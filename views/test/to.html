@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="http://localhost:8888/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <ul class="site-nav site-navbar">
+            <li id="menu-item-0" class="menu-item menu-item-object-custom  menu-item-type-taxonomy menu-item-0  current-menu-item " >
+                <a  href="/"><i class="fa fa-home"></i>首页</a>
+            </li>
+
+            <li id="menu-item-0" class="menu-item menu-item-object-custom  menu-item-type-taxonomy  menu-item-0 ">
+                <a  href="/category/1">
+                    <i class="mdi mdi-google"></i> Golang
+                </a>
+
+            </li>
+
+            <li id="menu-item-1" class="menu-item menu-item-object-custom  menu-item-type-taxonomy  menu-item-1 ">
+                <a  href="/category/2">
+                    <i class="mdi mdi-language-php"></i> PHP  <i class="fa fa-angle-down"></i>
+                </a>
+
+                <ul class="sub-menu">
+
+                    <li id="menu-item-4" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-4  ">
+                        <a  href="/category/4">swoole</a>
+                    </li>
+
+                    <li id="menu-item-9" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-9  ">
+                        <a  href="/category/9">Laravel</a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <li id="menu-item-2" class="menu-item menu-item-object-custom  menu-item-type-taxonomy  menu-item-2 ">
+                <a  href="/category/3">
+                    <i class="mdi mdi-server"></i> 服务器
+                </a>
+
+            </li>
+
+            <li id="menu-item-3" class="menu-item menu-item-object-custom  menu-item-type-taxonomy  menu-item-3 ">
+                <a  href="/category/5">
+                    <i class="mdi mdi-database"></i> 数据库
+                </a>
+
+            </li>
+
+            <li id="menu-item-999" class="menu-item menu-item-object-custom  menu-item-type-taxonomy  ">
+                <a href="/news">
+                    <i class="mdi mdi-package-down"></i> 资讯
+                </a>
+            </li>
+            <li class="navto-search">
+                <a href="javascript:;" class="search-show active"><i class="fa fa-search"></i></a>
+            </li>
+        </ul>
+        <i class="fa fa-bars m-icon-nav"></i>
+    </div>
+</header>
+<div class="site-search">
+    <div class="container">
+        <form method="get" class="site-search-form" action="/">
+            <input class="search-input" name="wd" type="text" placeholder="输入关键字" value="" />
+            <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
