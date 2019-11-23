@@ -3,18 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/bootsnav.css">
+    <link rel="stylesheet" href="../static/css/loading.css">
+    <link rel="stylesheet" href="../static/css/global.css">
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="../static/css/nav.css">
+    <link rel="stylesheet" href="../static/fonts/iconfont.css">
 </head>
 <body>
-<div class="load_more_box">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
+<!--加载框-->
+<div id="initialize" class="middleCenter whiteBgColor">
+    <div class="load_more_box ">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 </div>
-
+<!--皮肤-->
+<div class="navbar-box nav-skin">
+    <div class="navbar-expanded"></div>
+</div>
+<!--内容部分-->
 
 </body>
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+<script type="text/javascript" src="../static/js/bootsnav.js"></script>
+<script>
+    window.onload = function () {
+        setTimeout(function () {
+            $('#initialize').hide()
+        }, 1)
+    }
+</script>
 </html>

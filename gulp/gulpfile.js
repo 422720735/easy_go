@@ -38,7 +38,7 @@ gulp.task('cssUglify', function () {
     return gulp.src(['src/css/*.css'])
         .pipe(rename({suffixes: '.min'}))
         .pipe(cssUglify())
-        .pipe(gulp.dest('../../static/css'))
+        .pipe(gulp.dest(path.resolve(__dirname, '../static/css')))
 });
 
 // 压缩js
@@ -52,7 +52,7 @@ gulp.task('jsUglify', function () {
                 drop_debugger: NODE_ENV === 'development' ? false :  true // 过滤 debugger
             }
         }))
-        .pipe(gulp.dest('../../static/js'))
+        .pipe(gulp.dest(path.resolve(__dirname, '../static/js')))
 });
 
 gulp.task('img', function () {
@@ -63,7 +63,7 @@ gulp.task('img', function () {
         //     interlaced: true, 	// 隔行扫描gif进行渲染，默认：false
         //     multipass: true 		// 多次优化svg直到完全优化，默认：false
         // })))
-        .pipe(gulp.dest('../static/images'));
+        .pipe(gulp.dest(path.resolve(__dirname, '../static/images')));
 });
 
 /**
@@ -78,7 +78,7 @@ gulp.task('html', function () {
 
 gulp.task('fonts', function () {
    return gulp.src('src/fonts/**')
-       .pipe(gulp.dest('../../static/fonts'))
+       .pipe(gulp.dest(path.resolve(__dirname, '../static/fonts')))
 });
 
 
@@ -88,7 +88,7 @@ gulp.task('watch', () => {
     gulp.watch('src/css/**', gulp.series('cssUglify'));
     gulp.watch('src/js/**', gulp.series('jsUglify'));
     gulp.watch('src/images/**', gulp.series('img'));
-    gulp.watch('src/font/**', gulp.series('fonts'));
+    gulp.watch('src/fonts/**', gulp.series('fonts'));
 });
 
 gulp.task('clean', function () {

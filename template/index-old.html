@@ -6,34 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
-    <link rel="stylesheet" type="text/css" href="./css/bootsnav.css">
-    <link rel="stylesheet" href="./css/loading.css">
-    <link rel="stylesheet" href="./css/global.css">
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/nav.css">
-    <link rel="stylesheet" href="./fonts/iconfont.css">
-    <style>
-        @media (max-width: 992px) {
-            nav.navbar.bootsnav.navbar-mobile .navbar-collapse.in {
-                background-color: rgba(0, 0, 0, 0.7);
-            }
-
-            nav.navbar.bootsnav.navbar-mobile ul.nav > li > a {
-                color: #fff;
-            }
-            nav.navbar.bootsnav ul.nav li.dropdown ul.dropdown-menu > li > a {
-                color: #fff;
-            }
-        }
-
-        .nav > li:after {
-            height: 2px;
-        }
-
-        .nav.navbar-nav i,.nav.navbar-nav i::after {
-            margin-right: 4px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootsnav.css">
+    <link rel="stylesheet" href="../static/css/loading.css">
+    <link rel="stylesheet" href="../static/css/global.css">
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="../static/css/nav.css">
+    <link rel="stylesheet" href="../static/fonts/iconfont.css">
 </head>
 <body>
 <div id="initialize" class="middleCenter whiteBgColor">
@@ -67,9 +45,7 @@
 
                     <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
 
-                        <li><a href="#">
-                            <i class="iconfont icon-home"></i>首页
-                        </a></li>
+                        <li><a href="#"><i class="iconfont icon-home1"></i>首页</a></li>
 
                         <li><a href="#"><i class="iconfont icon-h5"></i>前端</a></li>
 
@@ -195,12 +171,12 @@
 </body>
 <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
 <script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
-<script type="text/javascript" src="./js/bootsnav.js"></script>
+<script type="text/javascript" src="../static/js/bootsnav.js"></script>
 <script>
     window.onload = function () {
         setTimeout(function () {
             $('#initialize').hide()
-        }, 1000)
+        }, 1)
     }
 </script>
 </html>
