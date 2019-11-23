@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .navbar-brand {
   padding: 29px 15px;
   height: auto; }
@@ -63,15 +62,3 @@ nav.navbar.bootsnav li.dropdown ul.dropdown-menu {
     background: transparent; }
   nav.navbar.bootsnav ul.nav > li > a {
     margin: 0; } }
-
-/** 皮肤*/
-@media (min-width: 768px) {
-  .navbar-box.nav-skin {
-    position: fixed;
-    width: 45px;
-    height: 100%;
-    left: 0;
-    top: 0;
-    z-index: 100000;
-    background-color: rgba(0, 0, 0, 0.65);
-    box-shadow: none; } }

@@ -79,22 +79,3 @@ nav.navbar.bootsnav li.dropdown ul.dropdown-menu {
   }
 }
 
-
-/** 皮肤*/
-@media (min-width: 768px) {
-  .navbar-box {
-    &.nav-skin {
-      position: fixed;
-      width: 45px;
-      height: 100%;
-      left: 0;
-      top: 0;
-      z-index: 100000;
-      background-color: rgba(0, 0, 0, .65);
-      box-shadow: none;
-    }
-
-
-  }
-
-}

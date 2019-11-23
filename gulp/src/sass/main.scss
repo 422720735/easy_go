@@ -1,32 +1,126 @@
+@import "./theme/themeColor";
+
+@media (min-width: 768px) {
+  .col-sm-3 {
+    min-height: auto;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: inherit;
+  }
+}
 /*loading加载框*/
 #initialize {
   position: fixed;
   z-index: 9999;
   width: 100%;
   height: 100%;
+  background-color: #ffffff;
 }
 
-@media (max-width: 992px) {
-  nav.navbar.bootsnav.navbar-mobile .navbar-collapse.in {
-    background-color: rgba(0, 0, 0, 0.7);
+
+
+/** 皮肤*/
+@media (min-width: 768px) {
+  .navbar-box {
+    &.nav-skin {
+      position: fixed;
+      width: 45px;
+      height: 100%;
+      left: 0;
+      top: 0;
+      z-index: 500;
+      background-color: rgba(0, 0, 0, .65);
+      box-shadow: none;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .main-box {
+    padding-left: 60px;
+    .row {
+      margin: 0;
+    }
+    // 博客背景
+    .sidebar-box {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      min-height: 100%;
+      left: 45px;
+      .cover-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-position: center;
+        background-image: url("../images/bg.jpg");
+      }
+
+      .bottom-block {
+        position: absolute;
+        bottom: 0;
+        padding: 30px;
+        color: $text-color;
+      }
+    }
+  }
+}
+
+
+
+
+.main-content {
+  position: relative;
+  min-height: 100vh;
+  // blog正文部分
+  .blog-container {
+    min-height: calc(100vh - 51px);
+    padding-bottom: 51px;
   }
 
-  nav.navbar.bootsnav.navbar-mobile ul.nav > li > a {
-    color: #fff;
+  // 页脚
+  ul.footer-container {
+    margin: 0;
   }
-  nav.navbar.bootsnav ul.nav li.dropdown ul.dropdown-menu > li > a {
-    color: #fff;
+  .footer-container {
+    padding: 10px 0 10px 10px;
+    border-top: solid 1px #d9d9d9;
+    color: rgba(0,0,0,.45);
+    li {
+      display: inline-block;
+      margin-right: 10px;
+      a {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 50%;
+        font-size: 18px;
+        i {
+          font-size: 18px;
+          color: rgba(0,0,0,.45);
+        }
+        &.github:hover {
+          background-color: #49be38;
+          i {
+            color: #ffffff;
+          }
+        }
+        &.email:hover {
+          background-color: #f57e42;
+          i {
+            color: #ffffff;
+          }
+        }
+
+      }
+      &.user {
+        font-family: fantasy;
+      }
+    }
   }
 }
-
-.nav > li:after {
-  height: 2px;
-}
-
-.nav.navbar-nav i,.nav.navbar-nav i::after {
-  margin-right: 4px;
-}
-
-
-
-

@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "718203",
+      "name": "setting",
+      "font_class": "setting",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
       "icon_id": "808581",
       "name": "h5",
       "font_class": "h5",
@@ -20,11 +27,11 @@
       "unicode_decimal": 59188
     },
     {
-      "icon_id": "1084694",
-      "name": "home",
-      "font_class": "home",
-      "unicode": "e65e",
-      "unicode_decimal": 58974
+      "icon_id": "1762372",
+      "name": "邮箱",
+      "font_class": "youxiang",
+      "unicode": "e624",
+      "unicode_decimal": 58916
     },
     {
       "icon_id": "2493970",
@@ -41,46 +48,46 @@
       "unicode_decimal": 58984
     },
     {
-      "icon_id": "4667135",
-      "name": "Golang",
-      "font_class": "Golang",
-      "unicode": "e600",
-      "unicode_decimal": 58880
+      "icon_id": "2718243",
+      "name": "moon",
+      "font_class": "moon",
+      "unicode": "e674",
+      "unicode_decimal": 58996
     },
     {
-      "icon_id": "4667136",
-      "name": "Golang",
-      "font_class": "Golang1",
-      "unicode": "e601",
-      "unicode_decimal": 58881
+      "icon_id": "3175123",
+      "name": "sun",
+      "font_class": "sun",
+      "unicode": "e610",
+      "unicode_decimal": 58896
     },
     {
-      "icon_id": "6926775",
-      "name": "golang",
-      "font_class": "golang",
-      "unicode": "e612",
-      "unicode_decimal": 58898
+      "icon_id": "7101242",
+      "name": "clone",
+      "font_class": "clone",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
     },
     {
-      "icon_id": "6926777",
-      "name": "golang",
-      "font_class": "golang1",
-      "unicode": "e607",
-      "unicode_decimal": 58887
+      "icon_id": "7334992",
+      "name": "github",
+      "font_class": "git",
+      "unicode": "e64a",
+      "unicode_decimal": 58954
     },
     {
-      "icon_id": "11180531",
-      "name": "golang",
-      "font_class": "go",
-      "unicode": "e608",
-      "unicode_decimal": 58888
+      "icon_id": "8335436",
+      "name": "login, enter, sign in, input, access",
+      "font_class": "loginentersignininputaccess",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
     },
     {
-      "icon_id": "11180532",
-      "name": "golang-waitou",
-      "font_class": "go2",
-      "unicode": "e60a",
-      "unicode_decimal": 58890
+      "icon_id": "10827037",
+      "name": "Exit without change",
+      "font_class": "Exitwithoutchange",
+      "unicode": "e626",
+      "unicode_decimal": 58918
     }
   ]
 }
