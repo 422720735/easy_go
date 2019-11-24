@@ -227,7 +227,7 @@
                 </div>
             </div>
             <footer>
-                <ul class="footer-container">
+                <ul class="footer-container" style="height: 4000px">
                     <li>
                         <span>&copy;<span id="year"></span>&ensp;/&ensp;蜀ICP备19025155号-1</span>
                     </li>
@@ -252,19 +252,34 @@
 <script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
 <script type="text/javascript" src="../static/js/bootsnav.js"></script>
 <script>
-    window.onload = function () {
-        setTimeout(function () {
-            document.getElementById('initialize').style.display = 'none'
-        }, 1);
+    // 函数防抖
+    function debounce(fn, wait) {
+        var timeout = null;
+        return function() {
+            if(timeout !== null)
+                clearTimeout(timeout);
+            timeout = setTimeout(fn, wait);
+        }
+    }
 
-        document.getElementById('year').innerText = new Date().getFullYear()
-        $('#drawer-mask').click(function () {
+    function handleMoreIcon() {
+        document.getElementById('drawer-mask').onclick = function() {
             if ($(this).attr('aria-expanded') === 'true') {
                 const more = $('nav.navbar.bootsnav .navbar-toggle i');
                 more.removeClass('fa fa-times');
                 more.addClass('fa fa-bars');
             }
-        })
+        }
     }
+
+    window.onload = function () {
+        setTimeout(function () {
+            document.getElementById('initialize').style.display = 'none'
+        }, 1);
+
+        document.getElementById('year').innerText = new Date().getFullYear();
+        handleMoreIcon()
+    }
+    window.onresize = debounce(handleMoreIcon, 1000)
 </script>
 </html>
