@@ -258,7 +258,7 @@
         }, 100);
 
         document.getElementById('year').innerText = new Date().getFullYear()
-        $('#drawer-mask').click(function (event) {
+        $('#drawer-mask').click(function () {
             if ($(this).attr('aria-expanded') === 'true') {
                 const more = $('nav.navbar.bootsnav .navbar-toggle i');
                 more.removeClass('fa fa-times');
