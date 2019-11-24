@@ -79,7 +79,8 @@
     min-height: calc(100vh - 51px);
     padding-bottom: 51px; }
   .main-content ul.footer-container {
-    margin: 0; }
+    margin: 0;
+    padding-left: 30px; }
   .main-content .footer-container {
     padding: 10px 0 10px 10px;
     border-top: solid 1px #d9d9d9;

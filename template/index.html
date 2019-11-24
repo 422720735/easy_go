@@ -219,7 +219,7 @@
 
                     </div>
 
-                    <div class="drawer-mask navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu" aria-expanded="false"></div>
+                    <div id="drawer-mask" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu" aria-expanded="false"></div>
 
                 </nav>
                 <div>
@@ -258,10 +258,13 @@
         }, 100);
 
         document.getElementById('year').innerText = new Date().getFullYear()
+        $('#drawer-mask').click(function (event) {
+            if ($(this).attr('aria-expanded') === 'true') {
+                const more = $('nav.navbar.bootsnav .navbar-toggle i');
+                more.removeClass('fa fa-times');
+                more.addClass('fa fa-bars');
+            }
+        })
     }
-
-    $('.main-content').click(function () {
-
-    })
 </script>
 </html>
