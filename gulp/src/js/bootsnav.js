@@ -336,7 +336,7 @@
                 });
             }
         }, navbarScrollspy: function () {
-            alert(1321)
+
             var navScrollSpy = $(".navbar-scrollspy"), $body = $('body'), getNav = $('nav.navbar.bootsnav'),
                 offset = getNav.outerHeight();
             if (navScrollSpy.length) {
