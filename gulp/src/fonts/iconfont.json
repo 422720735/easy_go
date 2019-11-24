@@ -27,6 +27,13 @@
       "unicode_decimal": 59188
     },
     {
+      "icon_id": "1345107",
+      "name": "mobile",
+      "font_class": "mobile",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
       "icon_id": "1762372",
       "name": "邮箱",
       "font_class": "youxiang",
@@ -62,6 +69,13 @@
       "unicode_decimal": 58896
     },
     {
+      "icon_id": "6516390",
+      "name": "其他",
+      "font_class": "qita",
+      "unicode": "e673",
+      "unicode_decimal": 58995
+    },
+    {
       "icon_id": "7101242",
       "name": "clone",
       "font_class": "clone",
@@ -81,6 +95,20 @@
       "font_class": "loginentersignininputaccess",
       "unicode": "e62b",
       "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "9374623",
+      "name": "nav_icon_Block chain",
+      "font_class": "nav_icon_Blockchain2",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    },
+    {
+      "icon_id": "10015282",
+      "name": "data-base",
+      "font_class": "data-base",
+      "unicode": "e65b",
+      "unicode_decimal": 58971
     },
     {
       "icon_id": "10827037",

@@ -25,31 +25,52 @@
     background-color: rgba(0, 0, 0, 0.65);
     box-shadow: none; } }
 
-@media (min-width: 768px) {
+@media (min-width: 1199px) {
+  .sidebar-box {
+    display: block !important; } }
+
+@media (min-width: 992px) {
   .main-box {
-    padding-left: 60px; }
-    .main-box .row {
-      margin: 0; }
+    padding-left: 60px; } }
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .main-box {
+    padding-left: 45px;
+    background-color: red; }
     .main-box .sidebar-box {
-      position: fixed;
+      display: none !important; }
+    .main-box .col-sm-offset-3 {
+      margin-left: 0; } }
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .main-box {
+    padding-left: 45px; }
+  .col-sm-offset-3 {
+    margin-left: 0; } }
+
+@media (min-width: 768px) {
+  .main-box .row {
+    margin: 0; }
+  .main-box .sidebar-box {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 100%;
+    left: 45px; }
+    .main-box .sidebar-box .cover-img {
+      position: absolute;
       top: 0;
-      right: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-position: center;
+      background-image: url("../images/bg.jpg"); }
+    .main-box .sidebar-box .bottom-block {
+      position: absolute;
       bottom: 0;
-      min-height: 100%;
-      left: 45px; }
-      .main-box .sidebar-box .cover-img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-position: center;
-        background-image: url("../images/bg.jpg"); }
-      .main-box .sidebar-box .bottom-block {
-        position: absolute;
-        bottom: 0;
-        padding: 30px;
-        color: #fff; } }
+      padding: 30px;
+      color: #fff; } }
 
 .main-content {
   position: relative;

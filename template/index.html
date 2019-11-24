@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
@@ -13,6 +13,14 @@
     <link rel="stylesheet" href="../static/css/repair.css">
     <link rel="stylesheet" href="../static/css/main.css">
     <link rel="stylesheet" href="../static/fonts/iconfont.css">
+
+    <style>
+        @media (max-width: 768px) {
+            nav.navbar.bootsnav.navbar-mobile .navbar-collapse {
+                background-color: rebeccapurple;
+            }
+        }
+    </style>
 </head>
 <body>
 <!--加载框-->
@@ -32,7 +40,7 @@
 <!--内容部分-->
 <div class="container-fluid main-box">
     <div class="row">
-        <div class="col-sm-3 sidebar-box">
+        <div class="col-sm-3 sidebar-box hide">
             <div class="cover-img"></div>
             <div class="bottom-block">
                 <h1>Bob The Blog</h1>
@@ -42,7 +50,7 @@
         </div>
         <div class="col-sm-offset-3 main-content">
             <div class="blog-container">
-                <nav class="navbar navbar-default navbar-mobile bootsnav on" style="background-color: orange">
+                <nav class="navbar navbar-default navbar-mobile bootsnav on">
 
                     <div class="navbar-header">
 
@@ -60,7 +68,50 @@
 
                             <li><a href="#"><i class="iconfont icon-home1"></i>首页</a></li>
 
-                            <li><a href="#"><i class="iconfont icon-h5"></i>前端</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="iconfont icon-h5"></i>前端</a>
+                                <ul class="dropdown-menu animated">
+
+                                    <li><a href="#">beego</a></li>
+
+                                    <li><a href="#">gin</a></li>
+
+                                    <li class="dropdown">
+
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sub Menu</a>
+
+                                        <ul class="dropdown-menu animated">
+
+                                            <li><a href="#">Custom Menu</a></li>
+
+                                            <li><a href="#">Custom Menu</a></li>
+
+                                            <li class="dropdown">
+
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sub Menu</a>
+
+                                                <ul class="dropdown-menu multi-dropdown animated">
+
+                                                    <li><a href="#">Custom Menu</a></li>
+
+                                                    <li><a href="#">Custom Menu</a></li>
+
+                                                    <li><a href="#">Custom Menu</a></li>
+
+                                                    <li><a href="#">Custom Menu</a></li>
+
+                                                </ul>
+
+                                            </li>
+
+                                            <li><a href="#">Custom Menu</a></li>
+
+                                        </ul>
+
+                                    </li>
+
+                                </ul>
+                            </li>
 
                             <li class="dropdown">
 
@@ -112,13 +163,13 @@
 
                             <li class="dropdown">
 
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages</a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="iconfont icon-mobile"></i>移动端</a>
 
                                 <ul class="dropdown-menu animated">
 
-                                    <li><a href="#">Custom Menu</a></li>
+                                    <li><a href="#">beego</a></li>
 
-                                    <li><a href="#">Custom Menu</a></li>
+                                    <li><a href="#">gin</a></li>
 
                                     <li class="dropdown">
 
@@ -154,28 +205,23 @@
 
                                     </li>
 
-                                    <li><a href="#">Custom Menu</a></li>
-
-                                    <li><a href="#">Custom Menu</a></li>
-
-                                    <li><a href="#">Custom Menu</a></li>
-
-                                    <li><a href="#">Custom Menu</a></li>
-
                                 </ul>
 
                             </li>
+                            <li><a href="#"><i class="iconfont icon-data-base"></i>数据库</a></li>
 
-                            <li><a href="#">Portfolio</a></li>
+                            <li><a href="#"><i class="iconfont icon-nav_icon_Blockchain2"></i>区块链</a></li>
 
-                            <li><a href="#">Contact Us</a></li>
 
+                            <li><a href="#"><i class="iconfont icon-qita"></i>其他</a></li>
                         </ul>
 
                     </div>
 
                 </nav>
-
+                <div>
+                    4545654
+                </div>
             </div>
             <footer>
                 <ul class="footer-container">
@@ -201,7 +247,7 @@
 </body>
 <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
 <script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
-<script type="text/javascript" src="../static/js/bootsnav.js"></script>
+<!--<script type="text/javascript" src="../static/js/bootsnav.js"></script>-->
 <script>
     window.onload = function () {
         setTimeout(function () {

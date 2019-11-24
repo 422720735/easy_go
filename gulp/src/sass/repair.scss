@@ -1,6 +1,8 @@
+@charset "UTF-8";
+@import "theme/themeColor";
 @media (max-width: 992px) {
   nav.navbar.bootsnav.navbar-mobile .navbar-collapse.in {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: #293038;
   }
 
   nav.navbar.bootsnav.navbar-mobile ul.nav > li > a {
@@ -15,11 +17,23 @@
   height: 2px;
 }
 
-.nav.navbar-nav i,.nav.navbar-nav i::after {
+.nav.navbar-nav i, .nav.navbar-nav i::after {
   margin-right: 4px;
 }
 
 .container-fluid {
   padding-right: 0;
   padding-left: 0;
+}
+
+.navbar {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .03);
+}
+
+nav.navbar.bootsnav ul.nav>li>a {
+  color: $hot-text-color;
+}
+
+nav.navbar.bootsnav ul.nav>li:hover {
+  background: $base-color;
 }

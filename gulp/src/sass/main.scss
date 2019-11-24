@@ -34,11 +34,49 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1199px) {
+  .sidebar-box {
+    display: block!important;
+  }
+}
+
+
+@media (min-width: 992px) {
   .main-box {
     padding-left: 60px;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .main-box {
+    padding-left: 45px;
+    background-color: red;
+    .sidebar-box {
+      display: none!important;
+    }
+    .col-sm-offset-3 {
+      margin-left: 0;
+    }
+
+  }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .main-box {
+    padding-left: 45px;
+  }
+  .col-sm-offset-3 {
+    margin-left: 0;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .main-box {
     .row {
       margin: 0;
+
     }
     // 博客背景
     .sidebar-box {
