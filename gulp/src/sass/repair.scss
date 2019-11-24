@@ -2,7 +2,7 @@
 @import "theme/themeColor";
 @media (max-width: 992px) {
   nav.navbar.bootsnav.navbar-mobile .navbar-collapse.in {
-    background-color: #293038;
+    //background-color: #293038;
   }
 
   nav.navbar.bootsnav.navbar-mobile ul.nav > li > a {
@@ -36,4 +36,27 @@ nav.navbar.bootsnav ul.nav>li>a {
 
 nav.navbar.bootsnav ul.nav>li:hover {
   background: $base-color;
+}
+
+@media (max-width: 992px) {
+  nav.navbar.bootsnav.navbar-mobile ul.nav>li>a {
+    color: $hot-text-color!important;
+  }
+
+  // 导航边距
+  .navbar-collapse {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  nav.navbar.bootsnav.navbar-mobile .navbar-collapse {
+    background-color: #293038!important;
+  }
+  nav.navbar.bootsnav .navbar-toggle {
+    //margin-left: 20px;
+  }
 }
