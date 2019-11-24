@@ -224,11 +224,6 @@
                 </nav>
                 <div>
                     4545654
-                    4545654
-                    4545654
-                    4545654
-                    4545654
-                    4545654
                 </div>
             </div>
             <footer>
@@ -259,8 +254,8 @@
 <script>
     window.onload = function () {
         setTimeout(function () {
-            $('#initialize').hide()
-        }, 100);
+            document.getElementById('initialize').style.display = 'none'
+        }, 1);
 
         document.getElementById('year').innerText = new Date().getFullYear()
         $('#drawer-mask').click(function () {

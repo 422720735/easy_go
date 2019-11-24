@@ -1,5 +1,10 @@
 @import "./theme/themeColor";
 
+.col-sm-3 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 @media (min-width: 768px) {
   .col-sm-3 {
     min-height: auto;
@@ -8,6 +13,7 @@
     box-sizing: inherit;
   }
 }
+
 /*loading加载框*/
 #initialize {
   position: fixed;
@@ -15,7 +21,6 @@
   width: 100%;
   height: 100%;
 }
-
 
 
 /** 皮肤*/
@@ -36,30 +41,39 @@
 
 @media (min-width: 1199px) {
   .sidebar-box {
-    display: block!important;
+    display: block !important;
   }
 }
 
-
-@media (min-width: 992px) {
-  .main-box {
-    padding-left: 60px;
+.main-box {
+  .row {
+    margin: 0;
   }
 }
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {
   .main-box {
     padding-left: 45px;
-    background-color: red;
+
     .sidebar-box {
-      display: none!important;
+      display: none !important;
     }
+
     .col-sm-offset-3 {
       margin-left: 0;
     }
 
   }
+}
 
+@media (min-width: 992px) {
+  .main-box {
+    padding-left: 60px;
+
+    ul.footer-container {
+      padding-left: 30px !important;
+    }
+  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
@@ -69,15 +83,19 @@
   .col-sm-offset-3 {
     margin-left: 0;
   }
+  nav.navbar.bootsnav ul.nav > li > a {
+    color: $hot-text-color !important;
+  }
 }
 
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  nav.navbar.bootsnav ul.nav > li > a {
+    font-weight: 600;
+  }
+}
 
 @media (min-width: 768px) {
   .main-box {
-    .row {
-      margin: 0;
-
-    }
     // 博客背景
     .sidebar-box {
       position: fixed;
@@ -86,6 +104,7 @@
       bottom: 0;
       min-height: 100%;
       left: 45px;
+
       .cover-img {
         position: absolute;
         top: 0;
@@ -106,9 +125,6 @@
   }
 }
 
-
-
-
 .main-content {
   position: relative;
   min-height: 100vh;
@@ -121,15 +137,18 @@
   // 页脚
   ul.footer-container {
     margin: 0;
-    padding-left: 30px;
+    padding-left: 15px;
   }
+
   .footer-container {
     padding: 10px 0 10px 10px;
     border-top: solid 1px #d9d9d9;
-    color: rgba(0,0,0,.45);
+    color: rgba(0, 0, 0, .45);
+
     li {
       display: inline-block;
       margin-right: 10px;
+
       a {
         display: inline-block;
         width: 30px;
@@ -138,24 +157,30 @@
         text-align: center;
         border-radius: 50%;
         font-size: 18px;
+
         i {
           font-size: 18px;
-          color: rgba(0,0,0,.45);
+          color: rgba(0, 0, 0, .45);
         }
+
         &.github:hover {
           background-color: #49be38;
+
           i {
             color: #ffffff;
           }
         }
+
         &.email:hover {
           background-color: #f57e42;
+
           i {
             color: #ffffff;
           }
         }
 
       }
+
       &.user {
         font-family: fantasy;
       }

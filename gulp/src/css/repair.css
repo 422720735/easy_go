@@ -34,8 +34,6 @@ nav.navbar.bootsnav .navbar-toggle {
 @media (max-width: 768px) {
   nav.navbar.bootsnav.navbar-mobile .navbar-collapse, .navbar-header {
     background-color: #293038 !important; }
-  .navbar-toggle {
-    margin-left: 30px; }
   nav.navbar.bootsnav .navbar-toggle {
     top: 0; }
   nav.navbar.bootsnav.navbar-mobile ul.nav > li > a {
