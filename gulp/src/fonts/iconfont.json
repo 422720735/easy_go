@@ -69,6 +69,13 @@
       "unicode_decimal": 58896
     },
     {
+      "icon_id": "5657791",
+      "name": "close",
+      "font_class": "close",
+      "unicode": "e6a6",
+      "unicode_decimal": 59046
+    },
+    {
       "icon_id": "6516390",
       "name": "其他",
       "font_class": "qita",
@@ -109,6 +116,13 @@
       "font_class": "data-base",
       "unicode": "e65b",
       "unicode_decimal": 58971
+    },
+    {
+      "icon_id": "10267591",
+      "name": "search",
+      "font_class": "search",
+      "unicode": "e600",
+      "unicode_decimal": 58880
     },
     {
       "icon_id": "10827037",

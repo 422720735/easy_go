@@ -17,3 +17,6 @@ li {
 
 .hide {
   display: none; }
+
+.cursorPointer {
+  cursor: pointer; }

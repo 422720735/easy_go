@@ -8,3 +8,6 @@
 [参考1](http://www.54tianzhisheng.cn/)
 ###
 [参考2](https://lin-xin.gitee.io/open/)
+
+### 侧边栏
+[jQuery响应式隐藏滑动侧边栏插件效果演示](http://www.htmleaf.com/Demo/201507012144.html)

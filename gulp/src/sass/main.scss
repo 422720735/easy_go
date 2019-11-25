@@ -40,8 +40,11 @@
 }
 
 @media (min-width: 1199px) {
-  .sidebar-box {
-    display: block !important;
+  .main-box {
+    padding-left: 60px;
+    .sidebar-box {
+      display: block !important;
+    }
   }
 }
 
@@ -54,7 +57,6 @@
 @media screen and (min-width: 992px) and (max-width: 1199px) {
   .main-box {
     padding-left: 45px;
-
     .sidebar-box {
       display: none !important;
     }
@@ -68,8 +70,6 @@
 
 @media (min-width: 992px) {
   .main-box {
-    padding-left: 60px;
-
     ul.footer-container {
       padding-left: 30px !important;
     }
@@ -187,3 +187,54 @@
     }
   }
 }
+
+/*************************** 右边搜索面部 ***************************/
+.mobile.search {
+  color: $text-color;
+  line-height: 43px;
+}
+
+#searchPanel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 99;
+  width: 260px;
+  min-height: 100vh;
+  background-color: $layout--bg-color;
+  color: $text-color;
+  .searchBox {
+    position: relative;
+    width: 260px;
+    height: 43px;
+    background-color: $input-bg-color;
+    input[title="search"] {
+      width: 230px;
+      height: 43px;
+      padding-left: 10px;
+      padding-right: 10px;
+      border: none;
+      outline: none;
+      color: $layout--bg-color;
+    }
+    .icon-search {
+      color: $layout--bg-color;
+    }
+  }
+
+  .load_more_box {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50vh;
+    transform: translate(-50%, -50%);
+  }
+}
+
+// 搜索框
+.main-content {
+  margin-right: 260px;
+}
+
+
+
