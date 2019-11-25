@@ -69,11 +69,32 @@
       "unicode_decimal": 58896
     },
     {
-      "icon_id": "5657791",
-      "name": "close",
-      "font_class": "close",
-      "unicode": "e6a6",
-      "unicode_decimal": 59046
+      "icon_id": "4031887",
+      "name": "区块链",
+      "font_class": "qukuailian",
+      "unicode": "e662",
+      "unicode_decimal": 58978
+    },
+    {
+      "icon_id": "5386440",
+      "name": "区块链",
+      "font_class": "qukuailian2",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "5473834",
+      "name": "区块链",
+      "font_class": "qukuailian1",
+      "unicode": "e696",
+      "unicode_decimal": 59030
+    },
+    {
+      "icon_id": "5838387",
+      "name": "区块链",
+      "font_class": "qukuailian3",
+      "unicode": "e6da",
+      "unicode_decimal": 59098
     },
     {
       "icon_id": "6516390",
@@ -104,6 +125,13 @@
       "unicode_decimal": 58923
     },
     {
+      "icon_id": "8821593",
+      "name": "Blockchain",
+      "font_class": "Blockchain",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
       "icon_id": "9374623",
       "name": "nav_icon_Block chain",
       "font_class": "nav_icon_Blockchain2",
@@ -125,11 +153,25 @@
       "unicode_decimal": 58880
     },
     {
+      "icon_id": "10608755",
+      "name": "wd-accent-blockchain",
+      "font_class": "wd-accent-blockchain",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
       "icon_id": "10827037",
       "name": "Exit without change",
       "font_class": "Exitwithoutchange",
       "unicode": "e626",
       "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "11421292",
+      "name": "区块链",
+      "font_class": "qukuailian4",
+      "unicode": "e603",
+      "unicode_decimal": 58883
     }
   ]
 }
