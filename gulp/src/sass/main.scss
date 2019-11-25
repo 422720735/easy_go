@@ -189,51 +189,36 @@
 }
 
 /*************************** 右边搜索面部 ***************************/
-.mobile.search {
-  color: $text-color;
-  line-height: 43px;
+.navbar-header {
+  .mobile.search {
+    color: $text-color;
+    line-height: 43px;
+  }
 }
 
-#searchPanel {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 99;
-  width: 260px;
-  min-height: 100vh;
-  background-color: $layout--bg-color;
-  color: $text-color;
-  .searchBox {
-    position: relative;
-    width: 260px;
-    height: 43px;
-    background-color: $input-bg-color;
-    input[title="search"] {
-      width: 230px;
-      height: 43px;
-      padding-left: 10px;
-      padding-right: 10px;
-      border: none;
+#search-form-box {
+  .search-content {
+    .form-control {
+      height: 50px;
+      line-height: 50px;
+    }
+    input.form-control {
       outline: none;
-      color: $layout--bg-color;
+      color: $form-input-text-color;
+      &:focus {
+        border: solid 1px $form-btn-search-bg-color;
+      }
     }
-    .icon-search {
-      color: $layout--bg-color;
+    .btn.btn-default {
+      width: 97px;
+      height: 50px;
+      color: $text-color;
+      background-color: $form-btn-search-bg-color ;
+      &:hover {
+        opacity: .85;
+      }
     }
   }
-
-  .load_more_box {
-    display: none;
-    position: absolute;
-    left: 50%;
-    top: 50vh;
-    transform: translate(-50%, -50%);
-  }
-}
-
-// 搜索框
-.main-content {
-  margin-right: 260px;
 }
 
 

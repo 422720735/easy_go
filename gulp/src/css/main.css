@@ -82,7 +82,7 @@
       position: absolute;
       bottom: 0;
       padding: 30px;
-      color: #fff; } }
+      color: #ffffff; } }
 
 .main-content {
   position: relative;
@@ -123,40 +123,24 @@
         font-family: fantasy; }
 
 /*************************** 右边搜索面部 ***************************/
-.mobile.search {
-  color: #fff;
+.navbar-header .mobile.search {
+  color: #ffffff;
   line-height: 43px; }
 
-#searchPanel {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 99;
-  width: 260px;
-  min-height: 100vh;
-  background-color: #293038;
-  color: #fff; }
-  #searchPanel .searchBox {
-    position: relative;
-    width: 260px;
-    height: 43px;
-    background-color: #fff; }
-    #searchPanel .searchBox input[title="search"] {
-      width: 230px;
-      height: 43px;
-      padding-left: 10px;
-      padding-right: 10px;
-      border: none;
-      outline: none;
-      color: #293038; }
-    #searchPanel .searchBox .icon-search {
-      color: #293038; }
-  #searchPanel .load_more_box {
-    display: none;
-    position: absolute;
-    left: 50%;
-    top: 50vh;
-    transform: translate(-50%, -50%); }
+#search-form-box .search-content .form-control {
+  height: 50px;
+  line-height: 50px; }
 
-.main-content {
-  margin-right: 260px; }
+#search-form-box .search-content input.form-control {
+  outline: none;
+  color: #999999; }
+  #search-form-box .search-content input.form-control:focus {
+    border: solid 1px #45b6f7; }
+
+#search-form-box .search-content .btn.btn-default {
+  width: 97px;
+  height: 50px;
+  color: #ffffff;
+  background-color: #45b6f7; }
+  #search-form-box .search-content .btn.btn-default:hover {
+    opacity: .85; }
