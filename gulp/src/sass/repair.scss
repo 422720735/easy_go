@@ -114,17 +114,9 @@ nav.navbar.bootsnav .navbar-toggle {
   transition: all 0.25s;
 }
 
-#search-form-box.active {
-  top: 93px;
-}
-
 @media (max-width: 768px) {
   #search-form-box {
     padding: 0 15px;
-    &.active {
-      top: 54px;
-    }
-
   }
 }
 

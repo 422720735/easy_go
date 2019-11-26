@@ -53,7 +53,7 @@
 
                         </button>
 
-                        <i id="mobile" class="cursorPointer fr iconfont icon-search"></i>
+                        <i id="mobile" class="mobile cursorPointer fr iconfont icon-search"></i>
                     </div>
 
                     <div class="collapse navbar-collapse" id="navbar-menu">
@@ -253,47 +253,5 @@
 <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
 <script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
 <script type="text/javascript" src="../static/js/bootsnav.js"></script>
-<script>
-    // 函数防抖
-    function debounce(fn, wait) {
-        var timeout = null;
-        return function() {
-            if(timeout !== null)
-                clearTimeout(timeout);
-            timeout = setTimeout(fn, wait);
-        }
-    }
-
-    function handleMoreIcon() {
-        document.getElementById('drawer-mask').onclick = function() {
-            if ($(this).attr('aria-expanded') === 'true') {
-                const more = $('nav.navbar.bootsnav .navbar-toggle i');
-                more.removeClass('fa fa-times');
-                more.addClass('fa fa-bars');
-            }
-        }
-    }
-
-    window.onload = function () {
-        setTimeout(function () {
-            document.getElementById('initialize').style.display = 'none'
-        }, 1);
-
-        document.getElementById('year').innerText = new Date().getFullYear();
-        handleMoreIcon()
-    }
-    window.onresize = debounce(handleMoreIcon, 1000)
-
-    $('#handleSearch, i#mobile').click(function () {
-        //  <li id="handleSearch"><a href="#"><i class="iconfont icon-search"></i></a></li>
-        var iconSearch = $('#handleSearch .iconfont.icon-search')
-        if (!iconSearch.hasClass('active')) {
-            iconSearch.addClass('active')
-            $('#search-form-box').addClass('active')
-        } else  {
-            iconSearch.removeClass('active')
-            $('#search-form-box').removeClass('active')
-        }
-    })
-</script>
+<script src="../static/js/main.js"></script>
 </html>
