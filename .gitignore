@@ -14,3 +14,4 @@ yarn-error.log*
 *.sln
 
 gulp/node_modules/
+static/

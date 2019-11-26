@@ -81,7 +81,12 @@ gulp.task('fonts', function () {
        .pipe(gulp.dest(path.resolve(__dirname, '../static/fonts')))
 });
 
-
+gulp.task('minFonts', function () {
+    return gulp.src(path.resolve(__dirname, '../static/fonts/*.css'))
+        .pipe(rename({suffixes: '.min'}))
+        .pipe(cssUglify())
+        .pipe(gulp.dest(path.resolve(__dirname, '../static/fonts')))
+});
 
 gulp.task('watch', () => {
     gulp.watch('src/sass/*.scss', gulp.series('sass'));
@@ -99,7 +104,7 @@ gulp.task('clean', function () {
     ], { force: true });
 });
 
-gulp.task('build', gulp.series('clean', 'sass', 'cssUglify', 'jsUglify', 'img', 'fonts', 'html'));
+gulp.task('build', gulp.series('clean', 'sass', 'cssUglify', 'jsUglify', 'img', 'fonts', 'minFonts', 'html'));
 
 
 
