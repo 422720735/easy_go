@@ -128,9 +128,22 @@
   }
 }
 
+@media (max-width: 768px) {
+  .main-content {
+    i#mobile {
+      display: block !important;
+      line-height: 43px;
+      color: $text-color;
+    }
+  }
+}
+
 .main-content {
   position: relative;
   min-height: 100vh;
+  i#mobile {
+    display: none;
+  }
   // blog正文部分
   .blog-container {
     min-height: calc(100vh - 51px);
@@ -192,29 +205,32 @@
 }
 
 /*************************** 右边搜索面部 ***************************/
-
 #search-form-box {
-  background-color: rosybrown;
-  .search-content {
-    .form-control {
-      height: 50px;
-      line-height: 50px;
+  background-color: $text-color;
+  .form-control {
+    height: 50px;
+    line-height: 50px;
+  }
+  input.form-control {
+    border-right: 0;
+    color: $form-input-text-color;
+    outline: 0;
+    &:focus {
+      border: solid 1px $form-btn-search-bg-color;
+      border-right: 0;
+      outline: 0;
     }
-    input.form-control {
-      outline: none;
-      color: $form-input-text-color;
-      &:focus {
-        border: solid 1px $form-btn-search-bg-color;
-      }
-    }
-    .btn.btn-default {
-      width: 97px;
-      height: 50px;
-      color: $text-color;
-      background-color: $form-btn-search-bg-color ;
-      &:hover {
-        opacity: .85;
-      }
+  }
+  button.search-btn {
+    width: 97px;
+    height: 50px;
+    border-radius: 4px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    color: $text-color;
+    background-color: $form-btn-search-bg-color ;
+    &:hover {
+      opacity: .85;
     }
   }
 }

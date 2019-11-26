@@ -116,3 +116,26 @@ nav.navbar.bootsnav .navbar-toggle {
 #search-form-box.active {
   top: 93px;
 }
+
+@media (max-width: 768px) {
+  #search-form-box {
+    padding: 0 15px;
+    &.active {
+      top: 54px;
+    }
+
+  }
+}
+
+@media (min-width: 992px) {
+  #search-form-box {
+    padding: 0 20%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  #search-form-box {
+    padding: 0 15%;
+  }
+}
+
