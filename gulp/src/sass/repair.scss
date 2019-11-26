@@ -37,6 +37,12 @@ nav.navbar.bootsnav ul.nav > li:hover {
   background: $base-color;
 }
 
+nav.navbar.bootsnav ul.nav > li.active, nav.navbar.bootsnav ul.nav > li i.active {
+  color: $base-color;
+}
+
+
+
 nav.navbar.bootsnav .navbar-toggle {
   background-color: transparent;
 }
@@ -94,4 +100,19 @@ nav.navbar.bootsnav .navbar-toggle {
 
 #drawer-mask.navbar-toggle[aria-expanded=true] {
   display: block;
+}
+
+.blog-container {
+  position: relative;
+}
+
+#search-form-box {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  transition: all 0.25s;
+}
+
+#search-form-box.active {
+  top: 93px;
 }

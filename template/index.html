@@ -53,8 +53,6 @@
 
                         </button>
 
-                        <i class="mobile search cursorPointer iconfont icon-search fr"></i>
-
                     </div>
 
                     <div class="collapse navbar-collapse" id="navbar-menu">
@@ -209,7 +207,7 @@
 
                             <li><a href="#"><i class="iconfont icon-qita"></i>其他</a></li>
 
-                            <li><a href="#"><i class="iconfont icon-search"></i></a></li>
+                            <li id="handleSearch"><a href="#"><i class="iconfont icon-search"></i></a></li>
 
                         </ul>
 
@@ -219,17 +217,19 @@
 
                 </nav>
 
+                <div class="col-sm-9 article-list">
+4646
+                </div>
                 <form id="search-form-box">
-                    <div class="col-sm-9 article-list">
-                        <div class="input-group search-content">
-                            <input type="text" class="form-control" aria-label="...">
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="iconfont icon-search"></i>
-                                </button>
-                            </div>
+                    <div class="input-group search-content">
+                        <input type="text" class="form-control" aria-label="...">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="iconfont icon-search"></i>
+                            </button>
                         </div>
                     </div>
+
                 </form>
             </div>
             <footer>
@@ -287,5 +287,17 @@
         handleMoreIcon()
     }
     window.onresize = debounce(handleMoreIcon, 1000)
+
+    $('#handleSearch').click(function () {
+        //  <li id="handleSearch"><a href="#"><i class="iconfont icon-search"></i></a></li>
+        var iconSearch = $('#handleSearch .iconfont.icon-search')
+        if (!iconSearch.hasClass('active')) {
+            iconSearch.addClass('active')
+            $('#search-form-box').addClass('active')
+        } else  {
+            iconSearch.removeClass('active')
+            $('#search-form-box').removeClass('active')
+        }
+    })
 </script>
 </html>

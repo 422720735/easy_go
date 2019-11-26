@@ -51,6 +51,8 @@
     padding-left: 30px !important; } }
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
+  .navbar-header {
+    display: none; }
   .main-box {
     padding-left: 45px; }
   .col-sm-offset-3 {
@@ -123,24 +125,20 @@
         font-family: fantasy; }
 
 /*************************** 右边搜索面部 ***************************/
-.navbar-header .mobile.search {
-  color: #ffffff;
-  line-height: 43px; }
-
-#search-form-box .search-content .form-control {
-  height: 50px;
-  line-height: 50px; }
-
-#search-form-box .search-content input.form-control {
-  outline: none;
-  color: #999999; }
-  #search-form-box .search-content input.form-control:focus {
-    border: solid 1px #45b6f7; }
-
-#search-form-box .search-content .btn.btn-default {
-  width: 97px;
-  height: 50px;
-  color: #ffffff;
-  background-color: #45b6f7; }
-  #search-form-box .search-content .btn.btn-default:hover {
-    opacity: .85; }
+#search-form-box {
+  background-color: rosybrown; }
+  #search-form-box .search-content .form-control {
+    height: 50px;
+    line-height: 50px; }
+  #search-form-box .search-content input.form-control {
+    outline: none;
+    color: #999999; }
+    #search-form-box .search-content input.form-control:focus {
+      border: solid 1px #45b6f7; }
+  #search-form-box .search-content .btn.btn-default {
+    width: 97px;
+    height: 50px;
+    color: #ffffff;
+    background-color: #45b6f7; }
+    #search-form-box .search-content .btn.btn-default:hover {
+      opacity: .85; }
