@@ -138,6 +138,12 @@
   }
 }
 
+@media (max-width: 492px) {
+  .blog-container {
+    min-height: calc(100vh - 74px)!important;
+  }
+}
+
 .main-content {
   position: relative;
   min-height: 100vh;
@@ -212,6 +218,7 @@
     line-height: 50px;
   }
   input.form-control {
+    width: 85%;
     border-right: 0;
     color: $form-input-text-color;
     outline: 0;
@@ -222,7 +229,7 @@
     }
   }
   button.search-btn {
-    width: 97px;
+    width: 15%;
     height: 50px;
     border-radius: 4px;
     border-top-left-radius: 0;

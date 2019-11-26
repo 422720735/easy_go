@@ -92,6 +92,10 @@
     line-height: 43px;
     color: #ffffff; } }
 
+@media (max-width: 492px) {
+  .blog-container {
+    min-height: calc(100vh - 74px) !important; } }
+
 .main-content {
   position: relative;
   min-height: 100vh; }
@@ -139,6 +143,7 @@
     height: 50px;
     line-height: 50px; }
   #search-form-box input.form-control {
+    width: 85%;
     border-right: 0;
     color: #999999;
     outline: 0; }
@@ -147,7 +152,7 @@
       border-right: 0;
       outline: 0; }
   #search-form-box button.search-btn {
-    width: 97px;
+    width: 15%;
     height: 50px;
     border-radius: 4px;
     border-top-left-radius: 0;

@@ -72,6 +72,7 @@ nav.navbar.bootsnav .navbar-toggle {
   position: absolute;
   z-index: 1;
   top: 0;
+  width: 100%;
   transition: all 0.25s; }
 
 #search-form-box.active {
