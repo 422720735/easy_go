@@ -143,3 +143,11 @@ nav.navbar.bootsnav .navbar-toggle {
     padding: 0 42% 0 12%;
   }
 }
+
+nav.navbar.bootsnav {
+  position: fixed;
+  z-index: 300;
+  top: 0;
+  right: 0;
+
+}

@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"bobBlog/controllers"
+	"easy_go/controllers"
 	"github.com/astaxie/beego"
 )
 

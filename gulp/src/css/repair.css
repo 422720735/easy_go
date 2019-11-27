@@ -94,3 +94,9 @@ nav.navbar.bootsnav .navbar-toggle {
 @media (min-width: 1679px) {
   #search-form-box {
     padding: 0 42% 0 12%; } }
+
+nav.navbar.bootsnav {
+  position: fixed;
+  z-index: 300;
+  top: 0;
+  right: 0; }

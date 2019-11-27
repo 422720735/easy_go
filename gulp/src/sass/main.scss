@@ -146,6 +146,11 @@
 }
 
 @media (max-width: 768px) {
+  .nav-skin {
+    .navbar-expanded {
+      display: none!important;
+    }
+  }
   .main-content {
     i#mobile {
       display: block !important;
