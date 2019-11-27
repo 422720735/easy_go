@@ -79,10 +79,18 @@ nav.navbar.bootsnav .navbar-toggle {
   #search-form-box {
     padding: 0 15px; } }
 
-@media (min-width: 992px) {
-  #search-form-box {
-    padding: 0 20%; } }
-
 @media screen and (min-width: 768px) and (max-width: 992px) {
   #search-form-box {
-    padding: 0 15%; } }
+    padding: 0 10%; } }
+
+@media screen and (min-width: 992px) and (max-width: 1170px) {
+  #search-form-box {
+    padding: 0 35% 0 20%; } }
+
+@media screen and (min-width: 1170px) and (max-width: 1679px) {
+  #search-form-box {
+    padding: 0 33% 0 13%; } }
+
+@media (min-width: 1679px) {
+  #search-form-box {
+    padding: 0 42% 0 12%; } }
