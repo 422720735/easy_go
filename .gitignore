@@ -15,3 +15,7 @@ yarn-error.log*
 
 gulp/node_modules/
 static/
+
+easy_go
+easy_go.exe
+easy_go.exe~
