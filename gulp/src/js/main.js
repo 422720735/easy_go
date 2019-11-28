@@ -67,4 +67,9 @@ function computeNavWidth() {
     } else {
         document.querySelectorAll('nav.navbar.bootsnav')[0].style.width = totalWidth + 'px'
     }
+
+    const navHeight = document.querySelectorAll('nav.navbar.bootsnav')[0].clientHeight;
+    const marginBottom = parseInt($('nav.navbar.bootsnav').css('marginBottom'))
+    // 空容器用来占nav定位留下来的高度
+    document.querySelectorAll("#placeholder.ensp")[0].style.height = navHeight + marginBottom + 'px'
 }
