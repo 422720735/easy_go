@@ -45,8 +45,7 @@ $('#handleSearch, i#mobile').click(function () {
         iconSearch.addClass('active');
         $('#search-form-box').addClass('active');
         // form_top 高度
-        const isMobile = $(this).
-        ('mobile'); // 是否是手机
+        const isMobile = $(this).hasClass('mobile'); // 是否是手机
         const mobileHeight = document.querySelectorAll('.navbar-header')[0].clientHeight;
         const pcHeight = document.querySelectorAll('.navbar-collapse')[0].clientHeight
         formBox.style.top = isMobile ? `${mobileHeight + 14}px` : `${pcHeight + 14}px`
