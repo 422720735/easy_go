@@ -26,7 +26,7 @@ function handleMoreIcon() {
 window.onload = function () {
     setTimeout(function () {
         document.getElementById('initialize').style.display = 'none'
-    }, 1);
+    });
 
     document.getElementById('year').innerText = new Date().getFullYear();
     handleMoreIcon();
@@ -58,7 +58,7 @@ $('#handleSearch, i#mobile').click(function () {
 
 /**************** 计算nav的宽度，因为采用了锁定定位所以需要宽度，后期还需要加工。****************/
 function computeNavWidth() {
-    const totalWidth = document.querySelectorAll('.wrapper')[0].clientWidth;
+    const totalWidth = document.querySelectorAll('body')[0].clientWidth;
     if (totalWidth > 768) {
         const skinWidth = document.querySelectorAll('.nav-skin')[0].clientWidth;
         const coverWidth = document.querySelectorAll('.cover-img')[0].clientWidth;

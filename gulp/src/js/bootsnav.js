@@ -121,7 +121,15 @@
                 $("nav.navbar.bootsnav > .side").removeClass("on");
                 $("body").removeClass("on-side");
             });
-            $("body").wrapInner("<div class='wrapper'></div>");
+
+
+
+
+
+
+
+            
+            // $("body").wrapInner("<div class='wrapper'></div>");
         }, hoverDropdown: function () {
             var getNav = $("nav.navbar.bootsnav"), getWindow = $(window).width(), getHeight = $(window).height(),
                 getIn = getNav.find("ul.nav").data("in"), getOut = getNav.find("ul.nav").data("out");
