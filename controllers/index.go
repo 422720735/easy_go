@@ -7,10 +7,10 @@ type IndexController struct {
 }
 
 func (c *IndexController) Index() {
-	c.Layout = "layout.html"
-	this.TplName = "layout.html"
+	c.Layout = "base/layout.html"
+	c.TplName = "main.html"
 	c.LayoutSections = make(map[string]string)
-    c.LayoutSections["articleList"] = "article-list.html"
-// 	c.LayoutPageList = make(map[string]string)
-// 	c.LayoutPageList["articleList"] = "article-list.html"
+	c.LayoutSections["Welcome"] = "base/welcome.html"
+
+	c.LayoutSections["Header"] = "style/article_List.html"
 }
