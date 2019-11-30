@@ -230,6 +230,6 @@
         opacity: b.getAttribute("opacity"),
         color: b.getAttribute("color"),
         pointColor: b.getAttribute("pointColor"),
-        count: Number(b.getAttribute("count")) || bodyW < 768 ? 30 : 99
+        count: Number(b.getAttribute("count")) || bodyW < 768 ? 24 : 66
     }))
 }();
