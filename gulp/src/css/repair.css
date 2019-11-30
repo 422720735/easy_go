@@ -21,10 +21,10 @@ nav.navbar.bootsnav ul.nav > li > a {
   color: #666; }
 
 nav.navbar.bootsnav ul.nav > li:hover {
-  background: #13c2c2; }
+  background: none; }
 
 nav.navbar.bootsnav ul.nav > li.active, nav.navbar.bootsnav ul.nav > li i.active {
-  color: #13c2c2; }
+  color: none; }
 
 nav.navbar.bootsnav .navbar-toggle {
   background-color: transparent; }
