@@ -71,9 +71,15 @@ gulp.task('img', function () {
  */
 gulp.task('html', function () {
    // 开发环境html在template, 生产环境是在views
-   return gulp.src([`${path.resolve(__dirname, '../template')}/**`])
+   return gulp.src([`${path.resolve(__dirname, '../template')}/**`, `!${path.resolve(__dirname, '../template')}/error.html`])
        .pipe(htmlMin(options))
        .pipe(gulp.dest(`${path.resolve(__dirname, '../views')}`))
+});
+
+gulp.task('errorHtml', function () {
+    // 开发环境html在template, 生产环境是在views
+    return gulp.src([`${path.resolve(__dirname, '../template')}/error.html`])
+      .pipe(gulp.dest(`${path.resolve(__dirname, '../views')}`))
 });
 
 gulp.task('fonts', function () {
@@ -104,7 +110,7 @@ gulp.task('clean', function () {
     ], { force: true });
 });
 
-gulp.task('build', gulp.series('clean', 'sass', 'cssUglify', 'jsUglify', 'img', 'fonts', 'minFonts', 'html'));
+gulp.task('build', gulp.series('clean', 'sass', 'cssUglify', 'jsUglify', 'img', 'fonts', 'minFonts', 'html', 'errorHtml'));
 
 
 
