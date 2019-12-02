@@ -7,4 +7,14 @@
             $('.container-fluid.main-box').removeClass('hide')
         }
     }, 3000)
+
+
+    setTimeout(() => {
+        if (document.querySelectorAll('.navbar-box.nav-skin')[0]) {
+            $('.navbar-box.nav-skin').addClass('active')
+        }
+        if (document.querySelectorAll('.container-fluid.main-box')[0]) {
+            $('.container-fluid.main-box').addClass('active')
+        }
+    }, 3000)
 </script>
