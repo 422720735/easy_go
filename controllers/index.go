@@ -8,7 +8,7 @@ type IndexController struct {
 
 func (c *IndexController) Index() {
 	c.Layout = "base/layout.html"
-	c.TplName = "main.html"
+	c.TplName = "article-list.html"
 	c.LayoutSections = make(map[string]string)
 	c.LayoutSections["Welcome"] = "base/welcome.html"
 

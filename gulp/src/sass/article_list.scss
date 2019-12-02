@@ -1,10 +1,42 @@
 @charset "UTF-8";
 
+/*
+这里是响应式适配屏幕
+*/
+@media (max-width: 768px) {
+  .article-list {
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .article-list {
+
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1170px) {
+  .article-list {
+  }
+}
+
+@media screen and (min-width: 1170px) and (max-width: 1679px) {
+  .article-list {
+  }
+}
+
+@media (min-width: 1679px) {
+  .article-list {
+    width: 978px;
+  }
+}
+
+
+
 
 @media (max-width: 768px) {
   .article-list {
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
 
@@ -14,8 +46,4 @@
     margin-left: 30px;
     margin-right: 30px;
   }
-}
-
-.article-list {
-  background-color: rebeccapurple;
 }
