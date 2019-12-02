@@ -43,7 +43,7 @@ gulp.task('cssUglify', function () {
 
 // 压缩js
 gulp.task('jsUglify', function () {
-    return gulp.src( ['src/js/*.js'])
+    return gulp.src(['src/js/**', '!src/js/TweenMax/**'])
         .pipe(babel())
         .pipe(rename({suffixes: '.min'}))
         .pipe(uglify({
@@ -55,11 +55,29 @@ gulp.task('jsUglify', function () {
         .pipe(gulp.dest(path.resolve(__dirname, '../static/js')))
 });
 
-gulp.task('img', function () {
+// 压缩js
+gulp.task('jsNoBuildUglify', function () {
+    return gulp.src(['src/js/**', '!src/js/TweenMax/**'])
+      .pipe(babel())
+      .pipe(rename({suffixes: '.min'}))
+      .pipe(uglify({
+          compress: {
+              drop_console: NODE_ENV === 'development' ? false :  true, // 过滤 console
+              drop_debugger: NODE_ENV === 'development' ? false :  true // 过滤 debugger
+          }
+      }))
+      .pipe(gulp.dest(path.resolve(__dirname, '../static/js')))
+});
+
+
+gulp.task('img', function () { //
     return gulp.src('src/images/**')
         // .pipe(cache(imageMin({
         //     optimizationLevel: 5, // 取值范围：0-7（优化等级），默认：3
         //     progressive: true, 	// 无损压缩jpg图片，默认：false
+
+
+
         //     interlaced: true, 	// 隔行扫描gif进行渲染，默认：false
         //     multipass: true 		// 多次优化svg直到完全优化，默认：false
         // })))
@@ -71,12 +89,13 @@ gulp.task('img', function () {
  */
 gulp.task('html', function () {
    // 开发环境html在template, 生产环境是在views
-   return gulp.src([`${path.resolve(__dirname, '../template')}/**`, `!${path.resolve(__dirname, '../template')}/error.html`])
+   return gulp.src([`${path.resolve(__dirname, '../template')}/**`, `!${path.resolve(__dirname, '../template')}/error.html`, `!${path.resolve(__dirname, '../template/transition')}/TweenMax.html`])
        .pipe(htmlMin(options))
        .pipe(gulp.dest(`${path.resolve(__dirname, '../views')}`))
 });
 
-gulp.task('errorHtml', function () {
+// 不压缩的html
+gulp.task('noBuildHtml', function () {
     // 开发环境html在template, 生产环境是在views
     return gulp.src([`${path.resolve(__dirname, '../template')}/error.html`])
       .pipe(gulp.dest(`${path.resolve(__dirname, '../views')}`))
@@ -110,7 +129,7 @@ gulp.task('clean', function () {
     ], { force: true });
 });
 
-gulp.task('build', gulp.series('clean', 'sass', 'cssUglify', 'jsUglify', 'img', 'fonts', 'minFonts', 'html', 'errorHtml'));
+gulp.task('build', gulp.series('clean', 'sass', 'cssUglify', 'jsUglify', 'img', 'fonts', 'minFonts', 'html', 'noBuildHtml'));
 
 
 
