@@ -57,16 +57,8 @@ gulp.task('jsUglify', function () {
 
 // 压缩js
 gulp.task('jsNoBuildUglify', function () {
-    return gulp.src(['src/js/**', '!src/js/TweenMax/**'])
-      .pipe(babel())
-      .pipe(rename({suffixes: '.min'}))
-      .pipe(uglify({
-          compress: {
-              drop_console: NODE_ENV === 'development' ? false :  true, // 过滤 console
-              drop_debugger: NODE_ENV === 'development' ? false :  true // 过滤 debugger
-          }
-      }))
-      .pipe(gulp.dest(path.resolve(__dirname, '../static/js')))
+    return gulp.src(['src/js/TweenMax/**'])
+      .pipe(gulp.dest(path.resolve(__dirname, '../static/js/TweenMax')))
 });
 
 
@@ -129,7 +121,7 @@ gulp.task('clean', function () {
     ], { force: true });
 });
 
-gulp.task('build', gulp.series('clean', 'sass', 'cssUglify', 'jsUglify', 'img', 'fonts', 'minFonts', 'html', 'noBuildHtml'));
+gulp.task('build', gulp.series('clean', 'sass', 'cssUglify', 'jsUglify', 'jsNoBuildUglify', 'img', 'fonts', 'minFonts', 'html', 'noBuildHtml'));
 
 
 

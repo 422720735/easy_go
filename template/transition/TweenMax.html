@@ -3,39 +3,13 @@
 <head>
     <meta charset="utf-8">
     <title>Tesselation Transition</title>
-
-    <style>
-        *{margin:0;padding:0;list-style-type:none;}
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        body {
-            background: #e0e6eb;
-        }
-
-        svg {
-            width: 100%;
-            height: 100%;
-        }
-        svg g {
-            mix-blend-mode: lighten;
-        }
-        svg polygon {
-            stroke: none;
-            fill: white;
-        }
-    </style>
-
 </head>
 <body>
 
-<script type="text/javascript" src="js/TweenMax.min.js"></script>
-<script type="text/javascript" src="js/Stats.min.js"></script>
+<script type="text/javascript" src="/static/js/TweenMax/TweenMax.min.js"></script>
+<script type="text/javascript" src="/static/js/TweenMax/Stats.min.js"></script>
 
-<svg id="demo" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMid slice">
+<svg id="firstScreen" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMid slice">
     <defs>
         <linearGradient id="grad1" x1="0" y1="0" x2="1" y2="0" color-interpolation="sRGB">
             <stop id="stop1a" offset="0%" stop-color="#12a3b4"></stop>
@@ -68,7 +42,7 @@
         }
 
         // init
-        var svg = document.getElementById('demo');
+        var svg = document.getElementById('firstScreen');
         tesselation.setup(svg);
         gradients.setup();
 
@@ -87,6 +61,10 @@
             window.requestAnimationFrame(tick);
         }
         window.requestAnimationFrame(tick);
+
+        setTimeout(() => {
+            document.getElementById('firstScreen').style.display = 'none'
+        }, 3000)
     }
 
     //////////////////////////////

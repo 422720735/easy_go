@@ -24,9 +24,9 @@ function handleMoreIcon() {
 }
 
 window.onload = function () {
-    setTimeout(function () {
-        document.getElementById('initialize').style.display = 'none'
-    });
+    // setTimeout(function () {
+    //     document.getElementById('initialize').style.display = 'none'
+    // });
 
     document.getElementById('year').innerText = new Date().getFullYear();
     handleMoreIcon();
