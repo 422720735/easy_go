@@ -15,3 +15,10 @@ svg polygon {
 
 .visibility {
   visibility: hidden; }
+
+.navbar-box.nav-skin, .container-fluid.main-box {
+  transition: all 1.3s;
+  opacity: 0; }
+
+.navbar-box.nav-skin.active, .container-fluid.main-box.active {
+  opacity: 1.3; }

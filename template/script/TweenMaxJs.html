@@ -1,12 +1,13 @@
 <script>
     setTimeout(() => {
+        document.getElementById('firstScreen').style.display = 'none'; // svg动画隐藏
         if (document.querySelectorAll('.navbar-box.nav-skin')[0]) {
-            $('.navbar-box.nav-skin').removeClass('hide')
+            $('.navbar-box.nav-skin').removeClass('visibility')
         }
         if (document.querySelectorAll('.container-fluid.main-box')[0]) {
-            $('.container-fluid.main-box').removeClass('hide')
+            $('.container-fluid.main-box').removeClass('visibility')
         }
-    }, 3000)
+    }, 2000);
 
 
     setTimeout(() => {
@@ -16,5 +17,5 @@
         if (document.querySelectorAll('.container-fluid.main-box')[0]) {
             $('.container-fluid.main-box').addClass('active')
         }
-    }, 3000)
+    }, 2000)
 </script>
