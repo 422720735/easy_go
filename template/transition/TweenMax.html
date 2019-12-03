@@ -2,10 +2,16 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Tesselation Transition</title>
+    <title>log</title>
+    <link rel="stylesheet" href="/static/css/progress.css">
 </head>
 <body>
-
+<div id="progress-box">
+    <div class="loader-container">
+        <div class="meter">0</div>
+        <span class="runner"></span>
+    </div>
+</div>
 <script type="text/javascript" src="/static/js/TweenMax/TweenMax.min.js"></script>
 <script type="text/javascript" src="/static/js/TweenMax/Stats.min.js"></script>
 
@@ -22,7 +28,8 @@
     </defs>
     <rect id="rect1" x="0" y="0" width="1600" height="600" stroke="none" fill="url(#grad1)"></rect>
     <rect id="rect2" x="0" y="0" width="1600" height="600" stroke="none" fill="url(#grad2)"></rect>
-</svg><script>
+</svg>
+<script>
     //////////////////////////////
     // Demo Functions
     //////////////////////////////
@@ -341,5 +348,8 @@
     })();
     init();
 </script>
+<!--加载进度条-->
+<script src="/static/js/TweenMax/prefixfree.min.js"></script>
+<script src="/static/js/TweenMax/modernizr.min.js"></script>
 </body>
 </html>
