@@ -1,11 +1,13 @@
 <script>setTimeout(() => {
         document.getElementById('firstScreen').style.display = 'none'; // svg动画隐藏
+        document.getElementById('progress-box').style.display = 'none';
         if (document.querySelectorAll('.navbar-box.nav-skin')[0]) {
             $('.navbar-box.nav-skin').removeClass('visibility')
         }
         if (document.querySelectorAll('.container-fluid.main-box')[0]) {
             $('.container-fluid.main-box').removeClass('visibility')
         }
+
     }, 5000);
 
 
@@ -18,7 +20,7 @@
         }
     }, 5000)
 
-
+    // index进度条
     var Loader = function () {
         var loader = document.querySelector('.loader-container'),
             meter = document.querySelector('.meter'),

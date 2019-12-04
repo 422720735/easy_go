@@ -81,3 +81,7 @@
   bottom: 60px;
   z-index: 199999;
   width: 300px; }
+
+@media (max-width: 769px) {
+  .loader-container {
+    margin-left: -184px; } }
