@@ -43,6 +43,8 @@ nav.navbar.bootsnav .navbar-toggle {
     color: #ffffff !important; }
   nav.navbar.bootsnav .navbar-header button.navbar-toggle i, nav.navbar.bootsnav .navbar-nav button.navbar-toggle i {
     color: #ffffff; }
+  .nav.navbar-nav #handleSearch {
+    display: none; }
   #drawer-mask.navbar-toggle {
     margin-left: 0; }
   nav.navbar.bootsnav #drawer-mask.navbar-toggle {

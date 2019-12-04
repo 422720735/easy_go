@@ -73,6 +73,9 @@ nav.navbar.bootsnav .navbar-toggle {
       }
     }
   }
+  .nav.navbar-nav #handleSearch {
+    display: none;
+  }
   #drawer-mask.navbar-toggle {
     margin-left: 0;
   }
