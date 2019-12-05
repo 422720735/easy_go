@@ -55,7 +55,7 @@
   background-color: $article-list-bg-color;
 
   .article-item {
-    padding: 9px 0;
+    display: flex;
     .left_img {
       width: 220px;
       height: 150px;
@@ -122,7 +122,16 @@
         }
       }
 
-      .article {}
+      .article {
+        background-color: pink;
+        padding: 9px 11px;
+        .text {
+          line-height: 24px;
+          color: $hot-text-color;
+          letter-spacing: 1px;
+          text-indent: 2em;
+        }
+      }
     }
   }
 }

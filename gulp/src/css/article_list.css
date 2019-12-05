@@ -19,7 +19,7 @@
 .article-list {
   background-color: #ffffff; }
   .article-list .article-item {
-    padding: 9px 0; }
+    display: flex; }
     .article-list .article-item .left_img {
       width: 220px;
       height: 150px;
@@ -72,3 +72,11 @@
         border-radius: 3px;
         background-color: #ffffff;
         color: #c0392b; }
+    .article-list .article-item .right-html .article {
+      background-color: pink;
+      padding: 9px 11px; }
+      .article-list .article-item .right-html .article .text {
+        line-height: 24px;
+        color: #666;
+        letter-spacing: 1px;
+        text-indent: 2em; }
