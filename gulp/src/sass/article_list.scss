@@ -55,6 +55,7 @@
   background-color: $article-list-bg-color;
 
   .article-item {
+    padding: 9px 0;
     .left_img {
       width: 220px;
       height: 150px;
@@ -69,11 +70,59 @@
 
     .right-html {
       .title_tag {
-        .border-current {
-          color: pink;
+        margin-top: 2px;
+        .classTag {
+          position: relative;
+          display: inline-block;
+          top: -2px;
+          padding: 3px 6px;
+          margin-right: 6px;
+          border-radius: 3px;
+          color: $text-color;
+          background-color: $article-tag-bg-color;
           font-size: 12px;
+          text-decoration: none;
+          &:before {
+            position: absolute;
+            display: inline;
+            right: -8px;
+            top: 50%;
+            margin-top: -4px;
+            content: "";
+            width: 0;
+            height: 0;
+            border-top: 4px solid transparent;
+            border-left: 8px solid $article-tag-bg-color;
+            border-bottom: 4px solid transparent;
+          }
+        }
+        .article-title {
+          display: inline;
+          margin-top: 0;
+          margin-bottom: 0;
+          font-size: larger;
+          letter-spacing: 1px;
+          a {
+            font-size: 16px;
+            font-weight: bold;
+            color: $hot-text-color;
+            &:hover {
+              color: $text-hover-color;
+            }
+          }
+        }
+
+        .isTop {
+          margin-left: 6px;
+          padding: 4px 6px;
+          border: solid 1px $nav-red-color;
+          border-radius: 3px;
+          background-color: $article-list-bg-color;
+          color: $nav-red-color;
         }
       }
+
+      .article {}
     }
   }
 }

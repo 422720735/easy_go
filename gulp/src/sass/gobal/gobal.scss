@@ -1,0 +1,15 @@
+// 多行省略号，默认一行
+@mixin text-overflow($ellipsisClamp: 1) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $ellipsisClamp;
+  overflow: hidden;
+}
+
+// 绝对定位居中
+@mixin absoluteCenter() {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
