@@ -56,10 +56,14 @@
 
   .article-item {
     display: flex;
+    border-bottom: 1px solid $form-input-text-color;
+    padding: 15px;
     .left_img {
       width: 220px;
       height: 150px;
       margin-right: 10px;
+      border-radius: 5px;
+      overflow: hidden;
       > a {
         display: block;
         img {

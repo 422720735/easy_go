@@ -19,11 +19,15 @@
 .article-list {
   background-color: #ffffff; }
   .article-list .article-item {
-    display: flex; }
+    display: flex;
+    border-bottom: 1px solid #999999;
+    padding: 15px; }
     .article-list .article-item .left_img {
       width: 220px;
       height: 150px;
-      margin-right: 10px; }
+      margin-right: 10px;
+      border-radius: 5px;
+      overflow: hidden; }
       .article-list .article-item .left_img > a {
         display: block; }
         .article-list .article-item .left_img > a img {
