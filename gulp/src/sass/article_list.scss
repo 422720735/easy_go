@@ -1,5 +1,5 @@
 @charset "UTF-8";
-
+@import "./theme/themeColor";
 /*
 这里是响应式适配屏幕
 */
@@ -45,5 +45,35 @@
   .article-list {
     margin-left: 30px;
     margin-right: 30px;
+  }
+}
+
+
+
+// 列表内容填充部分。
+.article-list {
+  background-color: $article-list-bg-color;
+
+  .article-item {
+    .left_img {
+      width: 220px;
+      height: 150px;
+      margin-right: 10px;
+      > a {
+        display: block;
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    .right-html {
+      .title_tab {
+        .border-current {
+          color: pink;
+          font-size: 12px;
+        }
+      }
+    }
   }
 }

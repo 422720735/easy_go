@@ -15,3 +15,17 @@
   .article-list {
     margin-left: 30px;
     margin-right: 30px; } }
+
+.article-list {
+  background-color: #ffffff; }
+  .article-list .article-item .left_img {
+    width: 220px;
+    height: 150px;
+    margin-right: 10px; }
+    .article-list .article-item .left_img > a {
+      display: block; }
+      .article-list .article-item .left_img > a img {
+        width: 100%; }
+  .article-list .article-item .right-html .title_tab .border-current {
+    color: pink;
+    font-size: 12px; }
