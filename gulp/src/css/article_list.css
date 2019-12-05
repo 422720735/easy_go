@@ -20,7 +20,7 @@
   background-color: #ffffff; }
   .article-list .article-item {
     display: flex;
-    border-bottom: 1px solid #999999;
+    border-bottom: 1px dashed #999999;
     padding: 15px; }
     .article-list .article-item .left_img {
       width: 220px;

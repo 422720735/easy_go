@@ -56,7 +56,7 @@
 
   .article-item {
     display: flex;
-    border-bottom: 1px solid $form-input-text-color;
+    border-bottom: 1px dashed $form-input-text-color;
     padding: 15px;
     .left_img {
       width: 220px;
