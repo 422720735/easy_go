@@ -33,6 +33,7 @@
         .article-list .article-item .left_img > a img {
           width: 100%; }
     .article-list .article-item .right-html {
+      margin-top: 15px;
       width: calc(100% - 230px); }
       .article-list .article-item .right-html .title_tag {
         margin-top: 2px; }
@@ -79,11 +80,11 @@
           background-color: #ffffff;
           color: #c0392b; }
       .article-list .article-item .right-html .article {
-        background-color: pink; }
+        margin-top: 20px;
+        margin-bottom: 5px; }
         .article-list .article-item .right-html .article .text {
           line-height: 24px;
           color: #666;
-          letter-spacing: 1px;
           text-indent: 2em; }
       .article-list .article-item .right-html .meta {
         margin-bottom: 0;
@@ -98,4 +99,4 @@
             vertical-align: middle;
             font-size: 14px; }
           .article-list .article-item .right-html .meta li span {
-            vertical-align: top; }
+            vertical-align: middle; }
