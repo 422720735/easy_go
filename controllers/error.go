@@ -28,7 +28,7 @@ func (c *ErrorController) Error500() {
 }
 
 func (c *ErrorController) Error503() {
-	c.Data["content"] = "服务器目前无法使用（由于超载或停机维护）"
+	c.Data["content"] = "服务器目前无法使用（由于超载或停机维护）。"
 	c.Data["status"] = "503"
 	c.TplName = "error.html"
 }
