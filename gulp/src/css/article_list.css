@@ -71,7 +71,8 @@
             font-weight: bold;
             color: #666; }
             .article-list .article-item .right-html .title_tag .article-title a:hover {
-              color: #000000; }
+              color: #000000;
+              text-decoration: none; }
         .article-list .article-item .right-html .title_tag .isTop {
           margin-left: 6px;
           padding: 4px 6px;
@@ -88,11 +89,11 @@
           text-indent: 2em; }
       .article-list .article-item .right-html .meta {
         margin-bottom: 0;
-        color: #666;
         font-size: 14px; }
         .article-list .article-item .right-html .meta li {
           display: inline;
-          margin-right: 20px; }
+          margin-right: 20px;
+          color: #666; }
           .article-list .article-item .right-html .meta li:last-child {
             margin-right: 0; }
           .article-list .article-item .right-html .meta li .iconfont {

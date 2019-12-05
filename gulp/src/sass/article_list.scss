@@ -114,6 +114,7 @@
             color: $hot-text-color;
             &:hover {
               color: $text-hover-color;
+              text-decoration: none;
             }
           }
         }
@@ -140,11 +141,11 @@
 
       .meta {
         margin-bottom: 0;
-        color: $hot-text-color;
         font-size: 14px;
         li {
           display: inline;
           margin-right: 20px;
+          color: $hot-text-color;
           &:last-child {
             margin-right: 0;
           }
