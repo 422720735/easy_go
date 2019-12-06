@@ -83,9 +83,11 @@ function computeNavWidth() {
  // 皮肤切换白天黑夜
  $('#themeMixin-skin').click(function () {
     if ($('body').hasClass('day-mode')) {
+        // body 添加icon切换
         $('body').removeClass('day-mode')
         $('body').addClass('night-mode')
 
+        // 当前模式的icon
         $('#themeMixin-skin .iconfont').addClass('icon-sun')
         $('#themeMixin-skin .iconfont').removeClass('icon-moon')
     } else {
