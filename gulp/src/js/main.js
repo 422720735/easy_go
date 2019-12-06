@@ -27,9 +27,13 @@ window.onload = function () {
     document.getElementById('year').innerText = new Date().getFullYear();
     handleMoreIcon();
     computeNavWidth();
-
-    console.log(localStorage.getItem('mode'))
-    !localStorage.getItem('day-mode') && $('body').addClass('day-mode')
+    if (!localStorage.getItem('day-mode')) {
+        $('body').addClass('day-mode')
+        $('#themeMixin-skin .iconfont').addClass('icon-sun')
+    } else {
+        $('body').addClass('night-mode')
+        $('#themeMixin-skin .iconfont').addClass('icon-moon')
+    }
 }
 window.onresize = function() {
     computeNavWidth();
@@ -79,8 +83,14 @@ function computeNavWidth() {
     if ($('body').hasClass('day-mode')) {
         $('body').removeClass('day-mode')
         $('body').addClass('night-mode')
+
+        $('#themeMixin-skin .iconfont').addClass('icon-sun')
+        $('#themeMixin-skin .iconfont').removeClass('icon-moon')
     } else {
         $('body').removeClass('night-mode')
         $('body').addClass('day-mode')
+
+        $('#themeMixin-skin .iconfont').addClass('icon-moon')
+        $('#themeMixin-skin .iconfont').removeClass('icon-sun')
     }
  }); 
