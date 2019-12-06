@@ -27,9 +27,11 @@ window.onload = function () {
     document.getElementById('year').innerText = new Date().getFullYear();
     handleMoreIcon();
     computeNavWidth();
-    if (!localStorage.getItem('day-mode')) {
+    if (!localStorage.getItem('blog_mode')) {
         $('body').addClass('day-mode')
         $('#themeMixin-skin .iconfont').addClass('icon-sun')
+
+        localStorage.setItem('blog_mode', 'day')
     } else {
         $('body').addClass('night-mode')
         $('#themeMixin-skin .iconfont').addClass('icon-moon')
