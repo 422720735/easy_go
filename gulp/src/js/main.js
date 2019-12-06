@@ -74,10 +74,13 @@ function computeNavWidth() {
 }
 
 
- // 皮肤切换
+ // 皮肤切换白天黑夜
  $('#themeMixin-skin').click(function () {
     if ($('body').hasClass('day-mode')) {
-        $(this).addClass('night-mode')
-        $(this).removeClass('day-mode')
+        $('body').removeClass('day-mode')
+        $('body').addClass('night-mode')
+    } else {
+        $('body').removeClass('night-mode')
+        $('body').addClass('day-mode')
     }
  }); 
