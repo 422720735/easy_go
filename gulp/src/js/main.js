@@ -17,10 +17,6 @@ function handleMoreIcon() {
             more.addClass('fa fa-bars');
         }
     }
-
-
-
-
 }
 
 window.onload = function () {
@@ -31,6 +27,9 @@ window.onload = function () {
     document.getElementById('year').innerText = new Date().getFullYear();
     handleMoreIcon();
     computeNavWidth();
+
+    console.log(localStorage.getItem('mode'))
+    !localStorage.getItem('day-mode') && $('body').addClass('day-mode')
 }
 window.onresize = function() {
     computeNavWidth();
@@ -73,3 +72,12 @@ function computeNavWidth() {
     // 空容器用来占nav定位留下来的高度
     document.querySelectorAll("#placeholder.ensp")[0].style.height = navHeight + marginBottom + 'px'
 }
+
+
+ // 皮肤切换
+ $('#themeMixin-skin').click(function () {
+    if ($('body').hasClass('day-mode')) {
+        $(this).addClass('night-mode')
+        $(this).removeClass('day-mode')
+    }
+ }); 
