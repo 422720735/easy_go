@@ -27,6 +27,7 @@ window.onload = function () {
     document.getElementById('year').innerText = new Date().getFullYear();
     handleMoreIcon();
     computeNavWidth();
+    /*
     if (!localStorage.getItem('blog_mode')) {
         $('body').addClass('day-mode')
         $('#themeMixin-skin .iconfont').addClass('icon-sun')
@@ -36,6 +37,7 @@ window.onload = function () {
         $('body').addClass('night-mode')
         $('#themeMixin-skin .iconfont').addClass('icon-moon')
     }
+    */
 }
 window.onresize = function() {
     computeNavWidth();
