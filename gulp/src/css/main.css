@@ -150,30 +150,30 @@
         font-family: fantasy; }
 
 /*************************** 右边搜索面部 ***************************/
-#search-form-box {
-  background-color: #ffffff; }
-  #search-form-box .form-control {
-    height: 50px;
-    line-height: 50px; }
-  #search-form-box input.form-control {
-    width: 85%;
+#search-form-box .form-control {
+  height: 50px;
+  line-height: 50px; }
+
+#search-form-box input.form-control {
+  width: 85%;
+  border-right: 0;
+  color: #999999;
+  outline: 0; }
+  #search-form-box input.form-control:focus {
+    border: solid 1px #45b6f7;
     border-right: 0;
-    color: #999999;
     outline: 0; }
-    #search-form-box input.form-control:focus {
-      border: solid 1px #45b6f7;
-      border-right: 0;
-      outline: 0; }
-  #search-form-box button.search-btn {
-    width: 15%;
-    height: 50px;
-    border: none;
-    border-radius: 4px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    color: #ffffff;
-    background-color: #45b6f7; }
-    #search-form-box button.search-btn:hover {
-      opacity: .85; }
-    #search-form-box button.search-btn:focus {
-      border: none; }
+
+#search-form-box button.search-btn {
+  width: 15%;
+  height: 50px;
+  border: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  color: #ffffff;
+  background-color: #45b6f7; }
+  #search-form-box button.search-btn:hover {
+    opacity: .85; }
+  #search-form-box button.search-btn:focus {
+    border: none; }

@@ -17,9 +17,6 @@
 .navbar {
   box-shadow: 0 1px 4px #eee; }
 
-nav.navbar.bootsnav ul.nav > li > a {
-  color: #999999; }
-
 nav.navbar.bootsnav ul.nav > li:hover {
   background: none; }
 
@@ -103,21 +100,28 @@ nav.navbar.bootsnav {
   top: 0;
   right: 0; }
 
+@media (min-width: 1024px) {
+  .night-mode .main-content nav.navbar.bootsnav li.dropdown ul.dropdown-menu {
+    background-color: #3f3f3f; }
+    .night-mode .main-content nav.navbar.bootsnav li.dropdown ul.dropdown-menu li > a {
+      color: #999999;
+      border-bottom: solid 1px #2f2f2f; } }
+
 .night-mode .main-content {
   color: #999999;
   background-color: #3f3f3f; }
-  .night-mode .main-content nav.navbar {
+  .night-mode .main-content nav.navbar.bootsnav {
     box-shadow: 0 1px 4px #2f2f2f; }
-    .night-mode .main-content nav.navbar .bootsnav ul > li > a {
+    .night-mode .main-content nav.navbar.bootsnav ul.nav > li > a {
       color: #999999; }
   .night-mode .main-content .navbar-default .navbar-collapse, .night-mode .main-content .navbar-default .navbar-form {
     background-color: #3f3f3f; }
   .night-mode .main-content .article-list .article-item {
     border-bottom: 1px dashed #2f2f2f; }
-  .night-mode .main-content .article-item .article-title a {
+  .night-mode .main-content .article-item .right-html .article-title a, .night-mode .main-content .article-item .right-html .article p.text, .night-mode .main-content .article-item .right-html .meta > li i, .night-mode .main-content .article-item .right-html .meta > li span {
     color: #b1b1b1; }
-  .night-mode .main-content .article-item .article p.text {
-    color: #b1b1b1; }
+  .night-mode .main-content .article-item:hover .article-title a, .night-mode .main-content .article-item:hover .article p.text, .night-mode .main-content .article-item:hover .meta > li i, .night-mode .main-content .article-item:hover .meta > li span {
+    color: #ffffff; }
   .night-mode .main-content .footer-container {
     border-top: solid 1px #2f2f2f; }
     .night-mode .main-content .footer-container a {
@@ -130,3 +134,13 @@ nav.navbar.bootsnav {
   background-color: #ffffff; }
   .day-mode .main-content .navbar {
     box-shadow: 0 1px 4px #eee; }
+  .day-mode .main-content .article-item .right-html .article-title a, .day-mode .main-content .article-item .right-html .article p.text, .day-mode .main-content .article-item .right-html ul.meta li > i, .day-mode .main-content .article-item .right-html .meta li > span {
+    color: #555555; }
+  .day-mode .main-content .article-item .right-html:hover .article-title a, .day-mode .main-content .article-item .right-html:hover .article p.text, .day-mode .main-content .article-item .right-html:hover ul.meta li > i, .day-mode .main-content .article-item .right-html:hover .meta li > span {
+    color: #000000; }
+  .day-mode .footer-container {
+    border-top: solid 1px #d9d9d9; }
+    .day-mode .footer-container li {
+      color: #999999; }
+    .day-mode .footer-container a i {
+      color: #999999; }

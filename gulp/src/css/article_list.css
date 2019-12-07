@@ -68,7 +68,6 @@
           font-size: 16px;
           font-weight: bold; }
           .article-list .article-item .right-html .title_tag .article-title a:hover {
-            color: #000000;
             text-decoration: none; }
       .article-list .article-item .right-html .title_tag .isTop {
         margin-left: 6px;
@@ -88,8 +87,7 @@
       font-size: 14px; }
       .article-list .article-item .right-html .meta li {
         display: inline;
-        margin-right: 20px;
-        color: #666; }
+        margin-right: 20px; }
         .article-list .article-item .right-html .meta li:last-child {
           margin-right: 0; }
         .article-list .article-item .right-html .meta li .iconfont {
