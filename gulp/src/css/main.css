@@ -123,8 +123,7 @@
     padding-left: 15px; }
   .main-content .footer-container {
     padding: 10px 0 10px 10px;
-    border-top: solid 1px #d9d9d9;
-    color: rgba(0, 0, 0, 0.45); }
+    border-top: solid 1px #d9d9d9; }
     .main-content .footer-container li {
       display: inline-block;
       margin-right: 10px; }
