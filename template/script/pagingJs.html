@@ -1,0 +1,13 @@
+<!--分页器-->
+<script src="http://www.jq22.com/demo/paging201904152156/js/pageMe.js"></script>
+<script>
+    // pageMe.js 使用方法
+    $("#page").paging({
+        pageNum: 5, // 当前页面
+        totalNum: 14, // 总页码
+        totalList: 300, // 记录总数量
+        callback: function (num) { //回调函数
+            console.log(num);
+        }
+    });
+</script>

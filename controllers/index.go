@@ -16,5 +16,12 @@ func (c *IndexController) Index() {
 	c.LayoutSections["Header"] = "style/article_ListCss.html"
 	c.LayoutSections["FirstScreen"] = "style/TweenMaxCss.html"
 
+	// canvas背景
+	c.LayoutSections["canvasNest"] = "script/canvasNest.html"
+
+	// svg init加载动画
 	c.LayoutSections["TweenMaxJs"] = "script/TweenMaxJs.html"
+
+	// 分页器
+	c.LayoutSections["pagingJs"] = "script/pagingJs.html"
 }
