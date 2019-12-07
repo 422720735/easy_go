@@ -135,6 +135,8 @@
         text-align: center;
         border-radius: 50%;
         font-size: 18px; }
+        .main-content .footer-container li a:hover {
+          text-decoration: none; }
         .main-content .footer-container li a i {
           font-size: 18px;
           color: rgba(0, 0, 0, 0.45); }
