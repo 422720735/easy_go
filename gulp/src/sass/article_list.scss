@@ -1,61 +1,12 @@
 @charset "UTF-8";
 @import "./theme/themeColor";
 
-
-/*
-这里是响应式适配屏幕
-*/
-@media (max-width: 768px) {
-  .article-list {
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 992px) {
-  .article-list {
-
-  }
-}
-
-@media screen and (min-width: 992px) and (max-width: 1170px) {
-  .article-list {
-  }
-}
-
-@media screen and (min-width: 1170px) and (max-width: 1679px) {
-  .article-list {
-  }
-}
-
-@media (min-width: 1679px) {
-  .article-list {
-    width: 978px;
-  }
-}
-
-
-
-
-@media (max-width: 768px) {
-  .article-list {
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-}
-
-
-@media (min-width: 768px) {
-  .article-list {
-    margin-left: 30px;
-    margin-right: 30px;
-  }
-}
-
-
-
 // 列表内容填充部分。
 .article-list {
+  box-sizing: border-box;
   .article-item {
     display: flex;
+    align-items: center;
     border-bottom: 1px dashed $form-input-text-color;
     padding: 15px;
     .left_img {
@@ -68,15 +19,14 @@
         display: block;
         img {
           width: 100%;
+          height: 150px;
         }
       }
     }
 
     .right-html {
-      margin-top: 15px;
       width:  calc(100% - 230px);
       .title_tag {
-        margin-top: 2px;
         .classTag {
           position: relative;
           display: inline-block;
@@ -157,3 +107,85 @@
     }
   }
 }
+
+
+/*
+这里是响应式适配屏幕
+*/
+@media (max-width: 768px) {
+  .article-list {
+    .left_img {
+      display: none;
+    }
+    .right-html {
+      width: 100%!important;
+      .article {
+        margin-top: 2px!important;
+        margin-bottom: 2px!important;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .article-list {
+    .article-item {
+      padding: 5px;
+      .left_img {
+        width: 160px;
+        height: 109px;
+        > a {
+          border-radius: 5px;
+          img {
+            width: 100%;
+            height: 109px;
+          }
+        }
+      }
+
+      .right-html {
+        width:  calc(100% - 160px);
+        .article {
+          margin-top: 5px;
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1170px) {
+  .article-list {
+  }
+}
+
+@media screen and (min-width: 1170px) and (max-width: 1679px) {
+  .article-list {
+  }
+}
+
+@media (min-width: 1679px) {
+  .article-list {
+    width: 978px;
+  }
+}
+
+
+
+
+@media (max-width: 768px) {
+  .article-list {
+    //margin-left: 10px;
+    //margin-right: 10px;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .article-list {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+}
+
+

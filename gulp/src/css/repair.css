@@ -144,3 +144,7 @@ nav.navbar.bootsnav {
       color: #999999; }
     .day-mode .footer-container a i {
       color: #999999; }
+
+@media (max-width: 1024px) {
+  .day-mode nav.navbar.bootsnav ul.nav > li > a {
+    color: #474747; } }
