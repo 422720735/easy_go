@@ -148,3 +148,9 @@ nav.navbar.bootsnav {
 @media (max-width: 1024px) {
   .day-mode nav.navbar.bootsnav ul.nav > li > a {
     color: #474747; } }
+
+.day-mode .article-list {
+  background-color: #ffffff; }
+
+.night-mode .article-list {
+  background-color: #3f3f3f; }

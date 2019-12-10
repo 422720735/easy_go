@@ -39,10 +39,11 @@ window.onload = function () {
     }
     */
 }
-window.onresize = function() {
+
+$(window).resize(function () {
     computeNavWidth();
-    debounce(handleMoreIcon, 1000)
-}
+    debounce(handleMoreIcon, 200)
+});
 
 /**************** 搜索框有两个样式，多个元素绑定同个事件。****************/
 $('#handleSearch, i#mobile').click(function () {
