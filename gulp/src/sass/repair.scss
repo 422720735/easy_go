@@ -1,15 +1,15 @@
 @charset "UTF-8";
 @import "theme/themeColor";
 
-@media (max-width: 992px) {
-
-  nav.navbar.bootsnav.navbar-mobile ul.nav > li > a {
-    color: #fff;
-  }
-  nav.navbar.bootsnav ul.nav li.dropdown ul.dropdown-menu > li > a {
-    color: #fff;
-  }
-}
+//@media (max-width: 992px) {
+//
+//  nav.navbar.bootsnav.navbar-mobile ul.nav > li > a {
+//    color: #fff;
+//  }
+//  nav.navbar.bootsnav ul.nav li.dropdown ul.dropdown-menu > li > a {
+//    color: #fff;
+//  }
+//}
 
 .nav > li:after {
   height: 2px;
@@ -151,17 +151,27 @@ nav.navbar.bootsnav {
 
 }
 
-
-@media (min-width: 1024px) {
+// 1024
+@media (min-width: 768px) {
   .night-mode {
     .main-content {
       nav.navbar.bootsnav li.dropdown ul.dropdown-menu {
         background-color: #3f3f3f;
-
-        li > a {
-          color: #999999;
-          border-bottom: solid 1px #2f2f2f;
+        li {
+          &:hover {
+            background-color: #5c5c5c;
+          }
+          > a {
+            padding: 10px 15px;
+            color: #999999;
+            border-bottom: solid 1px #2f2f2f;
+            &:hover {
+              color: #ffffff;
+              background-color: transparent;
+            }
+          }
         }
+
       }
     }
   }
@@ -259,7 +269,12 @@ nav.navbar.bootsnav {
 
 }
 
-@media (max-width: 1024px) {
+nav.navbar.bootsnav li.dropdown ul.dropdown-menu {
+  padding: 0;
+}
+
+// 1024
+@media (max-width: 768px) {
   .day-mode {
     nav.navbar.bootsnav ul.nav > li > a {
       color: #474747;
