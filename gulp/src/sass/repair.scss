@@ -163,8 +163,6 @@ nav.navbar.bootsnav {
           border-bottom: solid 1px #2f2f2f;
         }
       }
-
-
     }
   }
 }
@@ -265,6 +263,24 @@ nav.navbar.bootsnav {
   .day-mode {
     nav.navbar.bootsnav ul.nav > li > a {
       color: #474747;
+    }
+  }
+
+  .night-mode {
+    .main-content {
+      nav.navbar.bootsnav li.dropdown ul.dropdown-menu {
+        background-color: #3f3f3f;
+
+        li > a {
+          padding: 10px 15px;
+          color: #999999;
+          border-bottom: solid 1px #2f2f2f;
+        }
+      }
+    }
+
+    .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+      background-color: #3f3f3f;
     }
   }
 }
