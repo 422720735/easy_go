@@ -1,4 +1,10 @@
 @charset "UTF-8";
+.day-mode .article-list {
+  background-color: #ffffff; }
+
+.night-mode .article-list {
+  background-color: #3f3f3f; }
+
 .article-list {
   box-sizing: border-box; }
   .article-list .article-item {

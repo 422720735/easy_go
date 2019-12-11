@@ -1,6 +1,18 @@
 @charset "UTF-8";
 @import "./theme/themeColor";
 
+.day-mode {
+  .article-list {
+    background-color: #ffffff;
+  }
+}
+
+.night-mode {
+  .article-list {
+    background-color: #3f3f3f;
+  }
+}
+
 // 列表内容填充部分。
 .article-list {
   box-sizing: border-box;
