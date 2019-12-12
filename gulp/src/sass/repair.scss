@@ -180,6 +180,10 @@ nav.navbar.bootsnav {
     nav.navbar.bootsnav ul.nav > li > a {
       color: #474747;
     }
+    nav.navbar.bootsnav li.dropdown ul.dropdown-menu>li a:hover {
+      background-color: #f4f4f4;
+      color: #000000;
+    }
   }
 }
 
@@ -315,3 +319,12 @@ nav.navbar.bootsnav li.dropdown ul.dropdown-menu {
 // background-color: #3f3f3f;
 // border-bottom: solid 1px #2f2f2f;
 // color: #999;
+
+@media (min-width: 768px) {
+  .day-mode {
+    nav.navbar.bootsnav li.dropdown ul.dropdown-menu>li a:hover {
+      background-color: #f4f4f4;
+      color: #000000;
+    }
+  }
+}

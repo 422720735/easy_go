@@ -107,7 +107,10 @@ nav.navbar.bootsnav {
         color: #ffffff;
         background-color: transparent; }
   .day-mode nav.navbar.bootsnav ul.nav > li > a {
-    color: #474747; } }
+    color: #474747; }
+  .day-mode nav.navbar.bootsnav li.dropdown ul.dropdown-menu > li a:hover {
+    background-color: #f4f4f4;
+    color: #000000; } }
 
 .night-mode .main-content {
   color: #999999;
@@ -155,3 +158,8 @@ nav.navbar.bootsnav li.dropdown ul.dropdown-menu {
 
 .night-mode .article-list {
   background-color: #3f3f3f; }
+
+@media (min-width: 768px) {
+  .day-mode nav.navbar.bootsnav li.dropdown ul.dropdown-menu > li a:hover {
+    background-color: #f4f4f4;
+    color: #000000; } }
