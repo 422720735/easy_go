@@ -14,9 +14,6 @@ nav.navbar.bootsnav ul.nav > li > a {
   text-transform: uppercase;
   padding: 30px; }
 
-nav.navbar.bootsnav ul.nav > li:hover {
-  background: #f4f4f4; }
-
 .nav > li:after {
   content: "";
   width: 0;
