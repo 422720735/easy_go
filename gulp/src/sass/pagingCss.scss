@@ -41,12 +41,12 @@
 .ht-page .previous.disable {
   display: inline-block;
   padding: 0 15px;
-  background: url(../images/page_left_disabled.png) no-repeat center;
+  //background: url(../images/page_left_disabled.png) no-repeat center;
   cursor: default
 }
 
 .ht-page .previous.disable:hover {
-  background: url(../images/page_left_disabled.png) no-repeat center
+  //background: url(../images/page_left_disabled.png) no-repeat center
 }
 
 .ht-page .previous:hover {
@@ -79,11 +79,11 @@
   display: inline-block;
   padding: 0 15px;
   cursor: default;
-  background: url(../images/page_right_disabled.png) no-repeat center
+  //background: url(../images/page_right_disabled.png) no-repeat center
 }
 
 .ht-page .next.disable:hover {
-  background: url(../images/page_right_disabled.png) no-repeat center
+  //background: url(../images/page_right_disabled.png) no-repeat center
 }
 
 .ht-page .next a {
@@ -176,5 +176,22 @@
   }
   .ht-page .page_jump {
     margin: 0 5px
+  }
+}
+
+.night-mode {
+  .ht-page {
+    a {
+      color: #999999;
+      &:hover {
+        color: #ffffff;
+        background-color: #5c5c5c!important;
+      }
+    }
+
+    > span {
+      color: #999999;
+      background-color: #3f3f3f;
+    }
   }
 }
