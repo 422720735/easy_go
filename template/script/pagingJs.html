@@ -1,5 +1,4 @@
 <!--分页器-->
-<script src="/static/js/TweenMax/pagination.min.js"></script>
 <script typeof="text/javascript">
     /*
      * 定义回掉函数
@@ -7,7 +6,7 @@
      * */
     function pageChange(i) {
         alert("index is :" + i);
-        PaginationMin.Page($(".ht-page"), i, 10000, 10);
+        Pagination.Page($(".ht-page"), i, 10000, 10);
     }
 
     /*
@@ -15,7 +14,7 @@
      * @param  object:翻页容器对象
      * @param  function:回调函数
      * */
-    PaginationMin.init($(".ht-page"), pageChange);
+    Pagination.init($(".ht-page"), pageChange);
 
     /*
     * 首次调用
@@ -24,5 +23,5 @@
     * @param  number:总页数
     * @param  number:每页数据条数
     * */
-    PaginationMin.Page($(".ht-page"), 3, 10000, 10);
+    Pagination.Page($(".ht-page"), 3, 10000, 10);
 </script>
