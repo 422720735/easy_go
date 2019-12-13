@@ -14,3 +14,4 @@
 
 
 置顶 热门 标签
+[jQuery分页插件适配PC端移动端](http://www.jq22.com/demo/jquerypagination201811080936/)
