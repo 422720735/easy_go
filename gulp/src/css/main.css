@@ -14,8 +14,13 @@
 #initialize {
   position: fixed;
   z-index: 9999;
-  width: 100%;
-  height: 100%; }
+  top: 50%;
+  margin-left: 30px;
+  transform: translate(-50%, -50%); }
+
+@media (max-width: 768px) {
+  #initialize {
+    margin-left: 0; } }
 
 /** 皮肤*/
 @media (min-width: 768px) {
@@ -34,6 +39,8 @@
       bottom: 0;
       width: 100%;
       margin-bottom: 5px; }
+      .navbar-box.nav-skin .navbar-expanded.minS {
+        display: none; }
       .navbar-box.nav-skin .navbar-expanded a {
         display: block;
         padding: 10px;
@@ -41,7 +48,30 @@
         text-decoration: none;
         color: #999999; }
         .navbar-box.nav-skin .navbar-expanded a:hover {
-          color: #ffffff; } }
+          color: #ffffff; }
+  .navbar-expanded.menu {
+    display: none; } }
+
+@media (max-width: 768px) {
+  .navbar-expanded {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%; }
+    .navbar-expanded > div {
+      flex: 1; }
+    .navbar-expanded a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      text-decoration: none;
+      color: #999999; }
+      .navbar-expanded a:hover {
+        color: #ffffff; }
+  nav.navbar.bootsnav ul.nav > li.dropdown > a.dropdown-toggle:after {
+    margin-top: -3px; } }
 
 @media (min-width: 1199px) {
   .main-box {

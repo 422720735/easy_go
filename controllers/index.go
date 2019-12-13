@@ -19,6 +19,8 @@ func (c *IndexController) Index() {
 	// canvas背景
 	c.LayoutSections["canvasNest"] = "script/canvasNest.html"
 
+    c.LayoutSections["initialize"] = "transition/initialize.html"
+
 	// svg init加载动画
 	c.LayoutSections["TweenMaxJs"] = "script/TweenMaxJs.html"
 

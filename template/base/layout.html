@@ -27,7 +27,7 @@
     <div class="navbar-expanded">
         <!-- 切换皮肤主题 -->
         <div>
-            <a id="themeMixin-skin" class="cursorPointer">
+            <a class="themeMixin-skin cursorPointer">
                 <i class="iconfont icon-moon"></i>
                 <!-- <i class="iconfont icon-moon"></i>
                 <i class="iconfont icon-sun"></i> -->
@@ -214,8 +214,28 @@
                             <li><a href="#"><i class="iconfont icon-qita"></i>其他</a></li>
 
                             <li id="handleSearch"><a href="#"><i class="iconfont icon-search"></i></a></li>
-
                         </ul>
+
+                        <div class="navbar-expanded menu">
+                            <!-- 切换皮肤主题 -->
+                            <div>&ensp;</div>
+                            <div>&ensp;</div>
+                            <div>&ensp;</div>
+                            <div>&ensp;</div>
+                            <div>&ensp;</div>
+                            <div>&ensp;</div>
+                            <div>
+                                <a class="themeMixin-skin cursorPointer">
+                                    <i class="iconfont icon-moon"></i>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="javascript:;">
+                                    <!--                <i class="iconfont icon-exit"></i>-->
+                                    <i class="iconfont icon-denglu"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
 
                     <div id="drawer-mask" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu" aria-expanded="false"></div>
@@ -224,6 +244,8 @@
                 <!-- 空容器用来占nav定位留下来的高度 -->
                 <div id="placeholder" class="ensp">&ensp;</div>
                 {{.LayoutContent}}
+
+                {{.initialize}}
                 <form id="search-form-box" class="input-group search-content">
                     <input type="text" class="form-control" placeholder="输入关键字">
                     <button class="search-btn" type="submit">
