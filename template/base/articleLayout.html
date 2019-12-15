@@ -16,9 +16,9 @@
     <link rel="stylesheet" href="/static/css/article_list.css">
     {{.Header}}
     {{.FirstScreen}}
+    {{.ArticleDetails}}
 </head>
 <body class="day-mode">
-
 {{.Loading}}
 <!--皮肤-->
 <div class="navbar-box nav-skin visibility">
@@ -42,9 +42,7 @@
 <!--内容部分-->
 <div class="container-fluid main-box visibility">
     <div class="row">
-        <!--动态变化的欢迎-->
-        {{.Welcome}}
-        <div class="col-sm-offset-3 main-content">
+        <div class="main-content">
             <div class="blog-container">
                 <nav class="navbar navbar-default navbar-mobile bootsnav on">
 
@@ -241,9 +239,6 @@
                 </nav>
                 <!-- 空容器用来占nav定位留下来的高度 -->
                 <div id="placeholder" class="ensp">&ensp;</div>
-                {{.LayoutContent}}
-
-                {{.initialize}}
                 <form id="search-form-box" class="input-group search-content">
                     <input type="text" class="form-control" placeholder="输入关键字">
                     <button class="search-btn" type="submit">
