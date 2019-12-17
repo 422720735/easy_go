@@ -10,7 +10,9 @@
   }
 }
 
+
 nav.navbar.bootsnav {
+  overflow: hidden;
   left: 45px;
   .nav.navbar-nav {
     max-width: 1200px;
@@ -36,14 +38,12 @@ nav.navbar.bootsnav {
   max-width: 1200px;
   margin: 0 auto;
   .article-content {
-    background-color: #d9d9d9;
     margin-right: 380px;
     height: 1400px;
   }
 
   // 侧边栏
   .sidebar {
-    background-color: #5bd8ff;
     position: absolute;
     width: 360px;
     margin-left: 20px;
@@ -52,3 +52,46 @@ nav.navbar.bootsnav {
   }
 }
 
+.day-mode {
+  .article-content,.sidebar {
+    background-color: #ffffff;
+  }
+
+}
+
+.night-mode {
+  .article-content,.sidebar {
+    background-color: #3f3f3f;
+  }
+}
+
+.article-h1 {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateY(100%);
+  transition: transform .3s cubic-bezier(.645,.045,.355,1);
+  .articleTitle {
+    margin: 0 auto;
+    padding-left: 26px;
+    max-width: 1200px;
+    font-size: 30px;
+    font-weight: 700;
+    word-wrap: break-word;
+  }
+}
+
+.artile-ul {
+  transition: transform .3s cubic-bezier(.645,.045,.355,1);
+}
+
+.artile-ul.article-current {
+  transform: translateY(-100%);
+}
+
+
+.article-h1.article-current {
+  transform: translateY(-100%);
+}

@@ -12,6 +12,8 @@ func (c *ArticleController) Get() {
 	c.LayoutSections = make(map[string]string)
 
 	c.LayoutSections["Loading"] = "transition/TweenMax.html"
+	// h1
+	c.LayoutSections["ArticelH1"] = "articleDetailsH1.html"
 
 	c.LayoutSections["Header"] = "style/article_ListCss.html"
 	c.LayoutSections["FirstScreen"] = "style/TweenMaxCss.html"

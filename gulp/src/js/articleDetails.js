@@ -51,10 +51,17 @@ $('#handleSearch, i#mobile').click(function () {
 
 /**************** 计算nav的宽度，因为采用了锁定定位所以需要宽度，后期还需要加工。****************/
 function computeNavWidth() {
+    // 文章详情title 具有动画
+    const h = $('.nav.navbar-nav li').eq(0).height()
+    document.querySelectorAll('nav.navbar.navbar-default')[0].style.height = h + 'px'
+    $('.article-h1 .articleTitle').css({'height': h + 'px', 'line-height': h + 'px'})
+
+
+
     const navHeight = document.querySelectorAll('nav.navbar.bootsnav')[0].clientHeight;
     const marginBottom = parseInt($('nav.navbar.bootsnav').css('marginBottom'))
     // 空容器用来占nav定位留下来的高度
-    document.querySelectorAll('#placeholder.ensp')[0].style.height = navHeight + marginBottom + 'px';
+    document.querySelectorAll('#placeholder.ensp')[0].style.height = navHeight + marginBottom + 'px';    
 }
 
 
@@ -81,4 +88,11 @@ $('.themeMixin-skin').click(function () {
 $(window).scroll(() => {
     const top = Math.floor($(window).scrollTop());
     document.querySelectorAll('.sidebar')[0].style.top = top + 'px';
+    if (top > 100) {
+        $('.article-h1').addClass('article-current')
+        $('ul.nav.navbar-nav').addClass('article-current')
+    } else {
+        $('.article-h1').removeClass('article-current')
+        $('ul.nav.navbar-nav').removeClass('article-current')
+    }
 })
