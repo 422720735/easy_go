@@ -2,5 +2,37 @@
   .main-box {
     padding-left: 45px; } }
 
+@media (max-width: 768px) {
+  nav.navbar.bootsnav {
+    left: 0 !important; } }
+
 nav.navbar.bootsnav {
-  left: 45px !important; }
+  left: 45px; }
+  nav.navbar.bootsnav .nav.navbar-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    float: none !important; }
+
+@media (min-width: 768px) {
+  .main-box ul.footer-container {
+    padding-left: 25% !important; } }
+
+@media (min-width: 992px) {
+  .main-box ul.footer-container {
+    padding-left: 25% !important; } }
+
+.article-wrap {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto; }
+  .article-wrap .article-content {
+    background-color: #d9d9d9;
+    margin-right: 380px;
+    height: 1400px; }
+  .article-wrap .sidebar {
+    background-color: #5bd8ff;
+    position: absolute;
+    width: 360px;
+    margin-left: 20px;
+    top: 0;
+    right: 0; }
