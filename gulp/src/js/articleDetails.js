@@ -61,7 +61,15 @@ function computeNavWidth() {
     const navHeight = document.querySelectorAll('nav.navbar.bootsnav')[0].clientHeight;
     const marginBottom = parseInt($('nav.navbar.bootsnav').css('marginBottom'))
     // 空容器用来占nav定位留下来的高度
-    document.querySelectorAll('#placeholder.ensp')[0].style.height = navHeight + marginBottom + 'px';    
+    document.querySelectorAll('#placeholder.ensp')[0].style.height = navHeight + marginBottom + 'px';
+
+
+    // 计算sidebar的定位位置。
+    const totalWidth = window.screen.availWidth
+    const articleInfoWidth = document.querySelectorAll('.article-wrap')[0].clientWidth;
+    const contentWidth = document.querySelectorAll('.article-content')[0].clientWidth;
+    const unilateral = (totalWidth - articleInfoWidth) / 2;
+    $('.sidebar').css({'left': unilateral + 17 + contentWidth + 'px', 'top': navHeight + marginBottom + 'px' })
 }
 
 
@@ -87,7 +95,6 @@ $('.themeMixin-skin').click(function () {
 /*推荐的滚动*/
 $(window).scroll(() => {
     const top = Math.floor($(window).scrollTop());
-    document.querySelectorAll('.sidebar')[0].style.top = top + 'px';
     if (top > 100) {
         $('.article-h1').addClass('article-current')
         $('ul.nav.navbar-nav').addClass('article-current')
