@@ -1,3 +1,5 @@
+@import "extension/articleEnlarge";
+
 @media (min-width: 1199px) {
   .main-box {
     padding-left: 45px;
@@ -12,6 +14,7 @@
 
 
 nav.navbar.bootsnav {
+  overflow: hidden;
   left: 45px;
   .nav.navbar-nav {
     max-width: 1200px;
@@ -73,7 +76,6 @@ nav.navbar.bootsnav {
     }
   }
 }
-
 
 .day-mode {
   .article-content,.sidebar {
