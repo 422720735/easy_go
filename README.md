@@ -18,3 +18,7 @@
 
 
 [Google Code Prettify，代码高亮的JS库](https://blog.csdn.net/u011127019/article/details/77165062)
+
+[代码高亮](http://www.bootstrapmb.com/search?keyword=%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE)
+
+http://www.bootstrapmb.com/item/4026

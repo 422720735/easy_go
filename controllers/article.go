@@ -29,4 +29,6 @@ func (c *ArticleController) Get() {
 
 	// 分页器
 	c.LayoutSections["pagingJs"] = "script/pagingJs.html"
+
+	c.LayoutSections["articleDetailsJs"] = "script/articleDetailsJs.html"
 }
