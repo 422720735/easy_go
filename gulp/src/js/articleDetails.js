@@ -103,3 +103,11 @@ $(window).scroll(() => {
         $('ul.nav.navbar-nav').removeClass('article-current')
     }
 })
+
+$('.nav.navbar-nav > li, .nav.navbar-nav > li ul.dropdown-menu').hover(function () {
+    $('nav.navbar.bootsnav').css({ 'overflow': 'visible' })
+    $('.article-h1').css({ 'display': 'none' })
+}, function () {
+    $('nav.navbar.bootsnav').css({ 'overflow': 'hidden' })
+    $('.article-h1').css({ 'display': 'block' })
+});
