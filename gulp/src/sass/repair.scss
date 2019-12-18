@@ -157,14 +157,17 @@ nav.navbar.bootsnav {
     .main-content {
       nav.navbar.bootsnav li.dropdown ul.dropdown-menu {
         background-color: #3f3f3f;
+
         li {
           &:hover {
             background-color: #5c5c5c;
           }
+
           > a {
             padding: 10px 15px;
             color: #999999;
             border-bottom: solid 1px #2f2f2f;
+
             &:hover {
               color: #ffffff;
               background-color: transparent;
@@ -180,7 +183,8 @@ nav.navbar.bootsnav {
     nav.navbar.bootsnav ul.nav > li > a {
       color: #474747;
     }
-    nav.navbar.bootsnav li.dropdown ul.dropdown-menu>li a:hover {
+
+    nav.navbar.bootsnav li.dropdown ul.dropdown-menu > li a:hover {
       background-color: #f4f4f4;
       color: #000000;
     }
@@ -191,7 +195,9 @@ nav.navbar.bootsnav {
 .night-mode {
   .main-content {
     nav.navbar.bootsnav {
-      box-shadow: 0 1px 4px #2f2f2f;
+      //box-shadow: 0 1px 4px #2f2f2f;
+
+      box-shadow: 5px 5px 10px -4px #2f2f2f, 5px -5px 10px -4px #2f2f2f;
 
       ul.nav > li > a {
         color: #999999;
@@ -244,7 +250,8 @@ nav.navbar.bootsnav {
   .main-content {
 
     .navbar {
-      box-shadow: 0 1px 4px #eee;
+      //box-shadow: 0 1px 4px #eee;
+      box-shadow: 5px 5px 10px -4px #eeeeee, 5px -5px 10px -4px #eeeeee;
     }
 
     .article-item {
@@ -322,7 +329,7 @@ nav.navbar.bootsnav li.dropdown ul.dropdown-menu {
 
 @media (min-width: 768px) {
   .day-mode {
-    nav.navbar.bootsnav li.dropdown ul.dropdown-menu>li a:hover {
+    nav.navbar.bootsnav li.dropdown ul.dropdown-menu > li a:hover {
       background-color: #f4f4f4;
       color: #000000;
     }

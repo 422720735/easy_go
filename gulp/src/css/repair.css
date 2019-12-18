@@ -116,7 +116,7 @@ nav.navbar.bootsnav {
   color: #999999;
   background-color: #3f3f3f; }
   .night-mode .main-content nav.navbar.bootsnav {
-    box-shadow: 0 1px 4px #2f2f2f; }
+    box-shadow: 5px 5px 10px -4px #2f2f2f, 5px -5px 10px -4px #2f2f2f; }
     .night-mode .main-content nav.navbar.bootsnav ul.nav > li > a {
       color: #999999; }
   .night-mode .main-content .navbar-default .navbar-collapse, .night-mode .main-content .navbar-default .navbar-form {
@@ -138,7 +138,7 @@ nav.navbar.bootsnav {
   color: #555555;
   background-color: #ffffff; }
   .day-mode .main-content .navbar {
-    box-shadow: 0 1px 4px #eee; }
+    box-shadow: 5px 5px 10px -4px #eeeeee, 5px -5px 10px -4px #eeeeee; }
   .day-mode .main-content .article-item .right-html .article-title a, .day-mode .main-content .article-item .right-html .article p.text, .day-mode .main-content .article-item .right-html ul.meta li > i, .day-mode .main-content .article-item .right-html .meta li > span {
     color: #555555; }
   .day-mode .main-content .article-item .right-html:hover .article-title a, .day-mode .main-content .article-item .right-html:hover .article p.text, .day-mode .main-content .article-item .right-html:hover ul.meta li > i, .day-mode .main-content .article-item .right-html:hover .meta li > span {
