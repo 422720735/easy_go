@@ -107,6 +107,7 @@ gulp.task('minFonts', function () {
 
 gulp.task('watch', () => {
     gulp.watch('src/sass/*.scss', gulp.series('sass'));
+    gulp.watch('src/sass/extension/*.scss', gulp.series('sass'));
     gulp.watch('src/css/**', gulp.series('cssUglify'));
     gulp.watch('src/js/**', gulp.series('jsUglify'));
     gulp.watch('src/images/**', gulp.series('img'));

@@ -2,29 +2,42 @@
 /**
 该文件是文章详情文章内容部分的css
 */
-.article-content .article-header .article-title {
-  text-align: center;
-  font-size: 26px; }
-  .article-content .article-header .article-title a {
-    text-decoration: none !important; }
-    .article-content .article-header .article-title a:hover {
-      text-decoration: none !important; }
+.article-content .article-header {
+  padding: 25px 0;
+  margin-bottom: 20px; }
+  .article-content .article-header .article-title {
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 26px; }
+    .article-content .article-header .article-title a {
+      text-decoration: none; }
+      .article-content .article-header .article-title a:hover {
+        text-decoration: none; }
+  .article-content .article-header .article-meta {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 12px; }
+    .article-content .article-header .article-meta > div {
+      display: inline;
+      margin-right: 20px; }
+      .article-content .article-header .article-meta > div:last-child {
+        margin-right: 0; }
+      .article-content .article-header .article-meta > div .iconfont {
+        vertical-align: middle;
+        font-size: 14px; }
+      .article-content .article-header .article-meta > div span {
+        vertical-align: middle; }
 
-.article-content .article-header .article-meta {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  font-size: 14px; }
-  .article-content .article-header .article-meta > div {
-    display: inline;
-    margin-right: 20px; }
-    .article-content .article-header .article-meta > div:last-child {
-      margin-right: 0; }
-    .article-content .article-header .article-meta > div .iconfont {
-      vertical-align: middle;
-      font-size: 14px; }
-    .article-content .article-header .article-meta > div span {
-      vertical-align: middle; }
+.day-mode .article-content .article-header {
+  border-bottom: 1px solid #eaeaea; }
+
+.night-mode .article-content .article-header {
+  border-bottom: 1px solid #656565; }
+
+.sidebar .widget-meta {
+  background-color: red; }
 
 @media (min-width: 1199px) {
   .main-box {
