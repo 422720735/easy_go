@@ -20,6 +20,57 @@
       .article-content .article-header .article-meta span:last-child {
         margin-right: 0; }
 
+.article-content .article-tags {
+  text-align: center;
+  padding: 0 23px 17px 23px; }
+  .article-content .article-tags a {
+    display: inline-block;
+    padding: 4px 7px 3px;
+    margin: 0 4px 4px 0;
+    font-size: 12px;
+    opacity: .85;
+    cursor: pointer; }
+    .article-content .article-tags a:hover {
+      opacity: 1; }
+    .article-content .article-tags a:nth-child(6n + 1) {
+      background: #727577; }
+    .article-content .article-tags a:nth-child(6n + 2) {
+      background: #a77676; }
+    .article-content .article-tags a:nth-child(6n + 3) {
+      background: #5d5252; }
+    .article-content .article-tags a:nth-child(6n + 4) {
+      background: #5a5a7d; }
+    .article-content .article-tags a:nth-child(6n + 5) {
+      background: #bf8835; }
+    .article-content .article-tags a:nth-child(6n + 6) {
+      background: #929266; }
+
+.article-content .article-body {
+  margin-top: 30px; }
+
+.article-content .article-share a {
+  font-size: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 160px;
+  height: 50px;
+  border-radius: 40px;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid #e78170;
+  color: #e78170; }
+  .article-content .article-share a:hover {
+    text-decoration: none;
+    color: #e78170;
+    background: #f6cec7;
+    border-color: #f6cec7; }
+  .article-content .article-share a:focus {
+    text-decoration: none; }
+  .article-content .article-share a span {
+    font-size: 18px; }
+
 .day-mode .article-content .article-header {
   border-bottom: 1px solid #eaeaea; }
   .day-mode .article-content .article-header .article-meta span, .day-mode .article-content .article-header .article-meta a {
@@ -27,12 +78,22 @@
   .day-mode .article-content .article-header a {
     color: #555555; }
 
+.day-mode .article-content .article-tags {
+  border-bottom: 1px solid #eaeaea; }
+  .day-mode .article-content .article-tags a {
+    color: #eaeaea; }
+
 .night-mode .article-content .article-header {
   border-bottom: 1px solid #656565; }
   .night-mode .article-content .article-header .article-meta span, .night-mode .article-content .article-header .article-meta a {
     color: #a8a8a8; }
   .night-mode .article-content .article-header a {
     color: #999999; }
+
+.night-mode .article-content .article-tags {
+  border-bottom: 1px solid #656565; }
+  .night-mode .article-content .article-tags a {
+    color: #eaeaea; }
 
 .sidebar .widget {
   margin-bottom: 15px; }

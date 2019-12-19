@@ -6,6 +6,7 @@
   .article-header {
     padding: 25px 0;
     margin-bottom: 20px;
+
     .article-title {
       margin-top: 0;
       margin-bottom: 15px;
@@ -18,11 +19,88 @@
       flex-direction: row;
       justify-content: center;
       font-size: 12px;
+
       span {
         margin-right: 20px;
+
         &:last-child {
           margin-right: 0;
         }
+      }
+    }
+  }
+
+  .article-tags {
+    text-align: center;
+    padding: 0 23px 17px 23px;
+
+    a {
+      display: inline-block;
+      padding: 4px 7px 3px;
+      margin: 0 4px 4px 0;
+      font-size: 12px;
+      opacity: .85;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &:nth-child(6n + 1) {
+        background: #727577;
+      }
+
+      &:nth-child(6n + 2) {
+        background: #a77676;
+      }
+
+      &:nth-child(6n + 3) {
+        background: #5d5252;
+      }
+
+      &:nth-child(6n + 4) {
+        background: #5a5a7d;
+      }
+
+      &:nth-child(6n + 5) {
+        background: #bf8835;
+      }
+      &:nth-child(6n + 6) {
+        background:#929266
+      }
+    }
+  }
+
+  .article-body {
+    margin-top: 30px;
+  }
+
+  .article-share {
+    a {
+      font-size: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 160px;
+      height: 50px;
+      border-radius: 40px;
+      text-align: center;
+      text-decoration: none;
+      border: 1px solid #e78170;
+      color: #e78170;
+      &:hover {
+        text-decoration: none;
+        color: #e78170;
+        background: #f6cec7;
+        border-color: #f6cec7;
+      }
+      &:focus {
+        text-decoration: none;
+      }
+      span {
+
+        font-size: 18px;
       }
     }
   }
@@ -41,6 +119,14 @@
       }
       border-bottom: 1px solid #eaeaea;
     }
+
+    .article-tags {
+      border-bottom: 1px solid #eaeaea;
+
+      a {
+        color: #eaeaea;
+      }
+    }
   }
 
 }
@@ -53,10 +139,20 @@
           color: #a8a8a8;
         }
       }
+
       a {
         color: #999999;
       }
+
       border-bottom: 1px solid #656565;
+    }
+
+    .article-tags {
+      border-bottom: 1px solid #656565;
+
+      a {
+        color: #eaeaea;
+      }
     }
   }
 }
