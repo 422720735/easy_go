@@ -1,3 +1,6 @@
+// 位移高度
+let TRANSLATE_Y_HIGHT = 0;
+
 // 函数防抖
 function debounce(fn, wait) {
     var timeout = null;
@@ -57,7 +60,6 @@ function computeNavWidth() {
     $('.article-h1 .articleTitle').css({'height': h + 'px', 'line-height': h + 'px'})
 
 
-
     const navHeight = document.querySelectorAll('nav.navbar.bootsnav')[0].clientHeight;
     const marginBottom = parseInt($('nav.navbar.bootsnav').css('marginBottom'))
     // 空容器用来占nav定位留下来的高度
@@ -70,6 +72,9 @@ function computeNavWidth() {
     const contentWidth = document.querySelectorAll('.article-content')[0].clientWidth;
     const unilateral = (totalWidth - articleInfoWidth) / 2;
     $('.sidebar').css({'left': unilateral + 17 + contentWidth + 'px', 'top': navHeight + marginBottom + 'px' })
+
+    // 滚动获取第一层nav的高度，计算位移。
+    TRANSLATE_Y_HIGHT = document.querySelectorAll('ul.nav.navbar-nav')[0].clientHeight;
 }
 
 
@@ -96,10 +101,10 @@ $('.themeMixin-skin').click(function () {
 $(window).scroll(() => {
     const top = Math.floor($(window).scrollTop());
     if (top > 100) {
-        $('.article-h1').addClass('article-current')
+        $('.article-h1').css({ 'transform': `translateY(-${TRANSLATE_Y_HIGHT}px)` })
         $('ul.nav.navbar-nav').addClass('article-current')
     } else {
-        $('.article-h1').removeClass('article-current')
+        $('.article-h1').css({ 'transform': `translateY(0)` })
         $('ul.nav.navbar-nav').removeClass('article-current')
     }
 })

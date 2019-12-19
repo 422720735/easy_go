@@ -97,7 +97,7 @@ nav.navbar.bootsnav {
   left: 0;
   width: 100%;
   height: 100%;
-  transform: translateY(-200%);
+  //transform: translateY(-200%);
   transition: transform .3s cubic-bezier(.645,.045,.355,1);
   .articleTitle {
     margin: 0 auto;
@@ -117,10 +117,10 @@ nav.navbar.bootsnav {
   transform: translateY(-100%);
 }
 
-
-.article-h1.article-current {
-  transform: translateY(-100%);
-}
+// 已废弃，现在通过js来位移nav的位置给文章title
+//.article-h1.article-current {
+//  transform: translateY(-100%);
+//}
 
 a {
   text-decoration: none;
