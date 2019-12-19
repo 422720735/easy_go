@@ -85,8 +85,8 @@ pre[class*=language-].line-numbers > code {
   pointer-events: none;
   top: 0;
   font-size: 100%;
-  left: -3.8em;
-  width: 3em;
+  left: -5em;
+  width: 1em;
   letter-spacing: -1px;
   border-right: 1px solid #999;
   -webkit-user-select: none;
