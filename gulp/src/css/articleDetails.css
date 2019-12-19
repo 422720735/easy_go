@@ -69,7 +69,15 @@
   .article-content .article-share a:focus {
     text-decoration: none; }
   .article-content .article-share a span {
+    padding: 0 10px;
+    height: 50px;
+    line-height: 50px;
     font-size: 18px; }
+    .article-content .article-share a span:first-child {
+      flex: 1; }
+    .article-content .article-share a span:last-child {
+      min-width: 30%;
+      border-left: 1px solid; }
 
 .day-mode .article-content .article-header {
   border-bottom: 1px solid #eaeaea; }

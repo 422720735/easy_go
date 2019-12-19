@@ -99,8 +99,17 @@
         text-decoration: none;
       }
       span {
-
+        padding: 0 10px;
+        height: 50px;
+        line-height: 50px;
         font-size: 18px;
+        &:first-child {
+          flex: 1;
+        }
+        &:last-child {
+          min-width: 30%;
+          border-left: 1px solid;
+        }
       }
     }
   }
