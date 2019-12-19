@@ -19,6 +19,7 @@ func (c *ArticleController) Get() {
 	c.LayoutSections["FirstScreen"] = "style/TweenMaxCss.html"
 	c.LayoutSections["ArticleDetails"] = "style/ArticleDetailsCss.html"
 
+
 	// canvas背景
 	c.LayoutSections["canvasNest"] = "script/canvasNest.html"
 

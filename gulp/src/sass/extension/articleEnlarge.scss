@@ -113,6 +113,27 @@
       }
     }
   }
+
+  .prevNext {
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      height: 100%;
+      display: block;
+      width: 1px;
+      background-color: #eee;
+    }
+    > div {
+      float: left;
+      width: 50%;
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
 }
 
 .day-mode {
@@ -161,6 +182,25 @@
 
       a {
         color: #eaeaea;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .article-content {
+    .prevNext {
+      &::before {
+        display: none;
+      }
+      > div {
+        width: 100%;
+        &:last-child {
+          text-align: left;
+        }
+        .br {
+          display: none;
+        }
       }
     }
   }
