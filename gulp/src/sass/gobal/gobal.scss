@@ -1,3 +1,10 @@
+// 文本溢出显示省略号
+@mixin text-nowrap() {
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
 // 多行省略号，默认一行
 @mixin text-overflow($ellipsisClamp: 1) {
   display: -webkit-box;

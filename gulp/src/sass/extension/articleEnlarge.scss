@@ -124,7 +124,6 @@
       height: 100%;
       display: block;
       width: 1px;
-      background-color: #eee;
     }
     > div {
       float: left;
@@ -157,6 +156,20 @@
         color: #eaeaea;
       }
     }
+
+    .prevNext {
+      &:before {
+        background-color: #eeeeee;
+      }
+      > div {
+        a {
+          color: #555555;
+        }
+        &:hover a {
+          color: #000000;
+        }
+      }
+    }
   }
 
 }
@@ -169,7 +182,6 @@
           color: #a8a8a8;
         }
       }
-
       a {
         color: #999999;
       }
@@ -182,6 +194,23 @@
 
       a {
         color: #eaeaea;
+      }
+    }
+
+    .prevNext {
+      &:before {
+        background-color: #555;
+      }
+      > div {
+        a {
+          color: #999999;
+        }
+        &:hover {
+          color: #ffffff;
+          a {
+            color: #ffffff;
+          }
+        }
       }
     }
   }
