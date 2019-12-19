@@ -258,6 +258,7 @@ nav.navbar.bootsnav {
   left: 0;
   width: 100%;
   height: 100%;
+  transform: translateY(-200%);
   transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1); }
   .article-h1 .articleTitle {
     margin: 0 auto;
@@ -271,6 +272,9 @@ nav.navbar.bootsnav {
   transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1); }
 
 .artile-ul.article-current {
+  transform: translateY(-100%); }
+
+.article-h1.article-current {
   transform: translateY(-100%); }
 
 a {

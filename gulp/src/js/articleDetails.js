@@ -1,5 +1,5 @@
 // 位移高度
-let TRANSLATE_Y_HIGHT = 0;
+// let TRANSLATE_Y_HIGHT = 0;
 
 // 函数防抖
 function debounce(fn, wait) {
@@ -55,7 +55,8 @@ $('#handleSearch, i#mobile').click(function () {
 /**************** 计算nav的宽度，因为采用了锁定定位所以需要宽度，后期还需要加工。****************/
 function computeNavWidth() {
     // 文章详情title 具有动画
-    const h = $('.nav.navbar-nav li').eq(0).height()
+    // const h = $('.nav.navbar-nav li').eq(0).height()
+    const h = document.querySelectorAll('ul.nav.navbar-nav')[0].clientHeight
     document.querySelectorAll('nav.navbar.navbar-default')[0].style.height = h + 'px'
     $('.article-h1 .articleTitle').css({'height': h + 'px', 'line-height': h + 'px'})
 
@@ -67,14 +68,14 @@ function computeNavWidth() {
 
 
     // 计算sidebar的定位位置。
-    const totalWidth = window.screen.availWidth
-    const articleInfoWidth = document.querySelectorAll('.article-wrap')[0].clientWidth;
-    const contentWidth = document.querySelectorAll('.article-content')[0].clientWidth;
+    const totalWidth = document.body.clientWidth
+    const articleInfoWidth = document.querySelectorAll('.article-wrap')[0].offsetWidth;
+    const contentWidth = document.querySelectorAll('.article-content')[0].offsetWidth;
     const unilateral = (totalWidth - articleInfoWidth) / 2;
     $('.sidebar').css({'left': unilateral + 17 + contentWidth + 'px', 'top': navHeight + marginBottom + 'px' })
 
     // 滚动获取第一层nav的高度，计算位移。
-    TRANSLATE_Y_HIGHT = document.querySelectorAll('ul.nav.navbar-nav')[0].clientHeight;
+    // TRANSLATE_Y_HIGHT = document.querySelectorAll('ul.nav.navbar-nav')[0].clientHeight;
 }
 
 
@@ -101,10 +102,12 @@ $('.themeMixin-skin').click(function () {
 $(window).scroll(() => {
     const top = Math.floor($(window).scrollTop());
     if (top > 100) {
-        $('.article-h1').css({ 'transform': `translateY(-${TRANSLATE_Y_HIGHT}px)` })
+        // $('.article-h1').css({ 'transform': `translateY(-${TRANSLATE_Y_HIGHT}px)` })
+        $('.article-h1').addClass('article-current')
         $('ul.nav.navbar-nav').addClass('article-current')
     } else {
-        $('.article-h1').css({ 'transform': `translateY(0)` })
+        // $('.article-h1').css({ 'transform': `translateY(0)` })
+        $('.article-h1').removeClass('article-current')
         $('ul.nav.navbar-nav').removeClass('article-current')
     }
 })
