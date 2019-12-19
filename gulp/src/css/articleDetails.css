@@ -77,6 +77,8 @@
       color: #999999; }
     .night-mode .sidebar .widget ul li:hover {
       color: #ffffff; }
+      .night-mode .sidebar .widget ul li:hover a {
+        color: #ffffff; }
 
 @media (min-width: 1199px) {
   .main-box {

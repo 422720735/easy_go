@@ -1,0 +1,67 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+    margin: 0 auto;
+    padding: 0;
+    font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.ffer{text-shadow: 4px 4px 5px #8A8A8A;
+    color: #424242;
+    font-weight: 700;}
+.boxbig{
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 25px;
+}
+.kr-1{  }
+.kr-1 img{width: 115px;height: 105px;}
+.kr-1 img:hover{ width: 300px; height: 290px }
+.kr-1a img{width: 115px;height: 105px; transition :1s}
+.kr-1a img:hover{ width: 300px; height: 290px }
+
+
+
+.kr-2{   }
+.kr-2 img{width: 115px;height: 105px; transition: 1s 5s height , 1s 10s width}
+.kr-2 img:hover{ width: 300px; height: 290px }
+
+
+.kr-3 > p > span{transition: 2s all}
+.kr-3 > p > span:hover{ width: 115px;height: 105px; }
+.kr-3a { width: 300px ; height: 300px ; background: #000 ; transition: 1s all}
+.kr-3a:hover{ width: 300px ; height: 300px ; background: #ccc }
+
+.kr-4 > p > span{transition: 2s all}
+.kr-4 > p > span:hover{ width: 115px;height: 105px; }
+
+.kr-4a {width: 30px;height: 300px;background: #000;transition: 4s ease;display: inline-table;}
+.kr-4a:hover{ width: 30px ; height: 200px ; background: #000 }
+
+.kr-4b {width: 30px;height: 300px;background: #000;transition: 4s ease-in;display: inline-table;}
+.kr-4b:hover{ width: 30px ; height: 200px ; background: #000 }
+
+.kr-4c {width: 30px;height: 300px;background: #000;transition: 4s ease-out ;display: inline-table;}
+.kr-4c:hover{ width: 30px ; height: 200px ; background: #000 }
+
+.kr-4d {width: 30px;height: 300px;background: #000;transition: 4s cubic-bezier(.17,.67,1,-0.08); display: inline-table;}
+.kr-4d:hover{ width: 30px ; height: 200px ; background: #000 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
