@@ -9,4 +9,6 @@ func init() {
 	beego.Router("/", &controllers.IndexController{}, "get:Index")
 
 	beego.Router("/article", &controllers.ArticleController{})
+
+	beego.Router("/login", &controllers.LoginController{})
 }
