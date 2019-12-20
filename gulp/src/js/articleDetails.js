@@ -68,12 +68,14 @@ function computeNavWidth() {
 
 
     // 计算sidebar的定位位置。
-    const totalWidth = document.body.clientWidth
-    const articleInfoWidth = document.querySelectorAll('.article-wrap')[0].offsetWidth;
-    const contentWidth = document.querySelectorAll('.article-content')[0].offsetWidth;
-    const unilateral = (totalWidth - articleInfoWidth) / 2;
-    $('.sidebar').css({'left': unilateral + 17 + contentWidth + 'px', 'top': navHeight + marginBottom + 'px' })
-
+    const elHtml = document.querySelectorAll('.article-wrap')
+    if (elHtml.length > 0) {
+        const totalWidth = document.body.clientWidth
+        const articleInfoWidth = elHtml[0].offsetWidth;
+        const contentWidth = document.querySelectorAll('.article-content')[0].offsetWidth;
+        const unilateral = (totalWidth - articleInfoWidth) / 2;
+        $('.sidebar').css({'left': unilateral + 17 + contentWidth + 'px', 'top': navHeight + marginBottom + 'px' })
+    }
     // 滚动获取第一层nav的高度，计算位移。
     // TRANSLATE_Y_HIGHT = document.querySelectorAll('ul.nav.navbar-nav')[0].clientHeight;
 }
