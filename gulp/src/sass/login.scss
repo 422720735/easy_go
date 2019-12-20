@@ -1,20 +1,30 @@
+@media (min-width: 1199px) {
+  .main-box {
+    padding-left: 45px;
+  }
+}
+
 @media (min-width: 768px) {
   .main-box ul.footer-container {
     padding-left: 25%!important;
   }
 }
+
 .navbar-collapse {
   padding-left: 0;
 }
+
 .day-mode {
   .header {
     a {
       color: rgb(71, 71, 71);
     }
   }
+
   .desc {
     color: rgb(71, 71, 71);
   }
+
   .main {
     .user-title-tag {
       color: rgb(71, 71, 71);
@@ -28,9 +38,11 @@
       color: rgb(153, 153, 153);
     }
   }
+
   .desc {
     color: rgb(153, 153, 153);
   }
+
   .main {
     .user-title-tag {
       color: rgb(153, 153, 153);
@@ -46,19 +58,23 @@
   box-sizing: border-box;
   width: 368px;
   margin: 0 auto;
+
   .top {
     text-align: center;
+
     .header {
       .blog {
         height: 44px;
         vertical-align: top;
         margin-right: 16px;
       }
+
       .title {
         font-size: 33px;
         font-weight: 600;
       }
     }
+
     .desc {
       margin: 12px 0 40px 0;
       font-size: 12px;
@@ -69,22 +85,27 @@
     .user-title-tag {
       text-align: center;
       font-size: 14px;
+
       .tag {
         float: left;
         width: 50%;
         padding: 12px 0;
+
         &.active {
           color: #1890ff;
         }
       }
+
       .lnk-bar {
         height: 2px;
         background-color: #1890ff;
         transition: ease 0.3s;
+
         &.one {
           width: 116px;
           transform: translate3d(34px, 0px, 0px);
         }
+
         &.two {
           width: 102px;
           transform: translate3d(225px, 0px, 0px);
