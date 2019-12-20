@@ -200,6 +200,7 @@ nav.navbar.bootsnav {
       box-shadow: 5px 5px 10px -4px #2f2f2f, 5px -5px 10px -4px #2f2f2f;
 
       ul.nav > li > a {
+
         color: #999999;
       }
     }
@@ -332,6 +333,21 @@ nav.navbar.bootsnav li.dropdown ul.dropdown-menu {
     nav.navbar.bootsnav li.dropdown ul.dropdown-menu > li a:hover {
       background-color: #f4f4f4;
       color: #000000;
+    }
+
+    .main-content {
+      nav.navbar.bootsnav li.dropdown ul.dropdown-menu {
+        li {
+          > a {
+            padding: 10px 15px;
+            color: #555555;
+            &:hover {
+              color: #000000;
+            }
+          }
+        }
+
+      }
     }
   }
 }

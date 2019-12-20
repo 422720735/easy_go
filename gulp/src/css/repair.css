@@ -162,4 +162,9 @@ nav.navbar.bootsnav li.dropdown ul.dropdown-menu {
 @media (min-width: 768px) {
   .day-mode nav.navbar.bootsnav li.dropdown ul.dropdown-menu > li a:hover {
     background-color: #f4f4f4;
-    color: #000000; } }
+    color: #000000; }
+  .day-mode .main-content nav.navbar.bootsnav li.dropdown ul.dropdown-menu li > a {
+    padding: 10px 15px;
+    color: #555555; }
+    .day-mode .main-content nav.navbar.bootsnav li.dropdown ul.dropdown-menu li > a:hover {
+      color: #000000; } }

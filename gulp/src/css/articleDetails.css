@@ -50,39 +50,42 @@
 .article-content .article-body {
   margin-top: 30px; }
 
-.article-content .article-share a {
-  font-size: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 160px;
-  height: 50px;
-  border-radius: 40px;
-  text-align: center;
-  text-decoration: none;
-  border: 1px solid #e78170;
-  color: #e78170; }
-  .article-content .article-share a:hover {
-    text-decoration: none;
-    color: #e78170;
-    background: #f6cec7;
-    border-color: #f6cec7; }
-  .article-content .article-share a:focus {
-    text-decoration: none; }
-  .article-content .article-share a span {
-    padding: 0 10px;
+.article-content .article-share {
+  margin-top: 30px; }
+  .article-content .article-share a {
+    font-size: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 160px;
     height: 50px;
-    line-height: 50px;
-    font-size: 18px; }
-    .article-content .article-share a span:first-child {
-      flex: 1; }
-    .article-content .article-share a span:last-child {
-      min-width: 30%;
-      border-left: 1px solid; }
+    border-radius: 40px;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #e78170;
+    color: #e78170; }
+    .article-content .article-share a:hover {
+      text-decoration: none;
+      color: #e78170;
+      background: #f6cec7;
+      border-color: #f6cec7; }
+    .article-content .article-share a:focus {
+      text-decoration: none; }
+    .article-content .article-share a span {
+      padding: 0 10px;
+      height: 50px;
+      line-height: 50px;
+      font-size: 18px; }
+      .article-content .article-share a span:first-child {
+        flex: 1; }
+      .article-content .article-share a span:last-child {
+        min-width: 30%;
+        border-left: 1px solid; }
 
 .article-content .prevNext {
-  position: relative; }
+  position: relative;
+  margin: 30px 0; }
   .article-content .prevNext:before {
     content: '';
     position: absolute;
@@ -94,6 +97,13 @@
   .article-content .prevNext > div {
     float: left;
     width: 50%; }
+    .article-content .prevNext > div.prev, .article-content .prevNext > div.next {
+      margin-bottom: 15px; }
+    .article-content .prevNext > div .prevArticle, .article-content .prevNext > div .nextArticle {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden; }
     .article-content .prevNext > div:last-child {
       text-align: right; }
 
