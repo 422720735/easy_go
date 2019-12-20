@@ -24,3 +24,8 @@ li {
 
 .cursorPointer {
   cursor: pointer; }
+
+.aNone {
+  text-decoration: none; }
+  .aNone:hover {
+    text-decoration: none; }

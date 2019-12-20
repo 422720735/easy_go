@@ -32,3 +32,10 @@ li {
 .cursorPointer {
   cursor: pointer;
 }
+
+.aNone {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
