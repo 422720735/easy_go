@@ -116,19 +116,28 @@
     }
 
     .loginForm {
-      display: flex;
-      flex-direction: row;
-      transition: ease 0.3s;
-      margin-left: 0;
-      width: 200%;
-
-      > div {
-        width: 100%;
-
-      }
-
-      &.mobile {
-        margin-left: -100%;
+      .inputBox {
+        display: flex;
+        flex-direction: row;
+        transition: ease 0.3s;
+        margin-left: 0;
+        width: 200%;
+        > div {
+          width: 100%;
+          > div {
+            input {
+              border: 1px solid #d9d9d9;
+              border-radius: 4px;
+            }
+            .username {
+              width: 100%;
+              display: block;
+            }
+          }
+        }
+        &.mobile {
+          margin-left: -100%;
+        }
       }
     }
   }
@@ -139,9 +148,12 @@
   .login {
     .main {
       .loginForm {
-        > div {
-          margin: 0 1%;
+        .inputBox {
+          > div {
+            margin: 0 1%;
+          }
         }
+
       }
     }
   }

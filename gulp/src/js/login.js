@@ -10,15 +10,15 @@ $('.main > .user-title-tag .tag').click(function () {
     $(this).addClass('active')
     const Index = $(this).index()
     const lnkBar = document.querySelectorAll('.lnk-bar')
-    const loginForm = document.querySelectorAll('.loginForm')
+    const inputBox = document.querySelectorAll('.inputBox.form')
     switch (Index) {
         case 0:
             lnkBar[0].className = 'lnk-bar one'
-            loginForm[0].className = 'loginForm'
+            inputBox[0].className = 'inputBox form'
             break;
         case 1:
             lnkBar[0].className = 'lnk-bar two'
-            loginForm[0].className = 'loginForm mobile'
+            inputBox[0].className = 'inputBox form mobile'
             break;
     }
 })

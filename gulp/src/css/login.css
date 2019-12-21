@@ -69,19 +69,25 @@
         .login .main .user-title-tag .lnk-bar.two {
           width: 102px;
           transform: translate3d(225px, 0px, 0px); }
-    .login .main .loginForm {
+    .login .main .loginForm .inputBox {
       display: flex;
       flex-direction: row;
       transition: ease 0.3s;
       margin-left: 0;
       width: 200%; }
-      .login .main .loginForm > div {
+      .login .main .loginForm .inputBox > div {
         width: 100%; }
-      .login .main .loginForm.mobile {
+        .login .main .loginForm .inputBox > div > div input {
+          border: 1px solid #d9d9d9;
+          border-radius: 4px; }
+        .login .main .loginForm .inputBox > div > div .username {
+          width: 100%;
+          display: block; }
+      .login .main .loginForm .inputBox.mobile {
         margin-left: -100%; }
 
 @media screen and (min-width: 320px) and (max-width: 768px) {
-  .login .main .loginForm > div {
+  .login .main .loginForm .inputBox > div {
     margin: 0 1%; } }
 
 @media (max-width: 320px) {
