@@ -1,3 +1,10 @@
+window.onload = function () {
+    if (localStorage.getItem('mode')) {
+        $('body').removeClass('day-mode')
+        $('body').addClass('night-mode')
+    }
+}
+
 $('.main > .user-title-tag .tag').click(function () {
     $('.main > .user-title-tag .tag').removeClass('active')
     $(this).addClass('active')

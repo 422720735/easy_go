@@ -26,6 +26,10 @@ window.onload = function () {
     document.getElementById('year').innerText = new Date().getFullYear();
     handleMoreIcon();
     computeNavWidth();
+    if (localStorage.getItem('mode')) {
+        $('body').removeClass('day-mode')
+        $('body').addClass('night-mode')
+    }
 }
 
 $(window).resize(function () {
@@ -87,6 +91,7 @@ $('.themeMixin-skin').click(function () {
         // body 添加icon切换
         $('body').removeClass('day-mode')
         $('body').addClass('night-mode')
+        localStorage.setItem('mode', 'night-mode')
 
         // 当前模式的icon
         $('.themeMixin-skin .iconfont').addClass('icon-sun')
@@ -94,9 +99,11 @@ $('.themeMixin-skin').click(function () {
     } else {
         $('body').removeClass('night-mode')
         $('body').addClass('day-mode')
+        localStorage.removeItem('mode')
 
         $('.themeMixin-skin .iconfont').addClass('icon-moon')
         $('.themeMixin-skin .iconfont').removeClass('icon-sun')
+
     }
 });
 

@@ -38,6 +38,10 @@ window.onload = function () {
         $('#themeMixin-skin .iconfont').addClass('icon-moon')
     }
     */
+    if (localStorage.getItem('mode')) {
+        $('body').removeClass('day-mode')
+        $('body').addClass('night-mode')
+    }
 }
 
 $(window).resize(function () {
@@ -100,6 +104,7 @@ function computeNavWidth() {
         // body 添加icon切换
         $('body').removeClass('day-mode')
         $('body').addClass('night-mode')
+        localStorage.setItem('mode', 'night-mode')
 
         // 当前模式的icon
         $('.themeMixin-skin .iconfont').addClass('icon-sun')
@@ -110,5 +115,7 @@ function computeNavWidth() {
 
         $('.themeMixin-skin .iconfont').addClass('icon-moon')
         $('.themeMixin-skin .iconfont').removeClass('icon-sun')
+
+        localStorage.removeItem('mode')
     }
  });

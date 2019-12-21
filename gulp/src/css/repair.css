@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .nav > li:after {
   height: 2px; }
 
@@ -31,7 +32,7 @@ nav.navbar.bootsnav .navbar-toggle {
   nav.navbar.bootsnav .navbar-toggle {
     top: 0; }
   nav.navbar.bootsnav.navbar-mobile ul.nav > li > a {
-    color: #ffffff !important; }
+    color: #ffffff; }
   nav.navbar.bootsnav .navbar-header button.navbar-toggle i, nav.navbar.bootsnav .navbar-nav button.navbar-toggle i {
     color: #ffffff; }
   .nav.navbar-nav #handleSearch {
@@ -41,7 +42,12 @@ nav.navbar.bootsnav .navbar-toggle {
   nav.navbar.bootsnav #drawer-mask.navbar-toggle {
     margin-top: 0; }
   nav.navbar.bootsnav .navbar-toggle[aria-expanded=true] .fa {
-    visibility: hidden; } }
+    visibility: hidden; }
+  /*适配手机端nav样式。*/
+  nav.navbar.bootsnav ul.nav li.dropdown ul.dropdown-menu > li > a {
+    color: #ffffff; }
+  nav.navbar.bootsnav ul.nav > li.dropdown > a.dropdown-toggle:after {
+    display: none; } }
 
 #drawer-mask {
   position: fixed;
