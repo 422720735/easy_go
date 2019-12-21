@@ -47,22 +47,43 @@
     .login .top .desc {
       margin: 12px 0 40px 0;
       font-size: 12px; }
-  .login .main .user-title-tag {
-    text-align: center;
-    font-size: 14px; }
-    .login .main .user-title-tag .tag {
-      float: left;
-      width: 50%;
-      padding: 12px 0; }
-      .login .main .user-title-tag .tag.active {
-        color: #1890ff; }
-    .login .main .user-title-tag .lnk-bar {
-      height: 2px;
-      background-color: #1890ff;
-      transition: ease 0.3s; }
-      .login .main .user-title-tag .lnk-bar.one {
-        width: 116px;
-        transform: translate3d(34px, 0px, 0px); }
-      .login .main .user-title-tag .lnk-bar.two {
-        width: 102px;
-        transform: translate3d(225px, 0px, 0px); }
+  .login .main {
+    overflow: hidden; }
+    .login .main .user-title-tag {
+      margin-bottom: 16px;
+      text-align: center;
+      font-size: 14px; }
+      .login .main .user-title-tag .tag {
+        float: left;
+        width: 50%;
+        padding: 12px 0; }
+        .login .main .user-title-tag .tag.active {
+          color: #1890ff; }
+      .login .main .user-title-tag .lnk-bar {
+        height: 2px;
+        background-color: #1890ff;
+        transition: ease 0.3s; }
+        .login .main .user-title-tag .lnk-bar.one {
+          width: 116px;
+          transform: translate3d(34px, 0px, 0px); }
+        .login .main .user-title-tag .lnk-bar.two {
+          width: 102px;
+          transform: translate3d(225px, 0px, 0px); }
+    .login .main .loginForm {
+      display: flex;
+      flex-direction: row;
+      transition: ease 0.3s;
+      margin-left: 0;
+      width: 200%; }
+      .login .main .loginForm > div {
+        width: 100%; }
+      .login .main .loginForm.mobile {
+        margin-left: -100%; }
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .login .main .loginForm > div {
+    margin: 0 1%; } }
+
+@media (max-width: 320px) {
+  .login {
+    width: 320px; } }

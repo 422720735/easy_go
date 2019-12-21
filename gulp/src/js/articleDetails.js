@@ -60,17 +60,19 @@ $('#handleSearch, i#mobile').click(function () {
 function computeNavWidth() {
     // 文章详情title 具有动画
     // const h = $('.nav.navbar-nav li').eq(0).height()
-    const h = document.querySelectorAll('ul.nav.navbar-nav')[0].clientHeight
-    document.querySelectorAll('nav.navbar.navbar-default')[0].style.height = h + 'px'
-    $('.article-h1 .articleTitle').css({'height': h + 'px', 'line-height': h + 'px'})
+    const navBar = document.querySelectorAll('ul.nav.navbar-nav')
+    if (navBar.length > 0) {
+        const h = navBar[0].clientHeight
+        document.querySelectorAll('nav.navbar.navbar-default')[0].style.height = h + 'px'
+        $('.article-h1 .articleTitle').css({'height': h + 'px', 'line-height': h + 'px'})
 
+        const navHeight = document.querySelectorAll('nav.navbar.bootsnav')[0].clientHeight;
+        const marginBottom = parseInt($('nav.navbar.bootsnav').css('marginBottom'))
+        // 空容器用来占nav定位留下来的高度
+        document.querySelectorAll('#placeholder.ensp')[0].style.height = navHeight + marginBottom + 'px';
+    }
 
-    const navHeight = document.querySelectorAll('nav.navbar.bootsnav')[0].clientHeight;
-    const marginBottom = parseInt($('nav.navbar.bootsnav').css('marginBottom'))
-    // 空容器用来占nav定位留下来的高度
-    document.querySelectorAll('#placeholder.ensp')[0].style.height = navHeight + marginBottom + 'px';
-
-
+    
     // 计算sidebar的定位位置。
     const elHtml = document.querySelectorAll('.article-wrap')
     if (elHtml.length > 0) {
