@@ -76,7 +76,8 @@
       margin-left: 0;
       width: 200%; }
       .login .main .loginForm .inputBox > div {
-        width: 100%; }
+        margin: 0 1%;
+        width: 98%; }
         .login .main .loginForm .inputBox > div > div input {
           border: 1px solid #d9d9d9;
           border-radius: 4px; }
@@ -86,10 +87,21 @@
       .login .main .loginForm .inputBox.mobile {
         margin-left: -100%; }
 
+/*
 @media screen and (min-width: 320px) and (max-width: 768px) {
-  .login .main .loginForm .inputBox > div {
-    margin: 0 1%; } }
-
+  .login {
+    .main {
+      .loginForm {
+        .inputBox {
+          > div {
+            margin: 0 1%;
+          }
+        }
+      }
+    }
+  }
+}
+*/
 @media (max-width: 320px) {
   .login {
     width: 320px; } }
