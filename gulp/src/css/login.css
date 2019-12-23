@@ -78,12 +78,18 @@
       .login .main .loginForm .inputBox > div {
         margin: 0 1%;
         width: 98%; }
-        .login .main .loginForm .inputBox > div > div input {
-          border: 1px solid #d9d9d9;
-          border-radius: 4px; }
-        .login .main .loginForm .inputBox > div > div .username {
-          width: 100%;
-          display: block; }
+        .login .main .loginForm .inputBox > div input {
+          padding-left: 30px; }
+        .login .main .loginForm .inputBox > div .formInput {
+          position: relative; }
+          .login .main .loginForm .inputBox > div .formInput.form-group {
+            margin-bottom: 0; }
+          .login .main .loginForm .inputBox > div .formInput i.iconfont {
+            position: absolute;
+            top: 6px;
+            left: 11px; }
+          .login .main .loginForm .inputBox > div .formInput .help-block {
+            margin-bottom: 5px; }
       .login .main .loginForm .inputBox.mobile {
         margin-left: -100%; }
 

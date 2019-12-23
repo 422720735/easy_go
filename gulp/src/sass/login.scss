@@ -125,14 +125,21 @@
         > div {
           margin: 0 1%;
           width: 98%;
-          > div {
-            input {
-              border: 1px solid #d9d9d9;
-              border-radius: 4px;
+          input {
+            padding-left: 30px;
+          }
+          .formInput {
+            position: relative;
+            &.form-group {
+              margin-bottom: 0;
             }
-            .username {
-              width: 100%;
-              display: block;
+            i.iconfont {
+              position: absolute;
+              top: 6px;
+              left: 11px;
+            }
+            .help-block {
+              margin-bottom: 5px;
             }
           }
         }
