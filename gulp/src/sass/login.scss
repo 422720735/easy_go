@@ -58,6 +58,7 @@
   box-sizing: border-box;
   width: 368px;
   margin: 0 auto;
+
   .top {
     text-align: center;
 
@@ -122,30 +123,71 @@
         transition: ease 0.3s;
         margin-left: 0;
         width: 200%;
+
         > div {
           margin: 0 1%;
           width: 98%;
+
           input {
             padding-left: 30px;
           }
+
           .formInput {
             position: relative;
+
+            &.passOrverify {
+              > input {
+                width: 65%;
+              }
+
+              .form-control-feedback {
+                right: 35%;
+              }
+
+              .btn,.code {
+                width: 33%;
+                height: 34px;
+                margin-left: 2%;
+                img {
+                  display: block;
+                  width: 100%;
+                  height: 34px;
+                  &.form-control {
+                    padding: 0;
+                  }
+                }
+              }
+            }
+
             &.form-group {
               margin-bottom: 0;
             }
+
             i.iconfont {
               position: absolute;
               top: 6px;
               left: 8px;
             }
+
             .help-block {
+              margin-top: 0;
               margin-bottom: 5px;
             }
           }
         }
+
         &.mobile {
           margin-left: -100%;
         }
+      }
+
+      > div:not(.inputBox), > button {
+        margin: 0 2%;
+      }
+
+      > button {
+        display: block;
+        width: 96%;
       }
     }
   }

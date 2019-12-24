@@ -22,52 +22,50 @@
                 <div class="userLogin">
 
                     <div class="formInput form-group has-feedback has-success">
-                        <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
+                        <input type="text" class="form-control" aria-describedby="inputSuccess2Status">
                         <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-                        <span id="helpBlock2" class="help-block">请输入帐户名</span>
+                        <span class="help-block">请输入帐户名</span>
                         <i class="iconfont icon-zuozhe"></i>
-                      </div>
-                      <div class="formInput form-group has-error has-feedback">
-                        <input type="text" class="form-control" id="inputError2" aria-describedby="inputError2Status">
+                    </div>
+                    <div class="formInput form-group has-error has-feedback passOrverify clearfix">
+                        <input type="text" class="form-control fl" aria-describedby="inputError2Status">
+                        <a href="javascript:;" class="code fl">
+                            <img class="form-control" src="https://api.jackhu.top/users/getCaptcha?0.47659466436739173">
+                        </a>
                         <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-                        <span id="helpBlock2" class="help-block">请输入密码</span>
+                        <span class="help-block">请输入密码</span>
                         <i class="iconfont icon-zuozhe"></i>
-                      </div>
-                      
+                    </div>
 
 
-                    <div class="form-group has-success">
-                        <label class="control-label" for="inputSuccess1">Input with success</label>
-                        <input type="text" class="form-control" id="inputSuccess1" aria-describedby="helpBlock2">
-                        <span id="helpBlock2" class="help-block">请输入帐户名</span>
-                    </div>
-                    <div class="form-group has-success">
-                        <label class="control-label" for="inputSuccess1">Input with success</label>
-                        <input type="password" class="form-control" id="inputSuccess1" aria-describedby="helpBlock2">
-                        <span id="helpBlock2" class="help-block">请输入密码</span>
-                    </div>
-                    <div class="has-warning">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="checkboxWarning" value="option1">
-                                Checkbox with warning
-                            </label>
-                        </div>
-                    </div>
-                    <div class="has-error">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="checkboxError" value="option1">
-                                Checkbox with error
-                            </label>
-                        </div>
-                    </div>
                 </div>
                 <!--手机号登录-->
                 <div class="mobileLogin">
-                    2
+                    <div class="formInput form-group has-feedback has-success">
+                        <input type="text" class="form-control" aria-describedby="inputSuccess2Status">
+                        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                        <span class="help-block">请输入帐户名</span>
+                        <i class="iconfont icon-zuozhe"></i>
+                    </div>
+                    <div class="formInput form-group has-error has-feedback passOrverify clearfix">
+                        <input type="text" class="form-control fl" aria-describedby="inputError2Status">
+                        <button type="button" class="btn btn-default fr">获取验证码</button>
+                        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                        <span class="help-block">请输入密码</span>
+                        <i class="iconfont icon-zuozhe"></i>
+                    </div>
                 </div>
             </div>
+            <!--勾选-->
+            <div class="has-error">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="checkboxError" value="option1">
+                        自动登录
+                    </label>
+                </div>
+            </div>
+            <button type="button" class="btn btn-info">（成功）Success</button>
 
         </div>
     </div>
