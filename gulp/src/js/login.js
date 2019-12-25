@@ -3,7 +3,6 @@ function handleMoreIcon() {
     document.getElementById('drawer-mask').onclick = function () {
         if ($(this).attr('aria-expanded') === 'true') {
             const more = $('nav.navbar.bootsnav .navbar-toggle i');
-            console.log(more)
             more.removeClass('fa fa-times');
             more.addClass('fa fa-bars');
         }
@@ -11,7 +10,7 @@ function handleMoreIcon() {
 }
 
 window.onload = function () {
-    handleMoreIcon()
+    handleMoreIcon();
     if (localStorage.getItem('mode')) {
         $('body').removeClass('day-mode')
         $('body').addClass('night-mode')
