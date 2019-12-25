@@ -124,7 +124,7 @@ nav.navbar.bootsnav {
   .night-mode .main-content nav.navbar.bootsnav {
     box-shadow: 5px 5px 10px -4px #2f2f2f, 5px -5px 10px -4px #2f2f2f; }
     .night-mode .main-content nav.navbar.bootsnav ul.nav > li > a {
-      color: #999999; }
+      color: #ffffff; }
   .night-mode .main-content .navbar-default .navbar-collapse, .night-mode .main-content .navbar-default .navbar-form {
     background-color: #3f3f3f; }
   .night-mode .main-content .article-list .article-item {

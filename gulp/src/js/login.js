@@ -1,4 +1,17 @@
+/**************** 更多按钮icon 始终是 三的样式 去除关闭icon的class。****************/
+function handleMoreIcon() {
+    document.getElementById('drawer-mask').onclick = function () {
+        if ($(this).attr('aria-expanded') === 'true') {
+            const more = $('nav.navbar.bootsnav .navbar-toggle i');
+            console.log(more)
+            more.removeClass('fa fa-times');
+            more.addClass('fa fa-bars');
+        }
+    }
+}
+
 window.onload = function () {
+    handleMoreIcon()
     if (localStorage.getItem('mode')) {
         $('body').removeClass('day-mode')
         $('body').addClass('night-mode')
