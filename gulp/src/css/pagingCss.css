@@ -74,7 +74,8 @@
   border-left: 0; }
 
 .ht-page .num.current {
-  padding: 0 15px; }
+  padding: 0 15px;
+  cursor: pointer; }
 
 .ht-page .num a {
   display: inline-block;
