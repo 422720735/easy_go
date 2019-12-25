@@ -77,12 +77,11 @@
   .navbar-expanded {
     display: flex;
     flex-direction: row;
-    position: absolute;
+    position: relative;
     left: 0;
     bottom: 0;
     width: 100%;
     > div {
-
       flex: 1;
     }
     a {

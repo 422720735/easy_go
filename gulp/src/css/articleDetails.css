@@ -213,7 +213,9 @@
 
 @media (max-width: 768px) {
   nav.navbar.bootsnav {
-    left: 0 !important; } }
+    left: 0 !important; }
+  .article-h1 {
+    display: none !important; } }
 
 nav.navbar.bootsnav {
   overflow: hidden;
@@ -225,7 +227,9 @@ nav.navbar.bootsnav {
 
 @media (min-width: 768px) {
   .main-box ul.footer-container {
-    padding-left: 25% !important; } }
+    padding-left: 25% !important; }
+  .article-h1 {
+    display: block; } }
 
 /*
 @media (min-width: 992px) {

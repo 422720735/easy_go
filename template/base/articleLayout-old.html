@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="/static/css/bootstrap_nav.css">
-    <link rel="stylesheet" href="/static/css/loading.css">
+    <link rel="stylesheet" href="/static/css/globalLoad.css">
     <link rel="stylesheet" href="/static/css/global.css">
     <link rel="stylesheet" href="/static/css/nav.css">
     <link rel="stylesheet" href="/static/css/repair.css">
     <link rel="stylesheet" href="/static/css/main.css">
     <link rel="stylesheet" href="/static/fonts/iconfont.css">
-    <link rel="stylesheet" href="/static/css/article_list.css">
     {{.Header}}
     {{.FirstScreen}}
     {{.ArticleDetails}}
@@ -32,7 +32,7 @@
             </a>
         </div>
         <div>
-            <a href="javascript:;">
+            <a href="/login">
                 <!--                <i class="iconfont icon-exit"></i>-->
                 <i class="iconfont icon-denglu"></i>
             </a>
@@ -42,9 +42,7 @@
 <!--内容部分-->
 <div class="container-fluid main-box visibility">
     <div class="row">
-        <!--动态变化的欢迎-->
-        {{.Welcome}}
-        <div class="col-sm-offset-3 main-content">
+        <div class="main-content">
             <div class="blog-container">
                 <nav class="navbar navbar-default navbar-mobile bootsnav on">
 
@@ -61,7 +59,7 @@
 
                     <div class="collapse navbar-collapse" id="navbar-menu">
 
-                        <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
+                        <ul class="nav navbar-nav artile-ul" data-in="fadeInDown" data-out="fadeOutUp">
 
                             <li><a href="#"><i class="iconfont icon-home1"></i>首页</a></li>
 
@@ -213,6 +211,7 @@
 
                             <li id="handleSearch"><a href="#"><i class="iconfont icon-search"></i></a></li>
                         </ul>
+                        {{.ArticleH1}}
 
                         <div class="navbar-expanded menu">
                             <!-- 切换皮肤主题 -->
@@ -228,7 +227,7 @@
                                 </a>
                             </div>
                             <div>
-                                <a href="javascript:;">
+                                <a href="/login">
                                     <!--                <i class="iconfont icon-exit"></i>-->
                                     <i class="iconfont icon-denglu"></i>
                                 </a>
@@ -239,11 +238,10 @@
                     <div id="drawer-mask" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu" aria-expanded="false"></div>
 
                 </nav>
+               
                 <!-- 空容器用来占nav定位留下来的高度 -->
                 <div id="placeholder" class="ensp">&ensp;</div>
                 {{.LayoutContent}}
-
-                {{.initialize}}
                 <form id="search-form-box" class="input-group search-content">
                     <input type="text" class="form-control" placeholder="输入关键字">
                     <button class="search-btn" type="submit">
@@ -276,11 +274,9 @@
 <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
 <script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
 <script type="text/javascript" src="/static/js/bootsnav.js"></script>
-<script src="/static/js/main.js"></script>
-
-<script src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js"></script>
-<script color="0,0,0" opacity="0.5" count="33" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/articleDetails.js"></script>
 {{.canvasNest}}
 {{.TweenMaxJs}}
 {{.pagingJs}}
+{{.articleDetailsJs}}
 </html>

@@ -58,6 +58,14 @@ $('#handleSearch, i#mobile').click(function () {
 
 /**************** 计算nav的宽度，因为采用了锁定定位所以需要宽度，后期还需要加工。****************/
 function computeNavWidth() {
+    const totalWidth = document.body.clientWidth
+    // 判断是不是小屏幕，大屏幕添加class，文章详情title动画。
+    if (totalWidth >= 768) {
+        $('#navbar-menu .nav.navbar-nav').addClass('artile-ul')
+    } else {
+        $('#navbar-menu .nav.navbar-nav').removeClass('artile-ul')
+    }
+
     // 文章详情title 具有动画
     // const h = $('.nav.navbar-nav li').eq(0).height()
     const navBar = document.querySelectorAll('ul.nav.navbar-nav')
@@ -79,6 +87,8 @@ function computeNavWidth() {
         const totalWidth = document.body.clientWidth
         const articleInfoWidth = elHtml[0].offsetWidth;
         const contentWidth = document.querySelectorAll('.article-content')[0].offsetWidth;
+        const navHeight = document.querySelectorAll('nav.navbar.bootsnav')[0].clientHeight;
+        const marginBottom = parseInt($('nav.navbar.bootsnav').css('marginBottom'))
         const unilateral = (totalWidth - articleInfoWidth) / 2;
         $('.sidebar').css({'left': unilateral + 17 + contentWidth + 'px', 'top': navHeight + marginBottom + 'px' })
     }

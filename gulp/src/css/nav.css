@@ -41,8 +41,7 @@ nav.navbar.bootsnav ul.nav > li.dropdown.on > a.dropdown-toggle:after {
   transform: rotate(90deg); }
 
 .dropdown-menu.multi-dropdown {
-  position: absolute;
-  left: -100% !important; }
+  position: absolute; }
 
 nav.navbar.bootsnav li.dropdown ul.dropdown-menu {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
