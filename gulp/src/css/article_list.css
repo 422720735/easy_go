@@ -99,6 +99,10 @@
       margin-top: 2px !important;
       margin-bottom: 2px !important; } }
 
+@media (max-width: 468px) {
+  .article-list .right-html ul.meta {
+    padding-inline-start: 0; } }
+
 @media screen and (min-width: 768px) and (max-width: 992px) {
   .article-list .article-item {
     padding: 5px; }
