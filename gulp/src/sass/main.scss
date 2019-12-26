@@ -30,7 +30,6 @@
 }
 
 
-
 /** 皮肤*/
 @media (min-width: 768px) {
   .navbar-box {
@@ -50,9 +49,11 @@
         bottom: 0;
         width: 100%;
         margin-bottom: 5px;
+
         &.minS {
           display: none;
         }
+
         a {
           display: block;
           padding: 10px;
@@ -81,9 +82,11 @@
     left: 0;
     bottom: 0;
     width: 100%;
+
     > div {
       flex: 1;
     }
+
     a {
       display: block;
       padding: 10px;
@@ -326,6 +329,19 @@
 // 登陆个人信息
 .navbar-expanded {
   .expanded-avatar {
-
+    display: flex !important;
+    justify-content: center;
+    margin: 0 auto;
+    img {
+      display: block;
+      box-sizing: border-box;
+      border: 2px solid transparent;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+    &:hover img {
+      border: 2px solid #f49484;
+    }
   }
 }
