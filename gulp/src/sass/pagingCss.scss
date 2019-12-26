@@ -43,13 +43,16 @@
   padding: 0 15px;
   //background: url(../images/page_left_disabled.png) no-repeat center;
   cursor: default;
+  visibility: hidden;
 }
 
 .ht-page .previous.disable:hover {
+  visibility: hidden;
   //background: url(../images/page_left_disabled.png) no-repeat center;
 }
 
 .ht-page .previous:hover {
+  visibility: hidden;
   //background: url(../images/page_left_hover_img.png) no-repeat center;
 }
 
@@ -82,10 +85,12 @@
   display: inline-block;
   padding: 0 15px;
   cursor: default;
+  visibility: hidden;
   //background: url(../images/page_right_disabled.png) no-repeat center
 }
 
 .ht-page .next.disable:hover {
+  visibility: hidden;
   //background: url(../images/page_right_disabled.png) no-repeat center
 }
 
