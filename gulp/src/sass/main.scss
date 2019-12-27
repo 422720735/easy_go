@@ -82,18 +82,18 @@
     left: 0;
     bottom: 0;
     width: 100%;
-
     > div {
       flex: 1;
+
     }
 
     a {
       display: block;
       padding: 10px;
       text-align: center;
+      line-height: 31px;
       text-decoration: none;
       color: $skin-text-color;
-
       &:hover {
         color: $text-color;
       }

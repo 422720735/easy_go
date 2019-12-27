@@ -66,6 +66,7 @@
       display: block;
       padding: 10px;
       text-align: center;
+      line-height: 31px;
       text-decoration: none;
       color: #999999; }
       .navbar-expanded a:hover {
