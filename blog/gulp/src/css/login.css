@@ -1,0 +1,133 @@
+@media (min-width: 1199px) {
+  .main-box {
+    padding-left: 45px; } }
+
+@media (min-width: 768px) {
+  .main-box ul.footer-container {
+    padding-left: 25% !important; } }
+
+.navbar-collapse {
+  padding-left: 0; }
+
+.day-mode .header a {
+  color: #474747; }
+
+.day-mode .desc {
+  color: #474747; }
+
+.day-mode .main .user-title-tag {
+  color: #474747; }
+
+.night-mode .header a {
+  color: #999999; }
+
+.night-mode .desc {
+  color: #999999; }
+
+.night-mode .main .user-title-tag {
+  color: #999999; }
+
+.login {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  width: 368px;
+  margin: 0 auto; }
+  .login .top {
+    text-align: center; }
+    .login .top .header .blog {
+      height: 44px;
+      vertical-align: top;
+      margin-right: 16px; }
+    .login .top .header .title {
+      font-size: 33px;
+      font-weight: 600; }
+    .login .top .desc {
+      margin: 12px 0 40px 0;
+      font-size: 12px; }
+  .login .main {
+    overflow: hidden; }
+    .login .main .user-title-tag {
+      margin-bottom: 16px;
+      text-align: center;
+      font-size: 14px; }
+      .login .main .user-title-tag .tag {
+        float: left;
+        width: 50%;
+        padding: 12px 0; }
+        .login .main .user-title-tag .tag.active {
+          color: #1890ff; }
+      .login .main .user-title-tag .lnk-bar {
+        height: 2px;
+        background-color: #1890ff;
+        transition: ease 0.3s; }
+        .login .main .user-title-tag .lnk-bar.one {
+          width: 116px;
+          transform: translate3d(34px, 0px, 0px); }
+        .login .main .user-title-tag .lnk-bar.two {
+          width: 102px;
+          transform: translate3d(225px, 0px, 0px); }
+    .login .main .loginForm .inputBox {
+      display: flex;
+      flex-direction: row;
+      transition: ease 0.3s;
+      margin-left: 0;
+      width: 200%; }
+      .login .main .loginForm .inputBox > div {
+        margin: 0 1%;
+        width: 98%; }
+        .login .main .loginForm .inputBox > div input {
+          padding-left: 30px; }
+        .login .main .loginForm .inputBox > div .formInput {
+          position: relative; }
+          .login .main .loginForm .inputBox > div .formInput.passOrverify > input {
+            width: 65%; }
+          .login .main .loginForm .inputBox > div .formInput.passOrverify .form-control-feedback {
+            right: 35%; }
+          .login .main .loginForm .inputBox > div .formInput.passOrverify .btn, .login .main .loginForm .inputBox > div .formInput.passOrverify .code {
+            width: 33%;
+            height: 34px;
+            margin-left: 2%; }
+            .login .main .loginForm .inputBox > div .formInput.passOrverify .btn img, .login .main .loginForm .inputBox > div .formInput.passOrverify .code img {
+              display: block;
+              width: 100%;
+              height: 34px; }
+              .login .main .loginForm .inputBox > div .formInput.passOrverify .btn img.form-control, .login .main .loginForm .inputBox > div .formInput.passOrverify .code img.form-control {
+                padding: 0; }
+          .login .main .loginForm .inputBox > div .formInput.form-group {
+            margin-bottom: 0; }
+          .login .main .loginForm .inputBox > div .formInput i.iconfont {
+            position: absolute;
+            top: 6px;
+            left: 8px; }
+          .login .main .loginForm .inputBox > div .formInput .help-block {
+            margin-top: 0;
+            margin-bottom: 5px; }
+      .login .main .loginForm .inputBox.mobile {
+        margin-left: -100%; }
+    .login .main .loginForm > div:not(.inputBox), .login .main .loginForm > button {
+      margin: 0 2%; }
+    .login .main .loginForm > button {
+      display: block;
+      width: 96%; }
+
+/*
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .login {
+    .main {
+      .loginForm {
+        .inputBox {
+          > div {
+            margin: 0 1%;
+          }
+        }
+      }
+    }
+  }
+}
+*/
+@media (max-width: 320px) {
+  .login {
+    width: 320px; } }

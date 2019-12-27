@@ -1,8 +1,8 @@
 package main
 
 import (
-	"easy_go/controllers"
-	_ "easy_go/routers"
+	"easy_go/blog/controllers"
+	_ "easy_go/blog/routers"
 	"github.com/astaxie/beego"
 )
 

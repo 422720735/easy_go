@@ -13,7 +13,7 @@ yarn-error.log*
 *.njsproj
 *.sln
 
-gulp/node_modules/
+**/gulp/node_modules/
 static/
 
 easy_go

@@ -1,0 +1,216 @@
+@media (min-width: 1199px) {
+  .main-box {
+    padding-left: 45px;
+  }
+}
+
+@media (min-width: 768px) {
+  .main-box ul.footer-container {
+    padding-left: 25% !important;
+  }
+}
+
+.navbar-collapse {
+  padding-left: 0;
+}
+
+.day-mode {
+  .header {
+    a {
+      color: rgb(71, 71, 71);
+    }
+  }
+
+  .desc {
+    color: rgb(71, 71, 71);
+  }
+
+  .main {
+    .user-title-tag {
+      color: rgb(71, 71, 71);
+    }
+  }
+}
+
+.night-mode {
+  .header {
+    a {
+      color: rgb(153, 153, 153);
+    }
+  }
+
+  .desc {
+    color: rgb(153, 153, 153);
+  }
+
+  .main {
+    .user-title-tag {
+      color: rgb(153, 153, 153);
+    }
+  }
+}
+
+.login {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  width: 368px;
+  margin: 0 auto;
+
+  .top {
+    text-align: center;
+
+    .header {
+      .blog {
+        height: 44px;
+        vertical-align: top;
+        margin-right: 16px;
+      }
+
+      .title {
+        font-size: 33px;
+        font-weight: 600;
+      }
+    }
+
+    .desc {
+      margin: 12px 0 40px 0;
+      font-size: 12px;
+    }
+  }
+
+  .main {
+    overflow: hidden;
+
+    .user-title-tag {
+      margin-bottom: 16px;
+      text-align: center;
+      font-size: 14px;
+
+      .tag {
+        float: left;
+        width: 50%;
+        padding: 12px 0;
+
+        &.active {
+          color: #1890ff;
+        }
+      }
+
+      .lnk-bar {
+        height: 2px;
+        background-color: #1890ff;
+        transition: ease 0.3s;
+
+        &.one {
+          width: 116px;
+          transform: translate3d(34px, 0px, 0px);
+        }
+
+        &.two {
+          width: 102px;
+          transform: translate3d(225px, 0px, 0px);
+        }
+      }
+    }
+
+    .loginForm {
+      .inputBox {
+        display: flex;
+        flex-direction: row;
+        transition: ease 0.3s;
+        margin-left: 0;
+        width: 200%;
+
+        > div {
+          margin: 0 1%;
+          width: 98%;
+
+          input {
+            padding-left: 30px;
+          }
+
+          .formInput {
+            position: relative;
+
+            &.passOrverify {
+              > input {
+                width: 65%;
+              }
+
+              .form-control-feedback {
+                right: 35%;
+              }
+
+              .btn,.code {
+                width: 33%;
+                height: 34px;
+                margin-left: 2%;
+                img {
+                  display: block;
+                  width: 100%;
+                  height: 34px;
+                  &.form-control {
+                    padding: 0;
+                  }
+                }
+              }
+            }
+
+            &.form-group {
+              margin-bottom: 0;
+            }
+
+            i.iconfont {
+              position: absolute;
+              top: 6px;
+              left: 8px;
+            }
+
+            .help-block {
+              margin-top: 0;
+              margin-bottom: 5px;
+            }
+          }
+        }
+
+        &.mobile {
+          margin-left: -100%;
+        }
+      }
+
+      > div:not(.inputBox), > button {
+        margin: 0 2%;
+      }
+
+      > button {
+        display: block;
+        width: 96%;
+      }
+    }
+  }
+}
+
+/*
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .login {
+    .main {
+      .loginForm {
+        .inputBox {
+          > div {
+            margin: 0 1%;
+          }
+        }
+      }
+    }
+  }
+}
+*/
+
+@media (max-width: 320px) {
+  .login {
+    width: 320px;
+  }
+}

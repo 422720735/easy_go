@@ -1,0 +1,28 @@
+svg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+}
+svg g {
+  mix-blend-mode: lighten;
+}
+svg polygon {
+  stroke: none;
+  fill: white;
+}
+
+.visibility {
+  visibility: hidden;
+}
+
+.navbar-box.nav-skin,.container-fluid.main-box {
+  transition: all 1.3s;
+  opacity: 0;
+}
+
+.navbar-box.nav-skin.active,.container-fluid.main-box.active {
+  opacity: 1.3;
+}
