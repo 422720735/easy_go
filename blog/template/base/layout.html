@@ -19,7 +19,6 @@
     {{.FirstScreen}}
 </head>
 <body class="day-mode">
-
 {{.Loading}}
 <!--皮肤-->
 <div class="navbar-box nav-skin visibility">
@@ -47,6 +46,7 @@
         {{.Welcome}}
         <div class="col-sm-offset-3 main-content">
             <div class="blog-container">
+                {{template "base/nav.html"}}
                 <nav class="navbar navbar-default navbar-mobile bootsnav on">
 
                     <div class="navbar-header clearfiex">
@@ -61,159 +61,7 @@
                     </div>
 
                     <div class="collapse navbar-collapse" id="navbar-menu">
-
-                        <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
-
-                            <li><a href="#"><i class="iconfont icon-home1"></i>首页</a></li>
-
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="iconfont icon-h5"></i>前端</a>
-                                <ul class="dropdown-menu animated">
-
-                                    <li><a href="#">beego</a></li>
-
-                                    <li><a href="#">gin</a></li>
-
-                                    <li class="dropdown">
-
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sub Menu</a>
-
-                                        <ul class="dropdown-menu animated">
-
-                                            <li><a href="#">Custom Menu</a></li>
-
-                                            <li><a href="#">Custom Menu</a></li>
-
-                                            <li class="dropdown">
-
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sub Menu</a>
-
-                                                <ul class="dropdown-menu multi-dropdown animated">
-
-                                                    <li><a href="#">Custom Menu</a></li>
-
-                                                    <li><a href="#">Custom Menu</a></li>
-
-                                                    <li><a href="#">Custom Menu</a></li>
-
-                                                    <li><a href="#">Custom Menu</a></li>
-
-                                                </ul>
-
-                                            </li>
-
-                                            <li><a href="#">Custom Menu</a></li>
-
-                                        </ul>
-
-                                    </li>
-
-                                </ul>
-                            </li>
-
-                            <li class="dropdown">
-
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="iconfont icon-prog-golang"></i>golang</a>
-
-                                <ul class="dropdown-menu animated">
-
-                                    <li><a href="#">beego</a></li>
-
-                                    <li><a href="#">gin</a></li>
-
-                                    <li class="dropdown">
-
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sub Menu</a>
-
-                                        <ul class="dropdown-menu animated">
-
-                                            <li><a href="#">Custom Menu</a></li>
-
-                                            <li><a href="#">Custom Menu</a></li>
-
-                                            <li class="dropdown">
-
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sub Menu</a>
-
-                                                <ul class="dropdown-menu multi-dropdown animated">
-
-                                                    <li><a href="#">Custom Menu</a></li>
-
-                                                    <li><a href="#">Custom Menu</a></li>
-
-                                                    <li><a href="#">Custom Menu</a></li>
-
-                                                    <li><a href="#">Custom Menu</a></li>
-
-                                                </ul>
-
-                                            </li>
-
-                                            <li><a href="#">Custom Menu</a></li>
-
-                                        </ul>
-
-                                    </li>
-
-                                </ul>
-
-                            </li>
-
-                            <li class="dropdown">
-
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="iconfont icon-mobile"></i>移动端</a>
-
-                                <ul class="dropdown-menu animated">
-
-                                    <li><a href="#">beego</a></li>
-
-                                    <li><a href="#">gin</a></li>
-
-                                    <li class="dropdown">
-
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sub Menu</a>
-
-                                        <ul class="dropdown-menu animated">
-
-                                            <li><a href="#">Custom Menu</a></li>
-
-                                            <li><a href="#">Custom Menu</a></li>
-
-                                            <li class="dropdown">
-
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sub Menu</a>
-
-                                                <ul class="dropdown-menu multi-dropdown animated">
-
-                                                    <li><a href="#">Custom Menu</a></li>
-
-                                                    <li><a href="#">Custom Menu</a></li>
-
-                                                    <li><a href="#">Custom Menu</a></li>
-
-                                                    <li><a href="#">Custom Menu</a></li>
-
-                                                </ul>
-
-                                            </li>
-
-                                            <li><a href="#">Custom Menu</a></li>
-
-                                        </ul>
-
-                                    </li>
-
-                                </ul>
-
-                            </li>
-                            <li><a href="#"><i class="iconfont icon-data-base"></i>数据库</a></li>
-
-                            <li><a href="#"><i class="iconfont icon-qukuailian4"></i>区块链</a></li>
-
-                            <li><a href="#"><i class="iconfont icon-qita"></i>其他</a></li>
-
-                            <li id="handleSearch"><a href="#"><i class="iconfont icon-search"></i></a></li>
-                        </ul>
+                        {{template base/menu.html}}
 
                         <div class="navbar-expanded menu">
                             <!-- 切换皮肤主题 -->
