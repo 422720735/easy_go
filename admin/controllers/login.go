@@ -11,13 +11,13 @@ type LoginController struct {
 
 func (c *LoginController) Get() {
 	c.Layout = "base/layout.html"
-	c.TplName = "user.html"
+	c.TplName = "log.html"
 
 	c.LayoutSections = make(map[string]string)
-	c.LayoutSections["style"] = "style/user.html"
+	c.LayoutSections["style"] = "style/login_register.html"
 
 
-	c.LayoutSections["script"] = "script/user.html"
+// 	c.LayoutSections["script"] = "script/login_register.html"
 
 	c.Data["Year"] = time.Now().Year()
 }
