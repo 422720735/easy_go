@@ -238,7 +238,6 @@ li.twt {
 }
 
 .social-icons ul li span.icons {
-    background: url(../gulp/src/images/i1.png) no-repeat center;
     width: 30px;
     height: 30px;
     display: inline-block
