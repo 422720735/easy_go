@@ -1,12 +1,12 @@
 package main
 
 import (
+	_ "easy_go/admin/routers"
 	"github.com/astaxie/beego"
 )
 
 func main() {
-	// beego.BConfig.RunMode = beego.AppConfig.String("runmode")          // 环境
-	beego.BConfig.RunMode = "dev"
-	beego.BConfig.WebConfig.ViewsPath = "template" // 静态目录
+	beego.BConfig.WebConfig.ViewsPath = "template"
 	beego.Run(":" + beego.AppConfig.String("httpport"))
 }
+
