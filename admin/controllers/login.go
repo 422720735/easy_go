@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"github.com/astaxie/beego"
+	"time"
 )
 
 type LoginController struct {
@@ -17,4 +18,6 @@ func (c *LoginController) Get() {
 
 
 	c.LayoutSections["script"] = "script/user.html"
+
+	c.Data["Year"] = time.Now().Year()
 }
