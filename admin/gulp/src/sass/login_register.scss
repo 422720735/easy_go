@@ -115,7 +115,12 @@ body a {
 }
 
 .container {
-  width: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 368px;
+  //width: 50%;
   margin: 0 auto;
   padding: 40px;
   //background-color: rgba(10, 10, 10, .77);
@@ -124,9 +129,9 @@ body a {
   -moz-box-shadow: 0 -5px 10px 1px rgba(16, 16, 16, .57);
   -webkit-box-shadow: 0 -5px 10px 1px rgba(16, 16, 16, .57);
   box-shadow: 0 -5px 10px 1px rgba(16, 16, 16, .57);
-  border-bottom: 0;
-  border-bottom-left-radius: initial;
-  border-bottom-right-radius: initial
+  //border-bottom: 0;
+  //border-bottom-left-radius: initial;
+  //border-bottom-right-radius: initial;
 }
 
 .login {
@@ -343,24 +348,24 @@ input[type=text], input[type=password] {
   color: #fff
 }
 
-.footer {
-  text-align: center;
-  margin: 100px 20px 20px
-}
-
+//.footer {
+//  text-align: center;
+//  margin: 100px 20px 20px
+//}
+//
 .footer p {
   color: #ccc;
   line-height: 25px
 }
-
-.footer a {
-  color: #ccc;
-  text-decoration: none
-}
-
-.footer a:hover {
-  color: #fff
-}
+//
+//.footer a {
+//  color: #ccc;
+//  text-decoration: none
+//}
+//
+//.footer a:hover {
+//  color: #fff
+//}
 
 @media screen and (max-width: 1920px) {
   h1 {
@@ -407,9 +412,9 @@ input[type=text], input[type=password] {
     width: 80%
   }
 
-  .footer {
-    margin: 50px 20px 20px
-  }
+  //.footer {
+  //  margin: 50px 20px 20px
+  //}
 }
 
 @media screen and (max-width: 853px) {
@@ -567,10 +572,10 @@ input[type=text], input[type=password] {
   .register {
     padding: 30px 0 0
   }
-
-  .footer p {
-    font-size: 14px
-  }
+  //
+  //.footer p {
+  //  font-size: 14px
+  //}
 }
 
 @media screen and (max-width: 384px) {
