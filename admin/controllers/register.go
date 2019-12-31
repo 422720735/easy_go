@@ -1,8 +1,6 @@
 package controllers
 
 import (
-	"time"
-
 	"github.com/astaxie/beego"
 )
 
@@ -17,7 +15,5 @@ func (c *RegisterController) Get() {
 	c.LayoutSections = make(map[string]string)
 	c.LayoutSections["style"] = "style/login_register.html"
 
-	// 	c.LayoutSections["script"] = "script/login_register.html"
-
-	c.Data["Year"] = time.Now().Year()
+	c.LayoutSections["script"] = "script/login_register.html"
 }

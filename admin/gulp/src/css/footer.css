@@ -44,5 +44,6 @@ ul.footer-container {
 @media (max-width: 492px) {
   .footer-container {
     padding-left: 25px;
-    text-align: left;
+    text-align: left; }
+  ul.footer-container {
     bottom: 0; } }
