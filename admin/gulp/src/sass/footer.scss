@@ -1,0 +1,76 @@
+// 页脚
+ul.footer-container {
+  position: absolute;
+  left: 50%;
+  bottom: 1%;
+  box-sizing: border-box;
+  padding-left: 15px;
+  transform: translateX(-50%);
+  width: 100%;
+  color: #cccccc;
+}
+
+.footer-container {
+  padding: 10px 0 10px 10px;
+
+
+  li {
+    display: inline-block;
+    margin-right: 10px;
+
+    a {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border-radius: 50%;
+      font-size: 18px;
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      i {
+        font-size: 18px;
+        color: #cccccc;
+      }
+
+      &.github:hover {
+        background-color: #49be38;
+
+        i {
+          color: #ffffff;
+        }
+      }
+
+      &.email:hover {
+        background-color: #f57e42;
+
+        i {
+          color: #ffffff;
+        }
+      }
+
+    }
+
+    &.user {
+      font-family: fantasy;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  ul.footer-container {
+    padding-left: 30px !important;
+  }
+}
+
+
+@media (max-width: 492px) {
+  .footer-container {
+    padding-left: 25px;
+    text-align: left;
+    bottom: 0;
+  }
+}

@@ -286,10 +286,6 @@ input[type=text], input[type=password] {
 .register p a:hover {
   color: #fff; }
 
-.footer p {
-  color: #ccc;
-  line-height: 25px; }
-
 @media screen and (max-width: 1920px) {
   h1 {
     margin: 100px 0; } }
