@@ -17,6 +17,4 @@ func (c *LoginController) Get() {
 	c.LayoutSections["style"] = "style/login_register.html"
 
     c.LayoutSections["script"] = "script/login_register.html"
-
-	c.LayoutSections["Loading"] = "transition/loading.html"
 }
