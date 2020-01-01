@@ -43,7 +43,7 @@ gulp.task('cssUglify', function () {
 
 // 压缩js
 gulp.task('jsUglify', function () {
-    return gulp.src(['src/js/**', '!src/js/TweenMax/**'])
+    return gulp.src(['src/js/**', '!src/js/build/**'])
         .pipe(babel())
         .pipe(rename({suffixes: '.min'}))
         .pipe(uglify({
@@ -57,8 +57,8 @@ gulp.task('jsUglify', function () {
 
 // 压缩js
 gulp.task('jsNoBuildUglify', function () {
-    return gulp.src(['src/js/TweenMax/**'])
-      .pipe(gulp.dest(path.resolve(__dirname, '../static/js/TweenMax')))
+    return gulp.src(['src/js/build/**'])
+      .pipe(gulp.dest(path.resolve(__dirname, '../static/js/build')))
 });
 
 
@@ -81,7 +81,7 @@ gulp.task('img', function () { //
  */
 gulp.task('html', function () {
    // 开发环境html在template, 生产环境是在views
-   return gulp.src([`${path.resolve(__dirname, '../template')}/**`, `!${path.resolve(__dirname, '../template')}/error.html`, `!${path.resolve(__dirname, '../template/transition')}/TweenMax.html`])
+   return gulp.src([`${path.resolve(__dirname, '../template')}/**`, `!${path.resolve(__dirname, '../template')}/error.html`, `!${path.resolve(__dirname, '../template/transition')}/build.html`])
        .pipe(htmlMin(options))
        .pipe(gulp.dest(`${path.resolve(__dirname, '../views')}`))
 });
