@@ -12,10 +12,10 @@ func (c *IndexControllers) Get() {
 
 	c.LayoutSections = make(map[string]string)
 	c.LayoutSections["Loading"] = "transition/loading.html"
-	c.LayoutSections["menu"] = "base/menu.html"
+   // c.LayoutSections["menu"] = "base/menu.html"
 
 	c.Data["Base"] = "Base"
-	//c.LayoutSections["BaseStyle"] = "style/base.html"
+	// c.LayoutSections["BaseStyle"] = "style/base.html"
 
-	//c.LayoutSections["BaseScript"] = "script/base.html"
+	// c.LayoutSections["BaseScript"] = "script/base.html"
 }

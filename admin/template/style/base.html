@@ -11,7 +11,23 @@
 <link rel="stylesheet" href="/static/css/style.css">
 
 
-
 <!-- nav -->
-<!-- <link rel="stylesheet" type="text/css" href="http://www.jq22.com/demo/jQueryNav201710162238/css/nav.css">
-<link rel="stylesheet" type="text/css" href="http://www.jq22.com/demo/jQueryNav201710162238/font/iconfont.css"> -->
+<link rel="stylesheet" type="text/css" href="http://www.jq22.com/demo/jQueryNav201710162238/font/iconfont.css">
+<link rel="stylesheet" href="/static/css/nav3.css">
+<style>
+    /*带children*/
+    .nav-item.nav-show > ul > li.active > a {
+        color: #ffffff;
+        background: rgba(0, 0, 0, .1);
+    }
+
+    .nav-item.nav-show > ul > li.active > a:after {
+        position: absolute;
+        content: "";
+        right: 0;
+        width: 4px;
+        height: 46px;
+
+        background: #34a0ce;
+    }
+</style>

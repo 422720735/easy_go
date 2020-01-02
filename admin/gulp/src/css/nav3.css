@@ -1,0 +1,128 @@
+@charset "UTF-8";
+body, html {
+  height: 100%;
+  background: #e2e2e2; }
+
+body, ul {
+  margin: 0;
+  padding: 0; }
+
+body {
+  font: 14px 微软雅黑, 宋体, arial narrow, HELVETICA;
+  -webkit-text-size-adjust: 100%; }
+
+li {
+  list-style: none; }
+
+a {
+  text-decoration: none; }
+
+.nav {
+  height: 100%;
+  transition: all .3s; }
+
+.nav a {
+  display: block;
+  overflow: hidden;
+  padding-left: 20px;
+  line-height: 46px;
+  max-height: 46px;
+  color: #abb1b7;
+  transition: all .3s; }
+
+.nav a span {
+  margin-left: 30px; }
+
+.nav-item {
+  position: relative; }
+
+.nav-item > a {
+  max-height: 55px !important;
+  line-height: 55px !important; }
+
+.nav-item.nav-show {
+  border-bottom: 0; }
+
+.nav-item ul {
+  display: none;
+  background: rgba(0, 0, 0, 0.1); }
+
+.nav-item.nav-show ul {
+  display: block; }
+
+.nav-item > a:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 2px;
+  height: 55px;
+  background: #34a0ce;
+  opacity: 0;
+  transition: all .3s; }
+
+.nav .nav-icon {
+  font-size: 20px;
+  position: absolute;
+  margin-left: -1px; }
+
+.icon_1::after {
+  content: "\e62b"; }
+
+.icon_2::after {
+  content: "\e669"; }
+
+.icon_3::after {
+  content: "\e61d"; }
+
+.nav-more {
+  float: right;
+  margin-right: 20px;
+  font-size: 12px;
+  transition: transform .3s; }
+
+.nav-more::after {
+  content: "\e621"; }
+
+.nav-show .nav-more {
+  transform: rotate(90deg); }
+
+.nav-show, .nav-item > a:hover {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.1); }
+
+.nav-show > a:before, .nav-item > a:hover:before {
+  opacity: 1; }
+
+.nav-item li:hover a {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.1); }
+
+.nav-mini.nav {
+  width: 60px; }
+
+.nav-mini.nav .nav-item > a span {
+  display: none; }
+
+.nav-mini.nav .nav-more {
+  margin-right: -20px; }
+
+.nav-mini.nav .nav-item ul {
+  position: absolute;
+  top: 0;
+  left: 60px;
+  width: 180px;
+  z-index: 99;
+  background: #3c474c;
+  overflow: hidden; }
+
+.nav-mini.nav .nav-item:hover {
+  background: rgba(255, 255, 255, 0.1); }
+
+.nav-mini.nav .nav-item:hover .nav-item a {
+  color: #fff; }
+
+.nav-mini.nav .nav-item:hover a:before {
+  opacity: 1; }
+
+.nav-mini.nav .nav-item:hover ul {
+  display: block; }
