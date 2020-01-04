@@ -1,4 +1,3 @@
-@import "./gobal/gobal";
 .user-dropdown {
   float: right;
   margin-right: 39px;
@@ -17,6 +16,14 @@
 
   .dropdown-menu {
     top: 369%;
+    padding: 2px 0;
+    > li > a {
+      padding: 3px 12px;
+      i {
+        font-size: 14px!important;
+        vertical-align: top;
+      }
+    }
   }
 
   .dropdown.open {
@@ -46,5 +53,8 @@
   }
 }
 
-
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  color: #1890ff;
+  background-color: #c1ebf7;
+}
 

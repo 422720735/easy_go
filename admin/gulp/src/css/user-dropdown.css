@@ -11,7 +11,13 @@
     margin-top: 5px;
     border-radius: 50%; }
   .user-dropdown .dropdown-menu {
-    top: 369%; }
+    top: 369%;
+    padding: 2px 0; }
+    .user-dropdown .dropdown-menu > li > a {
+      padding: 3px 12px; }
+      .user-dropdown .dropdown-menu > li > a i {
+        font-size: 14px !important;
+        vertical-align: top; }
   .user-dropdown .dropdown.open .modified {
     visibility: visible; }
   .user-dropdown .modified {
@@ -32,3 +38,7 @@
       border-width: 0 10px 10px;
       border-style: solid;
       border-color: transparent transparent #ffffff; }
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  color: #1890ff;
+  background-color: #c1ebf7; }
