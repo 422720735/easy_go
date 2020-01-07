@@ -105,6 +105,12 @@ gulp.task('minFonts', function () {
         .pipe(gulp.dest(path.resolve(__dirname, '../static/fonts')))
 });
 
+// 复制后台模版的静态资源。
+gulp.task('copyAssets', function () {
+    return gulp.src('src/assets/**')
+        .pipe(gulp.dest(path.resolve(__dirname, '../static/assets')))
+})
+
 gulp.task('watch', () => {
     gulp.watch('src/sass/*.scss', gulp.series('sass'));
     gulp.watch('src/sass/extension/*.scss', gulp.series('sass'));
@@ -122,7 +128,7 @@ gulp.task('clean', function () {
     ], { force: true });
 });
 
-gulp.task('build', gulp.series('clean', 'sass', 'cssUglify', 'jsUglify', 'jsNoBuildUglify', 'img', 'fonts', 'minFonts', 'html', 'noBuildHtml'));
+gulp.task('build', gulp.series('clean', 'sass', 'cssUglify', 'jsUglify', 'jsNoBuildUglify', 'img', 'fonts', 'minFonts', 'html', 'noBuildHtml', 'copyAssets'));
 
 
 

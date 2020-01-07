@@ -7,5 +7,5 @@ type MainController struct {
 }
 
 func (c *MainController) Get() {
-	c.TplName = "base/mainLayout.html"
+	c.TplName = "ele/mainLayout.html"
 }
