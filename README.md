@@ -1,3 +1,7 @@
+## admin/template/base 暂时废弃
+
+
+
 # 使用beego重构博客（目的最简单的部署方式，最优美的界面展示）
 
 吴先生的博客[http://www.woann.cn](http://www.woann.cn)

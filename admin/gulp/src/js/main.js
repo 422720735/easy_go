@@ -1,3 +1,3 @@
-window.onload = function () {
-    document.getElementById('year').innerText = new Date().getFullYear()
-}
+/**
+ * 公共js文件，暂时未用。
+ * */

@@ -7,11 +7,11 @@ import (
 )
 
 func init() {
-	beego.Router("/", &controllers.IndexControllers{})
-	// welcome
+	// beego.Router("/", &controllers.IndexControllers{}) // 废弃
+
 	beego.Router("/login", &controllers.LoginController{})
 
 	beego.Router("/register", &controllers.RegisterController{})
 
-	beego.Router("/main", &controllers.MainController{})
+	beego.Router("/", &controllers.MainController{})
 }

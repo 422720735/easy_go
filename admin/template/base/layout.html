@@ -7,19 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link rel="shortcut icon" href="/static/images/favicon.ico">
     <link rel="stylesheet" href="/static/fonts/iconfont.css">
-    {{if .Base}}
-        {{template "style/base.html"}}
-    {{end}}
     {{.style}}
 </head>
 <body>
-<!--{{.Loading}}-->
-
+{{.Loading}}
 {{.LayoutContent}}
-
 </body>
-{{if .Base}}
-{{template "script/base.html"}}
-{{end}}
 {{.script}}
+<script>window.onload=function(){document.getElementById("year").innerText=(new Date).getFullYear()};</script>
 </html>
