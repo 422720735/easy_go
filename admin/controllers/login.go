@@ -20,3 +20,14 @@ func (c *LoginController) Get() {
 
     c.LayoutSections["script"] = "script/login_register.html"
 }
+
+func (c *LoginController) Post() {
+	name := c.GetString("Userame")
+	passwrd := c.GetString("Password")
+
+	if name == "admin" && passwrd == "123456" {
+		c.Redirect("/", 302)
+	} else {
+		c.Redirect("/login", 302)
+	}
+}
