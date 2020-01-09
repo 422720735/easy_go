@@ -1,6 +1,8 @@
 package controllers
 
-import "github.com/astaxie/beego"
+import (
+	"github.com/astaxie/beego"
+)
 
 type MainController struct {
 	beego.Controller
@@ -12,8 +14,8 @@ func (c *MainController) Get() {
 		c.Redirect("/login", 302)
 	} else {
 		c.Layout = "layout/mainLayout.html"
-		
 		c.TplName = "pages/index.html"
+
 		c.LayoutSections = make(map[string]string)
 		// menu
 		c.LayoutSections["LeftMenu"] = "layout/leftSideMenuLayout.html"
