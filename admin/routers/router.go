@@ -13,5 +13,7 @@ func init() {
 
 	beego.Router("/register", &controllers.RegisterController{})
 
+	beego.Router("/welcome", &controllers.WelcomeController{})
+
 	beego.Router("/", &controllers.MainController{})
 }
