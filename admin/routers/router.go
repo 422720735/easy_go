@@ -13,7 +13,10 @@ func init() {
 
 	beego.Router("/register", &controllers.RegisterController{})
 
-	beego.Router("/welcome", &controllers.WelcomeController{})
+	beego.Router("/welcome", &controllers.DashBoardControllers{})
 
-	beego.Router("/", &controllers.MainController{})
+	beego.Router("/analysis", &controllers.DashBoardControllers{}, "get:HandleAnalysis")
+
+	// 工作台
+	beego.Router("/workplace", &controllers.DashBoardControllers{}, "get:HandleWorkplace")
 }
