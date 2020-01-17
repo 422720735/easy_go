@@ -25,6 +25,9 @@ func (c *DashBoardControllers) Get() {
 	c.LayoutSections["BaseStyle"] = "style/baseStyle.html"
 	// js
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
+
+	c.LayoutSections["Style"] = "style/welcome.html"
+	c.LayoutSections["Script"] = "script/welcome.html"
 }
 
 func (c *DashBoardControllers) HandleAnalysis() {

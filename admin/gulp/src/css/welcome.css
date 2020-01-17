@@ -1,0 +1,11 @@
+#welcome .page-header .avatar-image {
+  width: 72px;
+  height: 72px;
+  margin: 0 24px 8px 0; }
+
+#welcome .page-header .headerContent .title {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.85);
+  margin-bottom: 16px; }
