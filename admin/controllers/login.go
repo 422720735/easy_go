@@ -26,7 +26,7 @@ func (c *LoginController) Post() {
 	passwrd := c.GetString("Password")
 
 	if name == "admin" && passwrd == "123456" {
-		c.Redirect("/", 302)
+		c.Redirect("/workplace", 302)
 	} else {
 		c.Redirect("/login", 302)
 	}
