@@ -2,8 +2,6 @@ package routers
 
 import (
 	"easy_go/admin/controllers"
-	"easy_go/admin/controllers/menSetting"
-
 	"github.com/astaxie/beego"
 )
 
@@ -23,5 +21,5 @@ func init() {
 
 
 	// 路由权限设置
-	beego.Router("/menuSetting", &menSetting.MenuController{})
+	beego.Router("/menuSetting", &controllers.MenuController{})
 }
