@@ -2,6 +2,7 @@ package routers
 
 import (
 	"easy_go/admin/controllers"
+	"easy_go/admin/controllers/menSetting"
 
 	"github.com/astaxie/beego"
 )
@@ -19,4 +20,8 @@ func init() {
 
 	// 工作台
 	beego.Router("/workplace", &controllers.DashBoardControllers{}, "get:HandleWorkplace")
+
+
+	// 路由权限设置
+	beego.Router("/menuSetting", &menSetting.MenuController{})
 }
