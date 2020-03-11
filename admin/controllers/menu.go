@@ -9,7 +9,7 @@ type MenuController struct {
 func (c *MenuController) Get() {
 	c.Layout = "layout/mainLayout.html"
 
-	c.TplName = "pages/menuSetting/index.html"
+	c.TplName = "pages/menuSetting/menuSetting.html"
 	c.LayoutSections = make(map[string]string)
 	// menu
 	c.LayoutSections["LeftMenu"] = "layout/leftSideMenuLayout.html"
@@ -22,7 +22,7 @@ func (c *MenuController) Get() {
 	// js
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
 
-	c.LayoutSections["Style"] = "style/welcome.html"
+	c.LayoutSections["Style"] = "style/menuSetting.html"
 	c.LayoutSections["Script"] = "script/welcome.html"
 }
 

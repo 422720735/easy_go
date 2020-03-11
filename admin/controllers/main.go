@@ -10,7 +10,7 @@ type MainController struct {
 
 func (c *MainController) Get() {
 	c.Layout = "layout/mainLayout.html"
-	c.TplName = "pages/index.html"
+	c.TplName = "pages/menuSetting.html"
 
 	c.LayoutSections = make(map[string]string)
 	// menu
