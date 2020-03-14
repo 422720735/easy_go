@@ -13,9 +13,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- end page title -->
-    <div class="row">
         <div class="col-xl-12 col-md-12">
             <div class="col-md">
                 <div class="card mb-3">
@@ -31,10 +28,8 @@
                     </div>
                     <div class="card-body">
                         <div class="card-title">
-
-                            <div class="form-group row mb-3">
-                                <label class="col-md-3 col-form-label" for="userName">文章类型</label>
-                                <div class="col-md-9">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-6 pr-0">
                                     <select class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
                                         <optgroup label="Alaskan/Hawaiian Time Zone">
                                             <option value="AK">Alaska</option>
@@ -98,6 +93,10 @@
                                         </optgroup>
                                     </select>
                                 </div>
+                                <div class="col-md-3">
+                                    <button class="btn  btn-primary">查询</button>
+                                    <button class="btn  btn-danger">重置</button>
+                                </div>
                             </div>
                         </div>
                         <div class="card">
@@ -122,7 +121,7 @@
                                     <td>
                                         <a href="/menuSetting/info" class="text-c-blue">详情</a>
                                         <!-- Danger header modal -->
-                                        <a href="#!" class="text-c-blue text-danger" data-toggle="modal"
+                                        <a href="#!" class="text-c-blue text-warning" data-toggle="modal"
                                            data-target="#myModal">隐藏</a>
                                     </td>
                                 </tr>
@@ -135,7 +134,7 @@
                                     <td>
                                         <a href="/menuSetting/info" class="text-c-blue">详情</a>
                                         <!-- Danger header modal -->
-                                        <a href="#!" class="text-c-blue text-danger" data-toggle="modal"
+                                        <a href="#!" class="text-c-blue text-warning" data-toggle="modal"
                                            data-target="#myModal">隐藏</a>
                                     </td>
                                 </tr>
@@ -188,4 +187,5 @@
         </div>
 
     </div>
+    <!-- end page title -->
 </div>

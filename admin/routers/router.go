@@ -32,4 +32,10 @@ func init() {
 
 	// 文章类型
 	beego.Router("/article/type", &article.ArticleControllerType{})
+
+	// 文章列表
+	beego.Router("/article/list", &article.ArticleList{})
+
+	// 文章新增+编辑
+	beego.Router("/article/details", &article.ArticleDetails{}, "get:AddOfUpdate")
 }
