@@ -2,6 +2,7 @@ package routers
 
 import (
 	"easy_go/admin/controllers"
+	"easy_go/admin/controllers/article"
 
 	"github.com/astaxie/beego"
 )
@@ -28,4 +29,7 @@ func init() {
 
 	// 导航菜单-info
 	beego.Router("/menuSetting/info", &controllers.MenuController{}, "get:Info")
+
+	// 文章类型
+	beego.Router("/article/type", &article.ArticleControllerType{})
 }
