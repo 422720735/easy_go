@@ -7,10 +7,8 @@
             <div class="page-title-box">
                 <div class="page-title-left mt-3">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);"><i class="feather icon-home"></i></a>
-                        </li>
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">导航菜单</a></li>
-                        <li class="breadcrumb-item active">Home</li>
+                        <li class="breadcrumb-item"><a href="/welcome"><i class="feather icon-home"></i></a></li>
+                        <li class="breadcrumb-item active">导航菜单</li>
                     </ol>
                 </div>
             </div>
@@ -67,8 +65,9 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="#!" class="text-c-blue">详情</a>
-                                        <a href="#!" class="text-c-blue text-danger">删除</a>
+                                        <a href="/menuSetting/info" class="text-c-blue">详情</a>
+                                        <!-- Danger header modal -->
+                                        <a href="#!" class="text-c-blue text-danger" data-toggle="modal" data-target="#danger-header-modal">删除</a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -92,8 +91,9 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="#!" class="text-c-blue">详情</a>
-                                        <a href="#!" class="text-c-blue text-danger">删除</a>
+                                        <a href="/menuSetting/info" class="text-c-blue">详情</a>
+                                        <!-- Danger header modal -->
+                                        <a href="#!" class="text-c-blue text-danger" data-toggle="modal" data-target="#danger-header-modal">删除</a>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -159,6 +159,29 @@
                 </div>
             </div>
         </div>
+        <!-- Danger Header Modal -->
+        <div id="danger-header-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="danger-header-modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header modal-colored-header bg-danger">
+                        <h4 class="modal-title" id="danger-header-modalLabel">删除菜单</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="mt-0 text-center">
+                            <i class="mdi text-warning mdi-alert-circle"></i>
+                            <span class="font-14">是否删除该菜单？</span>
+                        </h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-danger">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+
 
 </div>

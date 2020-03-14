@@ -22,6 +22,10 @@ func init() {
 
 	// 路由权限设置
 	beego.Router("/menuSetting", &controllers.MenuController{})
-	// add
+
+	// 导航菜单-add
 	beego.Router("/menuSetting/add", &controllers.MenuController{}, "get:Add")
+
+	// 导航菜单-info
+	beego.Router("/menuSetting/info", &controllers.MenuController{}, "get:Info")
 }
