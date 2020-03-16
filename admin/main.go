@@ -8,20 +8,13 @@ import (
 	"runtime"
 )
 
-var System string
-
-func init()  {
-
-}
-
-
 func main() {
 	goos := runtime.GOOS
 	system := ""
 	if goos == "linux" {
-		System = "admin_prod"
+		system = "admin_prod"
 	} else {
-		System = "admin_dev"
+		system = "admin_dev"
 	}
 	env := lib.Conf.Read(system, "env")
 	port := lib.Conf.Read(system, "httpport")
