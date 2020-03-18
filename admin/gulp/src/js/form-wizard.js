@@ -1,6 +1,5 @@
 $(document).ready(function () {
     "use strict";
-  
     $('#basicwizard').bootstrapWizard();
   
     $('#progressbarwizard').bootstrapWizard({
@@ -11,9 +10,7 @@ $(document).ready(function () {
         $('#progressbarwizard').find('.bar').css({ width: $percent + '%' });
       }
     });
-  
     $('#btnwizard').bootstrapWizard({ 'nextSelector': '.button-next', 'previousSelector': '.button-previous', 'firstSelector': '.button-first', 'lastSelector': '.button-last' });
-  
     $('#rootwizard').bootstrapWizard({
       'onNext': function (tab, navigation, index) {
         var form = $($(tab).data("targetForm"));

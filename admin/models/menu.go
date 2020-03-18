@@ -1,5 +1,6 @@
 package models
 
+import "time"
 
 type MenuSetting struct {
 	Id int 	`json:"id"`
@@ -8,5 +9,6 @@ type MenuSetting struct {
 	Icon string `json:"icon"`
 	ChildStatus int `json:"child_status"`
 	Sort int `json:"sort"`
-	CreatedTime 
+	CreatedTime time.Time `json:"created_time"`
+	UpdateTime time.Time `json:"update_time"`
 }

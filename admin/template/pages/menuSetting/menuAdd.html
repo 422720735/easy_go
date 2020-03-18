@@ -25,19 +25,26 @@
                         <div id="basicwizard">
                             <ul class="nav nav-pills nav-justified form-wizard-header mb-4">
                                 <li class="nav-item">
-                                    <a href="#basictab1" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                                    <a href="#basictab1" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2 c-1">
                                         <i class="feather icon-user mr-1"></i>
                                         <span class="d-none d-sm-inline">主要配置</span>
                                     </a>
+
+
+                                    <button id="next-btn" type="button" disabled class="btn btn-primary nav-link rounded-0 pt-2 pb-2 c-1">
+                                        <i class="feather icon-user mr-1"></i>
+                                        <span class="d-none d-sm-inline">主要配置</span>
+                                    </button>
+
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#basictab2" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                                    <a href="#basictab2" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2 c-2">
                                         <i class="feather icon-file-text mr-1"></i>
                                         <span class="d-none d-sm-inline">次要配置</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#basictab3" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                                    <a href="#basictab3" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2 c-3">
                                         <i class="feather icon-check-circle mr-1"></i>
                                         <span class="d-none d-sm-inline">完成</span>
                                     </a>
@@ -50,20 +57,20 @@
                                             <div class="form-group row mb-3">
                                                 <label class="col-md-3 col-form-label" for="userName">菜单名</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control" id="menuName" name="menuName" value="" placeholder="请填写路由菜单名">
+                                                    <input oninput="addMenu()" type="text" class="form-control" id="menuName" name="menuName" value="" placeholder="请填写路由菜单名">
                                                 </div>
                                             </div>
                                             <div class="form-group row mb-3">
                                                 <label class="col-md-3 col-form-label" for="password">路由</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="password" name="path" class="form-control" value="" placeholder="请填写菜单相对应的路由路径">
+                                                    <input oninput="addMenu()" type="text" id="path" name="path" class="form-control" value="" placeholder="请填写菜单相对应的路由路径">
                                                 </div>
                                             </div>
 
                                             <div class="form-group row mb-3">
                                                 <label class="col-md-3 col-form-label" for="confirm">icon<small class="text-danger">（默认：不显示，示例：iconfont icon-h5）</small></label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="confirm" name="confirm" class="form-control" value="" placeholder="请填写第三方字体库提供的class名，如：iconfont icon-h5">
+                                                    <input oninput="addMenu()" type="text" id="icon" name="icon" class="form-control" value="" placeholder="请填写第三方字体库提供的class名，如：iconfont icon-h5">
                                                 </div>
                                             </div>
                                         </div>
@@ -107,10 +114,10 @@
                                 </div>
                                 <ul class="list-inline wizard mb-0">
                                     <li class="previous list-inline-item mt-2">
-                                        <a href="#" class="btn btn-primary">上一步</a>
+                                        <button id="next-prev" type="button" class="btn btn-primary d-none" onclick="goPrevOfNext(1)">上一步</button>
                                     </li>
                                     <li class="next list-inline-item float-right mt-2">
-                                        <a href="#" class="btn btn-primary">下一步</a>
+                                        <button id="next-btn" type="button" disabled class="btn btn-primary" onclick="goPrevOfNext(2)">下一步</button>
                                     </li>
                                 </ul>
                             </div>
