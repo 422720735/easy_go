@@ -1,16 +1,15 @@
 package db
 
 import (
-	"database/sql"
 	"easy_go/admin/lib"
 	"runtime"
 
-	_ "github.com/go-sql-driver/mysql"
+	"github.com/jinzhu/gorm"
 )
 
 var (
-	DbConns *sql.DB
-	err     error
+	DbConn *gorm.DB
+	err    error
 )
 
 func init() {
@@ -27,10 +26,10 @@ func init() {
 	port := lib.Conf.Read(mysql, "port")
 	host := lib.Conf.Read(mysql, "host")
 	dns := username + ":" + password + "@tcp(" + host + ":" + port + ")/" + dataname + "?parseTime=true&charset=utf8&loc=Local"
-	DbConns, err = sql.Open("mysql", dns)
+	DbConn, err := gorm.Open("mysql", dns)
 	if err != nil {
 		panic(err)
 	}
-	DbConns.SetConnMaxLifetime(20)
-	DbConns.SetMaxIdleConns(20)
+	DbConn.DB().SetMaxIdleConns(10)
+	DbConn.DB().SetMaxOpenConns(10)
 }
