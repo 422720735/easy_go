@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50722
 File Encoding         : 65001
 
-Date: 2020-03-18 12:22:08
+Date: 2020-03-19 18:01:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -122,8 +122,9 @@ CREATE TABLE `baas_history` (
   `block_number` int(11) DEFAULT NULL COMMENT '区块号',
   `block_hash` varchar(255) DEFAULT NULL COMMENT '区块hash',
   `transaction_hash` varchar(255) DEFAULT NULL COMMENT '交易hash',
-  `transaction_number` int(11) DEFAULT NULL COMMENT '交易序号',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `transaction_time` datetime DEFAULT NULL COMMENT '交易时间',
+  `block_time` datetime DEFAULT NULL COMMENT '区块时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -139,7 +140,7 @@ CREATE TABLE `baas_history_temp` (
   `transaction_hash` varchar(255) DEFAULT NULL COMMENT '交易hash',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1240106300495368194 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1240578527560994819 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for bank
@@ -1136,4 +1137,4 @@ CREATE TABLE `users_roles` (
   `id` bigint(100) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`),
   KEY `FKq4eq273l04bpu4efj0jd0jb98` (`role_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1239842139609894913 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='用户角色关联';
+) ENGINE=InnoDB AUTO_INCREMENT=1240175581002338305 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='用户角色关联';
