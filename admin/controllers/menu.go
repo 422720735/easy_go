@@ -63,3 +63,7 @@ func (c *MenuController) Info() {
 	// js
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
 }
+
+func (c*MenuController)HandleMenuAdd()  {
+	// 接通了获取数据。
+}

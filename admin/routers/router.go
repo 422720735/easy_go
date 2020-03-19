@@ -25,7 +25,7 @@ func init() {
 	beego.Router("/menuSetting", &controllers.MenuController{})
 
 	// 导航菜单-add
-	beego.Router("/menuSetting/add", &controllers.MenuController{}, "get:Add")
+	beego.Router("/menuSetting/add", &controllers.MenuController{}, "get:Add;post:HandleMenuAdd")
 
 	// 导航菜单-info
 	beego.Router("/menuSetting/info", &controllers.MenuController{}, "get:Info")

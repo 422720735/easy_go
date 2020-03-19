@@ -2,11 +2,16 @@ package main
 
 import (
 	"easy_go/admin/controllers"
+	"easy_go/admin/db"
 	"easy_go/admin/lib"
 	_ "easy_go/admin/routers"
 	"github.com/astaxie/beego"
 	"runtime"
 )
+
+func init()  {
+	db.Init()
+}
 
 func main() {
 	goos := runtime.GOOS
