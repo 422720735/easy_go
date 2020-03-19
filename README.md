@@ -33,3 +33,5 @@
 [后台模版](http://v.bootstrapmb.com/2019/11/gdgux6705/)
 
 [创意bootstrap模版](http://www.bootstrapmb.com/item/6705)
+
+[用beego开发服务端应用](https://www.cnblogs.com/zhangboyu/p/7760693.html)
