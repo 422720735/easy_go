@@ -3,13 +3,14 @@ package db
 import (
 	"database/sql"
 	"easy_go/admin/lib"
-	_ "github.com/go-sql-driver/mysql"
 	"runtime"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 var (
-	DbConn *sql.DB
-	err    error
+	DbConns *sql.DB
+	err     error
 )
 
 func init() {
@@ -26,10 +27,10 @@ func init() {
 	port := lib.Conf.Read(mysql, "port")
 	host := lib.Conf.Read(mysql, "host")
 	dns := username + ":" + password + "@tcp(" + host + ":" + port + ")/" + dataname + "?parseTime=true&charset=utf8&loc=Local"
-	DbConn, err = sql.Open("mysql", dns)
+	DbConns, err = sql.Open("mysql", dns)
 	if err != nil {
 		panic(err)
 	}
-	DbConn.SetConnMaxLifetime(20)
-	DbConn.SetMaxIdleConns(20)
+	DbConns.SetConnMaxLifetime(20)
+	DbConns.SetMaxIdleConns(20)
 }
