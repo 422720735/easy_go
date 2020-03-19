@@ -32,4 +32,10 @@ func init() {
 	}
 	DbConn.DB().SetMaxIdleConns(10)
 	DbConn.DB().SetMaxOpenConns(10)
+
+	CreatedTable()
+}
+
+func CreatedTable() {
+
 }
