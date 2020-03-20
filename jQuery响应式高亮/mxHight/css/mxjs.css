@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+body {
+font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+background: url(../img/bg-1.svg) repeat-y top center;
+background-size: cover;
+}
+.mxScroll {
+	overflow-y: scroll;
+	scrollbar-face-color: #888;/*滚动长条*/
+	scrollbar-shadow-color: #888;/*滚动长条  边框*/
+	scrollbar-highlight-color: #000;/*xxxxxxxxxxx*/
+	scrollbar-track-color: #ccc;/*背景图*/
+	scrollbar-arrow-color: #ccc;/*箭头*/
+	overflow: -moz-scrollbars-button(#000) !important;
+}
+/*IE用的滑轮*/ 
+
+.mxScroll::-webkit-scrollbar {
+max-width: 10px;
+height:0
+}
+.mxScroll::-webkit-scrollbar-button {
+background-color:none
+}/*上下按钮*/
+.mxScroll::-webkit-scrollbar-track {
+background:#ccc
+}/*背景颜色*/
+.mxScroll::-webkit-scrollbar-thumb {
+background:#888;
+}/*滑动按钮*/
+.mxScroll::-webkit-scrollbar-corner {
+background:#82AFFF;
+}/*上下的中点交接处*/
+.mxScroll::-webkit-scrollbar-resizer {
+background:#FF0BEE;
+}
+
+/*谷歌苹果用的滑轮*/
+/* ↑ overflow-Y专用______________________________________________________________________________________*/
+
+.mxlength {
+	margin-top: 18px;
+	background: #23241F;
+	color: #fff;
+	padding: 0 25px;
+	border-bottom: 1px solid  rgb(56, 56, 56);
+	padding-bottom: 25px;
+}
+.jsbg {
+	background: #23241F;
+	float: left;
+	margin-top: 35px;
+	width: 100%;
+	border-radius: 9px;
+	border: 4px dashed #516877;
+}
+.jsbg > div > pre {
+	max-height: 370px;
+}

@@ -1,5 +1,5 @@
-<script src="/static/js/form-wizard.js"></script><script>let current = 0
-
+<script src="/static/js/form-wizard.js"></script><script>const HOST = '/api'
+    let current = 0
     function addMenu() {
         const menuName = $('#menuName').val()
         const path = $('#path').val()
@@ -11,12 +11,7 @@
         } else {
             // $('#next-btn').attr('disabled', 'disabled')
         }
-
-
-
-
     }
-
     function goPrevOfNext(type) {
         switch (type) {
             case 1:
@@ -39,4 +34,19 @@
         if (current > 1) {
             $('#next-btn').addClass('d-none')
         }
+
+        if (current === 2) {
+            alert(2)
+            // 发送请求
+            $.ajax({
+                type: "post",
+                async: false,
+                url: `/menuSetting/add`,
+                data: JSON.stringify({}),
+                success: function () {
+
+                }
+            })
+        }
+
     }</script>

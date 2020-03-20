@@ -3,9 +3,10 @@ package db
 import (
 	"easy_go/admin/lib"
 	"easy_go/admin/models"
-	_ "github.com/go-sql-driver/mysql"
-	"github.com/astaxie/beego"
 	"runtime"
+
+	"github.com/astaxie/beego"
+	_ "github.com/go-sql-driver/mysql"
 
 	"github.com/jinzhu/gorm"
 )
@@ -32,7 +33,7 @@ func Init() {
 	beego.Info(dns)
 	DbConn, err = gorm.Open("mysql", dns)
 	if err != nil {
-		beego.Info(err,"e")
+		beego.Info(err, "e")
 		panic(err)
 	}
 	DbConn.DB().SetMaxIdleConns(10)
@@ -42,5 +43,5 @@ func Init() {
 }
 
 func CreatedTable() {
-	DbConn.AutoMigrate(&models.MenuSetting{})
+	DbConn.AutoMigrate(&models.MenuSetting{}, &models.User{})
 }
