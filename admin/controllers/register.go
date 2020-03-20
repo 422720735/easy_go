@@ -23,4 +23,20 @@ type RegisterController struct {
 func (c *RegisterController) Get() {
 	c.Layout = "layout/login-registerLayout.html"
 	c.TplName = "pages/register-img.html"
+	c.LayoutSections = make(map[string]string)
+	c.LayoutSections["script"] = "script/login_register.html"
+}
+
+func (c *RegisterController) Post() {
+	invitecode := c.GetString("invitecode")
+	username := c.GetString("username")
+	password := c.GetString("password")
+	if invitecode == "" || invitecode != "8201" {
+		c.Redirect("/register", 302)
+	} else {
+		if username != "" && password != "" {
+			// server
+		}
+	}
+
 }

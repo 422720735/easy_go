@@ -23,8 +23,8 @@ type LoginController struct {
 func (c *LoginController) Get() {
 	c.Layout = "layout/login-registerLayout.html"
 	c.TplName = "pages/login-img.html"
-
-	// c.LayoutSections = make(map[string]string)
+	c.LayoutSections = make(map[string]string)
+	c.LayoutSections["script"] = "script/login_register.html"
 
 	// c.LayoutSections["style"] = "style/login_img.html"
 
