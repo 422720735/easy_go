@@ -33,7 +33,6 @@ func Init() {
 	beego.Info(dns)
 	DbConn, err = gorm.Open("mysql", dns)
 	if err != nil {
-		beego.Info(err, "e")
 		panic(err)
 	}
 	DbConn.DB().SetMaxIdleConns(10)

@@ -1,0 +1,86 @@
+@font-face {
+	font-family: 'icomoon';
+	src: url('../fonts/icomoon.eot?nv22ee');
+	src: url('../fonts/icomoon.eot?nv22ee#iefix') format('embedded-opentype'), url('../fonts/icomoon.ttf?nv22ee') format('truetype'), url('../fonts/icomoon.woff?nv22ee') format('woff'), url('../fonts/icomoon.svg?nv22ee#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'icomoon' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	vertical-align: middle;
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-check-alt {
+	color: #00a854;
+}
+
+.icon-bubble {
+	color: #108ee9;
+}
+
+.icon-notification {
+	color: #ffbf00;
+}
+
+.icon-cancel-circle {
+	color: #f04134;
+}
+
+.icon-check-alt:before {
+	content: "\e900";
+}
+
+.icon-bubble:before {
+	content: "\e96b";
+}
+
+.icon-notification:before {
+	content: "\ea08";
+}
+
+.icon-cancel-circle:before {
+	content: "\ea0d";
+}
+
+.m-message {
+	pointer-events: none;
+	/*可以点击下面的元素*/
+	position: fixed;
+	overflow: hidden;
+	z-index: 1001;
+}
+
+.c-message-notice {
+	text-align: center;
+	margin: 10px 10px;
+}
+
+.m_content {
+	font-family: "microsoft yahei", "宋体";
+	display: inline-block;
+	border: 1px solid #eee;
+	border-radius: 5px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+	color: #555;
+	text-align: left;
+	max-width: 90%;
+	padding: 5px 10px 5px 15px;
+	background-color: #fff;
+}
+
+.m_content span {
+	vertical-align: middle;
+	margin-left: 5px;
+}

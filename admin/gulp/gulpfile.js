@@ -43,7 +43,7 @@ gulp.task('cssUglify', function () {
 
 // 压缩js
 gulp.task('jsUglify', function () {
-    return gulp.src(['src/js/**', '!src/js/build/**'])
+    return gulp.src(['src/js/**', 'src/api/**', '!src/js/build/**'])
         .pipe(babel())
         .pipe(rename({suffixes: '.min'}))
         .pipe(uglify({

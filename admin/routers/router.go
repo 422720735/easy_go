@@ -7,6 +7,8 @@ import (
 	"github.com/astaxie/beego"
 )
 
+const Api = "/api"
+
 func init() {
 	// beego.Router("/", &controllers.IndexControllers{}) // 废弃
 
@@ -38,4 +40,10 @@ func init() {
 
 	// 文章新增+编辑
 	beego.Router("/article/details", &article.ArticleDetails{}, "get:AddOfUpdate")
+	register()
 }
+
+func register()  {
+	beego.Router(Api + "/register", &controllers.RegisterController{}, "post:AddRegister")
+}
+
