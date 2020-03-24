@@ -5,7 +5,6 @@ import (
 	"easy_go/admin/servers"
 	"easy_go/admin/transform"
 	"easy_go/md5"
-	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
 )
@@ -28,7 +27,7 @@ func (c *RegisterController) Get() {
 }
 
 func (c *RegisterController) AddRegister() {
-	//var role int
+	var role int
 	msg, err := common.Unmarshal(&c.Controller)
 	if err != nil {
 		logs.Alert("获取注册接口数据失败", err.Error())
@@ -43,11 +42,11 @@ func (c *RegisterController) AddRegister() {
 	}
 	beego.Info(invitecode != "8201", "invitecode")
 	if invitecode == "8201" || invitecode == "20170510" {
-		//if invitecode == "20170510" {
-		//	role = 1
-		//} else {
-		//	role = 2
-		//}
+		if invitecode == "20170510" {
+			role = 1
+		} else {
+			role = 2
+		}
 	} else {
 		c.Error("邀请码错误")
 		return
@@ -69,5 +68,5 @@ func (c *RegisterController) AddRegister() {
 	}
 	// 加密后的密码
 	processPwd := md5.Md5(password, common.SECRET_KEY)
-	fmt.Println(processPwd)
+	servers.InsertUser(username, processPwd, role)
 }
