@@ -4,6 +4,9 @@ import (
 	"easy_go/admin/common"
 	"easy_go/admin/servers"
 	"easy_go/admin/transform"
+	"easy_go/md5"
+	"fmt"
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
 )
 
@@ -25,7 +28,7 @@ func (c *RegisterController) Get() {
 }
 
 func (c *RegisterController) AddRegister() {
-	var role int
+	//var role int
 	msg, err := common.Unmarshal(&c.Controller)
 	if err != nil {
 		logs.Alert("获取注册接口数据失败", err.Error())
@@ -38,14 +41,16 @@ func (c *RegisterController) AddRegister() {
 		c.Error("获取注册接口数据失败")
 		return
 	}
-	if invitecode == "" || invitecode != "8201" || invitecode != "20170510" {
-		c.Error("邀请码不正确")
-		return
-	}
-	if invitecode == "20170510" {
-		role = 1
+	beego.Info(invitecode != "8201", "invitecode")
+	if invitecode == "8201" || invitecode == "20170510" {
+		//if invitecode == "20170510" {
+		//	role = 1
+		//} else {
+		//	role = 2
+		//}
 	} else {
-		role = 2
+		c.Error("邀请码错误")
+		return
 	}
 	username, err := transform.InterToString(msg["username"])
 	if username == "" || len(username) < 6 {
@@ -62,5 +67,7 @@ func (c *RegisterController) AddRegister() {
 		c.Success("账号以被占用。")
 		return
 	}
-	// 走注册业务。 先把密码加密一次。
+	// 加密后的密码
+	processPwd := md5.Md5(password, common.SECRET_KEY)
+	fmt.Println(processPwd)
 }

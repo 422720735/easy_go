@@ -1,8 +1,8 @@
 package db
 
 import (
-	"easy_go/admin/lib"
 	"easy_go/admin/models"
+	"easy_go/lib"
 	"runtime"
 
 	"github.com/astaxie/beego"
