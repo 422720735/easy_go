@@ -1,5 +1,4 @@
-<script src="/static/assets/message/js/jquery.my-message.1.1.js"></script><script>
-    var message = new MyMessage.message({
+<script src="/static/assets/message/js/jquery.my-message.1.1.js"></script><script>var message = new MyMessage.message({
         /*默认参数，下面为默认项*/
         iconFontSize: "20px", //图标大小,默认为20px
         messageFontSize: "12px", //信息字体大小,默认为12px
@@ -19,9 +18,38 @@
         align: "bottom" //会覆盖前面的所有设置,可以创建不同的对象去避免覆盖
     });
     message.setting("showTime", "3000");
+    window.Msg = message
+    class Message {
+        static success(d) {
+            if (Object.prototype.toString.call(d) === '[object Object]') {
+                window.Msg.add(d.data, "success")
+            } else {
+                window.Msg.add(d, "success")
+            }
+        }
 
+        static warning(d) {
+            if (Object.prototype.toString.call(d) === '[object Object]') {
+                window.Msg.add(d.data, "success")
+            } else {
+                window.Msg.add(d, "success")
+            }
+        }
 
-    window.message = message
+        static error(d) {
+            if (Object.prototype.toString.call(d) === '[object Object]') {
+                window.Msg.add(d.data, "error")
+            } else {
+                window.Msg.add(d, "error")
+            }
+        }
 
-
-</script>
+        static info(d) {
+            if (Object.prototype.toString.call(d) === '[object Object]') {
+                window.Msg.add(d.data);
+            } else {
+                window.Msg.add(d);
+            }
+        }
+    }
+    window.message = Message</script>
