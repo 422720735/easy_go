@@ -43,7 +43,7 @@ func init() {
 	register()
 }
 
-func register()  {
+func register() {
+	beego.Router(Api + "/login", &controllers.LoginController{}, "post:HandleLogin")
 	beego.Router(Api + "/register", &controllers.RegisterController{}, "post:AddRegister")
 }
-

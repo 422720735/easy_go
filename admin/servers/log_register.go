@@ -15,9 +15,9 @@ func IsUserTake(name string) int {
 
 func InsertUser(user, pwd string, role int) error {
 	d := models.User{
-		UserName: user,
-		PassWord: pwd,
-		Role:     role,
+		UserName:    user,
+		PassWord:    pwd,
+		Role:        role,
 		CreatedTime: time.Now(),
 	}
 
@@ -26,4 +26,13 @@ func InsertUser(user, pwd string, role int) error {
 		return err
 	}
 	return nil
+}
+
+func SelectUserMd5Pwd(user, pwd string)(string, error){
+	var username models.User
+	err := db.DbConn.Model(&models.User{}).Where("user_name =? AND pass_word = ?", user, pwd).Find(&username).Error
+	if err != nil {
+		return "", err
+	}
+	return username.PassWord, nil
 }

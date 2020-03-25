@@ -5,7 +5,6 @@ import (
 	"easy_go/admin/servers"
 	"easy_go/admin/transform"
 	"easy_go/md5"
-	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
 )
 
@@ -40,7 +39,6 @@ func (c *RegisterController) AddRegister() {
 		c.Error("获取注册接口数据失败")
 		return
 	}
-	beego.Info(invitecode != "8201", "invitecode")
 	if invitecode == "8201" || invitecode == "20170510" {
 		if invitecode == "20170510" {
 			role = 1
