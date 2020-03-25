@@ -22,6 +22,8 @@ func InsertUser(user, pwd string, role int) {
 		PassWord: pwd,
 		Role:     role,
 		CreatedTime: time.Now(),
+		CurrentLoginTime: nil,
+		UpdateTime: nil,
 	}
 
 	db.DbConn.Create(&d)
