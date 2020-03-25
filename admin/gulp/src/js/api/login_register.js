@@ -25,8 +25,9 @@ $('#register-btn').click(function () {
             data: data,
             method: 'POST',
             success: function (res) {
-                if (res.code === Err) {
-                    // window.message.add('')
+                if (res.code === 1) {
+                   window.message.success(res)
+                } else {
                     window.message.error(res)
                 }
             }

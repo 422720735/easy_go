@@ -3,7 +3,6 @@ package servers
 import (
 	"easy_go/admin/db"
 	"easy_go/admin/models"
-	"github.com/astaxie/beego"
 	"time"
 )
 
@@ -14,17 +13,17 @@ func IsUserTake(name string) int {
 	return count
 }
 
-func InsertUser(user, pwd string, role int) {
-	beego.Info("22")
-	//  Error 1292: Incorrect datetime value: '0000-00-00' for column 'current_login_time' at row 1
+func InsertUser(user, pwd string, role int) error {
 	d := models.User{
 		UserName: user,
 		PassWord: pwd,
 		Role:     role,
 		CreatedTime: time.Now(),
-		CurrentLoginTime: nil,
-		UpdateTime: nil,
 	}
 
-	db.DbConn.Create(&d)
+	err := db.DbConn.Create(&d).Error
+	if err != nil {
+		return err
+	}
+	return nil
 }

@@ -68,5 +68,10 @@ func (c *RegisterController) AddRegister() {
 	}
 	// 加密后的密码
 	processPwd := md5.Md5(password, common.SECRET_KEY)
-	servers.InsertUser(username, processPwd, role)
+	err=servers.InsertUser(username, processPwd, role)
+	if err != nil {
+		c.Error("注册账号失败")
+		return
+	}
+	c.Success("注册成功")
 }
