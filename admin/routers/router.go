@@ -44,6 +44,6 @@ func init() {
 }
 
 func register() {
-	beego.Router(Api + "/login", &controllers.LoginController{}, "post:HandleLogin")
-	beego.Router(Api + "/register", &controllers.RegisterController{}, "post:AddRegister")
+	beego.Router(Api+"/login", &controllers.LoginController{}, "post:HandleLogin")
+	beego.Router(Api+"/register", &controllers.RegisterController{}, "post:AddRegister")
 }

@@ -43,13 +43,13 @@ $('#login-btn.btn.btn-primary.btn-block').click(function () {
     const checkbox = $('#checkbox-signin').is(':checked')
     if (username && username !== '' && password && password !== '') {
         const data = JSON.stringify({
-            username,
-            password,
-            checkbox
+            username: username,
+            password: password,
+            checkbox: checkbox
         })
         $.ajax({
-            url: HOST + '/login',
-            data,
+            url: '/login',
+            data: data,
             method: 'POST',
             success: function (res) {
                 console.log(res)
