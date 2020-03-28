@@ -28,11 +28,11 @@ func InsertUser(user, pwd string, role int) error {
 	return nil
 }
 
-func SelectUserMd5Pwd(user, pwd string)(string, error){
+func SelectUserMd5Pwd(user, pwd string)(models.User, error){
 	var username models.User
 	err := db.DbConn.Model(&models.User{}).Where("user_name =? AND pass_word = ?", user, pwd).Find(&username).Error
 	if err != nil {
-		return "", err
+		return username, err
 	}
-	return username.PassWord, nil
+	return username, nil
 }
