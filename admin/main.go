@@ -27,7 +27,7 @@ func main() {
 	port := lib.Conf.Read(system, "httpport")
 	viewsPath := lib.Conf.Read(system, "viewspath")
 	beego.BConfig.CopyRequestBody = true
-
+	beego.BConfig.WebConfig.Session.SessionOn = true
 	beego.ErrorController(&controllers.ErrorController{})
 	beego.BConfig.RunMode = env
 	beego.BConfig.WebConfig.ViewsPath = viewsPath

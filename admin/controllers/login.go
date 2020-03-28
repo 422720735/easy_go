@@ -3,7 +3,6 @@ package controllers
 import (
 	"easy_go/admin/common"
 	"easy_go/admin/servers"
-	"easy_go/admin/transform"
 	"easy_go/md5"
 	"github.com/astaxie/beego/logs"
 	// "time"
@@ -28,9 +27,6 @@ func (c *LoginController) HandleLogin() {
 	username := c.GetString("username")
 	password := c.GetString("password")
 	_ = c.GetStrings("checkbox")
-	msg, err := common.Unmarshal(&c.Controller)
-	username, _ = transform.InterToString(msg["username"])
-	username, _ = transform.InterToString(msg["password"])
 	if username == "" || len(username) < 6 || password == "" || len(password) < 6 {
 		c.History("账号或密码不合法", "")
 		return
@@ -45,11 +41,12 @@ func (c *LoginController) HandleLogin() {
 	// 跟数据库的比对
 	pwd, err := servers.SelectUserMd5Pwd(username, processPwd)
 	if err != nil {
-		logs.Alert("用户:"+username+"比对密码出多", err.Error())
+		logs.Alert("用户:"+username+"比对密码出错", err.Error())
 		c.History("账号或密码不合法", "")
 		return
 	}
 	if pwd != "" {
+		// session
 		c.Redirect("/workplace", 302)
 		return
 	} else {

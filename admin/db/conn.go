@@ -3,6 +3,7 @@ package db
 import (
 	"easy_go/admin/models"
 	"easy_go/lib"
+	"fmt"
 	"runtime"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -41,4 +42,14 @@ func Init() {
 
 func CreatedTable() {
 	DbConn.AutoMigrate(&models.MenuSetting{}, &models.User{})
+}
+
+func TableName(str string) string {
+	tab := ""
+	if tab == "linux" {
+		tab = "mysql_prod"
+	} else {
+		tab = "mysql_dev"
+	}
+	return fmt.Sprintf("%s%s", lib.Conf.Read(tab,"dbprefix"), str)
 }
