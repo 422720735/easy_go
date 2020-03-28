@@ -5,7 +5,6 @@ import (
 	"easy_go/lib"
 	"runtime"
 
-	"github.com/astaxie/beego"
 	_ "github.com/go-sql-driver/mysql"
 
 	"github.com/jinzhu/gorm"
@@ -30,7 +29,6 @@ func Init() {
 	port := lib.Conf.Read(mysql, "port")
 	host := lib.Conf.Read(mysql, "host")
 	dns := username + ":" + password + "@tcp(" + host + ":" + port + ")/" + dataname + "?charset=utf8&parseTime=True&loc=Local"
-	beego.Info(dns)
 	DbConn, err = gorm.Open("mysql", dns)
 	if err != nil {
 		panic(err)
