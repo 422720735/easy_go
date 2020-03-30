@@ -16,5 +16,4 @@ func Md5(password, salt string) string {
 	m.Write([]byte("-rytid^&^57fnvi2e---%#$fwef"+ str + salt + "1sfl,;'f'ewji23"))
 	pwd := m.Sum(nil)
 	return hex.EncodeToString(pwd)
-
 }

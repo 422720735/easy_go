@@ -17,15 +17,15 @@ func (c *LoginController) Get() {
 	c.TplName = "pages/login-img.html"
 	c.LayoutSections = make(map[string]string)
 	c.LayoutSections["script"] = "script/login_register.html"
-	// c.LayoutSections["style"] = "style/login_img.html"
 
+	// c.LayoutSections["style"] = "style/login_img.html"
 	// c.LayoutSections["script"] = "script/login_img.html"
 }
 
 func (c *LoginController) HandleLogin() {
 	username := c.GetString("username")
 	password := c.GetString("password")
-	_ = c.GetStrings("checkbox")
+	check := c.GetStrings("checkbox")
 	if username == "" || len(username) < 6 || password == "" || len(password) < 6 {
 		c.History("账号或密码不合法", "")
 		return
@@ -45,9 +45,11 @@ func (c *LoginController) HandleLogin() {
 		return
 	}
 	if user.PassWord != "" {
-		// 写入cookie,
-		c.Ctx.SetCookie("auth", "1235", 86400)
-		// session
+		// 使用jwt完成cookie的写入，我们记录的cookie的时间，完成beego的路由拦截，如果用户的数据跟数据库的相同，我们就放行让他登陆。生存的token需要记录在数据库里。
+		if len(check) > 0 {
+			c.Ctx.SetCookie(md5.Md5("auth", common.SECRET_COOKIES_KEY), md5.Md5(user.UserName + "=|=" +user.PassWord, common.SECRET_COOKIES_KEY), 860000)
+		}
+		// 存session
 		c.SetSession("userId", user.Id)
 		c.SetSession("userName", user.UserName)
 		c.Redirect("/workplace", 302)

@@ -61,7 +61,7 @@ func (c *BaseController) Error(msg string) {
 	c.ServeJSON()
 }
 
-func Echo(c *beego.Controller, code int, body interface{}) {
+func Echo(c *BaseController, code int, body interface{}) {
 	c.Data["json"] = map[string]interface{}{
 		"code": code,
 		"data": body,
@@ -69,5 +69,3 @@ func Echo(c *beego.Controller, code int, body interface{}) {
 	}
 	c.ServeJSON()
 }
-
-// 验证码

@@ -13,4 +13,5 @@ type User struct {
 	CurrentLoginTime sql.NullTime `json:"current_login_time"`
 	CreatedTime      time.Time    `json:"created_time"`
 	UpdateTime       sql.NullTime `json:update_time`
+	AuthToken        sql.NullString `json:"auth_token"`
 }
