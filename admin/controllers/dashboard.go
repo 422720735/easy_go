@@ -13,8 +13,9 @@ type DashBoardControllers struct {
 func (c *DashBoardControllers) Get() {
 	isLogin:=c.GetSession("userName")
 	if isLogin == nil || isLogin=="" {
-		c.History("未登陆，请先登陆","")
-		c.Redirect("/login", 302)
+		// c.Redirect("/login", 302)
+		// aes解密拿到username 数据库比对。
+		// 走方法获取cookies 解密到数据查看如果有这条数据就登陆。
 	}
 
 	c.Layout = "layout/mainLayout.html"
