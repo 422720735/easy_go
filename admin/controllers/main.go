@@ -11,7 +11,6 @@ type MainController struct {
 func (c *MainController) Get() {
 	c.Layout = "layout/mainLayout.html"
 	c.TplName = "pages/menuSetting.html"
-
 	c.LayoutSections = make(map[string]string)
 	// menu
 	c.LayoutSections["LeftMenu"] = "layout/leftSideMenuLayout.html"

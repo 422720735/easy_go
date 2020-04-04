@@ -2,15 +2,21 @@
 package controllers
 
 import (
-	"github.com/astaxie/beego"
+	"easy_go/admin/common"
 )
 
 type DashBoardControllers struct {
-	beego.Controller
+	common.BaseController
 }
 
 // 首页跳转到欢迎页面
 func (c *DashBoardControllers) Get() {
+	isLogin:=c.GetSession("userName")
+	if isLogin == nil || isLogin=="" {
+		c.History("未登陆，请先登陆","")
+		c.Redirect("/login", 302)
+	}
+
 	c.Layout = "layout/mainLayout.html"
 
 	c.TplName = "pages/dashboard/welcome.html"
@@ -28,6 +34,7 @@ func (c *DashBoardControllers) Get() {
 
 	c.LayoutSections["Style"] = "style/welcome.html"
 	c.LayoutSections["Script"] = "script/welcome.html"
+
 }
 
 func (c *DashBoardControllers) HandleAnalysis() {
