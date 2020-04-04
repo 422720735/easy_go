@@ -6,11 +6,15 @@ import (
 	_ "easy_go/admin/routers"
 	"easy_go/lib"
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/context"
 	"runtime"
 )
 
-
-
+var FilterUser = func(ctx *context.Context) {
+	// 获取session 跟cookies 数据库对比 过关就进入页面。
+	_,ok:=ctx.Input.Session("userId").(string)
+	if !ok {}
+}
 func init()  {
 	db.Init()
 }
