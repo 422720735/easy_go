@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	ExpireTime = 1296000
+	ExpireTime = 3600
 )
 
 //获取body

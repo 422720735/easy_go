@@ -1,17 +1,17 @@
-package aes
+package main
 
 import (
 	"bytes"
 	"crypto/aes"
 	"crypto/cipher"
-	"easy_go/admin/common"
 	"encoding/base64"
+	"fmt"
 )
 
-func PKCS7Padding(ciphertext []byte, blockSize int) []byte {
-	padding := blockSize - len(ciphertext) % blockSize
+func PKCS7Padding(cipherText []byte, blockSize int) []byte {
+	padding := blockSize - len(cipherText) % blockSize
 	padtext := bytes.Repeat([]byte{byte(padding)}, padding)
-	return append(ciphertext, padtext...)
+	return append(cipherText, padtext...)
 }
 
 func PKCS7UnPadding(origData []byte) []byte {
@@ -46,17 +46,16 @@ func AesDecrypt(crypted, key []byte) ([]byte, error) {
 	return origData, nil
 }
 
-// aes加密
-func Encrypt(str string) string {
-	key := []byte(common.SECRET_AES_KEY)
-	result, err := AesEncrypt([]byte(str), key)
+func main() {
+	key := []byte("0123456789abcdef")
+	result, err := AesEncrypt([]byte("hello world"), key)
 	if err != nil {
-		//panic(err)
-		return ""
+		panic(err)
 	}
-	return base64.StdEncoding.EncodeToString(result)
-}
-
-func Decrypt()  {
-	
+	fmt.Println(base64.StdEncoding.EncodeToString(result))
+	origData, err := AesDecrypt(result, key)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(string(origData))
 }
