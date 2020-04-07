@@ -19,6 +19,7 @@ func init()  {
 	db.Init()
 }
 
+// hltool
 func main() {
 	goos := runtime.GOOS
 	system := ""

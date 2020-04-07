@@ -67,7 +67,7 @@ func (c *LoginController) HandleLogin() {
 		5，如果有先就进行aes解密获取到key:val, 获取到token 解密token 去数据库查询这条数据。如果有创建新到token
 		6，根据key设置session 跳转到欢迎页面。
 		*/
-
+		// 用户的username,password,ip，当前时间。生成aes密钥。
 		// ip是用户请求的ip地址，我们要ip存到数据库里。
 		// 使用jwt完成cookie的写入，我们记录的cookie的时间，完成beego的路由拦截，如果用户的数据跟数据库的相同，我们就放行让他登陆。生存的token需要记录在数据库里。
 
