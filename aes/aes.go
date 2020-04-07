@@ -1,57 +1,62 @@
-package hltool
+package aes
 
 import (
 	"bytes"
 	"crypto/aes"
 	"crypto/cipher"
+	"easy_go/admin/common"
+	"encoding/base64"
 )
 
-func pKCS7Padding(ciphertext []byte, blockSize int) []byte {
-	padding := blockSize - len(ciphertext)%blockSize
+func PKCS7Padding(ciphertext []byte, blockSize int) []byte {
+	padding := blockSize - len(ciphertext) % blockSize
 	padtext := bytes.Repeat([]byte{byte(padding)}, padding)
 	return append(ciphertext, padtext...)
 }
 
-func pKCS7UnPadding(origData []byte) []byte {
+func PKCS7UnPadding(origData []byte) []byte {
 	length := len(origData)
 	unpadding := int(origData[length-1])
 	return origData[:(length - unpadding)]
 }
 
-// GoAES 加密
-type GoAES struct {
-	Key []byte
-}
-
-// NewGoAES 返回GoAES
-func NewGoAES(key []byte) *GoAES {
-	return &GoAES{Key: key}
-}
-
-// Encrypt 加密数据
-func (a *GoAES) Encrypt(origData []byte) ([]byte, error) {
-	block, err := aes.NewCipher(a.Key)
+func AesEncrypt(origData, key []byte) ([]byte, error) {
+	block, err := aes.NewCipher(key)
 	if err != nil {
 		return nil, err
 	}
 	blockSize := block.BlockSize()
-	origData = pKCS7Padding(origData, blockSize)
-	blockMode := cipher.NewCBCEncrypter(block, a.Key[:blockSize])
+	origData = PKCS7Padding(origData, blockSize)
+	blockMode := cipher.NewCBCEncrypter(block, key[:blockSize])
 	crypted := make([]byte, len(origData))
 	blockMode.CryptBlocks(crypted, origData)
 	return crypted, nil
 }
 
-// Decrypt 解密数据
-func (a *GoAES) Decrypt(crypted []byte) ([]byte, error) {
-	block, err := aes.NewCipher(a.Key)
+func AesDecrypt(crypted, key []byte) ([]byte, error) {
+	block, err := aes.NewCipher(key)
 	if err != nil {
 		return nil, err
 	}
 	blockSize := block.BlockSize()
-	blockMode := cipher.NewCBCDecrypter(block, a.Key[:blockSize])
+	blockMode := cipher.NewCBCDecrypter(block, key[:blockSize])
 	origData := make([]byte, len(crypted))
 	blockMode.CryptBlocks(origData, crypted)
-	origData = pKCS7UnPadding(origData)
+	origData = PKCS7UnPadding(origData)
 	return origData, nil
+}
+
+// aes加密
+func Encrypt(str string) string {
+	key := []byte(common.SECRET_AES_KEY)
+	result, err := AesEncrypt([]byte(str), key)
+	if err != nil {
+		//panic(err)
+		return ""
+	}
+	return base64.StdEncoding.EncodeToString(result)
+}
+
+func Decrypt()  {
+
 }
