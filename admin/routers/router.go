@@ -3,6 +3,8 @@ package routers
 import (
 	"easy_go/admin/controllers"
 	"easy_go/admin/controllers/article"
+	"fmt"
+	"github.com/astaxie/beego/context"
 
 	"github.com/astaxie/beego"
 )
@@ -10,6 +12,8 @@ import (
 const Api = "/api"
 
 func init() {
+	beego.InsertFilter(Api+"/*", beego.BeforeExec, FilterUser)
+	beego.InsertFilter("/", beego.BeforeExec, FilterUser)
 	// beego.Router("/", &controllers.IndexControllers{}) // 废弃
 
 	beego.Router("/login", &controllers.LoginController{})
@@ -46,4 +50,12 @@ func init() {
 func register() {
 	beego.Router(Api+"/login", &controllers.LoginController{}, "post:HandleLogin")
 	beego.Router(Api+"/register", &controllers.RegisterController{}, "post:AddRegister")
+}
+
+var FilterUser = func(ctx *context.Context) {
+	user := ctx.Input.Session("userName")
+	if user == nil {
+		ctx.Redirect(302, "/login", )
+	}
+	fmt.Print(user)
 }

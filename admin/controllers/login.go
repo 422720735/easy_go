@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"github.com/astaxie/beego/logs"
-	"strings"
 )
 
 var saltKey string
@@ -52,42 +51,38 @@ func (c *LoginController) HandleLogin() {
 	}
 
 	if user.PassWord != "" {
-		ip := c.Ctx.Request.Header.Get("X-Real-IP")
-		if ip == "" {
-			forwarded := c.Ctx.Request.Header.Get("X-Forwarded-For")
-			if forwarded != "" {
-				list := strings.Split(forwarded, ":")
-				if len(list) > 0 {
-					ip = list[0]
-				}
-			} else {
-				ip = strings.Split(c.Ctx.Request.RemoteAddr, ":")[0]
-			}
-		}
-
+		ip := c.Ctx.Request.RemoteAddr
 		// 生成token
-		cookieString, err := common.NewCurrentCookie(user, ip)
+		user.LoginIp = ip
+		tokenString, err := common.NewCurrentCookie(user)
 		if err != nil {
 			logs.Warning("用户登录创建token失败", err.Error())
-			c.History("未知异常","")
+			c.History("未知异常", "")
 			return
 		}
 		// 把token 登录时间，登录ip，更新sql时间，更新到用户表里，走一次sql更新，sql成功后继续下面的操作。
+		user.LoginIp = ip
+		user.CurrentLoginTime.Scan(time.Now())
+		user.UpdateTime.Scan(time.Now())
+		user.AuthToken = tokenString
+		err = servers.UserLoginSetToken(user)
+		if err != nil {
+			logs.Alert("用户记录登陆信息失败", err.Error())
+			c.History("未知异常", "")
+			return
+		}
 		// 记住密码，aes加密
 		if len(check) > 0 {
 			aesKey := aes.NewGoAES([]byte(common.SECRET_AES_KEY))
-			encrypt, err := aesKey.Encrypt([]byte(cookieString))
+			encrypt, err := aesKey.Encrypt([]byte(tokenString))
 			if err != nil {
 				logs.Warning("用户token-aes加密失败", err.Error())
-				c.History("未知异常","")
+				c.History("未知异常", "")
 				return
 			}
 			// 转存字符串
 			saltKey = base64.StdEncoding.EncodeToString(encrypt)
 		}
-
-
-
 
 		/*
 			1，生成token ip 把它记录在用户信息表里。
@@ -113,4 +108,3 @@ func (c *LoginController) HandleLogin() {
 		c.Redirect("/login", 302)
 	}
 }
-
