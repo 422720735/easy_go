@@ -1,6 +1,7 @@
 package common
 
 import (
+	"easy_go/admin/models"
 	myjwt "easy_go/middleware"
 	"encoding/json"
 	"github.com/astaxie/beego"
@@ -21,20 +22,25 @@ func Unmarshal(c *beego.Controller) (map[string]interface{}, error) {
 	return msg, nil
 }
 
-// 生成一个token
-func NewTokenSaveCookie(c *beego.Controller, id int, user string) string {
-	j := myjwt.JWT{
+// 生成token
+func NewCurrentCookie(user models.User, ip string) (string, error) {
+	//CreateToken
+	j := &myjwt.JWT{
 		[]byte("newtrekWang"),
 	}
 	claims := myjwt.CustomClaims{
-		ID:       id,
-		Username: user,
+		ID:       user.Id,
+		Username: user.UserName,
+		LoginIp: ip,
+		Password: user.PassWord,
 	}
 	claims.IssuedAt = time.Now().Unix()
 	claims.ExpiresAt = time.Now().Add(time.Second * time.Duration(ExpireTime)).Unix()
 	token, err := j.CreateToken(claims)
+
 	if err != nil {
-		return ""
+		return "", err
 	}
-	return token
+
+	return token, nil
 }
