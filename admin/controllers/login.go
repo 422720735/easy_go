@@ -72,15 +72,23 @@ func (c *LoginController) HandleLogin() {
 			c.History("未知异常","")
 			return
 		}
-		// aes加密
-		aesKey := aes.NewGoAES([]byte(common.SECRET_AES_KEY))
-		encrypt, err := aesKey.Encrypt([]byte(cookieString))
-		if err != nil {
-			logs.Warning("用户token-aes加密失败", err.Error())
-			c.History("未知异常","")
-			return
+		// 把token 登录时间，登录ip，更新sql时间，更新到用户表里，走一次sql更新，sql成功后继续下面的操作。
+		// 记住密码，aes加密
+		if len(check) > 0 {
+			aesKey := aes.NewGoAES([]byte(common.SECRET_AES_KEY))
+			encrypt, err := aesKey.Encrypt([]byte(cookieString))
+			if err != nil {
+				logs.Warning("用户token-aes加密失败", err.Error())
+				c.History("未知异常","")
+				return
+			}
+			// 转存字符串
+			saltKey = base64.StdEncoding.EncodeToString(encrypt)
 		}
-		saltKey = base64.StdEncoding.EncodeToString(encrypt)
+
+
+
+
 		/*
 			1，生成token ip 把它记录在用户信息表里。
 			2，如果用户记住密码则我们把token aes 加密一次放到cookies里。
@@ -92,7 +100,7 @@ func (c *LoginController) HandleLogin() {
 		// 用户的username,password,ip，当前时间。生成aes密钥。
 		// ip是用户请求的ip地址，我们要ip存到数据库里。
 		// 使用jwt完成cookie的写入，我们记录的cookie的时间，完成beego的路由拦截，如果用户的数据跟数据库的相同，我们就放行让他登陆。生存的token需要记录在数据库里。
-		if len(check) > 0 && saltKey != "" {
+		if saltKey != "" {
 			// 1小时有效
 			c.Ctx.SetCookie("auth", saltKey, time.Second*60*60)
 		}

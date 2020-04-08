@@ -58,7 +58,6 @@ var (
 type CustomClaims struct {
 	ID       int    `json:"id"`
 	Username string `json:"username"`
-	Password string `json:"password"`
 	LoginIp          string          `json:"login_ip"`           // 用户登陆的ip
 	jwt.StandardClaims
 }

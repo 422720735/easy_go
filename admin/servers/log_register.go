@@ -36,3 +36,9 @@ func SelectUserMd5Pwd(user, pwd string)(models.User, error){
 	}
 	return username, nil
 }
+
+// 用户登录setToken
+func userLoginSetToken(user models.User)error  {
+	// 更新sql
+	return nil
+}

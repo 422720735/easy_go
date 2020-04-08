@@ -32,7 +32,6 @@ func NewCurrentCookie(user models.User, ip string) (string, error) {
 		ID:       user.Id,
 		Username: user.UserName,
 		LoginIp: ip,
-		Password: user.PassWord,
 	}
 	claims.IssuedAt = time.Now().Unix()
 	claims.ExpiresAt = time.Now().Add(time.Second * time.Duration(ExpireTime)).Unix()
