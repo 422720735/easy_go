@@ -3,7 +3,6 @@ package routers
 import (
 	"easy_go/admin/controllers"
 	"easy_go/admin/controllers/article"
-	"fmt"
 	"github.com/astaxie/beego/context"
 
 	"github.com/astaxie/beego"
@@ -12,8 +11,6 @@ import (
 const Api = "/api"
 
 func init() {
-	beego.InsertFilter(Api+"/*", beego.BeforeExec, FilterUser)
-	beego.InsertFilter("/", beego.BeforeExec, FilterUser)
 	// beego.Router("/", &controllers.IndexControllers{}) // 废弃
 
 	beego.Router("/login", &controllers.LoginController{})
@@ -45,6 +42,7 @@ func init() {
 	// 文章新增+编辑
 	beego.Router("/article/details", &article.ArticleDetails{}, "get:AddOfUpdate")
 	register()
+	beego.InsertFilter("/", beego.BeforeRouter, FilterUser)
 }
 
 func register() {
@@ -52,10 +50,11 @@ func register() {
 	beego.Router(Api+"/register", &controllers.RegisterController{}, "post:AddRegister")
 }
 
+// 全局过滤方法。
+// https://www.kancloud.cn/hello123/beego/126127
 var FilterUser = func(ctx *context.Context) {
-	user := ctx.Input.Session("userName")
-	if user == nil {
-		ctx.Redirect(302, "/login", )
+	_, ok := ctx.Input.Session("userName").(int)
+	if !ok && ctx.Request.RequestURI != "/login" || ctx.Request.RequestURI != "register" {
+		ctx.Redirect(302, "/login")
 	}
-	fmt.Print(user)
 }
