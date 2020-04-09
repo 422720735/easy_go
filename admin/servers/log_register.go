@@ -37,13 +37,12 @@ func SelectUserMd5Pwd(user, pwd string) (models.User, error) {
 	return username, nil
 }
 
-// 用户登录setToken
-func UserLoginSetToken(user models.User) error {
+// 登录信息记录
+func LoginRecord(user models.User) error {
 	// 把token 登录时间，登录ip，更新sql时间，更新到用户表里，走一次sql更新，sql成功后继续下面的操作。
 	err := db.DbConn.Model(&user).Updates(&user).Error
 	if err != nil {
 		return err
 	}
-	// 更新sql
 	return nil
 }

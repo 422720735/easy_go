@@ -4,8 +4,8 @@ import (
 	"easy_go/admin/controllers"
 	"easy_go/admin/controllers/article"
 	"github.com/astaxie/beego/context"
-
 	"github.com/astaxie/beego"
+	"fmt"
 )
 
 const Api = "/api"
@@ -54,7 +54,10 @@ func register() {
 // https://www.kancloud.cn/hello123/beego/126127
 var FilterUser = func(ctx *context.Context) {
 	_, ok := ctx.Input.Session("userName").(int)
+	fmt.Printf(ctx.Input.Cookie("auth"))
 	if !ok && ctx.Request.RequestURI != "/login" || ctx.Request.RequestURI != "register" {
 		ctx.Redirect(302, "/login")
+	} else {
+
 	}
 }

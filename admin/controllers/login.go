@@ -65,7 +65,7 @@ func (c *LoginController) HandleLogin() {
 		user.CurrentLoginTime.Scan(time.Now())
 		user.UpdateTime.Scan(time.Now())
 		user.AuthToken = tokenString
-		err = servers.UserLoginSetToken(user)
+		err = servers.LoginRecord(user)
 		if err != nil {
 			logs.Alert("用户记录登陆信息失败", err.Error())
 			c.History("未知异常", "")
