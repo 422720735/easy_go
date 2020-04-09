@@ -28,7 +28,7 @@ func Unmarshal(c *beego.Controller) (map[string]interface{}, error) {
 func NewCurrentCookie(user models.User) (string, error) {
 	//CreateToken
 	j := &myjwt.JWT{
-		[]byte("newtrekWang"),
+		[]byte(SECRET_TOKEN_KEY),
 	}
 	claims := myjwt.CustomClaims{
 		ID:       user.Id,
