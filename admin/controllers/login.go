@@ -6,9 +6,8 @@ import (
 	"easy_go/aes"
 	"easy_go/md5"
 	"encoding/base64"
-	"time"
-
 	"github.com/astaxie/beego/logs"
+	"time"
 )
 
 var saltKey string
@@ -22,7 +21,6 @@ func (c *LoginController) Get() {
 	c.TplName = "pages/login-img.html"
 	c.LayoutSections = make(map[string]string)
 	c.LayoutSections["script"] = "script/login_register.html"
-
 	// c.LayoutSections["style"] = "style/login_img.html"
 	// c.LayoutSections["script"] = "script/login_img.html"
 }

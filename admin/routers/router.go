@@ -1,18 +1,19 @@
 package routers
 
 import (
+	"easy_go/admin/common"
 	"easy_go/admin/controllers"
 	"easy_go/admin/controllers/article"
 	"github.com/astaxie/beego/context"
+
 	"github.com/astaxie/beego"
-	"fmt"
 )
 
 const Api = "/api"
 
 func init() {
+	beego.InsertFilter("/menuSetting/add", beego.BeforeRouter, FilterUser)
 	// beego.Router("/", &controllers.IndexControllers{}) // 废弃
-
 	beego.Router("/login", &controllers.LoginController{})
 
 	beego.Router("/register", &controllers.RegisterController{})
@@ -42,7 +43,7 @@ func init() {
 	// 文章新增+编辑
 	beego.Router("/article/details", &article.ArticleDetails{}, "get:AddOfUpdate")
 	register()
-	beego.InsertFilter("/", beego.BeforeRouter, FilterUser)
+
 }
 
 func register() {
@@ -53,11 +54,15 @@ func register() {
 // 全局过滤方法。
 // https://www.kancloud.cn/hello123/beego/126127
 var FilterUser = func(ctx *context.Context) {
-	_, ok := ctx.Input.Session("userName").(int)
-	fmt.Printf(ctx.Input.Cookie("auth"))
-	if !ok && ctx.Request.RequestURI != "/login" || ctx.Request.RequestURI != "register" {
-		ctx.Redirect(302, "/login")
-	} else {
 
+	_, ok := ctx.Input.Session("userName").(string)
+	if !ok && ctx.Request.RequestURI != "/login" || ctx.Request.RequestURI != "register" {
+		// 获取cookies
+		cook:= ctx.GetCookie("auth")
+		if cook == "" {
+			ctx.Redirect(302, "/login")
+		} else {
+			common.ParseTokenUser(cook)
+		}
 	}
 }
