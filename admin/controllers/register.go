@@ -59,14 +59,18 @@ func (c *RegisterController) AddRegister() {
 		c.Error("输入不合法")
 		return
 	}
-	count := servers.IsUserTake(username)
+	count, err := servers.IsUserTake(username)
+	if err != nil {
+		logs.Alert("用户注册查询账号是否占用失败" + err.Error())
+		c.Error("未知异常")
+	}
 	if count > 0 {
 		c.Success("账号以被占用。")
 		return
 	}
 	// 加密后的密码
 	processPwd := md5.Md5(password, common.SECRET_KEY)
-	err=servers.InsertUser(username, processPwd, role)
+	err = servers.InsertUser(username, processPwd, role)
 	if err != nil {
 		c.Error("注册账号失败")
 		return

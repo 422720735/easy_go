@@ -7,10 +7,13 @@ import (
 )
 
 // 查看用户名是不是被占用了
-func IsUserTake(name string) int {
+func IsUserTake(name string) (int, error) {
 	var count int
-	db.DbConn.Model(&models.User{}).Where("user_name = ?", name).Count(&count)
-	return count
+	err:=db.DbConn.Model(&models.User{}).Where("user_name = ?", name).Count(&count).Error
+	if err != nil {
+		return 0, err
+	}
+	return count, nil
 }
 
 func InsertUser(user, pwd string, role int) error {
@@ -45,4 +48,14 @@ func LoginRecord(user models.User) error {
 		return err
 	}
 	return nil
+}
+
+// 登录信息解析
+func LoginInfoParse(u *models.User) (int, error) {
+	var count int
+	err := db.DbConn.Model(&models.User{}).Where("id = ? and user_name = ? and login_ip = ? and auth_token = ?", u.Id, u.UserName, u.LoginIp, u.AuthToken).Count(&count).Error
+	if err != nil {
+		return 0, err
+	}
+	return count, nil
 }

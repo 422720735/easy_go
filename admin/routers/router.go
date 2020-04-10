@@ -58,7 +58,7 @@ var FilterUser = func(ctx *context.Context) {
 	_, ok := ctx.Input.Session("userName").(string)
 	if !ok && ctx.Request.RequestURI != "/login" || ctx.Request.RequestURI != "register" {
 		// 获取cookies
-		cook:= ctx.GetCookie("auth")
+		cook := ctx.GetCookie("auth")
 		if cook == "" {
 			ctx.Redirect(302, "/login")
 		} else {

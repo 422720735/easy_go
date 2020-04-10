@@ -3,6 +3,7 @@ package main
 import (
 	"easy_go/admin/controllers"
 	"easy_go/admin/db"
+	"easy_go/admin/logger"
 	_ "easy_go/admin/routers"
 	"easy_go/lib"
 	"github.com/astaxie/beego"
@@ -11,6 +12,7 @@ import (
 
 func init()  {
 	db.Init()
+	logger.Init()
 }
 
 // hltool

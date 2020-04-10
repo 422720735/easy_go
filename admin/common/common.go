@@ -2,16 +2,18 @@ package common
 
 import (
 	"easy_go/admin/models"
+	"easy_go/admin/servers"
 	"easy_go/aes"
 	myjwt "easy_go/middleware"
 	"encoding/base64"
 	"encoding/json"
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/logs"
 	"time"
 )
 
 const (
-	ExpireTime = 3600
+	ExpireTime = 30
 )
 
 //获取body
@@ -46,29 +48,80 @@ func NewCurrentCookie(user models.User) (string, error) {
 	return token, nil
 }
 
-// 解析token, 先解密一次aes
-func ParseTokenUser(cookstr string) error{
-
-	// 走记住密码的程序，先比对。
+// 解析aes
+func ParseAes(aesStr string) (string, error) {
 	goaes := aes.NewGoAES([]byte(SECRET_AES_KEY))
-	bytesPass, err := base64.StdEncoding.DecodeString(cookstr)
+	bytesPass, err := base64.StdEncoding.DecodeString(aesStr)
+	if err != nil {
+		return "", err
+	}
+	decrypt, err := goaes.Decrypt(bytesPass)
 	if err != nil {
 
+		return "", err
 	}
-	token, err := goaes.Decrypt(bytesPass)
-	if err != nil {
+	return string(decrypt[:]), nil
+}
 
-	}
-	tokenStr:= string(token[:])
-	j:=myjwt.NewJWT()
+// 解析token
+func ParseToken(tokenStr string) (*myjwt.CustomClaims, error) {
+	j := myjwt.NewJWT()
 	claims, err := j.ParseToken(tokenStr)
+	var overdue = 1
 	if err != nil {
-		return err
+		if err == myjwt.TokenExpired {
+			// token过期
+			overdue = 0
+		}
+	}
+	/* 如果token过期就去重新请求一次，并解析一次
+	*/
+	if overdue == 0 {
+		tokenS, err := j.RefreshToken(tokenStr)
+		if err == nil {
+			// 重新请求成功
+			ParseToken(tokenS)
+		} else {
+			return nil, nil
+		}
+	}
+	return claims, nil
+}
+
+// token过期，重新请求token
+
+// 解析token, 先解密一次aes
+func ParseTokenUser(userCook string) (string, error) {
+	// 解析aes得到加密后的token
+	decryptToken, err := ParseAes(userCook)
+	if err != nil {
+		logs.Error("解析用户aes错误" + err.Error())
+		return "", err
+	}
+	claims, err := ParseToken(decryptToken)
+	if err != nil {
+		logs.Error("解析用户toekn错误" + err.Error())
+		return "", err
+	}
+	if claims == nil {
+		// 从新刷新token
+		return "", nil
 	} else {
-		beego.Info(claims)
-		// var user models.User
-		// user.Id = claims.ID
-		// user.UserName = claims.Username
-		// user.LoginIp= claims.LoginIp
+		// 数据库比对
+		var u models.User
+		u.Id = claims.ID
+		u.UserName = claims.Username
+		u.LoginIp = claims.LoginIp
+		u.AuthToken = decryptToken
+		// 去数据库查询
+		int, err := servers.LoginInfoParse(&u)
+		if err != nil {
+			logs.Warning("解析token数据跟数据库比对失败" + err.Error())
+			return "", err
+		}
+		if int == 1 {
+			return u.UserName, nil
+		}
+		return "", nil
 	}
 }
