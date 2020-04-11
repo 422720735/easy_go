@@ -4,6 +4,7 @@ import (
 	"easy_go/admin/common"
 	"easy_go/admin/controllers"
 	"easy_go/admin/controllers/article"
+	"fmt"
 	"github.com/astaxie/beego/context"
 
 	"github.com/astaxie/beego"
@@ -54,15 +55,25 @@ func register() {
 // 全局过滤方法。
 // https://www.kancloud.cn/hello123/beego/126127
 var FilterUser = func(ctx *context.Context) {
-
 	_, ok := ctx.Input.Session("userName").(string)
-	if !ok && ctx.Request.RequestURI != "/login" || ctx.Request.RequestURI != "register" {
-		// 获取cookies
-		cook := ctx.GetCookie("auth")
-		if cook == "" {
+	fmt.Println(ok, "-session")
+	fmt.Println(ctx.Request.RequestURI, "---url")
+	if !ok && (ctx.Request.RequestURI != "/login" || ctx.Request.RequestURI != "register") {
+		// 1 获取cookies
+		auth := ctx.GetCookie("auth")
+		if auth == "" {
 			ctx.Redirect(302, "/login")
 		} else {
-			common.ParseTokenUser(cook)
+			// 验证cook是否有效，有效记得session
+			// 如果解析token有用户数据把数据记录在session
+			user := common.ParseTokenUser(auth)
+			if user == nil {
+				ctx.Redirect(302, "/login")
+			} else {
+				ctx.Output.Session("userId", user.Id)
+				ctx.Output.Session("userName", user.Username)
+			}
 		}
+
 	}
 }
