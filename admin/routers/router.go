@@ -4,7 +4,6 @@ import (
 	"easy_go/admin/common"
 	"easy_go/admin/controllers"
 	"easy_go/admin/controllers/article"
-	"fmt"
 	"github.com/astaxie/beego/context"
 
 	"github.com/astaxie/beego"
@@ -13,7 +12,12 @@ import (
 const Api = "/api"
 
 func init() {
-	beego.InsertFilter("/menuSetting/add", beego.BeforeRouter, FilterUser)
+	beego.InsertFilter("/", beego.BeforeExec, FilterUser)
+	beego.InsertFilter("/analysis", beego.BeforeExec, FilterUser)
+	beego.InsertFilter("/workplace", beego.BeforeExec, FilterUser)
+	beego.InsertFilter("/menuSetting/*", beego.BeforeExec, FilterUser)
+	beego.InsertFilter("/article/*", beego.BeforeExec, FilterUser)
+
 	// beego.Router("/", &controllers.IndexControllers{}) // 废弃
 	beego.Router("/login", &controllers.LoginController{})
 
@@ -56,8 +60,6 @@ func register() {
 // https://www.kancloud.cn/hello123/beego/126127
 var FilterUser = func(ctx *context.Context) {
 	_, ok := ctx.Input.Session("userName").(string)
-	fmt.Println(ok, "-session")
-	fmt.Println(ctx.Request.RequestURI, "---url")
 	if !ok && (ctx.Request.RequestURI != "/login" || ctx.Request.RequestURI != "register") {
 		// 1 获取cookies
 		auth := ctx.GetCookie("auth")
@@ -74,6 +76,5 @@ var FilterUser = func(ctx *context.Context) {
 				ctx.Output.Session("userName", user.Username)
 			}
 		}
-
 	}
 }
