@@ -34,7 +34,7 @@ func init() {
 	beego.Router("/menuSetting", &controllers.MenuController{})
 
 	// 导航菜单-add
-	beego.Router("/menuSetting/add", &controllers.MenuController{}, "get:Add;post:HandleMenuAdd")
+	beego.Router("/menuSetting/add", &controllers.MenuController{}, "get:Add")
 
 	// 导航菜单-info
 	beego.Router("/menuSetting/info", &controllers.MenuController{}, "get:Info")
@@ -48,12 +48,13 @@ func init() {
 	// 文章新增+编辑
 	beego.Router("/article/details", &article.ArticleDetails{}, "get:AddOfUpdate")
 	register()
-
 }
 
 func register() {
 	beego.Router(Api+"/login", &controllers.LoginController{}, "post:HandleLogin")
 	beego.Router(Api+"/register", &controllers.RegisterController{}, "post:AddRegister")
+	beego.Router(Api + "/menuSetting/add", &controllers.MenuController{}, "post:HandleMenuAdd")
+
 }
 
 // 全局过滤方法。

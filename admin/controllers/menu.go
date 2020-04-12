@@ -1,9 +1,14 @@
 package controllers
 
-import "github.com/astaxie/beego"
+import (
+	"easy_go/admin/common"
+	"easy_go/admin/servers"
+	"easy_go/admin/transform"
+	"github.com/astaxie/beego/logs"
+)
 
 type MenuController struct {
-	beego.Controller
+	common.BaseController
 }
 
 func (c *MenuController) Get() {
@@ -64,6 +69,49 @@ func (c *MenuController) Info() {
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
 }
 
-func (c*MenuController)HandleMenuAdd()  {
+func (c *MenuController) HandleMenuAdd() {
 	// 接通了获取数据。
+	msg, err := common.Unmarshal(&c.Controller)
+	if err != nil {
+		logs.Alert("获取注册接口数据失败", err.Error())
+		c.Error("获取新增路由接口数据失败")
+		return
+	}
+	// 菜单名
+	menuName, err := transform.InterToString(msg["menuName"])
+	if err != nil {
+		logs.Alert("获取菜单名失败", err.Error())
+		c.Error("获取菜单名失败")
+		return
+	}
+	// 路由
+	path, err := transform.InterToString(msg["path"])
+	if err != nil {
+		logs.Alert("获取路由路径失败", err.Error())
+		c.Error("获取路由路径失败")
+		return
+	}
+	// icon
+	icon, err := transform.InterToString(msg["icon"])
+	if err != nil {
+		logs.Alert("获取路由路径失败", err.Error())
+		c.Error("获取路由路径失败")
+		return
+	}
+	// 是否有下级
+	isChildSwitch, err := transform.InterToBool(msg["isChildSwitch"])
+	if err != nil {
+		logs.Alert("获取下级菜单失败", err.Error())
+		c.Error("获取下级菜单失败")
+		return
+	}
+	// 热门推荐
+	isHotSwitch, err := transform.InterToBool(msg["isHotSwitch"])
+	if err != nil {
+		logs.Alert("获取热门推荐失败", err.Error())
+		c.Error("获取热门推荐失败")
+		return
+	}
+	servers.InsertMenu(menuName, path, icon, isChildSwitch, isHotSwitch)
+	c.Success("新增menu成功")
 }
