@@ -7,13 +7,14 @@ import (
 )
 
 // 新增路由菜单数据
-func InsertMenu(menuName, path, icon string, isChildSwitch, isHotSwitch bool) {
+func InsertMenu(menuName, path, icon string, isChildSwitch, isHotSwitch bool) error {
 	var m models.MenuSetting
 	m.MenuName = menuName
 	m.Path = path
 	m.Icon = icon
 	m.ChildStatus = isChildSwitch
 	m.Hot = isHotSwitch
-	m.UpdateTime.Scan(time.Now())
-	db.DbConn.Create(&m)
+	m.CreatedTime = time.Now()
+	err := db.DbConn.Create(&m).Error
+	return err
 }

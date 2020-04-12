@@ -1,0 +1,43 @@
+2020/04/12 22:34:36.406 [I] [app.go:215]  http server Running on http://:8201
+2020/04/12 22:34:39.044 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|  12.564857ms|   match|[97;44m GET     [0m /menuSetting/add   r:/menuSetting/add
+2020/04/12 22:34:39.110 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   2.946883ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-1.2.2.min.js
+2020/04/12 22:34:39.111 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   3.348716ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/Chart.bundle.min.js
+2020/04/12 22:34:39.190 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.035759ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-world-mill-en.js
+2020/04/12 22:34:39.383 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   2.001781ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/Chart.bundle.min.js
+2020/04/12 22:34:39.386 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   2.013723ms| nomatch|[97;44m GET     [0m /static/assets/js/metisMenu.js.map
+2020/04/12 22:34:39.420 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|   3.231511ms|   match|[97;44m GET     [0m /menuSetting/add   r:/menuSetting/add
+2020/04/12 22:34:39.428 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.545915ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-1.2.2.min.js
+2020/04/12 22:34:39.489 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.980291ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/Chart.bundle.min.js
+2020/04/12 22:34:39.490 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.987993ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-1.2.2.min.js
+2020/04/12 22:34:39.554 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.006799ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-world-mill-en.js
+2020/04/12 22:34:39.729 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.382843ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/Chart.bundle.min.js
+2020/04/12 22:34:39.740 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.166263ms| nomatch|[97;44m GET     [0m /static/assets/js/metisMenu.js.map
+2020/04/12 22:34:39.765 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.781578ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-1.2.2.min.js
+2020/04/12 22:34:39.786 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.706901ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-world-mill-en.js
+2020/04/12 22:34:39.910 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|    591.661µs|   match|[97;44m GET     [0m /static/assets/images/favicon.png
+2020/04/12 22:35:00.658 [I] [log.go:109]  Error 1292: Incorrect datetime value: '0000-00-00' for column 'created_time' at row 1 
+2020/04/12 22:35:00.658 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|   1.318375ms|   match|[97;46m POST    [0m /api/menuSetting/add   r:/api/menuSetting/add
+2020/04/12 22:35:31.448 [I] [app.go:215]  http server Running on http://:8201
+2020/04/12 22:35:46.683 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|   7.514605ms|   match|[97;44m GET     [0m /menuSetting/add   r:/menuSetting/add
+2020/04/12 22:35:46.738 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.704872ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-1.2.2.min.js
+2020/04/12 22:35:46.740 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   2.046865ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/Chart.bundle.min.js
+2020/04/12 22:35:46.788 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.855488ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-world-mill-en.js
+2020/04/12 22:35:46.885 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.526436ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/Chart.bundle.min.js
+2020/04/12 22:35:46.917 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.496013ms| nomatch|[97;44m GET     [0m /static/assets/js/metisMenu.js.map
+2020/04/12 22:35:46.946 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.413738ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-1.2.2.min.js
+2020/04/12 22:35:46.957 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.920606ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-world-mill-en.js
+2020/04/12 22:35:47.105 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|   1.592486ms|   match|[97;44m GET     [0m /static/assets/images/favicon.png
+2020/04/12 22:35:51.599 [I] [log.go:109]  Error 1292: Incorrect datetime value: '0000-00-00' for column 'created_time' at row 1 
+2020/04/12 22:35:51.599 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|   2.022139ms|   match|[97;46m POST    [0m /api/menuSetting/add   r:/api/menuSetting/add
+2020/04/12 22:37:14.245 [I] [app.go:215]  http server Running on http://:8201
+2020/04/12 22:37:15.694 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|   9.475478ms|   match|[97;44m GET     [0m /menuSetting/add   r:/menuSetting/add
+2020/04/12 22:37:15.752 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   7.806788ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/Chart.bundle.min.js
+2020/04/12 22:37:15.761 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|    9.65657ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-1.2.2.min.js
+2020/04/12 22:37:15.788 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   2.199321ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-world-mill-en.js
+2020/04/12 22:37:15.910 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.075117ms| nomatch|[97;44m GET     [0m /static/assets/js/metisMenu.js.map
+2020/04/12 22:37:16.094 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|   1.597862ms|   match|[97;44m GET     [0m /static/assets/images/favicon.png
+2020/04/12 22:37:33.268 [I] [log.go:109]  <nil> 
+2020/04/12 22:37:33.269 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|   3.731119ms|   match|[97;46m POST    [0m /api/menuSetting/add   r:/api/menuSetting/add
+2020/04/12 22:38:08.632 [I] [app.go:215]  http server Running on http://:8201
+2020/04/12 22:38:25.117 [I] [app.go:215]  http server Running on http://:8201
+2020/04/12 22:39:44.173 [I] [app.go:215]  http server Running on http://:8201

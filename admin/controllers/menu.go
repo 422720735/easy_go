@@ -112,6 +112,11 @@ func (c *MenuController) HandleMenuAdd() {
 		c.Error("获取热门推荐失败")
 		return
 	}
-	servers.InsertMenu(menuName, path, icon, isChildSwitch, isHotSwitch)
+	err = servers.InsertMenu(menuName, path, icon, isChildSwitch, isHotSwitch)
+	if err != nil {
+		logs.Alert("新增menu失败，数据不合法", err.Error())
+		c.Error("新增menu失败，数据不合法")
+		return
+	}
 	c.Success("新增menu成功")
 }
