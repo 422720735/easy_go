@@ -1,10 +1,10 @@
 <script src="/static/js/form-wizard.js"></script><script>const HOST = '/api'
     let current = 0
+
     function addMenu() {
         const menuName = $('#menuName').val()
         const path = $('#path').val()
         const icon = $('#icon').val()
-
         // 第一步
         if (menuName && menuName !== '' && path && path !== '' && icon && icon !== '') {
             $('#next-btn').removeAttr('disabled')
@@ -12,6 +12,7 @@
             // $('#next-btn').attr('disabled', 'disabled')
         }
     }
+
     function goPrevOfNext(type) {
         switch (type) {
             case 1:
@@ -36,13 +37,24 @@
         }
 
         if (current === 2) {
-            alert(2)
+            // 获取数据
+            const menuName = $('#menuName').val()
+            const path = $('#path').val()
+            const icon = $('#icon').val()
+            const isChildSwitch = $('#isChildSwitch').is(':checked')
+            const isHotSwitch = $('#isHotSwitch').is(':checked')
             // 发送请求
             $.ajax({
                 type: "post",
                 async: false,
-                url: `/menuSetting/add`,
-                data: JSON.stringify({}),
+                url: HOST + `/menuSetting/add`,
+                data: JSON.stringify({
+                    menuName,
+                    path,
+                    icon,
+                    isChildSwitch,
+                    isHotSwitch
+                }),
                 success: function () {
 
                 }

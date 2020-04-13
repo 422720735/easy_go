@@ -15,6 +15,10 @@ func (c *MenuController) Get() {
 	c.Layout = "layout/mainLayout.html"
 
 	c.TplName = "pages/menuSetting/menuSetting.html"
+
+	// 查询页面数据给前端
+
+
 	c.LayoutSections = make(map[string]string)
 	// menu
 	c.LayoutSections["LeftMenu"] = "layout/leftSideMenuLayout.html"
@@ -26,7 +30,6 @@ func (c *MenuController) Get() {
 	c.LayoutSections["BaseStyle"] = "style/baseStyle.html"
 	// js
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
-
 	c.LayoutSections["Style"] = "style/menuSetting.html"
 	c.LayoutSections["Script"] = "script/welcome.html"
 }
