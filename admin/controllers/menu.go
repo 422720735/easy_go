@@ -18,7 +18,6 @@ func (c *MenuController) Get() {
 
 	// 查询页面数据给前端
 
-
 	c.LayoutSections = make(map[string]string)
 	// menu
 	c.LayoutSections["LeftMenu"] = "layout/leftSideMenuLayout.html"
