@@ -1,0 +1,30 @@
+#initView {
+    height: 100%;
+    width: 100%;
+    &.bg {
+      background-image: url("./home_bg.png");
+    }
+    background-size: cover;
+    div.centerBar {
+      &.center {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .mainExample {
+        padding: 100px 0;
+      }
+      .copyright {
+        color: rgba(0, 0, 0, 0.45);
+        font-size: 12px;
+        > div {
+          width: 16px;
+          height: 16px;
+          .logo {
+            max-width: 100%;
+          }
+        }
+      }
+    }
+  }

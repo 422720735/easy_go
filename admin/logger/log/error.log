@@ -710,3 +710,6 @@
 2020/04/13 15:35:19.275 [D] [router.go:925]  |            ::1|[43m 404 [0m|      998.2µs| nomatch|[44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-world-mill-en.js
 2020/04/13 15:38:47.897 [I] [app.go:215]  http server Running on http://:8201
 2020/04/13 15:39:54.944 [I] [app.go:215]  http server Running on http://:8201
+2020/04/14 10:40:57.570 [I] [app.go:215]  http server Running on http://:8201
+2020/04/14 10:40:59.188 [I] [app.go:215]  http server Running on http://:8201
+2020/04/14 10:41:00.825 [I] [app.go:215]  http server Running on http://:8201

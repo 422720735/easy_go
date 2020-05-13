@@ -18,3 +18,4 @@ func InsertMenu(menuName, path, icon string, isChildSwitch, isHotSwitch bool) er
 	err := db.DbConn.Create(&m).Error
 	return err
 }
+
