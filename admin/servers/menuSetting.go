@@ -9,7 +9,7 @@ import (
 func SelectMenuPage(page int) (*[]models.MenuSetting, int, error) {
 	// 根据分页数据请求
 	var menuList []models.MenuSetting
-	var size = 1
+	var size = 10
 	var total int
 
 	// 获取总条数
