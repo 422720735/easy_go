@@ -1,0 +1,7 @@
+2020/04/14 21:33:10.591 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   5.632263ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-1.2.2.min.js
+2020/04/14 21:33:10.591 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   4.564676ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-world-mill-en.js
+2020/04/14 21:33:10.592 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   7.274067ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/Chart.bundle.min.js
+2020/04/14 21:33:10.637 [D] [router.go:925]  |            ::1|[90;47m 304 [0m|    445.977µs|   match|[97;44m GET     [0m /static/js/main.js
+2020/04/14 21:33:10.922 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   2.087982ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/Chart.bundle.min.js
+2020/04/14 21:33:10.937 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.634167ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-1.2.2.min.js
+2020/04/14 21:33:10.942 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.382262ms| nomatch|[97;44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-world-mill-en.js
