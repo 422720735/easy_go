@@ -24,7 +24,8 @@ func (c *MenuController) Get() {
 		page = 1
 	}
 	page = int
-	servers.SelectMenuPage(page)
+	data, total, _ := servers.SelectMenuPage(page, common.PAGE_SIZE)
+	menuList := common.Paginator(page, 10, total, data)
 	// 查询页面数据给前端
 	c.LayoutSections = make(map[string]string)
 	// menu
@@ -39,6 +40,8 @@ func (c *MenuController) Get() {
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
 	c.LayoutSections["Style"] = "style/menuSetting.html"
 	c.LayoutSections["Script"] = "script/welcome.html"
+	// 数据
+	c.Data["menu_data"] = menuList
 }
 
 func (c *MenuController) Add() {

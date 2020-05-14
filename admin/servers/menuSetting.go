@@ -6,11 +6,10 @@ import (
 	"time"
 )
 
-func SelectMenuPage(page int) (*[]models.MenuSetting, int, error) {
+func SelectMenuPage(page, size int) (*[]models.MenuSetting, int64, error) {
 	// 根据分页数据请求
 	var menuList []models.MenuSetting
-	var size = 10
-	var total int
+	var total int64
 
 	// 获取总条数
 	err := db.DbConn.Model(&menuList).Count(&total).Error

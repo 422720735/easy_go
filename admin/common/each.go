@@ -78,9 +78,8 @@ func Echo(c *BaseController, code int, body interface{}) {
 *参数说明:
 *@param:page	    当前页
 *@param:prepage	    每页条数
-*@param:page		请求的页数
-*@param:count		请求的数量
-*@param:inter		返回内容
+*@param:nums		总条数
+*@param:data		返回内容
  */
 func Paginator(page, prepage int, nums int64, data interface{}) map[string]interface{} {
 

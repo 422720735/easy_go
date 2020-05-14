@@ -650,3 +650,27 @@
 2020/05/14 17:28:29.311 [D] [router.go:925]  |            ::1|[43m 404 [0m|      998.6µs| nomatch|[44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-world-mill-en.js
 2020/05/14 17:32:21.658 [I] [app.go:215]  http server Running on http://:8201
 2020/05/14 17:32:50.819 [I] [app.go:215]  http server Running on http://:8201
+2020/05/14 17:35:25.943 [I] [app.go:215]  http server Running on http://:8201
+2020/05/14 17:49:44.037 [I] [app.go:215]  http server Running on http://:8201
+2020/05/14 17:49:49.537 [D] [router.go:925]  |            ::1|[47m 302 [0m|     1.9947ms|   match|[44m GET     [0m /menuSetting   r:/menuSetting
+2020/05/14 17:49:49.544 [D] [router.go:925]  |            ::1|[42m 200 [0m|     1.9653ms|   match|[44m GET     [0m /login   r:/login
+2020/05/14 17:49:49.560 [D] [router.go:925]  |            ::1|[43m 404 [0m|     1.0166ms| nomatch|[44m GET     [0m /assets/images/logo-light.png
+2020/05/14 17:49:55.223 [D] [router.go:925]  |            ::1|[43m 405 [0m|           0s|   match|[46m POST    [0m /login   r:/login
+2020/05/14 17:49:55.228 [D] [router.go:925]  |            ::1|[47m 302 [0m|      997.3µs|   match|[46m POST    [0m /api/login   r:/api/login
+2020/05/14 17:49:55.234 [D] [router.go:925]  |            ::1|[42m 200 [0m|     2.9888ms|   match|[44m GET     [0m /workplace   r:/workplace
+2020/05/14 17:49:55.251 [D] [router.go:925]  |            ::1|[43m 404 [0m|      998.2µs| nomatch|[44m GET     [0m /assets/images/users/avatar-4.jpg
+2020/05/14 17:49:55.255 [D] [router.go:925]  |            ::1|[43m 404 [0m|     1.9942ms| nomatch|[44m GET     [0m /assets/images/users/avatar-5.jpg
+2020/05/14 17:49:55.267 [D] [router.go:925]  |            ::1|[43m 404 [0m|     1.9948ms| nomatch|[44m GET     [0m /static/assets/js/vendor/Chart.bundle.min.js
+2020/05/14 17:49:55.267 [D] [router.go:925]  |            ::1|[43m 404 [0m|     1.9948ms| nomatch|[44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-1.2.2.min.js
+2020/05/14 17:49:55.268 [D] [router.go:925]  |            ::1|[43m 404 [0m|     2.9922ms| nomatch|[44m GET     [0m /assets/images/users/avatar-3.jpg
+2020/05/14 17:49:55.269 [D] [router.go:925]  |            ::1|[43m 404 [0m|     2.9922ms| nomatch|[44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-world-mill-en.js
+2020/05/14 17:49:55.269 [D] [router.go:925]  |            ::1|[43m 404 [0m|     2.9924ms| nomatch|[44m GET     [0m /assets/images/users/avatar-2.jpg
+2020/05/14 17:49:55.269 [D] [router.go:925]  |            ::1|[43m 404 [0m|     2.9924ms| nomatch|[44m GET     [0m /assets/images/users/avatar-1.jpg
+2020/05/14 17:49:56.586 [D] [router.go:925]  |            ::1|[42m 200 [0m|     2.9943ms|   match|[44m GET     [0m /menuSetting   r:/menuSetting
+2020/05/14 17:49:56.601 [D] [router.go:925]  |            ::1|[43m 404 [0m|      996.1µs| nomatch|[44m GET     [0m /static/assets/js/vendor/Chart.bundle.min.js
+2020/05/14 17:49:56.603 [D] [router.go:925]  |            ::1|[43m 404 [0m|      997.5µs| nomatch|[44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-1.2.2.min.js
+2020/05/14 17:49:56.608 [D] [router.go:925]  |            ::1|[43m 404 [0m|      997.6µs| nomatch|[44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-world-mill-en.js
+2020/05/14 17:49:56.656 [D] [router.go:925]  |            ::1|[43m 404 [0m|      998.4µs| nomatch|[44m GET     [0m /static/assets/js/vendor/Chart.bundle.min.js
+2020/05/14 17:49:56.664 [D] [router.go:925]  |            ::1|[43m 404 [0m|     1.9951ms| nomatch|[44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-1.2.2.min.js
+2020/05/14 17:49:56.667 [D] [router.go:925]  |            ::1|[43m 404 [0m|     1.9957ms| nomatch|[44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-world-mill-en.js
+2020/05/14 17:53:41.658 [I] [app.go:215]  http server Running on http://:8201
