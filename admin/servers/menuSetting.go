@@ -6,6 +6,10 @@ import (
 	"time"
 )
 
+func SelectMenuPage(page int) {
+
+}
+
 // 新增路由菜单数据
 func InsertMenu(menuName, path, icon string, isChildSwitch, isHotSwitch bool) error {
 	var m models.MenuSetting
@@ -18,4 +22,3 @@ func InsertMenu(menuName, path, icon string, isChildSwitch, isHotSwitch bool) er
 	err := db.DbConn.Create(&m).Error
 	return err
 }
-
