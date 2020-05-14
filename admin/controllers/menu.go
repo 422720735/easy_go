@@ -18,14 +18,12 @@ func (c *MenuController) Get() {
 
 	c.TplName = "pages/menuSetting/menuSetting.html"
 	pageStr := c.GetString("page")
-
 	var page int
 	int, err := strconv.Atoi(pageStr)
 	if err != nil {
 		page = 1
 	}
 	page = int
-
 	servers.SelectMenuPage(page)
 	// 查询页面数据给前端
 	c.LayoutSections = make(map[string]string)
