@@ -6,8 +6,24 @@ import (
 	"time"
 )
 
-func SelectMenuPage(page int) {
+func SelectMenuPage(page int) (*[]models.MenuSetting, int, error) {
 	// 根据分页数据请求
+	var menuList []models.MenuSetting
+	var size = 1
+	var total int
+
+	// 获取总条数
+	err := db.DbConn.Model(&menuList).Count(&total).Error
+	if err != nil {
+		return &menuList, total, nil
+	}
+
+	// 获取取指page，指定pagesize的记录
+	err = db.DbConn.Limit(size).Offset((page - 1) * size).Order("created_time desc").Find(&menuList).Error
+	if err != nil {
+		return &menuList, total, nil
+	}
+	return &menuList, total, nil
 }
 
 // 新增路由菜单数据
