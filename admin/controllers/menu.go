@@ -4,6 +4,8 @@ import (
 	"easy_go/admin/common"
 	"easy_go/admin/servers"
 	"easy_go/admin/transform"
+	"strconv"
+
 	"github.com/astaxie/beego/logs"
 )
 
@@ -15,9 +17,16 @@ func (c *MenuController) Get() {
 	c.Layout = "layout/mainLayout.html"
 
 	c.TplName = "pages/menuSetting/menuSetting.html"
-
+	pageStr := c.GetString("page")
+	var page int
+	int, err := strconv.Atoi(pageStr)
+	if err != nil {
+		page = 1
+	}
+	page = int
+	data, total, _ := servers.SelectMenuPage(page, common.PAGE_SIZE)
+	menuList := common.Paginator(page, 10, total, data)
 	// 查询页面数据给前端
-
 	c.LayoutSections = make(map[string]string)
 	// menu
 	c.LayoutSections["LeftMenu"] = "layout/leftSideMenuLayout.html"
@@ -31,6 +40,8 @@ func (c *MenuController) Get() {
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
 	c.LayoutSections["Style"] = "style/menuSetting.html"
 	c.LayoutSections["Script"] = "script/welcome.html"
+	// 数据
+	c.Data["menu_data"] = menuList
 }
 
 func (c *MenuController) Add() {
