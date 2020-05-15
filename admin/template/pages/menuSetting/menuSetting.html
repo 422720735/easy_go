@@ -42,9 +42,10 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                {{range $i, $v := .menu_data.list}}
                                 <tr>
-                                    <td>首页</td>
-                                    <td>/</td>
+                                    <td>{{$v.MenuName}}</td>
+                                    <td>{{$v.Path}}</td>
                                     <td>
                                         <i class="iconfont icon-home1"></i>
                                     </td>
@@ -69,32 +70,7 @@
                                         <a href="#!" class="text-c-blue text-danger" data-toggle="modal" data-target="#danger-header-modal">删除</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>前端</td>
-                                    <td>/web</td>
-                                    <td>
-                                        <i class="iconfont icon-h5"></i>
-                                    </td>
-                                    <td>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                            <label class="custom-control-label" for="customCheck2"></label>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a href="javascript:void(0)" title="上移">
-                                            <i class="feather icon-arrow-up"></i>
-                                        </a>
-                                        <a href="javascript:void(0)" title="下移">
-                                            <i class="feather icon-arrow-down" ></i>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="/menuSetting/info" class="text-c-blue">详情</a>
-                                        <!-- Danger header modal -->
-                                        <a href="#!" class="text-c-blue text-danger" data-toggle="modal" data-target="#danger-header-modal">删除</a>
-                                    </td>
-                                </tr>
+                                {{end}}
                                 </tbody>
                             </table>
 
