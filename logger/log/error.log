@@ -1,0 +1,30 @@
+2020/05/15 23:25:43.111 [I] [app.go:215]  http server Running on http://:8201
+2020/05/15 23:25:52.975 [W] [common.go:83]  解析token信息失败 Token is expired
+2020/05/15 23:25:52.975 [D] [router.go:925]  |            ::1|[90;47m 302 [0m|    510.398µs|   match|[97;44m GET     [0m /     r:/
+2020/05/15 23:25:52.981 [C] [config.go:176]  the request url is  /login
+2020/05/15 23:25:52.982 [C] [config.go:177]  Handler crashed with error can't find templatefile in the path:template/pages/login-img.html
+2020/05/15 23:25:52.982 [C] [config.go:183]  /usr/local/go/src/runtime/panic.go:679
+2020/05/15 23:25:52.982 [C] [config.go:183]  /Users/liuliutiyong/go/src/github.com/astaxie/beego/template.go:75
+2020/05/15 23:25:52.982 [C] [config.go:183]  /Users/liuliutiyong/go/src/github.com/astaxie/beego/controller.go:306
+2020/05/15 23:25:52.982 [C] [config.go:183]  /Users/liuliutiyong/go/src/github.com/astaxie/beego/controller.go:257
+2020/05/15 23:25:52.982 [C] [config.go:183]  /Users/liuliutiyong/go/src/github.com/astaxie/beego/controller.go:237
+2020/05/15 23:25:52.982 [C] [config.go:183]  /Users/liuliutiyong/go/src/github.com/astaxie/beego/router.go:865
+2020/05/15 23:25:52.982 [C] [config.go:183]  /usr/local/go/src/net/http/server.go:2802
+2020/05/15 23:25:52.982 [C] [config.go:183]  /usr/local/go/src/net/http/server.go:1890
+2020/05/15 23:25:52.982 [C] [config.go:183]  /usr/local/go/src/runtime/asm_amd64.s:1357
+2020/05/15 23:25:52.983 [log.go:179]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2020/05/15 23:25:53.179 [C] [config.go:176]  the request url is  /favicon.ico
+2020/05/15 23:25:53.179 [C] [config.go:177]  Handler crashed with error can't find templatefile in the path:template/error.html
+2020/05/15 23:25:53.179 [C] [config.go:183]  /usr/local/go/src/runtime/panic.go:679
+2020/05/15 23:25:53.179 [C] [config.go:183]  /Users/liuliutiyong/go/src/github.com/astaxie/beego/template.go:75
+2020/05/15 23:25:53.179 [C] [config.go:183]  /Users/liuliutiyong/go/src/github.com/astaxie/beego/controller.go:306
+2020/05/15 23:25:53.179 [C] [config.go:183]  /Users/liuliutiyong/go/src/github.com/astaxie/beego/controller.go:257
+2020/05/15 23:25:53.179 [C] [config.go:183]  /Users/liuliutiyong/go/src/github.com/astaxie/beego/controller.go:237
+2020/05/15 23:25:53.179 [C] [config.go:183]  /Users/liuliutiyong/go/src/github.com/astaxie/beego/error.go:466
+2020/05/15 23:25:53.179 [C] [config.go:183]  /Users/liuliutiyong/go/src/github.com/astaxie/beego/error.go:427
+2020/05/15 23:25:53.180 [C] [config.go:183]  /Users/liuliutiyong/go/src/github.com/astaxie/beego/router.go:744
+2020/05/15 23:25:53.180 [C] [config.go:183]  /usr/local/go/src/net/http/server.go:2802
+2020/05/15 23:25:53.180 [C] [config.go:183]  /usr/local/go/src/net/http/server.go:1890
+2020/05/15 23:25:53.180 [C] [config.go:183]  /usr/local/go/src/runtime/asm_amd64.s:1357
+2020/05/15 23:25:53.180 [log.go:179]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2020/05/15 23:26:05.027 [I] [app.go:215]  http server Running on http://:8201
