@@ -47,11 +47,15 @@
                                     <td>{{$v.MenuName}}</td>
                                     <td>{{$v.Path}}</td>
                                     <td>
-                                        <i class="iconfont icon-home1"></i>
+                                        <i class="{{$v.Icon}}"></i>
                                     </td>
                                     <td>
                                         <div class="custom-control custom-checkbox">
+                                            {{if $v.ChildStatus}}
+                                            <input type="checkbox" checked class="custom-control-input" id="customCheck1">
+                                            {{else}}
                                             <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            {{end}}
                                             <label class="custom-control-label" for="customCheck1"></label>
                                         </div>
                                     </td>

@@ -127,7 +127,7 @@ func Paginator(page, prepage int, nums int64, data interface{}) map[string]inter
 	paginatorMap["totalpages"] = totalpages
 	paginatorMap["firstpage"] = firstpage
 	paginatorMap["lastpage"] = lastpage
-	paginatorMap["currpage"] = page
+	paginatorMap["current"] = page
 	paginatorMap["list"] = data
 	return paginatorMap
 }
