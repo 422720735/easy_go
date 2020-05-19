@@ -27,21 +27,18 @@ function changeMenu(id, status) {
     })
 }
 
-function isIssue(id, status) {
+function deleteMenu(id) {
+    debugger
     $.ajax({
         type: "post",
         async: false,
-        url: HOST + `/menuSetting/issue`,
+        url: HOST + `/menuSetting/delete`,
         data: JSON.stringify({
-            id: id,
-            status: status
+            id: id
         }),
         success: function (res) {
             if (res.code === Ok) {
-                window.message.success(res)
-                setTimeout(function () {
-                    window.location.reload()
-                }, 5000)
+                window.location.reload()
             } else {
                 window.message.error(res)
             }

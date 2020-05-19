@@ -53,7 +53,6 @@ func (c *MenuController) Add() {
 	c.LayoutSections = make(map[string]string)
 	// menu
 
-
 	c.LayoutSections["LeftMenu"] = "layout/leftSideMenuLayout.html"
 	// header
 	c.LayoutSections["HeaderLayout"] = "layout/headerLayout.html"
@@ -147,9 +146,16 @@ func (c *MenuController) HandMove_up_down() {
 	sortStr := c.GetString("sort")
 	var sort int
 	int, err := strconv.Atoi(sortStr)
+
+	// 获取当前sort数值
+	page := c.GetString("page")
+	if page == "" {
+		page = "1"
+	}
+
 	if err != nil {
 		// 直接走
-		c.Redirect("/menuSetting?page=1", 302)
+		c.Redirect("/menuSetting?page="+page, 302)
 		return
 	}
 	sort = int
@@ -159,12 +165,6 @@ func (c *MenuController) HandMove_up_down() {
 	} else {
 		// 下移动
 		err = servers.UpdateUpDown(sort, "bottom")
-	}
-
-	// 获取当前sort数值
-	page := c.GetString("page")
-	if page == "" {
-		page = "1"
 	}
 
 	if err != nil {
@@ -203,4 +203,61 @@ func (c *MenuController) HandChangeChild() {
 		return
 	}
 	c.Success("修改成功")
+}
+
+// 上架、下架
+func (c *MenuController) HandUpdateIssue() {
+	page := c.GetString("page")
+	if page == "" {
+		page = "1"
+	}
+	idStr := c.GetString("id")
+	id, err := strconv.Atoi(idStr)
+
+	if err != nil {
+		// 直接走
+		c.Redirect("/menuSetting?page="+page, 302)
+		return
+	}
+
+	visible, err := c.GetBool("status")
+	if err != nil {
+		// 直接走
+		c.Redirect("/menuSetting?page="+page, 302)
+		return
+	}
+
+	err = servers.UpdateIssue(id, visible)
+
+	if err != nil {
+		// 直接走
+		logs.Warn("数据修改失败" + err.Error())
+		c.Redirect("/menuSetting?page="+page, 302)
+		return
+	}
+	c.Redirect("/menuSetting?page="+page, 302)
+}
+
+// 软删除
+func (c *MenuController) HandDelete() {
+	// 获取参数
+	msg, err := common.Unmarshal(&c.Controller)
+	if err != nil {
+		logs.Alert("获取数据失败", err.Error())
+		c.Error("获取数据失败")
+		return
+	}
+	id, err := transform.InterToInt(msg["id"])
+	if err != nil {
+		logs.Alert("获取数据失败" + err.Error())
+		c.Error("获取数据失败")
+		return
+	}
+	err = servers.DeleteMenu(id)
+	if err != nil {
+		logs.Alert("删除导航数据失败", err.Error())
+		c.Error("删除导航数据失败")
+		return
+	}
+	c.Success("删除成功")
 }

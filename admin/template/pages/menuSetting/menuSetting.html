@@ -69,13 +69,40 @@
                                     </td>
                                     <td>
                                         {{if $v.Visible}}
-                                        <a onclick="isIssue({{$v.Id}}, {{$v.Visible}})" href="javascript:void(0)" class="text-success">下架</a>
+                                            <a href="/api/menuSetting/issue?id={{$v.Id}}&status={{$v.Visible}}&page={{$.current}}" class="text-success">下架</a>
                                         {{else}}
-                                        <a onclick="isIssue({{$v.Id}}, {{$v.Visible}})" href="javascript:void(0)" class="text-danger">上架</a>
+                                            <a href="/api/menuSetting/issue?id={{$v.Id}}&status={{$v.Visible}}&page={{$.current}}" class="text-danger">上架</a>
                                         {{end}}
                                         <a href="/menuSetting/info" class="text-c-blue">详情</a>
                                         <!-- Danger header modal -->
-                                        <a href="#!" class="text-c-blue text-danger" data-toggle="modal" data-target="#danger-header-modal">删除</a>
+                                        {{if $v.Delete}}
+                                        <a href="#!" class="text-c-blue text-facebook" data-toggle="modal" data-target="#danger-header-modal-{{$v.Id}}">已删除</a>
+                                        {{else}}
+                                        <a href="#!" class="text-c-blue text-danger" data-toggle="modal" data-target="#danger-header-modal-{{$v.Id}}">删除</a>
+                                        {{end}}
+                                        <!-- Danger Header Modal -->
+                                        {{if eq  $v.Delete false}}
+                                        <div id="danger-header-modal-{{$v.Id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="danger-header-modalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header modal-colored-header bg-danger">
+                                                        <h4 class="modal-title" id="danger-header-modalLabel">删除菜单</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h4 class="mt-0 text-center">
+                                                            <i class="mdi text-warning mdi-alert-circle"></i>
+                                                            <span class="font-14">是否删除该菜单?</span>
+                                                        </h4>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                                                        <button type="button" class="btn btn-danger" onclick="deleteMenu({{$v.Id}})">确认</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{end}}
                                     </td>
                                 </tr>
                                 {{end}}
@@ -156,27 +183,6 @@
                                 <p class="mb-0">Lorem ipsum dolor sit ipsum <a href="#!" class="text-c-green"> More</a></p>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Danger Header Modal -->
-        <div id="danger-header-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="danger-header-modalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header modal-colored-header bg-danger">
-                        <h4 class="modal-title" id="danger-header-modalLabel">删除菜单</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    </div>
-                    <div class="modal-body">
-                        <h4 class="mt-0 text-center">
-                            <i class="mdi text-warning mdi-alert-circle"></i>
-                            <span class="font-14">是否删除该菜单？</span>
-                        </h4>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-danger">确认</button>
                     </div>
                 </div>
             </div>

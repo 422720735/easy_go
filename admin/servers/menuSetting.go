@@ -91,3 +91,20 @@ func UpdateChild(id int, status bool) error {
 	}
 	return nil
 }
+
+// 修改状态
+func UpdateIssue(id int, status bool) error {
+	err := db.DbConn.Model(&models.MenuSetting{}).Where("id = ?", id).Update("visible", !status).Error
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func DeleteMenu(id int) error  {
+	err := db.DbConn.Model(&models.MenuSetting{}).Where("id = ?", id).Update("delete", true).Error
+	if err != nil {
+		return err
+	}
+	return nil
+}
