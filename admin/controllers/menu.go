@@ -5,6 +5,7 @@ import (
 	"easy_go/admin/servers"
 	"easy_go/admin/transform"
 	"strconv"
+	"strings"
 
 	"github.com/astaxie/beego/logs"
 )
@@ -132,4 +133,41 @@ func (c *MenuController) HandleMenuAdd() {
 		return
 	}
 	c.Success("新增menu成功")
+}
+
+// 上移和下移
+func (c *MenuController) HandMove_up_down() {
+	// 修改的数据
+	u := c.Ctx.Request.RequestURI
+
+	// 获取当前sort数值
+	sortStr := c.GetString("sort")
+	var sort int
+	int, err := strconv.Atoi(sortStr)
+	if err != nil {
+		// 直接走
+		c.Redirect("/menuSetting?page=1", 302)
+		return
+	}
+	sort = int
+	if strings.Index(u, "up") > -1 {
+		// 上移动
+		err = servers.UpdateUpDown(sort, "top")
+	} else {
+		// 下移动
+		err = servers.UpdateUpDown(sort, "bottom")
+	}
+
+	// 获取当前sort数值
+	page := c.GetString("page")
+	if page == "" {
+		page = "1"
+	}
+
+	if err != nil {
+		logs.Critical("上移下移失败", err.Error())
+		c.Redirect("/menuSetting?page=" + page, 302)
+	}
+
+	c.Redirect("/menuSetting?page=" + page, 302)
 }
