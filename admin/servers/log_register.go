@@ -9,7 +9,7 @@ import (
 // 查看用户名是不是被占用了
 func IsUserTake(name string) (int, error) {
 	var count int
-	err:=db.DbConn.Model(&models.User{}).Where("user_name = ?", name).Count(&count).Error
+	err := db.DbConn.Model(&models.User{}).Where("user_name = ?", name).Count(&count).Error
 	if err != nil {
 		return 0, err
 	}
