@@ -80,5 +80,14 @@ func UpdateUpDown(sort int, str string) error {
 		tx.Rollback()
 	}
 	tx.Commit()
-	return  nil
+	return nil
+}
+
+// 修改状态
+func UpdateChild(id int, status bool) error {
+	err := db.DbConn.Model(&models.MenuSetting{}).Where("id = ?", id).Update("child_status", !status).Error
+	if err != nil {
+		return err
+	}
+	return nil
 }

@@ -40,7 +40,8 @@ func (c *MenuController) Get() {
 	// js
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
 	c.LayoutSections["Style"] = "style/menuSetting.html"
-	c.LayoutSections["Script"] = "script/welcome.html"
+	c.LayoutSections["Script"] = "script/menuSetting.html"
+	c.LayoutSections["ScriptMessage"] = "script/message.html"
 	// 数据
 	c.Data["menu_data"] = menuList
 }
@@ -51,6 +52,8 @@ func (c *MenuController) Add() {
 	c.TplName = "pages/menuSetting/menuAdd.html"
 	c.LayoutSections = make(map[string]string)
 	// menu
+
+
 	c.LayoutSections["LeftMenu"] = "layout/leftSideMenuLayout.html"
 	// header
 	c.LayoutSections["HeaderLayout"] = "layout/headerLayout.html"
@@ -166,8 +169,38 @@ func (c *MenuController) HandMove_up_down() {
 
 	if err != nil {
 		logs.Critical("上移下移失败", err.Error())
-		c.Redirect("/menuSetting?page=" + page, 302)
+		c.Redirect("/menuSetting?page="+page, 302)
 	}
 
-	c.Redirect("/menuSetting?page=" + page, 302)
+	c.Redirect("/menuSetting?page="+page, 302)
+}
+
+// 修改数据
+func (c *MenuController) HandChangeChild() {
+	// 获取参数
+	msg, err := common.Unmarshal(&c.Controller)
+	if err != nil {
+		logs.Alert("获取数据失败", err.Error())
+		c.Error("获取更改导航数据失败")
+		return
+	}
+	id, err := transform.InterToInt(msg["id"])
+	if err != nil {
+		logs.Alert("获取数据失败" + err.Error())
+		c.Error("获取更改导航数据失败")
+		return
+	}
+	status, err := transform.InterToBool(msg["status"])
+	if err != nil {
+		logs.Alert("获取数据失败" + err.Error())
+		c.Error("获取更改导航数据失败")
+		return
+	}
+	err = servers.UpdateChild(id, status)
+	if err != nil {
+		logs.Warn("数据修改失败" + err.Error())
+		c.Error("修改状态失败")
+		return
+	}
+	c.Success("修改成功")
 }

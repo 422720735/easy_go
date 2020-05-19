@@ -52,11 +52,11 @@
                                     <td>
                                         <div class="custom-control custom-checkbox">
                                             {{if $v.ChildStatus}}
-                                            <input type="checkbox" checked class="custom-control-input" id="customCheck1">
+                                            <input onchange="changeMenu({{$v.Id}}, {{$v.ChildStatus}})" type="checkbox" checked class="custom-control-input" id="customCheck{{$v.Id}}">
                                             {{else}}
-                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <input onchange="changeMenu({{$v.Id}}, {{$v.ChildStatus}})" type="checkbox" class="custom-control-input" id="customCheck{{$v.Id}}">
                                             {{end}}
-                                            <label class="custom-control-label" for="customCheck1"></label>
+                                            <label class="custom-control-label" for="customCheck{{$v.Id}}"></label>
                                         </div>
                                     </td>
                                     <td>
@@ -68,7 +68,11 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="javascript:void(0)">这里删除参照知识产权平台端-新闻</a>
+                                        {{if $v.Visible}}
+                                        <a onclick="isIssue({{$v.Id}}, {{$v.Visible}})" href="javascript:void(0)" class="text-success">下架</a>
+                                        {{else}}
+                                        <a onclick="isIssue({{$v.Id}}, {{$v.Visible}})" href="javascript:void(0)" class="text-danger">上架</a>
+                                        {{end}}
                                         <a href="/menuSetting/info" class="text-c-blue">详情</a>
                                         <!-- Danger header modal -->
                                         <a href="#!" class="text-c-blue text-danger" data-toggle="modal" data-target="#danger-header-modal">删除</a>
