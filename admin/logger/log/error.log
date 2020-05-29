@@ -353,3 +353,5 @@
 2020/05/20 20:02:19.970 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|    927.144µs| nomatch|[97;44m GET     [0m /static/assets/js/vendor/jquery-jvectormap-world-mill-en.js
 2020/05/20 20:02:19.985 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|     959.12µs| nomatch|[97;44m GET     [0m /static/js/api/menuSetting.js
 2020/05/20 20:02:20.003 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|    110.548µs|   match|[97;44m GET     [0m /static/assets/images/favicon.png
+2020/05/29 18:46:36.413 [E] [template.go:227]  parse template err: pages/menuSetting/menuSetting.html template: pages/menuSetting/menuSetting.html:121: function "lg" not defined
+2020/05/29 18:46:36.413 [W] [hooks.go:80]  template: pages/menuSetting/menuSetting.html:121: function "lg" not defined
