@@ -8,5 +8,5 @@ const (
 	// token盐码
 	SECRET_TOKEN_KEY = "fDEtrkpbQbocVxYRLZrnkrXDWJzRZMfO"
 	// 分页页码
-	PAGE_SIZE = 10
+	PAGE_SIZE = 2
 )

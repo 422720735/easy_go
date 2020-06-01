@@ -4,6 +4,7 @@ import (
 	"easy_go/admin/common"
 	"easy_go/admin/servers"
 	"easy_go/admin/transform"
+	"fmt"
 	"strconv"
 	"strings"
 
@@ -20,13 +21,23 @@ func (c *MenuController) Get() {
 	c.TplName = "pages/menuSetting/menuSetting.html"
 	pageStr := c.GetString("page")
 	var page int
-	int, err := strconv.Atoi(pageStr)
+	_int, err := strconv.ParseInt(pageStr, 10, 64)
 	if err != nil {
 		page = 1
 	}
-	page = int
+	page = int(_int)
 	data, total, _ := servers.SelectMenuPage(page, common.PAGE_SIZE)
-	menuList := common.Paginator(page, 10, total, data)
+	menuList := common.Paginator(page, common.PAGE_SIZE, total, data)
+	pagination := []int64{}
+
+	var a int64
+	for a = int64(page); a <= total; a++ {
+		page += 2
+		pagination = append(pagination, int64(page)) //给切片末尾追加一个成员
+	}
+	fmt.Printf("1: len = %d, cap = %d\n", len(pagination), cap(pagination))
+
+
 	// 查询页面数据给前端
 	c.LayoutSections = make(map[string]string)
 	// menu
@@ -44,6 +55,7 @@ func (c *MenuController) Get() {
 	c.LayoutSections["ScriptMessage"] = "script/message.html"
 	// 数据
 	c.Data["menu_data"] = menuList
+	c.Data["pagination"] = pagination
 }
 
 func (c *MenuController) Add() {
