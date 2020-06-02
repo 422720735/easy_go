@@ -81,12 +81,12 @@ func Echo(c *BaseController, code int, body interface{}) {
 *@param:nums		总条数
 *@param:data		返回内容
  */
-func Paginator(page, prepage int, nums int64, data interface{}) map[string]interface{} {
+func Paginator(page, pagesize int, nums int64, data interface{}) map[string]interface{} {
 
-	var firstpage int //前一页地址
-	var lastpage int  //后一页地址
-	//根据nums总数，和prepage每页数量 生成分页总数
-	totalpages := int(math.Ceil(float64(nums) / float64(prepage))) //page总数
+	var prepage int  //前一页地址
+	var nextpage int //后一页地址
+	//根据nums总数，和pagesize每页数量 生成分页总数
+	totalpages := int(math.Ceil(float64(nums) / float64(pagesize))) //page总数
 	if page > totalpages {
 		page = totalpages
 	}
@@ -95,38 +95,38 @@ func Paginator(page, prepage int, nums int64, data interface{}) map[string]inter
 	}
 	var pages []int
 	switch {
-	case page >= totalpages-5 && totalpages > 5: //最后5页
-		start := totalpages - 5 + 1
-		firstpage = page - 1
-		lastpage = int(math.Min(float64(totalpages), float64(page+1)))
-		pages = make([]int, 5)
+	case page >= totalpages-8 && totalpages > 8: //最后8页
+		start := totalpages - 8 + 1
+		prepage = page - 1
+		nextpage = int(math.Min(float64(totalpages), float64(page+1)))
+		pages = make([]int, 8)
 		for i, _ := range pages {
 			pages[i] = start + i
 		}
-	case page >= 3 && totalpages > 5:
-		start := page - 3 + 1
-		pages = make([]int, 5)
-		firstpage = page - 3
+	case page >= 5 && totalpages > 8:
+		start := page - 5 + 1
+		pages = make([]int, 8)
+		prepage = page - 5
 		for i, _ := range pages {
 			pages[i] = start + i
 		}
-		firstpage = page - 1
-		lastpage = page + 1
+		prepage = page - 1
+		nextpage = page + 1
 	default:
-		pages = make([]int, int(math.Min(5, float64(totalpages))))
+		pages = make([]int, int(math.Min(8, float64(totalpages))))
 		for i, _ := range pages {
 			pages[i] = i + 1
 		}
-		firstpage = int(math.Max(float64(1), float64(page-1)))
-		lastpage = page + 1
+		prepage = int(math.Max(float64(1), float64(page-1)))
+		nextpage = page + 1
 		//fmt.Println(pages)
 	}
 	paginatorMap := make(map[string]interface{})
 	paginatorMap["pages"] = pages
 	paginatorMap["total"] = nums
 	paginatorMap["totalpages"] = totalpages
-	paginatorMap["firstpage"] = firstpage
-	paginatorMap["lastpage"] = lastpage
+	paginatorMap["prepage"] = prepage
+	paginatorMap["nextpage"] = nextpage
 	paginatorMap["current"] = page
 	paginatorMap["list"] = data
 	return paginatorMap
