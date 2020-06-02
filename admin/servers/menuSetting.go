@@ -101,10 +101,19 @@ func UpdateIssue(id int, status bool) error {
 	return nil
 }
 
-func DeleteMenu(id int) error  {
+// 软删除
+func DeleteMenu(id int) error {
 	err := db.DbConn.Model(&models.MenuSetting{}).Where("id = ?", id).Update("delete", true).Error
 	if err != nil {
 		return err
 	}
 	return nil
+}
+
+// 查询所有的路由数据
+func SelectMenuAll() (*[]models.MenuSetting, error) {
+	var menuList []models.MenuSetting
+
+	err := db.DbConn.Select([]string{"id", "menu_name"}).Find(&menuList).Error
+	return &menuList, err
 }

@@ -27,7 +27,6 @@
                             <button type="button" class="btn btn-xs btn-outline-primary"><a href="/menuSetting/add"><span class="ion ion-md-add"></span> 新增</a></button>
                         </div>
                     </div>
-                    {{.menu_data}}
                     <div class="card-body pt-0">
                         <div class="card">
                             <table id="datatable-buttons" class="table table-striped dt-responsive nowrap" width="100%">
@@ -112,7 +111,7 @@
                         <div class="d-flex justify-content-end align-items-center">
                             <ul class="pagination float-right pagination-rounded justify-content-end">
                                 <li class="page-item">
-                                    <a class="page-link" href="{{ if  eq $.menu_data.current 1}}javascript:;{{ else }}?page={{.menu_data.prepage}}{{ end }}" aria-label="Previous">
+                                    <a class="page-link" href="{{ if eq $.menu_data.current 1}}javascript:;{{ else }}?page={{.menu_data.prepage}}{{ end }}" aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
                                         <span class="sr-only">Previous</span>
                                     </a>

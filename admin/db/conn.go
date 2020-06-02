@@ -41,7 +41,11 @@ func Init() {
 }
 
 func CreatedTable() {
-	DbConn.AutoMigrate(&models.MenuSetting{}, &models.User{})
+	DbConn.AutoMigrate(
+		&models.MenuSetting{},
+		&models.User{},
+		&models.ArticleType{},
+	)
 }
 
 func TableName(str string) string {

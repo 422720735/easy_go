@@ -41,6 +41,7 @@ func init() {
 
 	// 文章类型
 	beego.Router("/article/type", &article.ArticleControllerType{})
+	beego.Router("/article/type/add", &article.ArticleControllerType{}, "get:Add")
 
 	// 文章列表
 	beego.Router("/article/list", &article.ArticleList{})
@@ -54,12 +55,12 @@ func register() {
 	beego.Router(Api+"/login", &controllers.LoginController{}, "post:HandleLogin")
 	beego.Router(Api+"/register", &controllers.RegisterController{}, "post:AddRegister")
 
-
 	beego.Router(Api + "/menuSetting/add", &controllers.MenuController{}, "post:HandleMenuAdd")
 	beego.Router(Api + "/menuSetting/move/*", &controllers.MenuController{},"get:HandMove_up_down")
 	beego.Router(Api + "/menuSetting/child", &controllers.MenuController{},"post:HandChangeChild")
 	beego.Router(Api + "/menuSetting/issue", &controllers.MenuController{},"get:HandUpdateIssue")
 	beego.Router(Api + "/menuSetting/delete", &controllers.MenuController{},"post:HandDelete")
+
 }
 // 全局过滤方法。
 // https://www.kancloud.cn/hello123/beego/126127

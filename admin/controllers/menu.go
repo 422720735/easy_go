@@ -4,7 +4,6 @@ import (
 	"easy_go/admin/common"
 	"easy_go/admin/servers"
 	"easy_go/admin/transform"
-	"fmt"
 	"strconv"
 	"strings"
 
@@ -35,8 +34,6 @@ func (c *MenuController) Get() {
 		page += 2
 		pagination = append(pagination, int64(page)) //给切片末尾追加一个成员
 	}
-	fmt.Printf("1: len = %d, cap = %d\n", len(pagination), cap(pagination))
-
 
 	// 查询页面数据给前端
 	c.LayoutSections = make(map[string]string)
