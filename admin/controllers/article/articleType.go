@@ -1,13 +1,14 @@
 package article
 
 import (
+	"easy_go/admin/common"
 	"easy_go/admin/servers"
-	"github.com/astaxie/beego"
+	"easy_go/admin/transform"
 	"github.com/astaxie/beego/logs"
 )
 
 type ArticleControllerType struct {
-	beego.Controller
+	common.BaseController
 }
 
 func (c *ArticleControllerType) Get() {
@@ -53,8 +54,62 @@ func (c *ArticleControllerType) Add() {
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
 
 	c.LayoutSections["Style"] = "style/menuSetting.html"
-	c.LayoutSections["Script"] = "script/menuSettingAdd.html"
+	c.LayoutSections["Script"] = "script/articleType/articleTypeAdd.html"
 
 	// 数据
 	c.Data["menu_data"] = menuData
+}
+
+// 添加文章类型
+func (c *ArticleControllerType) HandArticleTypeAdd() {
+	// 接通了获取数据。
+	msg, err := common.Unmarshal(&c.Controller)
+	if err != nil {
+		logs.Alert("获取注册接口数据失败", err.Error())
+		c.Error("获取新增路由接口数据失败")
+		return
+	}
+
+	// 类型名称
+	articleName, err := transform.InterToString(msg["articleName"])
+	if err != nil {
+		logs.Alert("新增文章类型失败，数据不合法", err.Error())
+		c.Error("新增文章类型失败，数据不合法")
+		return
+	}
+
+	// 关键字
+	KeyWord, err := transform.InterToString(msg["KeyWord"])
+	if err != nil {
+		logs.Alert("新增文章类型失败，数据不合法", err.Error())
+		c.Error("新增文章类型失败，数据不合法")
+		return
+	}
+
+	// 父级
+	menuId, err := transform.InterToInt(msg["menuId"])
+	if err != nil {
+		logs.Alert("新增文章类型失败，数据不合法", err.Error())
+		c.Error("新增文章类型失败，数据不合法")
+		return
+	}
+
+	// 热门推荐
+	isHotSwitch, err := transform.InterToBool(msg["isHotSwitch"])
+	if err != nil {
+		logs.Alert("新增文章类型失败，数据不合法", err.Error())
+		c.Error("新增文章类型失败，数据不合法")
+		return
+	}
+
+	// 数据失败
+	err = servers.InsertArticleType(articleName, KeyWord, menuId, isHotSwitch)
+	if err != nil {
+		logs.Alert("新增文章类型失败，数据不合法", err.Error())
+		c.Error("新增文章类型失败，数据不合法")
+		c.Error("新增文章类型失败")
+		return
+	}
+
+	c.Success("新增文章类型成功")
 }

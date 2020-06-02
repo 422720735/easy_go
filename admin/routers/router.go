@@ -61,6 +61,8 @@ func register() {
 	beego.Router(Api + "/menuSetting/issue", &controllers.MenuController{},"get:HandUpdateIssue")
 	beego.Router(Api + "/menuSetting/delete", &controllers.MenuController{},"post:HandDelete")
 
+	beego.Router(Api + "/articleType/add", &article.ArticleControllerType{},"post:HandArticleTypeAdd")
+
 }
 // 全局过滤方法。
 // https://www.kancloud.cn/hello123/beego/126127

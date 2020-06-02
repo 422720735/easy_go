@@ -114,6 +114,6 @@ func DeleteMenu(id int) error {
 func SelectMenuAll() (*[]models.MenuSetting, error) {
 	var menuList []models.MenuSetting
 
-	err := db.DbConn.Select([]string{"id", "menu_name"}).Find(&menuList).Error
+	err := db.DbConn.Select([]string{"id", "menu_name"}).Where("visible = ?", true).Find(&menuList).Error
 	return &menuList, err
 }

@@ -48,17 +48,17 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group row mb-3">
-                                                <label class="col-md-3 col-form-label" for="userName">类型</label>
+                                                <label class="col-md-3 col-form-label" for="articleName">类型</label>
                                                 <div class="col-md-9">
-                                                    <input oninput="addMenu()" type="text" class="form-control" id="menuName" name="menuName" value="" placeholder="请填写类型名称">
+                                                    <input oninput="addArticle()" type="text" class="form-control" id="articleName" name="articleName" value="" placeholder="请填写类型名称">
                                                 </div>
                                             </div>
                                             <div class="form-group row mb-3">
-                                                <label class="col-md-3 col-form-label" for="password">
+                                                <label class="col-md-3 col-form-label" for="KeyWord">
                                                     关键字<small class="text-danger">类型在数据库的key</small>
                                                 </label>
                                                 <div class="col-md-9">
-                                                    <input oninput="addMenu()" type="text" id="path" name="path" class="form-control" value="" placeholder="请填写类型在数据库的关键字">
+                                                    <input oninput="addArticle()" type="text" id="KeyWord" name="KeyWord" class="form-control" value="" placeholder="请填写类型在数据库的关键字">
                                                 </div>
                                             </div>
 
@@ -67,7 +67,8 @@
                                                     父级
                                                 </label>
                                                 <div class="col-md-9">
-                                                    <select class="mb-3 form-control">
+                                                    <select class="mb-3 form-control" onchange="addArticle()" id="menuId">
+                                                        <option selected="selected" disabled="disabled" style='display: none' value=''>清选择导航归类</option>
                                                         {{range $k, $v := .menu_data}}
                                                             {{ if gt $v.Id 1}}
                                                             <option value="{{$v.Id}}">{{$v.MenuName}}</option>
@@ -83,7 +84,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group row mb-3">
-                                                <label class="col-md-3 col-form-label" for="name">热门推荐</label>
+                                                <label class="col-md-3 col-form-label" for="isHotSwitch">热门推荐</label>
                                                 <div class="col-md-9">
                                                     <!-- Success Switch-->
                                                     <input type="checkbox" id="isHotSwitch" data-switch="success" />

@@ -74,6 +74,8 @@ func (c *MenuController) Add() {
 
 	c.LayoutSections["Style"] = "style/menuSetting.html"
 	c.LayoutSections["Script"] = "script/menuSettingAdd.html"
+
+	c.LayoutSections["ScriptMessage"] = "script/message.html"
 }
 
 // 路由菜单权限详情页面
