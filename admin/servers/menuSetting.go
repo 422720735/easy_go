@@ -14,13 +14,13 @@ func SelectMenuPage(page, size int) (*[]models.MenuSetting, int64, error) {
 	// 获取总条数
 	err := db.DbConn.Model(&menuList).Count(&total).Error
 	if err != nil {
-		return &menuList, total, nil
+		return &menuList, total, err
 	}
 
 	// 获取取指page，指定pagesize的记录
 	err = db.DbConn.Limit(size).Offset((page - 1) * size).Order("sort asc").Find(&menuList).Error
 	if err != nil {
-		return &menuList, total, nil
+		return &menuList, total, err
 	}
 	return &menuList, total, nil
 }
@@ -114,6 +114,6 @@ func DeleteMenu(id int) error {
 func SelectMenuAll() (*[]models.MenuSetting, error) {
 	var menuList []models.MenuSetting
 
-	err := db.DbConn.Select([]string{"id", "menu_name"}).Where("visible = ?", true).Find(&menuList).Error
+	err := db.DbConn.Select([]string{"id", "menu_name"}).Where("child_status = ?", true).Find(&menuList).Error
 	return &menuList, err
 }

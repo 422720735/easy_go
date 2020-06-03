@@ -27,14 +27,6 @@ func (c *MenuController) Get() {
 	page = int(_int)
 	data, total, _ := servers.SelectMenuPage(page, common.PAGE_SIZE)
 	menuList := common.Paginator(page, common.PAGE_SIZE, total, data)
-	pagination := []int64{}
-
-	var a int64
-	for a = int64(page); a <= total; a++ {
-		page += 2
-		pagination = append(pagination, int64(page)) //给切片末尾追加一个成员
-	}
-
 	// 查询页面数据给前端
 	c.LayoutSections = make(map[string]string)
 	// menu
@@ -52,7 +44,6 @@ func (c *MenuController) Get() {
 	c.LayoutSections["ScriptMessage"] = "script/message.html"
 	// 数据
 	c.Data["menu_data"] = menuList
-	c.Data["pagination"] = pagination
 }
 
 func (c *MenuController) Add() {

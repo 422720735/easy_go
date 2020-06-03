@@ -4,7 +4,9 @@ import (
 	"easy_go/admin/common"
 	"easy_go/admin/servers"
 	"easy_go/admin/transform"
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
+	"strconv"
 )
 
 type ArticleControllerType struct {
@@ -12,6 +14,17 @@ type ArticleControllerType struct {
 }
 
 func (c *ArticleControllerType) Get() {
+	pageStr := c.GetString("page")
+	var page int
+	_int, err := strconv.ParseInt(pageStr, 10, 64)
+	if err != nil {
+		page = 1
+	}
+	page = int(_int)
+	data, total, _ := servers.SelectArticleTypeList(page, common.PAGE_SIZE)
+	articleTypelist := common.Paginator(page, common.PAGE_SIZE, total, data)
+	beego.Info(page, "page---")
+
 	c.Layout = "layout/mainLayout.html"
 
 	c.TplName = "pages/article/articleType/articleType.html"
@@ -28,6 +41,8 @@ func (c *ArticleControllerType) Get() {
 	// js
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
 
+	// 数据
+	c.Data["article_type_list"] = articleTypelist
 }
 
 func (c *ArticleControllerType) Add() {

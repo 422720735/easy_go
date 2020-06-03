@@ -48,12 +48,23 @@
                                     <td>
                                         <i class="{{$v.Icon}}"></i>
                                     </td>
-                                    <td>
+                                    {{/*<td>
                                         <div class="custom-control custom-checkbox">
                                             {{if $v.ChildStatus}}
                                             <input onchange="changeMenu({{$v.Id}}, {{$v.ChildStatus}})" type="checkbox" checked class="custom-control-input" id="customCheck{{$v.Id}}">
                                             {{else}}
                                             <input onchange="changeMenu({{$v.Id}}, {{$v.ChildStatus}})" type="checkbox" class="custom-control-input" id="customCheck{{$v.Id}}">
+                                            {{end}}
+                                            <label class="custom-control-label" for="customCheck{{$v.Id}}"></label>
+                                        </div>
+                                    </td>*/}}
+                                    {{/*这个字段不能随意改动的。*/}}
+                                    <td>
+                                        <div class="custom-control custom-checkbox">
+                                            {{if $v.ChildStatus}}
+                                                <input type="checkbox" checked class="custom-control-input" id="customCheck{{$v.Id}}">
+                                            {{else}}
+                                                <input type="checkbox" class="custom-control-input" id="customCheck{{$v.Id}}">
                                             {{end}}
                                             <label class="custom-control-label" for="customCheck{{$v.Id}}"></label>
                                         </div>
