@@ -103,7 +103,7 @@ func UpdateIssue(id int, status bool) error {
 
 // 软删除
 func DeleteMenu(id int) error {
-	err := db.DbConn.Model(&models.MenuSetting{}).Where("id = ?", id).Update("delete", true).Error
+	err := db.DbConn.Model(&models.MenuSetting{}).Where("id = ?", id).Update("state", true).Error
 	if err != nil {
 		return err
 	}

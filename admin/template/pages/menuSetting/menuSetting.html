@@ -85,13 +85,13 @@
                                         {{end}}
                                         <a href="/menuSetting/info" class="text-c-blue">详情</a>
                                         <!-- Danger header modal -->
-                                        {{if $v.Delete}}
+                                        {{if $v.State}}
                                         <a href="#!" class="text-c-blue text-facebook" data-toggle="modal" data-target="#danger-header-modal-{{$v.Id}}">已删除</a>
                                         {{else}}
                                         <a href="#!" class="text-c-blue text-danger" data-toggle="modal" data-target="#danger-header-modal-{{$v.Id}}">删除</a>
                                         {{end}}
                                         <!-- Danger Header Modal -->
-                                        {{if eq  $v.Delete false}}
+                                        {{if eq  $v.State false}}
                                         <div id="danger-header-modal-{{$v.Id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="danger-header-modalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">

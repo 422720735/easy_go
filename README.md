@@ -35,19 +35,3 @@
 [创意bootstrap模版](http://www.bootstrapmb.com/item/6705)
 
 [用beego开发服务端应用](https://www.cnblogs.com/zhangboyu/p/7760693.html)
-
-<div class="row">
-                                        <div class="col-md-6">
-                                            <input class="mb-3 form-control form-control-lg" type="text" placeholder=".form-control-lg">
-                                            <input class="mb-3 form-control" type="text" placeholder="Default input">
-                                            <input class="mb-3 form-control form-control-sm" type="text" placeholder=".form-control-sm">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <select class="mb-3 form-control form-control-lg">
-                                                <option>Large select</option>
-                                            </select>
-                                            <select class="mb-3 form-control">
-                                                <option>Default select</option>
-                                            </select>
-                                        </div>
-                                    </div>
