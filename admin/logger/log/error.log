@@ -1,0 +1,34 @@
+2020/06/05 23:10:13.524 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|   2.326633ms|   match|[97;44m GET     [0m /article/details   r:/article/details
+2020/06/05 23:10:13.590 [D] [router.go:925]  |            ::1|[90;47m 304 [0m|     61.623µs|   match|[97;44m GET     [0m /static/css/articleDetails.css
+2020/06/05 23:10:13.785 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.205863ms| nomatch|[97;44m GET     [0m /static/assets/js/metisMenu.js.map
+2020/06/05 23:10:15.334 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|      67.69µs|   match|[97;44m GET     [0m /static/assets/images/favicon.png
+2020/06/05 23:11:27.890 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|   3.108274ms|   match|[97;44m GET     [0m /article/details   r:/article/details
+2020/06/05 23:11:28.001 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|    292.659µs|   match|[97;44m GET     [0m /static/assets/js/editor/wangEditor.min.js
+2020/06/05 23:11:28.167 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.235064ms| nomatch|[97;44m GET     [0m /static/assets/js/metisMenu.js.map
+2020/06/05 23:11:28.271 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.666971ms| nomatch|[97;44m GET     [0m /static/assets/js/editor/wangEditor.min.js.map
+2020/06/05 23:11:28.364 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|     92.994µs|   match|[97;44m GET     [0m /static/assets/images/favicon.png
+2020/06/05 23:11:30.929 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|   3.324603ms|   match|[97;44m GET     [0m /article/details   r:/article/details
+2020/06/05 23:11:30.975 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|     88.927µs|   match|[97;44m GET     [0m /static/assets/css/vendor/jquery-jvectormap-1.2.2.css
+2020/06/05 23:11:30.976 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|     58.126µs|   match|[97;44m GET     [0m /static/fonts/iconfont.css
+2020/06/05 23:11:30.976 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|    228.993µs|   match|[97;44m GET     [0m /static/assets/css/style.css
+2020/06/05 23:11:30.976 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|    207.278µs|   match|[97;44m GET     [0m /static/assets/css/icons.min.css
+2020/06/05 23:11:30.989 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|     60.505µs|   match|[97;44m GET     [0m /static/assets/message/css/jquery.my-message.1.1.css
+2020/06/05 23:11:30.989 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|     57.548µs|   match|[97;44m GET     [0m /static/css/articleDetails.css
+2020/06/05 23:11:31.022 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|    585.793µs|   match|[97;44m GET     [0m /static/assets/js/vendor/apexcharts.min.js
+2020/06/05 23:11:31.024 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|   4.509239ms|   match|[97;44m GET     [0m /static/assets/js/app.js
+2020/06/05 23:11:31.030 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|    138.286µs|   match|[97;44m GET     [0m /static/assets/js/editor/wangEditor.min.js
+2020/06/05 23:11:31.031 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|     67.007µs|   match|[97;44m GET     [0m /static/assets/images/logo.png
+2020/06/05 23:11:31.033 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|     51.311µs|   match|[97;44m GET     [0m /static/assets/images/logo_sm.png
+2020/06/05 23:11:31.035 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|     48.061µs|   match|[97;44m GET     [0m /static/assets/images/users/avatar-2.jpg
+2020/06/05 23:11:31.035 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|    119.706µs|   match|[97;44m GET     [0m /static/assets/images/users/avatar-1.jpg
+2020/06/05 23:11:31.041 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|     98.466µs|   match|[97;44m GET     [0m /static/assets/images/users/avatar-4.jpg
+2020/06/05 23:11:31.159 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|    149.324µs|   match|[97;44m GET     [0m /static/assets/fonts/feather.woff
+2020/06/05 23:11:31.160 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|    167.221µs|   match|[97;44m GET     [0m /static/assets/fonts/Quicksand-Regular.ttf
+2020/06/05 23:11:31.162 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|    128.618µs|   match|[97;44m GET     [0m /static/assets/fonts/Quicksand-Bold.ttf
+2020/06/05 23:11:31.163 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|    181.888µs|   match|[97;44m GET     [0m /static/assets/fonts/materialdesignicons-webfont.woff2
+2020/06/05 23:11:31.167 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|    172.763µs|   match|[97;44m GET     [0m /static/assets/fonts/Quicksand-Medium.ttf
+2020/06/05 23:11:31.236 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|     106.24µs|   match|[97;44m GET     [0m /static/assets/fonts/dripicons-v2.woff
+2020/06/05 23:11:31.237 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.813097ms| nomatch|[97;44m GET     [0m /static/assets/js/metisMenu.js.map
+2020/06/05 23:11:31.315 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   1.086707ms| nomatch|[97;44m GET     [0m /static/assets/js/editor/wangEditor.min.js.map
+2020/06/05 23:12:44.436 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|     59.232µs|   match|[97;44m GET     [0m /static/assets/images/favicon.png
+2020/06/05 23:12:56.119 [I] [app.go:215]  http server Running on http://:8201

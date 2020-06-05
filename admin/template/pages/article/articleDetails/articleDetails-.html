@@ -1,0 +1,138 @@
+<!-- Start Content-->
+<div class="container-fluid admin-custom" id="welcome">
+
+    <form action="/" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews" data-upload-preview-template="#uploadPreviewTemplate">
+        <div class="fallback">
+            <input name="file" type="file" multiple />
+        </div>
+
+        <div class="dz-message needsclick">
+            <i class="h1 text-muted dripicons-cloud-upload"></i>
+            <h3>Drag & Drop files here or click to upload.</h3>
+            <span class="text-muted font-13">(This is just a Design of dropzone. Selected files are
+                                                <strong>not</strong> actually uploaded.)</span>
+        </div>
+    </form>
+
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-left mt-3">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/welcome"><i class="feather icon-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="/article/list">文章列表</a></li>
+                        <li class="breadcrumb-item active">{{.title}}</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>博文详情</h5>
+                </div>
+                <div class="card-body">
+                    <form class="needs-validation" novalidate>
+                        <div class="form-group mb-3">
+                            <label for="validationCustom01">标题：</label>
+                            <input type="text" class="form-control" id="validationCustom01" placeholder="First name" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid city.
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="validationCustom02">类型：</label>
+{{/*                            <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="Otto" required>*/}}
+                            <select class="form-control select2" data-toggle="select2">
+                                <option>Select</option>
+                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                    <option value="AK">Alaska</option>
+                                    <option value="HI">Hawaii</option>
+                                </optgroup>
+                                <optgroup label="Pacific Time Zone">
+                                    <option value="CA">California</option>
+                                    <option value="NV">Nevada</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="WA">Washington</option>
+                                </optgroup>
+                                <optgroup label="Mountain Time Zone">
+                                    <option value="AZ">Arizona</option>
+                                    <option value="CO">Colorado</option>
+                                    <option value="ID">Idaho</option>
+                                    <option value="MT">Montana</option>
+                                    <option value="NE">Nebraska</option>
+                                    <option value="NM">New Mexico</option>
+                                    <option value="ND">North Dakota</option>
+                                    <option value="UT">Utah</option>
+                                    <option value="WY">Wyoming</option>
+                                </optgroup>
+                            </select>
+
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="validationCustom01">加入首页：</label>
+{{/*                            <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Mark" required>*/}}
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1"></label>
+                            </div>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="validationCustomUsername">链接：</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupPrepend">http://</span>
+                                </div>
+                                <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+                                <div class="invalid-feedback">
+                                    Please choose a username.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="validationCustom03">标签：</label>
+                            <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid city.
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="validationCustom05">封面</label>
+                            <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid zip.
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group mb-3">
+                            <label for="validationCustom04">内容：</label>
+                            <input type="text" class="form-control" id="validationCustom04" placeholder="State" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid state.
+                            </div>
+                        </div>
+
+                         {{if eq .id ""}}
+                             <button class="btn btn-primary" type="submit">新增</button>
+                         {{else}}
+                             <button class="btn btn-primary" type="submit">编辑</button>
+                         {{end}}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

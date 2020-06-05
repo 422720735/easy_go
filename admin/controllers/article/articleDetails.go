@@ -27,6 +27,9 @@ func (c *ArticleDetails) AddOfUpdate() {
 	// js
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
 
+	c.LayoutSections["Style"] = "style/articleDetails.html"
+	c.LayoutSections["Script"] = "script/articleDetails.html"
+
 	c.Data["title"] = title
 	c.Data["id"] = id
 }
