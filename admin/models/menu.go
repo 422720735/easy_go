@@ -18,3 +18,9 @@ type MenuSetting struct {
 	CreatedTime time.Time    `json:"created_time"`
 	UpdateTime  sql.NullTime `json:"update_time"`
 }
+
+
+type ArticleTypeAndMenuName struct {
+	ArticleType
+	MenuName    string       `json:"menu_name";gorm:"size:128"`
+}

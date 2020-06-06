@@ -1,6 +1,11 @@
 package article
 
-import "github.com/astaxie/beego"
+import (
+	"easy_go/admin/common"
+	"easy_go/admin/servers"
+	"github.com/astaxie/beego"
+	"time"
+)
 
 type ArticleDetails struct {
 	beego.Controller
@@ -30,6 +35,19 @@ func (c *ArticleDetails) AddOfUpdate() {
 	c.LayoutSections["Style"] = "style/articleDetails.html"
 	c.LayoutSections["Script"] = "script/articleDetails.html"
 
+	list, _ := servers.SelectArticleTypeMenuName()
+
+	beego.Info(list, "hishiuhif")
 	c.Data["title"] = title
 	c.Data["id"] = id
+	c.Data["list"] = list
+
+	// 返回文章的时间戳
+	c.Data["time"] = time.Now()
+}
+
+func (c *ArticleDetails) AddOfUpdateTest() {
+	list, _ := servers.SelectArticleTypeMenuName()
+
+	common.Echo((*common.BaseController)(c), 1, list)
 }

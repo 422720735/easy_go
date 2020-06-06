@@ -47,3 +47,50 @@ func SelectArticleTypeList(page, size int) (*[]models.ArticleType, int64, error)
 
 	return &articleTypeList, total, nil
 }
+
+// 查询所有的类型及与之相对应的父级menu
+func SelectArticleTypeMenuName() ([]interface{}, error) {
+	// 文章类型
+	var articleType []models.ArticleType
+	// menu
+	var menuList []models.MenuSetting
+
+	// menu
+	err := db.DbConn.Select([]string{"id", "menu_name", "child_status", "visible"}).Find(&menuList).Error
+	if err != nil {
+		return nil, err
+	}
+
+	// articleType
+	err = db.DbConn.Select([]string{"id", "article_name", "menu_id"}).Where("visible = ? and state = ?", true, false).Find(&articleType).Error
+	if err != nil {
+		return nil, err
+	}
+
+	var result []interface{}
+	for j := 0; j < len(menuList); j++ {
+		// 只装载上架的数据
+		if menuList[j].Visible {
+			menuItem := make(map[string]interface{})
+			menuItem["name"] = *&menuList[j].MenuName
+			menuItem["id"] = *&menuList[j].Id
+			var arr []interface{}
+			for i := 1; i < len(articleType); i++ {
+				item := make(map[string]interface{})
+				if articleType[i].MenuId == *&menuList[j].Id {
+					// 只装载上架的数据
+					if *&menuList[j].ChildStatus {
+						item["id"] = *&articleType[i].Id
+						item["name"] = *&articleType[i].ArticleName
+						item["menu_id"] = *&articleType[i].MenuId
+						arr = append(arr, item)
+						menuItem["child"] = arr
+					}
+				}
+			}
+			result = append(result, menuItem)
+		}
+	}
+
+	return result, nil
+}

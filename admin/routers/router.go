@@ -48,6 +48,7 @@ func init() {
 
 	// 文章新增+编辑
 	beego.Router("/article/details", &article.ArticleDetails{}, "get:AddOfUpdate")
+	beego.Router("/article/details/test", &article.ArticleDetails{}, "get:AddOfUpdateTest")
 	register()
 }
 

@@ -35,3 +35,7 @@
 [创意bootstrap模版](http://www.bootstrapmb.com/item/6705)
 
 [用beego开发服务端应用](https://www.cnblogs.com/zhangboyu/p/7760693.html)
+
+[开源在线 Markdown 编辑器](http://editor.md.ipandao.com/)
+
+[原生js的图片上传插件cupload](http://www.jq22.com/jquery-info22747)
