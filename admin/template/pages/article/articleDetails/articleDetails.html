@@ -26,18 +26,17 @@
                                     <div class="article_editor_title">
                                         <input type="text" placeholder="请在这里输入标题" name="title" max-length="64">
                                     </div>
-
                                     <div class="article_editor_info">
-                                        <select name="" id="">
+                                        <select>
                                             {{range $i, $v := .list}}
                                                 {{if $v.child}}
                                                     <optgroup label="{{$v.name}}">
                                                         {{range $key, $item := $v.child}}
-                                                            <option value="{{$item.name}}">{{$item.name}}</option>
+                                                            <option value="[{{$v.id}}, {{$item.id}}]">{{$item.name}}</option>
                                                         {{end}}
                                                     </optgroup>
-                                                {{else}}
-                                                    <option value="{{$v.name}}">{{$v.name}}</option>
+                                                {{else if eq $v.child_status false}}
+                                                    <option value="[{{$v.id}}]">{{$v.name}}</option>
                                                 {{end}}
                                             {{end}}
                                         </select>
@@ -75,8 +74,8 @@
                                                 <span class="d-none d-lg-block">富文本编辑器</span>
                                             </a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a href="#home1" data-toggle="tab" aria-expanded="false" class="nav-link rounded-0">
+                                        <li class="nav-item" onclick="goMarkdown()">
+                                            <a href="#home1" target="_blank" data-toggle="tab" aria-expanded="false" class="nav-link rounded-0">
                                                 <i class="feather icon-home d-lg-none d-block mr-1"></i>
                                                 <span class="d-none d-lg-block">Markdown编辑器</span>
                                             </a>
@@ -136,6 +135,7 @@
                                 <div class="fl"><span>正文字数<i class="article_editor_charCount">0</i></span></div>
                                 <div class="fr">
                                     <button type="submit">保存发布</button>
+                                    <button type="submit" class="bg-danger text-light">草稿箱</button>
                                     <button>取消发布</button>
                                 </div>
                             </div>

@@ -74,6 +74,7 @@ func SelectArticleTypeMenuName() ([]interface{}, error) {
 			menuItem := make(map[string]interface{})
 			menuItem["name"] = *&menuList[j].MenuName
 			menuItem["id"] = *&menuList[j].Id
+			menuItem["child_status"] = *&menuList[j].ChildStatus
 			var arr []interface{}
 			for i := 1; i < len(articleType); i++ {
 				item := make(map[string]interface{})
