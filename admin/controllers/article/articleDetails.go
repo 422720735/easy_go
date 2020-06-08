@@ -61,7 +61,7 @@ func (c *ArticleDetails) AddOfUpdateMarkdown() {
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
 
 	c.LayoutSections["Style"] = "style/articleDetails.html"
-	c.LayoutSections["Script"] = "script/articleDetails.html"
+	c.LayoutSections["Script"] = "script/articleDetailsMarkdown.html"
 
 	list, _ := servers.SelectArticleTypeMenuName()
 

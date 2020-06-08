@@ -1,13 +1,14 @@
 <script src="/static/assets/js/editor/wangEditor.min.js"></script>
-
-<script src="/static/assets/editor.md/examples/js/jquery.min.js"></script>
-<script src="/static/assets/editor.md/editormd.js"></script>
-
 <script src="/static/js/cupload.js"></script>
 <script type="text/javascript">
     // 富文本编辑器
     var E = window.wangEditor
     var editor = new E('#editor')
+    editor.customConfig.onchange = function (html) {
+        // 监控变化，同步更新到 textarea
+        const n = editor.txt.text().length
+        $('.article_editor_charCount').text(n ? n : 0);
+    }
     editor.create()
 
 </script>
@@ -20,41 +21,4 @@
         width: 160, // 预览框的宽,单位为px,非必需,默认为148
         height: 114, // 预览框的高,单位为px,非必需,默认为148
     });
-</script>
-
-<script>
-    // markdown
-    var editor, pathStr = '/static/assets/editor.md/lib/';
-    editor = editormd("test-editormd", {
-        width: "100%",
-        height: 720,
-        placeholder: '请输入内容...',
-        // Editor.md theme, default or dark, change at v1.5.0
-        // You can also custom css class .editormd-preview-theme-xxxx
-        theme: (localStorage.theme) ? localStorage.theme : "default",
-
-        // Preview container theme, added v1.5.0
-        // You can also custom css class .editormd-preview-theme-xxxx
-        previewTheme: (localStorage.previewTheme) ? localStorage.previewTheme : "dark",
-
-        // Added @v1.5.0 & after version is CodeMirror (editor area) theme
-        editorTheme: (localStorage.editorTheme) ? localStorage.editorTheme : "blackboard",
-        path: pathStr,
-        onfullscreen: function () {
-            $('.left-side-menu,.article_editor_options,.article_editor_savebar,.footer').hide()
-            // console.log("onfullscreen =>", this, this.id, this.settings);
-        },
-
-        onfullscreenExit: function () {
-            $('.left-side-menu,.article_editor_options,.article_editor_savebar,.footer').show()
-        }
-    });
-    editor.setToolbarAutoFixed(false);
-
-    function goMarkdown() {
-        window.location.href = '/article/details/markdown'
-        // const {protocol, host} = window.location
-        // const url = protocol + '//' + host + '/article/details/markdown'
-        // window.open(url)
-    }
 </script>

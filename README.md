@@ -39,3 +39,7 @@
 [开源在线 Markdown 编辑器](http://editor.md.ipandao.com/)
 
 [原生js的图片上传插件cupload](http://www.jq22.com/jquery-info22747)
+
+[wangEditor-轻量级 web 富文本编辑器，配置方便，使用简单。支持 IE10+ 浏览器](https://www.kancloud.cn/wangfupeng/wangeditor3/332599)
+
+[仿微信公众平台文章发布](http://www.jq22.com/yanshi22827)
