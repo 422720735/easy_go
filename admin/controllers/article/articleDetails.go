@@ -52,12 +52,9 @@ func (c *ArticleDetails) AddOfUpdateMarkdown() {
 		title = "新增-Markdown"
 	}
 	id := c.GetString("id")
-	c.Layout = "layout/mainLayout.html"
+	c.Layout = "layout/extraLayout.html"
 	c.TplName = "pages/article/articleDetails/articleDetailsMarkdown.html"
 	c.LayoutSections = make(map[string]string)
-	// header
-	c.LayoutSections["HeaderLayout"] = "layout/headerLayout.html"
-	// footer
 	// css
 	c.LayoutSections["BaseStyle"] = "style/baseStyle.html"
 	// js

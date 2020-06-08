@@ -8,7 +8,7 @@
     // 富文本编辑器
     var E = window.wangEditor
     var editor = new E('#editor')
-    // 或者 var editor = new E( document.getElementById('editor') )
+    editor.customConfig.height = 1000 + 'px'
     editor.create()
 
 </script>
@@ -25,9 +25,9 @@
 
 <script>
     // markdown
-    var editor, pathStr = '../static/assets/editor.md/lib/';
+    var editor, pathStr = '/static/assets/editor.md/lib/';
     editor = editormd("test-editormd", {
-        width: "98%",
+        width: "100%",
         height: 720,
         placeholder: '请输入内容...',
         // Editor.md theme, default or dark, change at v1.5.0
