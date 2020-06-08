@@ -10346,9 +10346,8 @@ a.text-dark:hover, a.text-dark:focus {
   h3 {
         page-break-after: avoid;
     }
-  @    page {
-        size: a3;
-    }
+
+
 
     body {
         min-width: 992px !important;
@@ -16240,7 +16239,6 @@ div.dt-button-info h2 {
   font-style: normal;
   font-weight: normal;
   src: url("../fonts/summernote.eot");
-  src: url(http://bvmthemes.com/themes/shimba/live/assets/fonts/summernote.eot?#iefixx") format("embedded-opentype"), url("../fonts/summernote.woff?") format("woff"), url("../fonts/summernote.ttf?") format("truetype");
 }
 
 .note-toolbar {
