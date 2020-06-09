@@ -3,12 +3,12 @@ package article
 import (
 	"easy_go/admin/common"
 	"easy_go/admin/servers"
-	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/logs"
 	"time"
 )
 
 type ArticleDetails struct {
-	beego.Controller
+	common.BaseController
 }
 
 // add + update
@@ -34,16 +34,19 @@ func (c *ArticleDetails) AddOfUpdate() {
 
 	c.LayoutSections["Style"] = "style/articleDetails.html"
 	c.LayoutSections["Script"] = "script/articleDetails.html"
-
+	c.LayoutSections["ScriptMessage"] = "script/message.html"
 	list, _ := servers.SelectArticleTypeMenuName()
 
-	beego.Info(list, "hishiuhif")
 	c.Data["title"] = title
 	c.Data["id"] = id
 	c.Data["list"] = list
 
-	// 返回文章的时间戳
-	c.Data["time"] = time.Now()
+	if id == "" {
+		// 返回文章的时间戳
+		c.Data["CreatedTime"] = time.Now()
+		c.Data["UpdateTime"] = nil
+	}
+
 }
 
 func (c *ArticleDetails) AddOfUpdateMarkdown() {
@@ -62,20 +65,26 @@ func (c *ArticleDetails) AddOfUpdateMarkdown() {
 
 	c.LayoutSections["Style"] = "style/articleDetails.html"
 	c.LayoutSections["Script"] = "script/articleDetailsMarkdown.html"
-
+	c.LayoutSections["ScriptMessage"] = "script/message.html"
 	list, _ := servers.SelectArticleTypeMenuName()
 
-	beego.Info(list, "hishiuhif")
 	c.Data["title"] = title
 	c.Data["id"] = id
 	c.Data["list"] = list
 
-	// 返回文章的时间戳
-	c.Data["time"] = time.Now()
+	if id == "" {
+		// 返回文章的时间戳
+		c.Data["CreatedTime"] = time.Now()
+		c.Data["UpdateTime"] = nil
+	}
 }
 
-func (c *ArticleDetails) AddOfUpdateTest() {
-	list, _ := servers.SelectArticleTypeMenuName()
-
-	common.Echo((*common.BaseController)(c), 1, list)
+func (c *ArticleDetails) HandArticleDetailsInsert() {
+	msg, err := common.Unmarshal(&c.Controller)
+	if err != nil {
+		logs.Alert("获取文章详情数据失败", err.Error())
+		c.Error("获取文章详情数据失败")
+		return
+	}
+	c.Success(msg)
 }

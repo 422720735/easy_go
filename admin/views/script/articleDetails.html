@@ -1,9 +1,10 @@
-<script src="/static/assets/js/editor/wangEditor.min.js"></script><script src="/static/js/cupload.js"></script><script>// 富文本编辑器
+<script src="/static/assets/js/wangEditor.min.js"></script><script src="/static/js/cupload.js"></script><script>// 富文本编辑器
     var E = window.wangEditor
     var editor = new E('#editor')
     editor.customConfig.onchange = function (html) {
         // 监控变化，同步更新到 textarea
         const n = editor.txt.text().length
         $('.article_editor_charCount').text(n ? n : 0);
+        window.content = editor.txt.html()
     }
-    editor.create()</script><script>var cuploadCreate=new Cupload({ele:"#cupload",num:1,width:160,height:114})</script>
+    editor.create()</script><script>var cuploadCreate=new Cupload({ele:"#cupload",num:1,width:160,height:114})</script><script src="/static/js/api/article/articleDetails.js"></script>

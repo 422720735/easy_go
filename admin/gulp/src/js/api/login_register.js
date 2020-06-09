@@ -3,7 +3,6 @@
  * */
 const HOST = '/api'
 const Ok = 1
-const Err = 0
 $('#register-btn').click(function () {
     const username = $('#username').val()
     const invitecode = $('#invitecode').val()

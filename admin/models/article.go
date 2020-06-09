@@ -22,19 +22,21 @@ type ArticleType struct {
 // 文章
 type Article struct {
 	Id         int    `json:"id"`
+	MenuId     int    `json:"menu_id"`                     // 导航id
 	CategoryId int    `json:"category_id"`                 // 分类
 	Cover      string `json:"cover"`                       // 封面
 	Title      string `json:"title;" gorm:"not null"`      // 标题
 	Author     string `json:"author"`                      // 作者
 	Desc       string `json:"desc"`                        // 封面描述
+	Keyword    string `json:"keyword"`                     // 关键字
 	Tags       string `json:"tags"`                        // 标签
 	View       int    `json:"view"`                        // 阅读
 	Url        string `json:"url"`                         // 链接
 	Content    string `json:"content;" gorm:"type:text"`   // 内容
 	Type       int    `json:"type;" gorm:"size:8"`         // 0 草稿箱 1发布 2垃圾箱
-	Recommend  int    `json:"recommend"`                   // 推荐
 	Praise     int    `json:"praise"`                      // 赞
 	IsTop      int    `json:"is_top"`                      // 置顶
+	Recommend  int    `json:"recommend"`                   // 推荐
 	Hot        bool   `json:"hot"`                         // 热门
 	Sort       int    `json:"sort; "gorm:"AUTO_INCREMENT"` // 排序
 	State      bool   `json:"state"`                       // 软删除

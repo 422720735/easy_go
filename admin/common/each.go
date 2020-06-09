@@ -44,7 +44,7 @@ func (c *BaseController) History(msg string, url string) {
 		c.Redirect(url, 302)
 	}
 }
-func (c *BaseController) Success(msg string) {
+func (c *BaseController) Success(msg interface{}) {
 	c.Data["json"] = map[string]interface{}{
 		"code":    G_Success,
 		"message": ReturnMessage(G_Success),

@@ -1,4 +1,5 @@
 const HOST = '/api'
+const Ok = 1
 let current = 0
 
 function addArticle() {

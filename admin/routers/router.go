@@ -64,6 +64,9 @@ func register() {
 
 	beego.Router(Api + "/articleType/add", &article.ArticleControllerType{},"post:HandArticleTypeAdd")
 
+
+	beego.Router(Api + "/article/details/add", &article.ArticleDetails{},"post:HandArticleDetailsInsert")
+
 }
 // 全局过滤方法。
 // https://www.kancloud.cn/hello123/beego/126127
