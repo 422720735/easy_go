@@ -1,4 +1,4 @@
-<script src="/static/assets/editor.md/examples/js/jquery.min.js"></script><script src="/static/assets/editor.md/editormd.js"></script><script src="/static/js/cupload.js"></script><script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script><script>var cuploadCreate=new Cupload({ele:"#cupload",num:1,width:160,height:114})</script><script>// markdown
+<script src="/static/assets/editor.md/examples/js/jquery.min.js"></script><script src="/static/assets/editor.md/editormd.js"></script><script src="/static/js/cupload.js"></script><script>var cuploadCreate=new Cupload({ele:"#cupload",num:1,width:160,height:114})</script><script>// markdown
     var editor, pathStr = '/static/assets/editor.md/lib/';
     editor = editormd("editor-markdown", {
         width: "100%",
@@ -26,20 +26,6 @@
         onchange: _.debounce(function () {
             const n = $('#articleContent').val().length
             $('.article_editor_charCount').text(n ? n : 0)
-        }, 5000)
+        }, 200)
     });
-    editor.setToolbarAutoFixed(false);
-
-    function debounce(func, wait) {
-        let timer;
-        return function() {
-            let context = this; // 注意 this 指向
-            let args = arguments; // arguments中存着e
-
-            if (timer) clearTimeout(timer);
-
-            timer = setTimeout(() => {
-                func.apply(this, args)
-            }, wait)
-        }
-    }</script>
+    editor.setToolbarAutoFixed(false);</script>
