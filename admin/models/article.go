@@ -33,6 +33,7 @@ type Article struct {
 	View       int            `json:"view"`                        // 阅读
 	Url        sql.NullString `json:"url"`                         // 链接
 	Content    string         `json:"content;" gorm:"type:text"`   // 内容
+	Markdown   bool           `json:"markdown"`                    // 是否是markdown格式 默认否
 	Type       int            `json:"type;" gorm:"size:8"`         // 0 草稿箱 1发布 2垃圾箱
 	Praise     int            `json:"praise"`                      // 赞
 	IsTop      int            `json:"is_top"`                      // 置顶
