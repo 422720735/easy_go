@@ -31,8 +31,6 @@ type Article struct {
 	Keyword    sql.NullString `json:"keyword"`                     // 关键字
 	Tags       sql.NullString `json:"tags"`                        // 标签
 	View       int            `json:"view"`                        // 阅读
-	Url        sql.NullString `json:"url"`                         // 链接
-	Content    string         `json:"content;" gorm:"type:text"`   // 内容
 	Markdown   bool           `json:"markdown"`                    // 是否是markdown格式 默认否
 	Type       int            `json:"type;" gorm:"size:8"`         // 0 草稿箱 1发布 2垃圾箱
 	Praise     int            `json:"praise"`                      // 赞
@@ -44,4 +42,10 @@ type Article struct {
 
 	CreatedTime time.Time    `json:"created_time"`
 	UpdateTime  sql.NullTime `json:"update_time"`
+}
+
+// 文章内容 1对1
+type ArticleContent struct {
+	Url        sql.NullString `json:"url"`                         // 链接
+	Content    string         `json:"content;" gorm:"type:text"`   // 内容
 }

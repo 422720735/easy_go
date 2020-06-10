@@ -46,6 +46,7 @@ func CreatedTable() {
 		&models.User{},
 		&models.ArticleType{},
 		&models.Article{},
+		&models.ArticleContent{},
 	)
 }
 
