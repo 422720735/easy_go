@@ -1,8 +1,10 @@
 package article
 
 import (
+	"blogadminapi/transform"
 	"easy_go/admin/common"
 	"easy_go/admin/servers"
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
 	"time"
 )
@@ -86,5 +88,86 @@ func (c *ArticleDetails) HandArticleDetailsInsert() {
 		c.Error("获取文章详情数据失败")
 		return
 	}
+
+	title, err := transform.InterToString(msg["title"])
+	if err != nil {
+		logs.Alert("获取文章标题失败", err.Error())
+		c.Error("获取文章标题失败")
+		return
+	}
+
+	menuId, err := transform.InterToInt(msg["menuId"])
+	if err != nil {
+		logs.Alert("获取文章menu失败", err.Error())
+		c.Error("获取文章menu失败")
+		return
+	}
+
+	categoryId, err := transform.InterToInt(msg["categoryId"])
+	if err != nil {
+		logs.Alert("获取文章类型失败", err.Error())
+		c.Error("获取文章类型失败")
+		return
+	}
+
+	content, err := transform.InterToString(msg["content"])
+	if err != nil {
+		logs.Alert("获取文章内容失败", err.Error())
+		c.Error("获取文章内容失败")
+		return
+	}
+
+	cover, err := transform.InterToString(msg["cover"])
+	if err != nil {
+		logs.Alert("获取文章封面失败", err.Error())
+		c.Error("获取文章封面失败")
+		return
+	}
+
+	desc, err := transform.InterToString(msg["desc"])
+	if err != nil {
+		logs.Alert("获取文章描述失败", err.Error())
+		c.Error("获取文章描述失败")
+		return
+	}
+
+	keyword, err := transform.InterToString(msg["keyword"])
+	if err != nil {
+		logs.Alert("获取文章关键字失败", err.Error())
+		c.Error("获取文章关键字失败")
+		return
+	}
+
+	isTop, err := transform.InterToBool(msg["isTop"])
+	if err != nil {
+		logs.Alert("获取文章置顶失败", err.Error())
+		c.Error("获取文章置顶失败")
+		return
+	}
+
+	hot, err := transform.InterToBool(msg["hot"])
+	if err != nil {
+		logs.Alert("获取文章热门失败", err.Error())
+		c.Error("获取文章热门失败")
+		return
+	}
+
+	recommend, err := transform.InterToBool(msg["recommend"])
+	if err != nil {
+		logs.Alert("获取文章推荐失败", err.Error())
+		c.Error("获取文章推荐失败")
+		return
+	}
+
+	prod, err := transform.InterToBool(msg["prod"])
+	if err != nil {
+		logs.Alert("参数不正确", err.Error())
+		c.Error("参数不正确")
+		return
+	}
+
+	beego.Info(title, menuId, categoryId, content, cover, desc, keyword, isTop, hot, recommend, prod)
+	//beego.Info(title, menuId, categoryId)
+
 	c.Success(msg)
 }

@@ -1,4 +1,4 @@
-<script src="/static/assets/js/wangEditor.min.js"></script><script src="/static/js/cupload.js"></script><script>// 富文本编辑器
+<script src="/static/js/api/article/articleDetails.js"></script><script src="/static/assets/js/wangEditor.min.js"></script><script src="/static/js/cupload.js"></script><script>// 富文本编辑器
     var E = window.wangEditor
     var editor = new E('#editor')
     editor.customConfig.onchange = function (html) {
@@ -6,5 +6,6 @@
         const n = editor.txt.text().length
         $('.article_editor_charCount').text(n ? n : 0);
         window.content = editor.txt.html()
+        window.text = editor.txt.text()
     }
-    editor.create()</script><script>var cuploadCreate=new Cupload({ele:"#cupload",num:1,width:160,height:114})</script><script src="/static/js/api/article/articleDetails.js"></script>
+    editor.create()</script><script>var cuploadCreate=new Cupload({ele:"#cupload",num:1,width:160,height:114})</script>

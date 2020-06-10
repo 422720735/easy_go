@@ -10,6 +10,7 @@
         const n = editor.txt.text().length
         $('.article_editor_charCount').text(n ? n : 0);
         window.content = editor.txt.html()
+        window.text = editor.txt.text()
     }
     editor.create()
 </script>

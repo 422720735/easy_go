@@ -57,7 +57,7 @@
                     <div class="thumb" id="cupload"></div>
                 </div>
                 <div class="fr">
-                    <textarea id="article-desc" placeholder="选填，摘要会在文章列表页显露，帮助读者快速了解内容，如不填写则默认抓取正文前54字"></textarea>
+                    <textarea id="article-desc" oninput="articleItemValue()" onchange="articleItemValue()" placeholder="选填，摘要会在文章列表页显露，帮助读者快速了解内容，如不填写则默认抓取正文前54字" maxlength="54"></textarea>
                 </div>
             </div>
         </div>
