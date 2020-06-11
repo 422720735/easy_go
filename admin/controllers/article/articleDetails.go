@@ -4,7 +4,6 @@ import (
 	"blogadminapi/transform"
 	"easy_go/admin/common"
 	"easy_go/admin/servers"
-	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
 	"time"
 )
@@ -166,8 +165,11 @@ func (c *ArticleDetails) HandArticleDetailsInsert() {
 		return
 	}
 
-	beego.Info(title, menuId, categoryId, content, cover, desc, keyword, isTop, hot, recommend, prod)
-	//beego.Info(title, menuId, categoryId)
-
+	err = servers.ArticleDetails(title, content, cover, desc, keyword, menuId, categoryId, isTop, hot, recommend, prod)
+	if err != nil {
+		logs.Alert("参数不正确", err.Error())
+		c.Error("参数不正确")
+		return
+	}
 	c.Success(msg)
 }

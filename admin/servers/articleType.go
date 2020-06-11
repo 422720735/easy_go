@@ -8,7 +8,7 @@ import (
 
 // 新增路由菜单数据
 func InsertArticleType(articleName, KeyWord string, menuId int, isHotSwitch bool) error {
-	var a models.ArticleType
+	var a *models.ArticleType
 	a.ArticleName = articleName
 	a.KeyWord = KeyWord
 	a.MenuId = menuId
@@ -30,30 +30,30 @@ func InsertArticleType(articleName, KeyWord string, menuId int, isHotSwitch bool
 // ！！！！！！！！！！！！！！！
 // ！！！！！！！！！！！！！！！
 // ！！！！！！！！！！！！！！！
-func SelectArticleTypeList(page, size int) (*[]models.ArticleType, int64, error) {
-	var articleTypeList []models.ArticleType
+func SelectArticleTypeList(page, size int) ([]*models.ArticleType, int64, error) {
+	var articleTypeList []*models.ArticleType
 	var total int64
 	// 开始查询
 	err := db.DbConn.Model(&articleTypeList).Count(&total).Error
 	if err != nil {
-		return &articleTypeList, total, err
+		return articleTypeList, total, err
 	}
 
 	// 查询分页数据
 	err = db.DbConn.Limit(size).Offset((page - 1) * size).Order("sort asc").Find(&articleTypeList).Error
 	if err != nil {
-		return &articleTypeList, total, err
+		return articleTypeList, total, err
 	}
 
-	return &articleTypeList, total, nil
+	return articleTypeList, total, nil
 }
 
 // 查询所有的类型及与之相对应的父级menu
 func SelectArticleTypeMenuName() ([]interface{}, error) {
 	// 文章类型
-	var articleType []models.ArticleType
+	var articleType []*models.ArticleType
 	// menu
-	var menuList []models.MenuSetting
+	var menuList []*models.MenuSetting
 
 	// menu
 	err := db.DbConn.Select([]string{"id", "menu_name", "child_status", "visible"}).Find(&menuList).Error

@@ -27,7 +27,7 @@ func Unmarshal(c *beego.Controller) (map[string]interface{}, error) {
 }
 
 // 生成token
-func NewCurrentCookie(user models.User) (string, error) {
+func NewCurrentCookie(user *models.User) (string, error) {
 	//CreateToken
 	j := &myjwt.JWT{
 		[]byte(SECRET_TOKEN_KEY),

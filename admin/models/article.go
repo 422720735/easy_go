@@ -34,8 +34,8 @@ type Article struct {
 	Markdown   bool           `json:"markdown"`                    // 是否是markdown格式 默认否
 	Type       int            `json:"type;" gorm:"size:8"`         // 0 草稿箱 1发布 2垃圾箱
 	Praise     int            `json:"praise"`                      // 赞
-	IsTop      int            `json:"is_top"`                      // 置顶
-	Recommend  int            `json:"recommend"`                   // 推荐
+	IsTop      bool           `json:"is_top"`                      // 置顶
+	Recommend  bool           `json:"recommend"`                   // 推荐
 	Hot        bool           `json:"hot"`                         // 热门
 	Sort       int            `json:"sort; "gorm:"AUTO_INCREMENT"` // 排序
 	State      bool           `json:"state"`                       // 软删除
@@ -46,6 +46,11 @@ type Article struct {
 
 // 文章内容 1对1
 type ArticleContent struct {
-	Url        sql.NullString `json:"url"`                         // 链接
-	Content    string         `json:"content;" gorm:"type:text"`   // 内容
+	Url     sql.NullString `json:"url"`                       // 链接
+	Content string         `json:"content;" gorm:"type:text"` // 内容
+}
+
+type Special struct {
+	Id    int           `json:"id"`
+	HotId sql.NullInt64 `json:"hot_id"` // 记录置顶id
 }

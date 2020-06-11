@@ -27,7 +27,7 @@ func SelectMenuPage(page, size int) (*[]models.MenuSetting, int64, error) {
 
 // 新增路由菜单数据
 func InsertMenu(menuName, path, icon string, isChildSwitch, isHotSwitch bool) error {
-	var m models.MenuSetting
+	var m *models.MenuSetting
 	m.MenuName = menuName
 	m.Path = path
 	m.Icon = icon
