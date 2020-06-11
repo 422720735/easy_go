@@ -1,7 +1,7 @@
 const HOST = '/api'
 const Ok = 1
 
-let title, type, created, update, cover, desc, keyword, isTop, hot, recommend;
+let title, type, created, update, cover, desc, tags, keyword, isTop, hot, recommend;
 
 // 文章内容挂载到文章详情上面。
 let content = window.content
@@ -27,6 +27,26 @@ function articleItemValue() {
 
 function save(prod = false) {
     articleItemValue()
+
+    /**
+     * 标签
+     * */
+    const TagHtml = $('#articleTags li')
+    let Tags = []
+    for (var i = 0; i < TagHtml.length; i++) {
+        if ($(TagHtml[i]).find('.tagit-label') && $(TagHtml[i]).find('span.tagit-label').length > 0) {
+            if ($(TagHtml[i]).find('.tagit-label')[0].innerText &&
+                $(TagHtml[i]).find('.tagit-label')[0].innerText !== '' &&
+                typeof $(TagHtml[i]).find('.tagit-label')[0].innerText === 'string'
+            ) {
+                Tags.push($(TagHtml[i]).find('.tagit-label')[0].innerText)
+            }
+        }
+    }
+
+    if (Tags.length === 0) Tags = ''
+    else Tags.join(',')
+
     const data = {
         title,
         created,
@@ -41,8 +61,12 @@ function save(prod = false) {
         prod
     }
 
+    if (Tags !== '') {
+        data.Tags = Tags
+    }
+
     if (desc === undefined || desc === '' || !desc) {
-        data.desc = window.text.substr(0, 54)
+        data.desc = window.text ? window.text.substr(0, 54) : null
     }
 
     if (type && Array.isArray(type) && type.length === 1) {
@@ -57,9 +81,9 @@ function save(prod = false) {
         data['categoryId'] = type[1]
     }
 
-    Object.keys(data).map(item => {
-        if (data[item] === undefined || data[item] === null) {
-            delete data[item]
+    Object.keys(data).map(key => {
+        if (data[key] === '' || data[key] === undefined || data[key] === null) {
+            (key !== 'keyword') && delete data[key]
         }
     })
 

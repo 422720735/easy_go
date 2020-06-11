@@ -27,7 +27,7 @@ func Unmarshal(c *beego.Controller) (map[string]interface{}, error) {
 }
 
 // 生成token
-func NewCurrentCookie(user *models.User) (string, error) {
+func NewCurrentCookie(user models.User) (string, error) {
 	//CreateToken
 	j := &myjwt.JWT{
 		[]byte(SECRET_TOKEN_KEY),
@@ -90,7 +90,7 @@ func ParseTokenUser(userCook string) *myjwt.CustomClaims {
 	u.LoginIp = claims.LoginIp
 	u.AuthToken = userCook
 	// 去数据库查询
-	intCount, err := servers.LoginInfoParse(&u)
+	intCount, err := servers.LoginInfoParse(u)
 	if intCount == 1 && err == nil {
 		return claims
 	}

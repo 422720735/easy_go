@@ -89,7 +89,7 @@ func (c *ArticleDetails) HandArticleDetailsInsert() {
 	}
 
 	title, err := transform.InterToString(msg["title"])
-	if err != nil {
+	if err != nil || title == "" {
 		logs.Alert("获取文章标题失败", err.Error())
 		c.Error("获取文章标题失败")
 		return
@@ -110,14 +110,14 @@ func (c *ArticleDetails) HandArticleDetailsInsert() {
 	}
 
 	content, err := transform.InterToString(msg["content"])
-	if err != nil {
+	if err != nil || content == "" {
 		logs.Alert("获取文章内容失败", err.Error())
 		c.Error("获取文章内容失败")
 		return
 	}
 
 	cover, err := transform.InterToString(msg["cover"])
-	if err != nil {
+	if err != nil || cover == "" {
 		logs.Alert("获取文章封面失败", err.Error())
 		c.Error("获取文章封面失败")
 		return

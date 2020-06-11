@@ -24,7 +24,7 @@ type Article struct {
 	Id         int            `json:"id"`
 	MenuId     int            `json:"menu_id"`                     // 导航id
 	CategoryId sql.NullInt64  `json:"category_id"`                 // 分类
-	Cover      string         `json:"cover"`                       // 封面
+	Cover      string         `json:"cover;" gorm:"type:text"`                       // 封面
 	Title      string         `json:"title;" gorm:"not null"`      // 标题
 	Author     sql.NullString `json:"author"`                      // 作者
 	Desc       string         `json:"desc"`                        // 封面描述
