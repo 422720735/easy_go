@@ -38,8 +38,11 @@ func ArticleDetails(title, content, cover, desc, keyword string, menuId, categor
 	}
 
 	a := &models.Article{
-		Title:       title,
-		Cover:       cover,
+		Title: title,
+		Cover: sql.NullString{
+			String: cover,
+			Valid:  false,
+		},
 		Desc:        desc,
 		MenuId:      menuId,
 		Keyword:     sql.NullString{String: keyword, Valid: false},
