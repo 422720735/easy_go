@@ -1,7 +1,7 @@
 package article
 
 import (
-	"blogadminapi/transform"
+	"easy_go/admin/transform"
 	"easy_go/admin/common"
 	"easy_go/admin/servers"
 	"github.com/astaxie/beego/logs"

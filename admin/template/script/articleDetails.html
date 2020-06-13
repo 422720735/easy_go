@@ -1,6 +1,5 @@
 <script src="/static/js/api/article/articleDetails.js"></script>
 <script src="/static/assets/js/wangEditor.min.js"></script>
-<script src="/static/js/cupload.js"></script>
 <script type="text/javascript">
     // 富文本编辑器
     var E = window.wangEditor
@@ -15,13 +14,4 @@
     editor.create()
 </script>
 
-<script>
-    // 图片上传
-    var cuploadCreate = new Cupload({
-        ele: '#cupload',
-        num: 1,
-        width: 160, // 预览框的宽,单位为px,非必需,默认为148
-        height: 114, // 预览框的高,单位为px,非必需,默认为148
-    });
-</script>
 {{template "articeCommon" .}}
