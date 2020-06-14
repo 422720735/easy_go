@@ -15,3 +15,76 @@
 </script>
 
 {{template "articeCommon" .}}
+
+
+<script>
+    (function (window) {
+
+        const QiNiuToken = function (options) {
+            if (!(this instanceof QiNiuToken)) {
+                return new QiNiuToken(options)
+            }
+
+            this.keyValue = {
+                ExpireKey: 'expireTime',
+                SecretKey: 'SecretKey',
+                localStorageKey: 'localStorage'
+            }
+
+            this.opt = this.extend(this.localValue, options, true)
+        }
+
+
+        QiNiuToken.prototype = {
+            constructor: this,
+            extend: function (o, n, override) {
+                for (const key in n) {
+                    if (n.hasOwnProperty(key) && (!o.hasOwnProperty(key) || override)) {
+                        o[key] = n[key]
+                    }
+                }
+                return o
+            },
+
+            set: function (data, error) {
+                if (data && Object.keys(data).length === 2) {
+                    const keys = this.finishing(data)
+                    let option = {}
+                    option[this.opt.ExpireKey] = keys[0]
+                    option[this.opt.SecretKey] = keys[1]
+                    localStorage.setItem('' + this.opt.localStorageKey, JSON.stringify(option))
+                } else error()
+            },
+            get: function () {
+                let store = JSON.parse(localStorage.getItem('' + this.opt.localStorageKey))
+                if (store && store !== '' && store !== undefined && Object.keys(store).length === 2) {
+                    const now = new Date().getTime()
+                    const end = store[this.opt.ExpireKey]
+                    if (now < end) {
+                        return store
+                    } else null
+                } else {
+                    return null
+                }
+            },
+            finishing: function (data) {
+                var array = [0, 0]
+                for (const k in data) {
+                    if (isNaN(data[k]) && !isNaN(Date.parse(data[k]))) {
+                        array[0] = data[k]
+                    } else {
+                        array[1] = data[k]
+                    }
+                }
+                return array
+            }
+        }
+
+        window.QiNiuToken = QiNiuToken;
+    })(window)
+</script>
+
+<script>
+    var d = new QiNiuToken()
+    d.test()
+</script>
