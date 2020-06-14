@@ -87,6 +87,8 @@ function save(prod = false) {
         }
     })
 
+
+
     $.ajax({
         url: HOST + '/article/details/add',
         data: JSON.stringify(data),
@@ -103,3 +105,9 @@ function save(prod = false) {
         }
     })
 }
+
+
+/**
+ * 1: 先查看永久存储有token？
+ * 2：如果有就获取到看过期没有， 过期就执行请求token, 成功后走七牛云到存储。
+ * */

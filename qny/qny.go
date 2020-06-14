@@ -2,8 +2,8 @@ package qny
 
 import (
 	"easy_go/lib"
-	"github.com/api.v7/auth/qbox"
-	"github.com/api.v7/storage"
+	"github.com/qiniu/api.v7/auth/qbox"
+	"github.com/qiniu/api.v7/storage"
 )
 
 func UpLoadQiNiuToken() string {
@@ -14,6 +14,7 @@ func UpLoadQiNiuToken() string {
 	putPolicy := storage.PutPolicy{
 		Scope: bucket,
 	}
+
 	mac := qbox.NewMac(AccessKey, SecretKey)
 	upToken := putPolicy.UploadToken(mac)
 	return upToken

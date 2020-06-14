@@ -4,7 +4,6 @@ import (
 	"easy_go/admin/common"
 	"easy_go/admin/servers"
 	"easy_go/admin/transform"
-	"easy_go/qny"
 	"github.com/astaxie/beego/logs"
 	"time"
 )
@@ -166,12 +165,11 @@ func (c *ArticleDetails) HandArticleDetailsInsert() {
 		return
 	}
 
-	_ = servers.ArticleDetails(title, content, cover, desc, keyword, menuId, categoryId, isTop, hot, recommend, prod)
-	//if err != nil {
-	//	logs.Alert("参数不正确", err.Error())
-	//	c.Error("参数不正确")
-	//	return
-	//}
-	token := qny.UpLoadQiNiuToken()
-	c.Success(token)
+	err = servers.ArticleDetails(title, content, cover, desc, keyword, menuId, categoryId, isTop, hot, recommend, prod)
+	if err != nil {
+		logs.Alert("参数不正确", err.Error())
+		c.Error("参数不正确")
+		return
+	}
+	c.Success("操作成功")
 }
