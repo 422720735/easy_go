@@ -1,6 +1,1 @@
-/**
- * 路由接口
- * */
-var HOST = '/api';
-var Ok = 1;
-var Err = 0;
+var HOST="/api",Ok=1,Err=0;

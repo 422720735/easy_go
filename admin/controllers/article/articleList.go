@@ -1,13 +1,32 @@
 package article
 
-import "github.com/astaxie/beego"
+import (
+	"easy_go/admin/common"
+	"easy_go/admin/servers"
+	"github.com/astaxie/beego"
+	"strconv"
+)
 
 type ArticleList struct {
 	beego.Controller
 }
 
-func (c *ArticleList)Get()  {
+func (c *ArticleList) Get() {
 	c.Layout = "layout/mainLayout.html"
+
+	pageStr := c.GetString("page")
+	var page int
+	_int, err := strconv.ParseInt(pageStr, 10, 64)
+	if err != nil {
+		page = 1
+	}
+	page = int(_int)
+
+	// 类型分类
+	articleTypeList, _ := servers.SelectArticleTypeMenuName()
+	// 文章list分页查询
+	data, total, _ := servers.SelectArticlePageList(page, common.PAGE_SIZE)
+	articleList := common.Paginator(page, common.PAGE_SIZE, total, data)
 
 	c.TplName = "pages/article/articleList/articleList.html"
 	c.LayoutSections = make(map[string]string)
@@ -21,4 +40,8 @@ func (c *ArticleList)Get()  {
 	c.LayoutSections["BaseStyle"] = "style/baseStyle.html"
 	// js
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
+
+	// 数据
+	c.Data["articleTypeList"] = articleTypeList
+	c.Data["articleList"] = articleList
 }
