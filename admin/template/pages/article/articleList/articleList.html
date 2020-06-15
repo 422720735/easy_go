@@ -34,9 +34,8 @@
                                     <input type="text" class="form-control" placeholder="请输入要搜索的文章标题">
                                 </div>
                                 <div class="col-md-4 col-sm-6 pr-0">
-
-
-                                    <select class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
+                                    <select class="select2 form-control select2-multiple" data-toggle="select2"
+                                            multiple="multiple" data-placeholder="Choose ...">
                                         {{range $i, $v := .articleTypeList}}
                                             {{if $v.child}}
                                                 <optgroup label="{{$v.name}}">
@@ -70,42 +69,37 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>
-                                        <a href="/article/details?id=1&title=javaScript" class="text-c-blue">javaScript学习笔记（一）js基础</a>
-                                    </td>
-                                    <td>20</td>
-                                    <td>2019-10-19 22:47</td>
-                                    <td>2019-10-19 22:47</td>
-                                    <td>普通</td>
-                                    <td>10</td>
-                                    <td>
-                                        <a href="/article/details?id=1&title=javaScript学习笔记（一）js基础" class="text-c-blue">详情</a>
-                                        <!-- Danger header modal -->
-                                        <a href="#!" class="text-c-blue text-warning" data-toggle="modal"
-                                           data-target="#myModal">隐藏</a>
-                                        <a href="#!" class="text-c-blue text-danger" data-toggle="modal"
-                                           data-target="#myModal">删除</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="/article/details?id=1&title=javaScript学习笔记（一）js基础" class="text-c-blue">javaScript学习笔记（一）js基础</a>
-                                    </td>
-                                    <td>20</td>
-                                    <td>2019-10-19 22:47</td>
-                                    <td></td>
-                                    <td class="text-danger">置顶</td>
-                                    <td>10</td>
-                                    <td>
-                                        <a href="/article/details?id=1&title=javaScript学习笔记（一）js基础" class="text-c-blue">详情</a>
-                                        <!-- Danger header modal -->
-                                        <a href="#!" class="text-c-blue text-warning" data-toggle="modal"
-                                           data-target="#myModal">隐藏</a>
-                                        <a href="#!" class="text-c-blue text-danger" data-toggle="modal"
-                                           data-target="#myModal">删除</a>
-                                    </td>
-                                </tr>
+                                {{range $i, $v := .articleList.list}}
+                                    <tr>
+                                        <td>
+                                            <a href="/article/details?id=1&title={{$v.Title}}"
+                                               class="text-c-blue">{{$v.Title}}</a>
+                                        </td>
+                                        <td>20</td>
+                                        <td>{{$v.CreatedTime.Format "2006-01-02 15:04:05"}}</td>
+                                        {{if $.v.UpdateTime.Valid}}
+                                            <td>{{$v.UpdateTime}}</td>
+                                        {{else}}
+                                            <td></td>
+                                        {{end}}
+                                        {{if and ($.top_id.Valid) (eq $.top_id.Int64 $v.Id)}}
+                                            <td class="text-danger">置顶</td>
+                                        {{else}}
+                                            <td>普通</td>
+                                        {{end}}
+                                        <td>{{$v.View}}</td>
+                                        <td>
+
+                                            <a href="/article/details?id=1&title={{$v.Title}}"
+                                               class="text-c-blue">详情</a>
+                                            <!-- Danger header modal -->
+                                            <a href="#!" class="text-c-blue text-warning" data-toggle="modal"
+                                               data-target="#myModal">隐藏</a>
+                                            <a href="#!" class="text-c-blue text-danger" data-toggle="modal"
+                                               data-target="#myModal">删除</a>
+                                        </td>
+                                    </tr>
+                                {{end}}
                                 </tbody>
                             </table>
                         </div>

@@ -23,10 +23,6 @@ func IsArticleTake(title string) error {
 }
 
 func ArticleDetails(title, content, cover, desc, keyword string, menuId, categoryId int, isTop, hot, recommend, prod bool, id ...int) error {
-	c := &models.ArticleContent{
-		Content: content,
-	}
-
 	// 0 草稿箱 1发布 2垃圾箱
 	var save int
 
@@ -44,13 +40,19 @@ func ArticleDetails(title, content, cover, desc, keyword string, menuId, categor
 		},
 		Desc:        desc,
 		MenuId:      menuId,
-		Keyword:     sql.NullString{String: keyword, Valid: true},
-		CategoryId:  sql.NullInt64{Int64: int64(categoryId), Valid: true},
 		IsTop:       isTop,
 		Hot:         hot,
 		Recommend:   recommend,
 		Type:        save,
 		CreatedTime: time.Now(),
+	}
+
+	if categoryId != -1 {
+		a.CategoryId = sql.NullInt64{Int64: int64(categoryId), Valid: true}
+	}
+
+	if keyword != "" {
+		a.Keyword = sql.NullString{String: keyword, Valid: true}
 	}
 
 	var count int
@@ -62,16 +64,19 @@ func ArticleDetails(title, content, cover, desc, keyword string, menuId, categor
 	// 开始事务
 	tx := db.DbConn.Begin()
 	defer tx.Commit()
-
 	// 如果需要置顶，新增文章 内部 最后根据返回的id 修改置顶id
-	err = db.DbConn.Create(&a).Error
-
+	err = tx.Create(&a).Error
 	if err != nil {
 		tx.Rollback()
 		return err
 	}
 
-	err = db.DbConn.Create(&c).Error
+	c := &models.ArticleContent{
+		Content: content,
+		ArticleId: a.Id,
+	}
+
+	err = tx.Create(&c).Error
 	if err != nil {
 		tx.Rollback()
 		return err
@@ -80,9 +85,10 @@ func ArticleDetails(title, content, cover, desc, keyword string, menuId, categor
 	if isTop {
 		var count int
 		s := models.Special{
-			HotId: sql.NullInt64{Int64: int64(a.Id), Valid: true},
+			TopId: sql.NullInt64{Int64: int64(a.Id), Valid: true},
+			CreatedTime: time.Now(),
 		}
-		err = db.DbConn.Select([]string{"id"}).Model(&models.Special{}).Count(&count).Error
+		err = tx.Select([]string{"id"}).Model(&models.Special{}).Count(&count).Error
 		if err != nil {
 			tx.Rollback()
 			return err

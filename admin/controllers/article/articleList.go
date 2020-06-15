@@ -26,6 +26,7 @@ func (c *ArticleList) Get() {
 	articleTypeList, _ := servers.SelectArticleTypeMenuName()
 	// 文章list分页查询
 	data, total, _ := servers.SelectArticlePageList(page, common.PAGE_SIZE)
+
 	articleList := common.Paginator(page, common.PAGE_SIZE, total, data)
 
 	c.TplName = "pages/article/articleList/articleList.html"
@@ -40,8 +41,15 @@ func (c *ArticleList) Get() {
 	c.LayoutSections["BaseStyle"] = "style/baseStyle.html"
 	// js
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
-
 	// 数据
 	c.Data["articleTypeList"] = articleTypeList
+
+	res, count, err := servers.SelectArticleIsTopId()
 	c.Data["articleList"] = articleList
+
+	if count == 1 && err == nil {
+		c.Data["top_id"] = res.TopId
+	} else {
+		c.Data["top_id"] = nil
+	}
 }

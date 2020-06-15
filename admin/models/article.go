@@ -30,7 +30,7 @@ type Article struct {
 	Desc       string         `json:"desc"`                        // 封面描述
 	Keyword    sql.NullString `json:"keyword"`                     // 关键字
 	Tags       sql.NullString `json:"tags"`                        // 标签
-	View       int            `json:"view"`                        // 阅读
+	View       int            `json:"view"`                        // 阅读量
 	Markdown   bool           `json:"markdown"`                    // 是否是markdown格式 默认否
 	Type       int            `json:"type;" gorm:"size:8"`         // 0 草稿箱 1发布 2垃圾箱
 	Praise     int            `json:"praise"`                      // 赞
@@ -46,11 +46,15 @@ type Article struct {
 
 // 文章内容 1对1
 type ArticleContent struct {
-	Url     sql.NullString `json:"url"`                       // 链接
-	Content string         `json:"content;" gorm:"type:text"` // 内容
+	Id        int
+	ArticleId int            `json:"article_id"`                // 文章映射id
+	Url       sql.NullString `json:"url"`                       // 链接
+	Content   string         `json:"content;" gorm:"type:text"` // 内容
 }
 
 type Special struct {
 	Id    int           `json:"id"`
-	HotId sql.NullInt64 `json:"hot_id"` // 记录置顶id
+	TopId sql.NullInt64 `json:"hot_id"` // 记录置顶id
+	CreatedTime time.Time    `json:"created_time"`
+	UpdateTime  sql.NullTime `json:"update_time"`
 }
