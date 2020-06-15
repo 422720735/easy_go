@@ -1,0 +1,51 @@
+{{define "articeQiniu"}}<script src="https://unpkg.com/qiniu-js@2.5.5/dist/qiniu.min.js"></script>{{/*<script>*/}}
+{{/*        var uploader = Qiniu.uploader({*/}}
+{{/*            disable_statistics_report: false,                                   // 禁止自动发送上传统计信息到七牛，默认允许发送*/}}
+{{/*            runtimes: 'html5,flash,html4',                                      // 上传模式，依次退化*/}}
+{{/*            browse_button: 'uploadImage',                                       // 上传选择的点选按钮，必需*/}}
+{{/*            container: 'container',                                             // 上传区域DOM ID，默认是browser_button的父元素*/}}
+{{/*            max_file_size: '100mb',                                             // 最大文件体积限制*/}}
+{{/*            flash_swf_url: 'Moxie.swf',                                         // 引入flash，相对路径*/}}
+{{/*            dragdrop: false,                                                    // 关闭可拖曳上传*/}}
+{{/*            chunk_size: '4mb',                                                  // 分块上传时，每块的体积*/}}
+{{/*            multi_selection: !(moxie.core.utils.Env.OS.toLowerCase() === "ios"),*/}}
+{{/*            uptoken_url: 'XXX',                                                 // 在初始化时，uptoken，uptoken_url，uptoken_func三个参数中必须有一个被设置,uptoken是上传凭证，由其他程序生成;uptoken_url是提供了获取上传凭证的地址，如果需要定制获取uptoken的过程则可以设置uptoken_func;其优先级为uptoken > uptoken_url > uptoken_func*/}}
+{{/*            domain: 'XXX',                                                      // bucket域名，下载资源时用到，必需*/}}
+{{/*            get_new_uptoken: true,                                              // 设置上传文件的时候是否每次都重新获取新的uptoken*/}}
+{{/*            auto_start: true,                                                   // 选择文件后自动上传，若关闭需要自己绑定事件触发上传*/}}
+{{/*            max_retries: 3,                                                     // 上传失败最大重试次数*/}}
+{{/*            save_key: true,*/}}
+{{/*            resize: {                                                           // 想限制上传图片尺寸，直接用resize这个属性*/}}
+{{/*                width: 300,*/}}
+{{/*                height: 300*/}}
+{{/*            },*/}}
+{{/*            init: {*/}}
+{{/*                'FilesAdded': function(up, files) {                             // 文件添加进队列后，处理相关的事情*/}}
+{{/*                    plupload.each(files, function(file) {*/}}
+{{/*                        console.log(file)*/}}
+{{/*                    });*/}}
+{{/*                },*/}}
+{{/*                'BeforeUpload': function(up, file) {                            // 每个文件上传前，处理相关的事情*/}}
+{{/*                    console.log("开始上传之前");*/}}
+{{/*                    $(".upload-progress").show();*/}}
+{{/*                },*/}}
+{{/*                'UploadProgress': function(up, file) {                          // 每个文件上传时，处理相关的事情*/}}
+{{/*                    console.log("上传中");*/}}
+{{/*                    $(".upload-progress").html("上传进度:"+file.percent + "%");*/}}
+{{/*                },*/}}
+{{/*                'FileUploaded': function(up, file, info) {                       // 每个文件上传成功后，处理相关的事情*/}}
+{{/*                    console.log("上传成功");*/}}
+{{/*                    $(".upload-progress").hide();*/}}
+{{/*                    var img = new Image();                                      //创建一个Image对象，实现图片的预下载*/}}
+{{/*                    img.src = "http://qiniu.com/"+res.key;*/}}
+{{/*                    $("#container").append(img);*/}}
+{{/*                },*/}}
+{{/*                'Error': function(up, err, errTip) {*/}}
+{{/*                    console.log("上传出错")*/}}
+{{/*                },*/}}
+{{/*                'UploadComplete': function() {*/}}
+{{/*                    //队列文件处理完毕后，处理相关的事情*/}}
+{{/*                }*/}}
+{{/*            }*/}}
+{{/*        });*/}}
+{{/*</script>*/}} {{end}}

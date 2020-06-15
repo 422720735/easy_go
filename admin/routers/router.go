@@ -53,7 +53,7 @@ func init() {
 }
 
 func register() {
-	beego.Router(Api+"/qn/token", &controllers.LoginController{}, "post:HandleLogin")
+	beego.Router(Api+"/qn/token", &controllers.QiNiuController{}, "get:InsertToken")
 
 	beego.Router(Api+"/login", &controllers.LoginController{}, "post:HandleLogin")
 	beego.Router(Api+"/register", &controllers.RegisterController{}, "post:AddRegister")

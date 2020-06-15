@@ -86,19 +86,31 @@ function save(prod = false) {
             (key !== 'keyword') && delete data[key]
         }
     })
+    if (!get()) {
+        handleToken((data) => {
+            // data["SecretKey"]
+        })
+    } else {
+        // 七牛云
+        const token = get().secretKey
+
+    }
+}
 
 
-
+/**
+ * 1: 先查看永久存储有token？
+ * 2：如果有就获取到看过期没有， 过期就执行请求token, 成功后走七牛云到存储。
+ * */
+function handleToken(success) {
     $.ajax({
-        url: HOST + '/article/details/add',
-        data: JSON.stringify(data),
-        method: 'POST',
+        url: HOST + '/qn/token',
+        method: 'get',
         success: function (res) {
             if (res.code === Ok) {
-                // window.message.success(res)
-                // setTimeout(function () {
-                //     window.location.href = '/login'
-                // }, 5000)
+                set({expireTime: res.expireTime, token: res.token}, (data) => {
+                    success(data)
+                })
             } else {
                 window.message.error(res)
             }
@@ -107,7 +119,48 @@ function save(prod = false) {
 }
 
 
-/**
- * 1: 先查看永久存储有token？
- * 2：如果有就获取到看过期没有， 过期就执行请求token, 成功后走七牛云到存储。
- * */
+function set(data, success, error) {
+    if (data && Object.keys(data).length === 2) {
+        let option = {}
+        option['expireTime'] = data['expireTime']
+        option['secretKey'] = data['token']
+        localStorage.setItem('localStorage', JSON.stringify(option))
+        success && success(option)
+    } else {
+        error && error()
+    }
+}
+
+function get() {
+    let store = localStorage.getItem('localStorage'), results
+
+    if (store && isJSON(store)) {
+        store = JSON.parse(store)
+    } else {
+        return null
+    }
+
+
+    if (Object.keys(store).length === 2) {
+        const now = new Date().getTime()
+        const end = store['expireTime'] + 1000 * 60 *60
+        if (now < end) {
+            results = store
+        } else {
+            return null
+        }
+    }
+
+    return results
+}
+
+function isJSON(str) {
+    if (typeof str == 'string') {
+        try {
+            JSON.parse(str)
+            return true
+        } catch (e) {
+            return false
+        }
+    }
+}
