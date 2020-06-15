@@ -116,12 +116,7 @@ func (c *ArticleDetails) HandArticleDetailsInsert() {
 		return
 	}
 
-	cover, err := transform.InterToString(msg["cover"])
-	if err != nil || cover == "" {
-		logs.Alert("获取文章封面失败", err.Error())
-		c.Error("获取文章封面失败")
-		return
-	}
+	cover, _ := transform.InterToString(msg["cover"])
 
 	desc, err := transform.InterToString(msg["desc"])
 	if err != nil {
@@ -165,10 +160,16 @@ func (c *ArticleDetails) HandArticleDetailsInsert() {
 		return
 	}
 
+	err = servers.IsArticleTake(title)
+	if err != nil {
+		logs.Alert("", err.Error())
+		c.Error("已经存在相同的文章")
+		return
+	}
 	err = servers.ArticleDetails(title, content, cover, desc, keyword, menuId, categoryId, isTop, hot, recommend, prod)
 	if err != nil {
-		logs.Alert("参数不正确", err.Error())
-		c.Error("参数不正确")
+		logs.Alert("保存数据失败", err.Error())
+		c.Error("保存数据失败")
 		return
 	}
 	c.Success("操作成功")

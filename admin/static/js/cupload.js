@@ -130,6 +130,7 @@
 
 		uploadImage: function uploadImage() {
 			var file = this.uploadInput.files[0];
+			window.qiniuyun = file;
 			this.createUploadBox();
 			if (!file || this.limitedSize(file)) {
 				return false;
