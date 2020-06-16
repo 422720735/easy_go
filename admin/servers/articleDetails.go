@@ -5,6 +5,7 @@ import (
 	"easy_go/admin/db"
 	"easy_go/admin/models"
 	"errors"
+	"github.com/astaxie/beego"
 	"time"
 )
 
@@ -96,11 +97,8 @@ func ArticleDetails(title, content, cover, desc, keyword string, menuId, categor
 		if count == 0 {
 			err = db.DbConn.Create(&s).Error
 		} else {
-			s.UpdateTime = sql.NullTime{
-				Time: time.Now(),
-				Valid: true,
-			}
-			err = tx.Model(&s).Update("hot_id", a.Id).Error
+			beego.Info(count, "count==================================")
+			err = tx.Model(&s).Update("top_id", a.Id).Error
 		}
 
 		if err != nil {
