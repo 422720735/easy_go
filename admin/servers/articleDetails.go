@@ -49,7 +49,6 @@ func InsertArticleDetails(title, content, cover, desc, tags, keyword string, men
 		CreatedTime: time.Now(),
 	}
 
-	beego.Info(tags, "tags")
 	if tags != "" {
 		a.Tags = sql.NullString{String: tags, Valid: true}
 	}
@@ -115,6 +114,52 @@ func InsertArticleDetails(title, content, cover, desc, tags, keyword string, men
 	return nil
 }
 
+func UpdateArticleDetails(title, content, cover, desc, tags, keyword string, menuId, categoryId int, isTop, hot, recommend, prod, markdown bool, id int) error {
+	// 0 草稿箱 1发布 2垃圾箱
+	var save int
+
+	if prod {
+		save = 1
+	} else {
+		save = 0
+	}
+
+	a := &models.Article{
+		Id: id,
+		Title: title,
+		Cover: sql.NullString{
+			String: cover,
+			Valid:  true,
+		},
+		Desc:        desc,
+		MenuId:      menuId,
+		IsTop:       isTop,
+		Hot:         hot,
+		Recommend:   recommend,
+		Markdown:    markdown,
+		Type:        save,
+		CreatedTime: time.Now(),
+	}
+
+	if tags != "" {
+		a.Tags = sql.NullString{String: tags, Valid: true}
+	}
+
+	if categoryId != -1 {
+		a.CategoryId = sql.NullInt64{Int64: int64(categoryId), Valid: true}
+	}
+
+	if keyword != "" {
+		a.Keyword = sql.NullString{String: keyword, Valid: true}
+	}
+
+	// 开始事务
+	tx := db.DbConn.Begin()
+	defer tx.Commit()
+
+
+}
+
 type ArticleAll struct {
 	models.Article
 	Url     sql.NullString `json:"url"`
@@ -127,12 +172,10 @@ func SelectArticleDetails(id int) (*ArticleAll, error) {
 	var all ArticleAll
 	err := db.DbConn.Where(&models.Article{Id: id}).Find(&a).Error
 	if err != nil {
-		beego.Info("====1")
 		return nil, err
 	}
 	err = db.DbConn.Where(&models.ArticleContent{ArticleId: a.Id}).Find(&c).Error
 	if err != nil {
-		beego.Info("====2")
 		return nil, err
 	}
 

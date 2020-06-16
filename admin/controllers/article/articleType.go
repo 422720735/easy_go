@@ -4,7 +4,6 @@ import (
 	"easy_go/admin/common"
 	"easy_go/admin/servers"
 	"easy_go/admin/transform"
-	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
 	"strconv"
 )
@@ -23,7 +22,6 @@ func (c *ArticleControllerType) Get() {
 	page = int(_int)
 	data, total, _ := servers.SelectArticleTypeList(page, common.PAGE_SIZE)
 	articleTypelist := common.Paginator(page, common.PAGE_SIZE, total, data)
-	beego.Info(page, "page---")
 
 	c.Layout = "layout/mainLayout.html"
 

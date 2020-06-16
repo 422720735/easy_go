@@ -27,6 +27,10 @@
             const n = $('#articleContent').val().length
             window.content = $('#articleContent').val()
             $('.article_editor_charCount').text(n ? n : 0)
+        }, 200),
+        onload : _.debounce(function () {
+            this.setMarkdown(window.content);
+            window.content = null
         }, 200)
     });
     editor.setToolbarAutoFixed(false);</script>{{template "articeCommon" .}}

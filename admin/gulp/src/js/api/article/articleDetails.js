@@ -3,7 +3,7 @@ const ASSETS = 'http://qbv39uqsg.bkt.clouddn.com/'
 const Ok = 1
 
 let title, type, created, update, cover, desc, tags, keyword, isTop, hot, recommend;
-let coverStr
+let coverStr, id
 
 // 文章内容挂载到文章详情上面。
 let content = window.content
@@ -12,7 +12,6 @@ $(document).ready(function () {
     if (window.location.search && window.location.search !== '') {
         // 请求数据
         const id = getQueryVariable('id')
-
         if (id !== false) {
             $.ajax({
                 url: HOST + '/article/details?id=' + id,
@@ -34,15 +33,20 @@ $(document).ready(function () {
 function setValue(data) {
     const {title, menu_id, category_id, created_time, update_time, view, content, cover, desc, tags, keyword, is_top, hot, recommend} = data
 
+    id = data.id
+
     $('#article-title').val(title)
-    // $("#article-type").val("pxx")
-    if (!category_id.Valid) {
-        $("#article-type").val(menu_id)
+
+    if (category_id.Valid) {
+        let opt = []
+        opt.push(menu_id)
+        opt.push(category_id.Int64)
+        $("#article-type").val(opt.join(','))
     } else {
-        $("#article-type").val(category_id.Int64)
+        $("#article-type").val(menu_id)
     }
 
-        $('#article-created').val(moment(created_time).format('YYYY-MM-DD HH:mm:ss'))
+    $('#article-created').val(moment(created_time).format('YYYY-MM-DD HH:mm:ss'))
 
     if (update_time.Valid) {
         $('#article-update').val(moment(update_time).format('YYYY-MM-DD HH:mm:ss'))
@@ -78,7 +82,6 @@ function setValue(data) {
     if (keyword.Valid && keyword.String !== '') {
         $('#keyword').val(keyword.String)
     }
-
 
     $('#is-top').prop('checked', is_top)
     $('#hot').prop('checked', hot)
@@ -156,7 +159,7 @@ function save(prod = false) {
         Tags = Tags.join(',')
     }
 
-    if (cover) {
+    if (cover && window.qiniuyun) {
         // 走七牛云接口
         if (!get()) {
             const results = handleToken()
@@ -183,6 +186,10 @@ function save(prod = false) {
         recommend: recommend ? recommend : false,
         prod,
         markdown: !(window.location.pathname.indexOf('markdown') == -1)
+    }
+
+    if (id) {
+        data.id = id
     }
 
     if (Tags !== '') {
@@ -215,9 +222,9 @@ function save(prod = false) {
 
 function saveArticle(data) {
     $.ajax({
-        url: HOST + '/article/details/add',
+        url: HOST + '/article/details',
         data: JSON.stringify(data),
-        method: 'POST',
+        method: data.id ? 'Put' : 'POST',
         success: function (res) {
             if (res.code === Ok) {
                 remove()
@@ -236,7 +243,9 @@ function remove() {
     if (cover) {
         window.qiniuyun = null
     }
+    id = null
     title = null
+    data = null
     type = null
     created = null
     update = null

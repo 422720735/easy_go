@@ -9,7 +9,7 @@
     <select id="article-type">
         {{range $i, $v := .list}}
             {{if $v.child}}
-                <optgroup label="{{$v.name}}">
+                <optgroup label="{{$v.Id}}">
                     {{range $key, $item := $v.child}}
                         <option value="{{$v.id}},{{$item.id}}">{{$item.name}}</option>
                     {{end}}

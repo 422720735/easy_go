@@ -65,9 +65,9 @@ func register() {
 	beego.Router(Api + "/menuSetting/delete", &controllers.MenuController{},"post:HandDelete")
 
 	beego.Router(Api + "/articleType/add", &article.ArticleControllerType{},"post:HandArticleTypeAdd")
-	beego.Router(Api + "/article/details/add", &article.ArticleDetails{},"post:HandArticleDetailsInsert")
 
-	beego.Router(Api + "/article/details", &article.ArticleDetails{})
+	// 查询文章详情 文章新增 编辑接口
+	beego.Router(Api + "/article/details", &article.ArticleDetails{}, "get:ArticleAll;post:HandArticleDetailsInsert;put:HandArticleDetailsUpdate")
 
 
 	beego.Router("/test", &controllers.TestControllers{})

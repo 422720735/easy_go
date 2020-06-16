@@ -1,4 +1,4 @@
-<script src="/static/js/api/article/articleDetails.js"></script><script src="/static/assets/js/wangEditor.min.js"></script><script>// 富文本编辑器
+<script src="http://cdn.staticfile.org/moment.js/2.24.0/moment.min.js"></script><script src="/static/js/api/article/articleDetails.js"></script><script src="/static/assets/js/wangEditor.min.js"></script><script>// 富文本编辑器
     var E = window.wangEditor
     var editor = new E('#editor')
     editor.customConfig.onchange = function (html) {
@@ -8,4 +8,5 @@
         window.content = editor.txt.html()
         window.text = editor.txt.text()
     }
-    editor.create()</script>{{template "articeCommon" .}}
+    editor.create()
+    window.editor = editor</script>{{template "articeCommon" .}}
