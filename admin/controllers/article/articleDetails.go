@@ -128,7 +128,6 @@ func (c *ArticleDetails) HandArticleDetailsInsert() {
 
 	tags, _ := transform.InterToString(msg["tags"])
 
-
 	keyword, err := transform.InterToString(msg["keyword"])
 	if err != nil {
 		logs.Alert("获取文章关键字失败", err.Error())
@@ -164,13 +163,20 @@ func (c *ArticleDetails) HandArticleDetailsInsert() {
 		return
 	}
 
+	markdown, err := transform.InterToBool(msg["markdown"])
+	if err != nil {
+		logs.Alert("文章内容类型不正确", err.Error())
+		c.Error("文章内容类型不正确")
+		return
+	}
+
 	err = servers.IsArticleTake(title)
 	if err != nil {
 		logs.Alert("", err.Error())
 		c.Error("已经存在相同的文章")
 		return
 	}
-	err = servers.InsertArticleDetails(title, content, cover, desc, tags, keyword, menuId, categoryId, isTop, hot, recommend, prod)
+	err = servers.InsertArticleDetails(title, content, cover, desc, tags, keyword, menuId, categoryId, isTop, hot, recommend, prod, markdown)
 	if err != nil {
 		logs.Alert("保存数据失败", err.Error())
 		c.Error("保存数据失败")

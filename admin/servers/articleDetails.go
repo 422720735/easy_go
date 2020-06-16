@@ -23,7 +23,7 @@ func IsArticleTake(title string) error {
 	return nil
 }
 
-func InsertArticleDetails(title, content, cover, desc, tags, keyword string, menuId, categoryId int, isTop, hot, recommend, prod bool, id ...int) error {
+func InsertArticleDetails(title, content, cover, desc, tags, keyword string, menuId, categoryId int, isTop, hot, recommend, prod, markdown bool, id ...int) error {
 	// 0 草稿箱 1发布 2垃圾箱
 	var save int
 
@@ -44,6 +44,7 @@ func InsertArticleDetails(title, content, cover, desc, tags, keyword string, men
 		IsTop:       isTop,
 		Hot:         hot,
 		Recommend:   recommend,
+		Markdown:    markdown,
 		Type:        save,
 		CreatedTime: time.Now(),
 	}

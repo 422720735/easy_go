@@ -32,14 +32,30 @@ $(document).ready(function () {
 })
 
 function setValue(data) {
-    const { title, created_time, update_time,view,content, cover, desc, tags, keyword, is_top, hot, recommend} =data
+    const {title, menu_id, category_id, created_time, update_time, view, content, cover, desc, tags, keyword, is_top, hot, recommend} = data
+
     $('#article-title').val(title)
-    $('#article-created').val(moment(created_time).format('YYYY-MM-DD HH:mm:ss'))
+    // $("#article-type").val("pxx")
+    if (!category_id.Valid) {
+        $("#article-type").val(menu_id)
+    } else {
+        $("#article-type").val(category_id.Int64)
+    }
+
+        $('#article-created').val(moment(created_time).format('YYYY-MM-DD HH:mm:ss'))
+
     if (update_time.Valid) {
         $('#article-update').val(moment(update_time).format('YYYY-MM-DD HH:mm:ss'))
     }
+
     $('#article-view').val(view)
-    window.editor.txt.html(content)
+
+    if ((window.location.pathname.indexOf('markdown') == -1)) {
+        window.editor.txt.html(content)
+    } else {
+        window.content = content
+    }
+
     $('#article-desc').val(desc)
     if (cover.Valid && cover.String !== '') {
         cupload(cover.String)
@@ -54,7 +70,7 @@ function setValue(data) {
         const tag = tags.String.split(',')
         let str = ''
         tag.forEach(item => {
-            str += '<li class="tagit-choice ui-widget-content ui-state-default ui-corner-all tagit-choice-editable"><span class="tagit-label">'+ item +'</span><a class="tagit-close"><span class="text-icon">×</span><span class="ui-icon ui-icon-close"></span></a><input type="hidden" value="11" name="tags" class="tagit-hidden-field"></li>'
+            str += '<li class="tagit-choice ui-widget-content ui-state-default ui-corner-all tagit-choice-editable"><span class="tagit-label">' + item + '</span><a class="tagit-close"><span class="text-icon">×</span><span class="ui-icon ui-icon-close"></span></a><input type="hidden" value="11" name="tags" class="tagit-hidden-field"></li>'
         })
         $('#articleTags').prepend(str)
     }
@@ -134,7 +150,7 @@ function save(prod = false) {
         }
     }
 
-    if (Tags.length === 0){
+    if (Tags.length === 0) {
         Tags = ''
     } else {
         Tags = Tags.join(',')
@@ -165,7 +181,8 @@ function save(prod = false) {
         isTop: isTop ? isTop : false,
         hot: hot ? hot : false,
         recommend: recommend ? recommend : false,
-        prod
+        prod,
+        markdown: !(window.location.pathname.indexOf('markdown') == -1)
     }
 
     if (Tags !== '') {

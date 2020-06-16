@@ -72,8 +72,13 @@
                                 {{range $i, $v := .articleList.list}}
                                     <tr>
                                         <td>
-                                            <a href="/article/details?id={{$v.Id}}&title={{$v.Title}}"
-                                               class="text-c-blue">{{$v.Title}}</a>
+                                            {{if $v.Markdown}}
+                                                <a href="/article/details/markdown?id={{$v.Id}}&title={{$v.Title}}"
+                                                   class="text-c-blue">{{$v.Title}}</a>
+                                            {{else}}
+                                                <a href="/article/details?id={{$v.Id}}&title={{$v.Title}}"
+                                                   class="text-c-blue">{{$v.Title}}</a>
+                                            {{end}}
                                         </td>
                                         <td>20</td>
                                         <td>{{$v.CreatedTime.Format "2006-01-02 15:04:05"}}</td>
@@ -89,6 +94,13 @@
                                         {{end}}
                                         <td>{{$v.View}}</td>
                                         <td>
+                                            {{if $v.Markdown}}
+                                                <a href="/article/details/markdown?id={{$v.Id}}&title={{$v.Title}}"
+                                                   class="text-c-blue">详情</a>
+                                            {{else}}
+                                                <a href="/article/details?id={{$v.Id}}&title={{$v.Title}}"
+                                                   class="text-c-blue">详情</a>
+                                            {{end}}
                                             <a href="/article/details?id={{$v.Id}}&title={{$v.Title}}"
                                                class="text-c-blue">详情</a>
                                             <!-- Danger header modal -->

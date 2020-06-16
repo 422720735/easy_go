@@ -49,7 +49,7 @@ type ArticleContent struct {
 	Id        int
 	ArticleId int            `json:"article_id"`                // 文章映射id
 	Url       sql.NullString `json:"url"`                       // 链接
-	Content   string         `json:"content";gorm:"type:text"` // 内容
+	Content   string         `json:"content" gorm:"type:text"` // 内容
 }
 
 type Special struct {
