@@ -1,4 +1,5 @@
 const HOST = '/api'
+const ASSETS = 'http://qbv39uqsg.bkt.clouddn.com/'
 const Ok = 1
 
 let title, type, created, update, cover, desc, tags, keyword, isTop, hot, recommend;
@@ -6,6 +7,110 @@ let coverStr
 
 // 文章内容挂载到文章详情上面。
 let content = window.content
+
+$(document).ready(function () {
+    if (window.location.search && window.location.search !== '') {
+        // 请求数据
+        const id = getQueryVariable('id')
+
+        if (id !== false) {
+            $.ajax({
+                url: HOST + '/article/details?id=' + id,
+                method: 'Get',
+                success: function (res) {
+                    if (res.code === Ok) {
+                        setValue(res.data)
+                    } else {
+                        window.message.error(res)
+                    }
+                }
+            })
+        }
+    } else {
+        cupload()
+    }
+})
+
+function setValue(data) {
+    const {title, menu_id, category_id, created_time, update_time, view, content, cover, desc, tags, keyword, is_top, hot, recommend} = data
+
+    $('#article-title').val(title)
+    // $("#article-type").val("pxx")
+    if (!category_id.Valid) {
+        $("#article-type").val(menu_id)
+    } else {
+        $("#article-type").val(category_id.Int64)
+    }
+
+        $('#article-created').val(moment(created_time).format('YYYY-MM-DD HH:mm:ss'))
+
+    if (update_time.Valid) {
+        $('#article-update').val(moment(update_time).format('YYYY-MM-DD HH:mm:ss'))
+    }
+
+    $('#article-view').val(view)
+
+    if ((window.location.pathname.indexOf('markdown') == -1)) {
+        window.editor.txt.html(content)
+    } else {
+        window.content = content
+    }
+
+    $('#article-desc').val(desc)
+    if (cover.Valid && cover.String !== '') {
+        cupload(cover.String)
+    } else {
+        cupload()
+    }
+
+    /**
+     * 添加标签
+     * */
+    if (tags.Valid && tags.String !== '') {
+        const tag = tags.String.split(',')
+        let str = ''
+        tag.forEach(item => {
+            str += '<li class="tagit-choice ui-widget-content ui-state-default ui-corner-all tagit-choice-editable"><span class="tagit-label">' + item + '</span><a class="tagit-close"><span class="text-icon">×</span><span class="ui-icon ui-icon-close"></span></a><input type="hidden" value="11" name="tags" class="tagit-hidden-field"></li>'
+        })
+        $('#articleTags').prepend(str)
+    }
+
+    if (keyword.Valid && keyword.String !== '') {
+        $('#keyword').val(keyword.String)
+    }
+
+
+    $('#is-top').prop('checked', is_top)
+    $('#hot').prop('checked', hot)
+    $('#recommend').prop('checked', recommend)
+}
+
+
+/**
+ * js原生图片上传
+ * */
+function cupload(cover) {
+    cuploadCreate = new Cupload({
+        ele: '#cupload',
+        num: 1,
+        width: 160, // 预览框的宽,单位为px,非必需,默认为148
+        height: 114, // 预览框的高,单位为px,非必需,默认为148
+        data: cover ? [ASSETS + cover] : null
+    });
+}
+
+
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == variable) {
+            return pair[1];
+        }
+    }
+    return (false);
+}
 
 function articleItemValue() {
     title = $('#article-title').val()
@@ -40,13 +145,16 @@ function save(prod = false) {
                 $(TagHtml[i]).find('.tagit-label')[0].innerText !== '' &&
                 typeof $(TagHtml[i]).find('.tagit-label')[0].innerText === 'string'
             ) {
-                Tags.push($(TagHtml[i]).find('.tagit-label')[0].innerText)
+                Tags.push($(TagHtml[i]).find('.tagit-label')[0].innerText.toLowerCase())
             }
         }
     }
 
-    if (Tags.length === 0) Tags = ''
-    else Tags.join(',')
+    if (Tags.length === 0) {
+        Tags = ''
+    } else {
+        Tags = Tags.join(',')
+    }
 
     if (cover) {
         // 走七牛云接口
@@ -54,7 +162,7 @@ function save(prod = false) {
             const results = handleToken()
             if (results && Object.keys(results).length === 2) {
                 const token = data.secretKey
-                coverStr  = getTokenUrl($('.cupload-image-list li input[type="hidden"]').val(), token)
+                coverStr = getTokenUrl($('.cupload-image-list li input[type="hidden"]').val(), token)
             }
         } else {
             const token = get().secretKey
@@ -73,11 +181,12 @@ function save(prod = false) {
         isTop: isTop ? isTop : false,
         hot: hot ? hot : false,
         recommend: recommend ? recommend : false,
-        prod
+        prod,
+        markdown: !(window.location.pathname.indexOf('markdown') == -1)
     }
 
     if (Tags !== '') {
-        data.Tags = Tags
+        data.tags = Tags
     }
 
     if (desc === undefined || desc === '' || !desc) {
@@ -151,17 +260,17 @@ function remove() {
 /**
  * 七牛云图片请求
  * */
-function getTokenUrl (base, token) {
+function getTokenUrl(base, token) {
     let src;
     let size = window.qiniuyun.size
-    let name =  window.btoa("0612_"+ new Date().getTime()+"_"+parseInt(Math.random()*10))
+    let name = window.btoa("0612_" + new Date().getTime() + "_" + parseInt(Math.random() * 10))
     let pic = base.split("base64,")[1];  //七牛云需要接受的参数是  base64， 后面的值 所以我把它截取了
-    let url = 'http://up-z2.qiniup.com/putb64/' + size +"/key/" + name;  //  我这个是华南地区的   要根据仓库选择url   这个是官方的  https://developer.qiniu.com/kodo/kb/1326/how-to-upload-photos-to-seven-niuyun-base64-code
+    let url = 'http://up-z2.qiniup.com/putb64/' + size + "/key/" + name;  //  我这个是华南地区的   要根据仓库选择url   这个是官方的  https://developer.qiniu.com/kodo/kb/1326/how-to-upload-photos-to-seven-niuyun-base64-code
     $.ajax({
         url: url,
         type: 'POST',
         async: false,  //  这里我使用同步的方式是为了把得到的src返回出去
-        beforeSend (request) { // 请求之前设置请求头
+        beforeSend(request) { // 请求之前设置请求头
             request.setRequestHeader('Content-Type', 'application/octet-stream');
             request.setRequestHeader('Authorization', 'UpToken ' + token)   // token服务端请求
         },
@@ -172,7 +281,6 @@ function getTokenUrl (base, token) {
     });
     return src
 }
-
 
 
 /**
@@ -223,7 +331,7 @@ function get() {
 
     if (Object.keys(store).length === 2) {
         const now = new Date().getTime()
-        const end = store['expireTime'] + 1000 * 60 *60
+        const end = store['expireTime'] + 1000 * 60 * 60
         if (now < end) {
             results = store
         } else {

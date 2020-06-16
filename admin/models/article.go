@@ -25,19 +25,19 @@ type Article struct {
 	MenuId     int            `json:"menu_id"`                     // 导航id
 	CategoryId sql.NullInt64  `json:"category_id"`                 // 分类
 	Cover      sql.NullString `json:"cover"`                       // 封面
-	Title      string         `json:"title;" gorm:"not null"`      // 标题
+	Title      string         `json:"title";gorm:"not null"`      // 标题
 	Author     sql.NullString `json:"author"`                      // 作者
 	Desc       string         `json:"desc"`                        // 封面描述
 	Keyword    sql.NullString `json:"keyword"`                     // 关键字
 	Tags       sql.NullString `json:"tags"`                        // 标签
 	View       int            `json:"view"`                        // 阅读量
 	Markdown   bool           `json:"markdown"`                    // 是否是markdown格式 默认否
-	Type       int            `json:"type;" gorm:"size:8"`         // 0 草稿箱 1发布 2垃圾箱
+	Type       int            `json:"type";gorm:"size:8"`         // 0 草稿箱 1发布 2垃圾箱
 	Praise     int            `json:"praise"`                      // 赞
 	IsTop      bool           `json:"is_top"`                      // 置顶
 	Recommend  bool           `json:"recommend"`                   // 推荐
 	Hot        bool           `json:"hot"`                         // 热门
-	Sort       int            `json:"sort; "gorm:"AUTO_INCREMENT"` // 排序
+	Sort       int            `json:"sort";gorm:"AUTO_INCREMENT"` // 排序
 	State      bool           `json:"state"`                       // 软删除
 
 	CreatedTime time.Time    `json:"created_time"`
@@ -49,12 +49,12 @@ type ArticleContent struct {
 	Id        int
 	ArticleId int            `json:"article_id"`                // 文章映射id
 	Url       sql.NullString `json:"url"`                       // 链接
-	Content   string         `json:"content;" gorm:"type:text"` // 内容
+	Content   string         `json:"content" gorm:"type:text"` // 内容
 }
 
 type Special struct {
-	Id    int           `json:"id"`
-	TopId sql.NullInt64 `json:"hot_id"` // 记录置顶id
-	CreatedTime time.Time    `json:"created_time"`
-	UpdateTime  sql.NullTime `json:"update_time"`
+	Id          int           `json:"id"`
+	TopId       sql.NullInt64 `json:"hot_id"` // 记录置顶id
+	CreatedTime time.Time     `json:"created_time"`
+	UpdateTime  sql.NullTime  `json:"update_time"`
 }

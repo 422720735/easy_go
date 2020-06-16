@@ -71,11 +71,11 @@ func UpdateUpDown(sort int, str string) error {
 	// 开始事务
 	tx := db.DbConn.Begin()
 	// 修改数据
-	err = tx.Model(&current).Update("sort", sortNext).Error
+	err = tx.Model(&current).Updates(map[string]interface{}{"sort": sortNext, "update_time": time.Now()}).Error
 	if err != nil {
 		tx.Rollback()
 	}
-	err = tx.Model(&prev_next).Update("sort", sort).Error
+	err = tx.Model(&prev_next).Updates(map[string]interface{}{"sort": sort, "update_time": time.Now()}).Error
 	if err != nil {
 		tx.Rollback()
 	}
@@ -85,7 +85,7 @@ func UpdateUpDown(sort int, str string) error {
 
 // 修改状态
 func UpdateChild(id int, status bool) error {
-	err := db.DbConn.Model(&models.MenuSetting{}).Where("id = ?", id).Update("child_status", !status).Error
+	err := db.DbConn.Model(&models.MenuSetting{}).Where("id = ?", id).Updates(map[string]interface{}{"child_status": !status, "update_time": time.Now()}).Error
 	if err != nil {
 		return err
 	}
@@ -94,7 +94,7 @@ func UpdateChild(id int, status bool) error {
 
 // 修改状态
 func UpdateIssue(id int, status bool) error {
-	err := db.DbConn.Model(&models.MenuSetting{}).Where("id = ?", id).Update("visible", !status).Error
+	err := db.DbConn.Model(&models.MenuSetting{}).Where("id = ?", id).Updates(map[string]interface{}{"visible": !status, "update_time": time.Now()}).Error
 	if err != nil {
 		return err
 	}
@@ -103,7 +103,7 @@ func UpdateIssue(id int, status bool) error {
 
 // 软删除
 func DeleteMenu(id int) error {
-	err := db.DbConn.Model(&models.MenuSetting{}).Where("id = ?", id).Update("state", true).Error
+	err := db.DbConn.Model(&models.MenuSetting{}).Where("id = ?", id).Updates(map[string]interface{}{"state": true, "update_time": time.Now()}).Error
 	if err != nil {
 		return err
 	}
@@ -113,7 +113,6 @@ func DeleteMenu(id int) error {
 // 查询所有的路由数据
 func SelectMenuAll() (*[]models.MenuSetting, error) {
 	var menuList []models.MenuSetting
-
 	err := db.DbConn.Select([]string{"id", "menu_name"}).Where("child_status = ?", true).Find(&menuList).Error
 	return &menuList, err
 }
