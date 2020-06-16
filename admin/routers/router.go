@@ -65,8 +65,10 @@ func register() {
 	beego.Router(Api + "/menuSetting/delete", &controllers.MenuController{},"post:HandDelete")
 
 	beego.Router(Api + "/articleType/add", &article.ArticleControllerType{},"post:HandArticleTypeAdd")
-
 	beego.Router(Api + "/article/details/add", &article.ArticleDetails{},"post:HandArticleDetailsInsert")
+
+	beego.Router(Api + "/article/details", &article.ArticleDetails{})
+
 
 	beego.Router("/test", &controllers.TestControllers{})
 }

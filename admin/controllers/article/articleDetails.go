@@ -5,6 +5,7 @@ import (
 	"easy_go/admin/servers"
 	"easy_go/admin/transform"
 	"github.com/astaxie/beego/logs"
+	"strconv"
 	"time"
 )
 
@@ -125,6 +126,9 @@ func (c *ArticleDetails) HandArticleDetailsInsert() {
 		return
 	}
 
+	tags, _ := transform.InterToString(msg["tags"])
+
+
 	keyword, err := transform.InterToString(msg["keyword"])
 	if err != nil {
 		logs.Alert("获取文章关键字失败", err.Error())
@@ -166,11 +170,30 @@ func (c *ArticleDetails) HandArticleDetailsInsert() {
 		c.Error("已经存在相同的文章")
 		return
 	}
-	err = servers.ArticleDetails(title, content, cover, desc, keyword, menuId, categoryId, isTop, hot, recommend, prod)
+	err = servers.InsertArticleDetails(title, content, cover, desc, tags, keyword, menuId, categoryId, isTop, hot, recommend, prod)
 	if err != nil {
 		logs.Alert("保存数据失败", err.Error())
 		c.Error("保存数据失败")
 		return
 	}
 	c.Success("操作成功")
+}
+
+func (c *ArticleDetails) Get() {
+	idStr := c.GetString("id")
+	var id int
+	id, err := strconv.Atoi(idStr)
+
+	if err != nil {
+		// 如果有值才去查询
+		logs.Alert("获取数据失败", err.Error())
+		c.Error("获取数据失败")
+		return
+	}
+	res, err := servers.SelectArticleDetails(id)
+	if err != nil {
+		logs.Alert("查询失败", err.Error())
+		c.Error("查询失败")
+	}
+	c.Success(res)
 }

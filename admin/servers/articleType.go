@@ -8,7 +8,7 @@ import (
 
 // 新增路由菜单数据
 func InsertArticleType(articleName, KeyWord string, menuId int, isHotSwitch bool) error {
-	var a *models.ArticleType
+	var a models.ArticleType
 	a.ArticleName = articleName
 	a.KeyWord = KeyWord
 	a.MenuId = menuId

@@ -68,11 +68,11 @@
                                     <th>操作</th>
                                 </tr>
                                 </thead>
-                                {{/*<tbody>
+                                <tbody>
                                 {{range $i, $v := .articleList.list}}
                                     <tr>
                                         <td>
-                                            <a href="/article/details?id=1&title={{$v.Title}}"
+                                            <a href="/article/details?id={{$v.Id}}&title={{$v.Title}}"
                                                class="text-c-blue">{{$v.Title}}</a>
                                         </td>
                                         <td>20</td>
@@ -89,8 +89,7 @@
                                         {{end}}
                                         <td>{{$v.View}}</td>
                                         <td>
-
-                                            <a href="/article/details?id=1&title={{$v.Title}}"
+                                            <a href="/article/details?id={{$v.Id}}&title={{$v.Title}}"
                                                class="text-c-blue">详情</a>
                                             <!-- Danger header modal -->
                                             <a href="#!" class="text-c-blue text-warning" data-toggle="modal"
@@ -100,7 +99,7 @@
                                         </td>
                                     </tr>
                                 {{end}}
-                                </tbody>*/}}
+                                </tbody>
                             </table>
                         </div>
                         <ul class="pagination pagination-rounded justify-content-end">

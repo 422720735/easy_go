@@ -23,7 +23,7 @@ func IsArticleTake(title string) error {
 	return nil
 }
 
-func ArticleDetails(title, content, cover, desc, keyword string, menuId, categoryId int, isTop, hot, recommend, prod bool, id ...int) error {
+func InsertArticleDetails(title, content, cover, desc, tags, keyword string, menuId, categoryId int, isTop, hot, recommend, prod bool, id ...int) error {
 	// 0 草稿箱 1发布 2垃圾箱
 	var save int
 
@@ -46,6 +46,11 @@ func ArticleDetails(title, content, cover, desc, keyword string, menuId, categor
 		Recommend:   recommend,
 		Type:        save,
 		CreatedTime: time.Now(),
+	}
+
+	beego.Info(tags, "tags")
+	if tags != "" {
+		a.Tags = sql.NullString{String: tags, Valid: true}
 	}
 
 	if categoryId != -1 {
@@ -73,7 +78,7 @@ func ArticleDetails(title, content, cover, desc, keyword string, menuId, categor
 	}
 
 	c := &models.ArticleContent{
-		Content: content,
+		Content:   content,
 		ArticleId: a.Id,
 	}
 
@@ -86,7 +91,7 @@ func ArticleDetails(title, content, cover, desc, keyword string, menuId, categor
 	if isTop {
 		var count int
 		s := models.Special{
-			TopId: sql.NullInt64{Int64: int64(a.Id), Valid: true},
+			TopId:       sql.NullInt64{Int64: int64(a.Id), Valid: true},
 			CreatedTime: time.Now(),
 		}
 		err = tx.Select([]string{"id"}).Model(&models.Special{}).Count(&count).Error
@@ -97,8 +102,7 @@ func ArticleDetails(title, content, cover, desc, keyword string, menuId, categor
 		if count == 0 {
 			err = db.DbConn.Create(&s).Error
 		} else {
-			beego.Info(count, "count==================================")
-			err = tx.Model(&s).Update("top_id", a.Id).Error
+			err = tx.Model(&s).Updates(map[string]interface{}{"top_id": a.Id, "update_time": time.Now()}).Error
 		}
 
 		if err != nil {
@@ -108,4 +112,51 @@ func ArticleDetails(title, content, cover, desc, keyword string, menuId, categor
 	}
 
 	return nil
+}
+
+type ArticleAll struct {
+	models.Article
+	Url     sql.NullString `json:"url"`
+	Content string         `json:"content"`
+}
+
+func SelectArticleDetails(id int) (*ArticleAll, error) {
+	var a models.Article
+	var c models.ArticleContent
+	var all ArticleAll
+	err := db.DbConn.Where(&models.Article{Id: id}).Find(&a).Error
+	if err != nil {
+		beego.Info("====1")
+		return nil, err
+	}
+	err = db.DbConn.Where(&models.ArticleContent{ArticleId: a.Id}).Find(&c).Error
+	if err != nil {
+		beego.Info("====2")
+		return nil, err
+	}
+
+	all.Id = a.Id
+	all.MenuId = a.MenuId
+	all.CategoryId = a.CategoryId
+	all.Cover = a.Cover
+	all.Title = a.Title
+	all.Author = a.Author
+	all.Desc = a.Desc
+	all.Keyword = a.Keyword
+	all.Tags = a.Tags
+	all.View = a.View
+	all.Markdown = a.Markdown
+	all.Type = a.Type
+	all.Praise = a.Praise
+	all.IsTop = a.IsTop
+	all.Recommend = a.Recommend
+	all.Hot = a.Hot
+	all.Sort = a.Sort
+	all.State = a.State
+	all.CreatedTime = a.CreatedTime
+	all.UpdateTime = a.UpdateTime
+	all.Url = c.Url
+	all.Content = c.Content
+
+	return &all, nil
 }
