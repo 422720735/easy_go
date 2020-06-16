@@ -5,7 +5,6 @@ import (
 	"easy_go/admin/db"
 	"easy_go/admin/models"
 	"errors"
-	"github.com/astaxie/beego"
 	"time"
 )
 
@@ -126,38 +125,77 @@ func UpdateArticleDetails(title, content, cover, desc, tags, keyword string, men
 
 	a := &models.Article{
 		Id: id,
-		Title: title,
-		Cover: sql.NullString{
-			String: cover,
-			Valid:  true,
-		},
-		Desc:        desc,
-		MenuId:      menuId,
-		IsTop:       isTop,
-		Hot:         hot,
-		Recommend:   recommend,
-		Markdown:    markdown,
-		Type:        save,
-		CreatedTime: time.Now(),
+		//Title: title,
+		//Cover: sql.NullString{
+		//	String: cover,
+		//	Valid:  true,
+		//},
+		//Desc:        desc,
+		//MenuId:      menuId,
+		//IsTop:       isTop,
+		//Hot:         hot,
+		//Recommend:   recommend,
+		//Markdown:    markdown,
+		//Type:        save,
+		//CreatedTime: time.Now(),
 	}
 
-	if tags != "" {
-		a.Tags = sql.NullString{String: tags, Valid: true}
-	}
-
-	if categoryId != -1 {
-		a.CategoryId = sql.NullInt64{Int64: int64(categoryId), Valid: true}
-	}
-
-	if keyword != "" {
-		a.Keyword = sql.NullString{String: keyword, Valid: true}
-	}
+	//if tags != "" {
+	//	a.Tags = sql.NullString{String: tags, Valid: true}
+	//}
+	//
+	//if categoryId != -1 {
+	//	a.CategoryId = sql.NullInt64{Int64: int64(categoryId), Valid: true}
+	//}
+	//
+	//if keyword != "" {
+	//	a.Keyword = sql.NullString{String: keyword, Valid: true}
+	//}
 
 	// 开始事务
 	tx := db.DbConn.Begin()
 	defer tx.Commit()
+	err := tx.Model(&a).Updates(map[string]interface{}{"title": title, "cover": cover, "desc": desc, "menu_id": menuId, "is_top": isTop, "hot": hot, "recommend": recommend, "markdown": markdown, "type": save, "update_time": time.Now()}).Error
+	if err != nil {
+		tx.Rollback()
+		return err
+	}
 
+	c := &models.ArticleContent{
+		//Content:   content,
+		ArticleId: id,
+	}
 
+	err = tx.Model(&c).Updates(map[string]interface{}{"content": content, "article_id": id}).Error
+	if err != nil {
+		tx.Rollback()
+		return err
+	}
+
+	if isTop {
+		var count int
+		s := models.Special{
+			TopId:       sql.NullInt64{Int64: int64(id), Valid: true},
+			CreatedTime: time.Now(),
+		}
+		err = tx.Select([]string{"id"}).Model(&models.Special{}).Count(&count).Error
+		if err != nil {
+			tx.Rollback()
+			return err
+		}
+		if count == 0 {
+			err = db.DbConn.Create(&s).Error
+		} else {
+			err = tx.Model(&s).Updates(map[string]interface{}{"top_id": id, "update_time": time.Now()}).Error
+		}
+
+		if err != nil {
+			tx.Rollback()
+			return err
+		}
+	}
+
+	return nil
 }
 
 type ArticleAll struct {

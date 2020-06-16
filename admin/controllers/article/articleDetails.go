@@ -282,7 +282,15 @@ func (c *ArticleDetails) HandArticleDetailsUpdate() {
 		return
 	}
 
-	servers.UpdateArticleDetails(title, content, cover, desc, tags, keyword, menuId, categoryId, isTop, hot, recommend, prod, markdown, id)
+	err = servers.UpdateArticleDetails(title, content, cover, desc, tags, keyword, menuId, categoryId, isTop, hot, recommend, prod, markdown, id)
+
+	if err != nil {
+		logs.Warning("文章编辑失败", err.Error())
+		c.Error("文章编辑失败")
+		return
+	}
+
+	c.Success("文章编辑成功")
 }
 
 func (c *ArticleDetails) ArticleAll() {

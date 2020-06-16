@@ -1,3 +1,0 @@
-2020/06/16 23:05:04.658 [D] [router.go:925]  |            ::1|[97;43m 404 [0m|   3.602925ms| nomatch|[97;44m GET     [0m /static/assets/js/metisMenu.js.map
-2020/06/16 23:05:05.316 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|   10.42497ms|   match|[97;44m GET     [0m /api/article/details   r:/api/article/details
-2020/06/16 23:05:05.321 [D] [router.go:925]  |            ::1|[97;42m 200 [0m|     76.692µs|   match|[97;44m GET     [0m /static/assets/images/favicon.png

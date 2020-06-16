@@ -85,7 +85,7 @@
                                         {{if $.v.UpdateTime.Valid}}
                                             <td>{{$v.UpdateTime}}</td>
                                         {{else}}
-                                            <td></td>
+                                            <td>{{$.v}}</td>
                                         {{end}}
                                         {{if and ($.top_id.Valid) (eq $.top_id.Int64 $v.Id)}}
                                             <td class="text-danger">置顶</td>

@@ -227,11 +227,11 @@ function saveArticle(data) {
         method: data.id ? 'Put' : 'POST',
         success: function (res) {
             if (res.code === Ok) {
-                remove()
+                window.location.reload()
                 window.message.success(res)
-                setTimeout(function () {
-                    window.location.reload()
-                }, 5000)
+                // setTimeout(function () {
+                //
+                // }, 200)
             } else {
                 window.message.error(res)
             }
