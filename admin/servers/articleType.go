@@ -3,6 +3,7 @@ package servers
 import (
 	"easy_go/admin/db"
 	"easy_go/admin/models"
+	"github.com/astaxie/beego/logs"
 	"time"
 )
 
@@ -17,6 +18,7 @@ func InsertArticleType(articleName, KeyWord string, menuId int, isHotSwitch bool
 	var count int
 	err := db.DbConn.Select([]string{"id"}).Model(&models.MenuSetting{}).Count(&count).Error
 	if err == nil {
+		logs.Critical(err.Error())
 		a.Sort = count + 1
 	}
 	err = db.DbConn.Create(&a).Error
@@ -36,12 +38,14 @@ func SelectArticleTypeList(page, size int) ([]*models.ArticleType, int64, error)
 	// 开始查询
 	err := db.DbConn.Model(&articleTypeList).Count(&total).Error
 	if err != nil {
+		logs.Critical(err.Error())
 		return articleTypeList, total, err
 	}
 
 	// 查询分页数据
 	err = db.DbConn.Limit(size).Offset((page - 1) * size).Order("sort asc").Find(&articleTypeList).Error
 	if err != nil {
+		logs.Critical(err.Error())
 		return articleTypeList, total, err
 	}
 
@@ -58,12 +62,14 @@ func SelectArticleTypeMenuName() ([]interface{}, error) {
 	// menu
 	err := db.DbConn.Select([]string{"id", "menu_name", "child_status", "visible"}).Find(&menuList).Error
 	if err != nil {
+		logs.Critical(err.Error())
 		return nil, err
 	}
 
 	// articleType
 	err = db.DbConn.Select([]string{"id", "article_name", "menu_id"}).Where("visible = ? and state = ?", true, false).Find(&articleType).Error
 	if err != nil {
+		logs.Critical(err.Error())
 		return nil, err
 	}
 

@@ -3,6 +3,7 @@ package servers
 import (
 	"easy_go/admin/db"
 	"easy_go/admin/models"
+	"github.com/astaxie/beego/logs"
 	"time"
 )
 
@@ -14,12 +15,14 @@ func SelectMenuPage(page, size int) (*[]models.MenuSetting, int64, error) {
 	// 获取总条数
 	err := db.DbConn.Model(&menuList).Count(&total).Error
 	if err != nil {
+		logs.Critical(err.Error())
 		return &menuList, total, err
 	}
 
 	// 获取取指page，指定pagesize的记录
 	err = db.DbConn.Limit(size).Offset((page - 1) * size).Order("sort asc").Find(&menuList).Error
 	if err != nil {
+		logs.Critical(err.Error())
 		return &menuList, total, err
 	}
 	return &menuList, total, nil
@@ -37,6 +40,7 @@ func InsertMenu(menuName, path, icon string, isChildSwitch, isHotSwitch bool) er
 	var count int
 	err := db.DbConn.Select([]string{"id"}).Model(&models.MenuSetting{}).Count(&count).Error
 	if err == nil {
+		logs.Critical(err.Error())
 		m.Sort = count + 1
 	}
 	err = db.DbConn.Create(&m).Error
@@ -53,18 +57,21 @@ func UpdateUpDown(sort int, str string) error {
 	// 查询当前数据
 	err = db.DbConn.Model(&models.MenuSetting{}).Where("sort = ?", sort).Find(&current).Error
 	if err != nil {
+		logs.Critical(err.Error())
 		return err
 	}
 	if str == "top" {
 		err = db.DbConn.Model(&models.MenuSetting{}).Where("sort = ?", sort-1).Find(&prev_next).Error
 		sortNext = sort - 1
 		if err != nil {
+			logs.Critical(err.Error())
 			return err
 		}
 	} else {
 		err = db.DbConn.Model(&models.MenuSetting{}).Where("sort = ?", sort+1).Find(&prev_next).Error
 		sortNext = sort + 1
 		if err != nil {
+			logs.Critical(err.Error())
 			return err
 		}
 	}
@@ -73,10 +80,12 @@ func UpdateUpDown(sort int, str string) error {
 	// 修改数据
 	err = tx.Model(&current).Updates(map[string]interface{}{"sort": sortNext, "update_time": time.Now()}).Error
 	if err != nil {
+		logs.Critical(err.Error())
 		tx.Rollback()
 	}
 	err = tx.Model(&prev_next).Updates(map[string]interface{}{"sort": sort, "update_time": time.Now()}).Error
 	if err != nil {
+		logs.Critical(err.Error())
 		tx.Rollback()
 	}
 	tx.Commit()
@@ -87,6 +96,7 @@ func UpdateUpDown(sort int, str string) error {
 func UpdateChild(id int, status bool) error {
 	err := db.DbConn.Model(&models.MenuSetting{}).Where("id = ?", id).Updates(map[string]interface{}{"child_status": !status, "update_time": time.Now()}).Error
 	if err != nil {
+		logs.Critical(err.Error())
 		return err
 	}
 	return nil
@@ -96,6 +106,7 @@ func UpdateChild(id int, status bool) error {
 func UpdateIssue(id int, status bool) error {
 	err := db.DbConn.Model(&models.MenuSetting{}).Where("id = ?", id).Updates(map[string]interface{}{"visible": !status, "update_time": time.Now()}).Error
 	if err != nil {
+		logs.Critical(err.Error())
 		return err
 	}
 	return nil
@@ -105,6 +116,7 @@ func UpdateIssue(id int, status bool) error {
 func DeleteMenu(id int) error {
 	err := db.DbConn.Model(&models.MenuSetting{}).Where("id = ?", id).Updates(map[string]interface{}{"state": true, "update_time": time.Now()}).Error
 	if err != nil {
+		logs.Critical(err.Error())
 		return err
 	}
 	return nil
@@ -114,5 +126,9 @@ func DeleteMenu(id int) error {
 func SelectMenuAll() (*[]models.MenuSetting, error) {
 	var menuList []models.MenuSetting
 	err := db.DbConn.Select([]string{"id", "menu_name"}).Where("child_status = ?", true).Find(&menuList).Error
-	return &menuList, err
+	if err != nil {
+		logs.Critical(err.Error())
+		return nil, err
+	}
+	return &menuList, nil
 }
