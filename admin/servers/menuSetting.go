@@ -40,7 +40,6 @@ func InsertMenu(menuName, path, icon string, isChildSwitch, isHotSwitch bool) er
 	var count int
 	err := db.DbConn.Select([]string{"id"}).Model(&models.MenuSetting{}).Count(&count).Error
 	if err == nil {
-		logs.Critical(err.Error())
 		m.Sort = count + 1
 	}
 	err = db.DbConn.Create(&m).Error

@@ -3,23 +3,39 @@ package servers
 import (
 	"easy_go/admin/db"
 	"easy_go/admin/models"
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
+	"strings"
 	"time"
 )
 
-func SelectArticlePageList(page, size int) ([]*models.Article, int64, error) {
+func SelectArticlePageList(title, tag string, page, size int) ([]*models.Article, int64, error) {
 	var articleList []*models.Article
 	var total int64
+	tags := strings.Split(tag, ",")
 
+	article := db.DbConn.Model(&articleList)
+
+	beego.Info(len(tags))
+	if len(tags) == 1 && tags[0] != "" {
+		article = article.Where("menu_id = ?", tags[0])
+	} else if len(tags) == 2 {
+		article = article.Where("category_id = ?", tags[1])
+	}
+
+	if title != "" {
+		article = article.Where("title LIKE ?", "%"+title+"%")
+	}
 	// 获取总条数
-	err := db.DbConn.Model(&articleList).Count(&total).Error
+	err := article.Count(&total).Error
 
 	if err != nil {
 		logs.Critical(err.Error())
 		return nil, 0, err
 	}
 
-	err = db.DbConn.Limit(size).Offset((page - 1) * size).Order("sort desc").Find(&articleList).Error
+	//err = db.DbConn.Limit(size).Offset((page - 1) * size).Order("sort desc").Find(&articleList).Error
+	err = article.Limit(size).Offset((page - 1) * size).Order("sort desc").Find(&articleList).Error
 	if err != nil {
 		logs.Critical(err.Error())
 		return nil, 0, err

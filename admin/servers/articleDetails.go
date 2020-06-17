@@ -62,7 +62,6 @@ func InsertArticleDetails(title, content, cover, desc, tags, keyword string, men
 	var count int
 	err := db.DbConn.Select([]string{"id"}).Model(&models.Article{}).Count(&count).Error
 	if err == nil {
-		logs.Critical(err.Error())
 		a.Sort = count + 1
 	}
 

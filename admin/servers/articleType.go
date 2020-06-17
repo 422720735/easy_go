@@ -18,7 +18,6 @@ func InsertArticleType(articleName, KeyWord string, menuId int, isHotSwitch bool
 	var count int
 	err := db.DbConn.Select([]string{"id"}).Model(&models.MenuSetting{}).Count(&count).Error
 	if err == nil {
-		logs.Critical(err.Error())
 		a.Sort = count + 1
 	}
 	err = db.DbConn.Create(&a).Error

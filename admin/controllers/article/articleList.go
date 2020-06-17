@@ -24,10 +24,13 @@ func (c *ArticleList) Get() {
 	}
 	page = int(_int)
 
+	title := c.GetString("title")
+	tag := c.GetString("tag")
+
 	// 类型分类
 	articleTypeList, _ := servers.SelectArticleTypeMenuName()
 	// 文章list分页查询
-	data, total, _ := servers.SelectArticlePageList(page, common.PAGE_SIZE)
+	data, total, _ := servers.SelectArticlePageList(title, tag, page, common.PAGE_SIZE)
 
 	articleList := common.Paginator(page, common.PAGE_SIZE, total, data)
 
@@ -47,7 +50,6 @@ func (c *ArticleList) Get() {
 	c.LayoutSections["ScriptMessage"] = "script/message.html"
 	// 数据
 	c.Data["articleTypeList"] = articleTypeList
-
 
 	res, count, err := servers.SelectArticleIsTopId()
 	var top_id int

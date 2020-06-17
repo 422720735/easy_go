@@ -18,7 +18,7 @@ type RegisterController struct {
 */
 func (c *RegisterController) Get() {
 	c.Layout = "layout/login-registerLayout.html"
-	c.TplName = "pages/register-img.html"
+	c.TplName = "pages/register.html"
 	c.LayoutSections = make(map[string]string)
 	c.LayoutSections["styleMessage"] = "style/message.html"
 	c.LayoutSections["script"] = "script/login_register.html"
