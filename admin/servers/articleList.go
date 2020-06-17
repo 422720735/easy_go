@@ -3,6 +3,7 @@ package servers
 import (
 	"easy_go/admin/db"
 	"easy_go/admin/models"
+	"time"
 )
 
 func SelectArticlePageList(page, size int) ([]*models.Article, int64, error) {
@@ -32,6 +33,62 @@ func SelectArticleIsTopId() (models.Special, int, error) {
 		return top, count, err
 	}
 	return top, count, nil
+}
+
+// 上移下移
+func ArticleUpdateUpDown(sort int, str string) error {
+	// 上移动, 需要修改前一条
+	var err error
+	var current models.Article
+	var prev_next models.Article
+	var sortNext int
+	// 查询当前数据
+	err = db.DbConn.Model(&models.Article{}).Where("sort = ?", sort).Find(&current).Error
+	if err != nil {
+		return err
+	}
+	if str == "top" {
+		err = db.DbConn.Model(&models.Article{}).Where("sort = ?", sort-1).Find(&prev_next).Error
+		sortNext = sort - 1
+		if err != nil {
+			return err
+		}
+	} else {
+		err = db.DbConn.Model(&models.Article{}).Where("sort = ?", sort+1).Find(&prev_next).Error
+		sortNext = sort + 1
+		if err != nil {
+			return err
+		}
+	}
+	// 开始事务
+	tx := db.DbConn.Begin()
+	// 修改数据
+	err = tx.Model(&current).Updates(map[string]interface{}{"sort": sortNext, "update_time": time.Now()}).Error
+	if err != nil {
+		tx.Rollback()
+	}
+	err = tx.Model(&prev_next).Updates(map[string]interface{}{"sort": sort, "update_time": time.Now()}).Error
+	if err != nil {
+		tx.Rollback()
+	}
+	tx.Commit()
+	return nil
+}
+
+func ArticleUpdateIssue(id int, status bool) error {
+	err := db.DbConn.Model(&models.Article{}).Where("id = ?", id).Updates(map[string]interface{}{"visible": !status, "update_time": time.Now()}).Error
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func ArticleDeleteMenu(id int) error {
+	err := db.DbConn.Model(&models.Article{}).Where("id = ?", id).Updates(map[string]interface{}{"state": true, "update_time": time.Now()}).Error
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 //func SelectArticleIsTopId() (models.Special, int, error) {

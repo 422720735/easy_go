@@ -64,10 +64,13 @@ func register() {
 	beego.Router(Api + "/menuSetting/issue", &controllers.MenuController{},"get:HandUpdateIssue")
 	beego.Router(Api + "/menuSetting/delete", &controllers.MenuController{},"post:HandDelete")
 
-	beego.Router(Api + "/articleType/add", &article.ArticleControllerType{},"post:HandArticleTypeAdd")
 
+	beego.Router(Api + "/articleType/add", &article.ArticleControllerType{},"post:HandArticleTypeAdd")
 	// 查询文章详情 文章新增 编辑接口
 	beego.Router(Api + "/article/details", &article.ArticleDetails{}, "get:ArticleAll;post:HandArticleDetailsInsert;put:HandArticleDetailsUpdate")
+	beego.Router(Api + "/article/issue", &article.ArticleList{},"get:HandUpdateIssue")
+	beego.Router(Api + "/article/delete", &article.ArticleList{},"post:HandDelete")
+	beego.Router(Api + "/article/move/*", &article.ArticleList{},"get:HandMove_up_down")
 
 
 	beego.Router("/test", &controllers.TestControllers{})

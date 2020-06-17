@@ -28,7 +28,6 @@ function changeMenu(id, status) {
 }
 
 function deleteMenu(id) {
-    debugger
     $.ajax({
         type: "post",
         async: false,

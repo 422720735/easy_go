@@ -81,7 +81,7 @@
                                         {{if $v.Visible}}
                                             <a href="/api/menuSetting/issue?id={{$v.Id}}&status={{$v.Visible}}&page={{$.current}}" class="text-success">下架</a>
                                         {{else}}
-                                            <a href="/api/menuSetting/issue?id={{$v.Id}}&status={{$v.Visible}}&page={{$.current}}" class="text-danger">上架</a>
+                                            <a href="/api/menuSetting/issue?id={{$v.Id}}&status={{$v.Visible}}&page={{$.current}}" class="text-warning">上架</a>
                                         {{end}}
                                         <a href="/menuSetting/info" class="text-c-blue">详情</a>
                                         <!-- Danger header modal -->
@@ -143,19 +143,16 @@
                                         </li>
                                     {{ end }}
                                 {{ end }}
-
                                 <li class="page-item">
                                     <a class="page-link" href="{{ if  eq $.menu_data.current .menu_data.totalpages}}javascript:;{{ else }}?page={{.menu_data.nextpage}}{{ end }}" aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
                                         <span class="sr-only">Next</span>
                                     </a>
                                 </li>
-
                                 <li class="page-item">
                                     <a class="page-link" href="javascript:;">共 {{ .menu_data.totalpages }} 页</a>
                                 </li>
                             </ul>
-
                         </div>
                     </div>
                 </div>

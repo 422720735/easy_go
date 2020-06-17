@@ -87,7 +87,10 @@ func InsertArticleDetails(title, content, cover, desc, tags, keyword string, men
 	if isTop {
 		var count int
 		s := models.Special{
-			TopId:       &a.Id,
+			TopId:       sql.NullInt64{
+				Int64: int64(a.Id),
+				Valid: true,
+			},
 			CreatedTime: time.Now(),
 		}
 		err = tx.Select([]string{"id"}).Model(&models.Special{}).Count(&count).Error
@@ -137,17 +140,20 @@ func UpdateArticleDetails(title, content, cover, desc, tags, keyword string, men
 		//CreatedTime: time.Now(),
 	}
 
-	//if tags != "" {
-	//	a.Tags = sql.NullString{String: tags, Valid: true}
-	//}
-	//
-	//if categoryId != -1 {
-	//	a.CategoryId = sql.NullInt64{Int64: int64(categoryId), Valid: true}
-	//}
-	//
-	//if keyword != "" {
-	//	a.Keyword = sql.NullString{String: keyword, Valid: true}
-	//}
+	if tags != "" {
+		//a.Tags = sql.NullString{String: tags, Valid: true}
+		a.Tags = &tags
+	}
+
+	if categoryId != -1 {
+		//a.CategoryId = sql.NullInt64{Int64: int64(categoryId), Valid: true}
+		a.CategoryId = &categoryId
+	}
+
+	if keyword != "" {
+		//a.Keyword = sql.NullString{String: keyword, Valid: true}
+		a.Keyword = &keyword
+	}
 
 	// 开始事务
 	tx := db.DbConn.Begin()
@@ -172,7 +178,7 @@ func UpdateArticleDetails(title, content, cover, desc, tags, keyword string, men
 	if isTop {
 		var count int
 		s := models.Special{
-			TopId:       sql.NullInt64{int64(id)},
+			TopId: sql.NullInt64{Int64: int64(id), Valid: true},
 			CreatedTime: time.Now(),
 		}
 		err = tx.Select([]string{"id"}).Model(&models.Special{}).Count(&count).Error
