@@ -37,10 +37,10 @@ function setValue(data) {
 
     $('#article-title').val(title)
 
-    if (category_id.Valid) {
+    if (category_id && category_id !== '') {
         let opt = []
         opt.push(menu_id)
-        opt.push(category_id.Int64)
+        opt.push(category_id)
         $("#article-type").val(opt.join(','))
     } else {
         $("#article-type").val(menu_id)
@@ -48,21 +48,21 @@ function setValue(data) {
 
     $('#article-created').val(moment(created_time).format('YYYY-MM-DD HH:mm:ss'))
 
-    if (update_time.Valid) {
+    if (update_time) {
         $('#article-update').val(moment(update_time).format('YYYY-MM-DD HH:mm:ss'))
     }
 
     $('#article-view').val(view)
 
-    if ((window.location.pathname.indexOf('markdown') == -1)) {
+    if ((window.location.pathname.indexOf('markdown') === -1)) {
         window.editor.txt.html(content)
     } else {
         window.content = content
     }
 
     $('#article-desc').val(desc)
-    if (cover.Valid && cover.String !== '') {
-        cupload(cover.String)
+    if (cover && cover !== '') {
+        cupload(cover)
     } else {
         cupload()
     }
@@ -70,8 +70,8 @@ function setValue(data) {
     /**
      * 添加标签
      * */
-    if (tags.Valid && tags.String !== '') {
-        const tag = tags.String.split(',')
+    if (tags && tags !== '') {
+        const tag = tags.split(',')
         let str = ''
         tag.forEach(item => {
             str += '<li class="tagit-choice ui-widget-content ui-state-default ui-corner-all tagit-choice-editable"><span class="tagit-label">' + item + '</span><a class="tagit-close"><span class="text-icon">×</span><span class="ui-icon ui-icon-close"></span></a><input type="hidden" value="11" name="tags" class="tagit-hidden-field"></li>'
@@ -79,8 +79,8 @@ function setValue(data) {
         $('#articleTags').prepend(str)
     }
 
-    if (keyword.Valid && keyword.String !== '') {
-        $('#keyword').val(keyword.String)
+    if (keyword && keyword !== '') {
+        $('#keyword').val(keyword)
     }
 
     $('#is-top').prop('checked', is_top)

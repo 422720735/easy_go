@@ -1,7 +1,6 @@
 package servers
 
 import (
-	"database/sql"
 	"easy_go/admin/db"
 	"easy_go/admin/models"
 	"errors"
@@ -33,11 +32,8 @@ func InsertArticleDetails(title, content, cover, desc, tags, keyword string, men
 	}
 
 	a := &models.Article{
-		Title: title,
-		Cover: sql.NullString{
-			String: cover,
-			Valid:  true,
-		},
+		Title:       title,
+		Cover:       &cover,
 		Desc:        desc,
 		MenuId:      menuId,
 		IsTop:       isTop,
@@ -49,15 +45,15 @@ func InsertArticleDetails(title, content, cover, desc, tags, keyword string, men
 	}
 
 	if tags != "" {
-		a.Tags = sql.NullString{String: tags, Valid: true}
+		a.Tags = &tags
 	}
 
 	if categoryId != -1 {
-		a.CategoryId = sql.NullInt64{Int64: int64(categoryId), Valid: true}
+		a.CategoryId = &categoryId
 	}
 
 	if keyword != "" {
-		a.Keyword = sql.NullString{String: keyword, Valid: true}
+		a.Keyword = &keyword
 	}
 
 	var count int
@@ -77,7 +73,7 @@ func InsertArticleDetails(title, content, cover, desc, tags, keyword string, men
 	}
 
 	c := &models.ArticleContent{
-		Content:   content,
+		Content:   &content,
 		ArticleId: a.Id,
 	}
 
@@ -90,7 +86,7 @@ func InsertArticleDetails(title, content, cover, desc, tags, keyword string, men
 	if isTop {
 		var count int
 		s := models.Special{
-			TopId:       sql.NullInt64{Int64: int64(a.Id), Valid: true},
+			TopId:       &a.Id,
 			CreatedTime: time.Now(),
 		}
 		err = tx.Select([]string{"id"}).Model(&models.Special{}).Count(&count).Error
@@ -175,7 +171,7 @@ func UpdateArticleDetails(title, content, cover, desc, tags, keyword string, men
 	if isTop {
 		var count int
 		s := models.Special{
-			TopId:       sql.NullInt64{Int64: int64(id), Valid: true},
+			TopId:       &id,
 			CreatedTime: time.Now(),
 		}
 		err = tx.Select([]string{"id"}).Model(&models.Special{}).Count(&count).Error
@@ -200,8 +196,8 @@ func UpdateArticleDetails(title, content, cover, desc, tags, keyword string, men
 
 type ArticleAll struct {
 	models.Article
-	Url     sql.NullString `json:"url"`
-	Content string         `json:"content"`
+	Url     *string `json:"url"`
+	Content *string `json:"content"`
 }
 
 func SelectArticleDetails(id int) (*ArticleAll, error) {

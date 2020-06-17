@@ -16,7 +16,7 @@ type MenuSetting struct {
 	ChildStatus bool         `json:"child_status"`
 	Hot         bool         `json:"hot";gorm:"size 20"`
 	CreatedTime time.Time    `json:"created_time"`
-	UpdateTime  sql.NullTime `json:"update_time"`
+	UpdateTime  *sql.NullTime `json:"update_time"`
 }
 
 type ArticleTypeAndMenuName struct {
