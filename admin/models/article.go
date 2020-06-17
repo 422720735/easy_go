@@ -54,7 +54,7 @@ type ArticleContent struct {
 
 type Special struct {
 	Id          int           `json:"id"`
-	TopId       *int `json:"hot_id"` // 记录置顶id
+	TopId       sql.NullInt64 `json:"top_id"` // 记录置顶id
 	CreatedTime time.Time     `json:"created_time"`
 	UpdateTime  *sql.NullTime  `json:"update_time"`
 }

@@ -1,6 +1,7 @@
 package servers
 
 import (
+	"database/sql"
 	"easy_go/admin/db"
 	"easy_go/admin/models"
 	"errors"
@@ -171,7 +172,7 @@ func UpdateArticleDetails(title, content, cover, desc, tags, keyword string, men
 	if isTop {
 		var count int
 		s := models.Special{
-			TopId:       &id,
+			TopId:       sql.NullInt64{int64(id)},
 			CreatedTime: time.Now(),
 		}
 		err = tx.Select([]string{"id"}).Model(&models.Special{}).Count(&count).Error

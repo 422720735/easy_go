@@ -87,11 +87,12 @@
                                         {{else}}
                                             <td>{{$.v}}</td>
                                         {{end}}
-                                        {{if and ($.top_id.Valid) (eq $.top_id.Int64 $v.Id)}}
+                                        {{/*{{if and ($v.IsTop) (eq $.top_id $v.Id)}}
                                             <td class="text-danger">置顶</td>
                                         {{else}}
                                             <td>普通</td>
-                                        {{end}}
+                                        {{end}}*/}}
+                                        <td>{{$v.Id}}</td>
                                         <td>{{$v.View}}</td>
                                         <td>
                                             {{if $v.Markdown}}

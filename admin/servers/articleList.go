@@ -33,3 +33,14 @@ func SelectArticleIsTopId() (models.Special, int, error) {
 	}
 	return top, count, nil
 }
+
+//func SelectArticleIsTopId() (models.Special, int, error) {
+//	var count int
+//	err := db.DbConn.Model(&models.Special{}).Count(&count).Error
+//	if err != nil {
+//		return models.Special{}, 0, err
+//	} else if count == 0{
+//		return models.Special{}, 0, nil
+//	}
+//	return models.Special{}, 1, nil
+//}

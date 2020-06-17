@@ -45,11 +45,8 @@ func (c *ArticleList) Get() {
 	c.Data["articleTypeList"] = articleTypeList
 
 	res, count, err := servers.SelectArticleIsTopId()
+	beego.Info(res, count, err, "========================")
+	//var topId *int
+	//c.Data["top_id"] = *res.TopId
 	c.Data["articleList"] = articleList
-
-	if count == 1 && err == nil {
-		c.Data["top_id"] = res.TopId
-	} else {
-		c.Data["top_id"] = nil
-	}
 }
