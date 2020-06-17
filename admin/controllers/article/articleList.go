@@ -15,7 +15,22 @@ type ArticleList struct {
 
 func (c *ArticleList) Get() {
 	c.Layout = "layout/mainLayout.html"
+	c.TplName = "pages/article/articleList/articleList.html"
+	c.LayoutSections = make(map[string]string)
+	// menu
+	c.LayoutSections["LeftMenu"] = "layout/leftSideMenuLayout.html"
+	// header
+	c.LayoutSections["HeaderLayout"] = "layout/headerLayout.html"
+	// footer
+	c.LayoutSections["FooterLayout"] = "layout/footerLayout.html"
+	// css
+	c.LayoutSections["BaseStyle"] = "style/baseStyle.html"
+	// js
+	c.LayoutSections["BaseScript"] = "script/baseScript.html"
+	c.LayoutSections["Script"] = "script/articleList.html"
+	c.LayoutSections["ScriptMessage"] = "script/message.html"
 
+	// req
 	pageStr := c.GetString("page")
 	var page int
 	_int, err := strconv.ParseInt(pageStr, 10, 64)
@@ -34,21 +49,7 @@ func (c *ArticleList) Get() {
 
 	articleList := common.Paginator(page, common.PAGE_SIZE, total, data)
 
-	c.TplName = "pages/article/articleList/articleList.html"
-	c.LayoutSections = make(map[string]string)
-	// menu
-	c.LayoutSections["LeftMenu"] = "layout/leftSideMenuLayout.html"
-	// header
-	c.LayoutSections["HeaderLayout"] = "layout/headerLayout.html"
-	// footer
-	c.LayoutSections["FooterLayout"] = "layout/footerLayout.html"
-	// css
-	c.LayoutSections["BaseStyle"] = "style/baseStyle.html"
-	// js
-	c.LayoutSections["BaseScript"] = "script/baseScript.html"
-	c.LayoutSections["Script"] = "script/articleList.html"
-	c.LayoutSections["ScriptMessage"] = "script/message.html"
-	// 数据
+	// res
 	c.Data["articleTypeList"] = articleTypeList
 
 	res, count, err := servers.SelectArticleIsTopId()

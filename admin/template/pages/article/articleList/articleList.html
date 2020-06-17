@@ -31,10 +31,11 @@
                         <div class="card-title">
                             <form method="get" action="/article/list" class="row">
                                 <div class="col-md-3 col-sm-6 pr-0">
-                                    <input type="text" class="form-control" name="title" placeholder="请输入要搜索的文章标题">
+                                    <input id="article-title" type="text" class="form-control" name="title" placeholder="请输入要搜索的文章标题">
                                 </div>
                                 <div class="col-md-4 col-sm-6 pr-0">
                                     <select class="select2 form-control" data-toggle="select2"
+                                            id="article-type"
                                             name="tag"
                                             data-placeholder="Choose ...">
                                         <option selected="selected" disabled="disabled" style="display: none;" value=""></option>
@@ -52,10 +53,8 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    {{/*                                    <button class="btn  btn-primary">查询</button>*/}}
                                     <button class="btn  btn-primary" type="submit">查询</button>
-{{/*                                    <button class="btn  btn-danger">重置</button>*/}}
-                                    <a class="btn  btn-danger" href="/article/list">重置</a>
+                                    <a class="btn  btn-danger" href="/article/list?page=1">重置</a>
                                 </div>
                             </form>
                         </div>

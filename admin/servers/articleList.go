@@ -3,7 +3,6 @@ package servers
 import (
 	"easy_go/admin/db"
 	"easy_go/admin/models"
-	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
 	"strings"
 	"time"
@@ -12,11 +11,9 @@ import (
 func SelectArticlePageList(title, tag string, page, size int) ([]*models.Article, int64, error) {
 	var articleList []*models.Article
 	var total int64
-	tags := strings.Split(tag, ",")
-
 	article := db.DbConn.Model(&articleList)
 
-	beego.Info(len(tags))
+	tags := strings.Split(tag, ",")
 	if len(tags) == 1 && tags[0] != "" {
 		article = article.Where("menu_id = ?", tags[0])
 	} else if len(tags) == 2 {

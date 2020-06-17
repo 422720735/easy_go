@@ -13,16 +13,6 @@ type ArticleControllerType struct {
 }
 
 func (c *ArticleControllerType) Get() {
-	pageStr := c.GetString("page")
-	var page int
-	_int, err := strconv.ParseInt(pageStr, 10, 64)
-	if err != nil {
-		page = 1
-	}
-	page = int(_int)
-	data, total, _ := servers.SelectArticleTypeList(page, common.PAGE_SIZE)
-	articleTypelist := common.Paginator(page, common.PAGE_SIZE, total, data)
-
 	c.Layout = "layout/mainLayout.html"
 
 	c.TplName = "pages/article/articleType/articleType.html"
@@ -39,7 +29,25 @@ func (c *ArticleControllerType) Get() {
 	// js
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
 
-	// 数据
+	// req
+	pageStr := c.GetString("page")
+	var page int
+	_int, err := strconv.ParseInt(pageStr, 10, 64)
+	if err != nil {
+		page = 1
+	}
+	page = int(_int)
+
+	tag := c.GetString("tag")
+
+	// 类型分类
+	articleTypeList, _ := servers.SelectArticleTypeMenuName()
+
+	data, total, _ := servers.SelectArticleTypeList(tag, page, common.PAGE_SIZE)
+	articleTypelist := common.Paginator(page, common.PAGE_SIZE, total, data)
+
+	// res
+	c.Data["articleTypeList"] = articleTypeList
 	c.Data["article_type_list"] = articleTypelist
 }
 

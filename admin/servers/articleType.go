@@ -4,6 +4,7 @@ import (
 	"easy_go/admin/db"
 	"easy_go/admin/models"
 	"github.com/astaxie/beego/logs"
+	"strings"
 	"time"
 )
 
@@ -31,18 +32,30 @@ func InsertArticleType(articleName, KeyWord string, menuId int, isHotSwitch bool
 // ！！！！！！！！！！！！！！！
 // ！！！！！！！！！！！！！！！
 // ！！！！！！！！！！！！！！！
-func SelectArticleTypeList(page, size int) ([]*models.ArticleType, int64, error) {
+func SelectArticleTypeList(tag string, page, size int) ([]*models.ArticleType, int64, error) {
 	var articleTypeList []*models.ArticleType
 	var total int64
 	// 开始查询
-	err := db.DbConn.Model(&articleTypeList).Count(&total).Error
+	//err := db.DbConn.Model(&articleTypeList).Count(&total).Error
+	typeList := db.DbConn.Model(&articleTypeList)
+
+	tags := strings.Split(tag, ",")
+	if len(tags) == 1 && tags[0] != "" {
+		typeList = typeList.Where("menu_id = ?", tags[0])
+	} else if len(tags) == 2 {
+		typeList = typeList.Where("id = ?", tags[1])
+	}
+
+	err := typeList.Count(&total).Error
+
 	if err != nil {
 		logs.Critical(err.Error())
 		return articleTypeList, total, err
 	}
 
 	// 查询分页数据
-	err = db.DbConn.Limit(size).Offset((page - 1) * size).Order("sort asc").Find(&articleTypeList).Error
+	//err = db.DbConn.Limit(size).Offset((page - 1) * size).Order("sort asc").Find(&articleTypeList).Error
+	err = typeList.Limit(size).Offset((page - 1) * size).Order("sort asc").Find(&articleTypeList).Error
 	if err != nil {
 		logs.Critical(err.Error())
 		return articleTypeList, total, err
@@ -81,7 +94,7 @@ func SelectArticleTypeMenuName() ([]interface{}, error) {
 			menuItem["id"] = *&menuList[j].Id
 			menuItem["child_status"] = *&menuList[j].ChildStatus
 			var arr []interface{}
-			for i := 1; i < len(articleType); i++ {
+			for i := 0; i < len(articleType); i++ {
 				item := make(map[string]interface{})
 				if articleType[i].MenuId == *&menuList[j].Id {
 					// 只装载上架的数据
