@@ -2,10 +2,10 @@ package servers
 
 import (
 	"database/sql"
-	models2 "easy_go-github/admin/models"
 	"easy_go/admin/db"
 	"easy_go/admin/models"
 	"errors"
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
 	"github.com/jinzhu/gorm"
 	"time"
@@ -89,15 +89,25 @@ func InsertArticleDetails(title, content, cover, desc, tags, keyword string, men
 		tx.Rollback()
 		return err
 	}
-
+	beego.Info(menuId, "menu")
+	beego.Info(categoryId, "categoryId")
 	// 新增文章类型中的文章量
-	if categoryId != -1 {
-		err = tx.Model(&models2.ArticleType{}).Where("id = ?", categoryId).Update("sum", gorm.Expr("sum + ?", 1)).Error
+	if categoryId == -1 {
+		beego.Info(menuId, "menu")
+		err = tx.Model(&models.MenuSetting{}).Where("id = ?", menuId).UpdateColumn("sum", gorm.Expr("sum + ?", 1)).Error
 		if err != nil {
 			logs.Critical(err.Error())
-			tx.Rollback()
-			return err
 		}
+	} else {
+		err = tx.Model(&models.ArticleType{}).Where("id = ?", categoryId).UpdateColumn("sum", gorm.Expr("sum + ?", 1)).Error
+		if err != nil {
+			logs.Critical(err.Error())
+		}
+	}
+
+	if err != nil {
+		tx.Rollback()
+		return err
 	}
 
 	if isTop {
@@ -163,43 +173,56 @@ func UpdateArticleDetails(title, content, cover, desc, tags, keyword string, men
 
 	// 编辑数据前需要吸纳查询原来的数据,如果原来的数据，文章类型发生改变我们总数量想对应的+1 -1
 	// 需要对比两个字段menu_id category_id
-	if categoryId != -1 {
+	var isChange models.Article
+	err = tx.Select([]string{"menu_id", "category_id"}).Where("id = ?", id).First(&isChange).Error
+	if err != nil {
+		logs.Critical(err.Error())
+		tx.Rollback()
+		return err
+	}
 
-		var isChange models.Article
-		err = tx.Select([]string{"menu_id", "category_id"}).Where("id = ?", id).First(&isChange).Error
+	beego.Info("-----4")
+	beego.Info(isChange.CategoryId, "858")
+	beego.Info(categoryId, "858")
+	beego.Info("-----32")
+	if menuId != isChange.MenuId || categoryId != *isChange.CategoryId {
+		beego.Info("-----3")
+		// 1. 先去修改哪条数据,如果没有穿categoryId就去修改menu_id
+		if categoryId == -1 {
+			err = tx.Model(&models.MenuSetting{}).Where("id = ?", isChange.MenuId).Update("sum", gorm.Expr("sum - ?", 1)).Error
+			if err != nil {
+				logs.Critical(err.Error())
+			}
+		} else {
+			err = tx.Model(&models.ArticleType{}).Where("id = ?", *isChange.CategoryId).Update("sum", gorm.Expr("sum - ?", 1)).Error
+			if err != nil {
+				logs.Critical(err.Error())
+			}
+		}
+
 		if err != nil {
-			logs.Critical(err.Error())
 			tx.Rollback()
 			return err
 		}
 
-		if menuId != isChange.MenuId || categoryId != *isChange.CategoryId {
-			// 去修改哪条数据,如果没有穿categoryId就去修改menu_id
-			sum := tx.Model(&models2.ArticleType{})
-			if categoryId == -1 {
-				if err != nil {
-					logs.Critical(err.Error())
-					tx.Rollback()
-					return err
-				}
-				err = sum.Where("menu_id = ?", isChange.MenuId).Update("sum", gorm.Expr("sum - ?", 1)).Error
-			} else {
-				if err != nil {
-					logs.Critical(err.Error())
-					tx.Rollback()
-					return err
-				}
-				err = sum.Where("id = ?", *isChange.CategoryId).Update("sum", gorm.Expr("sum - ?", 1)).Error
-			}
-
-			err = sum.Where("id = ?", categoryId).Update("sum", gorm.Expr("sum + ?", 1)).Error
+		// 2. 编辑当前类型 + 1
+		if categoryId == -1 {
+			err = tx.Model(&models.MenuSetting{}).Where("id = ?", categoryId).Update("sum", gorm.Expr("sum + ?", 1)).Error
 			if err != nil {
 				logs.Critical(err.Error())
-				tx.Rollback()
-				return err
 			}
-
+		} else {
+			err = tx.Model(&models.ArticleType{}).Where("id = ?", categoryId).Update("sum", gorm.Expr("sum + ?", 1)).Error
+			if err != nil {
+				logs.Critical(err.Error())
+			}
 		}
+
+		if err != nil {
+			tx.Rollback()
+			return err
+		}
+
 	}
 
 	err = tx.Model(&a).Updates(map[string]interface{}{"title": title, "cover": cover, "desc": desc, "menu_id": menuId, "is_top": isTop, "hot": hot, "recommend": recommend, "markdown": markdown, "type": save, "update_time": time.Now()}).Error

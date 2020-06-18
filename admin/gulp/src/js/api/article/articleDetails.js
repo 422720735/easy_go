@@ -56,9 +56,9 @@ function setValue(data) {
 
     if ((window.location.pathname.indexOf('markdown') === -1)) {
         window.editor.txt.html(content)
-    } else {
-        window.content = content
     }
+
+    window.content = content
 
     $('#article-desc').val(desc)
     if (cover && cover !== '') {

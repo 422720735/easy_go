@@ -11,7 +11,7 @@ type ArticleType struct {
 	ArticleName string        `json:"article_name"`
 	KeyWord     string        `json:"key_word"`
 	MenuId      int           `json:"menu_id"`
-	Sum         bool          `json:"sum;" gorm:"default:'0'"`     // 文章量
+	Sum         int           `json:"sum;" gorm:"default:'0'"`     // 文章量
 	Visible     bool          `json:"visible;" gorm:"default:'0'"` // 0 默认下架
 	Hot         bool          `json:"hot;"`                        // 热门
 	Sort        int           `json:"sort; "gorm:"AUTO_INCREMENT"` // 排序

@@ -21,7 +21,6 @@ $(function () {
     //     }
     // });
 
-
     $('.nav > ul >  li.nav-item').click(function () {
         $('.nav > ul >  li.nav-item').removeClass('nav-show');
         $(this).addClass('nav-show');

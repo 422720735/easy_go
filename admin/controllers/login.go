@@ -67,7 +67,6 @@ func (c *LoginController) HandleLogin() {
 				c.History("未知异常", "")
 				return
 			}
-
 			c.Ctx.SetCookie("auth", tokenString, time.Second*60*60)
 		}
 		// 存session

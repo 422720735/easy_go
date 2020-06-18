@@ -43,6 +43,7 @@ function goPrevOfNext(type) {
         const icon = $('#icon').val()
         const isChildSwitch = $('#isChildSwitch').is(':checked')
         const isHotSwitch = $('#isHotSwitch').is(':checked')
+        const isRecommend = $('#isRecommend').is(':checked')
         // 发送请求
         $.ajax({
             type: "post",
