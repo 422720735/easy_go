@@ -29,13 +29,12 @@ func SelectMenuPage(page, size int) (*[]models.MenuSetting, int64, error) {
 }
 
 // 新增路由菜单数据
-func InsertMenu(menuName, path, icon string, isChildSwitch, isHotSwitch bool) error {
+func InsertMenu(menuName, path, icon string, isChildSwitch bool) error {
 	var m models.MenuSetting
 	m.MenuName = menuName
 	m.Path = path
 	m.Icon = icon
 	m.ChildStatus = isChildSwitch
-	m.Hot = isHotSwitch
 	m.CreatedTime = time.Now()
 	var count int
 	err := db.DbConn.Select([]string{"id"}).Model(&models.MenuSetting{}).Count(&count).Error

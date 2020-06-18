@@ -123,14 +123,8 @@ func (c *MenuController) HandleMenuAdd() {
 		c.Error("获取下级菜单失败")
 		return
 	}
-	// 热门推荐
-	isHotSwitch, err := transform.InterToBool(msg["isHotSwitch"])
-	if err != nil {
-		logs.Alert("获取热门推荐失败", err.Error())
-		c.Error("获取热门推荐失败")
-		return
-	}
-	err = servers.InsertMenu(menuName, path, icon, isChildSwitch, isHotSwitch)
+
+	err = servers.InsertMenu(menuName, path, icon, isChildSwitch)
 	if err != nil {
 		logs.Alert("新增menu失败，数据不合法", err.Error())
 		c.Error("新增menu失败，数据不合法")

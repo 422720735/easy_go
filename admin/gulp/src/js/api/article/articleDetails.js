@@ -6,7 +6,7 @@ let title, type, created, update, cover, desc, tags, keyword, isTop, hot, recomm
 let coverStr, id
 
 // 文章内容挂载到文章详情上面。
-let content = window.content
+let content
 
 $(document).ready(function () {
     if (window.location.search && window.location.search !== '') {
@@ -59,6 +59,7 @@ function setValue(data) {
     }
 
     window.content = content
+    console.log(window.content, 'content')
 
     $('#article-desc').val(desc)
     if (cover && cover !== '') {
@@ -173,6 +174,7 @@ function save(prod = false) {
         }
     }
 
+    console.log(window.content, "ccccc")
     const data = {
         title,
         created,
