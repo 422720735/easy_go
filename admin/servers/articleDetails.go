@@ -2,10 +2,12 @@ package servers
 
 import (
 	"database/sql"
+	models2 "easy_go-github/admin/models"
 	"easy_go/admin/db"
 	"easy_go/admin/models"
 	"errors"
 	"github.com/astaxie/beego/logs"
+	"github.com/jinzhu/gorm"
 	"time"
 )
 
@@ -24,7 +26,7 @@ func IsArticleTake(title string) error {
 	return nil
 }
 
-func InsertArticleDetails(title, content, cover, desc, tags, keyword string, menuId, categoryId int, isTop, hot, recommend, prod, markdown bool, id ...int) error {
+func InsertArticleDetails(title, content, cover, desc, tags, keyword string, menuId, categoryId int, isTop, hot, recommend, prod, markdown bool) error {
 	// 0 草稿箱 1发布 2垃圾箱
 	var save int
 
@@ -88,10 +90,20 @@ func InsertArticleDetails(title, content, cover, desc, tags, keyword string, men
 		return err
 	}
 
+	// 新增文章类型中的文章量
+	if categoryId != -1 {
+		err = tx.Model(&models2.ArticleType{}).Where("id = ?", categoryId).Update("sum", gorm.Expr("sum + ?", 1)).Error
+		if err != nil {
+			logs.Critical(err.Error())
+			tx.Rollback()
+			return err
+		}
+	}
+
 	if isTop {
 		var count int
 		s := models.Special{
-			TopId:       sql.NullInt64{
+			TopId: sql.NullInt64{
 				Int64: int64(a.Id),
 				Valid: true,
 			},
@@ -129,42 +141,68 @@ func UpdateArticleDetails(title, content, cover, desc, tags, keyword string, men
 		save = 0
 	}
 
-	a := &models.Article{
-		Id: id,
-		//Title: title,
-		//Cover: sql.NullString{
-		//	String: cover,
-		//	Valid:  true,
-		//},
-		//Desc:        desc,
-		//MenuId:      menuId,
-		//IsTop:       isTop,
-		//Hot:         hot,
-		//Recommend:   recommend,
-		//Markdown:    markdown,
-		//Type:        save,
-		//CreatedTime: time.Now(),
-	}
+	a := &models.Article{Id: id}
 
 	if tags != "" {
-		//a.Tags = sql.NullString{String: tags, Valid: true}
 		a.Tags = &tags
 	}
 
 	if categoryId != -1 {
-		//a.CategoryId = sql.NullInt64{Int64: int64(categoryId), Valid: true}
 		a.CategoryId = &categoryId
 	}
 
 	if keyword != "" {
-		//a.Keyword = sql.NullString{String: keyword, Valid: true}
 		a.Keyword = &keyword
 	}
 
 	// 开始事务
 	tx := db.DbConn.Begin()
 	defer tx.Commit()
-	err := tx.Model(&a).Updates(map[string]interface{}{"title": title, "cover": cover, "desc": desc, "menu_id": menuId, "is_top": isTop, "hot": hot, "recommend": recommend, "markdown": markdown, "type": save, "update_time": time.Now()}).Error
+
+	var err error
+
+	// 编辑数据前需要吸纳查询原来的数据,如果原来的数据，文章类型发生改变我们总数量想对应的+1 -1
+	// 需要对比两个字段menu_id category_id
+	if categoryId != -1 {
+
+		var isChange models.Article
+		err = tx.Select([]string{"menu_id", "category_id"}).Where("id = ?", id).First(&isChange).Error
+		if err != nil {
+			logs.Critical(err.Error())
+			tx.Rollback()
+			return err
+		}
+
+		if menuId != isChange.MenuId || categoryId != *isChange.CategoryId {
+			// 去修改哪条数据,如果没有穿categoryId就去修改menu_id
+			sum := tx.Model(&models2.ArticleType{})
+			if categoryId == -1 {
+				if err != nil {
+					logs.Critical(err.Error())
+					tx.Rollback()
+					return err
+				}
+				err = sum.Where("menu_id = ?", isChange.MenuId).Update("sum", gorm.Expr("sum - ?", 1)).Error
+			} else {
+				if err != nil {
+					logs.Critical(err.Error())
+					tx.Rollback()
+					return err
+				}
+				err = sum.Where("id = ?", *isChange.CategoryId).Update("sum", gorm.Expr("sum - ?", 1)).Error
+			}
+
+			err = sum.Where("id = ?", categoryId).Update("sum", gorm.Expr("sum + ?", 1)).Error
+			if err != nil {
+				logs.Critical(err.Error())
+				tx.Rollback()
+				return err
+			}
+
+		}
+	}
+
+	err = tx.Model(&a).Updates(map[string]interface{}{"title": title, "cover": cover, "desc": desc, "menu_id": menuId, "is_top": isTop, "hot": hot, "recommend": recommend, "markdown": markdown, "type": save, "update_time": time.Now()}).Error
 	if err != nil {
 		logs.Critical(err.Error())
 		tx.Rollback()
@@ -186,7 +224,7 @@ func UpdateArticleDetails(title, content, cover, desc, tags, keyword string, men
 	if isTop {
 		var count int
 		s := models.Special{
-			TopId: sql.NullInt64{Int64: int64(id), Valid: true},
+			TopId:       sql.NullInt64{Int64: int64(id), Valid: true},
 			CreatedTime: time.Now(),
 		}
 		err = tx.Select([]string{"id"}).Model(&models.Special{}).Count(&count).Error

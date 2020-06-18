@@ -65,8 +65,9 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                {{range $i, $v := .articleTypeList}}
                                 <tr>
-                                    <td>vue</td>
+                                    <td>{{$v.name}}</td>
                                     <td>20</td>
                                     <td></td>
                                     <td>2019-10-19 22:47</td>
@@ -78,6 +79,7 @@
                                            data-target="#myModal">隐藏</a>
                                     </td>
                                 </tr>
+                                {{end}}
                                 <tr>
                                     <td>vue</td>
                                     <td>20</td>
