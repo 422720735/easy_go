@@ -1,63 +1,19 @@
 /*
- Navicat Premium Data Transfer
+Navicat MySQL Data Transfer
 
- Source Server         : localhost_3306
- Source Server Type    : MySQL
- Source Server Version : 50710
- Source Host           : localhost:3306
- Source Schema         : easy_go
+Source Server         : localhost_3306
+Source Server Version : 50727
+Source Host           : localhost:3306
+Source Database       : easy_go
 
- Target Server Type    : MySQL
- Target Server Version : 50710
- File Encoding         : 65001
+Target Server Type    : MYSQL
+Target Server Version : 50727
+File Encoding         : 65001
 
- Date: 18/06/2020 00:42:02
+Date: 2020-06-18 18:58:31
 */
 
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for article_contents
--- ----------------------------
-DROP TABLE IF EXISTS `article_contents`;
-CREATE TABLE `article_contents` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `article_id` int(11) DEFAULT NULL,
-  `url` varchar(255) DEFAULT NULL,
-  `content` text,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Table structure for article_types
--- ----------------------------
-DROP TABLE IF EXISTS `article_types`;
-CREATE TABLE `article_types` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `article_name` varchar(255) DEFAULT NULL,
-  `key_word` varchar(255) DEFAULT NULL,
-  `menu_id` int(11) DEFAULT NULL,
-  `visible` tinyint(1) DEFAULT '0',
-  `hot` tinyint(1) DEFAULT NULL,
-  `sort` int(11) DEFAULT NULL,
-  `state` tinyint(1) DEFAULT '0',
-  `created_time` datetime DEFAULT NULL,
-  `update_time` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of article_types
--- ----------------------------
-BEGIN;
-INSERT INTO `article_types` VALUES (1, 'vue', 'vue', 2, 1, 0, 8, 0, '2020-06-18 00:18:24', NULL);
-INSERT INTO `article_types` VALUES (2, 'react', 'react', 2, 1, 0, 8, 0, '2020-06-18 00:18:34', NULL);
-INSERT INTO `article_types` VALUES (3, 'beego', 'beego', 3, 1, 0, 8, 0, '2020-06-18 00:18:50', NULL);
-INSERT INTO `article_types` VALUES (4, 'gin', 'gin', 3, 1, 0, 8, 0, '2020-06-18 00:19:00', NULL);
-INSERT INTO `article_types` VALUES (5, 'mysql', 'mysql', 5, 1, 0, 8, 0, '2020-06-18 00:19:17', NULL);
-INSERT INTO `article_types` VALUES (6, 'flutter', 'flutter', 4, 1, 0, 8, 0, '2020-06-18 00:19:47', NULL);
-COMMIT;
+SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
 -- Table structure for articles
@@ -89,6 +45,49 @@ CREATE TABLE `articles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
+-- Records of articles
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for article_contents
+-- ----------------------------
+DROP TABLE IF EXISTS `article_contents`;
+CREATE TABLE `article_contents` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `article_id` int(11) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `content` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of article_contents
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for article_types
+-- ----------------------------
+DROP TABLE IF EXISTS `article_types`;
+CREATE TABLE `article_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `article_name` varchar(255) DEFAULT NULL,
+  `key_word` varchar(255) DEFAULT NULL,
+  `menu_id` int(11) DEFAULT NULL,
+  `sum` int(11) DEFAULT '0',
+  `visible` tinyint(1) DEFAULT '0',
+  `hot` tinyint(1) DEFAULT NULL,
+  `sort` int(11) DEFAULT NULL,
+  `state` tinyint(1) DEFAULT '0',
+  `created_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of article_types
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for menu_settings
 -- ----------------------------
 DROP TABLE IF EXISTS `menu_settings`;
@@ -97,6 +96,7 @@ CREATE TABLE `menu_settings` (
   `menu_name` varchar(255) DEFAULT NULL,
   `path` varchar(255) DEFAULT NULL,
   `icon` varchar(255) DEFAULT NULL,
+  `sum` int(11) DEFAULT '0',
   `visible` tinyint(1) DEFAULT NULL,
   `state` tinyint(1) DEFAULT NULL,
   `sort` int(11) DEFAULT NULL,
@@ -105,20 +105,17 @@ CREATE TABLE `menu_settings` (
   `created_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of menu_settings
 -- ----------------------------
-BEGIN;
-INSERT INTO `menu_settings` VALUES (1, '首页', '/home', 'iconfont icon-home1', 1, 0, 1, 0, 0, '2020-06-03 19:25:06', '2020-06-16 13:57:25');
-INSERT INTO `menu_settings` VALUES (2, '前端', '/web', 'iconfont icon-h5', 1, 0, 2, 1, 1, '2020-06-03 19:26:28', '2020-06-16 13:57:25');
-INSERT INTO `menu_settings` VALUES (3, 'golang', '/go', 'iconfont icon-prog-golang', 1, 0, 3, 1, 1, '2020-06-03 19:27:03', NULL);
-INSERT INTO `menu_settings` VALUES (4, '移动端', 'mobile', 'iconfont icon-mobile', 1, 0, 4, 1, 1, '2020-06-03 19:27:49', '2020-06-16 14:02:31');
-INSERT INTO `menu_settings` VALUES (5, '数据库', '/data_base', 'iconfont icon-data-base', 1, 0, 5, 1, 0, '2020-06-03 19:28:48', NULL);
-INSERT INTO `menu_settings` VALUES (6, '区块链', '/block', 'iconfont icon-qukuailian', 1, 0, 6, 0, 0, '2020-06-03 19:30:08', '2020-06-16 14:00:29');
-INSERT INTO `menu_settings` VALUES (7, '其他', '/other', 'iconfont icon-qita', 1, 0, 7, 0, 0, '2020-06-03 19:30:50', NULL);
-COMMIT;
+INSERT INTO `menu_settings` VALUES ('1', '首页', 'home             ', 'iconfont icon-home1', '0', '0', '0', '1', '0', '1', '2020-06-18 15:20:05', null);
+INSERT INTO `menu_settings` VALUES ('2', '前端', 'web', 'iconfont icon-h5', '0', '0', '0', '2', '1', '1', '2020-06-18 15:27:11', null);
+INSERT INTO `menu_settings` VALUES ('3', 'golang', 'go', 'iconfont icon-prog-golang', '0', '0', '0', '3', '1', '0', '2020-06-18 15:29:43', null);
+INSERT INTO `menu_settings` VALUES ('4', '移动端', 'mobile', 'iconfont icon-mobile', '0', '0', '0', '4', '1', '1', '2020-06-18 15:32:15', null);
+INSERT INTO `menu_settings` VALUES ('5', '区块链', 'block', 'iconfont icon-qukuailian', '0', '0', '0', '5', '0', '1', '2020-06-18 18:33:36', null);
+INSERT INTO `menu_settings` VALUES ('6', '其他', 'other', 'iconfont icon-qita', '0', '0', '0', '6', '0', '0', '2020-06-18 18:34:03', null);
 
 -- ----------------------------
 -- Table structure for specials
@@ -131,6 +128,10 @@ CREATE TABLE `specials` (
   `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of specials
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for users
@@ -152,8 +153,4 @@ CREATE TABLE `users` (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-BEGIN;
-INSERT INTO `users` VALUES (1, '123456', '1c6a47df3c59184b447411d3764d9e56', 2, '[::1]:50837', '2020-06-18 00:23:17', '2020-06-03 19:24:15', '2020-06-18 00:23:17', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiIxMjM0NTYiLCJsb2dpbl9pcCI6Ils6OjFdOjUwODM3IiwiZXhwIjoxNTkyNDE0NTk2LCJpYXQiOjE1OTI0MTA5OTZ9.LpdFsmZ-tvQRiQk905lgr9Y9yBwjsffOOFDkPY1wKwM');
-COMMIT;
-
-SET FOREIGN_KEY_CHECKS = 1;
+INSERT INTO `users` VALUES ('1', '123456', '1c6a47df3c59184b447411d3764d9e56', '2', '[::1]:57279', '2020-06-18 18:23:54', '2020-06-18 14:57:13', '2020-06-18 18:23:54', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiIxMjM0NTYiLCJsb2dpbl9pcCI6Ils6OjFdOjU3Mjc5IiwiZXhwIjoxNTkyNDc5NDMzLCJpYXQiOjE1OTI0NzU4MzN9.5VAsKZxKESSiTya-vONTVcBPLj-VpwV7hGMrJOHJf1g');
