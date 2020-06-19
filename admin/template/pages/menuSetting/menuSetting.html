@@ -123,6 +123,9 @@
                         </div>
                         <div class="d-flex justify-content-end align-items-center">
                             <ul class="pagination float-right pagination-rounded justify-content-end">
+                                <li class="page-item default">
+                                    <a class="page-link" href="javascript:;">共 {{ .menu_data.total }} 条</a>
+                                </li>
                                 <li class="page-item">
                                     <a class="page-link" href="{{ if eq $.menu_data.current 1}}javascript:;{{ else }}?page={{.menu_data.prepage}}{{ end }}" aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
@@ -151,7 +154,7 @@
                                         <span class="sr-only">Next</span>
                                     </a>
                                 </li>
-                                <li class="page-item">
+                                <li class="page-item default">
                                     <a class="page-link" href="javascript:;">共 {{ .menu_data.totalpages }} 页</a>
                                 </li>
                             </ul>
