@@ -1,0 +1,51 @@
+2020/06/19 15:07:06.476 [D] [router.go:925]  |            ::1|[42m 200 [0m|     3.9896ms|   match|[44m GET     [0m /article/type/add   r:/article/type/add
+2020/06/19 15:07:06.497 [D] [router.go:925]  |            ::1|[47m 304 [0m|           0s|   match|[44m GET     [0m /static/fonts/iconfont.css
+2020/06/19 15:07:06.498 [D] [router.go:925]  |            ::1|[47m 304 [0m|           0s|   match|[44m GET     [0m /static/assets/css/vendor/jquery-jvectormap-1.2.2.css
+2020/06/19 15:07:06.499 [D] [router.go:925]  |            ::1|[47m 304 [0m|     1.0021ms|   match|[44m GET     [0m /static/assets/css/icons.min.css
+2020/06/19 15:07:06.499 [D] [router.go:925]  |            ::1|[47m 304 [0m|     1.0021ms|   match|[44m GET     [0m /static/assets/message/css/jquery.my-message.1.1.css
+2020/06/19 15:07:06.500 [D] [router.go:925]  |            ::1|[47m 304 [0m|     2.0017ms|   match|[44m GET     [0m /static/assets/css/style.css
+2020/06/19 15:07:06.535 [D] [router.go:925]  |            ::1|[47m 304 [0m|     1.9941ms|   match|[44m GET     [0m /static/assets/js/app.js
+2020/06/19 15:07:06.535 [D] [router.go:925]  |            ::1|[47m 304 [0m|      997.3µs|   match|[44m GET     [0m /static/assets/js/vendor/apexcharts.min.js
+2020/06/19 15:07:06.536 [D] [router.go:925]  |            ::1|[47m 304 [0m|     1.9955ms|   match|[44m GET     [0m /static/assets/js/lodash.min.js
+2020/06/19 15:07:06.536 [D] [router.go:925]  |            ::1|[47m 304 [0m|     1.9955ms|   match|[44m GET     [0m /static/assets/message/js/jquery.my-message.1.1.js
+2020/06/19 15:07:06.537 [D] [router.go:925]  |            ::1|[47m 304 [0m|     1.9945ms|   match|[44m GET     [0m /static/assets/images/logo.png
+2020/06/19 15:07:06.537 [D] [router.go:925]  |            ::1|[47m 304 [0m|     1.9945ms|   match|[44m GET     [0m /static/assets/images/logo_sm.png
+2020/06/19 15:07:06.539 [D] [router.go:925]  |            ::1|[47m 304 [0m|      997.5µs|   match|[44m GET     [0m /static/assets/images/users/avatar-1.jpg
+2020/06/19 15:07:06.541 [D] [router.go:925]  |            ::1|[47m 304 [0m|      997.1µs|   match|[44m GET     [0m /static/assets/images/users/avatar-2.jpg
+2020/06/19 15:07:06.542 [D] [router.go:925]  |            ::1|[47m 304 [0m|           0s|   match|[44m GET     [0m /static/assets/images/users/avatar-4.jpg
+2020/06/19 15:07:06.616 [D] [router.go:925]  |            ::1|[42m 200 [0m|           0s|   match|[44m GET     [0m /static/assets/images/favicon.png
+2020/06/19 15:07:06.692 [D] [router.go:925]  |            ::1|[42m 200 [0m|     3.9875ms|   match|[44m GET     [0m /article/type/add   r:/article/type/add
+2020/06/19 15:07:06.800 [D] [router.go:925]  |            ::1|[42m 200 [0m|           0s|   match|[44m GET     [0m /static/assets/images/favicon.png
+2020/06/19 15:07:06.901 [D] [router.go:925]  |            ::1|[42m 200 [0m|      3.989ms|   match|[44m GET     [0m /article/type/add   r:/article/type/add
+2020/06/19 15:07:06.998 [D] [router.go:925]  |            ::1|[42m 200 [0m|           0s|   match|[44m GET     [0m /static/assets/images/favicon.png
+2020/06/19 15:07:07.075 [D] [router.go:925]  |            ::1|[42m 200 [0m|     4.0035ms|   match|[44m GET     [0m /article/type/add   r:/article/type/add
+2020/06/19 15:07:07.173 [D] [router.go:925]  |            ::1|[42m 200 [0m|           0s|   match|[44m GET     [0m /static/assets/images/favicon.png
+2020/06/19 15:07:07.227 [D] [router.go:925]  |            ::1|[42m 200 [0m|     3.9903ms|   match|[44m GET     [0m /article/type/add   r:/article/type/add
+2020/06/19 15:07:07.323 [D] [router.go:925]  |            ::1|[42m 200 [0m|           0s|   match|[44m GET     [0m /static/assets/images/favicon.png
+2020/06/19 15:07:07.397 [D] [router.go:925]  |            ::1|[42m 200 [0m|      5.971ms|   match|[44m GET     [0m /article/type/add   r:/article/type/add
+2020/06/19 15:07:08.164 [I] [app.go:215]  http server Running on http://:8201
+2020/06/19 15:07:08.251 [D] [router.go:925]  |            ::1|[42m 200 [0m|      997.6µs|   match|[44m GET     [0m /static/assets/images/favicon.png
+2020/06/19 15:07:24.613 [D] [router.go:925]  |            ::1|[42m 200 [0m|    38.4284ms|   match|[46m POST    [0m /api/articleType/add   r:/api/articleType/add
+2020/06/19 15:07:29.634 [D] [router.go:925]  |            ::1|[42m 200 [0m|     3.9896ms|   match|[44m GET     [0m /article/type/add   r:/article/type/add
+2020/06/19 15:07:41.811 [D] [router.go:925]  |            ::1|[42m 200 [0m|    44.5465ms|   match|[46m POST    [0m /api/articleType/add   r:/api/articleType/add
+2020/06/19 15:07:46.823 [D] [router.go:925]  |            ::1|[42m 200 [0m|     2.9927ms|   match|[44m GET     [0m /article/type/add   r:/article/type/add
+2020/06/19 15:08:05.920 [D] [router.go:925]  |            ::1|[42m 200 [0m|    34.5647ms|   match|[46m POST    [0m /api/articleType/add   r:/api/articleType/add
+2020/06/19 15:08:10.933 [D] [router.go:925]  |            ::1|[42m 200 [0m|     3.9901ms|   match|[44m GET     [0m /article/type/add   r:/article/type/add
+2020/06/19 15:08:20.091 [D] [router.go:925]  |            ::1|[42m 200 [0m|    59.8447ms|   match|[46m POST    [0m /api/articleType/add   r:/api/articleType/add
+2020/06/19 15:08:25.102 [D] [router.go:925]  |            ::1|[42m 200 [0m|     2.5031ms|   match|[44m GET     [0m /article/type/add   r:/article/type/add
+2020/06/19 15:09:41.728 [C] [articleList.go:49]  record not found
+2020/06/19 15:09:41.732 [D] [router.go:925]  |            ::1|[42m 200 [0m|     5.9846ms|   match|[44m GET     [0m /article/list   r:/article/list
+2020/06/19 15:09:41.748 [D] [router.go:925]  |            ::1|[42m 200 [0m|           0s|   match|[44m GET     [0m /static/js/api/article/articleList.js
+2020/06/19 15:09:41.782 [D] [router.go:925]  |            ::1|[47m 304 [0m|           0s|   match|[44m GET     [0m /static/assets/fonts/ionicons.woff
+2020/06/19 15:09:43.251 [D] [router.go:925]  |            ::1|[42m 200 [0m|     3.9952ms|   match|[44m GET     [0m /article/type   r:/article/type
+2020/06/19 15:09:47.633 [D] [router.go:925]  |            ::1|[42m 200 [0m|     2.9907ms|   match|[44m GET     [0m /article/type/add   r:/article/type/add
+2020/06/19 15:09:47.651 [D] [router.go:925]  |            ::1|[47m 304 [0m|           0s|   match|[44m GET     [0m /static/js/form-wizard.js
+2020/06/19 15:09:47.651 [D] [router.go:925]  |            ::1|[47m 304 [0m|           0s|   match|[44m GET     [0m /static/js/api/article/articleTypeAdd.js
+2020/06/19 15:11:46.503 [D] [router.go:925]  |            ::1|[42m 200 [0m|    38.8968ms|   match|[46m POST    [0m /api/articleType/add   r:/api/articleType/add
+2020/06/19 15:11:51.513 [D] [router.go:925]  |            ::1|[42m 200 [0m|     2.9769ms|   match|[44m GET     [0m /article/type/add   r:/article/type/add
+2020/06/19 15:11:51.576 [D] [router.go:925]  |            ::1|[47m 304 [0m|           0s|   match|[44m GET     [0m /static/assets/fonts/Quicksand-Bold.ttf
+2020/06/19 15:11:51.577 [D] [router.go:925]  |            ::1|[47m 304 [0m|      997.9µs|   match|[44m GET     [0m /static/assets/fonts/Quicksand-Regular.ttf
+2020/06/19 15:11:51.577 [D] [router.go:925]  |            ::1|[47m 304 [0m|           0s|   match|[44m GET     [0m /static/assets/fonts/feather.woff
+2020/06/19 15:11:51.578 [D] [router.go:925]  |            ::1|[47m 304 [0m|      996.1µs|   match|[44m GET     [0m /static/assets/fonts/materialdesignicons-webfont.woff2
+2020/06/19 15:11:51.578 [D] [router.go:925]  |            ::1|[47m 304 [0m|      996.1µs|   match|[44m GET     [0m /static/assets/fonts/dripicons-v2.woff
+2020/06/19 15:11:51.578 [D] [router.go:925]  |            ::1|[47m 304 [0m|      996.1µs|   match|[44m GET     [0m /static/assets/fonts/Quicksand-Medium.ttf

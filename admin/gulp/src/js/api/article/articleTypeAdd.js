@@ -1,6 +1,5 @@
 const HOST = '/api'
 const Ok = 1
-let current = 0
 
 function addArticle() {
     const articleName = $('#articleName').val()
@@ -9,62 +8,36 @@ function addArticle() {
 
     // 第一步
     if (articleName && articleName !== '' && KeyWord && KeyWord !== '' && menuId && menuId !== '') {
-        $('#next-btn').removeAttr('disabled')
+        $('button.btn.validation').removeAttr('disabled')
     } else {
-        // $('#next-btn').attr('disabled', 'disabled')
+        $('button.btn.validation').attr('disabled', 'disabled')
     }
+    $('.needs-validation').addClass('was-validated')
 }
 
-function goPrevOfNext(type) {
-    switch (type) {
-        case 1:
-            // 上一步
-            current -= 1
-            break
-        case 2:
-            // 下一步
-            current += 1
-            break
-    }
+$('button.btn.validation').click(function () {
+    const articleName = $('#articleName').val()
+    const KeyWord = $('#KeyWord').val()
+    const menuId = $('#menuId').val()
 
-    // 第二步
-    if (current === 0) {
-        // 上一步可以显示。
-        $('#next-prev').addClass('d-none')
-    } else {
-        $('#next-prev').removeClass('d-none')
-    }
-    if (current > 1) {
-        $('#next-btn').addClass('d-none')
-    }
-
-    if (current === 2) {
-        // 获取数据
-        const articleName = $('#articleName').val()
-        const KeyWord = $('#KeyWord').val()
-        const menuId = $('#menuId').val()
-        const isHotSwitch = $('#isHotSwitch').is(':checked')
-        // 发送请求
-        $.ajax({
-            type: "post",
-            async: false,
-            url: HOST + `/articleType/add`,
-            data: JSON.stringify({
-                articleName,
-                KeyWord,
-                menuId,
-                isHotSwitch
-            }),
-            success: function (res) {
-                if (res.code === Ok) {
-                    window.message.success(res)
-                    setTimeout(function () {
-                        window.location.reload()
-                    }, 5000)
-                } else {
-                    window.message.error(res)
-                }
+    $.ajax({
+        type: "post",
+        async: false,
+        url: HOST + `/articleType/add`,
+        data: JSON.stringify({
+            articleName,
+            KeyWord,
+            menuId
+        }),
+        success: function (res) {
+            if (res.code === Ok) {
+                window.message.success(res)
+                setTimeout(function () {
+                    window.location.reload()
+                }, 5000)
+            } else {
+                window.message.error(res)
             }
-        })
-    }
-}
+        }
+    })
+})

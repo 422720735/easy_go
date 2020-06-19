@@ -28,6 +28,7 @@ func (c *ArticleControllerType) Get() {
 	c.LayoutSections["BaseStyle"] = "style/baseStyle.html"
 	// js
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
+	c.LayoutSections["ScriptMessage"] = "script/message.html"
 
 	// req
 	pageStr := c.GetString("page")
@@ -76,6 +77,7 @@ func (c *ArticleControllerType) Add() {
 
 	c.LayoutSections["Style"] = "style/menuSetting.html"
 	c.LayoutSections["Script"] = "script/articleType/articleTypeAdd.html"
+	c.LayoutSections["ScriptMessage"] = "script/message.html"
 
 	// 数据
 	c.Data["menu_data"] = menuData
@@ -115,16 +117,15 @@ func (c *ArticleControllerType) HandArticleTypeAdd() {
 		return
 	}
 
-	// 热门推荐
-	isHotSwitch, err := transform.InterToBool(msg["isHotSwitch"])
+	err = servers.IsArticleTypeTake(articleName, KeyWord)
 	if err != nil {
-		logs.Alert("新增文章类型失败，数据不合法", err.Error())
-		c.Error("新增文章类型失败，数据不合法")
+		logs.Alert("", err.Error())
+		c.Error("已经存在相同的文章类型或关键字")
 		return
 	}
 
-	// 数据失败
-	err = servers.InsertArticleType(articleName, KeyWord, menuId, isHotSwitch)
+	// 新增文章类型
+	err = servers.InsertArticleType(articleName, KeyWord, menuId)
 	if err != nil {
 		logs.Alert("新增文章类型失败，数据不合法", err.Error())
 		c.Error("新增文章类型失败，数据不合法")

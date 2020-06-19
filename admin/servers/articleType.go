@@ -3,18 +3,32 @@ package servers
 import (
 	"easy_go/admin/db"
 	"easy_go/admin/models"
+	"errors"
 	"github.com/astaxie/beego/logs"
 	"strings"
 	"time"
 )
 
+func IsArticleTypeTake(name, keyword string) error {
+	// 新增先查询数据是不是有该条数据
+	var count int
+	err := db.DbConn.Select([]string{"article_name"}).Model(&models.ArticleType{}).Where("article_name = ?", name).Or("key_word = ?", keyword).Count(&count).Error
+	if err != nil {
+		logs.Critical(err.Error())
+		return err
+	}
+	if count != 0 {
+		return errors.New("已经存在相同的文章类型或关键字")
+	}
+	return nil
+}
+
 // 新增路由菜单数据
-func InsertArticleType(articleName, KeyWord string, menuId int, isHotSwitch bool) error {
+func InsertArticleType(articleName, KeyWord string, menuId int) error {
 	var a models.ArticleType
 	a.ArticleName = articleName
 	a.KeyWord = KeyWord
 	a.MenuId = menuId
-	a.Hot = isHotSwitch
 	a.CreatedTime = time.Now()
 	var count int
 	err := db.DbConn.Select([]string{"id"}).Model(&models.MenuSetting{}).Count(&count).Error

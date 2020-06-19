@@ -5,7 +5,6 @@ const Ok = 1
 function addMenu() {
     const menuName = $('#menuName').val()
     const path = $('#path').val()
-    const icon = $('#icon').val()
     // 第一步
     if (menuName && menuName !== '' && path && path !== '') {
         $('button.btn.validation').removeAttr('disabled')
