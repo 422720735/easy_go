@@ -4,8 +4,10 @@ import (
 	"easy_go/admin/common"
 	"easy_go/admin/servers"
 	"easy_go/admin/transform"
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
 	"strconv"
+	"strings"
 )
 
 type ArticleControllerType struct {
@@ -178,4 +180,34 @@ func (c *ArticleControllerType) HandArticleTypeDelete() {
 		return
 	}
 	c.Success("删除成功")
+}
+
+// 上移和下移
+func (c *ArticleControllerType) HandArticleType_up_down() {
+	beego.Info("-------------------")
+	// 修改的数据
+	u := c.Ctx.Request.RequestURI
+
+	// 获取当前sort数值
+	sortStr := c.GetString("sort")
+	var sort int
+	atoi, err := strconv.Atoi(sortStr)
+
+	sort = atoi
+	if strings.Index(u, "up") > -1 {
+		// 上移动
+		beego.Info("---")
+		err = servers.ArticleTypeUpdateUpDown(sort, "top")
+	} else {
+		// 下移动
+		beego.Info("++")
+		err = servers.ArticleTypeUpdateUpDown(sort, "bottom")
+	}
+
+	if err != nil {
+		logs.Critical("上移下移失败", err.Error())
+		c.Redirect("/article/list", 302)
+	}
+
+	c.Redirect("/article/list", 302)
 }

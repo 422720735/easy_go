@@ -69,7 +69,7 @@ func (c *ArticleList) HandMove_up_down() {
 	// 获取当前sort数值
 	sortStr := c.GetString("sort")
 	var sort int
-	int, err := strconv.Atoi(sortStr)
+	atoi, err := strconv.Atoi(sortStr)
 
 	// 获取当前sort数值
 	page := c.GetString("page")
@@ -82,7 +82,7 @@ func (c *ArticleList) HandMove_up_down() {
 		c.Redirect("/article/list?page="+page, 302)
 		return
 	}
-	sort = int
+	sort = atoi
 	if strings.Index(u, "up") > -1 {
 		// 上移动
 		err = servers.ArticleUpdateUpDown(sort, "top")

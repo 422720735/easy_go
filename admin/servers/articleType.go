@@ -4,6 +4,7 @@ import (
 	"easy_go/admin/db"
 	"easy_go/admin/models"
 	"errors"
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
 	"time"
 )
@@ -140,5 +141,53 @@ func ArticleTypeDeleteMenu(id int) error {
 		logs.Critical(err.Error())
 		return err
 	}
+	return nil
+}
+
+// 文章类型上移下移
+func ArticleTypeUpdateUpDown(sort int, str string) error {
+	// 上移动, 需要修改前一条
+	var err error
+	var current models.ArticleType
+	var prev_next models.ArticleType
+	var sortNext int
+	// 查询当前数据
+	err = db.DbConn.Model(&models.ArticleType{}).Where("sort = ?", sort).Find(&current).Error
+	beego.Info("-+65464656")
+	if err != nil {
+		logs.Critical(err.Error())
+		return err
+	}
+	if str == "top" {
+		err = db.DbConn.Model(&models.ArticleType{}).Where("sort = ?", sort-1).Find(&prev_next).Error
+		sortNext = sort - 1
+		if err != nil {
+			logs.Critical(err.Error())
+			return err
+		}
+	} else {
+		err = db.DbConn.Model(&models.ArticleType{}).Where("sort = ?", sort+1).Find(&prev_next).Error
+		sortNext = sort + 1
+		if err != nil {
+			logs.Critical(err.Error())
+			return err
+		}
+	}
+	beego.Info("-+222")
+	// 开始事务
+	tx := db.DbConn.Begin()
+	// 修改数据
+	err = tx.Model(&current).Updates(map[string]interface{}{"sort": sortNext, "update_time": time.Now()}).Error
+	if err != nil {
+		logs.Critical(err.Error())
+		tx.Rollback()
+	}
+	err = tx.Model(&prev_next).Updates(map[string]interface{}{"sort": sort, "update_time": time.Now()}).Error
+	if err != nil {
+		logs.Critical(err.Error())
+		tx.Rollback()
+	}
+	beego.Info("-+rewre")
+	tx.Commit()
 	return nil
 }

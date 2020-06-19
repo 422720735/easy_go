@@ -73,6 +73,17 @@
                                             <td>&emsp;</td>
                                         {{end}}
                                         <td>
+                                            <a href="/api/article/type/move/up?sort={{$v.Sort}}"
+                                               title="上移">
+                                                <i class="feather icon-arrow-down"></i>
+                                            </a>
+                                            <a href="/api/article/type/move/down?sort={{$v.Sort}}"
+                                               title="下移">
+                                                <i class="feather icon-arrow-up"></i>
+
+                                            </a>
+                                        </td>
+                                        <td>
                                             {{if $v.Visible}}
                                                 <a href="/api/article/type/issue?id={{$v.Id}}&status={{$v.Visible}}"
                                                    class="text-success">下架</a>
