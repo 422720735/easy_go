@@ -31,7 +31,7 @@ func InsertArticleType(articleName, KeyWord string, menuId int) error {
 	a.MenuId = menuId
 	a.CreatedTime = time.Now()
 	var count int
-	err := db.DbConn.Select([]string{"id"}).Model(&models.MenuSetting{}).Count(&count).Error
+	err := db.DbConn.Select([]string{"id"}).Model(&models.ArticleType{}).Count(&count).Error
 	if err == nil {
 		a.Sort = count + 1
 	}
