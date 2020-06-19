@@ -28,6 +28,8 @@ func (c *TestControllers) Get() {
 		"b": res,
 	})
 	*/
+	//data, total, _ := servers.SelectArticleTypeList("", 1, common.PAGE_SIZE)
+	//articleList := common.Paginator(1, common.PAGE_SIZE, total, data)
 	articleTypeList, _ := servers.SelectArticleTypeMenuName()
 	c.Success(articleTypeList)
 }

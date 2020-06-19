@@ -28,28 +28,19 @@ func (c *ArticleControllerType) Get() {
 	c.LayoutSections["BaseStyle"] = "style/baseStyle.html"
 	// js
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
+	c.LayoutSections["Script"] = "script/articleType/articleTypeList.html"
 	c.LayoutSections["ScriptMessage"] = "script/message.html"
 
 	// req
-	pageStr := c.GetString("page")
-	var page int
-	_int, err := strconv.ParseInt(pageStr, 10, 64)
-	if err != nil {
-		page = 1
-	}
-	page = int(_int)
-
 	tag := c.GetString("tag")
 
 	// 类型分类
-	articleTypeList, _ := servers.SelectArticleTypeMenuName()
-
-	data, total, _ := servers.SelectArticleTypeList(tag, page, common.PAGE_SIZE)
-	articleTypelist := common.Paginator(page, common.PAGE_SIZE, total, data)
+	menAll, _ := servers.SelectArticleMenu("") // 传""不筛选
+	typeLimit, _ := servers.SelectArticleTypeList(tag)
 
 	// res
-	c.Data["articleTypeList"] = articleTypeList
-	c.Data["article_type_list"] = articleTypelist
+	c.Data["menu_all"] = menAll
+	c.Data["article_type_limit"] = typeLimit
 }
 
 func (c *ArticleControllerType) Add() {
@@ -134,4 +125,57 @@ func (c *ArticleControllerType) HandArticleTypeAdd() {
 	}
 
 	c.Success("新增文章类型成功")
+}
+
+// 上下架
+func (c *ArticleControllerType) HandArticleTypeUpdateIssue() {
+	idStr := c.GetString("id")
+	id, err := strconv.Atoi(idStr)
+
+	if err != nil {
+		// 直接走
+		c.Redirect("/article/type", 302)
+		return
+	}
+
+	visible, err := c.GetBool("status")
+	if err != nil {
+		// 直接走
+		c.Redirect("/article/type", 302)
+		return
+	}
+
+	err = servers.ArticleTypeUpdateIssue(id, visible)
+	if err != nil {
+		// 直接走
+		logs.Warn("数据修改失败" + err.Error())
+		c.Redirect("/article/type", 302)
+		return
+	}
+
+	c.Redirect("/article/type", 302)
+}
+
+// 文章类型软删除
+func (c *ArticleControllerType) HandArticleTypeDelete() {
+	// 获取参数
+	msg, err := common.Unmarshal(&c.Controller)
+	if err != nil {
+		logs.Alert("获取数据失败", err.Error())
+		c.Error("获取数据失败")
+		return
+	}
+	id, err := transform.InterToInt(msg["id"])
+	if err != nil {
+		logs.Alert("获取数据失败" + err.Error())
+		c.Error("获取数据失败")
+		return
+	}
+	err = servers.ArticleTypeDeleteMenu(id)
+	if err != nil {
+		logs.Alert("删除文章类型数据失败", err.Error())
+		c.Error("删除文章类型数据失败")
+		return
+	}
+	c.Success("删除成功")
 }

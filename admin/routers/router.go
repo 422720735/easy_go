@@ -72,6 +72,10 @@ func register() {
 	beego.Router(Api + "/article/delete", &article.ArticleList{},"post:HandDelete")
 	beego.Router(Api + "/article/move/*", &article.ArticleList{},"get:HandMove_up_down")
 
+	// 文章类型操作
+	beego.Router(Api + "/article/type/issue", &article.ArticleControllerType{},"get:HandArticleTypeUpdateIssue")
+	beego.Router(Api + "/article/type/delete", &article.ArticleControllerType{},"post:HandArticleTypeDelete")
+
 
 	beego.Router("/test", &controllers.TestControllers{})
 }

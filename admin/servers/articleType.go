@@ -5,7 +5,6 @@ import (
 	"easy_go/admin/models"
 	"errors"
 	"github.com/astaxie/beego/logs"
-	"strings"
 	"time"
 )
 
@@ -39,61 +38,23 @@ func InsertArticleType(articleName, KeyWord string, menuId int) error {
 	return err
 }
 
-// 文章类型的分页数据,后期需要调整这个接口，需要连表查询-文章量-父级
-// ！！！！！！！！！！！！！！！
-// ！！！！！！！！！！！！！！！
-// ！！！！！！！！！！！！！！！
-// ！！！！！！！！！！！！！！！
-// ！！！！！！！！！！！！！！！
-// ！！！！！！！！！！！！！！！
-func SelectArticleTypeList(tag string, page, size int) ([]*models.ArticleType, int64, error) {
-	var articleTypeList []*models.ArticleType
-	var total int64
-	// 开始查询
-	//err := db.DbConn.Model(&articleTypeList).Count(&total).Error
-	typeList := db.DbConn.Model(&articleTypeList)
-
-	tags := strings.Split(tag, ",")
-	if len(tags) == 1 && tags[0] != "" {
-		typeList = typeList.Where("menu_id = ?", tags[0])
-	} else if len(tags) == 2 {
-		typeList = typeList.Where("id = ?", tags[1])
-	}
-
-	err := typeList.Count(&total).Error
-
-	if err != nil {
-		logs.Critical(err.Error())
-		return articleTypeList, total, err
-	}
-
-	// 查询分页数据
-	//err = db.DbConn.Limit(size).Offset((page - 1) * size).Order("sort asc").Find(&articleTypeList).Error
-	err = typeList.Limit(size).Offset((page - 1) * size).Order("sort asc").Find(&articleTypeList).Error
-	if err != nil {
-		logs.Critical(err.Error())
-		return articleTypeList, total, err
-	}
-
-	return articleTypeList, total, nil
-}
-
 // 查询所有的类型及与之相对应的父级menu
 func SelectArticleTypeMenuName() ([]interface{}, error) {
-	// 文章类型
-	var articleType []*models.ArticleType
-	// menu
+	// 路由
 	var menuList []*models.MenuSetting
+	menu := db.DbConn.Select([]string{"id", "menu_name", "child_status", "visible"}).Model(&menuList)
 
-	// menu
-	err := db.DbConn.Select([]string{"id", "menu_name", "child_status", "visible"}).Find(&menuList).Error
+	// 文章类型 要过滤下架和软删除的
+	var articleList []*models.ArticleType
+	article := db.DbConn.Select([]string{"id", "article_name", "menu_id"}).Model(&articleList).Where("visible = ? and state = ?", true, false)
+
+	err := menu.Find(&menuList).Error
 	if err != nil {
 		logs.Critical(err.Error())
 		return nil, err
 	}
 
-	// articleType
-	err = db.DbConn.Select([]string{"id", "article_name", "menu_id"}).Where("visible = ? and state = ?", true, false).Find(&articleType).Error
+	err = article.Find(&articleList).Error
 	if err != nil {
 		logs.Critical(err.Error())
 		return nil, err
@@ -108,14 +69,14 @@ func SelectArticleTypeMenuName() ([]interface{}, error) {
 			menuItem["id"] = *&menuList[j].Id
 			menuItem["child_status"] = *&menuList[j].ChildStatus
 			var arr []interface{}
-			for i := 0; i < len(articleType); i++ {
+			for i := 0; i < len(articleList); i++ {
 				item := make(map[string]interface{})
-				if articleType[i].MenuId == *&menuList[j].Id {
+				if articleList[i].MenuId == *&menuList[j].Id {
 					// 只装载上架的数据
 					if *&menuList[j].ChildStatus {
-						item["id"] = *&articleType[i].Id
-						item["name"] = *&articleType[i].ArticleName
-						item["menu_id"] = *&articleType[i].MenuId
+						item["id"] = *&articleList[i].Id
+						item["name"] = *&articleList[i].ArticleName
+						item["menu_id"] = *&articleList[i].MenuId
 						arr = append(arr, item)
 						menuItem["child"] = arr
 					}
@@ -126,4 +87,58 @@ func SelectArticleTypeMenuName() ([]interface{}, error) {
 	}
 
 	return result, nil
+}
+
+// 根据条件筛选或不筛选menu路由菜单
+func SelectArticleMenu(tag string) ([]*models.MenuSetting, error) {
+	// 路由
+	var menuList []*models.MenuSetting
+	menu := db.DbConn.Select([]string{"id", "menu_name", "child_status", "visible"}).Model(&menuList).Where("visible = ? and state = ?", true, false)
+	if tag != "" {
+		menu = menu.Where("id = ?", tag)
+	}
+
+	err := menu.Find(&menuList).Error
+	if err != nil {
+		logs.Critical(err.Error())
+		return nil, err
+	}
+
+	return menuList, err
+}
+
+// 文章类型的分页数据,后期需要调整这个接口，需要连表查询-文章量-父级
+func SelectArticleTypeList(menuId string) ([]*models.ArticleType, error) {
+	// 文章类型 要过滤下架和软删除的
+	var articleList []*models.ArticleType
+	articleType := db.DbConn.Model(&articleList)
+	if menuId != "" {
+		articleType = articleType.Where("menu_id =?", menuId)
+	}
+
+	err := articleType.Find(&articleList).Error
+	if err != nil {
+		return nil, err
+	}
+	return articleList, nil
+}
+
+// 文章类型上下架
+func ArticleTypeUpdateIssue(id int, status bool) error {
+	err := db.DbConn.Model(&models.ArticleType{}).Where("id = ?", id).Updates(map[string]interface{}{"visible": !status, "update_time": time.Now()}).Error
+	if err != nil {
+		logs.Critical(err.Error())
+		return err
+	}
+	return nil
+}
+
+// 文章类型软删除
+func ArticleTypeDeleteMenu(id int) error {
+	err := db.DbConn.Model(&models.ArticleType{}).Where("id = ?", id).Updates(map[string]interface{}{"state": true, "update_time": time.Now()}).Error
+	if err != nil {
+		logs.Critical(err.Error())
+		return err
+	}
+	return nil
 }

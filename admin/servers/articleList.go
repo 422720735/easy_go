@@ -31,7 +31,6 @@ func SelectArticlePageList(title, tag string, page, size int) ([]*models.Article
 		return nil, 0, err
 	}
 
-	//err = db.DbConn.Limit(size).Offset((page - 1) * size).Order("sort desc").Find(&articleList).Error
 	err = article.Limit(size).Offset((page - 1) * size).Order("sort desc").Find(&articleList).Error
 	if err != nil {
 		logs.Critical(err.Error())

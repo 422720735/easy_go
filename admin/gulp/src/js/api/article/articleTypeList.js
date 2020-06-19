@@ -9,7 +9,7 @@ function deleteArticle(id) {
     $.ajax({
         type: "post",
         async: false,
-        url: HOST + `/article/delete`,
+        url: HOST + `/article/type/delete`,
         data: JSON.stringify({
             id: id
         }),
