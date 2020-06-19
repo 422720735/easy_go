@@ -4,7 +4,6 @@ import (
 	"easy_go/admin/db"
 	"easy_go/admin/models"
 	"errors"
-	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
 	"time"
 )
@@ -75,9 +74,9 @@ func SelectArticleTypeMenuName() ([]interface{}, error) {
 				if articleList[i].MenuId == *&menuList[j].Id {
 					// 只装载上架的数据
 					if *&menuList[j].ChildStatus {
-						item["id"] = *&articleList[i].Id
-						item["name"] = *&articleList[i].ArticleName
-						item["menu_id"] = *&articleList[i].MenuId
+						item["id"] = articleList[i].Id
+						item["name"] = articleList[i].ArticleName
+						item["menu_id"] = articleList[i].MenuId
 						arr = append(arr, item)
 						menuItem["child"] = arr
 					}
@@ -117,7 +116,7 @@ func SelectArticleTypeList(menuId string) ([]*models.ArticleType, error) {
 		articleType = articleType.Where("menu_id =?", menuId)
 	}
 
-	err := articleType.Find(&articleList).Error
+	err := articleType.Order("sort asc").Find(&articleList).Error
 	if err != nil {
 		return nil, err
 	}
@@ -153,13 +152,12 @@ func ArticleTypeUpdateUpDown(sort int, str string) error {
 	var sortNext int
 	// 查询当前数据
 	err = db.DbConn.Model(&models.ArticleType{}).Where("sort = ?", sort).Find(&current).Error
-	beego.Info("-+65464656")
 	if err != nil {
 		logs.Critical(err.Error())
 		return err
 	}
 	if str == "top" {
-		err = db.DbConn.Model(&models.ArticleType{}).Where("sort = ?", sort-1).Find(&prev_next).Error
+		err = db.DbConn.Model(&models.ArticleType{}).Where("sort = ?", sort - 1).Find(&prev_next).Error
 		sortNext = sort - 1
 		if err != nil {
 			logs.Critical(err.Error())
@@ -173,10 +171,9 @@ func ArticleTypeUpdateUpDown(sort int, str string) error {
 			return err
 		}
 	}
-	beego.Info("-+222")
-	// 开始事务
+	// 开始事务 修改数据
 	tx := db.DbConn.Begin()
-	// 修改数据
+	defer tx.Commit()
 	err = tx.Model(&current).Updates(map[string]interface{}{"sort": sortNext, "update_time": time.Now()}).Error
 	if err != nil {
 		logs.Critical(err.Error())
@@ -187,7 +184,5 @@ func ArticleTypeUpdateUpDown(sort int, str string) error {
 		logs.Critical(err.Error())
 		tx.Rollback()
 	}
-	beego.Info("-+rewre")
-	tx.Commit()
 	return nil
 }

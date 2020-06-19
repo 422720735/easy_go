@@ -5,14 +5,16 @@ import (
 	"easy_go/admin/db"
 	"easy_go/admin/logger"
 	_ "easy_go/admin/routers"
+	"easy_go/admin/tempFunc"
 	"easy_go/lib"
 	"github.com/astaxie/beego"
 	"runtime"
 )
 
-func init()  {
+func init() {
 	db.Init()
 	logger.Init()
+	tempFunc.Init()
 }
 
 // hltool
@@ -32,5 +34,6 @@ func main() {
 	beego.ErrorController(&controllers.ErrorController{})
 	beego.BConfig.RunMode = env
 	beego.BConfig.WebConfig.ViewsPath = viewsPath
+
 	beego.Run(":" + port)
 }

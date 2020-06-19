@@ -75,23 +75,25 @@
                                         <td>
                                             <a href="/api/article/type/move/up?sort={{$v.Sort}}"
                                                title="上移">
-                                                <i class="feather icon-arrow-down"></i>
+                                                <i class="feather icon-arrow-up"></i>
                                             </a>
                                             <a href="/api/article/type/move/down?sort={{$v.Sort}}"
                                                title="下移">
-                                                <i class="feather icon-arrow-up"></i>
+                                                <i class="feather icon-arrow-down"></i>
 
                                             </a>
                                         </td>
                                         <td>
                                             {{if $v.Visible}}
                                                 <a href="/api/article/type/issue?id={{$v.Id}}&status={{$v.Visible}}"
-                                                   class="text-success">下架</a>
+                                                   class="text-warning">下架</a>
                                             {{else}}
                                                 <a href="/api/article/type/issue?id={{$v.Id}}&status={{$v.Visible}}"
-                                                   class="text-warning">上架</a>
+                                                   class="text-success">上架</a>
                                             {{end}}
+                                            <div role="separator" class="ant-divider ant-divider-vertical"></div>
                                             <a href="/menuSetting/info" class="text-c-blue">详情</a>
+                                            <div role="separator" class="ant-divider ant-divider-vertical"></div>
                                             <!-- Danger header modal -->
                                             {{if $v.State}}
                                                 <a href="#!" class="text-c-blue text-facebook" data-toggle="modal"

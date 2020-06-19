@@ -229,11 +229,10 @@ function saveArticle(data) {
         method: data.id ? 'Put' : 'POST',
         success: function (res) {
             if (res.code === Ok) {
-                window.location.reload()
                 window.message.success(res)
-                // setTimeout(function () {
-                //
-                // }, 200)
+                setTimeout(function () {
+                    window.location.reload()
+                }, 5000)
             } else {
                 window.message.error(res)
             }

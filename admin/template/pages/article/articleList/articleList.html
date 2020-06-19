@@ -31,14 +31,16 @@
                         <div class="card-title">
                             <form method="get" action="/article/list" class="row">
                                 <div class="col-md-3 col-sm-6 pr-0">
-                                    <input id="article-title" type="text" class="form-control" name="title" placeholder="请输入要搜索的文章标题">
+                                    <input id="article-title" type="text" class="form-control" name="title"
+                                           placeholder="请输入要搜索的文章标题">
                                 </div>
                                 <div class="col-md-4 col-sm-6 pr-0">
                                     <select class="select2 form-control" data-toggle="select2"
                                             id="article-type"
                                             name="tag"
                                             data-placeholder="Choose ...">
-                                        <option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+                                        <option selected="selected" disabled="disabled" style="display: none;"
+                                                value=""></option>
                                         {{range $i, $v := .articleTypeList}}
                                             {{if $v.child}}
                                                 <optgroup label="{{$v.name}}">
@@ -64,9 +66,8 @@
                                 <tr>
                                     <th>标题</th>
                                     <th>分类</th>
-                                    <th>创建时间</th>
-                                    <th>修改时间</th>
-                                    <th>置顶</th>
+                                    <th>编辑时间</th>
+                                    <th>推荐位</th>
                                     <th>点击量</th>
                                     <th>移动</th>
                                     <th>操作</th>
@@ -84,28 +85,53 @@
                                                    class="text-c-blue">{{$v.Title}}</a>
                                             {{end}}
                                         </td>
-                                        <td>20</td>
-                                        <td>{{$v.CreatedTime.Format "2006-01-02 15:04:05"}}</td>
+                                        {{if $v.CategoryId}}
+                                            {{range $i, $type := $.articleTypeList}}
+                                                {{if and $type.child (eq $type.id $v.MenuId)}}
+                                                    {{range $key, $item := $type.child}}
+                                                        {{if IsArticleTypeName $v.CategoryId $item.id }}
+                                                            <td>{{$item.name}}</td>
+                                                        {{end}}
+                                                    {{end}}
+                                                {{end}}
+                                            {{end}}
+                                        {{else}}
+                                            {{range $key, $type := $.articleTypeList}}
+                                                {{if and (eq $type.child_status false) (eq $type.id $v.MenuId)}}
+                                                    <td>{{$type.name}}</td>
+                                                {{end}}
+                                            {{end}}
+                                        {{end}}
+                                        {{if eq $v.UpdateTime.Valid false}}
+                                            <td>{{$v.CreatedTime.Format "2006-01-02 15:04:05"}}</td>
+                                        {{end}}
                                         {{if $v.UpdateTime}}
                                             <td>{{$v.UpdateTime.Time.Format "2006-01-02 15:04:05"}}</td>
                                         {{else}}
                                             <td>&emsp;</td>
                                         {{end}}
-                                        {{if and ($v.IsTop) (eq $.top_id $v.Id)}}
-                                            <td class="text-danger">置顶</td>
-                                        {{else}}
-                                            <td>普通</td>
-                                        {{end}}
+                                        <td>
+                                            {{if and ($v.IsTop) (eq $.top_id $v.Id)}}
+                                                <span class="badge badge-danger-lighten badge-pill">置顶</span>
+                                            {{else}}
+                                                <span class="badge badge-secondary-lighten badge-pill">普通</span>
+                                            {{end}}
+                                            {{if $v.Hot}}
+                                                <span class="badge badge-success-lighten badge-pill">热门</span>
+                                            {{end}}
+                                            {{if $v.Recommend}}
+                                                <span class="badge badge-primary-lighten badge-pill">推荐</span>
+                                            {{end}}
+                                        </td>
                                         <td>{{$v.View}}</td>
                                         <td>
-                                            <a href="/api/article/move/up?sort={{$v.Sort}}&page={{$.current}}"
-                                               title="上移">
-                                                <i class="feather icon-arrow-down"></i>
-                                            </a>
                                             <a href="/api/article/move/down?sort={{$v.Sort}}&page={{$.current}}"
-                                               title="下移">
+                                               title="上移">
                                                 <i class="feather icon-arrow-up"></i>
-
+                                            </a>
+                                            <a href="/api/article/move/up?sort={{$v.Sort}}&page={{$.current}}"
+                                               title="下移">
+                                                <i class="feather icon-arrow-down"></i>
                                             </a>
                                         </td>
                                         <td>
@@ -116,6 +142,8 @@
                                                 <a href="/api/article/issue?id={{$v.Id}}&status={{$v.Visible}}&page={{$.current}}"
                                                    class="text-warning">上架</a>
                                             {{end}}
+                                            <div role="separator" class="ant-divider ant-divider-vertical"
+                                                 data-v-a1ccd506=""></div>
                                             {{if $v.Markdown}}
                                                 <a href="/article/details/markdown?id={{$v.Id}}&title={{$v.Title}}"
                                                    class="text-c-blue">详情</a>
@@ -123,6 +151,7 @@
                                                 <a href="/article/details?id={{$v.Id}}&title={{$v.Title}}"
                                                    class="text-c-blue">详情</a>
                                             {{end}}
+                                            <div role="separator" class="ant-divider ant-divider-vertical"></div>
                                             {{if $v.State}}
                                                 <a href="#!" class="text-c-blue text-facebook" data-toggle="modal"
                                                    data-target="#danger-header-modal-{{$v.Id}}">已删除</a>
