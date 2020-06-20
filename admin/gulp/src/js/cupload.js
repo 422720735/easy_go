@@ -20,6 +20,9 @@
 			num: 1,
 			width: 148,
 			height: 148,
+			tailor_ele: '#cupload-tailor',
+			proportion: [600, 1500], // 宽/高  裁剪and压缩比例  单位px  图片等比例压缩至 200px/200px
+			is_tailor: false
 		}
 
 		this.opt = this.extend(this.localValue, options, true)
@@ -29,8 +32,11 @@
 		this.imagePreview = new Array();
 		this.imageInput = new Array();
 		this.imageDelete = new Array();
+		this.imgsName = new Array();
+		this.imgTailor = new Array();
 		this.deleteBtn = new Array();
 		this.amplify = new Array();
+		this.cropperBtn = new Array();
 
 		if ((typeof options.ele) === "string") {
 			this.opt.ele = document.querySelector(options.ele)
@@ -277,6 +283,10 @@
 			this.imageBox[this.i].appendChild(this.imageDelete[this.i])
 			this.createDeleteBtn()
 			this.createAmplifyBtn()
+
+			// 图片裁剪
+			this.opt.is_tailor && this.createTailorImageBtn()
+			this.imgsName[this.i] = name
 		},
 
 		createDeleteBtn: function() {
@@ -327,6 +337,26 @@
 				this.amplify[m].onclick = function(n) {
 					return function() {
 						_this.amplifyImage(n)
+					}
+				}(m)
+			}
+		},
+
+		createTailorImageBtn: function() {
+			/*裁剪*/
+			this.cropperBtn[this.i] = document.createElement('span')
+			this.cropperBtn[this.i].className = 'cupload-image-cropper'
+			this.cropperBtn[this.i].style.position = 'absolute'
+			this.cropperBtn[this.i].style.bottom = '-20%'
+			this.cropperBtn[this.i].style.left = '50%'
+			this.cropperBtn[this.i].style.marginLeft = '-12px'
+			this.cropperBtn[this.i].style.cursor = 'pointer'
+			this.imageDelete[this.i].appendChild(this.cropperBtn[this.i])
+			var _this = this
+			for (var m = 0; m <= this.i; m++) {
+				this.cropperBtn[m].onclick = function(n) {
+					return function() {
+						_this.tailorImage(n)
 					}
 				}(m)
 			}
@@ -389,7 +419,6 @@
 			}
 		},
 
-
 		amplifyImage: function(n) {
 			$('.wrapper').css({display: 'none'})
 			var amplifyView = document.createElement('div')
@@ -421,6 +450,37 @@
 
 		},
 
+		tailorImage: function(n) {
+			var _this = this
+			Model_Cropper({
+				imgUrl: this.imageInput[n].value, // 图片地址 / 或者 base64   注：图片地址(需要在服务器环境下  base64不需要)
+				proportion: _this.opt.proportion, // 宽/高  裁剪and压缩比例  单位px  图片等比例压缩至 200px/200px
+				confirm: function (result) {   // 裁剪成功后  返回的 事件
+					// 调用 result.close() 关闭弹框
+					// result.data  为对象  base64 = 处理后base64码  blob = 图片对象
+					// 动态插入html
+					_this.previewImage(_this, result.data.base64, n)
+					result.close()
+				},
+			})
+		},
+
+		previewImage: function(_this, base64, n) { // 动态插入数据
+			const children = document.querySelectorAll(this.opt.tailor_ele + ' > div')
+			const title = this.imgsName[n]
+			const liDom = '<div class="li-img"><img onclick="maximize(event)" title="'+ title +'" src="'+ base64 +'"></div>'
+
+			// 如果没有装过数据就往里面装，并添加当前元素到最后。
+			if (!this.imgTailor.includes(title)) {
+				this.imgTailor.push(this.imgsName[n])
+				$(this.opt.tailor_ele).append(liDom)
+			} else {
+				// 替换，先找到我们元素的位置。
+				const index = this.imgTailor.indexOf(title)
+				children[index].innerHTML = liDom
+			}
+		},
+
 		removeUploadBox: function() {
 			this.uploadBox.remove()
 		},
@@ -429,19 +489,55 @@
 			this.imageDelete[m].style.opacity = 1
 			var btn = this.imageDelete[m].childNodes[0]
 			var amplify = this.imageDelete[m].childNodes[1]
+			var cropperBtn = this.imageDelete[m].childNodes[2]
 			btn.style.marginLeft = '-35px'
 			amplify.style.marginLeft = '10px'
-			amplify.style.marginLeft = '10px'
+			cropperBtn.style.bottom = '20%'
 		},
 
 		hideImageDelete: function(m) {
 			this.imageDelete[m].style.opacity = 0
 			var btn = this.imageDelete[m].childNodes[0]
 			var amplify = this.imageDelete[m].childNodes[1]
+			var cropperBtn = this.imageDelete[m].childNodes[2]
 			btn.style.marginLeft = '-152px'
 			amplify.style.marginLeft = '128px'
+			cropperBtn.style.bottom = '-20%'
 		},
 	}
 
 	window.Cupload = Cupload;
+	window.maximize = function (e) {
+		if (!e) {
+			return
+		}
+		$('.wrapper').css({display: 'none'})
+		var amplifyView = document.createElement('div')
+		amplifyView.className = 'amplify-box'
+		amplifyView.style.width = '100%'
+		amplifyView.style.height = '100%'
+		amplifyView.style.position = 'fixed'
+		amplifyView.style.zIndex = '9999999'
+		amplifyView.style.left = 0
+		amplifyView.style.top = 0
+		amplifyView.style.backgroundColor = 'rgba(0,0,0, 1)'
+
+		// 添加图片
+		var img = document.createElement('img')
+		img.src = e.target.src ? e.target.src : 'data:image/png;base64,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'
+		img.style.height = 'auto'
+		img.style.position = 'fixed'
+		img.style.zIndex = '2000'
+		img.style.left = '50%'
+		img.style.top = '50%'
+		img.title = e.target.title
+		img.style.transform = 'translateX(-50%) translateY(-50%)'
+
+		var close = document.createElement('div')
+		close.className = 'amplify-close'
+		close.style.cursor = 'pointer'
+		$(amplifyView).append(close)
+		$(amplifyView).prepend(img)
+		$('body').prepend(amplifyView)
+	}
 })(window, document)

@@ -40,12 +40,19 @@
 
 [原生js的图片上传插件cupload](http://www.jq22.com/jquery-info22747)
 
+[jQuery图片预览插件](http://www.jq22.com/jquery-info19658)
+
 [wangEditor-轻量级 web 富文本编辑器，配置方便，使用简单。支持 IE10+ 浏览器](https://www.kancloud.cn/wangfupeng/wangeditor3/332599)
 
 [仿微信公众平台文章发布](http://www.jq22.com/yanshi22827)
 
 [jQuery标签插件Tag-it](http://www.jq22.com/jquery-info19168)
 
+[评论参考](http://www.bootstrapmb.com/item/5089)
+
+[Swiper.js响应式单排图片滚动jQuery代码](http://www.bootstrapmb.com/item/3968/preview)
+
+[js图片编辑器插件Filerobot](http://www.bootstrapmb.com/item/5226/preview)
 ```   
 // 查询所有的类型及与之相对应的父级menu
 func SelectArticleTypeMenuName(tag string) ([]interface{}, error) {

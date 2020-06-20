@@ -21,7 +21,7 @@
                     <div class="card-header with-elements border-bottom-0">
                         <h5  class="card-header-title mr-2">
                             导航菜单
-                            <small class="text-danger">（一级菜单最多能设置15个）</small>
+                            <small class="text-danger">&emsp;一级菜单最多能设置15个。</small>
                         </h5>
                         <div class="card-header-elements ml-md-auto">
                             <button type="button" class="btn btn-xs btn-outline-primary"><a href="/menuSetting/add"><span class="ion ion-md-add"></span> 新增</a></button>
@@ -84,7 +84,6 @@
                                             <a href="/api/menuSetting/issue?id={{$v.Id}}&status={{$v.Visible}}&page={{$.current}}" class="text-success">上架</a>
                                         {{end}}
                                         <div role="separator" class="ant-divider ant-divider-vertical"></div>
-{{/*                                        <a href="/menuSetting/info" class="text-c-blue">详情</a>*/}}
                                         <a href="/article/list?page=1&tag={{$v.Id}}" class="text-c-blue">详情</a>
                                         <div role="separator" class="ant-divider ant-divider-vertical"></div>
                                         <!-- Danger header modal -->

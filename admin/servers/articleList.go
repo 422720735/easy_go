@@ -3,15 +3,12 @@ package servers
 import (
 	"easy_go/admin/db"
 	"easy_go/admin/models"
-	"fmt"
 	"github.com/astaxie/beego/logs"
 	"strings"
 	"time"
 )
 
 func SelectArticlePageList(title, tag, visible string, page, size int) ([]*models.Article, int64, error) {
-	fmt.Println(visible, "visible---")
-
 	var articleList []*models.Article
 	var total int64
 	article := db.DbConn.Model(&articleList)

@@ -45,13 +45,13 @@ gulp.task('cssUglify', function () {
 gulp.task('jsUglify', function () {
     return gulp.src(['src/js/**', 'src/api/**', '!src/js/build/**'])
         .pipe(babel())
-        .pipe(rename({suffixes: '.min'}))
-        .pipe(uglify({
-            compress: {
-                drop_console: NODE_ENV === 'development' ? false :  true, // 过滤 console
-                drop_debugger: NODE_ENV === 'development' ? false :  true // 过滤 debugger
-            }
-        }))
+        // .pipe(rename({suffixes: '.min'}))
+        // .pipe(uglify({
+        //     compress: {
+        //         drop_console: NODE_ENV === 'development' ? false :  true, // 过滤 console
+        //         drop_debugger: NODE_ENV === 'development' ? false :  true // 过滤 debugger
+        //     }
+        // }))
         .pipe(gulp.dest(path.resolve(__dirname, '../static/js')))
 });
 

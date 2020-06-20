@@ -26,7 +26,6 @@ func ShowTotal(all []*models.ArticleType) int {
 }
 
 func IsTotal(all []*models.ArticleType) bool  {
-	beego.Info(all)
 	if all != nil && len(all) > 0 {
 		return true
 	}
