@@ -412,6 +412,15 @@
 		},
 
 		deleteImage: function(n) {
+			const index = this.imgTailor.indexOf(this.imgsName[n])
+			if (index !== -1) {
+				this.imgTailor.splice(index, 1)
+				document.querySelectorAll(this.opt.tailor_ele + ' > div')[index].remove()
+			}
+			if (this.imgTailor.length) {
+				this.imgsName = []
+			}
+
 			this.imageBox[n].remove()
 			this.removeUploadBox()
 			if (this.imageList.children.length < this.opt.num) {
@@ -471,8 +480,8 @@
 			const liDom = '<div class="li-img"><img onclick="maximize(event)" title="'+ title +'" src="'+ base64 +'"></div>'
 
 			// 如果没有装过数据就往里面装，并添加当前元素到最后。
-			if (!this.imgTailor.includes(title)) {
-				this.imgTailor.push(this.imgsName[n])
+			if (this.imgTailor.indexOf(title) == -1) {
+				this.imgTailor.push(title)
 				$(this.opt.tailor_ele).append(liDom)
 			} else {
 				// 替换，先找到我们元素的位置。
