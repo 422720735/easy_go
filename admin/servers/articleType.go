@@ -108,12 +108,18 @@ func SelectArticleMenu(tag string) ([]*models.MenuSetting, error) {
 }
 
 // 文章类型的分页数据,后期需要调整这个接口，需要连表查询-文章量-父级
-func SelectArticleTypeList(menuId string) ([]*models.ArticleType, error) {
+func SelectArticleTypeList(menuId, visible string) ([]*models.ArticleType, error) {
 	// 文章类型 要过滤下架和软删除的
 	var articleList []*models.ArticleType
 	articleType := db.DbConn.Model(&articleList)
 	if menuId != "" {
 		articleType = articleType.Where("menu_id =?", menuId)
+	}
+
+	if visible == "1" {
+		articleType = articleType.Where("visible = ?", true)
+	} else if visible == "2" {
+		articleType = articleType.Where("visible = ?", false)
 	}
 
 	err := articleType.Order("sort asc").Find(&articleList).Error
@@ -157,7 +163,7 @@ func ArticleTypeUpdateUpDown(sort int, str string) error {
 		return err
 	}
 	if str == "top" {
-		err = db.DbConn.Model(&models.ArticleType{}).Where("sort = ?", sort - 1).Find(&prev_next).Error
+		err = db.DbConn.Model(&models.ArticleType{}).Where("sort = ?", sort-1).Find(&prev_next).Error
 		sortNext = sort - 1
 		if err != nil {
 			logs.Critical(err.Error())

@@ -84,7 +84,8 @@
                                             <a href="/api/menuSetting/issue?id={{$v.Id}}&status={{$v.Visible}}&page={{$.current}}" class="text-success">上架</a>
                                         {{end}}
                                         <div role="separator" class="ant-divider ant-divider-vertical"></div>
-                                        <a href="/menuSetting/info" class="text-c-blue">详情</a>
+{{/*                                        <a href="/menuSetting/info" class="text-c-blue">详情</a>*/}}
+                                        <a href="/article/list?page=1&tag={{$v.Id}}" class="text-c-blue">详情</a>
                                         <div role="separator" class="ant-divider ant-divider-vertical"></div>
                                         <!-- Danger header modal -->
                                         {{if $v.State}}

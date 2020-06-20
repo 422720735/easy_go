@@ -3,12 +3,15 @@ package servers
 import (
 	"easy_go/admin/db"
 	"easy_go/admin/models"
+	"fmt"
 	"github.com/astaxie/beego/logs"
 	"strings"
 	"time"
 )
 
-func SelectArticlePageList(title, tag string, page, size int) ([]*models.Article, int64, error) {
+func SelectArticlePageList(title, tag, visible string, page, size int) ([]*models.Article, int64, error) {
+	fmt.Println(visible, "visible---")
+
 	var articleList []*models.Article
 	var total int64
 	article := db.DbConn.Model(&articleList)
@@ -18,6 +21,12 @@ func SelectArticlePageList(title, tag string, page, size int) ([]*models.Article
 		article = article.Where("menu_id = ?", tags[0])
 	} else if len(tags) == 2 {
 		article = article.Where("category_id = ?", tags[1])
+	}
+
+	if visible == "1" {
+		article = article.Where("visible = ?", true)
+	} else if visible == "2" {
+		article = article.Where("visible = ?", false)
 	}
 
 	if title != "" {

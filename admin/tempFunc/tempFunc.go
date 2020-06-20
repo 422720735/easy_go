@@ -8,6 +8,7 @@ import (
 func Init() {
 	beego.AddFuncMap("IsArticleTypeName", IsArticleTypeName)
 	beego.AddFuncMap("ShowTotal", ShowTotal)
+	beego.AddFuncMap("IsTotal", IsTotal)
 }
 
 func IsArticleTypeName(id *int, typeId int) bool {
@@ -22,4 +23,12 @@ func ShowTotal(all []*models.ArticleType) int {
 		return len(all)
 	}
 	return 0
+}
+
+func IsTotal(all []*models.ArticleType) bool  {
+	beego.Info(all)
+	if all != nil && len(all) > 0 {
+		return true
+	}
+	return false
 }

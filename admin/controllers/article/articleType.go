@@ -35,12 +35,19 @@ func (c *ArticleControllerType) Get() {
 	// req
 	tag := c.GetString("tag")
 
+	visible := c.GetString("visible")
+
 	// 类型分类
 	menAll, _ := servers.SelectArticleMenu("") // 传""不筛选
-	typeLimit, _ := servers.SelectArticleTypeList(tag)
+	typeLimit, _ := servers.SelectArticleTypeList(tag, visible)
+
+	if visible == "" {
+		visible = "0"
+	}
 
 	// res
 	c.Data["menu_all"] = menAll
+	c.Data["visible_id"] = visible
 	c.Data["article_type_limit"] = typeLimit
 }
 
