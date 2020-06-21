@@ -11,7 +11,7 @@
  Target Server Version : 50710
  File Encoding         : 65001
 
- Date: 20/06/2020 14:02:24
+ Date: 22/06/2020 00:18:10
 */
 
 SET NAMES utf8mb4;
@@ -27,7 +27,7 @@ CREATE TABLE `article_contents` (
   `url` varchar(255) DEFAULT NULL,
   `content` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of article_contents
@@ -36,6 +36,7 @@ BEGIN;
 INSERT INTO `article_contents` VALUES (1, 3, NULL, '<div><div><p>NG的实现最严谨，React的思想最正确，所以Vue是最好的前端框架。</p><p><br></p><p>其实我Vue用的最少，比较喜欢的是React，目前在用NG，所以我的观点应该不会有所偏颇？</p><p>NG的话，其实思路比较明确了特定情况下，一定会选这个，没有替代性，比如我现在正在做的多团队协作，不用NG的注入机制，不用TS的强校验，就没法完美解决，那就当然要用NG啦。</p><p>React是我最喜欢的，设计思路是王道，但是对使用者要求太高，对需求稳定性的要求也高，开发维护成本其实是3个框架中最高的，不过如果能用的好，效果也是最好的。</p><p>Vue提倡的渐进式的开发，而这点正是最贴切前端开发的思路，容易入手容易协同，能够更快速灵活的开发迭代，而这些正是Vue的成功之处，可以说是最具互联网思维的前端框架了。选择Vue不是因为它完善，而是因为它能包容不完善。所以其实Vue切换到TS，我是不看好的，等于把快速开发的看家本领给丢弃了，换回的强类型约束弥补不了。</p><p><br></p><p>再来看一下，所谓的那么多公司选择React，你可以去考虑一下他们切入的时间点和他们的项目，就能明白了，基本都是在Vue2成型之前，或者项目体量足够大的情况。</p><p>目前的创业公司基本都会选择Vue，因为3个框架中，Vue是最符合快速开发快速迭代的，人员培养又简单，后期维护又不复杂。</p><p>所以选择哪个框架完全是看需求来的啊，脱离需求谈技术都是耍流氓。</p></div></div>');
 INSERT INTO `article_contents` VALUES (2, 3, NULL, '<div><div><p>NG的实现最严谨，React的思想最正确，所以Vue是最好的前端框架。</p><p><br></p><p>其实我Vue用的最少，比较喜欢的是React，目前在用NG，所以我的观点应该不会有所偏颇？</p><p>NG的话，其实思路比较明确了特定情况下，一定会选这个，没有替代性，比如我现在正在做的多团队协作，不用NG的注入机制，不用TS的强校验，就没法完美解决，那就当然要用NG啦。</p><p>React是我最喜欢的，设计思路是王道，但是对使用者要求太高，对需求稳定性的要求也高，开发维护成本其实是3个框架中最高的，不过如果能用的好，效果也是最好的。</p><p>Vue提倡的渐进式的开发，而这点正是最贴切前端开发的思路，容易入手容易协同，能够更快速灵活的开发迭代，而这些正是Vue的成功之处，可以说是最具互联网思维的前端框架了。选择Vue不是因为它完善，而是因为它能包容不完善。所以其实Vue切换到TS，我是不看好的，等于把快速开发的看家本领给丢弃了，换回的强类型约束弥补不了。</p><p><br></p><p>再来看一下，所谓的那么多公司选择React，你可以去考虑一下他们切入的时间点和他们的项目，就能明白了，基本都是在Vue2成型之前，或者项目体量足够大的情况。</p><p>目前的创业公司基本都会选择Vue，因为3个框架中，Vue是最符合快速开发快速迭代的，人员培养又简单，后期维护又不复杂。</p><p>所以选择哪个框架完全是看需求来的啊，脱离需求谈技术都是耍流氓。</p></div></div>');
 INSERT INTO `article_contents` VALUES (3, 3, NULL, '<div><div><p>NG的实现最严谨，React的思想最正确，所以Vue是最好的前端框架。</p><p><br></p><p>其实我Vue用的最少，比较喜欢的是React，目前在用NG，所以我的观点应该不会有所偏颇？</p><p>NG的话，其实思路比较明确了特定情况下，一定会选这个，没有替代性，比如我现在正在做的多团队协作，不用NG的注入机制，不用TS的强校验，就没法完美解决，那就当然要用NG啦。</p><p>React是我最喜欢的，设计思路是王道，但是对使用者要求太高，对需求稳定性的要求也高，开发维护成本其实是3个框架中最高的，不过如果能用的好，效果也是最好的。</p><p>Vue提倡的渐进式的开发，而这点正是最贴切前端开发的思路，容易入手容易协同，能够更快速灵活的开发迭代，而这些正是Vue的成功之处，可以说是最具互联网思维的前端框架了。选择Vue不是因为它完善，而是因为它能包容不完善。所以其实Vue切换到TS，我是不看好的，等于把快速开发的看家本领给丢弃了，换回的强类型约束弥补不了。</p><p><br></p><p>再来看一下，所谓的那么多公司选择React，你可以去考虑一下他们切入的时间点和他们的项目，就能明白了，基本都是在Vue2成型之前，或者项目体量足够大的情况。</p><p>目前的创业公司基本都会选择Vue，因为3个框架中，Vue是最符合快速开发快速迭代的，人员培养又简单，后期维护又不复杂。</p><p>所以选择哪个框架完全是看需求来的啊，脱离需求谈技术都是耍流氓。</p></div></div>');
+INSERT INTO `article_contents` VALUES (4, 4, NULL, '<p>tihisbfewf</p>');
 COMMIT;
 
 -- ----------------------------
@@ -95,7 +96,7 @@ CREATE TABLE `articles` (
   `created_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of articles
@@ -104,6 +105,7 @@ BEGIN;
 INSERT INTO `articles` VALUES (1, 3, 4, '', 'blog', NULL, '新版本博客', NULL, 'beego,golang', 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, '2020-06-19 22:00:09', '2020-06-19 23:55:11');
 INSERT INTO `articles` VALUES (2, 2, 1, '', '如何评价Vue之于前端三大主流框架的地位 ?', NULL, 'NG的实现最严谨，React的思想最正确，所以Vue是最好的前端框架。其实我Vue用的最少，比较喜欢的是Re', NULL, NULL, 0, 0, 0, 1, 0, 0, 0, 0, 2, 0, '2020-06-19 22:01:15', '2020-06-19 22:05:08');
 INSERT INTO `articles` VALUES (3, 1, NULL, '', '前端三大主流框架React、Vue、Angular的对比', NULL, '一、Angular，它两个版本都是强主张的，如果你用它，必须接受以下东西：必须使用它的模块机制必须使用它的依', NULL, NULL, 0, 0, 1, 1, 0, 1, 1, 1, 3, 0, '2020-06-19 22:02:36', '2020-06-20 00:31:05');
+INSERT INTO `articles` VALUES (4, 1, NULL, '0612_1592754512142_6', 'ewfew', NULL, 'ewf', NULL, NULL, 0, 0, 0, 1, 0, 0, 0, 0, 4, 0, '2020-06-21 23:48:33', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -169,6 +171,7 @@ CREATE TABLE `users` (
   `created_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   `auth_token` varchar(255) DEFAULT NULL,
+  `cover` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
@@ -176,7 +179,7 @@ CREATE TABLE `users` (
 -- Records of users
 -- ----------------------------
 BEGIN;
-INSERT INTO `users` VALUES (1, '123456', '1c6a47df3c59184b447411d3764d9e56', 2, '[::1]:63208', '2020-06-20 13:22:35', '2020-06-19 21:31:49', '2020-06-20 13:22:35', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiIxMjM0NTYiLCJsb2dpbl9pcCI6Ils6OjFdOjYzMjA4IiwiZXhwIjoxNTkyNjM0MTU1LCJpYXQiOjE1OTI2MzA1NTV9.do_MK-k_nByHylu5ykWHfAjdnlNwcWcoPff2sGmeiBw');
+INSERT INTO `users` VALUES (1, '123456', '1c6a47df3c59184b447411d3764d9e56', 2, '[::1]:62475', '2020-06-21 23:05:31', '2020-06-19 21:31:49', '2020-06-21 23:05:31', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiIxMjM0NTYiLCJsb2dpbl9pcCI6Ils6OjFdOjYyNDc1IiwiZXhwIjoxNTkyNzU1NTMwLCJpYXQiOjE1OTI3NTE5MzB9.JLJb6CiP0SjTDLUuRxIndvtbMRaOjPKSChACiGiMx8I', NULL);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
