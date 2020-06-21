@@ -23,4 +23,5 @@ func (c *CoverControllers) Get() {
 
 	c.LayoutSections["Style"] = "style/cover.html"
 	c.LayoutSections["Script"] = "script/cover.html"
+	c.LayoutSections["ScriptMessage"] = "script/message.html"
 }

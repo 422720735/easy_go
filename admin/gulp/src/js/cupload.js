@@ -475,18 +475,14 @@
 		},
 
 		previewImage: function(_this, base64, n) { // 动态插入数据
-			const children = document.querySelectorAll(this.opt.tailor_ele + ' > div')
 			const title = this.imgsName[n]
 			const liDom = '<div class="li-img"><img onclick="maximize(event)" title="'+ title +'" src="'+ base64 +'"></div>'
-
 			// 如果没有装过数据就往里面装，并添加当前元素到最后。
 			if (this.imgTailor.indexOf(title) == -1) {
 				this.imgTailor.push(title)
 				$(this.opt.tailor_ele).append(liDom)
 			} else {
-				// 替换，先找到我们元素的位置。
-				const index = this.imgTailor.indexOf(title)
-				children[index].innerHTML = liDom
+				window.message.error('如果对图片二次裁剪，请删除原图片封面重新裁剪！')
 			}
 		},
 
