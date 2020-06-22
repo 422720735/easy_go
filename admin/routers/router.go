@@ -24,15 +24,15 @@ func init() {
 	beego.Router("/register", &controllers.RegisterController{})
 
 	beego.Router("/", &controllers.DashBoardControllers{})
-	beego.Router("/welcome", &controllers.DashBoardControllers{})
 
+	// 工作台
+	beego.Router("/workplace", &controllers.DashBoardControllers{})
+
+	// 分析页
 	beego.Router("/analysis", &controllers.DashBoardControllers{}, "get:HandleAnalysis")
 
 	// 系统设置
 	beego.Router("/cover", &system.CoverControllers{})
-
-	// 工作台
-	beego.Router("/workplace", &controllers.DashBoardControllers{}, "get:HandleWorkplace")
 
 	// 路由权限设置
 	beego.Router("/menuSetting", &controllers.MenuController{})

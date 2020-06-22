@@ -146,7 +146,7 @@
                                                     {{end}}
                                                 {{end}}
                                             {{end}}
-                                            {{if eq $v.UpdateTime.Valid false}}
+                                            {{if $v.CreatedTime}}
                                                 <td>{{$v.CreatedTime.Format "2006-01-02 15:04:05"}}</td>
                                             {{end}}
                                             {{if $v.UpdateTime}}

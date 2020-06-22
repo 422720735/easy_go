@@ -9,7 +9,7 @@ type DashBoardControllers struct {
 	common.BaseController
 }
 
-// 首页跳转到欢迎页面
+// 首页跳转到工作台
 func (c *DashBoardControllers) Get() {
 	isLogin:=c.GetSession("userName")
 	if isLogin == nil || isLogin=="" {
@@ -37,8 +37,10 @@ func (c *DashBoardControllers) Get() {
 	c.LayoutSections["Script"] = "script/welcome.html"
 
 	// 查询最近的文章
+
 }
 
+// 分析页
 func (c *DashBoardControllers) HandleAnalysis() {
 	c.Layout = "layout/mainLayout.html"
 
@@ -56,19 +58,3 @@ func (c *DashBoardControllers) HandleAnalysis() {
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
 }
 
-func (c *DashBoardControllers) HandleWorkplace() {
-	c.Layout = "layout/mainLayout.html"
-
-	c.TplName = "pages/dashboard/workplace.html"
-	c.LayoutSections = make(map[string]string)
-	// menu
-	c.LayoutSections["LeftMenu"] = "layout/leftSideMenuLayout.html"
-	// header
-	c.LayoutSections["HeaderLayout"] = "layout/headerLayout.html"
-	// footer
-	c.LayoutSections["FooterLayout"] = "layout/footerLayout.html"
-	// css
-	c.LayoutSections["BaseStyle"] = "style/baseStyle.html"
-	// js
-	c.LayoutSections["BaseScript"] = "script/baseScript.html"
-}
