@@ -28,9 +28,6 @@ func init() {
 	// 工作台
 	beego.Router("/workplace", &controllers.DashBoardControllers{})
 
-	// 分析页
-	beego.Router("/analysis", &controllers.DashBoardControllers{}, "get:HandleAnalysis")
-
 	// 系统设置
 	beego.Router("/cover", &system.CoverControllers{})
 

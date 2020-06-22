@@ -41,21 +41,3 @@ func (c *DashBoardControllers) Get() {
 	lastArticle := servers.SelectLastArticle()
 	c.Data["lastArticle"] = lastArticle
 }
-
-// 分析页
-func (c *DashBoardControllers) HandleAnalysis() {
-	c.Layout = "layout/mainLayout.html"
-
-	c.TplName = "pages/dashboard/analysis.html"
-	c.LayoutSections = make(map[string]string)
-	// menu
-	c.LayoutSections["LeftMenu"] = "layout/leftSideMenuLayout.html"
-	// header
-	c.LayoutSections["HeaderLayout"] = "layout/headerLayout.html"
-	// footer
-	c.LayoutSections["FooterLayout"] = "layout/footerLayout.html"
-	// css
-	c.LayoutSections["BaseStyle"] = "style/baseStyle.html"
-	// js
-	c.LayoutSections["BaseScript"] = "script/baseScript.html"
-}
