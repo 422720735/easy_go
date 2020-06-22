@@ -51,6 +51,7 @@ function qnMultiple(token) {
  * */
 function func_digui(arry, len, token) {
     var temp
+    var current = 0
     try {
         for (let i = 0; i < len; i++) {
             if (i === 0) {
@@ -71,6 +72,7 @@ function func_digui(arry, len, token) {
                             // src = data.key
                             if (data.key) {
                                 img_src.push(data.key)
+                                current = i
                                 func_digui(arry, len, token)
                             } else return
                         },
@@ -87,6 +89,7 @@ function func_digui(arry, len, token) {
         console.log(e)
         window.message.error('上传封面背景失败12')
     } finally {
+        console.log(current)
         if (img_src.length > 0 && img_src.length === len) {
             console.log(img_src)
         }
