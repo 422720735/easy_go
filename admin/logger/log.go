@@ -22,7 +22,7 @@ type LoggerConfig struct {
 
 func Init() {
 	var logCfg = LoggerConfig{
-		FileName:            "./logger/log/error.log",
+		FileName:            "./v2logger/log/error.log",
 		Level:               7,
 		EnableFuncCallDepth: true,
 		LogFuncCallDepth:    3,
