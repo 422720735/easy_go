@@ -19,9 +19,9 @@ func init() {
 	beego.InsertFilter("/menuSetting/*", beego.BeforeExec, FilterUser)
 	beego.InsertFilter("/article/*", beego.BeforeExec, FilterUser)
 	beego.InsertFilter("/cover/*", beego.BeforeExec, FilterUser)
-	beego.InsertFilter(Api + "/**", beego.BeforeRouter, FilterUser)
+	beego.InsertFilter(Api + "/**", beego.BeforeExec, FilterUser)
 
-	beego.Router("/login", &controllers.LoginController{})
+	beego.Router("/login", &controllers.LoginController{}, "get:Get;post:HandleLogin")
 
 	beego.Router("/register", &controllers.RegisterController{})
 
@@ -56,10 +56,11 @@ func init() {
 }
 
 func register() {
-	beego.Router(Api+"/qn/token", &controllers.QiNiuController{}, "get:InsertToken")
-
-	beego.Router(Api+"/login", &controllers.LoginController{}, "post:HandleLogin")
+	// 组册现在走的是form表单
+	//beego.Router(Api+"/login", &controllers.LoginController{}, "post:HandleLogin")
 	beego.Router(Api+"/register", &controllers.RegisterController{}, "post:AddRegister")
+
+	beego.Router(Api+"/qn/token", &controllers.QiNiuController{}, "get:InsertToken")
 
 	beego.Router(Api + "/menuSetting/add", &controllers.MenuController{}, "post:HandleMenuAdd")
 	beego.Router(Api + "/menuSetting/move/*", &controllers.MenuController{},"get:HandMove_up_down")
@@ -84,6 +85,8 @@ func register() {
 	beego.Router(Api + "/cover/alter", &system.CoverControllers{}, "post:HandleCoverAlter")
 	beego.Router(Api + "/cover", &system.CoverControllers{}, "get:CoverInfo")
 
+	//beego.Router(Api + "/log/out", &system.CoverControllers{}, "get:CoverInfo")
+
 	beego.Router("/test", &controllers.TestControllers{})
 }
 // 全局过滤方法。
@@ -94,12 +97,16 @@ var FilterUser = func(ctx *context.Context) {
 		// 1 获取cookies
 		auth := ctx.GetCookie("auth")
 		if auth == "" {
+			ctx.SetCookie("auth", "")
+			ctx.SetCookie("beegosessionID", "")
 			ctx.Redirect(302, "/login")
 		} else {
 			// 验证cook是否有效，有效记得session
 			// 如果解析token有用户数据把数据记录在session
 			user := common.ParseTokenUser(auth)
 			if user == nil {
+				ctx.SetCookie("auth", "")
+				ctx.SetCookie("beegosessionID", "")
 				ctx.Redirect(302, "/login")
 			} else {
 				ctx.Output.Session("userId", user.Id)
