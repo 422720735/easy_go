@@ -1,11 +1,11 @@
 package controllers
 
 import (
-	"github.com/astaxie/beego"
+	"easy_go/admin/common"
 )
 
 type MainController struct {
-	beego.Controller
+	common.BaseController
 }
 
 func (c *MainController) Get() {

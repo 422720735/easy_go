@@ -2,10 +2,10 @@ package controllers
 
 import (
 	"easy_go/admin/common"
+	"easy_go/admin/logger"
 	"easy_go/admin/servers"
 	"easy_go/admin/transform"
 	"easy_go/md5"
-	"github.com/astaxie/beego/logs"
 )
 
 type RegisterController struct {
@@ -29,13 +29,13 @@ func (c *RegisterController) AddRegister() {
 	var role int
 	msg, err := common.Unmarshal(&c.Controller)
 	if err != nil {
-		logs.Alert("获取注册接口数据失败", err.Error())
+		logger.Info("获取注册接口数据失败", err.Error())
 		c.Error("获取注册接口数据失败")
 		return
 	}
 	invitecode, err := transform.InterToString(msg["invitecode"])
 	if err != nil {
-		logs.Warn("邀请码错误", err.Error())
+		logger.Info("邀请码错误", err.Error())
 		c.Error("获取注册接口数据失败")
 		return
 	}
@@ -61,7 +61,7 @@ func (c *RegisterController) AddRegister() {
 	}
 	count, err := servers.IsUserTake(username)
 	if err != nil {
-		logs.Alert("用户注册查询账号是否占用失败" + err.Error())
+		logger.Info("用户注册查询账号是否占用失败" + err.Error())
 		c.Error("未知异常")
 	}
 	if count > 0 {
@@ -72,6 +72,7 @@ func (c *RegisterController) AddRegister() {
 	processPwd := md5.Md5(password, common.SECRET_KEY)
 	err = servers.InsertUser(username, processPwd, role)
 	if err != nil {
+		logger.Warn("注册账号失败", err.Error())
 		c.Error("注册账号失败")
 		return
 	}

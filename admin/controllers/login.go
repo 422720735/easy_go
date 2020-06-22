@@ -2,9 +2,9 @@ package controllers
 
 import (
 	"easy_go/admin/common"
+	"easy_go/admin/logger"
 	"easy_go/admin/servers"
 	"easy_go/md5"
-	"github.com/astaxie/beego/logs"
 	"time"
 )
 
@@ -32,14 +32,14 @@ func (c *LoginController) HandleLogin() {
 	// 加密后的密码
 	process, err := servers.SelectUserMd5Pwd(username, md5.Md5(password, common.SECRET_KEY))
 	if err != nil {
-		logs.Alert("用户:"+username+"加密失败", err.Error())
+		logger.Error("用户:"+username+"加密失败", err.Error())
 		c.History("账号或密码不合法", "")
 		return
 	}
 	// 跟数据库的比对
 	user, err := servers.SelectUserMd5Pwd(username, process.PassWord)
 	if err != nil {
-		logs.Alert("用户:"+username+"比对密码出错", err.Error())
+		logger.Warn("用户:"+username+"比对密码出错", err.Error())
 		c.History("账号或密码不合法", "")
 		return
 	}
@@ -52,7 +52,7 @@ func (c *LoginController) HandleLogin() {
 			user.LoginIp = ip
 			tokenString, err := common.NewCurrentCookie(user)
 			if err != nil {
-				logs.Warning("用户登录创建token失败", err.Error())
+				logger.Warn("用户登录创建token失败", err.Error())
 				c.History("未知异常", "")
 				return
 			}
@@ -63,7 +63,7 @@ func (c *LoginController) HandleLogin() {
 			user.AuthToken = tokenString
 			err = servers.LoginRecord(user)
 			if err != nil {
-				logs.Alert("用户记录登陆信息失败", err.Error())
+				logger.Info("用户记录登陆信息失败", err.Error())
 				c.History("未知异常", "")
 				return
 			}

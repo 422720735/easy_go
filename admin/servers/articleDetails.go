@@ -3,9 +3,9 @@ package servers
 import (
 	"database/sql"
 	"easy_go/admin/db"
+	"easy_go/admin/logger"
 	"easy_go/admin/models"
 	"errors"
-	"github.com/astaxie/beego/logs"
 	"time"
 )
 
@@ -15,7 +15,7 @@ func IsArticleTake(title string) error {
 	var count int
 	err := db.DbConn.Select([]string{"title"}).Model(&models.Article{}).Where("title = ?", title).Count(&count).Error
 	if err != nil {
-		logs.Critical(err.Error())
+		logger.Info(err.Error())
 		return err
 	}
 	if count != 0 {
@@ -71,7 +71,7 @@ func InsertArticleDetails(title, content, cover, desc, tags, keyword string, men
 	// 如果需要置顶，新增文章 内部 最后根据返回的id 修改置顶id
 	err = tx.Create(&a).Error
 	if err != nil {
-		logs.Critical(err.Error())
+		logger.Error(err.Error())
 		tx.Rollback()
 		return err
 	}
@@ -83,23 +83,23 @@ func InsertArticleDetails(title, content, cover, desc, tags, keyword string, men
 
 	err = tx.Create(&c).Error
 	if err != nil {
-		logs.Critical(err.Error())
+		logger.Error(err.Error())
 		tx.Rollback()
 		return err
 	}
 
 	if isTop {
 		var count int
-		s := models.Special{
+		s := models.System{
 			TopId: sql.NullInt64{
 				Int64: int64(a.Id),
 				Valid: true,
 			},
 			CreatedTime: time.Now(),
 		}
-		err = tx.Select([]string{"id"}).Model(&models.Special{}).Count(&count).Error
+		err = tx.Select([]string{"id"}).Model(&models.System{}).Count(&count).Error
 		if err != nil {
-			logs.Critical(err.Error())
+			logger.Error(err.Error())
 			tx.Rollback()
 			return err
 		}
@@ -110,7 +110,7 @@ func InsertArticleDetails(title, content, cover, desc, tags, keyword string, men
 		}
 
 		if err != nil {
-			logs.Critical(err.Error())
+			logger.Error(err.Error())
 			tx.Rollback()
 			return err
 		}
@@ -150,14 +150,14 @@ func UpdateArticleDetails(title, content, cover, desc, tags, keyword string, men
 	if categoryId == -1 {
 		err := tx.Model(&a).Updates(map[string]interface{}{"title": title, "cover": cover, "desc": desc, "menu_id": menuId, "category_id": nil, "is_top": isTop, "hot": hot, "recommend": recommend, "markdown": markdown, "type": save, "update_time": time.Now()}).Error
 		if err != nil {
-			logs.Critical(err.Error())
+			logger.Error(err.Error())
 			tx.Rollback()
 			return err
 		}
 	} else {
 		err := tx.Model(&a).Updates(map[string]interface{}{"title": title, "cover": cover, "desc": desc, "menu_id": menuId, "category_id": categoryId, "is_top": isTop, "hot": hot, "recommend": recommend, "markdown": markdown, "type": save, "update_time": time.Now()}).Error
 		if err != nil {
-			logs.Critical(err.Error())
+			logger.Error(err.Error())
 			tx.Rollback()
 			return err
 		}
@@ -166,20 +166,20 @@ func UpdateArticleDetails(title, content, cover, desc, tags, keyword string, men
 
 	err := tx.Model(&models.ArticleContent{}).Updates(map[string]interface{}{"content": content, "article_id": id}).Error
 	if err != nil {
-		logs.Critical(err.Error())
+		logger.Error(err.Error())
 		tx.Rollback()
 		return err
 	}
 
 	if isTop {
 		var count int
-		s := models.Special{
+		s := models.System{
 			TopId:       sql.NullInt64{Int64: int64(id), Valid: true},
 			CreatedTime: time.Now(),
 		}
-		err = tx.Select([]string{"id"}).Model(&models.Special{}).Count(&count).Error
+		err = tx.Select([]string{"id"}).Model(&models.System{}).Count(&count).Error
 		if err != nil {
-			logs.Critical(err.Error())
+			logger.Error(err.Error())
 			tx.Rollback()
 			return err
 		}
@@ -190,7 +190,7 @@ func UpdateArticleDetails(title, content, cover, desc, tags, keyword string, men
 		}
 
 		if err != nil {
-			logs.Critical(err.Error())
+			logger.Error(err.Error())
 			tx.Rollback()
 			return err
 		}
@@ -211,13 +211,13 @@ func SelectArticleDetails(id int) (*ArticleAll, error) {
 	var all ArticleAll
 	err := db.DbConn.Where(&models.Article{Id: id}).Find(&a).Error
 	if err != nil {
-		logs.Critical(err.Error())
+		logger.Error(err.Error())
 		return nil, err
 	}
 
 	err = db.DbConn.Model(&models.ArticleContent{}).Where("id = ?", a.Id).First(&c).Error
 	if err != nil {
-		logs.Critical(err.Error())
+		logger.Error(err.Error())
 		return nil, err
 	}
 

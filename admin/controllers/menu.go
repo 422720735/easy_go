@@ -2,12 +2,11 @@ package controllers
 
 import (
 	"easy_go/admin/common"
+	"easy_go/admin/logger"
 	"easy_go/admin/servers"
 	"easy_go/admin/transform"
 	"strconv"
 	"strings"
-
-	"github.com/astaxie/beego/logs"
 )
 
 type MenuController struct {
@@ -91,42 +90,45 @@ func (c *MenuController) HandleMenuAdd() {
 	// 接通了获取数据。
 	msg, err := common.Unmarshal(&c.Controller)
 	if err != nil {
-		logs.Alert("获取注册接口数据失败", err.Error())
+		logger.Info("获取注册接口数据失败", err.Error())
 		c.Error("获取新增路由接口数据失败")
 		return
 	}
+
 	// 菜单名
 	menuName, err := transform.InterToString(msg["menuName"])
 	if err != nil {
-		logs.Alert("获取菜单名失败", err.Error())
+		logger.Info("获取菜单名失败", err.Error())
 		c.Error("获取菜单名失败")
 		return
 	}
+
 	// 路由
 	path, err := transform.InterToString(msg["path"])
 	if err != nil {
-		logs.Alert("获取路由路径失败", err.Error())
+		logger.Info("获取路由路径失败", err.Error())
 		c.Error("获取路由路径失败")
 		return
 	}
 	// icon
 	icon, err := transform.InterToString(msg["icon"])
 	if err != nil {
-		logs.Alert("获取路由路径失败", err.Error())
+		logger.Info("获取路由路径失败", err.Error())
 		c.Error("获取路由路径失败")
 		return
 	}
+
 	// 是否有下级
 	isChildSwitch, err := transform.InterToBool(msg["isChildSwitch"])
 	if err != nil {
-		logs.Alert("获取下级菜单失败", err.Error())
+		logger.Info("获取下级菜单失败", err.Error())
 		c.Error("获取下级菜单失败")
 		return
 	}
 
 	err = servers.InsertMenu(menuName, path, icon, isChildSwitch)
 	if err != nil {
-		logs.Alert("新增menu失败，数据不合法", err.Error())
+		logger.Warn("新增menu失败，数据不合法", err.Error())
 		c.Error("新增menu失败，数据不合法")
 		return
 	}
@@ -151,6 +153,7 @@ func (c *MenuController) HandMove_up_down() {
 
 	if err != nil {
 		// 直接走
+		logger.Info("获取排序失败", err.Error())
 		c.Redirect("/menuSetting?page="+page, 302)
 		return
 	}
@@ -164,7 +167,7 @@ func (c *MenuController) HandMove_up_down() {
 	}
 
 	if err != nil {
-		logs.Critical("上移下移失败", err.Error())
+		logger.Warn("上移下移失败", err.Error())
 		c.Redirect("/menuSetting?page="+page, 302)
 	}
 
@@ -176,25 +179,25 @@ func (c *MenuController) HandChangeChild() {
 	// 获取参数
 	msg, err := common.Unmarshal(&c.Controller)
 	if err != nil {
-		logs.Alert("获取数据失败", err.Error())
+		logger.Info("获取数据失败", err.Error())
 		c.Error("获取更改导航数据失败")
 		return
 	}
 	id, err := transform.InterToInt(msg["id"])
 	if err != nil {
-		logs.Alert("获取数据失败" + err.Error())
+		logger.Info("获取数据失败" + err.Error())
 		c.Error("获取更改导航数据失败")
 		return
 	}
 	status, err := transform.InterToBool(msg["status"])
 	if err != nil {
-		logs.Alert("获取数据失败" + err.Error())
+		logger.Info("获取数据失败" + err.Error())
 		c.Error("获取更改导航数据失败")
 		return
 	}
 	err = servers.UpdateChild(id, status)
 	if err != nil {
-		logs.Warn("数据修改失败" + err.Error())
+		logger.Warn("数据修改失败" + err.Error())
 		c.Error("修改状态失败")
 		return
 	}
@@ -212,6 +215,7 @@ func (c *MenuController) HandUpdateIssue() {
 
 	if err != nil {
 		// 直接走
+		logger.Info("获取排序失败", err.Error())
 		c.Redirect("/menuSetting?page="+page, 302)
 		return
 	}
@@ -219,6 +223,7 @@ func (c *MenuController) HandUpdateIssue() {
 	visible, err := c.GetBool("status")
 	if err != nil {
 		// 直接走
+		logger.Info("获取status失败", err.Error())
 		c.Redirect("/menuSetting?page="+page, 302)
 		return
 	}
@@ -227,7 +232,7 @@ func (c *MenuController) HandUpdateIssue() {
 
 	if err != nil {
 		// 直接走
-		logs.Warn("数据修改失败" + err.Error())
+		logger.Warn("数据修改失败" + err.Error())
 		c.Redirect("/menuSetting?page="+page, 302)
 		return
 	}
@@ -239,19 +244,19 @@ func (c *MenuController) HandDelete() {
 	// 获取参数
 	msg, err := common.Unmarshal(&c.Controller)
 	if err != nil {
-		logs.Alert("获取数据失败", err.Error())
+		logger.Info("获取数据失败", err.Error())
 		c.Error("获取数据失败")
 		return
 	}
 	id, err := transform.InterToInt(msg["id"])
 	if err != nil {
-		logs.Alert("获取数据失败" + err.Error())
+		logger.Info("获取数据失败" + err.Error())
 		c.Error("获取数据失败")
 		return
 	}
 	err = servers.DeleteMenu(id)
 	if err != nil {
-		logs.Alert("删除导航数据失败", err.Error())
+		logger.Warn("删除导航数据失败", err.Error())
 		c.Error("删除导航数据失败")
 		return
 	}

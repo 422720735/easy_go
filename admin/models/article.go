@@ -52,9 +52,10 @@ type ArticleContent struct {
 	Content   *string `json:"content" gorm:"type:text"` // 内容
 }
 
-type Special struct {
+type System struct {
 	Id          int           `json:"id"`
 	TopId       sql.NullInt64 `json:"top_id"` // 记录置顶id
+	Cover       string        `json:"cover"`  // 封面图片
 	CreatedTime time.Time     `json:"created_time"`
 	UpdateTime  *sql.NullTime `json:"update_time"`
 }

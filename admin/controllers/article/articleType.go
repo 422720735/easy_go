@@ -2,9 +2,9 @@ package article
 
 import (
 	"easy_go/admin/common"
+	"easy_go/admin/logger"
 	"easy_go/admin/servers"
 	"easy_go/admin/transform"
-	"github.com/astaxie/beego/logs"
 	"strconv"
 	"strings"
 )
@@ -59,7 +59,7 @@ func (c *ArticleControllerType) Add() {
 	// 查询所有的导航菜单返回给页面。
 	menuData, err := servers.SelectMenuAll()
 	if err != nil {
-		logs.Alert("获取全部导航数据失败", err.Error())
+		logger.Info("获取全部导航数据失败", err.Error())
 	}
 
 	c.LayoutSections = make(map[string]string)
@@ -87,7 +87,7 @@ func (c *ArticleControllerType) HandArticleTypeAdd() {
 	// 接通了获取数据。
 	msg, err := common.Unmarshal(&c.Controller)
 	if err != nil {
-		logs.Alert("获取注册接口数据失败", err.Error())
+		logger.Info("获取注册接口数据失败", err.Error())
 		c.Error("获取新增路由接口数据失败")
 		return
 	}
@@ -95,7 +95,7 @@ func (c *ArticleControllerType) HandArticleTypeAdd() {
 	// 类型名称
 	articleName, err := transform.InterToString(msg["articleName"])
 	if err != nil {
-		logs.Alert("新增文章类型失败，数据不合法", err.Error())
+		logger.Info("新增文章类型失败，数据不合法", err.Error())
 		c.Error("新增文章类型失败，数据不合法")
 		return
 	}
@@ -103,7 +103,7 @@ func (c *ArticleControllerType) HandArticleTypeAdd() {
 	// 关键字
 	KeyWord, err := transform.InterToString(msg["KeyWord"])
 	if err != nil {
-		logs.Alert("新增文章类型失败，数据不合法", err.Error())
+		logger.Info("新增文章类型失败，数据不合法", err.Error())
 		c.Error("新增文章类型失败，数据不合法")
 		return
 	}
@@ -111,14 +111,14 @@ func (c *ArticleControllerType) HandArticleTypeAdd() {
 	// 父级
 	menuId, err := transform.InterToInt(msg["menuId"])
 	if err != nil {
-		logs.Alert("新增文章类型失败，数据不合法", err.Error())
+		logger.Info("新增文章类型失败，数据不合法", err.Error())
 		c.Error("新增文章类型失败，数据不合法")
 		return
 	}
 
 	err = servers.IsArticleTypeTake(articleName, KeyWord)
 	if err != nil {
-		logs.Alert("", err.Error())
+		logger.Info("", err.Error())
 		c.Error("已经存在相同的文章类型或关键字")
 		return
 	}
@@ -126,7 +126,7 @@ func (c *ArticleControllerType) HandArticleTypeAdd() {
 	// 新增文章类型
 	err = servers.InsertArticleType(articleName, KeyWord, menuId)
 	if err != nil {
-		logs.Alert("新增文章类型失败，数据不合法", err.Error())
+		logger.Info("新增文章类型失败，数据不合法", err.Error())
 		c.Error("新增文章类型失败，数据不合法")
 		c.Error("新增文章类型失败")
 		return
@@ -156,7 +156,7 @@ func (c *ArticleControllerType) HandArticleTypeUpdateIssue() {
 	err = servers.ArticleTypeUpdateIssue(id, visible)
 	if err != nil {
 		// 直接走
-		logs.Warn("数据修改失败" + err.Error())
+		logger.Warn("数据修改失败" + err.Error())
 		c.Redirect("/article/type", 302)
 		return
 	}
@@ -169,19 +169,19 @@ func (c *ArticleControllerType) HandArticleTypeDelete() {
 	// 获取参数
 	msg, err := common.Unmarshal(&c.Controller)
 	if err != nil {
-		logs.Alert("获取数据失败", err.Error())
+		logger.Info("获取数据失败", err.Error())
 		c.Error("获取数据失败")
 		return
 	}
 	id, err := transform.InterToInt(msg["id"])
 	if err != nil {
-		logs.Alert("获取数据失败" + err.Error())
+		logger.Info("获取数据失败" + err.Error())
 		c.Error("获取数据失败")
 		return
 	}
 	err = servers.ArticleTypeDeleteMenu(id)
 	if err != nil {
-		logs.Alert("删除文章类型数据失败", err.Error())
+		logger.Warn("删除文章类型数据失败", err.Error())
 		c.Error("删除文章类型数据失败")
 		return
 	}
@@ -208,7 +208,7 @@ func (c *ArticleControllerType) HandArticleType_up_down() {
 	}
 
 	if err != nil {
-		logs.Critical("上移下移失败", err.Error())
+		logger.Info("上移下移失败", err.Error())
 		c.Redirect("/article/type", 302)
 	}
 

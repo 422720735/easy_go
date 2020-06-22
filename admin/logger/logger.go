@@ -88,8 +88,8 @@ func SetLevelFile(level LEVEL, dir, fileName string) {
 }
 
 func Init() {
-	SetRollingFile("./log", "err.log", 10, 5, 64)
-	SetRollingDaily("./log", "err.log")
+	SetRollingFile("./logger/log", "err.log", 10, 5, 64)
+	SetRollingDaily("./logger/log", "err.log")
 	// 测试阶段为debug，生成环境为info以上
 	goos := runtime.GOOS
 	if goos == "linux" {

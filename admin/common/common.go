@@ -1,6 +1,7 @@
 package common
 
 import (
+	"easy_go/admin/logger"
 	"easy_go/admin/models"
 	"easy_go/admin/servers"
 	"easy_go/aes"
@@ -8,7 +9,6 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/logs"
 	"time"
 )
 
@@ -21,6 +21,7 @@ func Unmarshal(c *beego.Controller) (map[string]interface{}, error) {
 	msg := make(map[string]interface{})
 	err := json.Unmarshal(c.Ctx.Input.RequestBody, &msg)
 	if err != nil {
+		logger.Info(err.Error())
 		return nil, err
 	}
 	return msg, nil
@@ -42,6 +43,7 @@ func NewCurrentCookie(user models.User) (string, error) {
 	token, err := j.CreateToken(claims)
 
 	if err != nil {
+		logger.Error(err.Error())
 		return "", err
 	}
 
@@ -80,7 +82,7 @@ func ParseTokenUser(userCook string) *myjwt.CustomClaims {
 	j := myjwt.NewJWT()
 	claims, err := j.ParseToken(userCook)
 	if err != nil {
-		logs.Warn("解析token信息失败", err.Error())
+		logger.Error("解析token信息失败", err.Error())
 		return nil
 	}
 	// 数据库比对

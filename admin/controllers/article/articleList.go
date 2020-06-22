@@ -2,9 +2,9 @@ package article
 
 import (
 	"easy_go/admin/common"
+	"easy_go/admin/logger"
 	"easy_go/admin/servers"
 	"easy_go/admin/transform"
-	"github.com/astaxie/beego/logs"
 	"strconv"
 	"strings"
 )
@@ -98,7 +98,7 @@ func (c *ArticleList) HandMove_up_down() {
 	}
 
 	if err != nil {
-		logs.Critical("上移下移失败", err.Error())
+		logger.Info("上移下移失败", err.Error())
 		c.Redirect("/article/list?page="+page, 302)
 	}
 
@@ -130,7 +130,7 @@ func (c *ArticleList) HandUpdateIssue() {
 	err = servers.ArticleUpdateIssue(id, visible)
 	if err != nil {
 		// 直接走
-		logs.Warn("数据修改失败" + err.Error())
+		logger.Warn("数据修改失败" + err.Error())
 		c.Redirect("/article/list?page="+page, 302)
 		return
 	}
@@ -143,19 +143,19 @@ func (c *ArticleList) HandDelete() {
 	// 获取参数
 	msg, err := common.Unmarshal(&c.Controller)
 	if err != nil {
-		logs.Alert("获取数据失败", err.Error())
+		logger.Info("获取数据失败", err.Error())
 		c.Error("获取数据失败")
 		return
 	}
 	id, err := transform.InterToInt(msg["id"])
 	if err != nil {
-		logs.Alert("获取数据失败" + err.Error())
+		logger.Info("获取数据失败" + err.Error())
 		c.Error("获取数据失败")
 		return
 	}
 	err = servers.ArticleDeleteMenu(id)
 	if err != nil {
-		logs.Alert("删除文章数据失败", err.Error())
+		logger.Warn("删除文章数据失败", err.Error())
 		c.Error("删除文章数据失败")
 		return
 	}

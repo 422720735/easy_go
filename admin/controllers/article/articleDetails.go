@@ -203,7 +203,7 @@ func (c *ArticleDetails) HandArticleDetailsUpdate() {
 
 	title, err := transform.InterToString(msg["title"])
 	if err != nil || title == "" {
-		logger.Info("获取文章标题失败", err.Error())
+		logger.Info("获取文章标题失败")
 		c.Error("获取文章标题失败")
 		return
 	}

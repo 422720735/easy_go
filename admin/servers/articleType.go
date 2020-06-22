@@ -2,9 +2,9 @@ package servers
 
 import (
 	"easy_go/admin/db"
+	"easy_go/admin/logger"
 	"easy_go/admin/models"
 	"errors"
-	"github.com/astaxie/beego/logs"
 	"time"
 )
 
@@ -13,7 +13,7 @@ func IsArticleTypeTake(name, keyword string) error {
 	var count int
 	err := db.DbConn.Select([]string{"article_name"}).Model(&models.ArticleType{}).Where("article_name = ?", name).Or("key_word = ?", keyword).Count(&count).Error
 	if err != nil {
-		logs.Critical(err.Error())
+		logger.Info(err.Error())
 		return err
 	}
 	if count != 0 {
@@ -50,13 +50,13 @@ func SelectArticleTypeMenuName() ([]interface{}, error) {
 
 	err := menu.Find(&menuList).Error
 	if err != nil {
-		logs.Critical(err.Error())
+		logger.Info(err.Error())
 		return nil, err
 	}
 
 	err = article.Find(&articleList).Error
 	if err != nil {
-		logs.Critical(err.Error())
+		logger.Info(err.Error())
 		return nil, err
 	}
 
@@ -100,7 +100,7 @@ func SelectArticleMenu(tag string) ([]*models.MenuSetting, error) {
 
 	err := menu.Find(&menuList).Error
 	if err != nil {
-		logs.Critical(err.Error())
+		logger.Info(err.Error())
 		return nil, err
 	}
 
@@ -124,6 +124,7 @@ func SelectArticleTypeList(menuId, visible string) ([]*models.ArticleType, error
 
 	err := articleType.Order("sort asc").Find(&articleList).Error
 	if err != nil {
+		logger.Info(err.Error())
 		return nil, err
 	}
 	return articleList, nil
@@ -133,7 +134,7 @@ func SelectArticleTypeList(menuId, visible string) ([]*models.ArticleType, error
 func ArticleTypeUpdateIssue(id int, status bool) error {
 	err := db.DbConn.Model(&models.ArticleType{}).Where("id = ?", id).Updates(map[string]interface{}{"visible": !status, "update_time": time.Now()}).Error
 	if err != nil {
-		logs.Critical(err.Error())
+		logger.Warn(err.Error())
 		return err
 	}
 	return nil
@@ -143,7 +144,7 @@ func ArticleTypeUpdateIssue(id int, status bool) error {
 func ArticleTypeDeleteMenu(id int) error {
 	err := db.DbConn.Model(&models.ArticleType{}).Where("id = ?", id).Updates(map[string]interface{}{"state": true, "update_time": time.Now()}).Error
 	if err != nil {
-		logs.Critical(err.Error())
+		logger.Warn(err.Error())
 		return err
 	}
 	return nil
@@ -159,21 +160,21 @@ func ArticleTypeUpdateUpDown(sort int, str string) error {
 	// 查询当前数据
 	err = db.DbConn.Model(&models.ArticleType{}).Where("sort = ?", sort).Find(&current).Error
 	if err != nil {
-		logs.Critical(err.Error())
+		logger.Info(err.Error())
 		return err
 	}
 	if str == "top" {
 		err = db.DbConn.Model(&models.ArticleType{}).Where("sort = ?", sort-1).Find(&prev_next).Error
 		sortNext = sort - 1
 		if err != nil {
-			logs.Critical(err.Error())
+			logger.Info(err.Error())
 			return err
 		}
 	} else {
 		err = db.DbConn.Model(&models.ArticleType{}).Where("sort = ?", sort+1).Find(&prev_next).Error
 		sortNext = sort + 1
 		if err != nil {
-			logs.Critical(err.Error())
+			logger.Info(err.Error())
 			return err
 		}
 	}
@@ -182,12 +183,12 @@ func ArticleTypeUpdateUpDown(sort int, str string) error {
 	defer tx.Commit()
 	err = tx.Model(&current).Updates(map[string]interface{}{"sort": sortNext, "update_time": time.Now()}).Error
 	if err != nil {
-		logs.Critical(err.Error())
+		logger.Warn(err.Error())
 		tx.Rollback()
 	}
 	err = tx.Model(&prev_next).Updates(map[string]interface{}{"sort": sort, "update_time": time.Now()}).Error
 	if err != nil {
-		logs.Critical(err.Error())
+		logger.Warn(err.Error())
 		tx.Rollback()
 	}
 	return nil

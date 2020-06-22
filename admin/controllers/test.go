@@ -18,7 +18,6 @@ func (c *TestControllers) Get() {
 
 	//res, err := servers.SelectArticleDetails(1)
 	//if err != nil {
-	//	logs.Alert("======================", err.Error())
 	//	return
 	//}
 	//
