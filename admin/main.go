@@ -20,8 +20,6 @@ func init()  {
 	v2logger.SetRollingFile("./logger/log", "test.log", 10, 5, 64)
 	v2logger.SetRollingDaily("./logger/log", "test.log")
 	v2logger.SetLevel(v2logger.DEBUG)
-
-	log(1)
 }
 
 // hltool
