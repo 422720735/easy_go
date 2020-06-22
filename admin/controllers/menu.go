@@ -141,7 +141,7 @@ func (c *MenuController) HandMove_up_down() {
 	// 获取当前sort数值
 	sortStr := c.GetString("sort")
 	var sort int
-	int, err := strconv.Atoi(sortStr)
+	_int, err := strconv.Atoi(sortStr)
 
 	// 获取当前sort数值
 	page := c.GetString("page")
@@ -154,7 +154,7 @@ func (c *MenuController) HandMove_up_down() {
 		c.Redirect("/menuSetting?page="+page, 302)
 		return
 	}
-	sort = int
+	sort = _int
 	if strings.Index(u, "up") > -1 {
 		// 上移动
 		err = servers.UpdateUpDown(sort, "top")

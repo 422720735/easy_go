@@ -1,9 +1,13 @@
-package v2logger
+/**
+https://github.com/donnie4w/go-logger
+*/
 
-//	"log"
+package logger
+
+import "runtime"
 
 const (
-	//go-v2logger version
+	//logger version
 	_VER string = "1.0.3"
 )
 
@@ -59,7 +63,6 @@ func SetRollingDaily(fileDir, fileName string) {
 	defaultlog.setRollingDaily(fileDir, fileName)
 }
 
-
 func Debug(v ...interface{}) {
 
 	defaultlog.debug(v...)
@@ -84,3 +87,16 @@ func SetLevelFile(level LEVEL, dir, fileName string) {
 	defaultlog.setLevelFile(level, dir, fileName)
 }
 
+func Init() {
+	SetRollingFile("./log", "err.log", 10, 5, 64)
+	SetRollingDaily("./log", "err.log")
+	// 测试阶段为debug，生成环境为info以上
+	goos := runtime.GOOS
+	if goos == "linux" {
+		SetConsole(false)
+		SetLevel(FATAL)
+	} else {
+		SetConsole(true)
+		SetLevel(DEBUG)
+	}
+}
