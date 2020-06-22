@@ -18,6 +18,8 @@ func init() {
 	beego.InsertFilter("/workplace", beego.BeforeExec, FilterUser)
 	beego.InsertFilter("/menuSetting/*", beego.BeforeExec, FilterUser)
 	beego.InsertFilter("/article/*", beego.BeforeExec, FilterUser)
+	beego.InsertFilter("/cover/*", beego.BeforeExec, FilterUser)
+	beego.InsertFilter(Api + "/**", beego.BeforeRouter, FilterUser)
 
 	beego.Router("/login", &controllers.LoginController{})
 
