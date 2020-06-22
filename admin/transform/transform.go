@@ -95,8 +95,7 @@ func DecToHex(num string) (string, error) {
 		if err != nil {
 			return "", err
 		}
-		// fmt.Println(strconv.FormatInt(firstN, 16))
-		// fmt.Println(strconv.FormatInt(lastN, 16))
+
 		resultF := strings.ToUpper(strconv.FormatInt(firstN, 16))
 		resultL := strings.ToUpper(strconv.FormatInt(lastN, 16))
 		if len(resultF)-8 != 0 {
@@ -120,7 +119,7 @@ func DecToHex(num string) (string, error) {
 //16进制转10进制
 func HexToDec(num string) (string, error) {
 	if len(num) == 8 {
-		// fmt.Println("8")
+
 		n, err := strconv.ParseInt(num, 16, 64)
 		if err != nil {
 			return "", err
@@ -137,7 +136,6 @@ func HexToDec(num string) (string, error) {
 		}
 	}
 	if len(num) == 16 {
-		// fmt.Println("16")
 		first := num[0:8]
 		last := num[8:]
 		firstN, err := strconv.ParseInt(first, 16, 64)
@@ -148,8 +146,6 @@ func HexToDec(num string) (string, error) {
 		if err != nil {
 			return "", err
 		}
-		// fmt.Println(strconv.FormatInt(firstN, 10))
-		// fmt.Println(strconv.FormatInt(lastN, 10))
 		resultF := strings.ToUpper(strconv.FormatInt(firstN, 10))
 		if len(resultF) != 10 {
 			k := 10 - len(resultF)

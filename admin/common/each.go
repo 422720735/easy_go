@@ -119,7 +119,6 @@ func Paginator(page, pagesize int, nums int64, data interface{}) map[string]inte
 		}
 		prepage = int(math.Max(float64(1), float64(page-1)))
 		nextpage = page + 1
-		//fmt.Println(pages)
 	}
 	paginatorMap := make(map[string]interface{})
 	paginatorMap["pages"] = pages

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://www.jq22.com/demo/jqueryjpgys201906200044/css/cropper.css">
+</head>
+<body>
+<button id="guyuan" style="margin:50px;">裁剪图片</button>
+</body>
+
+<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script src="http://www.jq22.com/demo/jqueryjpgys201906200044/js/cropper.js"></script>
+<script>
+    var img = 'tp.png'
+    $('#guyuan').click(function () {
+        Model_Cropper({
+            imgUrl: img, // 图片地址 / 或者 base64   注：图片地址(需要在服务器环境下  base64不需要)
+            proportion: [100, 100], // 宽/高  裁剪and压缩比例  单位px  图片等比例压缩至 200px/200px
+            confirm: function (result) {   // 裁剪成功后  返回的 事件
+                // 调用 result.close() 关闭弹框
+                // result.data  为对象  base64 = 处理后base64码  blob = 图片对象
+                console.log(result)
+                console.log('blob对象=======',result.data.blob)
+                console.log('base64=======',result.data.base64)
+                alert('打开控制台查看 裁剪压缩返回数据')
+            },
+        })
+    })
+    //
+    $(function(){
+        $('#guyuan').click()
+    })
+</script>
+</html>

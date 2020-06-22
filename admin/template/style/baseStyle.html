@@ -1,18 +1,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-<meta content="Beethemesdesign" name="author" />
+<meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description"/>
+<meta content="Beethemesdesign" name="author"/>
 
 <!-- favicon -->
 <link rel="shortcut icon" href="/static/assets/images/favicon.png">
 
 
 <!-- third party css -->
-<link href="/static/assets/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+<link href="/static/assets/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css"/>
 <!-- third party css end -->
 
 <!-- Required css -->
-<link href="/static/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-<link href="/static/assets/css/style.css" rel="stylesheet" type="text/css" />
+<link href="/static/assets/css/icons.min.css" rel="stylesheet" type="text/css"/>
+<link href="/static/assets/css/style.css" rel="stylesheet" type="text/css"/>
 
 <link rel="stylesheet" href="/static/assets/message/css/jquery.my-message.1.1.css">
 <style>
@@ -22,7 +22,7 @@
 
     .go-black {
         border: none;
-        color: #6c757d;
+        color: #565c63;
         height: 70px;
         line-height: 70px;
         width: 148px;
@@ -30,5 +30,74 @@
         font-size: 22px;
         cursor: pointer;
         float: left;
+    }
+
+    ul.pagination .page-item.default .page-link:hover,
+    ul.pagination .page-item.default .page-link:focus {
+        cursor: default;
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    .ant-divider {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        color: rgba(0, 0, 0, 0.65);
+        font-size: 14px;
+        font-variant: tabular-nums;
+        line-height: 1.5;
+        list-style: none;
+        font-feature-settings: 'tnum';
+        background: #e8e8e8;
+    }
+
+    .ant-divider,
+    .ant-divider-vertical {
+        position: relative;
+        top: -0.06em;
+        display: inline-block;
+        width: 1px;
+        height: 0.9em;
+        margin: 0 8px;
+        vertical-align: middle;
+    }
+
+    .ant-empty {
+        margin: 0 8px;
+        font-size: 14px;
+        line-height: 22px;
+        text-align: center;
+    }
+    .ant-empty-image {
+        height: 100px;
+        margin-bottom: 8px;
+    }
+    .ant-empty-image img {
+        height: 100%;
+    }
+    .ant-empty-image svg {
+        height: 100%;
+        margin: auto;
+    }
+    .ant-empty-description {
+        margin: 0;
+    }
+    .ant-empty-footer {
+        margin-top: 16px;
+    }
+    .ant-empty-normal {
+        margin: 32px 0;
+        color: rgba(0, 0, 0, 0.25);
+    }
+    .ant-empty-normal .ant-empty-image {
+        height: 40px;
+    }
+    .ant-empty-small {
+        margin: 8px 0;
+        color: rgba(0, 0, 0, 0.25);
+    }
+    .ant-empty-small .ant-empty-image {
+        height: 35px;
     }
 </style>

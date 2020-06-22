@@ -165,7 +165,7 @@ function save(prod = false) {
         if (!get()) {
             const results = handleToken()
             if (results && Object.keys(results).length === 2) {
-                const token = data.secretKey
+                const token = results.secretKey
                 coverStr = getTokenUrl($('.cupload-image-list li input[type="hidden"]').val(), token)
             }
         } else {
@@ -174,7 +174,6 @@ function save(prod = false) {
         }
     }
 
-    console.log(window.content, "ccccc")
     const data = {
         title,
         created,
@@ -229,11 +228,10 @@ function saveArticle(data) {
         method: data.id ? 'Put' : 'POST',
         success: function (res) {
             if (res.code === Ok) {
-                window.location.reload()
                 window.message.success(res)
-                // setTimeout(function () {
-                //
-                // }, 200)
+                setTimeout(function () {
+                    window.location.reload()
+                }, 5000)
             } else {
                 window.message.error(res)
             }
@@ -288,6 +286,10 @@ function getTokenUrl(base, token) {
         data: pic,
         success: function (data) {
             src = data.key
+        },
+        error: function (e) {
+            window.message.error('上传封面失败')
+            localStorage.removeItem('localStorage')
         }
     });
     return src

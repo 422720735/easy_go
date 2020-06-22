@@ -41,11 +41,12 @@ func (c *ArticleList) Get() {
 
 	title := c.GetString("title")
 	tag := c.GetString("tag")
+	visible := c.GetString("visible")
 
 	// 类型分类
 	articleTypeList, _ := servers.SelectArticleTypeMenuName()
 	// 文章list分页查询
-	data, total, _ := servers.SelectArticlePageList(title, tag, page, common.PAGE_SIZE)
+	data, total, _ := servers.SelectArticlePageList(title, tag, visible, page, common.PAGE_SIZE)
 
 	articleList := common.Paginator(page, common.PAGE_SIZE, total, data)
 
@@ -57,7 +58,12 @@ func (c *ArticleList) Get() {
 	if count == 1 && err == nil && res.TopId.Valid {
 		top_id = int(res.TopId.Int64)
 	}
+
+	if visible == "" {
+		visible = "0"
+	}
 	c.Data["top_id"] = top_id
+	c.Data["visible_id"] = visible
 	c.Data["articleList"] = articleList
 }
 

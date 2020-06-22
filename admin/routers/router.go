@@ -4,6 +4,7 @@ import (
 	"easy_go/admin/common"
 	"easy_go/admin/controllers"
 	"easy_go/admin/controllers/article"
+	"easy_go/admin/controllers/system"
 	"github.com/astaxie/beego/context"
 
 	"github.com/astaxie/beego"
@@ -18,7 +19,6 @@ func init() {
 	beego.InsertFilter("/menuSetting/*", beego.BeforeExec, FilterUser)
 	beego.InsertFilter("/article/*", beego.BeforeExec, FilterUser)
 
-	// beego.Router("/", &controllers.IndexControllers{}) // 废弃
 	beego.Router("/login", &controllers.LoginController{})
 
 	beego.Router("/register", &controllers.RegisterController{})
@@ -26,6 +26,9 @@ func init() {
 	beego.Router("/", &controllers.DashBoardControllers{})
 
 	beego.Router("/analysis", &controllers.DashBoardControllers{}, "get:HandleAnalysis")
+
+	// 系统设置
+	beego.Router("/cover", &system.CoverControllers{})
 
 	// 工作台
 	beego.Router("/workplace", &controllers.DashBoardControllers{}, "get:HandleWorkplace")
