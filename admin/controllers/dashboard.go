@@ -36,6 +36,7 @@ func (c *DashBoardControllers) Get() {
 	c.LayoutSections["Style"] = "style/welcome.html"
 	c.LayoutSections["Script"] = "script/welcome.html"
 
+	// 查询最近的文章
 }
 
 func (c *DashBoardControllers) HandleAnalysis() {

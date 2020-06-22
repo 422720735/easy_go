@@ -19,6 +19,7 @@ function uploadCovers() {
     }
 }
 
+/** 清楚*/
 function removeCovers() {
     $('#cupload-tailor').empty()
 }

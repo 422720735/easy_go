@@ -82,7 +82,7 @@ func ParseTokenUser(userCook string) *myjwt.CustomClaims {
 	j := myjwt.NewJWT()
 	claims, err := j.ParseToken(userCook)
 	if err != nil {
-		logger.Error("解析token信息失败", err.Error())
+		logger.Info("解析token信息失败", err.Error())
 		return nil
 	}
 	// 数据库比对

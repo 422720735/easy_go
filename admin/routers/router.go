@@ -24,6 +24,7 @@ func init() {
 	beego.Router("/register", &controllers.RegisterController{})
 
 	beego.Router("/", &controllers.DashBoardControllers{})
+	beego.Router("/welcome", &controllers.DashBoardControllers{})
 
 	beego.Router("/analysis", &controllers.DashBoardControllers{}, "get:HandleAnalysis")
 
