@@ -146,13 +146,10 @@
                                                     {{end}}
                                                 {{end}}
                                             {{end}}
-                                            {{if $v.CreatedTime}}
-                                                <td>{{$v.CreatedTime.Format "2006-01-02 15:04:05"}}</td>
-                                            {{end}}
                                             {{if $v.UpdateTime}}
                                                 <td>{{$v.UpdateTime.Time.Format "2006-01-02 15:04:05"}}</td>
                                             {{else}}
-                                                <td>&emsp;</td>
+                                                <td>{{$v.CreatedTime.Format "2006-01-02 15:04:05"}}</td>
                                             {{end}}
                                             <td>
                                                 {{if and ($v.IsTop) (eq $.top_id $v.Id)}}
