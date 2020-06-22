@@ -80,6 +80,9 @@ func register() {
 	beego.Router(Api + "/article/type/delete", &article.ArticleControllerType{},"post:HandArticleTypeDelete")
 	beego.Router(Api + "/article/type/move/*", &article.ArticleControllerType{},"get:HandArticleType_up_down")
 
+	// 封面
+	beego.Router(Api + "/cover/alter", &system.CoverControllers{}, "post:HandleCoverAlter")
+	beego.Router(Api + "/cover", &system.CoverControllers{}, "get:CoverInfo")
 
 	beego.Router("/test", &controllers.TestControllers{})
 }

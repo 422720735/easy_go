@@ -108,7 +108,6 @@ func InsertArticleDetails(title, content, cover, desc, tags, keyword string, men
 		} else {
 			err = tx.Model(&s).Updates(map[string]interface{}{"top_id": a.Id, "update_time": time.Now()}).Error
 		}
-
 		if err != nil {
 			logger.Error(err.Error())
 			tx.Rollback()

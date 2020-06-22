@@ -7,6 +7,7 @@ let img_src = []
  * 请求token，完成数据请求。
  * */
 function uploadCovers() {
+    isVisible(true)
     if (!get()) {
         const results = handleToken()
         if (results && Object.keys(results).length === 2) {
@@ -18,13 +19,78 @@ function uploadCovers() {
     }
 }
 
+function removeCovers() {
+    $('#cupload-tailor').empty()
+}
+
 /**
  * 七牛云多图上传
  * */
+$(document).ready(function () {
+    $.ajax({
+        url: HOST + '/cover',
+        method: 'Get',
+        success: function (res) {
+            if (res.code === Ok  && res.data !== '') {
+                // 把数据查入进去
+                res.data.split(',').forEach(item => {
+                    const src = ASSETS + item
+                    const liDom = '<div class="li-img"><img onclick="maximize(event)" src="' + src + '"></div>'
+                    $('#cupload-tailor').append(liDom)
+                })
+            }
+        }
+    })
+})
+
 function qnMultiple(token) {
     if ($('#cupload-tailor > .li-img').length === 0) {
         window.message.error('当前没有可选择上传的图片')
     } else {
+        const src = $('#cupload-tailor > .li-img').eq(0).find('img').attr('data-src')
+        if (src) {
+            CoverUpload.have()
+        } else {
+            CoverUpload.none(token)
+        }
+    }
+}
+
+class CoverUpload {
+    static have() {
+        const len = document.querySelectorAll('#cupload-tailor .li-img').length
+        let upLoad = []
+        for (let i = 0; i < len; i++) {
+            const el = $('#cupload-tailor .li-img').eq(i).find('img')
+            const src = el.attr('data-src')
+            upLoad.push(src)
+        }
+        if (upLoad.length > 0) {
+            $.ajax({
+                url: HOST + '/cover/alter',
+                method: 'POST',
+                data: JSON.stringify({
+                    cover: upLoad.join(",")
+                }),
+                success: (res) => {
+                    isVisible(false)
+                    if (res.code === Ok) {
+                        window.message.success(res)
+                    } else {
+                        window.message.error(res)
+                    }
+
+                },
+                error: function () {
+                    window.message.error('图片上传失败')
+                    isVisible(false)
+                }
+            })
+        }
+
+    }
+
+    static none(token) {
         // 获取所有的base64
         const len = document.querySelectorAll('#cupload-tailor .li-img').length
         let upLoad = []
@@ -46,18 +112,29 @@ function qnMultiple(token) {
     }
 }
 
+function isVisible(bool) {
+    if (bool) {
+        $('#upload-icon').addClass('d-none')
+        $('#upload-spin').removeClass('d-none')
+    } else {
+        $('#upload-icon').removeClass('d-none')
+        $('#upload-spin').addClass('d-none')
+    }
+}
 /**
  * ajax 递归请求数据，并在最后一个请求完成后。我们走自己的上传接口数据
  * */
 function func_digui(arry, len, token) {
     var temp
     var current = 0
+    var title = ''
     try {
         for (let i = 0; i < len; i++) {
             if (i === 0) {
                 temp = Object.assign({}, arry[0])
                 arry.splice(i, 1);
                 const {size, name, pic} = temp
+                title = name
                 const url = 'http://up-z2.qiniup.com/putb64/' + size + "/key/" + name;  //  我这个是华南地区的   要根据仓库选择url   这个是官方的  https://developer.qiniu.com/kodo/kb/1326/how-to-upload-photos-to-seven-niuyun-base64-code
                 if (size && name && pic) {
                     $.ajax({
@@ -69,12 +146,13 @@ function func_digui(arry, len, token) {
                         },
                         data: pic,
                         success: function (data) {
-                            // src = data.key
                             if (data.key) {
                                 img_src.push(data.key)
                                 current = i
                                 func_digui(arry, len, token)
-                            } else return
+                            } else {
+                                return false
+                            }
                         },
                         error: function (e) {
                             console.log(e)
@@ -86,12 +164,36 @@ function func_digui(arry, len, token) {
             }
         }
     } catch (e) {
-        console.log(e)
+        isVisible(false)
         window.message.error('上传封面背景失败12')
     } finally {
-        console.log(current)
+        if (img_src[img_src.length - 1] && img_src[img_src.length - 1] !== null && img_src[img_src.length - 1] !== undefined) {
+            // 把七牛云的图片地址放在img 自定义属性上。
+            $('#cupload-tailor .li-img').eq(img_src.length - 1).find('img').attr('data-src', img_src[img_src.length - 1])
+            $('#cupload-tailor .li-img').eq(img_src.length - 1).find('img').attr('data-title', title)
+        }
         if (img_src.length > 0 && img_src.length === len) {
-            console.log(img_src)
+            // 请求我们自己的编辑接口
+            $.ajax({
+                url: HOST + '/cover/alter',
+                method: 'POST',
+                data: JSON.stringify({
+                    cover: img_src.join(",")
+                }),
+                success: (res) => {
+                    isVisible(false)
+                    if (res.code === Ok) {
+                        window.message.success(res)
+                    } else {
+                        window.message.error(res)
+                    }
+
+                },
+                error: function () {
+                    window.message.error('图片上传失败')
+                    isVisible(false)
+                }
+            })
         }
     }
 }
@@ -140,7 +242,6 @@ function get() {
     } else {
         return null
     }
-
 
     if (Object.keys(store).length === 2) {
         const now = new Date().getTime()

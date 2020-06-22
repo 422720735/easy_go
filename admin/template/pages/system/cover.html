@@ -31,8 +31,15 @@
                 <div class="card-body">
                     <div id="cupload-tailor" class="clearfix"></div>
                 </div>
-                <button onclick="uploadCovers()" type="button" class="btn btn-primary"><span class="ion ion-md-cloud-upload"></span>&nbsp;&nbsp;上传封面</button>
-
+                <div class="modal-footer">
+                    <button onclick="uploadCovers()" type="button" class="btn btn-primary">
+                        <span class="ion ion-md-cloud-upload" id="upload-icon"></span>
+                        <span class="spinner-border spinner-border-sm mr-1 d-none" id="upload-spin" role="status" aria-hidden="true"></span>
+                        &nbsp;&nbsp;上传封面</button>
+                    <button onclick="removeCovers()" type="button" class="btn btn-danger">
+                        <span class="dripicons-trash"></span>
+                        &nbsp;&nbsp;重置</button>
+                </div>
             </div>
         </div>
         <div class="col-xl-4 col-md-12">
