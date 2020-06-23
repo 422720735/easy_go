@@ -44,18 +44,15 @@ func (c *LoginController) HandleLogin() {
 		return
 	}
 
-	//check := c.GetStrings("checkbox")
 	check, _ := transform.InterToBool(msg["checkbox"])
 	if username == "" || len(username) < 6 || password == "" || len(password) < 6 {
 		c.Error("账号或密码不合法")
-		//c.History("账号或密码不合法", "")
 		return
 	}
 	// 加密后的密码
 	process, err := servers.SelectUserMd5Pwd(username, md5.Md5(password, common.SECRET_KEY))
 	if err != nil {
 		logger.Error("用户:"+username+"加密失败", err.Error())
-		//c.History("账号或密码不合法", "")
 		c.Error("账号或密码不合法")
 		return
 	}
@@ -63,7 +60,6 @@ func (c *LoginController) HandleLogin() {
 	user, err := servers.SelectUserMd5Pwd(username, process.PassWord)
 	if err != nil {
 		logger.Warn("用户:"+username+"比对密码出错", err.Error())
-		//c.History("账号或密码不合法", "")
 		c.Error("账号或密码不合法")
 		return
 	}
@@ -77,7 +73,6 @@ func (c *LoginController) HandleLogin() {
 			tokenString, err := common.NewCurrentCookie(user)
 			if err != nil {
 				//logger.Warn("用户登录创建token失败", err.Error())
-				//c.History("未知异常", "")
 				c.Error("未知异常")
 				return
 			}
@@ -89,7 +84,6 @@ func (c *LoginController) HandleLogin() {
 			err = servers.LoginRecord(user)
 			if err != nil {
 				logger.Info("用户记录登陆信息失败", err.Error())
-				//c.History("未知异常", "")
 				c.Error("未知异常")
 				return
 			}
@@ -98,10 +92,8 @@ func (c *LoginController) HandleLogin() {
 		// 存session
 		c.SetSession("userId", user.Id)
 		c.SetSession("userName", user.UserName)
-		//c.Redirect("/workplace", 302)
 		c.Success("登录成功")
 	} else {
-		//c.Redirect("/login", 302)
 		c.Error("登录失败")
 	}
 }
