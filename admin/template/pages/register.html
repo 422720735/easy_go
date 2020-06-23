@@ -25,6 +25,13 @@
                     <label class="mb-1" for="password2">重复密码</label>
                     <input oninput="handleValidator()" class="form-control" type="password" required id="password2" placeholder="请再次输入密码">
                 </div>
+                <div class="form-group">
+                    <label for="code">验证码</label>
+                    <input class="form-control" name="code" type="text" required="" id="code" placeholder="请输入图片中的验证码" maxlength="6">
+                    <span class="mt-1 mb-1 d-inline-block">请输入下面动画图片中的字符</span>
+                    <br />
+                    <img width="140px" height="60px" id="captcha" onclick="getCode()" style="cursor: pointer">
+                </div>
                 <div class="form-group mb-2">
                     <div class="custom-control custom-checkbox">
                         <input name="check" type="checkbox" class="custom-control-input" id="checkbox-signup">
@@ -56,7 +63,7 @@
             </form>
             <!-- Footer-->
             <footer class="footer footer-alt">
-                <p class="text-muted">Already have account? <a href="/login" class="text-muted ml-1"><b>Log In hear</b></a></p>
+                <p class="text-muted">已经有帐号? <a href="/login" class="text-muted ml-1"><b>登录</b></a></p>
             </footer>
         </div>
     </div>

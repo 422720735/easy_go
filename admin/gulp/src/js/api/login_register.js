@@ -73,3 +73,16 @@ $('#login-btn.btn.btn-primary.btn-block').click(function () {
         })
     }
 })
+
+function getCode() {
+    $.ajax({
+        url: '/captcha',
+        method: 'Get',
+        success: function (res) {
+            if (res.code === Ok) {
+                $('#captcha').attr('src', res.data)
+            }
+        }
+    })
+}
+getCode()

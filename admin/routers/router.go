@@ -21,7 +21,8 @@ func init() {
 	beego.InsertFilter("/cover/*", beego.BeforeExec, FilterUser)
 
 
-	beego.Router("/captcha/:captchaId", &controllers.LoginController{}, "get:ShowCode")
+	beego.Router("/captcha", &controllers.CaptchaControllers{})
+	beego.Router("/captcha/:captchaId", &controllers.CaptchaControllers{}, "get:ShowCode")
 
 	// 注册、登录
 	beego.Router("/login", &controllers.LoginController{}, "get:Get;post:HandleLogin")

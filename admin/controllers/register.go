@@ -6,6 +6,7 @@ import (
 	"easy_go/admin/servers"
 	"easy_go/admin/transform"
 	"easy_go/md5"
+	"easy_go/middleware"
 )
 
 type RegisterController struct {
@@ -31,6 +32,34 @@ func (c *RegisterController) Post() {
 		c.Error("获取注册接口数据失败")
 		return
 	}
+
+	code, err := transform.InterToString(msg["code"])
+	if err != nil {
+		logger.Info("验证码不合法", err.Error())
+		c.Error("验证码不合法")
+		return
+	}
+
+	if len(code) != 6 {
+		logger.Info("验证码长度不正确")
+		c.Error("验证码长度不正确")
+		return
+	}
+
+	captchaId, ok := c.GetSession("captchaId").(string)
+	if !ok {
+		c.Error("验证码验证失败")
+		return
+	}
+
+	_bool := middleware.VerifyCaptcha(captchaId, code)
+	if !_bool {
+		c.Error("验证码不合法")
+		return
+	} else {
+		c.DelSession("captchaId")
+	}
+
 	invitecode, err := transform.InterToString(msg["invitecode"])
 	if err != nil {
 		logger.Info("邀请码错误", err.Error())
@@ -47,6 +76,7 @@ func (c *RegisterController) Post() {
 		c.Error("邀请码错误")
 		return
 	}
+
 	username, err := transform.InterToString(msg["username"])
 	if username == "" || len(username) < 6 {
 		c.Error("输入不合法")
@@ -63,7 +93,7 @@ func (c *RegisterController) Post() {
 		c.Error("未知异常")
 	}
 	if count > 0 {
-		c.Success("账号以被占用。")
+		c.Error("账号以被占用。")
 		return
 	}
 	// 加密后的密码

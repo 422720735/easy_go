@@ -22,11 +22,9 @@
                     <input class="form-control" name="code" type="text" required="" id="code" placeholder="请输入图片中的验证码" maxlength="6">
                     <span class="mt-1 mb-1 d-inline-block">请输入下面动画图片中的字符</span>
                     <br />
-                    <a href="/login">
-                        <img width="140px" height="60px" src="{{.code}}" alt="验证码">
-                    </a>
+                    <img width="140px" height="60px" id="captcha" onclick="getCode()" style="cursor: pointer">
                 </div>
-                <a href="pages-recoverpw-img.html" class="text-muted float-right"><small>忘记密码?</small></a>
+                {{/*<a href="" class="text-muted float-right"><small>忘记密码?</small></a>*/}}
                 <div class="form-group mb-3">
                     <div class="custom-control custom-checkbox">
                         <input name="checkbox" type="checkbox" class="custom-control-input" id="checkbox-signin">
@@ -57,7 +55,7 @@
                 </div>
             </form>
             <footer class="footer footer-alt">
-                <p class="text-muted">Don't have an account? <a href="/register" class="text-muted ml-1"><b>Sign Up hear</b></a></p>
+                <p class="text-muted">还没有账号? <a href="/register" class="text-muted ml-1"><b>注册</b></a></p>
             </footer>
         </div>
     </div>
