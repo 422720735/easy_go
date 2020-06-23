@@ -97,16 +97,12 @@ var FilterUser = func(ctx *context.Context) {
 		// 1 获取cookies
 		auth := ctx.GetCookie("auth")
 		if auth == "" {
-			//ctx.SetCookie("auth", "")
-			//ctx.SetCookie("beegosessionID", "")
 			ctx.Redirect(302, "/login")
 		} else {
 			// 验证cook是否有效，有效记得session
 			// 如果解析token有用户数据把数据记录在session
 			user := common.ParseTokenUser(auth)
 			if user == nil {
-				//ctx.SetCookie("auth", "")
-				//ctx.SetCookie("beegosessionID", "")
 				ctx.Redirect(302, "/login")
 			} else {
 				ctx.Output.Session("userId", user.Id)
