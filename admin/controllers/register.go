@@ -20,11 +20,10 @@ func (c *RegisterController) Get() {
 	c.Layout = "layout/login-registerLayout.html"
 	c.TplName = "pages/register.html"
 	c.LayoutSections = make(map[string]string)
-	c.LayoutSections["styleMessage"] = "style/message.html"
 	c.LayoutSections["script"] = "script/login_register.html"
 }
 
-func (c *RegisterController) AddRegister() {
+func (c *RegisterController) Post() {
 	var role int
 	msg, err := common.Unmarshal(&c.Controller)
 	if err != nil {

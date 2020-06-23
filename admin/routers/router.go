@@ -20,8 +20,11 @@ func init() {
 	beego.InsertFilter("/article/*", beego.BeforeExec, FilterUser)
 	beego.InsertFilter("/cover/*", beego.BeforeExec, FilterUser)
 
-	beego.Router("/login", &controllers.LoginController{}, "get:Get;post:HandleLogin")
 
+	beego.Router("/captcha/:captchaId", &controllers.LoginController{}, "get:ShowCode")
+
+	// 注册、登录
+	beego.Router("/login", &controllers.LoginController{}, "get:Get;post:HandleLogin")
 	beego.Router("/register", &controllers.RegisterController{})
 
 	beego.Router("/", &controllers.DashBoardControllers{})
@@ -57,7 +60,7 @@ func init() {
 func register() {
 	// 组册现在走的是form表单
 	//beego.Router(Api+"/login", &controllers.LoginController{}, "post:HandleLogin")
-	beego.Router(Api+"/register", &controllers.RegisterController{}, "post:AddRegister")
+	//beego.Router(Api+"/register", &controllers.RegisterController{}, "post:AddRegister")
 
 	beego.Router(Api+"/qn/token", &controllers.QiNiuController{}, "get:InsertToken")
 
