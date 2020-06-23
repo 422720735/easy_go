@@ -40,7 +40,6 @@ func (c *MenuController) Get() {
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
 	c.LayoutSections["Style"] = "style/menuSetting.html"
 	c.LayoutSections["Script"] = "script/menuSetting.html"
-	c.LayoutSections["ScriptMessage"] = "script/message.html"
 	// 数据
 	c.Data["menu_data"] = menuList
 }
@@ -64,8 +63,6 @@ func (c *MenuController) Add() {
 
 	c.LayoutSections["Style"] = "style/menuSetting.html"
 	c.LayoutSections["Script"] = "script/menuSettingAdd.html"
-
-	c.LayoutSections["ScriptMessage"] = "script/message.html"
 }
 
 // 路由菜单权限详情页面

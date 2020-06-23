@@ -28,7 +28,6 @@ func (c *ArticleList) Get() {
 	// js
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
 	c.LayoutSections["Script"] = "script/articleList.html"
-	c.LayoutSections["ScriptMessage"] = "script/message.html"
 
 	// req
 	pageStr := c.GetString("page")

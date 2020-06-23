@@ -30,7 +30,6 @@ func (c *ArticleControllerType) Get() {
 	// js
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
 	c.LayoutSections["Script"] = "script/articleType/articleTypeList.html"
-	c.LayoutSections["ScriptMessage"] = "script/message.html"
 
 	// req
 	tag := c.GetString("tag")
@@ -76,7 +75,6 @@ func (c *ArticleControllerType) Add() {
 
 	c.LayoutSections["Style"] = "style/menuSetting.html"
 	c.LayoutSections["Script"] = "script/articleType/articleTypeAdd.html"
-	c.LayoutSections["ScriptMessage"] = "script/message.html"
 
 	// 数据
 	c.Data["menu_data"] = menuData

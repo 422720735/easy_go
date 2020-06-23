@@ -28,7 +28,6 @@ func (c *CoverControllers) Get() {
 
 	c.LayoutSections["Style"] = "style/cover.html"
 	c.LayoutSections["Script"] = "script/cover.html"
-	c.LayoutSections["ScriptMessage"] = "script/message.html"
 }
 
 func (c *CoverControllers) CoverInfo() {
@@ -36,7 +35,7 @@ func (c *CoverControllers) CoverInfo() {
 	if err != nil {
 		logger.Error("图片封面获取失败", err.Error())
 	}
-	c.Success(*&cover.Cover)
+	c.Success(cover.Cover)
 }
 
 func (c *CoverControllers) HandleCoverAlter() {

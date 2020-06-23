@@ -22,7 +22,6 @@ func (c *RegisterController) Get() {
 	c.LayoutSections = make(map[string]string)
 	c.LayoutSections["styleMessage"] = "style/message.html"
 	c.LayoutSections["script"] = "script/login_register.html"
-	c.LayoutSections["scriptMessage"] = "script/message.html"
 }
 
 func (c *RegisterController) AddRegister() {
