@@ -25,10 +25,8 @@ $('#register-btn').click(function () {
             method: 'POST',
             success: function (res) {
                 if (res.code === Ok) {
-                    window.message.success(res)
-                    setTimeout(function () {
-                        window.location.href = '/login'
-                    }, 5000)
+                    window.message.set(res)
+                    window.location.href = '/login'
                 } else {
                     window.message.error(res)
                 }

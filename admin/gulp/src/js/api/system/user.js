@@ -7,7 +7,12 @@ function logOut() {
         url: HOST + '/log/out',
         method: 'Post',
         success: function (res) {
-
+            if (res.code === Ok) {
+                window.message.set(res)
+                window.location.href = '/login'
+            } else {
+                window.message.error(res)
+            }
         }
     })
 }

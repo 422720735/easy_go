@@ -19,7 +19,6 @@ func init() {
 	beego.InsertFilter("/menuSetting/*", beego.BeforeExec, FilterUser)
 	beego.InsertFilter("/article/*", beego.BeforeExec, FilterUser)
 	beego.InsertFilter("/cover/*", beego.BeforeExec, FilterUser)
-	beego.InsertFilter(Api + "/**", beego.BeforeExec, FilterUser)
 
 	beego.Router("/login", &controllers.LoginController{}, "get:Get;post:HandleLogin")
 
@@ -85,7 +84,7 @@ func register() {
 	beego.Router(Api + "/cover/alter", &system.CoverControllers{}, "post:HandleCoverAlter")
 	beego.Router(Api + "/cover", &system.CoverControllers{}, "get:CoverInfo")
 
-	//beego.Router(Api + "/log/out", &system.CoverControllers{}, "get:CoverInfo")
+	beego.Router(Api + "/log/out", &system.SystemController{})
 
 	beego.Router("/test", &controllers.TestControllers{})
 }

@@ -44,7 +44,8 @@ func (c *LoginController) HandleLogin() {
 		return
 	}
 
-	check := c.GetStrings("checkbox")
+	//check := c.GetStrings("checkbox")
+	check, _ := transform.InterToBool(msg["checkbox"])
 	if username == "" || len(username) < 6 || password == "" || len(password) < 6 {
 		c.Error("账号或密码不合法")
 		//c.History("账号或密码不合法", "")
@@ -69,7 +70,7 @@ func (c *LoginController) HandleLogin() {
 
 	if user.PassWord != "" {
 		// 记住密码，aes加密
-		if len(check) > 0 {
+		if check {
 			ip := c.Ctx.Request.RemoteAddr
 			// 生成token
 			user.LoginIp = ip

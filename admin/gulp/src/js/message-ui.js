@@ -72,18 +72,16 @@ class Message {
 }
 window.message = Message
 
-$(document).ready(function () {
-    let msg = sessionStorage.getItem('msg')
-    if (msg && isJSON(msg)) {
-        msg = JSON.parse(msg)
-        if (msg.code === 1) {
-            window.Msg.add(msg.data, 'success')
-            window.message.remove()
-        } else if (msg.code === 0) {
-            window.Msg.add(msg.data, 'error')
-        }
+let msg = sessionStorage.getItem('msg')
+if (msg && isJSON(msg)) {
+    msg = JSON.parse(msg)
+    if (msg.code === 1) {
+        window.message.success(msg)
+        window.message.remove()
+    } else if (msg.code === 0) {
+        window.Msg.add(msg.data, 'error')
     }
-})
+}
 
 function isJSON(str) {
     if (typeof str == 'string') {
