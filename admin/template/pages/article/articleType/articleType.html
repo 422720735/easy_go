@@ -22,7 +22,7 @@
                         </h5>
                         <div class="card-header-elements ml-md-auto">
                             <button type="button" class="btn btn-xs btn-outline-primary"><a
-                                        href="/article/type/add"><span class="ion ion-md-add"></span> 新增</a></button>
+                                        href="/article/type/details"><span class="ion ion-md-add"></span> 新增</a></button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -114,7 +114,7 @@
                                                        class="text-success">上架</a>
                                                 {{end}}
                                                 <div role="separator" class="ant-divider ant-divider-vertical"></div>
-                                                <a href="/article/list?page=1&tag={{$v.MenuId}},{{$v.Id}}"
+                                                <a href="/article/type/details?id={{$v.Id}}"
                                                    class="text-c-blue">详情</a>
 
                                                 <div role="separator" class="ant-divider ant-divider-vertical"></div>

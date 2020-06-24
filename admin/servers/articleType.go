@@ -38,6 +38,15 @@ func InsertArticleType(articleName, KeyWord string, menuId int) error {
 	return err
 }
 
+func UpdateArticleType(articleName, KeyWord string, menuId, id int) error {
+	err := db.DbConn.Model(&models.ArticleType{}).Where("id = ?", id).Updates(map[string]interface{}{"article_name": articleName, "key_word": KeyWord, "menu_id": menuId, "update_time": time.Now()}).Error
+	if err !=nil {
+		logger.Info(err.Error())
+		return err
+	}
+	return nil
+}
+
 // 查询所有的类型及与之相对应的父级menu
 func SelectArticleTypeMenuName() ([]interface{}, error) {
 	// 路由
@@ -128,6 +137,17 @@ func SelectArticleTypeList(menuId, visible string) ([]*models.ArticleType, error
 		return nil, err
 	}
 	return articleList, nil
+}
+
+// 查询详情
+func SelectArticleTypeInfo(id int) (*models.ArticleType, error) {
+	var articleType models.ArticleType
+	err := db.DbConn.Select([]string{"id", "menu_id", "article_name", "key_word"}).Model(&models.ArticleType{}).Where("id = ?", id).Find(&articleType).Error
+	if err != nil {
+		logger.Info(err.Error())
+		return nil, err
+	}
+	return &articleType, nil
 }
 
 // 文章类型上下架

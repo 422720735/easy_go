@@ -11,9 +11,9 @@ type ArticleType struct {
 	ArticleName string        `json:"article_name"`
 	KeyWord     string        `json:"key_word"`
 	MenuId      int           `json:"menu_id"`
-	Visible     bool          `json:"visible;" gorm:"default:'0'"` // 0 默认下架
-	Sort        int           `json:"sort; "gorm:"AUTO_INCREMENT"` // 排序
-	State       bool          `json:"state;" gorm:"default:'0'"`   // 0 默认不删除 1 软删除
+	Visible     bool          `json:"visible" gorm:"default:'0'"` // 0 默认下架
+	Sort        int           `json:"sort" gorm:"AUTO_INCREMENT"` // 排序
+	State       bool          `json:"state" gorm:"default:'0'"`   // 0 默认不删除 1 软删除
 	CreatedTime time.Time     `json:"created_time"`
 	UpdateTime  *sql.NullTime `json:"update_time"`
 }

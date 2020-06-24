@@ -13,7 +13,7 @@ type ArticleControllerType struct {
 	common.BaseController
 }
 
-func (c *ArticleControllerType) Get() {
+func (c *ArticleControllerType) GetList() {
 	c.Layout = "layout/mainLayout.html"
 
 	c.TplName = "pages/article/articleType/articleType.html"
@@ -33,7 +33,6 @@ func (c *ArticleControllerType) Get() {
 
 	// req
 	tag := c.GetString("tag")
-
 	visible := c.GetString("visible")
 
 	// 类型分类
@@ -50,17 +49,9 @@ func (c *ArticleControllerType) Get() {
 	c.Data["article_type_limit"] = typeLimit
 }
 
-func (c *ArticleControllerType) Add() {
+func (c *ArticleControllerType) GetDetails() {
 	c.Layout = "layout/mainLayout.html"
-
-	c.TplName = "pages/article/articleType/articleTypeAdd.html"
-
-	// 查询所有的导航菜单返回给页面。
-	menuData, err := servers.SelectMenuAll()
-	if err != nil {
-		logger.Info("获取全部导航数据失败", err.Error())
-	}
-
+	c.TplName = "pages/article/articleType/articleTypeDetails.html"
 	c.LayoutSections = make(map[string]string)
 	// menu
 	c.LayoutSections["LeftMenu"] = "layout/leftSideMenuLayout.html"
@@ -74,10 +65,38 @@ func (c *ArticleControllerType) Add() {
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
 
 	c.LayoutSections["Style"] = "style/menuSetting.html"
-	c.LayoutSections["Script"] = "script/articleType/articleTypeAdd.html"
+	c.LayoutSections["Script"] = "script/articleType/articleTypeDetails.html"
 
+	// 查询所有的导航菜单返回给页面。
+	menuData, _ := servers.SelectMenuAll()
+	id := c.GetString("id")
+	if id != "" {
+		c.Data["title"] = "编辑"
+	} else {
+		c.Data["title"] = "新增"
+	}
 	// 数据
 	c.Data["menu_data"] = menuData
+}
+
+func (c *ArticleControllerType) GetArticleTypeInfo() {
+	idStr := c.GetString("id")
+	id, err := strconv.Atoi(idStr)
+
+	if err != nil {
+		logger.Info("获取文章类型id失败", err.Error())
+		c.Error("参数不合法")
+		return
+	}
+
+	articleTypeInfo, err := servers.SelectArticleTypeInfo(id)
+	if err != nil {
+		logger.Info("查询文章类型数据失败", err.Error())
+		c.Error("查询失败")
+		return
+	}
+
+	c.Success(articleTypeInfo)
 }
 
 // 添加文章类型
@@ -85,32 +104,32 @@ func (c *ArticleControllerType) HandArticleTypeAdd() {
 	// 接通了获取数据。
 	msg, err := common.Unmarshal(&c.Controller)
 	if err != nil {
-		logger.Info("获取注册接口数据失败", err.Error())
-		c.Error("获取新增路由接口数据失败")
+		logger.Info("获取添加文章类型数据失败", err.Error())
+		c.Error("获取文章类型失败")
 		return
 	}
 
 	// 类型名称
 	articleName, err := transform.InterToString(msg["articleName"])
 	if err != nil {
-		logger.Info("新增文章类型失败，数据不合法", err.Error())
-		c.Error("新增文章类型失败，数据不合法")
+		logger.Info("文章类型失败，数据不合法", err.Error())
+		c.Error("获取类型名称失败")
 		return
 	}
 
 	// 关键字
 	KeyWord, err := transform.InterToString(msg["KeyWord"])
 	if err != nil {
-		logger.Info("新增文章类型失败，数据不合法", err.Error())
-		c.Error("新增文章类型失败，数据不合法")
+		logger.Info("文章类型失败，数据不合法", err.Error())
+		c.Error("获取文章关键字失败")
 		return
 	}
 
 	// 父级
 	menuId, err := transform.InterToInt(msg["menuId"])
 	if err != nil {
-		logger.Info("新增文章类型失败，数据不合法", err.Error())
-		c.Error("新增文章类型失败，数据不合法")
+		logger.Info("文章父级，数据不合法", err.Error())
+		c.Error("获取文章所属归类失败")
 		return
 	}
 
@@ -124,13 +143,76 @@ func (c *ArticleControllerType) HandArticleTypeAdd() {
 	// 新增文章类型
 	err = servers.InsertArticleType(articleName, KeyWord, menuId)
 	if err != nil {
-		logger.Info("新增文章类型失败，数据不合法", err.Error())
-		c.Error("新增文章类型失败，数据不合法")
-		c.Error("新增文章类型失败")
+		logger.Info("文章类型失败，数据不合法", err.Error())
+		c.Error("文章类型失败，数据不合法")
+		c.Error("文章类型失败")
 		return
 	}
 
 	c.Success("新增文章类型成功")
+}
+
+// 编辑文章类型
+func (c *ArticleControllerType) HandleTypeUpdate() {
+	msg, err := common.Unmarshal(&c.Controller)
+	if err != nil {
+		logger.Info("获取添加文章类型数据失败", err.Error())
+		c.Error("添加文章类型失败")
+		return
+	}
+
+	idStr, err := transform.InterToString(msg["id"])
+	if err != nil {
+		logger.Info("id不合法", err.Error())
+		c.Error("id类型不合法")
+		return
+	}
+
+	id, err := strconv.Atoi(idStr)
+	if err != nil {
+		logger.Info("id不合法", err.Error())
+		c.Error("id类型不合法")
+		return
+	}
+
+	// 类型名称
+	articleName, err := transform.InterToString(msg["articleName"])
+	if err != nil {
+		logger.Info("获取文章名称失败，数据不合法", err.Error())
+		c.Error("获取文章名称失败")
+		return
+	}
+
+	// 关键字
+	KeyWord, err := transform.InterToString(msg["KeyWord"])
+	if err != nil {
+		logger.Info("获取文章名称失败，数据不合法", err.Error())
+		c.Error("获取文章名称失败")
+		return
+	}
+
+	// 父级
+	menuId, err := transform.InterToInt(msg["menuId"])
+	if err != nil {
+		logger.Info("文章父级，数据不合法", err.Error())
+		c.Error("获取文章所属归类失败")
+		return
+	}
+
+	err = servers.IsArticleTypeTake(articleName, KeyWord)
+	if err != nil {
+		logger.Info("已经存在相同的文章类型或关键字", err.Error())
+		c.Error("已经存在相同的文章类型或关键字")
+		return
+	}
+
+	err = servers.UpdateArticleType(articleName, KeyWord, menuId, id)
+	if err != nil {
+		logger.Info("文章类型编辑失败")
+		c.Error("编辑失败")
+	}
+
+	c.Success("文章类型编辑成功")
 }
 
 // 上下架

@@ -47,8 +47,8 @@ func init() {
 	beego.Router("/menuSetting/info", &controllers.MenuController{}, "get:Info")
 
 	// 文章类型
-	beego.Router("/article/type", &article.ArticleControllerType{})
-	beego.Router("/article/type/add", &article.ArticleControllerType{}, "get:Add")
+	beego.Router("/article/type", &article.ArticleControllerType{}, "get:GetList")
+	beego.Router("/article/type/details", &article.ArticleControllerType{}, "get:GetDetails")
 
 	// 文章列表
 	beego.Router("/article/list", &article.ArticleList{})
@@ -74,7 +74,6 @@ func register() {
 	beego.Router(Api + "/menuSetting/delete", &controllers.MenuController{},"post:HandDelete")
 
 
-	beego.Router(Api + "/articleType/add", &article.ArticleControllerType{},"post:HandArticleTypeAdd")
 	// 查询文章详情 文章新增 编辑接口
 	beego.Router(Api + "/article/details", &article.ArticleDetails{}, "get:ArticleAll;post:HandArticleDetailsInsert;put:HandArticleDetailsUpdate")
 	beego.Router(Api + "/article/issue", &article.ArticleList{},"get:HandUpdateIssue")
@@ -82,6 +81,7 @@ func register() {
 	beego.Router(Api + "/article/move/*", &article.ArticleList{},"get:HandMove_up_down")
 
 	// 文章类型操作
+	beego.Router(Api + "/article/type/details", &article.ArticleControllerType{}, "get:GetArticleTypeInfo;post:HandArticleTypeAdd;put:HandleTypeUpdate")
 	beego.Router(Api + "/article/type/issue", &article.ArticleControllerType{},"get:HandArticleTypeUpdateIssue")
 	beego.Router(Api + "/article/type/delete", &article.ArticleControllerType{},"post:HandArticleTypeDelete")
 	beego.Router(Api + "/article/type/move/*", &article.ArticleControllerType{},"get:HandArticleType_up_down")

@@ -1,6 +1,2 @@
-2020/06/24 19:24:56 captcha.go:37: info 验证失败
-2020/06/24 19:25:03 captcha.go:37: info 验证失败
-2020/06/24 19:30:17 register.go:38: info 验证码不合法参数错误
-2020/06/24 19:31:04 register.go:38: info 验证码不合法参数错误
-2020/06/24 19:31:11 register.go:38: info 验证码不合法参数错误
-2020/06/24 19:31:21 register.go:38: info 验证码不合法参数错误
+
+2020/06/25 01:12:35 common.go:85: info 解析token信息失败Token is expired

@@ -8,27 +8,25 @@ let coverStr, id
 // 文章内容挂载到文章详情上面。
 let content
 
-$(document).ready(function () {
-    if (window.location.search && window.location.search !== '') {
-        // 请求数据
-        const id = getQueryVariable('id')
-        if (id !== false) {
-            $.ajax({
-                url: HOST + '/article/details?id=' + id,
-                method: 'Get',
-                success: function (res) {
-                    if (res.code === Ok) {
-                        setValue(res.data)
-                    } else {
-                        window.message.error(res)
-                    }
+if (window.location.search && window.location.search !== '') {
+    // 请求数据
+    const id = getQueryVariable('id')
+    if (id !== false) {
+        $.ajax({
+            url: HOST + '/article/details?id=' + id,
+            method: 'Get',
+            success: function (res) {
+                if (res.code === Ok) {
+                    setValue(res.data)
+                } else {
+                    window.message.error(res)
                 }
-            })
-        }
-    } else {
-        cupload()
+            }
+        })
     }
-})
+} else {
+    cupload()
+}
 
 function setValue(data) {
     const {title, menu_id, category_id, created_time, update_time, view, content, cover, desc, tags, keyword, is_top, hot, recommend} = data
@@ -101,19 +99,6 @@ function cupload(cover) {
         height: 114, // 预览框的高,单位为px,非必需,默认为148
         data: cover ? [ASSETS + cover] : null
     });
-}
-
-
-function getQueryVariable(variable) {
-    var query = window.location.search.substring(1);
-    var vars = query.split("&");
-    for (var i = 0; i < vars.length; i++) {
-        var pair = vars[i].split("=");
-        if (pair[0] == variable) {
-            return pair[1];
-        }
-    }
-    return (false);
 }
 
 function articleItemValue() {

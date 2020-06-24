@@ -9,7 +9,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
                         <li class="breadcrumb-item"><a href="/article/type?page=1">文章类型</a></li>
-                        <li class="breadcrumb-item active">新增</li>
+                        <li class="breadcrumb-item active">{{.title}}</li>
                     </ol>
                 </div>
             </div>
@@ -18,12 +18,12 @@
         <div class="col-xl-8 col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>新增菜单</h5>
+                    <h5>文章类型</h5>
                 </div>
                 <div class="card-body">
                     <form class="needs-validation blog trim" novalidate>
                         <div class="form-group mb-3">
-                            <label for="validationCustom03">文章类型</label>
+                            <label for="validationCustom03">类型名称</label>
                             <input oninput="addArticle()" type="text" class="form-control" id="articleName" name="articleName" value="" placeholder="请填写文章类型名" required>
                             <div class="invalid-feedback">文章类型名不能为空</div>
                         </div>
@@ -34,7 +34,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <select class="custom-select" required id="menuId" onchange="addArticle()">
-                                <option value="">清选择所属路由菜单</option>
+                                <option value="1" selected disabled style="display: none;">--请选择--</option>
                                 {{range $k, $v := .menu_data}}
                                     {{ if gt $v.Id 1}}
                                         <option value="{{$v.Id}}">{{$v.MenuName}}</option>
