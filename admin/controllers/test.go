@@ -29,6 +29,6 @@ func (c *TestControllers) Get() {
 	*/
 	//data, total, _ := servers.SelectArticleTypeList("", 1, common.PAGE_SIZE)
 	//articleList := common.Paginator(1, common.PAGE_SIZE, total, data)
-	articleTypeList, _ := servers.SelectArticleTypeMenuName()
+	articleTypeList, _ := servers.SelectArticleTypeMenuName(false)
 	c.Success(articleTypeList)
 }

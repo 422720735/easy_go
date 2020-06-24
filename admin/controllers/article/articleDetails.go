@@ -36,7 +36,7 @@ func (c *ArticleDetails) AddOfUpdate() {
 
 	c.LayoutSections["Style"] = "style/articleDetails.html"
 	c.LayoutSections["Script"] = "script/articleDetails.html"
-	list, _ := servers.SelectArticleTypeMenuName()
+	list, _ := servers.SelectArticleTypeMenuName(false)
 
 	c.Data["title"] = title
 	c.Data["id"] = id
@@ -66,7 +66,7 @@ func (c *ArticleDetails) AddOfUpdateMarkdown() {
 
 	c.LayoutSections["Style"] = "style/articleDetails.html"
 	c.LayoutSections["Script"] = "script/articleDetailsMarkdown.html"
-	list, _ := servers.SelectArticleTypeMenuName()
+	list, _ := servers.SelectArticleTypeMenuName(false)
 
 	c.Data["title"] = title
 	c.Data["id"] = id

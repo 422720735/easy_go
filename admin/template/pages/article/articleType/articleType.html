@@ -22,7 +22,8 @@
                         </h5>
                         <div class="card-header-elements ml-md-auto">
                             <button type="button" class="btn btn-xs btn-outline-primary"><a
-                                        href="/article/type/details"><span class="ion ion-md-add"></span> 新增</a></button>
+                                        href="/article/type/details"><span class="ion ion-md-add"></span> 新增</a>
+                            </button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -113,18 +114,20 @@
                                                     <a href="/api/article/type/issue?id={{$v.Id}}&status={{$v.Visible}}"
                                                        class="text-success">上架</a>
                                                 {{end}}
+                                                {{if eq $v.Visible false}}
                                                 <div role="separator" class="ant-divider ant-divider-vertical"></div>
                                                 <a href="/article/type/details?id={{$v.Id}}"
                                                    class="text-c-blue">详情</a>
-
-                                                <div role="separator" class="ant-divider ant-divider-vertical"></div>
-                                                <!-- Danger header modal -->
-                                                {{if $v.State}}
-                                                    <a href="#!" class="text-c-blue text-facebook" data-toggle="modal"
-                                                       data-target="#danger-header-modal-{{$v.Id}}">已删除</a>
-                                                {{else}}
-                                                    <a href="#!" class="text-c-blue text-danger" data-toggle="modal"
-                                                       data-target="#danger-header-modal-{{$v.Id}}">删除</a>
+                                                    <div role="separator" class="ant-divider ant-divider-vertical"></div>
+                                                    <!-- Danger header modal -->
+                                                    {{if $v.State}}
+                                                        <a href="#!" class="text-c-blue text-facebook"
+                                                           data-toggle="modal"
+                                                           data-target="#danger-header-modal-{{$v.Id}}">已删除</a>
+                                                    {{else}}
+                                                        <a href="#!" class="text-c-blue text-danger" data-toggle="modal"
+                                                           data-target="#danger-header-modal-{{$v.Id}}">删除</a>
+                                                    {{end}}
                                                 {{end}}
                                                 {{if eq  $v.State false}}
                                                     <div id="danger-header-modal-{{$v.Id}}" class="modal fade"

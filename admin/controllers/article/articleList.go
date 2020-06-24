@@ -43,7 +43,7 @@ func (c *ArticleList) Get() {
 	visible := c.GetString("visible")
 
 	// 类型分类
-	articleTypeList, _ := servers.SelectArticleTypeMenuName()
+	articleTypeList, _ := servers.SelectArticleTypeMenuName(true)
 	// 文章list分页查询
 	data, total, _ := servers.SelectArticlePageList(title, tag, visible, page, common.PAGE_SIZE)
 

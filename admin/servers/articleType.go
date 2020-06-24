@@ -40,7 +40,7 @@ func InsertArticleType(articleName, KeyWord string, menuId int) error {
 
 func UpdateArticleType(articleName, KeyWord string, menuId, id int) error {
 	err := db.DbConn.Model(&models.ArticleType{}).Where("id = ?", id).Updates(map[string]interface{}{"article_name": articleName, "key_word": KeyWord, "menu_id": menuId, "update_time": time.Now()}).Error
-	if err !=nil {
+	if err != nil {
 		logger.Info(err.Error())
 		return err
 	}
@@ -48,15 +48,19 @@ func UpdateArticleType(articleName, KeyWord string, menuId, id int) error {
 }
 
 // 查询所有的类型及与之相对应的父级menu
-func SelectArticleTypeMenuName() ([]interface{}, error) {
+// allShow false 只装载上架的数据
+func SelectArticleTypeMenuName(allShow bool) ([]interface{}, error) {
 	// 路由
 	var menuList []*models.MenuSetting
 	menu := db.DbConn.Select([]string{"id", "menu_name", "child_status", "visible"}).Model(&menuList)
 
 	// 文章类型 要过滤下架和软删除的
 	var articleList []*models.ArticleType
-	article := db.DbConn.Select([]string{"id", "article_name", "menu_id"}).Model(&articleList).Where("visible = ? and state = ?", true, false)
-
+	//article := db.DbConn.Select([]string{"id", "article_name", "menu_id"}).Model(&articleList).Where("visible = ? and state = ?", true, false)
+	article := db.DbConn.Select([]string{"id", "article_name", "menu_id"}).Model(&articleList).Where("state = ?", false)
+	if !allShow {
+		article = article.Where("visible = ?", true)
+	}
 	err := menu.Find(&menuList).Error
 	if err != nil {
 		logger.Info(err.Error())
@@ -70,9 +74,33 @@ func SelectArticleTypeMenuName() ([]interface{}, error) {
 	}
 
 	var result []interface{}
-	for j := 0; j < len(menuList); j++ {
-		// 只装载上架的数据
-		if menuList[j].Visible {
+	if !allShow {
+		for j := 0; j < len(menuList); j++ {
+			// 只装载上架的数据
+			if menuList[j].Visible {
+				menuItem := make(map[string]interface{})
+				menuItem["name"] = *&menuList[j].MenuName
+				menuItem["id"] = *&menuList[j].Id
+				menuItem["child_status"] = *&menuList[j].ChildStatus
+				var arr []interface{}
+				for i := 0; i < len(articleList); i++ {
+					item := make(map[string]interface{})
+					if articleList[i].MenuId == *&menuList[j].Id {
+						// 只装载上架的数据
+						if *&menuList[j].ChildStatus {
+							item["id"] = articleList[i].Id
+							item["name"] = articleList[i].ArticleName
+							item["menu_id"] = articleList[i].MenuId
+							arr = append(arr, item)
+							menuItem["child"] = arr
+						}
+					}
+				}
+				result = append(result, menuItem)
+			}
+		}
+	} else {
+		for j := 0; j < len(menuList); j++ {
 			menuItem := make(map[string]interface{})
 			menuItem["name"] = *&menuList[j].MenuName
 			menuItem["id"] = *&menuList[j].Id
@@ -94,6 +122,7 @@ func SelectArticleTypeMenuName() ([]interface{}, error) {
 			result = append(result, menuItem)
 		}
 	}
+
 
 	return result, nil
 }
