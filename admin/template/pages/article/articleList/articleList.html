@@ -178,10 +178,10 @@
                                             <td>
                                                 {{if $v.Visible}}
                                                     <a href="/api/article/issue?id={{$v.Id}}&status={{$v.Visible}}&page={{$.current}}"
-                                                       class="text-success">下架</a>
+                                                       class="text-warning">下架</a>
                                                 {{else}}
                                                     <a href="/api/article/issue?id={{$v.Id}}&status={{$v.Visible}}&page={{$.current}}"
-                                                       class="text-warning">上架</a>
+                                                       class="text-success">上架</a>
                                                 {{end}}
                                                 {{if eq $v.Visible false}}
                                                     <div role="separator" class="ant-divider ant-divider-vertical"
