@@ -31,7 +31,7 @@ func (c *LoginController) HandleLogin() {
 		return
 	}
 
-	result, err := transform.InterToString(msg["t"])
+	result, err := transform.InterToString(msg["s"])
 	if err != nil {
 		logger.Info("账号或密码不合法", err.Error())
 		c.Error("账号或密码不合法")

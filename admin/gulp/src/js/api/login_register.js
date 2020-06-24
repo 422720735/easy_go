@@ -56,7 +56,7 @@ $('#login-btn.btn.btn-primary.btn-block').click(function () {
         const result = encodeAes(password) + '-' + encodeAes(username)
         const data = JSON.stringify({
             checkbox,
-            t: result,
+            s: result,
             code
         })
         $.ajax({
