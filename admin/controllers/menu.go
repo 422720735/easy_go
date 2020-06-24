@@ -192,7 +192,13 @@ func (c *MenuController) HandChangeChild() {
 		c.Error("获取更改导航数据失败")
 		return
 	}
-	err = servers.UpdateChild(id, status)
+	showCount, err := servers.UpdateChild(id, status)
+	if showCount == 15 {
+		logger.Info("当前上架已到最大限！")
+		c.Error("当前已上架导航菜单已有15条！")
+		return
+	}
+
 	if err != nil {
 		logger.Warn("数据修改失败" + err.Error())
 		c.Error("修改状态失败")

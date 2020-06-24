@@ -4,6 +4,7 @@ import (
 	"easy_go/admin/db"
 	"easy_go/admin/logger"
 	"easy_go/admin/models"
+	"errors"
 	"time"
 )
 
@@ -95,13 +96,28 @@ func UpdateUpDown(sort int, str string) error {
 }
 
 // 修改状态
-func UpdateChild(id int, status bool) error {
-	err := db.DbConn.Model(&models.MenuSetting{}).Where("id = ?", id).Updates(map[string]interface{}{"child_status": !status, "update_time": time.Now()}).Error
+func UpdateChild(id int, status bool) (int, error) {
+	var showCount int
+	var err error
+
+	if status == false {
+		// 用户上架需要查看当前已经上架了多少
+		err = db.DbConn.Select([]string{"id", "visible"}).Model(&models.MenuSetting{}).Where("visible = ?", true).Count(&showCount).Error
+		if err != nil {
+			return 0, err
+		}
+
+		if showCount == 15 {
+			return showCount, errors.New("当前上架已到最大限！")
+		}
+	}
+
+	err = db.DbConn.Model(&models.MenuSetting{}).Where("id = ?", id).Updates(map[string]interface{}{"child_status": !status, "update_time": time.Now()}).Error
 	if err != nil {
 		logger.Warn(err.Error())
-		return err
+		return 0, err
 	}
-	return nil
+	return 0, nil
 }
 
 // 修改状态
