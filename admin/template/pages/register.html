@@ -1,21 +1,16 @@
 <div class="auth-panel-form">
     <div class="align-items-center d-flex h-100">
         <div class="card-body">
-            <div class="auth-brand text-center text-lg-left">
-                <a href="index.html">
-                    <span><img src="/static/assets/images/logo-light.png" alt=""></span>
-                </a>
-            </div>
             <h4 class="mt-0 mb-1">注册</h4>
             <p class="text-muted mb-2">还没有帐号？创建您的帐户</p>
             <form id="register">
                 <div class="form-group mb-2">
                     <label class="mb-1" for="username">用户名</label>
-                    <input class="form-control" name="username" type="text" id="username" placeholder="请输入账号" required>
+                    <input class="form-control" name="username" type="text" id="username" autocomplete="off" placeholder="请输入账号" required>
                 </div>
                 <div class="form-group mb-2">
                     <label class="mb-1" for="invitecode">邀请码</label>
-                    <input oninput="handleValidator" class="form-control" name="invitecode" type="text" id="invitecode" required placeholder="请找管理员获取邀">
+                    <input oninput="handleValidator" class="form-control" name="invitecode" autocomplete="off" type="text" id="invitecode" required placeholder="请找管理员获取邀">
                 </div>
                 <div class="form-group mb-2">
                     <label class="mb-1" for="password">密码</label>
@@ -27,7 +22,7 @@
                 </div>
                 <div class="form-group">
                     <label for="code">验证码</label>
-                    <input class="form-control" name="code" type="text" required="" id="code" placeholder="请输入图片中的验证码" maxlength="6">
+                    <input class="form-control" name="code" type="text" required="" id="code" autocomplete="off" placeholder="请输入图片中的验证码" maxlength="6">
                     <span class="mt-1 mb-1 d-inline-block">请输入下面动画图片中的字符</span>
                     <br />
                     <img width="140px" height="60px" id="captcha" onclick="getCode()" style="cursor: pointer">

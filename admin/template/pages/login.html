@@ -1,17 +1,12 @@
 <div class="auth-panel-form">
     <div class="align-items-center d-flex h-100">
         <div class="card-body">
-            <div class="auth-brand text-center text-lg-left">
-                <a href="index.html">
-                    <span><img src="/static/assets/images/logo-light.png" alt=""></span>
-                </a>
-            </div>
             <h4 class="mt-0">登录</h4>
             <p class="text-muted mb-4">最简单部署、可自定义配置 golang 服务端渲染博客后台管理系统</p>
             <form id="login">
                 <div class="form-group">
                     <label for="emailaddress">账号 &amp; 用户名</label>
-                    <input class="form-control" name="username" type="text" id="username" required="" placeholder="请输入账号">
+                    <input class="form-control" name="username" type="text" id="username" autocomplete="off" required="" placeholder="请输入账号">
                 </div>
                 <div class="form-group">
                     <label for="password">密码</label>
@@ -19,7 +14,7 @@
                 </div>
                 <div class="form-group">
                     <label for="code">验证码</label>
-                    <input class="form-control" name="code" type="text" required="" id="code" placeholder="请输入图片中的验证码" maxlength="6">
+                    <input class="form-control" name="code" type="text" required="" id="code" autocomplete="off" placeholder="请输入图片中的验证码" maxlength="6">
                     <span class="mt-1 mb-1 d-inline-block">请输入下面动画图片中的字符</span>
                     <br />
                     <img width="140px" height="60px" id="captcha" onclick="getCode()" style="cursor: pointer">

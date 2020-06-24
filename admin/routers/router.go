@@ -19,6 +19,7 @@ func init() {
 	beego.InsertFilter("/menuSetting/*", beego.BeforeExec, FilterUser)
 	beego.InsertFilter("/article/*", beego.BeforeExec, FilterUser)
 	beego.InsertFilter("/cover/*", beego.BeforeExec, FilterUser)
+	beego.InsertFilter(Api +"/**", beego.BeforeRouter, FilterUser)
 
 
 	beego.Router("/captcha", &controllers.CaptchaControllers{})
@@ -63,6 +64,7 @@ func register() {
 	//beego.Router(Api+"/login", &controllers.LoginController{}, "post:HandleLogin")
 	//beego.Router(Api+"/register", &controllers.RegisterController{}, "post:AddRegister")
 
+	// 获取七牛云的token
 	beego.Router(Api+"/qn/token", &controllers.QiNiuController{}, "get:InsertToken")
 
 	beego.Router(Api + "/menuSetting/add", &controllers.MenuController{}, "post:HandleMenuAdd")

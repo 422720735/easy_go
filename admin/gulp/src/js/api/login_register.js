@@ -1,7 +1,6 @@
 /**
  * 注册接口
  * */
-const HOST = '/api'
 const Ok = 1
 $('#register-btn').click(function () {
     const username = $('#username').val()
@@ -19,16 +18,18 @@ $('#register-btn').click(function () {
     } else if (code.length !== 6) {
         window.message.error('验证码长度必须为6位')
     } else if (username && username !== '' || invitecode && invitecode !== '' && password && password !== '') {
+        const result =  encodeAes(username) + '+' + encodeAes(password)
         const data = JSON.stringify({
-            username,
+            t: result,
             invitecode,
-            password
+            code: code
         })
         $.ajax({
             url: 'register',
             data: data,
             method: 'POST',
             success: function (res) {
+                console.log(res)
                 if (res.code === Ok) {
                     window.message.set(res)
                     window.location.href = '/login'
@@ -52,10 +53,10 @@ $('#login-btn.btn.btn-primary.btn-block').click(function () {
     } else if (code.length !== 6) {
         window.message.error('验证码长度必须为6位')
     }else if (username && username !== '' && password && password !== '') {
+        const result = encodeAes(password) + '-' + encodeAes(username)
         const data = JSON.stringify({
-            username,
-            password,
             checkbox,
+            t: result,
             code
         })
         $.ajax({
@@ -86,3 +87,17 @@ function getCode() {
     })
 }
 getCode()
+
+
+//加密
+var key1 = "O8Hp9WQbFPT0b5AUsEMVLtIU1MVYOrt5"
+function encodeAes(plaintTextStr) {
+    var key = CryptoJS.enc.Utf8.parse(key1);
+    var encryptedData = CryptoJS.AES.encrypt(plaintTextStr, key, {
+        iv: key,
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.Pkcs7
+    });
+    encryptedData = encryptedData.ciphertext.toString();
+    return encryptedData
+}

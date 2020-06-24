@@ -5,8 +5,10 @@ import (
 	"easy_go/admin/logger"
 	"easy_go/admin/servers"
 	"easy_go/admin/transform"
+	"easy_go/aes"
 	"easy_go/md5"
 	"easy_go/middleware"
+	"strings"
 )
 
 type RegisterController struct {
@@ -77,16 +79,23 @@ func (c *RegisterController) Post() {
 		return
 	}
 
-	username, err := transform.InterToString(msg["username"])
-	if username == "" || len(username) < 6 {
-		c.Error("输入不合法")
+	result, err := transform.InterToString(msg["t"])
+	if err != nil {
+		logger.Info("账号或密码不合法", err.Error())
+		c.Error("账号或密码不合法")
 		return
 	}
-	password, err := transform.InterToString(msg["password"])
-	if password == "" || len(password) < 6 {
-		c.Error("输入不合法")
+
+	res := strings.Split(result, "+")
+	if len(res) != 2 {
+		logger.Info("账号或密码不合法")
+		c.Error("账号或密码不合法")
 		return
 	}
+
+	username := aes.DePwdCode(res[0])
+	password := aes.DePwdCode(res[1])
+
 	count, err := servers.IsUserTake(username)
 	if err != nil {
 		logger.Info("用户注册查询账号是否占用失败" + err.Error())

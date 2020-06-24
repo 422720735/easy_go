@@ -5,8 +5,10 @@ import (
 	"easy_go/admin/logger"
 	"easy_go/admin/servers"
 	"easy_go/admin/transform"
+	"easy_go/aes"
 	"easy_go/md5"
 	"easy_go/middleware"
+	"strings"
 	"time"
 )
 
@@ -21,7 +23,6 @@ func (c *LoginController) Get() {
 	c.LayoutSections["script"] = "script/login_register.html"
 }
 
-
 func (c *LoginController) HandleLogin() {
 	msg, err := common.Unmarshal(&c.Controller)
 	if err != nil {
@@ -30,9 +31,16 @@ func (c *LoginController) HandleLogin() {
 		return
 	}
 
-	username, err := transform.InterToString(msg["username"])
+	result, err := transform.InterToString(msg["t"])
 	if err != nil {
 		logger.Info("账号或密码不合法", err.Error())
+		c.Error("账号或密码不合法")
+		return
+	}
+
+	res := strings.Split(result, "-")
+	if len(res) != 2 {
+		logger.Info("账号或密码不合法")
 		c.Error("账号或密码不合法")
 		return
 	}
@@ -64,12 +72,8 @@ func (c *LoginController) HandleLogin() {
 		c.DelSession("captchaId")
 	}
 
-	password, err := transform.InterToString(msg["password"])
-	if err != nil {
-		logger.Info("账号或密码不合法", err.Error())
-		c.Error("账号或密码不合法")
-		return
-	}
+	username := aes.DePwdCode(res[1])
+	password := aes.DePwdCode(res[0])
 
 	if username == "" || len(username) < 6 || password == "" || len(password) < 6 {
 		c.Error("账号或密码不合法")
