@@ -35,7 +35,7 @@
                         <div class="form-group mb-3">
                             <label for="validationCustom05">导航分类</label>
                             <select class="custom-select" required id="menuId" onchange="addArticle()">
-                                <option value="1" selected disabled style="display: none;">--请选择--</option>
+                                <option value="" style="display: none;">--请选择--</option>
                                 {{range $k, $v := .menu_data}}
                                     {{ if gt $v.Id 1}}
                                         <option value="{{$v.Id}}">{{$v.MenuName}}</option>
