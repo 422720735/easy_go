@@ -48,12 +48,16 @@ gulp.task('jsUglify', function () {
         // .pipe(rename({suffixes: '.min'}))
         // .pipe(uglify({
         //     compress: {
-        //         drop_console: NODE_ENV === 'development' ? false :  true, // 过滤 console
-        //         drop_debugger: NODE_ENV === 'development' ? false :  true // 过滤 debugger
+        //         drop_console: NODE_ENV === 'production', // 过滤 console
+        //         drop_debugger: NODE_ENV === 'production' // 过滤 debugger
         //     }
         // }))
         .pipe(gulp.dest(path.resolve(__dirname, '../static/js')))
 });
+
+function js() {
+
+}
 
 // 压缩js
 gulp.task('jsNoBuildUglify', function () {

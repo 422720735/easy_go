@@ -15,6 +15,7 @@ yarn-error.log*
 
 **/gulp/node_modules/
 static/
+views/
 
 easy_go
 easy_go.exe
