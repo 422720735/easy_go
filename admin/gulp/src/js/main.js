@@ -1,5 +1,5 @@
 /**
- * 公共js文件，暂时未用。
+ * 工作台
  * */
 
 $('.headerContent > .title > .date').text(timeFix())

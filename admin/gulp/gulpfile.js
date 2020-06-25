@@ -36,30 +36,33 @@ gulp.task('sass', () => {
 // 压缩css
 gulp.task('cssUglify', function () {
     return gulp.src(['src/css/*.css'])
-        .pipe(rename({suffixes: '.min'}))
+        .pipe(rename({suffix: '.min'}))
         .pipe(cssUglify())
         .pipe(gulp.dest(path.resolve(__dirname, '../static/css')))
 });
 
 // 压缩js
 gulp.task('jsUglify', function () {
-    return gulp.src(['src/js/**', 'src/api/**', '!src/js/build/**'])
+    return gulp.src([
+        'src/js/*.js',
+        'src/js/api/*.js',
+        'src/js/api/article/*.js',
+        'src/js/api/system/*.js',
+        'src/js/plugins/*.js',
+        '!src/js/build/**'
+    ])
         .pipe(babel())
-        // .pipe(rename({suffixes: '.min'}))
-        // .pipe(uglify({
-        //     compress: {
-        //         drop_console: NODE_ENV === 'production', // 过滤 console
-        //         drop_debugger: NODE_ENV === 'production' // 过滤 debugger
-        //     }
-        // }))
+        .pipe(rename({suffix: '.min'}))
+        .pipe(uglify({
+            compress: {
+                drop_console: NODE_ENV === 'production', // 过滤 console
+                drop_debugger: NODE_ENV === 'production' // 过滤 debugger
+            }
+        }))
         .pipe(gulp.dest(path.resolve(__dirname, '../static/js')))
 });
 
-function js() {
-
-}
-
-// 压缩js
+// 不需要压缩js
 gulp.task('jsNoBuildUglify', function () {
     return gulp.src(['src/js/build/**'])
       .pipe(gulp.dest(path.resolve(__dirname, '../static/js/build')))
@@ -71,9 +74,6 @@ gulp.task('img', function () { //
         // .pipe(cache(imageMin({
         //     optimizationLevel: 5, // 取值范围：0-7（优化等级），默认：3
         //     progressive: true, 	// 无损压缩jpg图片，默认：false
-
-
-
         //     interlaced: true, 	// 隔行扫描gif进行渲染，默认：false
         //     multipass: true 		// 多次优化svg直到完全优化，默认：false
         // })))
@@ -129,6 +129,8 @@ gulp.task('clean', function () {
         'dist',
         path.resolve(__dirname, '../static'),
         path.resolve(__dirname, '../views'),
+        path.resolve(__dirname, '../static/js/.min'),
+        path.resolve(__dirname, '../static/js/'),
     ], { force: true });
 });
 
