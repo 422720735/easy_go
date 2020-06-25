@@ -90,9 +90,9 @@ getCode()
 
 
 //加密
-var key1 = "O8Hp9WQbFPT0b5AUsEMVLtIU1MVYOrt5"
+var tysitn = "O8Hp9WQbFPT0b5AUsEMVLtIU1MVYOrt5"
 function encodeAes(plaintTextStr) {
-    var key = CryptoJS.enc.Utf8.parse(key1);
+    var key = CryptoJS.enc.Utf8.parse(tysitn);
     var encryptedData = CryptoJS.AES.encrypt(plaintTextStr, key, {
         iv: key,
         mode: CryptoJS.mode.CBC,
