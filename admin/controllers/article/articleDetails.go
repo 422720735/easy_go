@@ -14,7 +14,7 @@ type ArticleDetails struct {
 }
 
 // add + update
-func (c *ArticleDetails) AddOfUpdate() {
+func (c *ArticleDetails) ArticleDetails() {
 	title := c.GetString("title")
 	if title == "" {
 		title = "新增-富文本编辑器"
@@ -50,7 +50,7 @@ func (c *ArticleDetails) AddOfUpdate() {
 
 }
 
-func (c *ArticleDetails) AddOfUpdateMarkdown() {
+func (c *ArticleDetails) ArticleDetailsMarkdown() {
 	title := c.GetString("title")
 	if title == "" {
 		title = "新增-Markdown"

@@ -527,3 +527,12 @@ label.btn {
 .docs-buttons-bd-s {
   padding-left: 0 !important
 }
+
+.tailor-card {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.tailor-card .card-body {
+  min-height: 196px;
+}

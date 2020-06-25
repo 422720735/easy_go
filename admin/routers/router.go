@@ -14,13 +14,11 @@ const Api = "/api"
 
 func init() {
 	beego.InsertFilter("/", beego.BeforeExec, FilterUser)
-	beego.InsertFilter("/analysis", beego.BeforeExec, FilterUser)
 	beego.InsertFilter("/workplace", beego.BeforeExec, FilterUser)
 	beego.InsertFilter("/menuSetting/*", beego.BeforeExec, FilterUser)
 	beego.InsertFilter("/article/*", beego.BeforeExec, FilterUser)
 	beego.InsertFilter("/cover/*", beego.BeforeExec, FilterUser)
 	beego.InsertFilter(Api +"/**", beego.BeforeRouter, FilterUser)
-
 
 	beego.Router("/captcha", &controllers.CaptchaControllers{})
 	beego.Router("/captcha/:captchaId", &controllers.CaptchaControllers{}, "get:ShowCode")
@@ -29,9 +27,9 @@ func init() {
 	beego.Router("/login", &controllers.LoginController{}, "get:Get;post:HandleLogin")
 	beego.Router("/register", &controllers.RegisterController{})
 
-	beego.Router("/", &controllers.DashBoardControllers{})
 
 	// 工作台
+	beego.Router("/", &controllers.DashBoardControllers{})
 	beego.Router("/workplace", &controllers.DashBoardControllers{})
 
 	// 系统设置
@@ -54,25 +52,21 @@ func init() {
 	beego.Router("/article/list", &article.ArticleList{})
 
 	// 文章新增+编辑
-	beego.Router("/article/details", &article.ArticleDetails{}, "get:AddOfUpdate")
-	beego.Router("/article/details/markdown", &article.ArticleDetails{}, "get:AddOfUpdateMarkdown")
+	beego.Router("/article/details", &article.ArticleDetails{}, "get:ArticleDetails")
+	beego.Router("/article/details/markdown", &article.ArticleDetails{}, "get:ArticleDetailsMarkdown")
 	register()
 }
 
 func register() {
-	// 组册现在走的是form表单
-	//beego.Router(Api+"/login", &controllers.LoginController{}, "post:HandleLogin")
-	//beego.Router(Api+"/register", &controllers.RegisterController{}, "post:AddRegister")
-
 	// 获取七牛云的token
-	beego.Router(Api+"/qn/token", &controllers.QiNiuController{}, "get:InsertToken")
+	beego.Router(Api + "/qn/token", &controllers.QiNiuController{}, "get:InsertToken")
 
+	// 导航菜单
 	beego.Router(Api + "/menuSetting/add", &controllers.MenuController{}, "post:HandleMenuAdd")
 	beego.Router(Api + "/menuSetting/move/*", &controllers.MenuController{},"get:HandMove_up_down")
 	beego.Router(Api + "/menuSetting/child", &controllers.MenuController{},"post:HandChangeChild")
 	beego.Router(Api + "/menuSetting/issue", &controllers.MenuController{},"get:HandUpdateIssue")
 	beego.Router(Api + "/menuSetting/delete", &controllers.MenuController{},"post:HandDelete")
-
 
 	// 查询文章详情 文章新增 编辑接口
 	beego.Router(Api + "/article/details", &article.ArticleDetails{}, "get:ArticleAll;post:HandArticleDetailsInsert;put:HandArticleDetailsUpdate")
@@ -90,6 +84,7 @@ func register() {
 	beego.Router(Api + "/cover/alter", &system.CoverControllers{}, "post:HandleCoverAlter")
 	beego.Router(Api + "/cover", &system.CoverControllers{}, "get:CoverInfo")
 
+	// 推出登录
 	beego.Router(Api + "/log/out", &system.SystemController{})
 
 	beego.Router("/test", &controllers.TestControllers{})
