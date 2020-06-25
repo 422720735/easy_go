@@ -55,3 +55,5 @@
 [js图片编辑器插件Filerobot](http://www.bootstrapmb.com/item/5226/preview)
 
 [golang、JS AES(CBC模式)加密解密兼容](https://www.cnblogs.com/haima/p/12611372.html)
+
+[env config](https://learnku.com/articles/33910)
