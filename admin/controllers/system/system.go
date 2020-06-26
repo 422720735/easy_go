@@ -1,7 +1,7 @@
 package system
 
 import (
-	"easy_go/admin/common"
+	"easy_go/common"
 )
 
 type SystemController struct {

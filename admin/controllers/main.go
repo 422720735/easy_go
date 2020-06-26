@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"easy_go/admin/common"
+	"easy_go/common"
 )
 
 type MainController struct {

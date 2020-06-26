@@ -2,12 +2,14 @@ package main
 
 import (
 	"easy_go/blog/controllers"
+	"easy_go/blog/db"
 	"easy_go/blog/logger"
 	_ "easy_go/blog/routers"
 	"github.com/astaxie/beego"
 )
 
 func init()  {
+	db.Init()
 	logger.Init()
 }
 

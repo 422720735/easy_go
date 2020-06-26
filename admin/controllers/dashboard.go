@@ -2,8 +2,8 @@
 package controllers
 
 import (
-	"easy_go/admin/common"
 	"easy_go/admin/servers"
+	"easy_go/common"
 )
 
 type DashBoardControllers struct {
