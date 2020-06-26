@@ -2,10 +2,14 @@ package main
 
 import (
 	"easy_go/blog/controllers"
+	"easy_go/blog/logger"
 	_ "easy_go/blog/routers"
 	"github.com/astaxie/beego"
 )
 
+func init()  {
+	logger.Init()
+}
 
 func main() {
 	// beego.BConfig.RunMode = beego.AppConfig.String("runmode")          // 环境
