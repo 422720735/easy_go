@@ -14,12 +14,21 @@
                 </ul>
             </li>
         {{else}}
-            <li><a href="/{{$v.id}}">
-                    {{if $v.icon}}
-                        <i class="{{$v.icon}}"></i>
-                    {{end}}
-                    {{$v.name}}
-                </a></li>
+            {{if eq $v.name "首页"}}
+                <li><a href="/">
+                        {{if $v.icon}}
+                            <i class="{{$v.icon}}"></i>
+                        {{end}}
+                        {{$v.name}}
+                    </a></li>
+            {{else}}
+                <li><a href="/{{$v.id}}">
+                        {{if $v.icon}}
+                            <i class="{{$v.icon}}"></i>
+                        {{end}}
+                        {{$v.name}}
+                    </a></li>
+            {{end}}
         {{end}}
     {{end}}
     <li id="handleSearch"><a href="#"><i class="iconfont icon-search"></i></a></li>

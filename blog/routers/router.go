@@ -6,9 +6,9 @@ import (
 )
 
 func init() {
-	beego.Router("/?:menu/?:article", &controllers.IndexController{}, "get:Index")
+	beego.Router("/?:menu_id/?:category_id", &controllers.IndexController{}, "get:Index")
 
-	beego.Router("/article", &controllers.ArticleController{})
+	beego.Router("/article/?:menu_id/?:category_id", &controllers.ArticleController{})
 
 	beego.Router("/login", &controllers.LoginController{})
 

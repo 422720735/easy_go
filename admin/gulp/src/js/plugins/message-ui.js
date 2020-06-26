@@ -30,9 +30,9 @@ class Message {
 
     static warning(d) {
         if (Object.prototype.toString.call(d) === '[object Object]') {
-            window.Msg.add(d.data, "success")
+            window.Msg.add(d.data, "warning")
         } else {
-            window.Msg.add(d, "success")
+            window.Msg.add(d, "warning")
         }
     }
 

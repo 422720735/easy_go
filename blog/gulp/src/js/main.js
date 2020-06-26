@@ -1,4 +1,6 @@
 // 函数防抖
+
+console.log(516551616551)
 function debounce(fn, wait) {
     var timeout = null;
     return function () {
@@ -7,7 +9,6 @@ function debounce(fn, wait) {
         timeout = setTimeout(fn, wait);
     }
 }
-
 /**************** 更多按钮icon 始终是 三的样式 去除关闭icon的class。****************/
 function handleMoreIcon() {
     document.getElementById('drawer-mask').onclick = function () {
@@ -76,6 +77,7 @@ function computeNavWidth() {
         const skinWidth = document.querySelectorAll('.nav-skin')[0].clientWidth;
         const coverWidth = document.querySelectorAll('.cover-img')[0].clientWidth;
         const contentWidth = totalWidth - skinWidth - coverWidth;
+        console.log(contentWidth, 'contentWidth')
         document.querySelectorAll('nav.navbar.bootsnav')[0].style.width = contentWidth + 'px'
     } else {
         document.querySelectorAll('nav.navbar.bootsnav')[0].style.width = totalWidth + 'px'

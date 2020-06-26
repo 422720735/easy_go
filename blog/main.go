@@ -5,10 +5,12 @@ import (
 	"easy_go/blog/db"
 	"easy_go/blog/logger"
 	_ "easy_go/blog/routers"
+	"easy_go/blog/tempFunc"
 	"github.com/astaxie/beego"
 )
 
 func init()  {
+	tempFunc.Init()
 	db.Init()
 	logger.Init()
 }

@@ -17,6 +17,7 @@ if (window.location.search && window.location.search !== '') {
             method: 'Get',
             success: function (res) {
                 if (res.code === Ok) {
+                    debugger
                     setValue(res.data)
                 } else {
                     window.message.error(res)
@@ -57,10 +58,11 @@ function setValue(data) {
     }
 
     window.content = content
-    console.log(window.content, 'content')
 
     $('#article-desc').val(desc)
+
     if (cover && cover !== '') {
+        coverStr = cover
         cupload(cover)
     } else {
         cupload()
@@ -214,9 +216,9 @@ function saveArticle(data) {
         success: function (res) {
             if (res.code === Ok) {
                 window.message.success(res)
-                setTimeout(function () {
-                    window.location.reload()
-                }, 5000)
+                // setTimeout(function () {
+                //     window.location.reload()
+                // }, 5000)
             } else {
                 window.message.error(res)
             }
