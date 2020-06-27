@@ -17,7 +17,6 @@ if (window.location.search && window.location.search !== '') {
             method: 'Get',
             success: function (res) {
                 if (res.code === Ok) {
-                    debugger
                     setValue(res.data)
                 } else {
                     window.message.error(res)
@@ -30,7 +29,7 @@ if (window.location.search && window.location.search !== '') {
 }
 
 function setValue(data) {
-    const {title, menu_id, category_id, created_time, update_time, view, content, cover, desc, tags, keyword, is_top, hot, recommend} = data
+    const {title, menu_id, category_id, created_time, update_time, view, content, cover, desc, tags, keyword, top_id, hot, recommend} = data
 
     id = data.id
 
@@ -84,7 +83,10 @@ function setValue(data) {
         $('#keyword').val(keyword)
     }
 
-    $('#is-top').prop('checked', is_top)
+    if (top_id === data.id) {
+        $('#is-top').prop('checked', true)
+    }
+
     $('#hot').prop('checked', hot)
     $('#recommend').prop('checked', recommend)
 }
