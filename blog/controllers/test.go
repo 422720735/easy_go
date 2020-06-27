@@ -17,3 +17,12 @@ func (c *TestControllers) Get() {
 		c.Success(list)
 	}
 }
+
+func (c *TestControllers) Get2() {
+	list, err:= servers.SelectFilterLimit()
+	if err != nil {
+		c.Error(err.Error())
+	} else {
+		c.Success(list)
+	}
+}

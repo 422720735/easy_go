@@ -1,9 +1,12 @@
 {{define "articeCommon"}}
+    <script src="/static/js/cupload.min.js"></script>
+    {{/*业务逻辑*/}}
+    <script src="/static/js/articleDetails.min.js"></script>
     {{/*tag + 图片上传*/}}
     <script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/jqueryui/1.11.0/jquery-ui.min.js"></script>
     <script src="http://www.jq22.com/demo/jqueryTag-it201806010015/js/tag-it.js"></script>
-    <script src="/static/js/cupload.min.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function () {
             var d = $('#article-type')[0]
@@ -19,6 +22,4 @@
     </script>
     {{/*引入七牛云*/}}
     <script src="https://unpkg.com/qiniu-js@2.5.5/dist/qiniu.min.js"></script>
-    {{/*业务逻辑*/}}
-    <script src="/static/js/articleDetails.min.js"></script>
 {{end}}

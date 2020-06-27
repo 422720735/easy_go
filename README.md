@@ -61,7 +61,7 @@
 
 [练习sql``](https://www.jb51.net/article/76997.htm)
 
-
+[关于 Xtiper](http://v.bootstrapmb.com/2019/10/ebc96463/#load)
 
 ```  
 SELECT * FROM articles LEFT JOIN systems ON articles.id = systems.id ORDER BY systems.created_time desc,articles.hot desc
