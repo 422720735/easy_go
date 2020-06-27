@@ -57,3 +57,6 @@
 [golang、JS AES(CBC模式)加密解密兼容](https://www.cnblogs.com/haima/p/12611372.html)
 
 [env config](https://learnku.com/articles/33910)
+
+
+[练习sql``](https://www.jb51.net/article/76997.htm)
