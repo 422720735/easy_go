@@ -51,8 +51,10 @@ function qnMultiple(token) {
         const src = $('#cupload-tailor > .li-img').eq(0).find('img').attr('data-src')
         if (src) {
             CoverUpload.have()
+            console.log($('#cupload-tailor > .li-img'))
         } else {
             CoverUpload.none(token)
+            console.log($('#cupload-tailor > .li-img'))
         }
     }
 }
@@ -166,7 +168,7 @@ function func_digui(arry, len, token) {
         }
     } catch (e) {
         isVisible(false)
-        window.message.error('上传封面背景失败12')
+        window.message.error('上传封面背景失败')
     } finally {
         if (img_src[img_src.length - 1] && img_src[img_src.length - 1] !== null && img_src[img_src.length - 1] !== undefined) {
             // 把七牛云的图片地址放在img 自定义属性上。
@@ -195,6 +197,9 @@ function func_digui(arry, len, token) {
                     isVisible(false)
                 }
             })
+        } else {
+            window.message.warning('当前没有背景可修改')
+            isVisible(false)
         }
     }
 }

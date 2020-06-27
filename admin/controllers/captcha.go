@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"bytes"
-	"easy_go/admin/common"
+	"easy_go/common"
 	"easy_go/middleware"
 	"fmt"
 	"github.com/dchest/captcha"

@@ -34,7 +34,7 @@ type Article struct {
 	Visible    bool    `json:"visible";gorm:"default:'0'"` // 0 默认下架
 	Type       int     `json:"type";gorm:"size:8"`         // 0 草稿箱 1发布 2垃圾箱
 	Praise     int     `json:"praise"`                     // 赞
-	IsTop      bool    `json:"is_top"`                     // 置顶
+	//IsTop      bool    `json:"is_top"`                     // 当前文章是不是在置顶状态
 	Recommend  bool    `json:"recommend"`                  // 推荐
 	Hot        bool    `json:"hot"`                        // 热门
 	Sort       int     `json:"sort";gorm:"AUTO_INCREMENT"` // 排序

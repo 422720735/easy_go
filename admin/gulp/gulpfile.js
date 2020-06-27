@@ -55,8 +55,8 @@ gulp.task('jsUglify', function () {
         .pipe(rename({suffix: '.min'}))
         .pipe(uglify({
             compress: {
-                drop_console: NODE_ENV === 'production', // 过滤 console
-                drop_debugger: NODE_ENV === 'production' // 过滤 debugger
+                drop_console: NODE_ENV !== 'production', // 过滤 console
+                drop_debugger: NODE_ENV !== 'production' // 过滤 debugger
             }
         }))
         .pipe(gulp.dest(path.resolve(__dirname, '../static/js')))

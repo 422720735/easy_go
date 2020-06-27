@@ -29,7 +29,7 @@ if (window.location.search && window.location.search !== '') {
 }
 
 function setValue(data) {
-    const {title, menu_id, category_id, created_time, update_time, view, content, cover, desc, tags, keyword, is_top, hot, recommend} = data
+    const {title, menu_id, category_id, created_time, update_time, view, content, cover, desc, tags, keyword, top_id, hot, recommend} = data
 
     id = data.id
 
@@ -57,10 +57,11 @@ function setValue(data) {
     }
 
     window.content = content
-    console.log(window.content, 'content')
 
     $('#article-desc').val(desc)
+
     if (cover && cover !== '') {
+        coverStr = cover
         cupload(cover)
     } else {
         cupload()
@@ -82,7 +83,10 @@ function setValue(data) {
         $('#keyword').val(keyword)
     }
 
-    $('#is-top').prop('checked', is_top)
+    if (top_id === data.id) {
+        $('#is-top').prop('checked', true)
+    }
+
     $('#hot').prop('checked', hot)
     $('#recommend').prop('checked', recommend)
 }
@@ -214,9 +218,9 @@ function saveArticle(data) {
         success: function (res) {
             if (res.code === Ok) {
                 window.message.success(res)
-                setTimeout(function () {
-                    window.location.reload()
-                }, 5000)
+                // setTimeout(function () {
+                //     window.location.reload()
+                // }, 5000)
             } else {
                 window.message.error(res)
             }

@@ -152,7 +152,7 @@
                                                 <td>{{$v.CreatedTime.Format "2006-01-02 15:04:05"}}</td>
                                             {{end}}
                                             <td>
-                                                {{if and ($v.IsTop) (eq $.top_id $v.Id)}}
+                                                {{if eq $.top_id $v.Id}}
                                                     <span class="badge badge-danger-lighten badge-pill">置顶</span>
                                                 {{else}}
                                                     <span class="badge badge-secondary-lighten badge-pill">普通</span>

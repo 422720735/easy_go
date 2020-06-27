@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost_3306
-Source Server Version : 50727
+Source Server Version : 50723
 Source Host           : localhost:3306
 Source Database       : easy_go
 
 Target Server Type    : MYSQL
-Target Server Version : 50727
+Target Server Version : 50723
 File Encoding         : 65001
 
-Date: 2020-06-23 19:14:26
+Date: 2020-06-27 19:02:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -42,14 +42,20 @@ CREATE TABLE `articles` (
   `created_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of articles
 -- ----------------------------
-INSERT INTO `articles` VALUES ('1', '1', null, '', 'markdown', null, 'markdown', null, null, '0', '1', '0', '1', '0', '0', '0', '0', '1', '0', '2020-06-22 18:01:54', null);
-INSERT INTO `articles` VALUES ('2', '1', null, '', 'Spin 加载中', null, 'Spin 加载中', null, null, '0', '0', '0', '1', '0', '0', '0', '0', '2', '0', '2020-06-22 18:07:18', '2020-06-23 18:07:42');
-INSERT INTO `articles` VALUES ('3', '1', null, '', 'MySQL中查询时间最大的一条记录', null, '\nMySQL中查询时间最大的一条记录\n', null, null, '0', '0', '0', '1', '0', '0', '0', '0', '3', '0', '2020-06-22 18:29:13', null);
+INSERT INTO `articles` VALUES ('1', '1', null, '', 'markdown', null, 'markdown', null, null, '0', '1', '1', '1', '0', '0', '0', '0', '1', '0', '2020-06-22 18:01:54', '2020-06-26 22:48:11');
+INSERT INTO `articles` VALUES ('2', '1', null, '0612_1593189464620_2', 'Spin 加载中', null, 'Spin 加载中', null, null, '0', '0', '0', '1', '0', '0', '0', '0', '2', '0', '2020-06-22 18:07:18', '2020-06-27 17:23:00');
+INSERT INTO `articles` VALUES ('3', '2', '3', '0612_1593189782332_6', 'MySQL中查询时间最大的一条记录', null, '\nMySQL中查询时间最大的一条记录\n', null, null, '0', '0', '1', '1', '0', '0', '0', '0', '3', '0', '2020-06-22 18:29:13', '2020-06-27 00:43:24');
+INSERT INTO `articles` VALUES ('4', '2', '3', '0612_1593244173037_7', 'TypeScript 中文手册', null, 'TypeScript 中文手册', null, null, '0', '0', '1', '1', '0', '0', '1', '1', '4', '0', '2020-06-27 15:49:34', '2020-06-27 15:51:17');
+INSERT INTO `articles` VALUES ('5', '2', '5', '0612_1593244196820_9', '3242432423', null, '4232424', null, null, '0', '0', '1', '1', '0', '0', '0', '1', '5', '0', '2020-06-27 15:49:57', '2020-06-27 18:06:54');
+INSERT INTO `articles` VALUES ('6', '1', null, '0612_1593244212868_7', '42324324', null, '4324242424', null, null, '0', '0', '0', '1', '0', '0', '0', '0', '6', '0', '2020-06-27 15:50:14', '2020-06-27 18:24:48');
+INSERT INTO `articles` VALUES ('7', '1', null, '0612_1593244229509_8', '2342424', null, '2432424324', null, null, '0', '0', '1', '1', '0', '0', '0', '1', '7', '0', '2020-06-27 15:50:30', '2020-06-27 15:51:14');
+INSERT INTO `articles` VALUES ('8', '3', '8', '0612_1593244246941_4', 'fsfsafsaf', null, 'sdfsafafasf', null, null, '0', '0', '0', '1', '0', '0', '0', '1', '8', '0', '2020-06-27 15:50:47', '2020-06-27 17:50:11');
+INSERT INTO `articles` VALUES ('9', '2', '2', '0612_1593244369486_5', 'asfafasf', null, 'safsadffa', null, null, '0', '0', '0', '1', '0', '0', '0', '0', '9', '0', '2020-06-27 15:51:05', '2020-06-27 18:21:54');
 
 -- ----------------------------
 -- Table structure for article_contents
@@ -61,14 +67,20 @@ CREATE TABLE `article_contents` (
   `url` varchar(255) DEFAULT NULL,
   `content` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of article_contents
 -- ----------------------------
-INSERT INTO `article_contents` VALUES ('1', '2', null, '<h1 id=\"Spin-\"><pre><code>&lt;template&gt;<br>  &lt;div&gt;<br>    &lt;a-spin /&gt;<br>  &lt;/div&gt;<br>&lt;/template&gt;</code></pre><p><br></p></h1>');
-INSERT INTO `article_contents` VALUES ('2', '2', null, '<h1 id=\"Spin-\"><pre><code>&lt;template&gt;<br>  &lt;div&gt;<br>    &lt;a-spin /&gt;<br>  &lt;/div&gt;<br>&lt;/template&gt;</code></pre><p><br></p></h1>');
-INSERT INTO `article_contents` VALUES ('3', '3', null, '<pre><code>SELECT ip,MAX(act_time) FROM users_login GROUP BY login_id;</code></pre><p><br></p>');
+INSERT INTO `article_contents` VALUES ('1', '6', null, '<p>fasfsdafdsafsasfasf</p>');
+INSERT INTO `article_contents` VALUES ('2', '6', null, '<p>fasfsdafdsafsasfasf</p>');
+INSERT INTO `article_contents` VALUES ('3', '6', null, '<p>fasfsdafdsafsasfasf</p>');
+INSERT INTO `article_contents` VALUES ('4', '6', null, '<p>fasfsdafdsafsasfasf</p>');
+INSERT INTO `article_contents` VALUES ('5', '6', null, '<p>fasfsdafdsafsasfasf</p>');
+INSERT INTO `article_contents` VALUES ('6', '6', null, '<p>fasfsdafdsafsasfasf</p>');
+INSERT INTO `article_contents` VALUES ('7', '6', null, '<p>fasfsdafdsafsasfasf</p>');
+INSERT INTO `article_contents` VALUES ('8', '6', null, '<p>fasfsdafdsafsasfasf</p>');
+INSERT INTO `article_contents` VALUES ('9', '6', null, '<p>fasfsdafdsafsasfasf</p>');
 
 -- ----------------------------
 -- Table structure for article_types
@@ -90,13 +102,13 @@ CREATE TABLE `article_types` (
 -- ----------------------------
 -- Records of article_types
 -- ----------------------------
-INSERT INTO `article_types` VALUES ('1', 'vue', 'vue', '2', '1', '2', '0', '2020-06-19 14:53:56', '2020-06-19 18:17:13');
+INSERT INTO `article_types` VALUES ('1', 'vue', 'vue', '2', '1', '2', '0', '2020-06-19 14:53:56', '2020-06-26 22:47:50');
 INSERT INTO `article_types` VALUES ('2', 'react', 'react', '2', '1', '1', '0', '2020-06-19 15:06:07', '2020-06-19 18:17:13');
 INSERT INTO `article_types` VALUES ('3', 'typescript', 'ts', '2', '1', '3', '0', '2020-06-19 15:07:25', '2020-06-19 18:10:19');
 INSERT INTO `article_types` VALUES ('4', 'react native', 'rn', '2', '1', '4', '0', '2020-06-19 15:07:42', '2020-06-19 18:10:21');
-INSERT INTO `article_types` VALUES ('5', 'wexx', 'wexx', '2', '1', '6', '0', '2020-06-19 15:08:06', '2020-06-19 18:17:20');
-INSERT INTO `article_types` VALUES ('6', 'gin', 'gin', '3', '1', '5', '0', '2020-06-19 15:08:20', '2020-06-19 18:17:20');
-INSERT INTO `article_types` VALUES ('7', 'javascript', 'js', '2', '1', '7', '0', '2020-06-19 15:11:46', '2020-06-19 17:59:08');
+INSERT INTO `article_types` VALUES ('5', 'wexx', 'wexx', '2', '1', '7', '0', '2020-06-19 15:08:06', '2020-06-26 00:16:57');
+INSERT INTO `article_types` VALUES ('6', 'gin', 'gin', '3', '1', '5', '0', '2020-06-19 15:08:20', '2020-06-26 21:59:45');
+INSERT INTO `article_types` VALUES ('7', 'javascript', 'js', '2', '1', '6', '0', '2020-06-19 15:11:46', '2020-06-26 00:16:57');
 INSERT INTO `article_types` VALUES ('8', 'gorm', 'gorm', '3', '1', '8', '0', '2020-06-19 15:21:29', '2020-06-19 17:59:08');
 INSERT INTO `article_types` VALUES ('9', 'docker', 'docker', '3', '1', '9', '0', '2020-06-19 15:23:02', '2020-06-19 17:59:11');
 
@@ -121,8 +133,8 @@ CREATE TABLE `menu_settings` (
 -- ----------------------------
 -- Records of menu_settings
 -- ----------------------------
-INSERT INTO `menu_settings` VALUES ('1', '首页', 'home', 'iconfont icon-home1', '1', '0', '1', '0', '2020-06-19 13:38:37', '2020-06-19 13:43:00');
-INSERT INTO `menu_settings` VALUES ('2', '前端', 'web', 'iconfont icon-h5', '1', '0', '2', '1', '2020-06-19 13:39:04', '2020-06-19 13:43:02');
+INSERT INTO `menu_settings` VALUES ('1', '首页', 'home', 'iconfont icon-home1', '1', '0', '1', '0', '2020-06-19 13:38:37', '2020-06-26 20:15:21');
+INSERT INTO `menu_settings` VALUES ('2', '前端', 'web', 'iconfont icon-h5', '1', '0', '2', '1', '2020-06-19 13:39:04', '2020-06-26 20:15:21');
 INSERT INTO `menu_settings` VALUES ('3', 'golang', 'go', 'iconfont icon-prog-golang', '1', '0', '3', '1', '2020-06-19 13:39:33', '2020-06-19 13:43:02');
 INSERT INTO `menu_settings` VALUES ('4', '移动端', 'mobile', 'iconfont icon-mobile', '1', '0', '4', '1', '2020-06-19 13:41:18', '2020-06-19 13:43:05');
 INSERT INTO `menu_settings` VALUES ('5', '数据库', 'data_base', 'iconfont icon-data-base', '1', '0', '5', '0', '2020-06-19 13:41:53', '2020-06-19 13:43:05');
@@ -140,12 +152,12 @@ CREATE TABLE `systems` (
   `created_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of systems
 -- ----------------------------
-INSERT INTO `systems` VALUES ('1', null, '0612_1592817870091_9,0612_1592817870092_1', '2020-06-22 17:04:53', '2020-06-22 17:24:31');
+INSERT INTO `systems` VALUES ('1', null, '0612_1592817870091_9,0612_1592817870092_1,0612_1593244369486_5', '2020-06-22 17:04:53', '2020-06-27 18:24:48');
 
 -- ----------------------------
 -- Table structure for users
@@ -167,4 +179,4 @@ CREATE TABLE `users` (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', '123456', '1c6a47df3c59184b447411d3764d9e56', '2', '[::1]:58834', '2020-06-23 18:37:19', '2020-06-23 15:17:15', '2020-06-23 18:37:19', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiIxMjM0NTYiLCJsb2dpbl9pcCI6Ils6OjFdOjU4ODM0IiwiZXhwIjoxNTkyOTEyMjM4LCJpYXQiOjE1OTI5MDg2Mzh9.urOaJK4d0Ro9AmH-0-307kxYse3iHOeW_mifaIit5NM');
+INSERT INTO `users` VALUES ('1', '123456', '1c6a47df3c59184b447411d3764d9e56', '2', '[::1]:59577', '2020-06-27 17:27:45', '2020-06-23 15:17:15', '2020-06-27 17:27:45', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiIxMjM0NTYiLCJsb2dpbl9pcCI6Ils6OjFdOjU5NTc3IiwiZXhwIjoxNTkzMjUzNjY0LCJpYXQiOjE1OTMyNTAwNjR9.gtbJk5nFH4G3VGNI7ijmmucCYU0jmHYbd156oRB-peQ');

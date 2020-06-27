@@ -1,10 +1,10 @@
 package routers
 
 import (
-	"easy_go/admin/common"
 	"easy_go/admin/controllers"
 	"easy_go/admin/controllers/article"
 	"easy_go/admin/controllers/system"
+	"easy_go/common"
 	"github.com/astaxie/beego/context"
 
 	"github.com/astaxie/beego"

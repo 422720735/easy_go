@@ -39,7 +39,7 @@ func InsertArticleDetails(title, content, cover, desc, tags, keyword string, men
 		Cover:       &cover,
 		Desc:        desc,
 		MenuId:      menuId,
-		IsTop:       isTop,
+		//IsTop:       isTop,
 		Hot:         hot,
 		Recommend:   recommend,
 		Markdown:    markdown,
@@ -170,8 +170,8 @@ func UpdateArticleDetails(title, content, cover, desc, tags, keyword string, men
 		return err
 	}
 
+	var count int
 	if isTop {
-		var count int
 		s := models.System{
 			TopId:       sql.NullInt64{Int64: int64(id), Valid: true},
 			CreatedTime: time.Now(),
@@ -193,6 +193,28 @@ func UpdateArticleDetails(title, content, cover, desc, tags, keyword string, men
 			tx.Rollback()
 			return err
 		}
+	} else {
+		s := models.System{
+			TopId:       sql.NullInt64{Int64: int64(id), Valid: true},
+			CreatedTime: time.Now(),
+		}
+		err = tx.Select([]string{"id"}).Model(&models.System{}).Count(&count).Error
+		if err != nil {
+			logger.Error(err.Error())
+			tx.Rollback()
+			return err
+		}
+		if count == 0 {
+			err = db.DbConn.Create(&s).Error
+		} else {
+			err = tx.Model(&s).Updates(map[string]interface{}{"top_id": nil, "update_time": time.Now()}).Error
+		}
+
+		if err != nil {
+			logger.Error(err.Error())
+			tx.Rollback()
+			return err
+		}
 	}
 
 	return nil
@@ -202,11 +224,13 @@ type ArticleAll struct {
 	models.Article
 	Url     *string `json:"url"`
 	Content *string `json:"content"`
+	TopId   int    `json:"top_id"`  // 置顶
 }
 
 func SelectArticleDetails(id int) (*ArticleAll, error) {
 	var a models.Article
 	var c models.ArticleContent
+	var top models.System
 	var all ArticleAll
 	err := db.DbConn.Where(&models.Article{Id: id}).Find(&a).Error
 	if err != nil {
@@ -218,6 +242,12 @@ func SelectArticleDetails(id int) (*ArticleAll, error) {
 	if err != nil {
 		logger.Error(err.Error())
 		return nil, err
+	}
+
+	// 查询置顶文章
+	err = db.DbConn.Select([]string{"top_id"}).Model(&models.System{}).Find(&top).Error
+	if err == nil && top.TopId.Valid {
+		all.TopId = int(top.TopId.Int64)
 	}
 
 	all.Id = a.Id
@@ -233,7 +263,6 @@ func SelectArticleDetails(id int) (*ArticleAll, error) {
 	all.Markdown = a.Markdown
 	all.Type = a.Type
 	all.Praise = a.Praise
-	all.IsTop = a.IsTop
 	all.Recommend = a.Recommend
 	all.Hot = a.Hot
 	all.Sort = a.Sort

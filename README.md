@@ -58,12 +58,19 @@
 
 [env config](https://learnku.com/articles/33910)
 
-[css3动画个人主页简历web模板](http://v.bootstrapmb.com/2020/5/8c878073/#)
 
-[h5个人简历创意web网页模板](http://www.bootstrapmb.com/item/7795/preview)
+[练习sql``](https://www.jb51.net/article/76997.htm)
 
-[创意个人简历主页HTML5单页模板](http://www.bootstrapmb.com/item/7735/preview)
 
-[创意bootstrap个人简历网页模板](http://v.bootstrapmb.com/2020/1/w7gd87276/)
 
-[新颖的it科技公司网站响应式模板](http://v.bootstrapmb.com/2020/6/msb4j8224/contact.html)
+```  
+SELECT * FROM articles LEFT JOIN systems ON articles.id = systems.id ORDER BY systems.created_time desc,articles.hot desc
+
+SELECT articles.*,IFNULL(systems.top_id,0) FROM articles LEFT JOIN systems ON articles.id = systems.id  ORDER BY systems.created_time desc,articles.hot desc 
+
+SELECT articles.*,IFNULL(systems.top_id,0) FROM articles LEFT JOIN systems ON articles.id = systems.top_id  ORDER BY systems.created_time desc,articles.hot desc 
+
+
+replace into 针对于唯一数据的修改
+golang flag包
+```
