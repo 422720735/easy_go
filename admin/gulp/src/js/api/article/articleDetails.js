@@ -76,7 +76,13 @@ function setValue(data) {
         tag.forEach(item => {
             str += '<li class="tagit-choice ui-widget-content ui-state-default ui-corner-all tagit-choice-editable"><span class="tagit-label">' + item + '</span><a class="tagit-close"><span class="text-icon">×</span><span class="ui-icon ui-icon-close"></span></a><input type="hidden" value="11" name="tags" class="tagit-hidden-field"></li>'
         })
+        // var label = $(this.options.onTagClicked ? '<a class="tagit-label"></a>' : '<span class="tagit-label"></span>').text(item);
+        // var tag = $('<li></li>').addClass('tagit-choice ui-widget-content ui-state-default ui-corner-all').addClass(null).append(label);
         $('#articleTags').prepend(str)
+
+        $("#articleTags").tagit({
+            availableTags: tag
+        });
     }
 
     if (keyword && keyword !== '') {

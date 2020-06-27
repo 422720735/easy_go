@@ -6,6 +6,7 @@ import (
 	"easy_go/admin/logger"
 	"easy_go/admin/models"
 	"errors"
+	"github.com/astaxie/beego"
 	"time"
 )
 
@@ -129,6 +130,8 @@ func UpdateArticleDetails(title, content, cover, desc, tags, keyword string, men
 	}
 
 	a := &models.Article{Id: id}
+beego.Info(tags,"---------")
+	logger.Info(tags)
 
 	if tags != "" {
 		a.Tags = &tags
