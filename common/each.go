@@ -121,6 +121,7 @@ func Paginator(page, pagesize int, nums int64, data interface{}) map[string]inte
 		nextpage = page + 1
 	}
 	paginatorMap := make(map[string]interface{})
+	paginatorMap["size"] = pagesize
 	paginatorMap["pages"] = pages
 	paginatorMap["total"] = nums
 	paginatorMap["totalpages"] = totalpages

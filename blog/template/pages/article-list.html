@@ -64,4 +64,31 @@
     <!--分页器-->
     <div class="ht-page"></div>
 </section>
+<!--分页器-->
+<script src="/static/js/TweenMax/pagination.min.js"></script>
+<script typeof="text/javascript">
+    /*
+     * 定义回掉函数
+     * @param  number:跳转页
+     * */
+    function pageChange(i) {
+        Pagination.Page($(".ht-page"), i, {{.articleList.total}}, {{.articleList.size}});
+    }
+
+    /*
+     * 初始化插件
+     * @param  object:翻页容器对象
+     * @param  function:回调函数
+     * */
+    Pagination.init($(".ht-page"), pageChange);
+
+    /*
+    * 首次调用
+    * @param  object:翻页容器对象
+    * @param  number:当前页
+    * @param  number:总页数
+    * @param  number:每页数据条数
+    * */
+    Pagination.Page($(".ht-page"), {{.articleList.current}}, {{.articleList.total}}, {{.articleList.size}});
+</script>
 

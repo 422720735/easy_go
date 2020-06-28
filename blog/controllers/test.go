@@ -35,15 +35,12 @@ func (c *TestControllers) Get2() {
 
 	menuId, articleTypeId:=getParams(param1, param2)
 
-	list, total, err:= servers.SelectArticleFilterLimit(menuId, articleTypeId, title, page, common.PAGE_SIZE)
+	data, total, err:= servers.SelectArticleFilterLimit(menuId, articleTypeId, title, page, common.PAGE_SIZE)
+	articleList := common.Paginator(page, common.PAGE_SIZE, total, data)
 	if err != nil {
 		c.Error(err.Error())
 	} else {
-		var d = map[string]interface{}{
-			"data": list,
-			"total": total,
-		}
-		c.Success(d)
+		c.Success(articleList)
 	}
 }
 
