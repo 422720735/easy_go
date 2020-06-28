@@ -6,6 +6,7 @@ import (
 	"easy_go/admin/logger"
 	"easy_go/admin/models"
 	"errors"
+	"github.com/astaxie/beego"
 	"time"
 )
 
@@ -76,6 +77,10 @@ func InsertArticleDetails(title, content, cover, desc, tags, keyword string, men
 		return err
 	}
 
+	beego.Info(a.Id)
+	beego.Info(*&a.Id)
+	beego.Info(&a.Id)
+	beego.Info("====")
 	c := &models.ArticleContent{
 		Content:   &content,
 		ArticleId: a.Id,
@@ -162,7 +167,7 @@ func UpdateArticleDetails(title, content, cover, desc, tags, keyword string, men
 		}
 	}
 
-	err := tx.Model(&models.ArticleContent{}).Updates(map[string]interface{}{"content": content, "article_id": id}).Error
+	err := tx.Model(&models.ArticleContent{}).Where("article_id = ?", &a.Id).Update("content", content).Error
 	if err != nil {
 		logger.Error(err.Error())
 		tx.Rollback()

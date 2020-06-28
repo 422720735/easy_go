@@ -99,6 +99,7 @@ func (c *ArticleList) HandMove_up_down() {
 	if err != nil {
 		logger.Info("上移下移失败", err.Error())
 		c.Redirect("/article/list?page="+page, 302)
+		return
 	}
 
 	c.Redirect("/article/list?page="+page, 302)

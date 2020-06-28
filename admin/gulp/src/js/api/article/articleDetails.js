@@ -226,10 +226,8 @@ function saveArticle(data) {
         method: data.id ? 'Put' : 'POST',
         success: function (res) {
             if (res.code === Ok) {
-                window.message.success(res)
-                // setTimeout(function () {
-                //     window.location.reload()
-                // }, 5000)
+                window.message.set(res)
+                window.location.href = "list?page=1"
             } else {
                 window.message.error(res)
             }

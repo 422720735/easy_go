@@ -30,7 +30,7 @@
                     {{end}}
                     {{if $v.CategoryId}}
                         <h2 class="article-title cursorPointer"><a
-                                    href="/article/{{$v.Id}}">{{$v.Title}}</a></h2>
+                                    href="/article/{{$v.MenuId}}/{{$v.CategoryId}}">{{$v.Title}}</a></h2>
                     {{else}}
                         <h2 class="article-title cursorPointer"><a href="/article/{{$v.MenuId}}">{{$v.Title}}</a></h2>
                     {{end}}

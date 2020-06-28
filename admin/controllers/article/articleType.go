@@ -290,6 +290,7 @@ func (c *ArticleControllerType) HandArticleType_up_down() {
 	if err != nil {
 		logger.Info("上移下移失败", err.Error())
 		c.Redirect("/article/type", 302)
+		return
 	}
 
 	c.Redirect("/article/type", 302)

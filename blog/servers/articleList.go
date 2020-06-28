@@ -20,9 +20,7 @@ func SelectArticleIsTopId() (*models.System, int, error) {
 
 func SelectArticleFilterLimit(menuId, articleTypeId int, title string, page, size int) ([]*models.Article, int64, error) {
 	var m []*models.Article
-
 	var articleWhere = gorm.Expr("1")
-	var err error
 
 	if title != "" {
 		articleWhere = gorm.Expr("articles.title like ?", "%"+title+"%")
@@ -40,7 +38,7 @@ func SelectArticleFilterLimit(menuId, articleTypeId int, title string, page, siz
 
 	// 排序按照置顶,之后热门、推荐、普通
 	article = article.Order("systems.created_time desc,articles.hot desc, articles.recommend desc")
-	err = article.Limit(size).Offset((page - 1) * size).Find(&m).Error
+	err := article.Limit(size).Offset((page - 1) * size).Find(&m).Error
 
 	if err != nil {
 		logger.Info(err.Error())

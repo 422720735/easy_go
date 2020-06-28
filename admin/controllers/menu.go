@@ -166,6 +166,7 @@ func (c *MenuController) HandMove_up_down() {
 	if err != nil {
 		logger.Warn("上移下移失败", err.Error())
 		c.Redirect("/menuSetting?page="+page, 302)
+		return
 	}
 
 	c.Redirect("/menuSetting?page="+page, 302)

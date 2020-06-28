@@ -1,15 +1,16 @@
 <div class="article-wrap">
     <div class="article-content">
+
         <header class="article-header">
             <h1 class="article-title">
-                <a href="">taro聊天室tarochat项目|taro跨端实践</a>
+                <a href="">{{.details.Title}}</a>
             </h1>
             <div class="article-meta">
-                <span class="item">2019-11-22 11:49:12</span>
+                <span class="item">{{.details.CreatedTime.Format "2006-01-02 15:04:05"}}</span>
                 <span class="item">分类：
                     <a href="">html</a>
                 </span>
-                <span class="item post-views">阅读(120)</span>
+                <span class="item post-views">阅读({{.details.View}})</span>
             </div>
         </header>
         <div class="article-tags">

@@ -181,7 +181,7 @@ func (c *ArticleDetails) HandArticleDetailsInsert() {
 		c.Error("保存数据失败")
 		return
 	}
-	c.Success("操作成功")
+	c.Success("新增文章成功")
 }
 
 func (c *ArticleDetails) HandArticleDetailsUpdate() {

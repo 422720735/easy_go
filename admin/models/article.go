@@ -46,7 +46,7 @@ type Article struct {
 
 // 文章内容 1对1
 type ArticleContent struct {
-	Id        int
+	Id        int     `json:"id"`
 	ArticleId int     `json:"article_id"`               // 文章映射id
 	Url       *string `json:"url"`                      // 链接
 	Content   *string `json:"content" gorm:"type:text"` // 内容

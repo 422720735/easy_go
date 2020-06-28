@@ -17,6 +17,7 @@ func SelectArticleTypeMenuName() ([]interface{}, error) {
 
 	err := menu.Find(&menuList).Error
 	if err != nil {
+		logger.Info(err.Error())
 		return nil, err
 	}
 
