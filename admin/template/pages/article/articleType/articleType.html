@@ -36,7 +36,9 @@
                                         <option selected="selected" disabled="disabled" style="display: none;"
                                                 value=""></option>
                                         {{range $i, $v := .menu_all}}
-                                            <option value="{{$v.Id}}">{{$v.MenuName}}</option>
+                                            {{if ne $v.MenuName "首页"}}
+                                                <option value="{{$v.Id}}">{{$v.MenuName}}</option>
+                                            {{end}}
                                         {{end}}
                                     </select>
                                 </div>
@@ -115,10 +117,12 @@
                                                        class="text-success">上架</a>
                                                 {{end}}
                                                 {{if eq $v.Visible false}}
-                                                <div role="separator" class="ant-divider ant-divider-vertical"></div>
-                                                <a href="/article/type/details?id={{$v.Id}}"
-                                                   class="text-c-blue">详情</a>
-                                                    <div role="separator" class="ant-divider ant-divider-vertical"></div>
+                                                    <div role="separator"
+                                                         class="ant-divider ant-divider-vertical"></div>
+                                                    <a href="/article/type/details?id={{$v.Id}}"
+                                                       class="text-c-blue">详情</a>
+                                                    <div role="separator"
+                                                         class="ant-divider ant-divider-vertical"></div>
                                                     <!-- Danger header modal -->
                                                     {{if $v.State}}
                                                         <a href="#!" class="text-c-blue text-facebook"

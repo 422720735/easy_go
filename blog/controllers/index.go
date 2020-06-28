@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"easy_go/admin/models"
 	"easy_go/blog/servers"
 	"easy_go/common"
 	"math/rand"
@@ -35,9 +34,9 @@ func (c *IndexController) Index() {
 
 	param1 := c.Ctx.Input.Param(":menu_id")
 	param2 := c.Ctx.Input.Param(":category_id")
-
 	title := c.GetString("title")
 	pageStr := c.GetString("page")
+
 	var page int
 	_int, err := strconv.ParseInt(pageStr, 10, 64)
 	if err != nil {
@@ -45,36 +44,10 @@ func (c *IndexController) Index() {
 	}
 	page = int(_int)
 
-	var data []*models.Article
-	var total int64
-	var menuId int
-	var articleTypeId int
+	// 获取导航id,跟articleTypeId
+	menuId, articleTypeId := getHomeParams(param1, param2)
 
-	if param1 == "" && param2 == "" {
-		// 查询全部
-		data, total, _ = servers.SelectArticlePageList(0, 0, title, page, common.PAGE_SIZE)
-	} else if param1 == "" && param2 != "" {
-		// 查询 menuId
-		id1, err := strconv.Atoi(param2)
-		if err == nil {
-			menuId = id1
-		}
-
-		data, total, _ = servers.SelectArticlePageList(menuId, 0, title, page, common.PAGE_SIZE)
-	} else if param1 != "" && param2 != "" {
-		// 查询 menuId + articleId
-		id1, err := strconv.Atoi(param1)
-		if err == nil {
-			menuId = id1
-		}
-
-		id2, err := strconv.Atoi(param2)
-		if err == nil {
-			articleTypeId = id2
-		}
-
-		data, total, _ = servers.SelectArticlePageList(menuId, articleTypeId, title, page, common.PAGE_SIZE)
-	}
+	data, total, err := servers.SelectArticleFilterLimit(menuId, articleTypeId, title, page, common.PAGE_SIZE)
 
 	articleList := common.Paginator(page, common.PAGE_SIZE, total, data)
 
@@ -84,7 +57,7 @@ func (c *IndexController) Index() {
 		top_id = int(system.TopId.Int64)
 	}
 
-	// 0612_1592817870091_9,0612_1592817870092_1
+	
 	var cover string
 	coverLen := strings.Split(*&system.Cover, ",")
 	rand.Seed(time.Now().UnixNano())
@@ -100,4 +73,30 @@ func (c *IndexController) Index() {
 	c.Data["menu"] = menu
 	c.Data["cover"] = cover
 	c.Data["articleList"] = articleList
+}
+
+func getHomeParams(param1, param2 string) (int, int) {
+	if param1 == "" && param2 == "" {
+		// 查询全部
+		return 0, 0
+	} else if param1 == "" && param2 != "" {
+		id1, err := strconv.Atoi(param2)
+		if err == nil {
+			return id1, 0
+		}
+	} else if param1 != "" && param2 != "" {
+		var a int
+		var b int
+		id1, err := strconv.Atoi(param1)
+		if err == nil {
+			a = id1
+		}
+
+		id2, err := strconv.Atoi(param2)
+		if err == nil {
+			b = id2
+		}
+		return a, b
+	}
+	return 0, 0
 }

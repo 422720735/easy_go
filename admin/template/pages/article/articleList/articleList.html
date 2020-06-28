@@ -48,7 +48,7 @@
                                                         <option value="{{$v.id}},{{$item.id}}">{{$item.name}}</option>
                                                     {{end}}
                                                 </optgroup>
-                                            {{else if eq $v.child_status false}}
+                                            {{else if and (eq $v.child_status false) (ne $v.name "首页")}}
                                                 <option value="{{$v.id}}">{{$v.name}}</option>
                                             {{end}}
                                         {{end}}

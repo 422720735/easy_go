@@ -5,47 +5,49 @@
 {{end}}
 
 {{define "articType"}}
-<div class="article_editor_info">
-    <select id="article-type">
-        {{range $i, $v := .list}}
-            {{if $v.child}}
-                <optgroup label="{{$v.name}}">
-                    {{range $key, $item := $v.child}}
-                        <option value="{{$v.id}},{{$item.id}}">{{$item.name}}</option>
-                    {{end}}
-                </optgroup>
-            {{else if eq $v.child_status false}}
-                <option value="{{$v.id}}">{{$v.name}}</option>
+    <div class="article_editor_info">
+        <select id="article-type">
+            <option value="" style="display: none;">--请选择--</option>
+            {{range $i, $v := .list}}
+                {{if $v.child}}
+                    <optgroup label="{{$v.name}}">
+                        {{range $key, $item := $v.child}}
+                            <option value="{{$v.id}},{{$item.id}}">{{$item.name}}</option>
+                        {{end}}
+                    </optgroup>
+                    {{/*过滤首页*/}}
+                {{else if and (eq $v.child_status false) (ne $v.name "首页")}}
+                    <option value="{{$v.id}}">{{$v.name}}</option>
+                {{end}}
             {{end}}
-        {{end}}
-    </select>
-    <label>
-        <span>发布于</span>
-        <input
-                class="l form-control"
-                value="{{.CreatedTime}}"
-                type="text"
-                data-toggle="input-mask"
-                data-mask-format="0000/00/00 00:00:00"
-                id="article-created"
-        >
-    </label>
-    <label>
-        <span>最后编辑</span>
-        <input
-                class="l form-control"
-                value="{{.UpdateTime}}"
-                type="text"
-                data-toggle="input-mask"
-                data-mask-format="0000/00/00 00:00:00"
-                id="article-update"
-        >
-    </label>
-    <label>
-        <span>阅读数</span>
-        <input type="text" class="s" placeholder="0" id="article-view">
-    </label>
-</div>
+        </select>
+        <label>
+            <span>发布于</span>
+            <input
+                    class="l form-control"
+                    value="{{.CreatedTime}}"
+                    type="text"
+                    data-toggle="input-mask"
+                    data-mask-format="0000/00/00 00:00:00"
+                    id="article-created"
+            >
+        </label>
+        <label>
+            <span>最后编辑</span>
+            <input
+                    class="l form-control"
+                    value="{{.UpdateTime}}"
+                    type="text"
+                    data-toggle="input-mask"
+                    data-mask-format="0000/00/00 00:00:00"
+                    id="article-update"
+            >
+        </label>
+        <label>
+            <span>阅读数</span>
+            <input type="text" class="s" placeholder="0" id="article-view">
+        </label>
+    </div>
 {{end}}
 
 {{define "articleSetting"}}
@@ -57,7 +59,8 @@
                     <div class="thumb" id="cupload"></div>
                 </div>
                 <div class="fr">
-                    <textarea id="article-desc" oninput="articleItemValue()" onchange="articleItemValue()" placeholder="选填，摘要会在文章列表页显露，帮助读者快速了解内容，如不填写则默认抓取正文前54字" maxlength="54"></textarea>
+                    <textarea id="article-desc" oninput="articleItemValue()" onchange="articleItemValue()"
+                              placeholder="选填，摘要会在文章列表页显露，帮助读者快速了解内容，如不填写则默认抓取正文前54字" maxlength="54"></textarea>
                 </div>
             </div>
         </div>

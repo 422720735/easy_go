@@ -80,7 +80,7 @@
           }
         }
 
-        .isTop {
+        .tags {
           display: inline-block;
           padding: 4px 6px;
           border: solid 1px $nav-red-color;
@@ -99,6 +99,8 @@
         }
       }
 
+      /*
+      // 暂时废弃这种现在以标签为主
       .meta {
         margin-bottom: 0;
         font-size: 14px;
@@ -116,7 +118,7 @@
             vertical-align: middle;
           }
         }
-      }
+      }*/
     }
   }
 }
