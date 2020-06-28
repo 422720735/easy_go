@@ -47,8 +47,17 @@
                 <div class="article">
                     <p class="text">{{$v.Desc}}</p>
                 </div>
-                {{template "articleTag" .}}
-
+                {{if IsSplit $v.Tags}}
+                <ul class="tags-list">
+                    {{range $i, $value := TagSplit $v.Tags}}
+                    <li class="tag {{ClassName $i}}" title="{{$value}}">
+                        <a href="javascript: void(0);">
+                            {{$value}}
+                        </a>
+                    </li>
+                    {{end}}
+                </ul>
+                {{end}}
             </div>
         </div>
     {{end}}

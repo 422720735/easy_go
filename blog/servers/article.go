@@ -37,7 +37,7 @@ func SelectArticleFilterLimit(menuId, articleTypeId int, title string, page, siz
 	}
 
 	// 链表查询到所有数据
-	article := db.DbConn.Raw("SELECT articles.*,IFNULL(systems.top_id,0) FROM articles LEFT JOIN systems ON articles.id = systems.top_id where ?", articleWhere)
+	article := db.DbConn.Raw("SELECT articles.*,IFNULL(systems.top_id,0) FROM articles LEFT JOIN systems ON articles.id = systems.top_id where visible = 1 and state = 0 and ?", articleWhere)
 	total := article.Scan(&a).RowsAffected
 
 	// 排序按照置顶 之后热门
