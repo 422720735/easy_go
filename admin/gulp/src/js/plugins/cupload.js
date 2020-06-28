@@ -497,7 +497,9 @@
             var cropperBtn = this.imageDelete[m].childNodes[2]
             btn.style.marginLeft = '-35px'
             amplify.style.marginLeft = '10px'
-            cropperBtn.style.bottom = '20%'
+            if (this.opt.is_tailor) {
+                cropperBtn.style.bottom = '20%'
+            }
         },
 
         hideImageDelete: function (m) {
@@ -507,7 +509,10 @@
             var cropperBtn = this.imageDelete[m].childNodes[2]
             btn.style.marginLeft = '-152px'
             amplify.style.marginLeft = '128px'
-            cropperBtn.style.bottom = '-20%'
+            if (this.opt.is_tailor) {
+                cropperBtn.style.bottom = '-20%'
+            }
+
         },
     }
 

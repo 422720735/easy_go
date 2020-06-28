@@ -2,12 +2,21 @@ const HOST = '/api'
 const ASSETS = 'http://qbv39uqsg.bkt.clouddn.com/'
 const Ok = 1
 
+let selectType = $('#article-type')[0]
+let availableTags = []
+for (let i = 0; i < selectType.length; i++) {
+    availableTags.push(selectType[i].innerText)
+}
+// tags标记中预加载数据，数据来自menu+articleType
+$("#articleTags").tagit({
+    availableTags: availableTags
+});
+
 let title, type, created, update, cover, desc, tags, keyword, isTop, hot, recommend;
 let coverStr, id
 
 // 文章内容挂载到文章详情上面。
 let content
-
 if (window.location.search && window.location.search !== '') {
     // 请求数据
     const id = getQueryVariable('id')
@@ -76,13 +85,7 @@ function setValue(data) {
         tag.forEach(item => {
             str += '<li class="tagit-choice ui-widget-content ui-state-default ui-corner-all tagit-choice-editable"><span class="tagit-label">' + item + '</span><a class="tagit-close"><span class="text-icon">×</span><span class="ui-icon ui-icon-close"></span></a><input type="hidden" value="11" name="tags" class="tagit-hidden-field"></li>'
         })
-        // var label = $(this.options.onTagClicked ? '<a class="tagit-label"></a>' : '<span class="tagit-label"></span>').text(item);
-        // var tag = $('<li></li>').addClass('tagit-choice ui-widget-content ui-state-default ui-corner-all').addClass(null).append(label);
         $('#articleTags').prepend(str)
-
-        $("#articleTags").tagit({
-            availableTags: tag
-        });
     }
 
     if (keyword && keyword !== '') {

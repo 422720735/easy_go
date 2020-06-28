@@ -184,6 +184,11 @@
 
   .article_editor_setting {
     margin-bottom: 40px;
+    .articleTags-box {
+      ul.tagit {
+        border-style: none;
+      }
+    }
   }
 }
 

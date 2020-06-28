@@ -6,7 +6,6 @@ import (
 	"easy_go/admin/logger"
 	"easy_go/admin/models"
 	"errors"
-	"github.com/astaxie/beego"
 	"time"
 )
 
@@ -36,10 +35,10 @@ func InsertArticleDetails(title, content, cover, desc, tags, keyword string, men
 	}
 
 	a := &models.Article{
-		Title:       title,
-		Cover:       &cover,
-		Desc:        desc,
-		MenuId:      menuId,
+		Title:  title,
+		Cover:  &cover,
+		Desc:   desc,
+		MenuId: menuId,
 		//IsTop:       isTop,
 		Hot:         hot,
 		Recommend:   recommend,
@@ -130,8 +129,6 @@ func UpdateArticleDetails(title, content, cover, desc, tags, keyword string, men
 	}
 
 	a := &models.Article{Id: id}
-beego.Info(tags,"---------")
-	logger.Info(tags)
 
 	if tags != "" {
 		a.Tags = &tags
@@ -150,21 +147,20 @@ beego.Info(tags,"---------")
 	defer tx.Commit()
 
 	if categoryId == -1 {
-		err := tx.Model(&a).Updates(map[string]interface{}{"title": title, "cover": cover, "desc": desc, "menu_id": menuId, "category_id": nil, "is_top": isTop, "hot": hot, "recommend": recommend, "markdown": markdown, "type": save, "update_time": time.Now()}).Error
+		err := tx.Model(&a).Updates(map[string]interface{}{"title": title, "cover": cover, "desc": desc, "menu_id": menuId, "category_id": nil, "tags": tags, "hot": hot, "recommend": recommend, "markdown": markdown, "type": save, "update_time": time.Now()}).Error
 		if err != nil {
 			logger.Error(err.Error())
 			tx.Rollback()
 			return err
 		}
 	} else {
-		err := tx.Model(&a).Updates(map[string]interface{}{"title": title, "cover": cover, "desc": desc, "menu_id": menuId, "category_id": categoryId, "is_top": isTop, "hot": hot, "recommend": recommend, "markdown": markdown, "type": save, "update_time": time.Now()}).Error
+		err := tx.Model(&a).Updates(map[string]interface{}{"title": title, "cover": cover, "desc": desc, "menu_id": menuId, "category_id": categoryId, "tags": tags, "hot": hot, "recommend": recommend, "markdown": markdown, "type": save, "update_time": time.Now()}).Error
 		if err != nil {
 			logger.Error(err.Error())
 			tx.Rollback()
 			return err
 		}
 	}
-
 
 	err := tx.Model(&models.ArticleContent{}).Updates(map[string]interface{}{"content": content, "article_id": id}).Error
 	if err != nil {
@@ -227,7 +223,7 @@ type ArticleAll struct {
 	models.Article
 	Url     *string `json:"url"`
 	Content *string `json:"content"`
-	TopId   int    `json:"top_id"`  // 置顶
+	TopId   int     `json:"top_id"` // 置顶
 }
 
 func SelectArticleDetails(id int) (*ArticleAll, error) {
