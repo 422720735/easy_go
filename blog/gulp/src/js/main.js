@@ -1,6 +1,4 @@
 // 函数防抖
-
-console.log(516551616551)
 function debounce(fn, wait) {
     var timeout = null;
     return function () {
@@ -77,7 +75,6 @@ function computeNavWidth() {
         const skinWidth = document.querySelectorAll('.nav-skin')[0].clientWidth;
         const coverWidth = document.querySelectorAll('.cover-img')[0].clientWidth;
         const contentWidth = totalWidth - skinWidth - coverWidth;
-        console.log(contentWidth, 'contentWidth')
         document.querySelectorAll('nav.navbar.bootsnav')[0].style.width = contentWidth + 'px'
     } else {
         document.querySelectorAll('nav.navbar.bootsnav')[0].style.width = totalWidth + 'px'

@@ -72,6 +72,7 @@
      * @param  number:跳转页
      * */
     function pageChange(i) {
+        console.log(i)
         Pagination.Page($(".ht-page"), i, {{.articleList.total}}, {{.articleList.size}});
     }
 
@@ -89,6 +90,6 @@
     * @param  number:总页数
     * @param  number:每页数据条数
     * */
-    Pagination.Page($(".ht-page"), {{.articleList.current}}, {{.articleList.total}}, {{.articleList.size}});
+    Pagination.Page($(".ht-page"), {{.articleList.current}}-1, {{.articleList.total}}, {{.articleList.size}});
 </script>
 

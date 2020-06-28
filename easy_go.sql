@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost_3306
-Source Server Version : 50723
+Source Server Version : 50727
 Source Host           : localhost:3306
 Source Database       : easy_go
 
 Target Server Type    : MYSQL
-Target Server Version : 50723
+Target Server Version : 50727
 File Encoding         : 65001
 
-Date: 2020-06-27 19:02:12
+Date: 2020-06-28 18:44:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -47,15 +47,15 @@ CREATE TABLE `articles` (
 -- ----------------------------
 -- Records of articles
 -- ----------------------------
-INSERT INTO `articles` VALUES ('1', '1', null, '', 'markdown', null, 'markdown', null, null, '0', '1', '1', '1', '0', '0', '0', '0', '1', '0', '2020-06-22 18:01:54', '2020-06-26 22:48:11');
-INSERT INTO `articles` VALUES ('2', '1', null, '0612_1593189464620_2', 'Spin 加载中', null, 'Spin 加载中', null, null, '0', '0', '0', '1', '0', '0', '0', '0', '2', '0', '2020-06-22 18:07:18', '2020-06-27 17:23:00');
+INSERT INTO `articles` VALUES ('1', '7', null, '', 'markdown', null, 'markdown', null, null, '0', '1', '1', '1', '0', '0', '0', '0', '1', '0', '2020-06-22 18:01:54', '2020-06-26 22:48:11');
+INSERT INTO `articles` VALUES ('2', '7', null, '0612_1593189464620_2', 'Spin 加载中', null, 'Spin 加载中', null, null, '0', '0', '0', '1', '0', '0', '0', '0', '2', '0', '2020-06-22 18:07:18', '2020-06-27 17:23:00');
 INSERT INTO `articles` VALUES ('3', '2', '3', '0612_1593189782332_6', 'MySQL中查询时间最大的一条记录', null, '\nMySQL中查询时间最大的一条记录\n', null, null, '0', '0', '1', '1', '0', '0', '0', '0', '3', '0', '2020-06-22 18:29:13', '2020-06-27 00:43:24');
-INSERT INTO `articles` VALUES ('4', '2', '3', '0612_1593244173037_7', 'TypeScript 中文手册', null, 'TypeScript 中文手册', null, null, '0', '0', '1', '1', '0', '0', '1', '1', '4', '0', '2020-06-27 15:49:34', '2020-06-27 15:51:17');
+INSERT INTO `articles` VALUES ('4', '2', '3', '0612_1593244173037_7', 'TypeScript 中文手册', null, 'TypeScript 中文手册', null, null, '0', '0', '1', '1', '0', '0', '0', '1', '4', '0', '2020-06-27 15:49:34', '2020-06-27 15:51:17');
 INSERT INTO `articles` VALUES ('5', '2', '5', '0612_1593244196820_9', '3242432423', null, '4232424', null, null, '0', '0', '1', '1', '0', '0', '0', '1', '5', '0', '2020-06-27 15:49:57', '2020-06-27 18:06:54');
-INSERT INTO `articles` VALUES ('6', '1', null, '0612_1593244212868_7', '42324324', null, '4324242424', null, null, '0', '0', '0', '1', '0', '0', '0', '0', '6', '0', '2020-06-27 15:50:14', '2020-06-27 18:24:48');
-INSERT INTO `articles` VALUES ('7', '1', null, '0612_1593244229509_8', '2342424', null, '2432424324', null, null, '0', '0', '1', '1', '0', '0', '0', '1', '7', '0', '2020-06-27 15:50:30', '2020-06-27 15:51:14');
+INSERT INTO `articles` VALUES ('6', '7', null, '0612_1593244212868_7', '42324324', null, '4324242424', null, null, '0', '0', '0', '1', '0', '0', '0', '0', '6', '0', '2020-06-27 15:50:14', '2020-06-27 18:24:48');
+INSERT INTO `articles` VALUES ('7', '7', null, '0612_1593244229509_8', '2342424', null, '2432424324', null, null, '0', '0', '1', '1', '0', '0', '0', '1', '7', '0', '2020-06-27 15:50:30', '2020-06-27 15:51:14');
 INSERT INTO `articles` VALUES ('8', '3', '8', '0612_1593244246941_4', 'fsfsafsaf', null, 'sdfsafafasf', null, null, '0', '0', '0', '1', '0', '0', '0', '1', '8', '0', '2020-06-27 15:50:47', '2020-06-27 17:50:11');
-INSERT INTO `articles` VALUES ('9', '2', '2', '0612_1593244369486_5', 'asfafasf', null, 'safsadffa', null, null, '0', '0', '0', '1', '0', '0', '0', '0', '9', '0', '2020-06-27 15:51:05', '2020-06-27 18:21:54');
+INSERT INTO `articles` VALUES ('9', '2', '2', '0612_1593244369486_5', 'asfafasf', null, 'safsadffa', null, 'css,html,js,vue,react,ts,css3,theme,sass', '0', '0', '1', '1', '0', '0', '1', '1', '9', '0', '2020-06-27 15:51:05', '2020-06-28 18:01:58');
 
 -- ----------------------------
 -- Table structure for article_contents
@@ -72,15 +72,15 @@ CREATE TABLE `article_contents` (
 -- ----------------------------
 -- Records of article_contents
 -- ----------------------------
-INSERT INTO `article_contents` VALUES ('1', '6', null, '<p>fasfsdafdsafsasfasf</p>');
-INSERT INTO `article_contents` VALUES ('2', '6', null, '<p>fasfsdafdsafsasfasf</p>');
-INSERT INTO `article_contents` VALUES ('3', '6', null, '<p>fasfsdafdsafsasfasf</p>');
-INSERT INTO `article_contents` VALUES ('4', '6', null, '<p>fasfsdafdsafsasfasf</p>');
-INSERT INTO `article_contents` VALUES ('5', '6', null, '<p>fasfsdafdsafsasfasf</p>');
-INSERT INTO `article_contents` VALUES ('6', '6', null, '<p>fasfsdafdsafsasfasf</p>');
-INSERT INTO `article_contents` VALUES ('7', '6', null, '<p>fasfsdafdsafsasfasf</p>');
-INSERT INTO `article_contents` VALUES ('8', '6', null, '<p>fasfsdafdsafsasfasf</p>');
-INSERT INTO `article_contents` VALUES ('9', '6', null, '<p>fasfsdafdsafsasfasf</p>');
+INSERT INTO `article_contents` VALUES ('1', '9', null, '<p>fasfsdafdsafsasfasf</p>');
+INSERT INTO `article_contents` VALUES ('2', '9', null, '<p>fasfsdafdsafsasfasf</p>');
+INSERT INTO `article_contents` VALUES ('3', '9', null, '<p>fasfsdafdsafsasfasf</p>');
+INSERT INTO `article_contents` VALUES ('4', '9', null, '<p>fasfsdafdsafsasfasf</p>');
+INSERT INTO `article_contents` VALUES ('5', '9', null, '<p>fasfsdafdsafsasfasf</p>');
+INSERT INTO `article_contents` VALUES ('6', '9', null, '<p>fasfsdafdsafsasfasf</p>');
+INSERT INTO `article_contents` VALUES ('7', '9', null, '<p>fasfsdafdsafsasfasf</p>');
+INSERT INTO `article_contents` VALUES ('8', '9', null, '<p>fasfsdafdsafsasfasf</p>');
+INSERT INTO `article_contents` VALUES ('9', '9', null, '<p>fasfsdafdsafsasfasf</p>');
 
 -- ----------------------------
 -- Table structure for article_types
@@ -157,7 +157,7 @@ CREATE TABLE `systems` (
 -- ----------------------------
 -- Records of systems
 -- ----------------------------
-INSERT INTO `systems` VALUES ('1', null, '0612_1592817870091_9,0612_1592817870092_1,0612_1593244369486_5', '2020-06-22 17:04:53', '2020-06-27 18:24:48');
+INSERT INTO `systems` VALUES ('1', '9', '0612_1592817870091_9,0612_1592817870092_1', '2020-06-22 17:04:53', '2020-06-28 18:01:53');
 
 -- ----------------------------
 -- Table structure for users
@@ -179,4 +179,4 @@ CREATE TABLE `users` (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', '123456', '1c6a47df3c59184b447411d3764d9e56', '2', '[::1]:59577', '2020-06-27 17:27:45', '2020-06-23 15:17:15', '2020-06-27 17:27:45', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiIxMjM0NTYiLCJsb2dpbl9pcCI6Ils6OjFdOjU5NTc3IiwiZXhwIjoxNTkzMjUzNjY0LCJpYXQiOjE1OTMyNTAwNjR9.gtbJk5nFH4G3VGNI7ijmmucCYU0jmHYbd156oRB-peQ');
+INSERT INTO `users` VALUES ('1', '123456', '1c6a47df3c59184b447411d3764d9e56', '2', '[::1]:58609', '2020-06-28 16:47:37', '2020-06-23 15:17:15', '2020-06-28 16:47:37', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiIxMjM0NTYiLCJsb2dpbl9pcCI6Ils6OjFdOjU4NjA5IiwiZXhwIjoxNTkzMzM3NjU3LCJpYXQiOjE1OTMzMzQwNTd9.5HylGMWt3gHW69rYXxZki1tRx2zgEZcxDNF7Kaz13F0');

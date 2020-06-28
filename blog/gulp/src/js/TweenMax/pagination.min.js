@@ -1,6 +1,6 @@
 var Pagination={showPageCount:7,init:function(obj,callback,topFlag){this.bindListener(obj,callback,topFlag);},createHtml:function(pageIndex,recordCount,pageSize){var pageCount=Math.ceil(recordCount/pageSize);var showPageCount=this.showPageCount;var MaxCount=10000000000;var HalfPageCount=(showPageCount+1)/2;var html=[];if(pageCount>MaxCount){pageCount=MaxCount;}
         if(pageIndex>pageCount-1){pageIndex=pageCount-1;}
-        html.push("<span class=\"total\">共"+recordCount+"条</span>");if(pageIndex>0){html.push("<span class=\"previous\"><a href=\"javascript:;\" class=\"iconfont icon-xiala\" page= "+(pageIndex-1)+" data-rec=\"上一页\"></a></span>");}
+        html.push("<span class=\"total\">共"+recordCount+"条</span>");if(pageIndex>0){html.push("<span class=\"previous\"><a href=\"javascript:;\" page= "+(pageIndex-1)+" data-rec=\"上一页\"></a></span>");}
         else{html.push("<span class=\"disable previous\"></span>");}
         if(pageCount<=showPageCount){for(var i=0;i<pageCount;i++){if(pageIndex==i){html.push("<span class=\"current num\">"+(i+1)+"</span>");}
         else{html.push("<span class=\"num\"><a href=\"javascript:;\"  page="+i+">"+(i+1)+"</a></span>");}}}
@@ -12,7 +12,7 @@ var Pagination={showPageCount:7,init:function(obj,callback,topFlag){this.bindLis
         else{html.push("<span class=\"num\"><a href=\"javascript:;\" page=0>"+1+"</a></span>");html.push("<span class=\"dots\">...</span>");for(var i=pageIndex-HalfPageCount/2;i<=pageIndex+HalfPageCount/2;i++){if(pageIndex==i){html.push("<span class=\"current num\">"+(i+1)+"</span>");}
         else{html.push("<span class=\"num\"><a href=\"javascript:;\" page="+i+">"+(i+1)+"</a></span>");}}
             html.push("<span class=\"dots\">...</span>");html.push("<span class=\"num\"><a href=\"javascript:;\" page ="+(pageCount-1)+">"+pageCount+"</a></span>");}
-        if(pageIndex<pageCount-1){html.push("<span class=\"next\"><a href=\"javascript:;\" class=\"iconfont icon-xiala-copy\" page="+(pageIndex+1)+" data-rec=\"下一页\"></a></span>");}
+        if(pageIndex<pageCount-1){html.push("<span class=\"next\"><a href=\"javascript:;\" page="+(pageIndex+1)+" data-rec=\"下一页\"></a></span>");}
         else{html.push("<span class=\"disable next\"></span>");}
         html.push("<span class=\"total total_page\">共"+pageCount+"页</span>");html.push("<span class=\"page_jump\">到</span><input id='pageInput' class='pageInput' oldpage='' maxlength='"+pageCount+"' type='text' ><span class=\"page_jump\">页</span><button type='button' id='pagebtn' class='pagebtn'>确定</button>");return html.join("");},bindListener:function(obj,callback,topFlag){var topFlag=topFlag||true;obj.on("click","a",function(){if(typeof callback==="function"){var index=$(this).attr("page");callback(parseInt(index));}
         if(topFlag){$(window).scrollTop(0);}
