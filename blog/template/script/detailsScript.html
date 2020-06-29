@@ -25,9 +25,14 @@
     var editor, pathStr = '/static/assets/editor.md/lib/';
     // editor = editormd("article-content",  {
     //     path: pathStr,
-    //     width: "90%"
+    //     width: "90%",
+    //     saveHTMLToTextarea: true,
+    //     htmlDecode : "style,script,iframe|on*",
+    //     toolbar: false,
+    //     previewCodeHighlight: false
     // });
-
+    //
+    // editor.previewing()
     editormd.markdownToHTML("article-content", {
         htmlDecode      : "style,script,iframe",
         emoji           : false,
@@ -37,19 +42,12 @@
         sequenceDiagram : false,
         tocm            : true,
     });
-</script>
-{{/*
-<script>
-    $(function () {
-        editormd.markdownToHTML("article-content", {
-            htmlDecode      : "style,script,iframe",
-            emoji           : false,
-            taskList        : true,
-            tex             : true,
-            flowChart       : false,
-            sequenceDiagram : false,
-            tocm            : true,
-            tocContainer    : "#custom-toc-container",
+
+
+    //富文本转义html
+    function html2Escape(str){
+        return str.replace(/[<>&"]/g, function (c) {
+            return { '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c];
         });
-    })
-</script>*/}}
+    }
+</script>

@@ -76,3 +76,42 @@ SELECT articles.*,IFNULL(systems.top_id,0) FROM articles LEFT JOIN systems ON ar
 replace into 针对于唯一数据的修改
 golang flag包
 ```
+
+
+# 转义
+```js
+
+//js
+//富文本反转义html
+function escape2Html(str){
+    var arrEntities = { 'lt': '<', 'gt': '>', 'nbsp': ' ', 'amp': '&', 'quot': '"' };
+	return str.replace(/&(lt|gt|nbsp|amp|quot);/ig, function (all, t) {
+		return arrEntities[t];
+	});
+}
+ 
+//富文本转义html
+function html2Escape(str){
+    return str.replace(/[<>&"]/g, function (c) {
+		return { '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c];
+	});
+}
+ 
+ 
+//vue
+//富文本反转义html
+export const escape2Html = (str) => {
+	var arrEntities = { 'lt': '<', 'gt': '>', 'nbsp': ' ', 'amp': '&', 'quot': '"' };
+	return str.replace(/&(lt|gt|nbsp|amp|quot);/ig, function (all, t) {
+		return arrEntities[t];
+	});
+}
+ 
+//富文本转义html
+export const html2Escape = (str) => {
+	return sHtml.replace(/[<>&"]/g, function (c) {
+		return { '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c];
+	});
+}
+
+```

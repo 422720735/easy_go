@@ -226,8 +226,13 @@ function saveArticle(data) {
         method: data.id ? 'Put' : 'POST',
         success: function (res) {
             if (res.code === Ok) {
-                window.message.set(res)
-                window.location.href = "/article/list?page=1"
+                if (data.id) {
+                    window.message.set(res)
+                    window.location.reload()
+                } else {
+                    window.message.set(res)
+                    window.location.href = "/article/list?page=1"
+                }
             } else {
                 window.message.error(res)
             }

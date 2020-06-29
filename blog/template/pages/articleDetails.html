@@ -28,8 +28,21 @@
 
 
         <article class="article-body" id="article-content">
-            <textarea id="articleContent" name="content" style="display:none;">{{.details.Content}}</textarea>
+            <textarea id="articleContent" name="content" style="display:none;">html2Escape({{.details.Content}})</textarea>
         </article>
+
+
+        <div>
+            {{.details.Content}}
+        </div>
+        <script>
+
+            function html2Escape(str){
+                return str.replace(/[<>&"]/g, function (c) {
+                    return { '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c];
+                });
+            }
+        </script>
 
 
         <div class="article-share">
