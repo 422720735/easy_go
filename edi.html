@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 引入css文件 -->
+    <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css" rel="stylesheet">
+
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+</head>
+<body>
+<!-- 创建工具栏组件 -->
+<div id="toolbar">
+    <button class="ql-bold">Bold</button>
+    <button class="ql-italic">Italic</button>
+</div>
+
+<!-- 自定义编辑器工具栏 -->
+<div id="toolbar">
+    <button class="ql-bold">Bold</button>
+    <button class="ql-italic">Italic</button>
+</div>
+
+<!-- 创建编辑容器 -->
+<div id="editor">
+    <p>Hello World!</p>
+</div>
+</body>
+
+<!-- 引入js文件 -->
+<script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+
+<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
+<!-- 初始化编辑器，snow主题 -->
+<script>
+    var toolbarOptions = [
+        ['bold', 'italic', 'underline', 'strike'],        // 切换按钮
+        ['blockquote', 'code-block'],Hello World!
+
+        [{ 'header': 1 }, { 'header': 2 }],               // 用户自定义按钮值
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        [{ 'script': 'sub'}, { 'script': 'super' }],      // 上标/下标
+        [{ 'indent': '-1'}, { 'indent': '+1' }],          // 减少缩进/缩进
+        [{ 'direction': 'rtl' }],                         // 文本下划线
+
+        [{ 'size': ['small', false, 'large', 'huge'] }],  // 用户自定义下拉
+        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+        [{ 'color': [] }, { 'background': [] }],          // 主题默认下拉，使用主题提供的值
+        [{ 'font': [] }],
+        [{ 'align': [] }],
+
+        ['clean']                                         // 清除格式
+    ];
+    var editor = new Quill('#editor', {
+        modules: { toolbar: toolbarOptions },
+        theme: 'snow'
+    });
+</script>
+</html>

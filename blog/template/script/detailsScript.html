@@ -1,7 +1,4 @@
 <script src="/static/js/details.min.js"></script>
-<!--代码高亮-->
-<script src="/static/js/prism.min.js"></script>
-
 <script>
     /*nav的位移 + 用文章title替换。*/
     $(window).scroll(() => {
@@ -18,3 +15,41 @@
     })
 </script>
 
+
+<script src="/static/assets/editor.md/examples/js/jquery.min.js"></script>
+<script src="/static/assets/editor.md/editormd.js"></script>
+<script src="/static/assets/editor.md/lib/marked.min.js"></script>
+
+
+<script>
+    var editor, pathStr = '/static/assets/editor.md/lib/';
+    // editor = editormd("article-content",  {
+    //     path: pathStr,
+    //     width: "90%"
+    // });
+
+    editormd.markdownToHTML("article-content", {
+        htmlDecode      : "style,script,iframe",
+        emoji           : false,
+        taskList        : true,
+        tex             : true,
+        flowChart       : false,
+        sequenceDiagram : false,
+        tocm            : true,
+    });
+</script>
+{{/*
+<script>
+    $(function () {
+        editormd.markdownToHTML("article-content", {
+            htmlDecode      : "style,script,iframe",
+            emoji           : false,
+            taskList        : true,
+            tex             : true,
+            flowChart       : false,
+            sequenceDiagram : false,
+            tocm            : true,
+            tocContainer    : "#custom-toc-container",
+        });
+    })
+</script>*/}}

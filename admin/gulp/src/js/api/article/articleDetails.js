@@ -227,7 +227,7 @@ function saveArticle(data) {
         success: function (res) {
             if (res.code === Ok) {
                 window.message.set(res)
-                window.location.href = "list?page=1"
+                window.location.href = "/article/list?page=1"
             } else {
                 window.message.error(res)
             }

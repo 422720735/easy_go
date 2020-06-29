@@ -63,6 +63,8 @@
 
 [关于 Xtiper](http://v.bootstrapmb.com/2019/10/ebc96463/#load)
 
+[Quill—心目中的最佳富文本编辑器](https://www.jianshu.com/p/b237372f15cc)
+
 ```  
 SELECT * FROM articles LEFT JOIN systems ON articles.id = systems.id ORDER BY systems.created_time desc,articles.hot desc
 
