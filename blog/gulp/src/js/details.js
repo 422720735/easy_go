@@ -72,7 +72,8 @@ function computeNavWidth() {
     if (navBar.length > 0) {
         const h = navBar[0].clientHeight
         document.querySelectorAll('nav.navbar.navbar-default')[0].style.height = h + 'px'
-        $('.article-h1 .articleTitle').css({'height': h + 'px', 'line-height': h + 'px'})
+        $('.article-h1 .articleTitle').css({'height': h + 'px'})
+        // $('.article-h1 .articleTitle').css({'height': h + 'px', 'line-height': h + 'px'})
 
         const navHeight = document.querySelectorAll('nav.navbar.bootsnav')[0].clientHeight;
         const marginBottom = parseInt($('nav.navbar.bootsnav').css('marginBottom'))

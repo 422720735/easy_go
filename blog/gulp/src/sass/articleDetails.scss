@@ -117,6 +117,9 @@ nav.navbar.bootsnav {
   transform: translateY(-200%);
   transition: transform .3s cubic-bezier(.645,.045,.355,1);
   .articleTitle {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
     margin: 0 auto;
     padding-left: 20px;
     max-width: 1200px;
