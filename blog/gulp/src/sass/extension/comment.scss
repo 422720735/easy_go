@@ -5,7 +5,9 @@
 .commentbox {
   width: 100%;
   margin: 20px auto;
-
+  #openFace {
+    position: static;
+  }
 }
 
 .mytextarea {
