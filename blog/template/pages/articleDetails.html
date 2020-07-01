@@ -13,37 +13,18 @@
                 <span class="item post-views">阅读({{.details.View}})</span>
             </div>
         </header>
+        {{if IsSplit $.details.Tags}}
         <div class="article-tags">
             标签：
-            <a href="" class="tag">vue</a>
-
-            <a href="" class="tag">nvm</a>
-
-            <a href="" class="tag">node</a>
-
-            <a href="" class="tag">npm</a>
-
-            <a href="" class="tag">cnpm</a>
+            {{range $i, $value := TagSplit $.details.Tags}}
+                <a href="javascript: void(0);" class="tag {{ClassName $i}}">{{$value}}</a>
+            {{end}}
         </div>
-
+        {{end}}
 
         <article class="article-body" id="article-content">
-            <textarea id="articleContent" name="content" style="display:none;">html2Escape({{.details.Content}})</textarea>
+            <textarea id="articleContent" name="content" style="display:none;">{{.details.Content}}</textarea>
         </article>
-
-
-        <div>
-            {{.details.Content}}
-        </div>
-        <script>
-
-            function html2Escape(str){
-                return str.replace(/[<>&"]/g, function (c) {
-                    return { '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c];
-                });
-            }
-        </script>
-
 
         <div class="article-share">
             <a href="javascript:;" class="like-btn">

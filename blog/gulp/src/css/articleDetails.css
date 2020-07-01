@@ -2,6 +2,57 @@
 /**
 该文件是文章详情文章内容部分的css
 */
+.tags-list .tag {
+  display: inline-block;
+  padding: 3px 8px;
+  margin: 2px;
+  border-radius: 8px;
+  font-size: 12px; }
+  .tags-list .tag.tag_1 {
+    background-color: #727577; }
+  .tags-list .tag.tag_2 {
+    background-color: #a77676; }
+  .tags-list .tag.tag_3 {
+    background-color: #5d5252; }
+  .tags-list .tag.tag_4 {
+    background-color: #5a5a7d; }
+  .tags-list .tag.tag_5 {
+    background-color: #bf8835; }
+  .tags-list .tag.tag_6 {
+    background-color: #929266; }
+  .tags-list .tag:nth-of-type(2) {
+    background-color: #a77676; }
+  .tags-list .tag a {
+    color: #f1f1f1;
+    text-decoration: none; }
+    .tags-list .tag a:hover, .tags-list .tag a:focus {
+      outline: none; }
+
+.article-tags {
+  text-align: center;
+  padding: 0 23px 17px 23px; }
+  .article-tags a {
+    padding: 3px 8px;
+    margin: 2px;
+    border-radius: 8px;
+    font-size: 12px; }
+    .article-tags a:last-child {
+      margin: 0; }
+    .article-tags a:hover {
+      opacity: 1; }
+    .article-tags a.tag_1 {
+      background-color: #727577; }
+    .article-tags a.tag_2 {
+      background-color: #a77676; }
+    .article-tags a.tag_3 {
+      background-color: #5d5252; }
+    .article-tags a.tag_4 {
+      background-color: #5a5a7d; }
+    .article-tags a.tag_5 {
+      background-color: #bf8835; }
+    .article-tags a.tag_6 {
+      background-color: #929266; }
+
 .article-content .article-header {
   padding: 25px 0;
   margin-bottom: 20px; }
@@ -19,33 +70,6 @@
       margin-right: 20px; }
       .article-content .article-header .article-meta span:last-child {
         margin-right: 0; }
-
-.article-content .article-tags {
-  text-align: center;
-  padding: 0 23px 17px 23px; }
-  .article-content .article-tags a {
-    display: inline-block;
-    padding: 4px 7px 3px;
-    margin: 0 7px 4px 0;
-    font-size: 12px;
-    opacity: .85;
-    cursor: pointer; }
-    .article-content .article-tags a:last-child {
-      margin: 0; }
-    .article-content .article-tags a:hover {
-      opacity: 1; }
-    .article-content .article-tags a:nth-child(6n + 1) {
-      background: #727577; }
-    .article-content .article-tags a:nth-child(6n + 2) {
-      background: #a77676; }
-    .article-content .article-tags a:nth-child(6n + 3) {
-      background: #5d5252; }
-    .article-content .article-tags a:nth-child(6n + 4) {
-      background: #5a5a7d; }
-    .article-content .article-tags a:nth-child(6n + 5) {
-      background: #bf8835; }
-    .article-content .article-tags a:nth-child(6n + 6) {
-      background: #929266; }
 
 .article-content .article-body {
   margin-top: 30px; }

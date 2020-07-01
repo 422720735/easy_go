@@ -1,25 +1,42 @@
 {{/*这是原来icon的形式，现在暂时放弃这种方式*/}}
 {{define "articleIcon"}}
-<ul class="meta">
-    <li>
-        <i class="iconfont icon-zuozhe"></i>
-        <span>bob</span>
-    </li>
-    <li>
-        <i class="iconfont icon-reading"></i>
-        <span>21</span>
-    </li>
-    <li>
-        <i class="iconfont icon-comments1"></i>
-        <span>3</span>
-    </li>
-    <li>
-        <i class="iconfont icon-zan-"></i>
-        <span>4</span>
-    </li>
-    <li>
-        <i class="iconfont icon-time1"></i>
-        <span>56</span>
-    </li>
-</ul>
+    <ul class="meta">
+        <li>
+            <i class="iconfont icon-zuozhe"></i>
+            <span>bob</span>
+        </li>
+        <li>
+            <i class="iconfont icon-reading"></i>
+            <span>21</span>
+        </li>
+        <li>
+            <i class="iconfont icon-comments1"></i>
+            <span>3</span>
+        </li>
+        <li>
+            <i class="iconfont icon-zan-"></i>
+            <span>4</span>
+        </li>
+        <li>
+            <i class="iconfont icon-time1"></i>
+            <span>56</span>
+        </li>
+    </ul>
+{{end}}
+
+{{define "ArticlePage"}}
+    <div class="ht-page">
+        <span class="total">共1000条</span>
+        <span class="disable previous"></span>
+        <span class="current num">1</span>
+        <span class="num"><a href="javascript:;" page="1">2</a></span>
+        <span class="num"><a href="javascript:;" page="2">3</a></span>
+        <span class="num"><a href="javascript:;" page="3">4</a></span>
+        <span class="num"><a href="javascript:;" page="4">5</a></span>
+        <span class="num"><a href="javascript:;" page="5">6</a></span>
+        <span class="dots">...</span><span class="num"><a href="javascript:;" page="99">100</a></span>
+        <span class="next"><a href="javascript:;" page="1" data-rec="下一页"></a></span><span class="total total_page">共100页</span>
+        <span class="page_jump">到</span><input id="pageInput" class="pageInput" oldpage="" maxlength="100" type="text"><span class="page_jump">页</span>
+        <button type="button" id="pagebtn" class="pagebtn">确定</button>
+    </div>
 {{end}}

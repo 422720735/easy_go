@@ -1,0 +1,59 @@
+@import "./themeColor";
+
+
+.tags-list {
+  .tag {
+    display: inline-block;
+    padding: 3px 8px;
+    margin: 2px;
+    border-radius: 8px;
+    font-size: 12px;
+    @each $c in $liColor {
+      $i: index($liColor, $c);
+      &.tag_#{$i} {
+        background-color: $c;
+      }
+    }
+
+    &:nth-of-type(2) {
+      background-color: #a77676;
+    }
+
+    a {
+      color: #f1f1f1;
+      text-decoration: none;
+
+      &:hover, &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.article-tags {
+  text-align: center;
+  padding: 0 23px 17px 23px;
+
+  a {
+    padding: 3px 8px;
+    margin: 2px;
+    border-radius: 8px;
+    font-size: 12px;
+
+    &:last-child {
+      margin: 0;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+
+    @each $c in $liColor {
+      $i: index($liColor, $c);
+      &.tag_#{$i} {
+        background-color: $c;
+      }
+    }
+
+  }
+}
