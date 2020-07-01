@@ -1,0 +1,36 @@
+<script src="/static/assets/editor.md/examples/js/jquery.min.js"></script><script src="/static/assets/editor.md/editormd.js"></script><script>// markdown
+    var editor, pathStr = '/static/assets/editor.md/lib/';
+    editor = editormd("editor-markdown", {
+        width: "100%",
+        height: 720,
+        placeholder: '请输入内容...',
+        // Editor.md theme, default or dark, change at v1.5.0
+        // You can also custom css class .editormd-preview-theme-xxxx
+        theme: (localStorage.theme) ? localStorage.theme : "default",
+
+        // Preview container theme, added v1.5.0
+        // You can also custom css class .editormd-preview-theme-xxxx
+        previewTheme: (localStorage.previewTheme) ? localStorage.previewTheme : "dark",
+
+        // Added @v1.5.0 & after version is CodeMirror (editor area) theme
+        editorTheme: (localStorage.editorTheme) ? localStorage.editorTheme : "blackboard",
+        path: pathStr,
+        onfullscreen: function () {
+            $('.left-side-menu,.article_editor_options,.article_editor_savebar,.footer').hide()
+            // console.log("onfullscreen =>", this, this.id, this.settings);
+        },
+
+        onfullscreenExit: function () {
+            $('.left-side-menu,.article_editor_options,.article_editor_savebar,.footer').show()
+        },
+        onchange: _.debounce(function () {
+            const n = $('#articleContent').val().length
+            window.content = $('#articleContent').val()
+            $('.article_editor_charCount').text(n ? n : 0)
+        }, 200),
+        onload : _.debounce(function () {
+            this.setMarkdown(window.content);
+            window.content = null
+        }, 200)
+    });
+    editor.setToolbarAutoFixed(false);</script>{{template "articeCommon" .}}
