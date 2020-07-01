@@ -12,5 +12,5 @@ func init() {
 
 	beego.Router("/login", &controllers.LoginController{})
 
-	beego.Router("/test", &controllers.TestControllers{}, "get:Get2")
+	beego.Router("/test", &controllers.TestControllers{}, "get:Get3")
 }

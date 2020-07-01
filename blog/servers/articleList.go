@@ -37,7 +37,7 @@ func SelectArticleFilterLimit(menuId, articleTypeId int, title string, page, siz
 	total := article.Scan(&m).RowsAffected
 
 	// 排序按照置顶,之后热门、推荐、普通
-	article = article.Order("systems.created_time desc,articles.hot desc, articles.recommend desc")
+	article = article.Order("systems.created_time desc,articles.hot desc, articles.recommend desc, articles.sort desc")
 	err := article.Limit(size).Offset((page - 1) * size).Find(&m).Error
 
 	if err != nil {

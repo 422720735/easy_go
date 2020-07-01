@@ -35,19 +35,24 @@
             </a>
         </div>
 
+
         <div class="prevNext clearfix">
             <div class="prev">
                 <a href="">
                     <span>上一篇：</span>
                     <br class="br" />
-                    <span class="prevArticle">使用docker一键启动jackblog的所有版本使用docker一键启动jackblog的所有版本使用docker一键启动jackblog的所有版本使用docker一键启动jackblog的所有版本</span>
+                    {{if ne .details.Prev.Id 0}}
+                    <a href="/article/{{.details.Prev.Id}}" class="prevArticle">{{.details.Prev.Title}}</a>
+                    {{end}}
                 </a>
             </div>
             <div class="next">
                 <a href="">
                     <span>下一篇：</span>
                     <br class="br" />
-                    <span class="nextArticle">使用docker一键启动jackblog的所有版本</span>
+                    {{if ne .details.Next.Id 0}}
+                    <a href="/article/{{.details.Next.Id}}" class="nextArticle">{{.details.Next.Title}}</a>
+                    {{end}}
                 </a>
             </div>
         </div>
