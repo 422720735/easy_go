@@ -13,4 +13,6 @@ func init() {
 	beego.Router("/login", &controllers.LoginController{})
 
 	beego.Router("/test", &controllers.TestControllers{}, "get:Get3")
+
+	beego.Router("/404", &controllers.ErrorController{}, "get:Error404")
 }

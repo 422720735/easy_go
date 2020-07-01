@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+<head id="par">
+    <meta charset='utf-8'>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="format-detection" content="telephone=yes" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <link href="http://www.jq22.com/demo/emoji201910092048/css/tools.css" rel="stylesheet" />
+    <link href="http://www.jq22.com/demo/emoji201910092048/css/emojibg.css" rel="stylesheet" />
+</head>
+<body>
+<div style="position:relative;width: 800px;">
+    <img src="emoji/icon.png" id="openFace" title="添加表情">
+    <textarea id="textarea" style="padding:5px;width: 100%;height:88px;"></textarea>
+</div>
+<div class="faceDivBox" style="width:800px;height:580px;display:none;">
+    <div class="faceDiv" style="height:580px;">
+        <section class="emoji-box"></section>
+        <div class="tabbox">
+            <section class="emoji-tab"></section>
+        </div>
+    </div>
+    <a class="closeFaceBox" href="javascript:void(0)">×</a>
+</div>
+</body>
+</html>
+<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="http://www.jq22.com/demo/emoji201910092048/js/emojisort.js"></script>
+<script type="text/javascript" src="http://www.jq22.com/demo/emoji201910092048/js/emoji.js"></script>
+<script>
+    $(document).ready(function(){
+        sdEditorEmoj.Init(emojiconfig);
+        sdEditorEmoj.setEmoji({type:'input',id:"textarea"});
+    })
+</script>

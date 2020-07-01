@@ -1,5 +1,6 @@
 @import "extension/articleEnlarge";
 @import "extension/articleSidebar";
+@import "extension/comment";
 
 @media (min-width: 1199px) {
   .main-box {
@@ -48,10 +49,11 @@ nav.navbar.bootsnav {
   max-width: 1200px;
   margin: 0 auto;
   .article-content {
-    padding: 0 20px;
     margin-right: 380px;
-    height: 1400px;
-    border-radius: 4px;
+    .editor,.comments {
+      padding: 0 20px;
+      border-radius: 4px;
+    }
   }
 
   // 侧边栏
@@ -87,7 +89,11 @@ nav.navbar.bootsnav {
 .day-mode {
   .article-content {
     background-color: #ffffff;
-    border: 1px solid #eaeaea;
+
+
+    .editor,.comments {
+      border: 1px solid #eaeaea;
+    }
   }
 
 }
@@ -95,7 +101,10 @@ nav.navbar.bootsnav {
 .night-mode {
   .article-content {
     background-color: #3f3f3f;
-    border: 1px solid #656565;
+
+    .editor,.comments {
+      border: 1px solid #656565;
+    }
   }
 }
 
@@ -128,6 +137,10 @@ nav.navbar.bootsnav {
 // 已废弃，现在通过js来位移nav的位置给文章title,暂定还是css改变。
 .article-h1.article-current {
   transform: translateY(-100%);
+}
+
+.comments {
+  margin-top: 30px;
 }
 
 a {

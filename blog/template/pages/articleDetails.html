@@ -1,65 +1,135 @@
 <div class="article-wrap">
     <div class="article-content">
-
-        <header class="article-header">
-            <h1 class="article-title">
-                <a href="">{{.details.Title}}</a>
-            </h1>
-            <div class="article-meta">
-                <span class="item">{{.details.CreatedTime.Format "2006-01-02 15:04:05"}}</span>
-                <span class="item">分类：
+        <div class="editor">
+            <header class="article-header">
+                <h1 class="article-title">
+                    <a href="">{{.details.Title}}</a>
+                </h1>
+                <div class="article-meta">
+                    <span class="item">{{.details.CreatedTime.Format "2006-01-02 15:04:05"}}</span>
+                    <span class="item">分类：
                     <a href="">html</a>
                 </span>
-                <span class="item post-views">阅读({{.details.View}})</span>
-            </div>
-        </header>
-        {{if IsSplit $.details.Tags}}
-        <div class="article-tags">
-            标签：
-            {{range $i, $value := TagSplit $.details.Tags}}
-                <a href="javascript: void(0);" class="tag {{ClassName $i}}">{{$value}}</a>
+                    <span class="item post-views">阅读({{.details.View}})</span>
+                </div>
+            </header>
+            {{if IsSplit $.details.Tags}}
+                <div class="article-tags">
+                    标签：
+                    {{range $i, $value := TagSplit $.details.Tags}}
+                        <a href="javascript: void(0);" class="tag {{ClassName $i}}">{{$value}}</a>
+                    {{end}}
+                </div>
             {{end}}
-        </div>
-        {{end}}
 
-        <article class="article-body" id="article-content">
-            <textarea id="articleContent" name="content" style="display:none;">{{.details.Content}}</textarea>
-        </article>
+            <article class="article-body" id="article-content">
+                <textarea id="articleContent" name="content" style="display:none;">{{.details.Content}}</textarea>
+            </article>
 
-        <div class="article-share">
-            <a href="javascript:;" class="like-btn">
+            <div class="article-share">
+                <a href="javascript:;" class="like-btn">
                 <span class="like-content">
                     <i class="iconfont icon-heart1"></i>&ensp;赞
                 </span>
-                <span class="like-count">5</span>
-            </a>
-        </div>
-
-
-        <div class="prevNext clearfix">
-            <div class="prev">
-                <a href="">
-                    <span>上一篇：</span>
-                    <br class="br" />
-                    {{if ne .details.Prev.Id 0}}
-                    <a href="/article/{{.details.Prev.Id}}" class="prevArticle">{{.details.Prev.Title}}</a>
-                    {{end}}
+                    <span class="like-count">5</span>
                 </a>
             </div>
-            <div class="next">
-                <a href="">
-                    <span>下一篇：</span>
-                    <br class="br" />
-                    {{if ne .details.Next.Id 0}}
-                    <a href="/article/{{.details.Next.Id}}" class="nextArticle">{{.details.Next.Title}}</a>
-                    {{end}}
-                </a>
+
+            <div class="prevNext clearfix">
+                <div class="prev">
+                    <a href="">
+                        <span>上一篇：</span>
+                        <br class="br"/>
+                        {{if ne .details.Prev.Id 0}}
+                            <a href="/article/{{.details.Prev.Id}}" class="prevArticle">{{.details.Prev.Title}}</a>
+                        {{end}}
+                    </a>
+                </div>
+                <div class="next">
+                    <a href="">
+                        <span>下一篇：</span>
+                        <br class="br"/>
+                        {{if ne .details.Next.Id 0}}
+                            <a href="/article/{{.details.Next.Id}}" class="nextArticle">{{.details.Next.Title}}</a>
+                        {{end}}
+                    </a>
+                </div>
             </div>
+
         </div>
 
         <div class="comments">
             评论暂时未做，要等到后期做后端添加，有可能用插件。
         </div>
+
+        <div class="commentbox">
+            <textarea cols="80" rows="50" placeholder="来说几句吧......" class="mytextarea" id="content"></textarea>
+            <div class="btn btn-info pull-right" id="comment">评论</div>
+        </div>
+
+        <div class="comment-list">
+            <div class="comment-info">
+                <header><img src="/static/images/img.jpg"></header>
+                <div class="comment-right"><h3>帅大叔</h3>
+                    <div class="comment-content-header"><span><i class="glyphicon glyphicon-time"></i>2017-10-17 11:42:53</span><span><i
+                                    class="glyphicon glyphicon-map-marker"></i>深圳</span></div>
+                    <p class="content">同学聚会，看到当年追我的屌丝开着宝马车带着他老婆来了，他老婆是我隔壁宿舍的同班同学，心里后悔极了。</p>
+                    <div class="comment-content-footer">
+                        <div class="row">
+                            <div class="col-md-10"><span><i class="glyphicon glyphicon-globe"></i> 谷歌</span></div>
+                            <div class="col-md-2"><span class="reply-btn">回复</span></div>
+                        </div>
+                    </div>
+                    <div class="reply-list"></div>
+                </div>
+            </div>
+
+            <div class="comment-info">
+                <header><img src="/static/images/img.jpg"></header>
+                <div class="comment-right"><h3>匿名</h3>
+                    <div class="comment-content-header"><span><i class="glyphicon glyphicon-time"></i>2017-10-17 11:42:53</span><span><i
+                                    class="glyphicon glyphicon-map-marker"></i>深圳</span></div>
+                    <p class="content">到菜市场买菜，看到一个孩子在看摊，我问：“一只鸡多少钱？” 那孩子回答：“23。” 我又问：“两只鸡多少钱？”
+                        孩子愣了一下，一时间没算过来，急中生智大吼一声：“一次只能买一只！”</p>
+                    <div class="comment-content-footer">
+                        <div class="row">
+                            <div class="col-md-10"><span><i class="glyphicon glyphicon-globe"></i> 谷歌</span></div>
+                            <div class="col-md-2"><span class="reply-btn">回复</span></div>
+                        </div>
+                    </div>
+                    <div class="reply-list">
+                        <div class="reply">
+                            <div><a href="javascript:void(0)" class="replyname">帅大叔</a>:<a
+                                        href="javascript:void(0)">@匿名</a><span>来啊，我们一起吃鸡</span></div>
+                            <p><span>2017-10-17 11:42:53</span> <span class="reply-list-btn">回复</span></p></div>
+                        <div class="reply">
+                            <div><a href="javascript:void(0)" class="replyname">匿名</a>:<a
+                                        href="javascript:void(0)">@帅大叔</a><span>测试吃鸡
+</span></div>
+                            <p><span>2020-07-01 18:03:24</span> <span class="reply-list-btn">回复</span></p></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-info">
+                <header><img src="/static/images/img.jpg"></header>
+                <div class="comment-right"><h3>帅大叔</h3>
+                    <div class="comment-content-header"><span><i class="glyphicon glyphicon-time"></i>2017-10-17 11:42:53</span><span><i
+                                    class="glyphicon glyphicon-map-marker"></i>深圳</span></div>
+                    <p class="content">同学聚会，看到当年追我的屌丝开着宝马车带着他老婆来了，他老婆是我隔壁宿舍的同班同学，心里后悔极了。</p>
+                    <div class="comment-content-footer">
+                        <div class="row">
+                            <div class="col-md-10"><span><i
+                                            class="glyphicon glyphicon-pushpin"></i> 来自:win10</span><span><i
+                                            class="glyphicon glyphicon-globe"></i> 谷歌</span></div>
+                            <div class="col-md-2"><span class="reply-btn">回复</span></div>
+                        </div>
+                    </div>
+                    <div class="reply-list"></div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <div class="sidebar">

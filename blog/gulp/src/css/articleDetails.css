@@ -231,6 +231,62 @@
       .night-mode .sidebar .widget ul li:hover a {
         color: #ffffff; }
 
+.container {
+  width: 1000px; }
+
+.commentbox {
+  width: 100%;
+  margin: 20px auto; }
+
+.mytextarea {
+  width: 100%;
+  overflow: auto;
+  word-break: break-all;
+  height: 100px;
+  color: #000;
+  font-size: 1em;
+  resize: none; }
+
+.comment-list {
+  width: 100%;
+  margin: 20px auto;
+  clear: both;
+  padding-top: 20px; }
+  .comment-list .comment-info {
+    position: relative;
+    margin-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc; }
+    .comment-list .comment-info header {
+      width: 10%;
+      position: absolute; }
+      .comment-list .comment-info header img {
+        width: 100%;
+        border-radius: 50%;
+        padding: 5px; }
+    .comment-list .comment-info .comment-right {
+      padding: 5px 0px 5px 11%; }
+      .comment-list .comment-info .comment-right h3 {
+        margin: 5px 0px; }
+      .comment-list .comment-info .comment-right .comment-content-header {
+        height: 25px; }
+      .comment-list .comment-info .comment-right .comment-content-header span, .comment-list .comment-info .comment-right .comment-content-footer span {
+        padding-right: 2em;
+        color: #aaa; }
+      .comment-list .comment-info .comment-right .reply-list {
+        border-left: 3px solid #ccc;
+        padding-left: 7px; }
+        .comment-list .comment-info .comment-right .reply-list .reply {
+          border-bottom: 1px dashed #ccc; }
+          .comment-list .comment-info .comment-right .reply-list .reply div span {
+            padding-left: 10px; }
+          .comment-list .comment-info .comment-right .reply-list .reply p span {
+            padding-right: 2em;
+            color: #aaa; }
+
+.comment-list .comment-info .comment-right .comment-content-header span, .comment-list .comment-info .comment-right .comment-content-footer span.reply-btn, .send, .reply-list-btn {
+  cursor: pointer; }
+
 @media (min-width: 1199px) {
   .main-box {
     padding-left: 45px; } }
@@ -266,10 +322,10 @@ nav.navbar.bootsnav {
   max-width: 1200px;
   margin: 0 auto; }
   .article-wrap .article-content {
-    padding: 0 20px;
-    margin-right: 380px;
-    height: 1400px;
-    border-radius: 4px; }
+    margin-right: 380px; }
+    .article-wrap .article-content .editor, .article-wrap .article-content .comments {
+      padding: 0 20px;
+      border-radius: 4px; }
   .article-wrap .sidebar {
     position: fixed;
     width: 360px;
@@ -288,12 +344,14 @@ nav.navbar.bootsnav {
     display: none; } }
 
 .day-mode .article-content {
-  background-color: #ffffff;
-  border: 1px solid #eaeaea; }
+  background-color: #ffffff; }
+  .day-mode .article-content .editor, .day-mode .article-content .comments {
+    border: 1px solid #eaeaea; }
 
 .night-mode .article-content {
-  background-color: #3f3f3f;
-  border: 1px solid #656565; }
+  background-color: #3f3f3f; }
+  .night-mode .article-content .editor, .night-mode .article-content .comments {
+    border: 1px solid #656565; }
 
 .article-h1 {
   position: relative;
@@ -319,6 +377,9 @@ nav.navbar.bootsnav {
 
 .article-h1.article-current {
   transform: translateY(-100%); }
+
+.comments {
+  margin-top: 30px; }
 
 a {
   text-decoration: none; }
