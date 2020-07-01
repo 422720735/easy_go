@@ -48,20 +48,36 @@
                     <p class="text">{{$v.Desc}}</p>
                 </div>
                 {{if IsSplit $v.Tags}}
-                <ul class="tags-list">
-                    {{range $i, $value := TagSplit $v.Tags}}
-                    <li class="tag {{ClassName $i}}" title="{{$value}}">
-                        <a href="javascript: void(0);">
-                            {{$value}}
-                        </a>
-                    </li>
-                    {{end}}
-                </ul>
+                    <ul class="tags-list">
+                        {{range $i, $value := TagSplit $v.Tags}}
+                            <li class="tag {{ClassName $i}}" title="{{$value}}">
+                                <a href="javascript: void(0);">
+                                    {{$value}}
+                                </a>
+                            </li>
+                        {{end}}
+                    </ul>
                 {{end}}
             </div>
         </div>
     {{end}}
     <!--分页器-->
-    <div class="ht-page"></div>
+    <div class="ht-page"><span class="total">共10000条</span><span class="previous"><a href="javascript:;"
+                                                                                     class="iconfont icon-xiala"
+                                                                                     page="2" data-rec="上一页"></a></span><span
+                class="num"><a href="javascript:;" page="0">1</a></span><span class="num"><a href="javascript:;"
+                                                                                             page="1">2</a></span><span
+                class="num"><a href="javascript:;" page="2">3</a></span><span class="current num">4</span><span
+                class="num"><a href="javascript:;" page="4">5</a></span><span class="num"><a href="javascript:;"
+                                                                                             page="5">6</a></span><span
+                class="dots">...</span><span class="num"><a href="javascript:;" page="999">1000</a></span><span
+                class="next"><a href="javascript:;" class="iconfont icon-xiala-copy" page="4" data-rec="下一页"></a></span><span
+                class="total total_page">共1000页</span><span class="page_jump">到</span><input id="pageInput"
+                                                                                             class="pageInput"
+                                                                                             oldpage="" maxlength="1000"
+                                                                                             type="text"><span
+                class="page_jump">页</span>
+        <button type="button" id="pagebtn" class="pagebtn">确定</button>
+    </div>
 </section>
 
