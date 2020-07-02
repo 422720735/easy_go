@@ -39,7 +39,7 @@ func (c *OAuthControllers) Get() {
 	}
 
 	// 我们把token也记录起来
-	userInfo["oauth_token"] = token.AccessToken
+	userInfo["access_token"] = token.AccessToken
 	c.Success(userInfo)
 }
 
