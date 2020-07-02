@@ -5,7 +5,6 @@ import (
 	"easy_go/common"
 	"easy_go/middleware"
 	"fmt"
-	"github.com/astaxie/beego"
 	"github.com/dchest/captcha"
 	"net/http"
 	"path"
