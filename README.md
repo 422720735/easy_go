@@ -115,3 +115,13 @@ export const html2Escape = (str) => {
 }
 
 ```
+
+
+```  
+mysql 有中文全文检索
+你做博客的搜索会用到
+自己的可以用mysql
+企业级的，你要用elastic
+没事，连表就行
+连表inner join 是首选
+```
