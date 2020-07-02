@@ -44,3 +44,5 @@
 2020/07/02 10:01:27 article.go:77: info 下页查询失败record not found
 2020/07/02 10:01:41 article.go:77: info 下页查询失败record not found
 2020/07/02 10:01:42 article.go:77: info 下页查询失败record not found
+2020/07/02 23:28:12 OAuth.go:36: error 获取github用户信息失败Get https://api.github.com/user: dial tcp 13.250.168.23:443: connect: connection refused
+2020/07/02 23:28:25 OAuth.go:36: error 获取github用户信息失败Get https://api.github.com/user: dial tcp 13.250.168.23:443: connect: connection refused

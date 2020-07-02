@@ -115,7 +115,6 @@ type Token struct {
 
 // 获取用户信息
 func GetUserInfo(token *Token) (map[string]interface{}, error) {
-
 	// 形成请求
 	var userInfoUrl = "https://api.github.com/user"	// github用户信息获取接口
 	var req *http.Request

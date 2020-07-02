@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"easy_go/blog/servers"
+	"easy_go/lib"
 	"github.com/astaxie/beego"
 )
 
@@ -22,6 +23,11 @@ func (c *LoginController) Get() {
 	// 登录页js
 	c.LayoutSections["Script"] = "script/loginScript.html"
 
+	ClientId := lib.Conf.Read("github", "ClientId")
+	ClientSecret := lib.Conf.Read("github", "ClientSecret")
+
 	menu, _ := servers.SelectArticleTypeMenuName()
 	c.Data["menu"] = menu
+	c.Data["clientId"] = ClientId
+	c.Data["clientSecret"] = ClientSecret
 }
