@@ -259,7 +259,7 @@
                                     </a>
                                 </li>
                                 {{if gt $.articleList.current 5}}
-                                    <li class="page-item"><a class="page-link" href="javascript: void(0);">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
                                 {{end}}
                                 {{ range $k,$v := .articleList.pages }}
                                     {{ if and ( gt $.articleList.current 5 ) (eq $k 0) }}

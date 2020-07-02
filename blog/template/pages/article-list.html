@@ -48,50 +48,43 @@
                     <p class="text">{{$v.Desc}}</p>
                 </div>
                 {{if IsSplit $v.Tags}}
-                <ul class="tags-list">
-                    {{range $i, $value := TagSplit $v.Tags}}
-                    <li class="tag {{ClassName $i}}" title="{{$value}}">
-                        <a href="javascript: void(0);">
-                            {{$value}}
-                        </a>
-                    </li>
-                    {{end}}
-                </ul>
+                    <ul class="tags-list">
+                        {{range $i, $value := TagSplit $v.Tags}}
+                            <li class="tag {{ClassName $i}}" title="{{$value}}">
+                                <a href="javascript: void(0);">
+                                    {{$value}}
+                                </a>
+                            </li>
+                        {{end}}
+                    </ul>
                 {{end}}
             </div>
         </div>
     {{end}}
     <!--分页器-->
-    <div class="ht-page"></div>
+    <form class="ht-page" method="get" action="/">
+        <span class="total">共{{.articleList.total}}条</span>
+        <span class="previous"><a
+                    href="{{ if eq $.articleList.current 1}}javascript:;{{ else }}?page={{.articleList.prepage}}{{ end }}"
+                    class="iconfont icon-xiala" data-rec="上一页"></a></span>
+        {{if gt $.articleList.current 5}}
+            <span class="num"><a href="?page=1">1</a></span>
+        {{end}}
+        {{ range $k,$v := .articleList.pages }}
+            {{ if and ( gt $.articleList.current 5 ) (eq $k 0) }}
+                <span class="dots">...</span>
+            {{else}}
+                {{ if eq $v $.articleList.current }}
+                    <span class="current num">{{ $v }}</span>
+                {{ else }}
+                    <span class="num"><a href="?page={{$v}}">{{$v}}</a></span>
+                {{end}}
+            {{end}}
+        {{end}}
+        <span class="next"><a href="{{ if  eq $.articleList.current .articleList.totalpages}}javascript:;{{ else }}?page={{.articleList.nextpage}}{{ end }}" class="iconfont icon-xiala-copy" data-rec="下一页"></a></span>
+        <span class="total total_page">共{{.articleList.totalpages}}页</span>
+        <span class="page_jump">到</span><input id="pageInput" class="pageInput" name="page" oldpage="" maxlength="{{.articleList.total}}" type="text"><span class="page_jump">页</span>
+        <button type="submit" id="pagebtn" class="pagebtn">确定</button>
+    </form>
 </section>
-<!--分页器-->
-<script src="/static/js/TweenMax/pagination.min.js"></script>
-<script typeof="text/javascript">
-    /*
-     * 定义回掉函数
-     * @param  number:跳转页
-     * */
-    function pageChange(i) {
-        console.log(i)
-        {{/*Pagination.Page($(".ht-page"), i, {{.articleList.total}}, {{.articleList.size}});*/}}
-        Pagination.Page($(".ht-page"), i, 1000, 10);
-    }
-
-    /*
-     * 初始化插件
-     * @param  object:翻页容器对象
-     * @param  function:回调函数
-     * */
-    Pagination.init($(".ht-page"), pageChange);
-
-    /*
-    * 首次调用
-    * @param  object:翻页容器对象
-    * @param  number:当前页
-    * @param  number:总页数
-    * @param  number:每页数据条数
-    * */
-    {{/*Pagination.Page($(".ht-page"), {{.articleList.current}}-1, {{.articleList.total}}, {{.articleList.size}});*/}}
-    Pagination.Page($(".ht-page"), 3, 1000, 10);
-</script>
 

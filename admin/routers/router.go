@@ -60,7 +60,6 @@ func init() {
 func register() {
 	// 获取七牛云的token
 	beego.Router(Api + "/qn/token", &controllers.QiNiuController{}, "get:InsertToken")
-
 	// 导航菜单
 	beego.Router(Api + "/menuSetting/add", &controllers.MenuController{}, "post:HandleMenuAdd")
 	beego.Router(Api + "/menuSetting/move/*", &controllers.MenuController{},"get:HandMove_up_down")
@@ -89,8 +88,8 @@ func register() {
 
 	beego.Router("/test", &controllers.TestControllers{})
 }
+
 // 全局过滤方法。
-// https://www.kancloud.cn/hello123/beego/126127
 var FilterUser = func(ctx *context.Context) {
 	_, ok := ctx.Input.Session("userName").(string)
 	if !ok && (ctx.Request.RequestURI != "/login" || ctx.Request.RequestURI != "register") {

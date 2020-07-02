@@ -1,0 +1,83 @@
+/*表情包*/
+@import "../comment-emojibg";
+
+.container {
+  width: 1000px;
+}
+
+.commentbox {
+  width: 100%;
+  margin: 20px auto;
+  #openFace {
+    position: static;
+  }
+}
+
+.mytextarea {
+  width: 100%;
+  overflow: auto;
+  word-break: break-all;
+  height: 100px;
+  color: #000;
+  font-size: 1em;
+  resize: none;
+}
+
+.comment-list {
+  width: 100%;
+  margin: 20px auto;
+  clear: both;
+  padding: 20px 20px 0;
+
+  .comment-info {
+    position: relative;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    header {
+      width: 10%;
+      position: absolute;
+      img {
+        width: 100%;
+        border-radius: 50%;
+        padding: 5px;
+      }
+    }
+
+    .comment-right {
+      padding: 5px 0px 5px 11%;
+      h3 {
+        margin: 5px 0px;
+      }
+
+      .comment-content-header {
+        height: 25px;
+      }
+
+      .comment-content-header span,.comment-content-footer span {
+        padding-right: 2em;
+        color: #aaa;
+      }
+
+      .reply-list {
+        border-left: 3px solid #ccc;
+        padding-left: 7px;
+        .reply {
+          border-bottom: 1px dashed #ccc;
+          div span {
+            padding-left: 10px;
+          }
+          p span {
+            padding-right: 2em;
+            color: #aaa;
+          }
+        }
+      }
+
+    }
+
+  }
+}
+
+.comment-list .comment-info .comment-right .comment-content-header span, .comment-list .comment-info .comment-right .comment-content-footer span.reply-btn, .send, .reply-list-btn {
+  cursor: pointer;
+}

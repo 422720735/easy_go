@@ -14,25 +14,11 @@
         }
     })
 </script>
-
-
-<script src="/static/assets/editor.md/examples/js/jquery.min.js"></script>
-<script src="/static/assets/editor.md/editormd.js"></script>
+{{/*editormd*/}}
 <script src="/static/assets/editor.md/lib/marked.min.js"></script>
-
-
+<script src="/static/assets/editor.md/editormd.min.js"></script>
+<script src="/static/assets/editor.md/lib/prettify.min.js"></script>
 <script>
-    var editor, pathStr = '/static/assets/editor.md/lib/';
-    // editor = editormd("article-content",  {
-    //     path: pathStr,
-    //     width: "90%",
-    //     saveHTMLToTextarea: true,
-    //     htmlDecode : "style,script,iframe|on*",
-    //     toolbar: false,
-    //     previewCodeHighlight: false
-    // });
-    //
-    // editor.previewing()
     editormd.markdownToHTML("article-content", {
         htmlDecode      : "style,script,iframe",
         emoji           : false,
@@ -42,12 +28,15 @@
         sequenceDiagram : false,
         tocm            : true,
     });
+</script>
 
-
-    //富文本转义html
-    function html2Escape(str){
-        return str.replace(/[<>&"]/g, function (c) {
-            return { '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c];
-        });
-    }
+{{/*表情系统*/}}
+<script type="text/javascript" src="http://www.jq22.com/demo/emoji201910092048/js/emojisort.js"></script>
+<script type="text/javascript" src="http://www.jq22.com/demo/emoji201910092048/js/emoji.js"></script>
+<script>
+    $('.faceDivBox').css('width', '100%')
+    $(document).ready(function(){
+        sdEditorEmoj.Init(emojiconfig);
+        sdEditorEmoj.setEmoji({type:'input',id:"textarea"});
+    })
 </script>

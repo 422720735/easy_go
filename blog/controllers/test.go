@@ -44,6 +44,14 @@ func (c *TestControllers) Get2() {
 	}
 }
 
+func (c *TestControllers)Get3()  {
+	details, err := servers.SelectArticleDetails(1)
+	if err != nil {
+		c.Error(err.Error())
+	}
+	c.Success(details)
+}
+
 func getParams(param1, param2 string) (int, int) {
 	if param1 == "" && param2 == "" {
 		// 查询全部

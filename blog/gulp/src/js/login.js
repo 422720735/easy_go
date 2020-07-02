@@ -1,3 +1,4 @@
+const Ok = 1
 /**************** 更多按钮icon 始终是 三的样式 去除关闭icon的class。****************/
 function handleMoreIcon() {
     document.getElementById('drawer-mask').onclick = function () {
@@ -34,3 +35,16 @@ $('.main > .user-title-tag .tag').click(function () {
             break;
     }
 })
+
+function getCode() {
+    $.ajax({
+        url: '/captcha',
+        method: 'Get',
+        success: function (res) {
+            if (res.code === Ok) {
+                $('#captcha').attr('src', res.data)
+            }
+        }
+    })
+}
+getCode()

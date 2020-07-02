@@ -1,4 +1,55 @@
 @charset "UTF-8";
+.tags-list .tag {
+  display: inline-block;
+  padding: 3px 8px;
+  margin: 2px;
+  border-radius: 8px;
+  font-size: 12px; }
+  .tags-list .tag.tag_1 {
+    background-color: #727577; }
+  .tags-list .tag.tag_2 {
+    background-color: #a77676; }
+  .tags-list .tag.tag_3 {
+    background-color: #5d5252; }
+  .tags-list .tag.tag_4 {
+    background-color: #5a5a7d; }
+  .tags-list .tag.tag_5 {
+    background-color: #bf8835; }
+  .tags-list .tag.tag_6 {
+    background-color: #929266; }
+  .tags-list .tag:nth-of-type(2) {
+    background-color: #a77676; }
+  .tags-list .tag a {
+    color: #f1f1f1;
+    text-decoration: none; }
+    .tags-list .tag a:hover, .tags-list .tag a:focus {
+      outline: none; }
+
+.article-tags {
+  text-align: center;
+  padding: 0 23px 17px 23px; }
+  .article-tags a {
+    padding: 3px 8px;
+    margin: 2px;
+    border-radius: 8px;
+    font-size: 12px; }
+    .article-tags a:last-child {
+      margin: 0; }
+    .article-tags a:hover {
+      opacity: 1; }
+    .article-tags a.tag_1 {
+      background-color: #727577; }
+    .article-tags a.tag_2 {
+      background-color: #a77676; }
+    .article-tags a.tag_3 {
+      background-color: #5d5252; }
+    .article-tags a.tag_4 {
+      background-color: #5a5a7d; }
+    .article-tags a.tag_5 {
+      background-color: #bf8835; }
+    .article-tags a.tag_6 {
+      background-color: #929266; }
+
 .day-mode .article-list {
   background-color: #ffffff; }
 
@@ -93,31 +144,6 @@
           line-height: 24px;
           color: #666;
           text-indent: 2em; }
-      .article-list .article-item .right-html .tags-list .tag {
-        display: inline-block;
-        padding: 3px 8px;
-        margin: 2px;
-        border-radius: 8px;
-        font-size: 12px; }
-        .article-list .article-item .right-html .tags-list .tag.tag_1 {
-          background-color: #727577; }
-        .article-list .article-item .right-html .tags-list .tag.tag_2 {
-          background-color: #a77676; }
-        .article-list .article-item .right-html .tags-list .tag.tag_3 {
-          background-color: #5d5252; }
-        .article-list .article-item .right-html .tags-list .tag.tag_4 {
-          background-color: #5a5a7d; }
-        .article-list .article-item .right-html .tags-list .tag.tag_5 {
-          background-color: #bf8835; }
-        .article-list .article-item .right-html .tags-list .tag.tag_6 {
-          background-color: #929266; }
-        .article-list .article-item .right-html .tags-list .tag:nth-of-type(2) {
-          background-color: #a77676; }
-        .article-list .article-item .right-html .tags-list .tag a {
-          color: #f1f1f1;
-          text-decoration: none; }
-          .article-list .article-item .right-html .tags-list .tag a:hover, .article-list .article-item .right-html .tags-list .tag a:focus {
-            outline: none; }
 
 /*
 这里是响应式适配屏幕

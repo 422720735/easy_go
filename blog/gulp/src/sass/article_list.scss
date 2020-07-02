@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import "./theme/themeColor";
+@import "extension/tags-list";
 
-$liColor: #727577, #a77676, #5d5252, #5a5a7d, #bf8835, #929266;
 .day-mode {
   .article-list {
     background-color: #ffffff;
@@ -110,34 +110,7 @@ $liColor: #727577, #a77676, #5d5252, #5a5a7d, #bf8835, #929266;
         }
       }
 
-      .tags-list {
-        .tag {
-          display: inline-block;
-          padding: 3px 8px;
-          margin: 2px;
-          border-radius: 8px;
-          font-size: 12px;
-          @each $c in $liColor {
-            $i: index($liColor, $c);
-            &.tag_#{$i} {
-              background-color: $c;
-            }
-          }
 
-          &:nth-of-type(2) {
-            background-color: #a77676;
-          }
-
-          a {
-            color: #f1f1f1;
-            text-decoration: none;
-
-            &:hover, &:focus {
-              outline: none;
-            }
-          }
-        }
-      }
 
       /*
       // 暂时废弃这种现在以标签为主

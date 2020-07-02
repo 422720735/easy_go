@@ -11,7 +11,7 @@
     <div class="main">
         <div class="user-title-tag cursorPointer">
             <div class="tag active">账号密码登录</div>
-            <div class="tag">手机号登录</div>
+            <div class="tag">邮箱登录</div>
             <div class="clearfix"></div>
             <div class="lnk-bar one"></div>
         </div>
@@ -30,7 +30,7 @@
                     <div class="formInput form-group has-error has-feedback passOrverify clearfix">
                         <input type="text" class="form-control fl" aria-describedby="inputError2Status">
                         <a href="javascript:;" class="code fl">
-                            <img class="form-control" src="https://api.jackhu.top/users/getCaptcha?0.47659466436739173">
+                            <img class="form-control" onclick="getCode()" id="captcha">
                         </a>
                         <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                         <span class="help-block">请输入密码</span>
@@ -67,6 +67,20 @@
             </div>
             <button type="button" class="btn btn-info">（成功）Success</button>
 
+        </div>
+
+        <p class="text-center mt-3 mb-3">您还可以通过以下方式直接登录</p>
+        <div class="oauth-login d-flex justify-content-center">
+            <div class="mr-3">
+                <a href="">
+                    <i class="iconfont icon-QQ"></i>
+                </a>
+            </div>
+            <div>
+                <a href="">
+                    <i class="iconfont icon-youxiang"></i>
+                </a>
+            </div>
         </div>
     </div>
 </div>

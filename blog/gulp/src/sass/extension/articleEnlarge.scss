@@ -2,6 +2,8 @@
 该文件是文章详情文章内容部分的css
 */
 @import "../gobal/gobal";
+@import "../theme/themeColor";
+@import "tags-list";
 .article-content {
   .article-header {
     padding: 25px 0;
@@ -26,48 +28,6 @@
         &:last-child {
           margin-right: 0;
         }
-      }
-    }
-  }
-
-  .article-tags {
-    text-align: center;
-    padding: 0 23px 17px 23px;
-    a {
-      display: inline-block;
-      padding: 4px 7px 3px;
-      margin: 0 7px 4px 0;
-      font-size: 12px;
-      opacity: .85;
-      cursor: pointer;
-      &:last-child {
-        margin: 0;
-      }
-      &:hover {
-        opacity: 1;
-      }
-
-      &:nth-child(6n + 1) {
-        background: #727577;
-      }
-
-      &:nth-child(6n + 2) {
-        background: #a77676;
-      }
-
-      &:nth-child(6n + 3) {
-        background: #5d5252;
-      }
-
-      &:nth-child(6n + 4) {
-        background: #5a5a7d;
-      }
-
-      &:nth-child(6n + 5) {
-        background: #bf8835;
-      }
-      &:nth-child(6n + 6) {
-        background:#929266
       }
     }
   }

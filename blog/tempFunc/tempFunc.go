@@ -30,6 +30,8 @@ func IsArticleTypeName(id *int, typeId int) bool {
 func IsSplit (tags *string) bool {
 	if tags == nil {
 		return false
+	} else if *tags == ""{
+		return false
 	}
 	return true
 }

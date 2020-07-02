@@ -6,7 +6,6 @@ import (
 	"easy_go/admin/logger"
 	"easy_go/admin/models"
 	"errors"
-	"github.com/astaxie/beego"
 	"time"
 )
 
@@ -77,10 +76,6 @@ func InsertArticleDetails(title, content, cover, desc, tags, keyword string, men
 		return err
 	}
 
-	beego.Info(a.Id)
-	beego.Info(*&a.Id)
-	beego.Info(&a.Id)
-	beego.Info("====")
 	c := &models.ArticleContent{
 		Content:   &content,
 		ArticleId: a.Id,

@@ -21,6 +21,8 @@ easy_go
 easy_go.exe
 easy_go.exe~
 
+/OAuth/OAuth.exe
+
 admin/admin
 admin/admin.exe
 admin/admin.exe~
