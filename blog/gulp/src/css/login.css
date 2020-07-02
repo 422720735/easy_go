@@ -18,6 +18,11 @@
 .day-mode .main .user-title-tag {
   color: #474747; }
 
+.day-mode .main .oauth-login > div a {
+  background-color: #eee; }
+  .day-mode .main .oauth-login > div a i {
+    color: #474747; }
+
 .night-mode .header a {
   color: #999999; }
 
@@ -26,6 +31,11 @@
 
 .night-mode .main .user-title-tag {
   color: #999999; }
+
+.night-mode .main .oauth-login > div a {
+  background-color: #2f2f2f; }
+  .night-mode .main .oauth-login > div a i {
+    color: #999999; }
 
 .login {
   position: absolute;
@@ -112,6 +122,18 @@
     .login .main .loginForm > button {
       display: block;
       width: 96%; }
+    .login .main .oauth-login > div {
+      display: inline-block; }
+      .login .main .oauth-login > div a {
+        display: inline-block;
+        font-size: 26px;
+        width: 44px;
+        height: 44px;
+        line-height: 44px;
+        text-align: center;
+        border-radius: 50%; }
+        .login .main .oauth-login > div a i {
+          font-size: 26px; }
 
 /*
 @media screen and (min-width: 320px) and (max-width: 768px) {

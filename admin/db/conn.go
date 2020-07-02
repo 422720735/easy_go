@@ -47,5 +47,8 @@ func CreatedTable() {
 		&models.Article{},
 		&models.ArticleContent{},
 		&models.System{},
+		&models.Comment{},
+		&models.Reply{},
+		&models.Zan{},
 	)
 }

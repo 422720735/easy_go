@@ -20,5 +20,6 @@ func main() {
 	beego.ErrorController(&controllers.ErrorController{})
     beego.BConfig.RunMode = "dev"
 	beego.BConfig.WebConfig.ViewsPath = "template" // 静态目录
+	beego.BConfig.WebConfig.Session.SessionOn = true
 	beego.Run(":" + beego.AppConfig.String("httpport"))
 }

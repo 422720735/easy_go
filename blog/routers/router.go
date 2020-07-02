@@ -6,6 +6,9 @@ import (
 )
 
 func init() {
+	beego.Router("/captcha", &controllers.CaptchaControllers{})
+	beego.Router("/captcha/:captchaId", &controllers.CaptchaControllers{}, "get:ShowCode")
+
 	beego.Router("/?:menu_id/?:category_id", &controllers.IndexController{}, "get:Index")
 
 	beego.Router("/article/?:id", &controllers.ArticleController{})
