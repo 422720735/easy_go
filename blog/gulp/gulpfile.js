@@ -37,7 +37,7 @@ gulp.task('sass', () => {
 gulp.task('cssUglify', function () {
     return gulp.src(['src/css/*.css'])
         .pipe(rename({suffix: '.min'}))
-        .pipe(cssUglify())
+        // .pipe(cssUglify())
         .pipe(gulp.dest(path.resolve(__dirname, '../static/css')))
 });
 

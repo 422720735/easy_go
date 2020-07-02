@@ -50,7 +50,7 @@ nav.navbar.bootsnav {
   margin: 0 auto;
   .article-content {
     margin-right: 380px;
-    .editor,.comments {
+    .editor {
       padding: 0 20px;
       border-radius: 4px;
     }
@@ -89,22 +89,24 @@ nav.navbar.bootsnav {
 .day-mode {
   .article-content {
     background-color: #ffffff;
-
-
-    .editor,.comments {
+    .editor {
       border: 1px solid #eaeaea;
     }
   }
-
+  .comment-list {
+    border: 1px solid #eaeaea;
+  }
 }
 
 .night-mode {
   .article-content {
     background-color: #3f3f3f;
-
-    .editor,.comments {
+    .editor {
       border: 1px solid #656565;
     }
+  }
+  .comment-list {
+    border: 1px solid #656565;
   }
 }
 
@@ -140,10 +142,6 @@ nav.navbar.bootsnav {
 // 已废弃，现在通过js来位移nav的位置给文章title,暂定还是css改变。
 .article-h1.article-current {
   transform: translateY(-100%);
-}
-
-.comments {
-  margin-top: 30px;
 }
 
 a {

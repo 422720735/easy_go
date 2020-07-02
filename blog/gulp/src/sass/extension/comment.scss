@@ -1,3 +1,6 @@
+/*表情包*/
+@import "../comment-emojibg";
+
 .container {
   width: 1000px;
 }
@@ -24,10 +27,10 @@
   width: 100%;
   margin: 20px auto;
   clear: both;
-  padding-top: 20px;
+  padding: 20px 20px 0;
+
   .comment-info {
     position: relative;
-    margin-bottom: 20px;
     margin-bottom: 20px;
     border-bottom: 1px solid #ccc;
     header {

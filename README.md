@@ -119,3 +119,5 @@ export const html2Escape = (str) => {
 [404](http://www.jq22.com/demo/jQuery404201710142052/)
 
 [留言板](https://www.17sucai.com/preview/41468/2015-04-18/zyComment%E5%AE%9E%E4%BE%8B/demo.html)
+
+[一款jQuery评论插件](http://www.jq22.com/jquery-info22092)
