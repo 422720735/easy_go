@@ -48,3 +48,6 @@ function getCode() {
     })
 }
 getCode()
+if (sessionStorage.getItem('r')) {
+    $('.github').attr('href', $('.github').attr('href') + encodeURIComponent(sessionStorage.getItem('r')))
+}

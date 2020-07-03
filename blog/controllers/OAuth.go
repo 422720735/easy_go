@@ -2,11 +2,13 @@ package controllers
 
 import (
 	"easy_go/blog/logger"
+	"easy_go/blog/servers"
 	"easy_go/common"
 	"easy_go/lib"
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strconv"
 )
 
 type OAuthControllers struct {
@@ -40,7 +42,19 @@ func (c *OAuthControllers) Get() {
 
 	// 我们把token也记录起来
 	userInfo["access_token"] = token.AccessToken
-	c.Success(userInfo)
+
+
+
+	role, err := servers.Login_github(userInfo, c.Ctx.Request.RemoteAddr, token.AccessToken)
+	if err != nil {
+		c.Error("第三方登陆失败")
+	}
+
+	c.Ctx.SetCookie("name", role.Name)
+	c.Ctx.SetCookie("uid", strconv.Itoa(role.UId))
+
+	c.SetSession("role", role)
+	c.History("", "/")
 }
 
 func GetTokenAuthUrl(code string) string {

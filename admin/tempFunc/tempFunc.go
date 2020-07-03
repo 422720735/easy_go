@@ -1,7 +1,7 @@
 package tempFunc
 
 import (
-	"easy_go/admin/models"
+	"easy_go/models"
 	"github.com/astaxie/beego"
 )
 

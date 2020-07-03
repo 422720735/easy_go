@@ -2,10 +2,10 @@ package common
 
 import (
 	"easy_go/admin/logger"
-	"easy_go/admin/models"
 	"easy_go/admin/servers"
 	"easy_go/aes"
 	myjwt "easy_go/middleware"
+	"easy_go/models"
 	"encoding/base64"
 	"encoding/json"
 	"github.com/astaxie/beego"

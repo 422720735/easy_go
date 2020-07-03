@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"easy_go/admin/db"
 	"easy_go/admin/logger"
-	"easy_go/admin/models"
+	"easy_go/models"
 	"errors"
 	"time"
 )

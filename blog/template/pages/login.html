@@ -30,7 +30,7 @@
                     <div class="formInput form-group has-error has-feedback passOrverify clearfix">
                         <input type="text" class="form-control fl" aria-describedby="inputError2Status">
                         <a href="javascript:;" class="code fl">
-                            <img class="form-control" onclick="getCode()" id="captcha">
+                            <img class="form-control" onclick="getCode()" id="captcha" alt="验证码">
                         </a>
                         <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                         <span class="help-block">请输入密码</span>
@@ -77,8 +77,9 @@
                 </a>
             </div>
             <div>
-                <a href="https://github.com/login/oauth/authorize?client_id={{.clientId}}&redirect_uri={{.redirectUrl}}">
-                    <i class="iconfont icon-youxiang"></i>
+{{/*                &redirect_uri={{.redirectUrl}}*/}}
+                <a href="https://github.com/login/oauth/authorize?client_id={{.clientId}}">
+                    <i class="iconfont icon-git"></i>
                 </a>
             </div>
         </div>

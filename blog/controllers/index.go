@@ -1,8 +1,10 @@
 package controllers
 
 import (
+	"easy_go/blog/logger"
 	"easy_go/blog/servers"
 	"easy_go/common"
+	"github.com/astaxie/beego"
 	"math/rand"
 	"strconv"
 	"strings"
@@ -73,6 +75,9 @@ func (c *IndexController) Index() {
 	c.Data["menu"] = menu
 	c.Data["cover"] = cover
 	c.Data["articleList"] = articleList
+
+	beego.Info(c.GetSession("role"))
+	logger.Info(c.GetSession("role"))
 }
 
 

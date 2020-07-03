@@ -1,9 +1,9 @@
 package servers
 
 import (
-	"easy_go/admin/models"
 	"easy_go/blog/db"
 	"easy_go/blog/logger"
+	"easy_go/models"
 )
 
 // 文章上下关联

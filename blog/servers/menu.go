@@ -1,9 +1,9 @@
 package servers
 
 import (
-	"easy_go/admin/models"
 	"easy_go/blog/db"
 	"easy_go/blog/logger"
+	"easy_go/models"
 )
 
 // 查询所有不是软删除跟隐藏的 导航数据及文章类型数据

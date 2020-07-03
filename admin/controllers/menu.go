@@ -3,8 +3,8 @@ package controllers
 import (
 	"easy_go/admin/logger"
 	"easy_go/admin/servers"
-	"easy_go/admin/transform"
 	"easy_go/common"
+	"easy_go/transform"
 	"strconv"
 	"strings"
 )

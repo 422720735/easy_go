@@ -3,7 +3,7 @@ package servers
 import (
 	"easy_go/admin/db"
 	"easy_go/admin/logger"
-	"easy_go/admin/models"
+	"easy_go/models"
 )
 
 /*查询最后更新的数据*/

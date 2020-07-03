@@ -214,6 +214,9 @@
   display: flex !important;
   justify-content: center;
   margin: 0 auto; }
+  .navbar-expanded .expanded-avatar a {
+    width: 32px;
+    height: 32px; }
   .navbar-expanded .expanded-avatar img {
     display: block;
     box-sizing: border-box;

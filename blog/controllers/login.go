@@ -25,9 +25,13 @@ func (c *LoginController) Get() {
 
 	ClientId := lib.Conf.Read("github", "ClientId")
 	ClientSecret := lib.Conf.Read("github", "ClientSecret")
+	RedirectUrl := lib.Conf.Read("github", "RedirectUrl")
 
 	menu, _ := servers.SelectArticleTypeMenuName()
 	c.Data["menu"] = menu
 	c.Data["clientId"] = ClientId
 	c.Data["clientSecret"] = ClientSecret
+	c.Data["redirectUrl"] = RedirectUrl
+
+	c.Data["Log"] = "1233"
 }

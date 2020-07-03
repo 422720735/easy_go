@@ -1,8 +1,8 @@
 package db
 
 import (
-	"easy_go/admin/models"
 	"easy_go/lib"
+	"easy_go/models"
 	"runtime"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -50,5 +50,6 @@ func CreatedTable() {
 		&models.Comment{},
 		&models.Reply{},
 		&models.Zan{},
+		&models.Role{},
 	)
 }
