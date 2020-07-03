@@ -3,20 +3,22 @@
         <!-- 切换皮肤主题 -->
         <a class="themeMixin-skin cursorPointer">
             <i class="iconfont icon-moon"></i>
-            <!-- <i class="iconfont icon-moon"></i>
-            <i class="iconfont icon-sun"></i> -->
-        </a>
-        <a href="/login">
-            {{if .u_id}}
-                <i class="iconfont icon-exit" title="退出登录"></i>
-            {{else}}
-                <i class="iconfont icon-denglu" title="登录" onclick="_login()"></i>
-            {{end}}
         </a>
 
-        {{if .avatar_url}}
-            <a class="expanded-avatar c-pointer" title="{{.name}}">
-                <img width="32px" height="32px" src="{{.avatar_url}}">
+        {{if .u_id}}
+            <a href="javascript: void(0);">
+                <i class="iconfont icon-exit" title="退出登录" id="confirmbtn"></i>
+            </a>
+        {{else}}
+            <a href="/login">
+                <i class="iconfont icon-denglu" title="登录" onclick="_login()"></i>
+            </a>
+        {{end}}
+
+
+        {{if .u_id}}
+            <a class="expanded-avatar c-pointer" title="{{.u_name}}">
+                <img width="32px" height="32px" src="{{.u_avatar_url}}">
             </a>
         {{end}}
     </div>

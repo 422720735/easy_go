@@ -1,10 +1,8 @@
 package controllers
 
 import (
-	"easy_go/blog/logger"
 	"easy_go/blog/servers"
 	"easy_go/common"
-	"github.com/astaxie/beego"
 	"math/rand"
 	"strconv"
 	"strings"
@@ -74,19 +72,15 @@ func (c *IndexController) Index() {
 	c.Data["menu"] = menu
 	c.Data["cover"] = cover
 	c.Data["articleList"] = articleList
-
 	public(c)
-	beego.Info(c.GetSession("role"))
-	logger.Info(c.GetSession("role"))
 }
 
 func public(c *IndexController) {
 	u_id := c.GetSession("u_id")
 	if u_id != nil {
-		name := c.GetSession("name")
-		avatar_url := c.GetSession("avatar_url")
-		auth_token := c.GetSession("auth_token")
-
+		name := c.GetSession("u_name")
+		avatar_url := c.GetSession("u_avatar_url")
+		auth_token := c.GetSession("u_auth_token")
 		c.Data["u_id"] = u_id
 		c.Data["u_name"] = name
 		c.Data["u_avatar_url"] = avatar_url

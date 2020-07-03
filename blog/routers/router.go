@@ -5,6 +5,8 @@ import (
 	"github.com/astaxie/beego"
 )
 
+const Api = "/api"
+
 func init() {
 	beego.Router("/captcha", &controllers.CaptchaControllers{})
 	beego.Router("/captcha/:captchaId", &controllers.CaptchaControllers{}, "get:ShowCode")
@@ -20,4 +22,11 @@ func init() {
 	beego.Router("/test", &controllers.TestControllers{}, "get:Get3")
 
 	beego.Router("/404", &controllers.ErrorController{}, "get:Error404")
+
+	business()
+}
+
+func business()  {
+	// 退出登录
+	beego.Router(Api + "/log/out", &controllers.UserControllers{})
 }

@@ -5,9 +5,11 @@ import (
 	"easy_go/blog/servers"
 	"easy_go/common"
 	"easy_go/lib"
+	"easy_go/models"
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"time"
 )
 
 type OAuthControllers struct {
@@ -27,7 +29,7 @@ func (c *OAuthControllers) Get() {
 	var err error
 	if token, err = GetToken(tokenAuthUrl); err != nil {
 		logger.Error("获取github用户token失败", err.Error())
-		c.Error("第三方登陆失败")
+		c.History("第三方登陆失败", "/")
 		return
 	}
 
@@ -35,7 +37,7 @@ func (c *OAuthControllers) Get() {
 	var userInfo map[string]interface{}
 	if userInfo, err = GetUserInfo(token); err != nil {
 		logger.Error("获取github用户信息失败", err.Error())
-		c.Error("第三方登陆失败")
+		c.History("第三方登陆失败", "/")
 		return
 	}
 
@@ -44,7 +46,16 @@ func (c *OAuthControllers) Get() {
 
 	role, err := servers.Login_github(userInfo, c.Ctx.Request.RemoteAddr, token.AccessToken)
 	if err != nil {
-		c.Error("第三方登陆失败")
+		c.History("第三方登陆失败", "/")
+	}
+
+	var u models.User
+	u.Id = role.UId
+	u.UserName = role.Name
+	u.LoginIp = role.LoginIp
+	tokenString, err := common.NewCurrentCookie(u)
+	if err == nil {
+		c.Ctx.SetCookie("auth", tokenString, time.Second*60*60)
 	}
 
 	c.SetSession("u_id", role.UId)

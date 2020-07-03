@@ -54,10 +54,10 @@ func init() {
 	// 文章新增+编辑
 	beego.Router("/article/details", &article.ArticleDetails{}, "get:ArticleDetails")
 	beego.Router("/article/details/markdown", &article.ArticleDetails{}, "get:ArticleDetailsMarkdown")
-	register()
+	business()
 }
 
-func register() {
+func business() {
 	// 获取七牛云的token
 	beego.Router(Api + "/qn/token", &controllers.QiNiuController{}, "get:InsertToken")
 	// 导航菜单
@@ -83,7 +83,7 @@ func register() {
 	beego.Router(Api + "/cover/alter", &system.CoverControllers{}, "post:HandleCoverAlter")
 	beego.Router(Api + "/cover", &system.CoverControllers{}, "get:CoverInfo")
 
-	// 推出登录
+	// 退出登录
 	beego.Router(Api + "/log/out", &system.SystemController{})
 
 	beego.Router("/test", &controllers.TestControllers{})

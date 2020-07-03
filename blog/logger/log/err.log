@@ -1,23 +1,2 @@
-2020/07/03 17:52:59 OAuth.go:38: error 获取github用户信息失败Get https://api.github.com/user: read tcp 192.168.125.190:57531->13.250.168.23:443: wsarecv: An existing connection was forcibly closed by the remote host.
-2020/07/03 17:52:59 index.go:80: info <nil>
-2020/07/03 17:55:22 index.go:80: info &{0 32890951 1 422720735 422720735 0xc00038c010 https://avatars2.githubusercontent.com/u/32890951?v=4 [::1]:57295 d1f62b078449351c493c592a3cf71c5bd2f6a803 {2020-07-03 17:55:22.3327588 +0800 CST m=+354.755652001 true} 0001-01-01 00:00:00 +0000 UTC {0001-01-01 00:00:00 +0000 UTC false}}
-2020/07/03 17:55:22 index.go:80: info &{0 32890951 1 422720735 422720735 0xc00038c010 https://avatars2.githubusercontent.com/u/32890951?v=4 [::1]:57295 d1f62b078449351c493c592a3cf71c5bd2f6a803 {2020-07-03 17:55:22.3327588 +0800 CST m=+354.755652001 true} 0001-01-01 00:00:00 +0000 UTC {0001-01-01 00:00:00 +0000 UTC false}}
-2020/07/03 17:55:39 index.go:80: info &{0 32890951 1 422720735 422720735 0xc0001267c0 https://avatars2.githubusercontent.com/u/32890951?v=4 [::1]:57297 6ae6e9140cb89474bb7be6e93d216b84f8b542c4 {2020-07-03 17:55:39.1712236 +0800 CST m=+371.594116801 true} 0001-01-01 00:00:00 +0000 UTC {0001-01-01 00:00:00 +0000 UTC false}}
-2020/07/03 17:55:39 index.go:80: info &{0 32890951 1 422720735 422720735 0xc0001267c0 https://avatars2.githubusercontent.com/u/32890951?v=4 [::1]:57297 6ae6e9140cb89474bb7be6e93d216b84f8b542c4 {2020-07-03 17:55:39.1712236 +0800 CST m=+371.594116801 true} 0001-01-01 00:00:00 +0000 UTC {0001-01-01 00:00:00 +0000 UTC false}}
-2020/07/03 18:10:23 index.go:80: info <nil>
-2020/07/03 18:10:24 index.go:80: info <nil>
-2020/07/03 18:10:25 index.go:80: info <nil>
-2020/07/03 18:10:26 index.go:80: info <nil>
-2020/07/03 18:10:32 OAuth.go:37: error 获取github用户信息失败Get https://api.github.com/user: read tcp 192.168.125.190:58631->13.250.168.23:443: wsarecv: An existing connection was forcibly closed by the remote host.
-2020/07/03 18:10:32 index.go:80: info <nil>
-2020/07/03 18:10:47 index.go:80: info <nil>
-2020/07/03 18:10:47 index.go:80: info <nil>
-2020/07/03 18:10:48 index.go:80: info <nil>
-2020/07/03 18:11:08 index.go:80: info <nil>
-2020/07/03 18:11:13 index.go:80: info <nil>
-2020/07/03 18:11:38 index.go:80: info <nil>
-2020/07/03 18:11:39 index.go:80: info <nil>
-2020/07/03 18:12:00 index.go:80: info <nil>
-2020/07/03 18:12:56 index.go:80: info <nil>
-2020/07/03 18:12:57 index.go:80: info <nil>
-2020/07/03 18:13:11 index.go:80: info <nil>
+2020/07/03 18:35:48 index.go:80: info <nil>
+2020/07/03 18:42:17 OAuth.go:39: error 获取github用户信息失败Get https://api.github.com/user: read tcp 192.168.125.190:60701->13.250.168.23:443: wsarecv: An existing connection was forcibly closed by the remote host.

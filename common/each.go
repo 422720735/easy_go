@@ -37,7 +37,7 @@ type Message interface {
 }
 
 func (c *BaseController) History(msg string, url string) {
-	if url == "" {
+	if msg != "" {
 		c.Ctx.WriteString("<script>alert('" + msg + "');window.history.go(-1);</script>")
 		c.StopRun()
 	} else {

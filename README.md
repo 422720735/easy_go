@@ -129,3 +129,5 @@ mysql 有中文全文检索
 [留言板](https://www.17sucai.com/preview/41468/2015-04-18/zyComment%E5%AE%9E%E4%BE%8B/demo.html)
 
 [一款jQuery评论插件](http://www.jq22.com/jquery-info22092)
+
+[jQuery弹出框美化插件(支持alert、confirm和toast)](http://www.bootstrapmb.com/item/7781)
