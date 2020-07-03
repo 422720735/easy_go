@@ -23,15 +23,11 @@ func (c *LoginController) Get() {
 	// 登录页js
 	c.LayoutSections["Script"] = "script/loginScript.html"
 
-	ClientId := lib.Conf.Read("github", "ClientId")
-	ClientSecret := lib.Conf.Read("github", "ClientSecret")
-	RedirectUrl := lib.Conf.Read("github", "RedirectUrl")
+	githubClientId := lib.Conf.Read("github", "ClientId")
+	giteeClientId := lib.Conf.Read("gitee", "ClientId")
 
 	menu, _ := servers.SelectArticleTypeMenuName()
 	c.Data["menu"] = menu
-	c.Data["clientId"] = ClientId
-	c.Data["clientSecret"] = ClientSecret
-	c.Data["redirectUrl"] = RedirectUrl
-
-	c.Data["Log"] = "1233"
+	c.Data["githubClientId"] = githubClientId
+	c.Data["giteeClientId"] = giteeClientId
 }

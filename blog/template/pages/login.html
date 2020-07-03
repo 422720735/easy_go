@@ -76,9 +76,14 @@
                     <i class="iconfont icon-QQ"></i>
                 </a>
             </div>
+            <div class="mr-3">
+                <a href="https://github.com/login/oauth/authorize?client_id={{.giteeClientId}}&scope=user,public_repo">
+                    <i class="iconfont icon-icon_gitee"></i>
+                </a>
+            </div>
             <div>
-{{/*                &redirect_uri={{.redirectUrl}}*/}}
-                <a href="https://github.com/login/oauth/authorize?client_id={{.clientId}}">
+                {{/*&redirect_uri={{.redirectUrl}}*/}}
+                <a href="https://github.com/login/oauth/authorize?client_id={{.githubClientId}}">
                     <i class="iconfont icon-git"></i>
                 </a>
             </div>
