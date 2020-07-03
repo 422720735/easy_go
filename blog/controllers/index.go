@@ -59,7 +59,6 @@ func (c *IndexController) Index() {
 		top_id = int(system.TopId.Int64)
 	}
 
-	
 	var cover string
 	coverLen := strings.Split(*&system.Cover, ",")
 	rand.Seed(time.Now().UnixNano())
@@ -76,8 +75,21 @@ func (c *IndexController) Index() {
 	c.Data["cover"] = cover
 	c.Data["articleList"] = articleList
 
+	public(c)
 	beego.Info(c.GetSession("role"))
 	logger.Info(c.GetSession("role"))
 }
 
+func public(c *IndexController) {
+	u_id := c.GetSession("u_id")
+	if u_id != nil {
+		name := c.GetSession("name")
+		avatar_url := c.GetSession("avatar_url")
+		auth_token := c.GetSession("auth_token")
 
+		c.Data["u_id"] = u_id
+		c.Data["u_name"] = name
+		c.Data["u_avatar_url"] = avatar_url
+		c.Data["u_auth_token"] = auth_token
+	}
+}

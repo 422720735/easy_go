@@ -8,7 +8,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"strconv"
 )
 
 type OAuthControllers struct {
@@ -43,17 +42,15 @@ func (c *OAuthControllers) Get() {
 	// 我们把token也记录起来
 	userInfo["access_token"] = token.AccessToken
 
-
-
 	role, err := servers.Login_github(userInfo, c.Ctx.Request.RemoteAddr, token.AccessToken)
 	if err != nil {
 		c.Error("第三方登陆失败")
 	}
 
-	c.Ctx.SetCookie("name", role.Name)
-	c.Ctx.SetCookie("uid", strconv.Itoa(role.UId))
-
-	c.SetSession("role", role)
+	c.SetSession("u_id", role.UId)
+	c.SetSession("u_name", role.Name)
+	c.SetSession("u_avatar_url", role.AvatarUrl)
+	c.SetSession("u_auth_token", role.AuthToken)
 	c.History("", "/")
 }
 
