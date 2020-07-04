@@ -24,6 +24,7 @@ func (c *LoginController) Get() {
 	c.LayoutSections["Script"] = "script/loginScript.html"
 
 	githubClientId := lib.Conf.Read("github", "ClientId")
+
 	giteeClientId := lib.Conf.Read("gitee", "ClientId")
 	giteeRedirectUrl := lib.Conf.Read("gitee", "RedirectUrl")
 

@@ -1,4 +1,5 @@
 const Ok = 1
+
 // 函数防抖
 function debounce(fn, wait) {
     var timeout = null;
@@ -132,16 +133,21 @@ $.isok = function (ok) {
         headers: {'Content-Type': 'application/json;charset=utf8', 'r': getCookie('auth')},
         success: function (res) {
             if (res.code === Ok) {
-                $.toast("退出登录！", 5, true);
-                setTimeout(() => {
-                    window.location.reload()
-                }, 5000)
+                sessionStorage.setItem('out', '1')
+                window.location.reload()
             } else {
                 window.message.error(res)
                 $.alert("标题", "内容");
             }
         }
     })
+}
+
+window.onload = function () {
+    if (sessionStorage.getItem('out')) {
+        $.toast("退出登录！", 5, true);
+        sessionStorage.removeItem('out')
+    }
 }
 
 // 获取指定名称的cookie
