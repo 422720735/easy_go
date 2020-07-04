@@ -10,63 +10,14 @@
     </div>
     <div class="main">
         <div class="user-title-tag cursorPointer">
-            <div class="tag active">账号密码登录</div>
-            <div class="tag">邮箱登录</div>
+            <div class="tag active">QQ邮箱登录</div>
+            <div class="tag">手机号登录</div>
             <div class="clearfix"></div>
             <div class="lnk-bar one"></div>
         </div>
 
         <div class="loginForm">
-            <div class="inputBox form">
-                <!--账号密码登录-->
-                <div class="userLogin">
-
-                    <div class="formInput form-group has-feedback has-success">
-                        <input type="text" class="form-control" aria-describedby="inputSuccess2Status">
-                        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-                        <span class="help-block">请输入帐户名</span>
-                        <i class="iconfont icon-zuozhe"></i>
-                    </div>
-                    <div class="formInput form-group has-error has-feedback passOrverify clearfix">
-                        <input type="text" class="form-control fl" aria-describedby="inputError2Status">
-                        <a href="javascript:;" class="code fl">
-                            <img class="form-control" onclick="getCode()" id="captcha" alt="验证码">
-                        </a>
-                        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-                        <span class="help-block">请输入密码</span>
-                        <i class="iconfont icon-zuozhe"></i>
-                    </div>
-
-
-                </div>
-                <!--手机号登录-->
-                <div class="mobileLogin">
-                    <div class="formInput form-group has-feedback has-success">
-                        <input type="text" class="form-control" aria-describedby="inputSuccess2Status">
-                        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-                        <span class="help-block">请输入帐户名</span>
-                        <i class="iconfont icon-zuozhe"></i>
-                    </div>
-                    <div class="formInput form-group has-error has-feedback passOrverify clearfix">
-                        <input type="text" class="form-control fl" aria-describedby="inputError2Status">
-                        <button type="button" class="btn btn-default fr">获取验证码</button>
-                        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-                        <span class="help-block">请输入密码</span>
-                        <i class="iconfont icon-zuozhe"></i>
-                    </div>
-                </div>
-            </div>
-            <!--勾选-->
-            <div class="has-error">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" id="checkboxError" value="option1">
-                        自动登录
-                    </label>
-                </div>
-            </div>
-            <button type="button" class="btn btn-info">（成功）Success</button>
-
+            {{template "logBox" .}}
         </div>
 
         <p class="text-center mt-3 mb-3">您还可以通过以下方式直接登录</p>
@@ -76,9 +27,14 @@
                     <i class="iconfont icon-QQ"></i>
                 </a>
             </div>
+            <div class="mr-3">
+                <a href="https://github.com/login/oauth/authorize?client_id={{.giteeClientId}}&scope=user,public_repo">
+                    <i class="iconfont icon-icon_gitee"></i>
+                </a>
+            </div>
             <div>
-{{/*                &redirect_uri={{.redirectUrl}}*/}}
-                <a href="https://github.com/login/oauth/authorize?client_id={{.clientId}}">
+                {{/*&redirect_uri={{.redirectUrl}}*/}}
+                <a href="https://github.com/login/oauth/authorize?client_id={{.githubClientId}}">
                     <i class="iconfont icon-git"></i>
                 </a>
             </div>
