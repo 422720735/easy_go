@@ -1,5 +1,10 @@
 package common
 
+import (
+	"net"
+	"net/http"
+)
+
 const (
 	//成功返回
 	G_Success = 1
@@ -9,6 +14,9 @@ const (
 	G_Restrict = 3
 	// 未知异常
 	G_UNKNOWERR = 4
+
+	XForwardedFor = "X-Forwarded-For"
+	XRealIP       = "X-Real-IP"
 )
 
 var recodeText = map[int]string{
@@ -24,4 +32,21 @@ func ReturnMessage(code int) string {
 		return str
 	}
 	return ReturnMessage(G_UNKNOWERR)
+}
+
+func RemoteIp(req *http.Request) string {
+	remoteAddr := req.RemoteAddr
+	if ip := req.Header.Get(XRealIP); ip != "" {
+		remoteAddr = ip
+	} else if ip = req.Header.Get(XForwardedFor); ip != "" {
+		remoteAddr = ip
+	} else {
+		remoteAddr, _, _ = net.SplitHostPort(remoteAddr)
+	}
+
+	if remoteAddr == "::1" {
+		remoteAddr = "127.0.0.1"
+	}
+
+	return remoteAddr
 }

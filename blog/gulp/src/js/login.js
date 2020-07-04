@@ -50,6 +50,7 @@ $('.main > .user-title-tag .tag').click(function () {
 // }
 // getCode()
 
-if (sessionStorage.getItem('r')) {
-    $('.github').attr('href', $('.github').attr('href') + encodeURIComponent(sessionStorage.getItem('r')))
-}
+// if (sessionStorage.getItem('r')) {
+//     $('.github').attr('href', $('.github').attr('href') + encodeURIComponent(sessionStorage.getItem('r')))
+//     $('.github').attr('href', $('.github').attr('href') + '&' + encodeURIComponent('RedirectUrl') + '='+ encodeURIComponent(sessionStorage.getItem('r')))
+// }

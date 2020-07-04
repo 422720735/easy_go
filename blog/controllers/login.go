@@ -25,9 +25,11 @@ func (c *LoginController) Get() {
 
 	githubClientId := lib.Conf.Read("github", "ClientId")
 	giteeClientId := lib.Conf.Read("gitee", "ClientId")
+	giteeRedirectUrl := lib.Conf.Read("gitee", "RedirectUrl")
 
 	menu, _ := servers.SelectArticleTypeMenuName()
 	c.Data["menu"] = menu
 	c.Data["githubClientId"] = githubClientId
 	c.Data["giteeClientId"] = giteeClientId
+	c.Data["giteeRedirectUrl"] = giteeRedirectUrl
 }

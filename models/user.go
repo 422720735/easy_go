@@ -31,10 +31,11 @@ type Role struct {
 	UType            RoleTypeEle  `json:"u_type"`             // 用户类型 1：github 2：qq
 	Name             string       `json:"name"`               // 用户名
 	ULogin           string       `json:"u_login"`            // 用户登陆
-	Location         *string       `json:"location"`           // 位置
+	Location         *string      `json:"location"`           // 位置
 	AvatarUrl        string       `json:"avatar_url"`         // 头像url
 	LoginIp          string       `json:"login_ip"`           // 用户登陆的ip
-	AuthToken        string       `json:"auth_token"`         // token
+	AuthToken        string       `json:"auth_token"`         // 登录token
+	AccessToken      string       `json:"access_token"`       // 用户token
 	CurrentLoginTime sql.NullTime `json:"current_login_time"` // 登陆时间
 	CreatedTime      time.Time    `json:"created_time"`       // 创建时间
 	UpdateTime       sql.NullTime `json:"update_time"`        // 更新时间

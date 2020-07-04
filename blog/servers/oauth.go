@@ -4,37 +4,25 @@ import (
 	"easy_go/blog/db"
 	"easy_go/blog/logger"
 	"easy_go/models"
-	"easy_go/transform"
+	"errors"
 	"time"
 )
 
-func Login_github(user map[string]interface{}, ip, token string) (*models.Role, error) {
+func Login_github(uid int, utype models.RoleTypeEle, name, login, location, avatar_url, access_token, auth_token string, ip string) (*models.Role, error) {
 	var r models.Role
-
-	uid, _ := transform.InterToInt(user["id"])
-
-	name, _ := transform.InterToString(user["name"])
-
-	login, _ := transform.InterToString(user["login"])
-
-	location, _ := transform.InterToString(user["location"])
-
-	avatar_url, _ := transform.InterToString(user["avatar_url"])
-
 	r.UId = uid
-	r.UType = 1
-	if name == "" {
-		r.Name = login
-	} else {
-		r.Name = name
-	}
+	r.UType = utype
 	r.ULogin = login
+
 	if location != "" {
 		r.Location = &location
 	}
+
+	r.Name = name
 	r.AvatarUrl = avatar_url
 	r.LoginIp = ip
-	r.AuthToken = token
+	r.AuthToken = auth_token
+	r.AccessToken = access_token
 	r.CurrentLoginTime.Scan(time.Now())
 
 	var count int
@@ -55,6 +43,7 @@ func Login_github(user map[string]interface{}, ip, token string) (*models.Role, 
 			"location":           r.Location,
 			"avatar_url":         r.AvatarUrl,
 			"login_ip":           r.LoginIp,
+			"access_token":       r.AccessToken,
 			"auth_token":         r.AuthToken,
 			"current_login_time": time.Now(),
 			"update_time":        time.Now(),
@@ -75,3 +64,22 @@ func Login_github(user map[string]interface{}, ip, token string) (*models.Role, 
 
 	return &r, nil
 }
+
+func Select_github(uid int, name, login_ip, auth_token string) (*models.Role, error) {
+	var count int
+	var r models.Role
+	err := db.DbConn.Select([]string{"uid", "name", "avatar_url", "auth_token"}).Model(&models.Role{}).Where("uid = ? and name = ? and login_ip = ? and auth_token = ?", uid, name, login_ip, auth_token).Find(&r).Count(&count).Error
+	if err != nil {
+		logger.Info("查询登录信息失败")
+		return nil, err
+	}
+	if count == 0 {
+		return nil, errors.New("没有查询相关到相关数据")
+	}
+	return &r, nil
+}
+
+func Login_gitee()  {
+	
+}
+

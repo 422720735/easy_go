@@ -1,3 +1,4 @@
+const Ok = 1
 // 函数防抖
 function debounce(fn, wait) {
     var timeout = null;
@@ -132,7 +133,9 @@ $.isok = function (ok) {
         success: function (res) {
             if (res.code === Ok) {
                 $.toast("退出登录！", 5, true);
-                window.location.reload()
+                setTimeout(() => {
+                    window.location.reload()
+                }, 5000)
             } else {
                 window.message.error(res)
                 $.alert("标题", "内容");
