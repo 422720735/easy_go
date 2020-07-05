@@ -44,6 +44,11 @@ window.onload = function () {
         $('body').removeClass('day-mode')
         $('body').addClass('night-mode')
     }
+
+    if (sessionStorage.getItem('out')) {
+        $.toast("退出登录！", 5, true);
+        sessionStorage.removeItem('out')
+    }
 }
 
 $(window).resize(function () {
@@ -126,7 +131,6 @@ $("#confirmbtn").click(function () {
     $.confirm("提示信息", "是否退出登录！");
 });
 $.isok = function (ok) {
-    console.log(getCookie('auth'))
     $.ajax({
         url: '/api' + '/log/out',
         method: 'Post',
@@ -141,13 +145,6 @@ $.isok = function (ok) {
             }
         }
     })
-}
-
-window.onload = function () {
-    if (sessionStorage.getItem('out')) {
-        $.toast("退出登录！", 5, true);
-        sessionStorage.removeItem('out')
-    }
 }
 
 // 获取指定名称的cookie

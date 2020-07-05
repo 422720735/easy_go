@@ -40,4 +40,19 @@ func (c *ArticleController) Get() {
 	}
 	c.Data["menu"] = menu
 	c.Data["details"] = details
+	publicA(c)
+}
+
+
+func publicA(c *ArticleController) {
+	u_id := c.GetSession("u_id")
+	if u_id != nil {
+		name := c.GetSession("u_name")
+		avatar_url := c.GetSession("u_avatar_url")
+		auth_token := c.GetSession("u_auth_token")
+		c.Data["u_id"] = u_id
+		c.Data["u_name"] = name
+		c.Data["u_avatar_url"] = avatar_url
+		c.Data["u_auth_token"] = auth_token
+	}
 }

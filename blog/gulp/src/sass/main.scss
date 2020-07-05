@@ -49,18 +49,16 @@
         bottom: 0;
         width: 100%;
         margin-bottom: 5px;
-
         &.minS {
           display: none;
         }
-
         a {
           display: block;
           padding: 10px;
           text-align: center;
           text-decoration: none;
-          color: $skin-text-color;
 
+          color: $skin-text-color;
           &:hover {
             color: $text-color;
           }
@@ -329,19 +327,12 @@
 // 登陆个人信息
 .navbar-expanded {
   .expanded-avatar {
-    display: flex !important;
+    display: flex;
     justify-content: center;
     margin: 0 auto;
-    a {
-      width: 32px;
-      height: 32px;
-    }
     img {
-      display: block;
       box-sizing: border-box;
       border: 2px solid transparent;
-      width: 32px;
-      height: 32px;
       border-radius: 50%;
     }
     &:hover img {

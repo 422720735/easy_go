@@ -37,18 +37,18 @@ $('.main > .user-title-tag .tag').click(function () {
 })
 
 // 登陆页废弃验证码
-// function getCode() {
-//     $.ajax({
-//         url: '/captcha',
-//         method: 'Get',
-//         success: function (res) {
-//             if (res.code === Ok) {
-//                 $('#captcha').attr('src', res.data)
-//             }
-//         }
-//     })
-// }
-// getCode()
+function getCode() {
+    $.ajax({
+        url: '/captcha',
+        method: 'Get',
+        success: function (res) {
+            if (res.code === Ok) {
+                $('#captcha').attr('src', res.data)
+            }
+        }
+    })
+}
+getCode()
 
 // if (sessionStorage.getItem('r')) {
 //     $('.github').attr('href', $('.github').attr('href') + encodeURIComponent(sessionStorage.getItem('r')))

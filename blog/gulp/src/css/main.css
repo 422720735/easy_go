@@ -211,18 +211,12 @@
     border: none; }
 
 .navbar-expanded .expanded-avatar {
-  display: flex !important;
+  display: flex;
   justify-content: center;
   margin: 0 auto; }
-  .navbar-expanded .expanded-avatar a {
-    width: 32px;
-    height: 32px; }
   .navbar-expanded .expanded-avatar img {
-    display: block;
     box-sizing: border-box;
     border: 2px solid transparent;
-    width: 32px;
-    height: 32px;
     border-radius: 50%; }
   .navbar-expanded .expanded-avatar:hover img {
     border: 2px solid #f49484; }
