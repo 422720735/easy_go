@@ -36,6 +36,8 @@ func init() {
 func business() {
 	// 退出登录
 	beego.Router(Api + "/log/out", &controllers.UserControllers{})
+	beego.Router("/comment", &controllers.CommentControllers{},"get:SelectComment")
+	beego.Router(Api + "/comment/insert", &controllers.CommentControllers{},"post:InsertComment")
 }
 
 /*
@@ -44,7 +46,7 @@ func business() {
 */
 var FilterUser = func(ctx *context.Context) {
 	u_id := ctx.Input.CruSession.Get("u_id")
-	if u_id == nil && (ctx.Request.RequestURI != Api + "/log/out" || strings.Index(ctx.Request.RequestURI, "/static") == - 1) {
+	if u_id == nil && (ctx.Request.RequestURI != Api + "/log/out" || strings.Index(ctx.Request.RequestURI, "/static") != - 1) {
 		// 1 获取cookies
 		if auth := ctx.GetCookie("auth"); auth != "" {
 			// 验证token

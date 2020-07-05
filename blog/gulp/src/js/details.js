@@ -30,6 +30,9 @@ window.onload = function () {
         $('body').removeClass('day-mode')
         $('body').addClass('night-mode')
     }
+
+    // 评论信息
+    selectComment()
 }
 
 $(window).resize(function () {
@@ -81,7 +84,7 @@ function computeNavWidth() {
         document.querySelectorAll('#placeholder.ensp')[0].style.height = navHeight + marginBottom + 'px';
     }
 
-    
+
     // 计算sidebar的定位位置。
     const elHtml = document.querySelectorAll('.article-wrap')
     if (elHtml.length > 0) {
@@ -91,7 +94,7 @@ function computeNavWidth() {
         const navHeight = document.querySelectorAll('nav.navbar.bootsnav')[0].clientHeight;
         const marginBottom = parseInt($('nav.navbar.bootsnav').css('marginBottom'))
         const unilateral = (totalWidth - articleInfoWidth) / 2;
-        $('.sidebar').css({'left': unilateral + 17 + contentWidth + 'px', 'top': navHeight + marginBottom + 'px' })
+        $('.sidebar').css({'left': unilateral + 17 + contentWidth + 'px', 'top': navHeight + marginBottom + 'px'})
     }
     // 滚动获取第一层nav的高度，计算位移。
     // TRANSLATE_Y_HIGHT = document.querySelectorAll('ul.nav.navbar-nav')[0].clientHeight;
@@ -121,11 +124,109 @@ $('.themeMixin-skin').click(function () {
 });
 
 
-
 $('.nav.navbar-nav > li, .nav.navbar-nav > li ul.dropdown-menu').hover(function () {
-    $('nav.navbar.bootsnav').css({ 'overflow': 'visible' })
-    $('.article-h1').css({ 'display': 'none' })
+    $('nav.navbar.bootsnav').css({'overflow': 'visible'})
+    $('.article-h1').css({'display': 'none'})
 }, function () {
-    $('nav.navbar.bootsnav').css({ 'overflow': 'hidden' })
-    $('.article-h1').css({ 'display': 'block' })
+    $('nav.navbar.bootsnav').css({'overflow': 'hidden'})
+    $('.article-h1').css({'display': 'block'})
 });
+
+// 发布评论信息
+function insertComment() {
+    $.ajax({
+        url: '/api' + '/comment/insert',
+        method: 'post',
+        headers: {'Content-Type': 'application/json;charset=utf8', 'r': getCookie('auth')},
+        data: JSON.stringify({
+            article_id: $('#article_id').val(),
+            message: $('#comment-textarea').val()
+        }),
+        success: function (res) {
+            if (res.code === 1) {
+            } else {
+                // window.message.error(res)
+            }
+        }
+    })
+}
+
+// 显示信息
+function selectComment() {
+    var arr = [
+        {
+            id: 1,
+            img: "./img.jpg",
+            replyName: "帅大叔",
+            beReplyName: "匿名",
+            content: "同学聚会，看到当年追我的屌丝开着宝马车带着他老婆来了，他老婆是我隔壁宿舍的同班同学，心里后悔极了。",
+            time: "2017-10-17 11:42:53",
+            address: "深圳",
+            osname: "",
+            browse: "谷歌",
+            replyBody: []
+        },
+        {
+            id: 2,
+            img: "./img.jpg",
+            replyName: "匿名",
+            beReplyName: "",
+            content: "到菜市场买菜，看到一个孩子在看摊，我问：“一只鸡多少钱？” 那孩子回答：“23。” 我又问：“两只鸡多少钱？” 孩子愣了一下，一时间没算过来，急中生智大吼一声：“一次只能买一只！”",
+            time: "2017-10-17 11:42:53",
+            address: "深圳",
+            osname: "",
+            browse: "谷歌",
+            replyBody: [{
+                id: 3,
+                img: "",
+                replyName: "帅大叔",
+                beReplyName: "匿名",
+                content: "来啊，我们一起吃鸡",
+                time: "2017-10-17 11:42:53",
+                address: "",
+                osname: "",
+                browse: "谷歌"
+            }]
+        },
+        {
+            id: 3,
+            img: "./img.jpg",
+            replyName: "帅大叔",
+            beReplyName: "匿名",
+            content: "同学聚会，看到当年追我的屌丝开着宝马车带着他老婆来了，他老婆是我隔壁宿舍的同班同学，心里后悔极了。",
+            time: "2017-10-17 11:42:53",
+            address: "深圳",
+            osname: "win10",
+            browse: "谷歌",
+            replyBody: []
+        }
+    ];
+    $(".comment-list").addCommentList({data: arr, add: ""});
+
+    // $.ajax({
+    //     url: '/comment',
+    //     method: 'get',
+    //     headers: {'Content-Type': 'application/json;charset=utf8', 'r': getCookie('auth')},
+    //     success: function (res) {
+    //         if (res.code === 1) {
+    //         } else {
+    //             // window.message.error(res)
+    //         }
+    //     }
+    // })
+}
+
+// 获取指定名称的cookie
+function getCookie(name) {
+    var strcookie = document.cookie;//获取cookie字符串
+    var arrcookie = strcookie.split("; ");//分割
+    //遍历匹配
+    for (var i = 0; i < arrcookie.length; i++) {
+        var arr = arrcookie[i].split("=");
+        if (arr[0] == name) {
+            return arr[1];
+        }
+    }
+    return "";
+}
+

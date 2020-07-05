@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+/*第三方登录*/
 func Login_github(uid int, utype models.RoleTypeEle, name, login, location, avatar_url, access_token, auth_token string, ip string) (*models.Role, error) {
 	var r models.Role
 	r.UId = uid
@@ -65,6 +66,7 @@ func Login_github(uid int, utype models.RoleTypeEle, name, login, location, avat
 	return &r, nil
 }
 
+/*去数据库查询*/
 func Select_github(uid int, name, login_ip, auth_token string) (*models.Role, error) {
 	var count int
 	var r models.Role
@@ -77,9 +79,5 @@ func Select_github(uid int, name, login_ip, auth_token string) (*models.Role, er
 		return nil, errors.New("没有查询相关到相关数据")
 	}
 	return &r, nil
-}
-
-func Login_gitee()  {
-	
 }
 

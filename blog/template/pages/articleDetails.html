@@ -61,11 +61,17 @@
         <div class="comments">
             评论暂时未做，要等到后期做后端添加，有可能用插件。
         </div>
-
         <div class="commentbox">
-            <textarea cols="80" rows="50" placeholder="来说几句吧......" class="mytextarea" id="textarea"></textarea>
+            <textarea cols="80" rows="50" placeholder="来说几句吧......" class="mytextarea" id="comment-textarea"></textarea>
             <img src="/static/images/bba_thumb.gif" class="bq" id="openFace">
-            <div class="btn btn-info pull-right" id="comment">评论</div>
+            {{if .u_id}}
+                <input type="hidden" id="article_id" value="{{$.details.Id}}"/>
+                <div class="btn btn-info pull-right" id="comment" onclick="insertComment()">评论</div>
+                {{else}}
+                <div class="btn btn-info pull-right" id="comment">
+                    <a href="/login" class="whiteColor">登录后发表评论</a>
+                </div>
+            {{end}}
         </div>
 
         <div class="faceDivBox" style="width:800px;height:580px;display:none;">
@@ -79,66 +85,7 @@
         </div>
 
         <div class="comment-list">
-            <div class="comment-info">
-                <header><img src="/static/images/img.jpg"></header>
-                <div class="comment-right"><h3>帅大叔</h3>
-                    <div class="comment-content-header"><span><i class="glyphicon glyphicon-time"></i>2017-10-17 11:42:53</span><span><i
-                                    class="glyphicon glyphicon-map-marker"></i>深圳</span></div>
-                    <p class="content">同学聚会，看到当年追我的屌丝开着宝马车带着他老婆来了，他老婆是我隔壁宿舍的同班同学，心里后悔极了。</p>
-                    <div class="comment-content-footer">
-                        <div class="row">
-                            <div class="col-md-10"><span><i class="glyphicon glyphicon-globe"></i> 谷歌</span></div>
-                            <div class="col-md-2"><span class="reply-btn">回复</span></div>
-                        </div>
-                    </div>
-                    <div class="reply-list"></div>
-                </div>
-            </div>
 
-            <div class="comment-info">
-                <header><img src="/static/images/img.jpg"></header>
-                <div class="comment-right"><h3>匿名</h3>
-                    <div class="comment-content-header"><span><i class="glyphicon glyphicon-time"></i>2017-10-17 11:42:53</span><span><i
-                                    class="glyphicon glyphicon-map-marker"></i>深圳</span></div>
-                    <p class="content">到菜市场买菜，看到一个孩子在看摊，我问：“一只鸡多少钱？” 那孩子回答：“23。” 我又问：“两只鸡多少钱？”
-                        孩子愣了一下，一时间没算过来，急中生智大吼一声：“一次只能买一只！”</p>
-                    <div class="comment-content-footer">
-                        <div class="row">
-                            <div class="col-md-10"><span><i class="glyphicon glyphicon-globe"></i> 谷歌</span></div>
-                            <div class="col-md-2"><span class="reply-btn">回复</span></div>
-                        </div>
-                    </div>
-                    <div class="reply-list">
-                        <div class="reply">
-                            <div><a href="javascript:void(0)" class="replyname">帅大叔</a>:<a
-                                        href="javascript:void(0)">@匿名</a><span>来啊，我们一起吃鸡</span></div>
-                            <p><span>2017-10-17 11:42:53</span> <span class="reply-list-btn">回复</span></p></div>
-                        <div class="reply">
-                            <div><a href="javascript:void(0)" class="replyname">匿名</a>:<a
-                                        href="javascript:void(0)">@帅大叔</a><span>测试吃鸡
-</span></div>
-                            <p><span>2020-07-01 18:03:24</span> <span class="reply-list-btn">回复</span></p></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="comment-info">
-                <header><img src="/static/images/img.jpg"></header>
-                <div class="comment-right"><h3>帅大叔</h3>
-                    <div class="comment-content-header"><span><i class="glyphicon glyphicon-time"></i>2017-10-17 11:42:53</span><span><i
-                                    class="glyphicon glyphicon-map-marker"></i>深圳</span></div>
-                    <p class="content">同学聚会，看到当年追我的屌丝开着宝马车带着他老婆来了，他老婆是我隔壁宿舍的同班同学，心里后悔极了。</p>
-                    <div class="comment-content-footer">
-                        <div class="row">
-                            <div class="col-md-10"><span><i
-                                            class="glyphicon glyphicon-pushpin"></i> 来自:win10</span><span><i
-                                            class="glyphicon glyphicon-globe"></i> 谷歌</span></div>
-                            <div class="col-md-2"><span class="reply-btn">回复</span></div>
-                        </div>
-                    </div>
-                    <div class="reply-list"></div>
-                </div>
-            </div>
         </div>
 
     </div>

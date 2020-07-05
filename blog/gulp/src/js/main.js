@@ -139,9 +139,6 @@ $.isok = function (ok) {
             if (res.code === Ok) {
                 sessionStorage.setItem('out', '1')
                 window.location.reload()
-            } else {
-                window.message.error(res)
-                $.alert("标题", "内容");
             }
         }
     })

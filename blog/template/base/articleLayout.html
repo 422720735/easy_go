@@ -32,6 +32,40 @@
 
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         {{.menuUl}}
+                        <div class="article-h1">
+                            <h1 class="articleTitle">
+                                {{.details.Title}}
+                            </h1>
+                        </div>
+                        <div class="navbar-expanded menu">
+                            <!-- 切换皮肤主题 -->
+                            <div>&ensp;</div>
+                            <div>&ensp;</div>
+                            <div>&ensp;</div>
+                            <div>&ensp;</div>
+                            <div>&ensp;</div>
+                            <div>
+                                <a class="themeMixin-skin cursorPointer">
+                                    <i class="iconfont icon-moon"></i>
+                                </a>
+                            </div>
+                            {{if .u_id}}
+                                <a href="javascript: void(0);">
+                                    <i class="iconfont icon-exit" title="退出登录" id="confirmbtn"></i>
+                                </a>
+                            {{else}}
+                                <a href="/login">
+                                    <i class="iconfont icon-denglu" title="登录" onclick="_login()"></i>
+                                </a>
+                            {{end}}
+                            <div>
+                                {{if .u_id}}
+                                    <a class="expanded-avatar c-pointer d-block" title="{{.u_name}}">
+                                        <img class="d-block" width="32px" height="32px" src="{{.u_avatar_url}}" />
+                                    </a>
+                                {{end}}
+                            </div>
+                        </div>
                     </div>
 
                     <div id="drawer-mask" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu" aria-expanded="false"></div>

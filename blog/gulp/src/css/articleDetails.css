@@ -2866,16 +2866,10 @@ nav.navbar.bootsnav {
   .day-mode .article-content .editor {
     border: 1px solid #eaeaea; }
 
-.day-mode .comment-list {
-  border: 1px solid #eaeaea; }
-
 .night-mode .article-content {
   background-color: #3f3f3f; }
   .night-mode .article-content .editor {
     border: 1px solid #656565; }
-
-.night-mode .comment-list {
-  border: 1px solid #656565; }
 
 .article-h1 {
   position: relative;

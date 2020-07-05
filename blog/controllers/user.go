@@ -37,7 +37,7 @@ func (c *UserControllers) Post() {
 	c.Success(auth)
 }
 
-func setUser(user map[string]interface{}, u_type models.RoleTypeEle, c * OAuthControllers)  {
+func setUser(user map[string]interface{}, u_type models.RoleTypeEle, c *OAuthControllers) {
 	uid, _ := transform.InterToInt(user["id"])
 	name, _ := transform.InterToString(user["name"])
 	login, _ := transform.InterToString(user["login"])
