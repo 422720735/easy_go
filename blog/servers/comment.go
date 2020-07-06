@@ -11,7 +11,7 @@ func AddComment(role *models.Role, articleId int, message string) error {
 	c := models.Comment{
 		ArticleId:    articleId,
 		Content:      message,
-		UserId:       role.UId,
+		UserId:       role.Id,
 		CommentState: true,
 		CreatedTime:  time.Now(),
 	}
@@ -34,3 +34,19 @@ Id           int          `json:"id"`
 	CreatedTime  time.Time    `json:"created_time"`  // 创建时间
 	UpdateTime   sql.NullTime `json:"update_time"`   // 更新时间
 */
+
+func AddReply(content string, userId, commentId, replyId int, replyType models.ReplyTypeEle) error {
+	var r models.Reply
+	r.CommentId = commentId
+	r.Content = content
+	r.UserId = userId
+	r.ReplyType = replyType
+	r.ReplyId = replyId
+	r.CreatedTime = time.Now()
+	err := db.DbConn.Model(&models.Role{}).Create(&r).Error
+	if err != nil {
+		logger.Error("新增回复数据失败", err.Error())
+		return err
+	}
+	return nil
+}

@@ -3,12 +3,12 @@ package controllers
 import (
 	"easy_go/blog/logger"
 	"easy_go/blog/servers"
-	"github.com/astaxie/beego"
+	"easy_go/common"
 	"strconv"
 )
 
 type ArticleController struct {
-	beego.Controller
+	common.BaseController
 }
 
 func (c *ArticleController) Get() {
@@ -43,9 +43,8 @@ func (c *ArticleController) Get() {
 	publicA(c)
 }
 
-
 func publicA(c *ArticleController) {
-	u_id := c.GetSession("u_id")
+	u_id := c.GetSession("id")
 	if u_id != nil {
 		name := c.GetSession("u_name")
 		avatar_url := c.GetSession("u_avatar_url")
@@ -55,4 +54,21 @@ func publicA(c *ArticleController) {
 		c.Data["u_avatar_url"] = avatar_url
 		c.Data["u_auth_token"] = auth_token
 	}
+}
+
+func (c *ArticleController) CommentList() {
+	param := c.Ctx.Input.Param(":id")
+	if param == "" {
+		c.Error("获取评论参数不合法")
+		return
+	}
+
+	_id, err := strconv.Atoi(param)
+	if err != nil {
+		c.Error("获取评论参数不合法")
+		return
+	}
+
+	// 获取到文章id去查询评论+回复
+	c.Success(_id)
 }

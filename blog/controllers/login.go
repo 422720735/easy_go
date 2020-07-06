@@ -11,6 +11,10 @@ type LoginController struct {
 }
 
 func (c *LoginController) Get() {
+	if c.GetSession("id") != nil {
+		c.Redirect("/", 302)
+		return
+	}
 	c.Layout = "base/loginLayout.html"
 	c.TplName = "pages/login.html"
 	c.LayoutSections = make(map[string]string)

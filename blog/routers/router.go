@@ -23,6 +23,7 @@ func init() {
 	beego.Router("/?:menu_id/?:category_id", &controllers.IndexController{}, "get:Index")
 
 	beego.Router("/article/?:id", &controllers.ArticleController{})
+	beego.Router("/article/comment/?:id", &controllers.ArticleController{}, "get:CommentList")
 
 	beego.Router("/login", &controllers.LoginController{})
 
@@ -38,6 +39,7 @@ func business() {
 	beego.Router(Api + "/log/out", &controllers.UserControllers{})
 	beego.Router("/comment", &controllers.CommentControllers{},"get:SelectComment")
 	beego.Router(Api + "/comment/insert", &controllers.CommentControllers{},"post:InsertComment")
+	beego.Router(Api + "/reply/insert", &controllers.CommentControllers{},"post:InsertReply")
 }
 
 /*
@@ -45,8 +47,8 @@ func business() {
 如果合法则把信息装入session里
 */
 var FilterUser = func(ctx *context.Context) {
-	u_id := ctx.Input.CruSession.Get("u_id")
-	if u_id == nil && (ctx.Request.RequestURI != Api + "/log/out" || strings.Index(ctx.Request.RequestURI, "/static") != - 1) {
+	id := ctx.Input.CruSession.Get("id")
+	if id == nil && (ctx.Request.RequestURI != Api + "/log/out" || strings.Index(ctx.Request.RequestURI, "/static") != - 1) {
 		// 1 获取cookies
 		if auth := ctx.GetCookie("auth"); auth != "" {
 			// 验证token
@@ -55,7 +57,7 @@ var FilterUser = func(ctx *context.Context) {
 			if err == nil {
 				role, err := servers.Select_github(claims.ID, claims.Username, claims.LoginIp, auth)
 				if err == nil {
-					ctx.Output.Session("u_id", role.UId)
+					ctx.Output.Session("id", role.UId)
 					ctx.Output.Session("u_name", role.Name)
 					ctx.Output.Session("u_avatar_url", role.AvatarUrl)
 				}

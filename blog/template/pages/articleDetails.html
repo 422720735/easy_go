@@ -64,8 +64,8 @@
         <div class="commentbox">
             <textarea cols="80" rows="50" placeholder="来说几句吧......" class="mytextarea" id="comment-textarea"></textarea>
             <img src="/static/images/bba_thumb.gif" class="bq" id="openFace">
-            {{if .u_id}}
-                <input type="hidden" id="article_id" value="{{$.details.Id}}"/>
+            <input type="hidden" id="article_id" value="{{$.details.Id}}"/>
+            {{if .id}}
                 <div class="btn btn-info pull-right" id="comment" onclick="insertComment()">评论</div>
                 {{else}}
                 <div class="btn btn-info pull-right" id="comment">

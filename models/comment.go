@@ -36,6 +36,8 @@ type Reply struct {
 	UserId    int          `json:"user_id"`                  // 回复用户id
 	ReplyType ReplyTypeEle `json:"reply_type" gorm:"size:8"` // 表示回复的类型，因为回复可以是针对评论的回复(comment表)，也可以是针对回复的回复(reply表)， 通过这个字段来区分两种情景。
 	ReplyId   int          `json:"reply_id"`                 // 表示回复目标的id，如果reply_type是comment的话，那么reply_id＝commit_id，如果reply_type是reply的话，这表示这条回复的父回复
+	CreatedTime  time.Time    `json:"created_time"`  // 创建时间
+	UpdateTime   sql.NullTime `json:"update_time"`   // 更新时间
 }
 
 type ZanTypeEle int8

@@ -33,6 +33,7 @@ window.onload = function () {
 
     // 评论信息
     selectComment()
+
 }
 
 $(window).resize(function () {
@@ -203,17 +204,16 @@ function selectComment() {
     ];
     $(".comment-list").addCommentList({data: arr, add: ""});
 
-    // $.ajax({
-    //     url: '/comment',
-    //     method: 'get',
-    //     headers: {'Content-Type': 'application/json;charset=utf8', 'r': getCookie('auth')},
-    //     success: function (res) {
-    //         if (res.code === 1) {
-    //         } else {
-    //             // window.message.error(res)
-    //         }
-    //     }
-    // })
+    $.ajax({
+        url: '/article/comment/' + $('#article_id').val(),
+        method: 'get',
+        success: function (res) {
+            if (res.code === 1) {
+            } else {
+                // window.message.error(res)
+            }
+        }
+    })
 }
 
 // 获取指定名称的cookie
