@@ -46,12 +46,12 @@ gulp.task('jsUglify', function () {
     return gulp.src(['src/js/*.js', '!src/js/TweenMax/**'])
         .pipe(babel())
         .pipe(rename({suffix: '.min'}))
-        .pipe(uglify({
-            compress: {
-                drop_console: NODE_ENV !== 'production', // 过滤 console
-                drop_debugger: NODE_ENV !== 'production' // 过滤 debugger
-            }
-        }))
+        // .pipe(uglify({
+        //     compress: {
+        //         drop_console: NODE_ENV !== 'production', // 过滤 console
+        //         drop_debugger: NODE_ENV !== 'production' // 过滤 debugger
+        //     }
+        // }))
         .pipe(gulp.dest(path.resolve(__dirname, '../static/js')))
 });
 

@@ -76,7 +76,7 @@ func (c *IndexController) Index() {
 }
 
 func public(c *IndexController) {
-	u_id := c.GetSession("u_id")
+	u_id := c.GetSession("id")
 	if u_id != nil {
 		name := c.GetSession("u_name")
 		avatar_url := c.GetSession("u_avatar_url")
