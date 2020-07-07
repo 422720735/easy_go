@@ -6,7 +6,6 @@ import (
 	"easy_go/common"
 	myjwt "easy_go/middleware"
 	"easy_go/transform"
-	"github.com/astaxie/beego"
 	"strconv"
 )
 
@@ -57,10 +56,6 @@ func (c *CommentControllers) InsertComment() {
 		return
 	}
 
-	beego.Info(claims.ID)
-	beego.Info(claims.Username)
-	beego.Info(claims.LoginIp)
-	beego.Info(auth)
 	role, err := servers.Select_github(claims.ID, claims.Username, claims.LoginIp, auth)
 	if err != nil {
 		c.Error("评论失败，参数不合法！2")

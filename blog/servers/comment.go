@@ -3,6 +3,7 @@ package servers
 import (
 	"easy_go/blog/db"
 	"easy_go/blog/logger"
+	myjwt "easy_go/middleware"
 	"easy_go/models"
 	"github.com/astaxie/beego"
 	"time"
@@ -52,9 +53,13 @@ func AddReply(content string, userId, commentId, replyId int, replyType models.R
 	return nil
 }
 
+/**
+1.查询到的评论list信息userId存在重复我们需要去重。
+2.根据这个user_id,comment_id在去查询相关回复。
+*/
 func SelectCommentList(article_id, size, page int) error {
 	var commentList []*models.Comment
-	var reply []*models.Reply
+	//var reply []*models.Reply
 
 	commentSql := db.DbConn.Model(&models.Comment{}).Where("article_id = ?", article_id)
 	err := commentSql.Error
@@ -71,13 +76,14 @@ func SelectCommentList(article_id, size, page int) error {
 		return err
 	}
 
+	// 去重
+	var user_array_old []int
 	for _, value := range commentList {
-		beego.Info(value.UserId)
-		// 1 2 3  4 5 6 7 8 9
-		// SELECT * FROM replies WHERE user_id in (1, 3)
-		// db.DbConn.Model(&models.Reply{}).Where()
-		//db.DbConn.Raw("select * form")
+		user_array_old = append(user_array_old, value.UserId)
 	}
 
+	// 调用去重方法
+	user_array_now:= myjwt.RemoveRepByMapInt(user_array_old)
+	beego.Info(user_array_now)
 	return nil
 }

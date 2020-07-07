@@ -58,17 +58,17 @@
 
                         // 回复 评论下面的回复
                         obj.type = 2
-                        // 评论id
+                        // 你回复哪条评论的id
                         obj.comment_id = 1
                         // 你所回复的 那条回复的id
-                        obj.reply_id = 2
+                        obj.reply_id = 4
                     } else {
                         obj.beReplyName = parentEl.find("h3").text();
 
                         // 回复 评论
                         obj.type = 1
-                        // 评论id
-                        obj.comment_id = 1
+                        // 你回复哪条评论的id
+                        obj.comment_id = 4
                     }
                     obj.content = content;
                     obj.time = getNowDateFormat();
