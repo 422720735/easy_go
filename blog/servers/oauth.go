@@ -36,7 +36,6 @@ func Login_github(uid int, utype models.RoleTypeEle, name, login, location, avat
 	}
 
 	if count > 0 {
-		role.Find(&r)
 		err = role.Updates(map[string]interface{}{
 			"uid":                r.UId,
 			"u_type":             r.UType,
@@ -55,6 +54,8 @@ func Login_github(uid int, utype models.RoleTypeEle, name, login, location, avat
 			logger.Info("修改github第三方登录角色失败", err.Error())
 			return nil, err
 		}
+
+		role.Find(&r)
 	} else {
 		r.CreatedTime = time.Now()
 		err = role.Create(&r).Error
@@ -71,7 +72,7 @@ func Login_github(uid int, utype models.RoleTypeEle, name, login, location, avat
 func Select_github(uid int, name, login_ip, auth_token string) (*models.Role, error) {
 	var count int
 	var r models.Role
-	err := db.DbConn.Select([]string{"id", "name", "avatar_url", "auth_token"}).Model(&models.Role{}).Where("id = ? and name = ? and login_ip = ? and auth_token = ?", uid, name, login_ip, auth_token).Find(&r).Count(&count).Error
+	err := db.DbConn.Select([]string{"id", "uid", "name", "avatar_url", "auth_token"}).Model(&models.Role{}).Where("uid = ? and name = ? and login_ip = ? and auth_token = ?", uid, name, login_ip, auth_token).Find(&r).Count(&count).Error
 	if err != nil {
 		logger.Info("查询登录信息失败")
 		return nil, err
@@ -81,3 +82,4 @@ func Select_github(uid int, name, login_ip, auth_token string) (*models.Role, er
 	}
 	return &r, nil
 }
+

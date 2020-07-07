@@ -65,10 +65,10 @@
             <textarea cols="80" rows="50" placeholder="来说几句吧......" class="mytextarea" id="comment-textarea"></textarea>
             <img src="/static/images/bba_thumb.gif" class="bq" id="openFace">
             <input type="hidden" id="article_id" value="{{$.details.Id}}"/>
-            {{if .id}}
-                <div class="btn btn-info pull-right" id="comment" onclick="insertComment()">评论</div>
+            {{if .u_id}}
+                <div class="btn btn-info pull-right" id="ok-comment" onclick="insertComment()">评论</div>
                 {{else}}
-                <div class="btn btn-info pull-right" id="comment">
+                <div class="btn btn-info pull-right">
                     <a href="/login" class="whiteColor">登录后发表评论</a>
                 </div>
             {{end}}

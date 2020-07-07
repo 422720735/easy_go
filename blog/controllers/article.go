@@ -23,11 +23,12 @@ func (c *ArticleController) Get() {
 
 	param := c.Ctx.Input.Param(":id")
 	var id int
-	id1, err := strconv.Atoi(param)
+	_id, err := strconv.Atoi(param)
 	if err == nil {
-		id = id1
+		id = _id
 	} else {
-		id = 0
+		c.History("查看文章详情失败", "/")
+		return
 	}
 
 	menu, _ := servers.SelectArticleTypeMenuName()
@@ -44,7 +45,7 @@ func (c *ArticleController) Get() {
 }
 
 func publicA(c *ArticleController) {
-	u_id := c.GetSession("id")
+	u_id := c.GetSession("u_id")
 	if u_id != nil {
 		name := c.GetSession("u_name")
 		avatar_url := c.GetSession("u_avatar_url")
@@ -56,7 +57,7 @@ func publicA(c *ArticleController) {
 	}
 }
 
-func (c *ArticleController) CommentList() {
+func (c *ArticleController) GetCommentList() {
 	param := c.Ctx.Input.Param(":id")
 	if param == "" {
 		c.Error("获取评论参数不合法")
@@ -64,11 +65,28 @@ func (c *ArticleController) CommentList() {
 	}
 
 	_id, err := strconv.Atoi(param)
-	if err != nil {
+	if err != nil || _id <= 0 {
 		c.Error("获取评论参数不合法")
 		return
 	}
 
+	pageStr := c.GetString("page")
+	if pageStr == "" {
+		c.Error("页码不能为空")
+		return
+	}
+	page, err := strconv.Atoi(pageStr)
+	if err != nil || page <= 0 {
+		c.Error("页码不合法")
+		return
+	}
+
 	// 获取到文章id去查询评论+回复
+	err = servers.SelectCommentList(_id, common.PAGE_SIZE, page)
+	if err != nil {
+		c.Error("查询数据失败")
+		return
+	}
+
 	c.Success(_id)
 }

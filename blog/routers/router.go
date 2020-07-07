@@ -23,7 +23,8 @@ func init() {
 	beego.Router("/?:menu_id/?:category_id", &controllers.IndexController{}, "get:Index")
 
 	beego.Router("/article/?:id", &controllers.ArticleController{})
-	beego.Router("/article/comment/?:id", &controllers.ArticleController{}, "get:CommentList")
+
+	beego.Router("/article/comment/?:id", &controllers.ArticleController{}, "get:GetCommentList")
 
 	beego.Router("/login", &controllers.LoginController{})
 
@@ -37,9 +38,10 @@ func init() {
 func business() {
 	// 退出登录
 	beego.Router(Api + "/log/out", &controllers.UserControllers{})
-	beego.Router("/comment", &controllers.CommentControllers{},"get:SelectComment")
+	// 新增评论
 	beego.Router(Api + "/comment/insert", &controllers.CommentControllers{},"post:InsertComment")
-	beego.Router(Api + "/reply/insert", &controllers.CommentControllers{},"post:InsertReply")
+	// 新增回复
+	beego.Router(Api + "/reply/insert", &controllers.ReplyControllers{},"post:InsertReply")
 }
 
 /*
@@ -57,7 +59,7 @@ var FilterUser = func(ctx *context.Context) {
 			if err == nil {
 				role, err := servers.Select_github(claims.ID, claims.Username, claims.LoginIp, auth)
 				if err == nil {
-					ctx.Output.Session("id", role.UId)
+					ctx.Output.Session("u_id", role.Id)
 					ctx.Output.Session("u_name", role.Name)
 					ctx.Output.Session("u_avatar_url", role.AvatarUrl)
 				}

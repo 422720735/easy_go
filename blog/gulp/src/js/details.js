@@ -157,7 +157,7 @@ function selectComment() {
     var arr = [
         {
             id: 1,
-            img: "./img.jpg",
+            img: "/static/images/img.jpg",
             replyName: "帅大叔",
             beReplyName: "匿名",
             content: "同学聚会，看到当年追我的屌丝开着宝马车带着他老婆来了，他老婆是我隔壁宿舍的同班同学，心里后悔极了。",
@@ -169,7 +169,7 @@ function selectComment() {
         },
         {
             id: 2,
-            img: "./img.jpg",
+            img: "/static/images/img.jpg",
             replyName: "匿名",
             beReplyName: "",
             content: "到菜市场买菜，看到一个孩子在看摊，我问：“一只鸡多少钱？” 那孩子回答：“23。” 我又问：“两只鸡多少钱？” 孩子愣了一下，一时间没算过来，急中生智大吼一声：“一次只能买一只！”",
@@ -191,7 +191,7 @@ function selectComment() {
         },
         {
             id: 3,
-            img: "./img.jpg",
+            img: "/static/images/img.jpg",
             replyName: "帅大叔",
             beReplyName: "匿名",
             content: "同学聚会，看到当年追我的屌丝开着宝马车带着他老婆来了，他老婆是我隔壁宿舍的同班同学，心里后悔极了。",
@@ -205,7 +205,7 @@ function selectComment() {
     $(".comment-list").addCommentList({data: arr, add: ""});
 
     $.ajax({
-        url: '/article/comment/' + $('#article_id').val(),
+        url: '/article/comment/' + $('#article_id').val() + '?page=1',
         method: 'get',
         success: function (res) {
             if (res.code === 1) {
@@ -230,3 +230,24 @@ function getCookie(name) {
     return "";
 }
 
+function insertReply(reply, callback) {
+    if (document.getElementById('ok-comment')) {
+        $.ajax({
+            url: '/api' + '/reply/insert',
+            method: 'post',
+            headers: {'Content-Type': 'application/json;charset=utf8', 'r': getCookie('auth')},
+            data: JSON.stringify(reply),
+            success: function (res) {
+                if (res.code === 1) {
+                    window.message.success('新增回复成功！')
+                    callback && callback()
+                } else {
+                    window.message.error(res)
+                }
+            }
+        })
+    } else {
+        window.message.error('请先登录才能回复！')
+    }
+
+}

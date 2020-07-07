@@ -64,9 +64,7 @@ func SelectArticleDetails(id int) (*ArticleAll, error) {
 		err = db.DbConn.Select([]string{"id", "title"}).Model(&models.Article{}).Where("sort < ? and visible = 1 and state = 0", a.Sort).Find(&p).Error
 	}
 
-	if err != nil {
-		logger.Info("上页查询失败", err.Error())
-	} else {
+	if err == nil {
 		all.Prev.Id = p.Id
 		all.Prev.Title = p.Title
 	}
