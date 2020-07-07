@@ -49,12 +49,13 @@
         function replyClick(el) {
             el.parent().parent().append("<div class='replybox'><textarea cols='80' rows='50' placeholder='来说几句吧......' class='mytextarea' ></textarea><span class='send'>发送</span></div>").find(".send").click(function() {
                 var content = $(this).prev().val();
-
-                console.log(getCookie('auth'))
                 if (content != "") {
                     var parentEl = $(this).parent().parent().parent().parent();
-                    var obj = {};
+                    var obj = {}
+                    obj.replyName = "匿名";
                     if (el.parent().parent().hasClass("reply")) {
+                        obj.beReplyName = el.parent().parent().find("a:first").text();
+
                         // 回复 评论下面的回复
                         obj.type = 2
                         // 评论id
@@ -62,27 +63,22 @@
                         // 你所回复的 那条回复的id
                         obj.reply_id = 2
                     } else {
+                        obj.beReplyName = parentEl.find("h3").text();
+
                         // 回复 评论
                         obj.type = 1
                         // 评论id
                         obj.comment_id = 1
                     }
                     obj.content = content;
-
-                    Object.keys(obj).length > 0 && insertReply(obj);
-
-                    $(".replybox").remove();
-                    /**
-                     * 需要传递
-                     * 1回复内容
-                     * 2回复用户id
-                     * 3回复评论type/回复的回复type
-                     * 4针对的id
-                     * */
-                    debugger
-                    parentEl.find(".reply-list").append(replyString).find(".reply-list-btn:last").click(function() {
-                        debugger
-                        alert("不能回复自己");
+                    obj.time = getNowDateFormat();
+                    const {type, comment_id, reply_id} = obj
+                    Object.keys(obj).length > 0 && insertReply({type, comment_id, reply_id, content}, () => {
+                        var replyString = createReplyComment(obj);
+                        $(".replybox").remove();
+                        parentEl.find(".reply-list").append(replyString).find(".reply-list-btn:last").click(function() {
+                            alert("不能回复自己");
+                        });
                     });
                 } else {
                     alert("空内容");
@@ -130,32 +126,3 @@
         }
     }
 )(jQuery);
-
-// 获取指定名称的cookie
-function getCookie(name) {
-    var strcookie = document.cookie;//获取cookie字符串
-    var arrcookie = strcookie.split("; ");//分割
-    //遍历匹配
-    for (var i = 0; i < arrcookie.length; i++) {
-        var arr = arrcookie[i].split("=");
-        if (arr[0] == name) {
-            return arr[1];
-        }
-    }
-    return "";
-}
-
-function insertReply(reply) {
-    $.ajax({
-        url: '/api' + '/reply/insert',
-        method: 'post',
-        headers: {'Content-Type': 'application/json;charset=utf8', 'r': getCookie('auth')},
-        data: JSON.stringify(reply),
-        success: function (res) {
-            if (res.code === 1) {
-            } else {
-                // window.message.error(res)
-            }
-        }
-    })
-}

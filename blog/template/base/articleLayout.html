@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{template "style/globalStyle.html"}}
     {{.style}}
+    <link rel="stylesheet" href="/static/assets/message/css/jquery.my-message.1.1.css">
 </head>
 <body class="day-mode">
 <!--皮肤-->
@@ -51,7 +52,7 @@
                             </div>
                             {{if .u_id}}
                                 <a href="javascript: void(0);">
-                                    <i class="iconfont icon-exit" title="退出登录" id="confirmbtn"></i>
+                                    <i class="iconfont icon-exit" title="退出登录" id="confirmbtn2"></i>
                                 </a>
                             {{else}}
                                 <a href="/login">
@@ -90,4 +91,6 @@
 {{template "script/globalScript.html"}}
 {{.canvasNest}}
 {{.script}}
+<script src="/static/assets/message/js/jquery.my-message.1.1.js"></script>
+<script src="/static/js/message-ui.min.js"></script>
 </html>

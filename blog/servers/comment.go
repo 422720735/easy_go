@@ -4,6 +4,7 @@ import (
 	"easy_go/blog/db"
 	"easy_go/blog/logger"
 	"easy_go/models"
+	"github.com/astaxie/beego"
 	"time"
 )
 
@@ -48,5 +49,35 @@ func AddReply(content string, userId, commentId, replyId int, replyType models.R
 		logger.Error("新增回复数据失败", err.Error())
 		return err
 	}
+	return nil
+}
+
+func SelectCommentList(article_id, size, page int) error {
+	var commentList []*models.Comment
+	var reply []*models.Reply
+
+	commentSql := db.DbConn.Model(&models.Comment{}).Where("article_id = ?", article_id)
+	err := commentSql.Error
+	if err != nil {
+		logger.Info("查询评论数据失败")
+		return err
+	}
+
+	commentSql = commentSql.Limit(size).Offset((page - 1)* size).Order("created_time desc").Find(&commentList)
+	err = commentSql.Error
+
+	if err != nil {
+		logger.Info("查询评论数据失败")
+		return err
+	}
+
+	for _, value := range commentList {
+		beego.Info(value.UserId)
+		// 1 2 3  4 5 6 7 8 9
+		// SELECT * FROM replies WHERE user_id in (1, 3)
+		// db.DbConn.Model(&models.Reply{}).Where()
+		//db.DbConn.Raw("select * form")
+	}
+
 	return nil
 }

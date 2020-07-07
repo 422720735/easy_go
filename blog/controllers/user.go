@@ -69,7 +69,7 @@ func setUser(user map[string]interface{}, u_type models.RoleTypeEle, c *OAuthCon
 	}
 
 	c.Ctx.SetCookie("auth", auth_token, time.Second*60*60)
-	c.SetSession("id", role.Id)
+	c.SetSession("u_id", role.Id)
 	c.SetSession("u_name", role.Name)
 	c.SetSession("u_avatar_url", role.AvatarUrl)
 	c.History("", "/")
