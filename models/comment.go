@@ -56,3 +56,15 @@ type Zan struct {
 	UserId int        `json:"user_id"` // 用户id
 	State  bool       `json:"state"`   // 点赞状态  0--取消赞   1--有效赞
 }
+
+type ReplyBody struct {
+	Id int `json:"id"`
+	Img string `json:"img"` // 头像
+	ReplyName string `json:"reply_name"` // 回复用户名
+	BeReplyName string `json:"be_reply_name"` // 目标用户名
+	Content string `json:"content"`
+	Time int64 `json:"time" gorm:"size(11)"`
+	Addres string `json:"addres"`
+	OsName string `json:"os_name"`
+	Browse string `json:"browse"`
+}

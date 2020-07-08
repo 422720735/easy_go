@@ -3,7 +3,6 @@ package servers
 import (
 	"easy_go/blog/db"
 	"easy_go/blog/logger"
-	myjwt "easy_go/middleware"
 	"easy_go/models"
 	"github.com/astaxie/beego"
 	"time"
@@ -96,11 +95,70 @@ func SelectCommentList(article_id, size, page int) error {
 	err = db.DbConn.Model(&models.Reply{}).Where("comment_id in (?)", comment_id).Find(&reply).Error
 	if err != nil {
 		logger.Info(err.Error())
-		beego.Info(err.Error())
 	}
+
+	if len(reply) > 0 {
+		// 去查询相关评论数据的用户
+
+		for _, v := range reply {
+			// 需要连表查询查询想与之想对应的数据。
+			beego.Info(v)
+		}
+	}
+
 	// 调用去重方法
-	user_array_now := myjwt.RemoveRepByMapInt(user_array_old)
-	beego.Info(user_array_now)
-	beego.Info(len(reply))
+	//user_array_now := myjwt.RemoveRepByMapInt(user_array_old)
+
 	return nil
 }
+
+/*
+var arr = [
+        {
+            id: 1,
+            img: "/static/images/img.jpg",
+            replyName: "帅大叔",
+            beReplyName: "匿名",
+            content: "同学聚会，看到当年追我的屌丝开着宝马车带着他老婆来了，他老婆是我隔壁宿舍的同班同学，心里后悔极了。",
+            time: "2017-10-17 11:42:53",
+            address: "深圳",
+            osname: "",
+            browse: "谷歌",
+            replyBody: []
+        },
+        {
+            id: 2,
+            img: "/static/images/img.jpg",
+            replyName: "匿名",
+            beReplyName: "",
+            content: "到菜市场买菜，看到一个孩子在看摊，我问：“一只鸡多少钱？” 那孩子回答：“23。” 我又问：“两只鸡多少钱？” 孩子愣了一下，一时间没算过来，急中生智大吼一声：“一次只能买一只！”",
+            time: "2017-10-17 11:42:53",
+            address: "深圳",
+            osname: "",
+            browse: "谷歌",
+            replyBody: [{
+                id: 3,
+                img: "",
+                replyName: "帅大叔",
+                beReplyName: "匿名",
+                content: "来啊，我们一起吃鸡",
+                time: "2017-10-17 11:42:53",
+                address: "",
+                osname: "",
+                browse: "谷歌"
+            }]
+        },
+        {
+            id: 3,
+            img: "/static/images/img.jpg",
+            replyName: "帅大叔",
+            beReplyName: "匿名",
+            content: "同学聚会，看到当年追我的屌丝开着宝马车带着他老婆来了，他老婆是我隔壁宿舍的同班同学，心里后悔极了。",
+            time: "2017-10-17 11:42:53",
+            address: "深圳",
+            osname: "win10",
+            browse: "谷歌",
+            replyBody: []
+        }
+    ];
+*/
