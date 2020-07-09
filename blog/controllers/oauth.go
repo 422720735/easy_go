@@ -30,7 +30,10 @@ func (c *OAuthControllers) Github() {
 }
 
 func _github(codeStr string) (map[string]interface{}, error) {
-	github_conf := &d3auth.Auth_conf{Appid: lib.Conf.Read("github", "ClientId"), Appkey: lib.Conf.Read("github", "ClientSecret"), Rurl: lib.Conf.Read("github", "RedirectUrl")}
+	github_conf := &d3auth.Auth_conf{
+		Appid: lib.Conf.Read("github", "ClientId"),
+		Appkey: lib.Conf.Read("github", "ClientSecret"),
+	}
 	githubAuth := d3auth.NewAuth_github(github_conf)
 	token, err := githubAuth.Get_Token(codeStr)
 
@@ -95,3 +98,5 @@ func _gitee(codeStr string) (map[string]interface{}, error) {
 	return userInfo, nil
 
 }
+
+// 4 '防守反击' 2  2

@@ -15,7 +15,7 @@ type Comment struct {
 	Id           int          `json:"id"`
 	ArticleId    int          `json:"article_id"`    // 文章id
 	Content      string       `json:"content"`       // 评论内容
-	UserId       int          `json:"user_id"`       // 评论用户id
+	FromUid      int          `json:"from_uid"`      // 评论用户id
 	CommentState bool         `json:"comment_state"` // 评论状态：默认显示全部，超级管理员可以删除评论
 	CreatedTime  time.Time    `json:"created_time"`  // 创建时间
 	UpdateTime   sql.NullTime `json:"update_time"`   // 更新时间
@@ -32,10 +32,11 @@ const (
 type Reply struct {
 	Id          int          `json:"id"`
 	CommentId   int          `json:"comment_id"`               // 评论id
-	Content     string       `json:"content"`                  // 回复内容
-	UserId      int          `json:"user_id"`                  // 回复用户id
+	ReplyId     int          `json:"reply_id"`                 // 回复目标id
 	ReplyType   ReplyTypeEle `json:"reply_type" gorm:"size:8"` // 表示回复的类型，因为回复可以是针对评论的回复(comment表)，也可以是针对回复的回复(reply表)， 通过这个字段来区分两种情景。
-	ReplyId     int          `json:"reply_id"`                 // 表示回复目标的id，如果reply_type是comment的话，那么reply_id＝commit_id，如果reply_type是reply的话，这表示这条回复的父回复
+	Content     string       `json:"content"`                  // 回复内容
+	FromUid     int          `json:"from_uid"`                 // 回复用户id
+	ToUid       int          `json:"to_uid"`                   // 目标用户id
 	CreatedTime time.Time    `json:"created_time"`             // 创建时间
 	UpdateTime  sql.NullTime `json:"update_time"`              // 更新时间
 }
@@ -58,13 +59,13 @@ type Zan struct {
 }
 
 type ReplyBody struct {
-	Id int `json:"id"`
-	Img string `json:"img"` // 头像
-	ReplyName string `json:"reply_name"` // 回复用户名
+	Id          int    `json:"id"`
+	Img         string `json:"img"`           // 头像
+	ReplyName   string `json:"reply_name"`    // 回复用户名
 	BeReplyName string `json:"be_reply_name"` // 目标用户名
-	Content string `json:"content"`
-	Time int64 `json:"time" gorm:"size(11)"`
-	Addres string `json:"addres"`
-	OsName string `json:"os_name"`
-	Browse string `json:"browse"`
+	Content     string `json:"content"`
+	Time        int64  `json:"time" gorm:"size(11)"`
+	Addres      string `json:"addres"`
+	OsName      string `json:"os_name"`
+	Browse      string `json:"browse"`
 }
