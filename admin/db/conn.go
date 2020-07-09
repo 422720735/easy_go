@@ -50,6 +50,6 @@ func CreatedTable() {
 		&models.Comment{},
 		&models.Reply{},
 		&models.Zan{},
-		&models.Role{},
+		&models.OauthUser{},
 	)
 }

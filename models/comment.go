@@ -12,13 +12,13 @@ import (
 
 /*评论*/
 type Comment struct {
-	Id           int          `json:"id"`
-	ArticleId    int          `json:"article_id"`    // 文章id
-	Content      string       `json:"content"`       // 评论内容
-	FromUid      int          `json:"from_uid"`      // 评论用户id
-	CommentState bool         `json:"comment_state"` // 评论状态：默认显示全部，超级管理员可以删除评论
-	CreatedTime  time.Time    `json:"created_time"`  // 创建时间
-	UpdateTime   sql.NullTime `json:"update_time"`   // 更新时间
+	Id           int          `json:"id" gorm:"size:10"`
+	ArticleId    int          `json:"article_id" gorm:"size:10"`   // 文章id
+	Content      string       `json:"content" gorm:"type:text"`    // 评论内容
+	FromUid      int          `json:"from_uid" gorm:"size:10"`     // 评论用户id
+	CommentState bool         `json:"comment_state" gorm:"size:2"` // 评论状态：默认显示全部，超级管理员可以删除评论
+	CreatedTime  time.Time    `json:"created_time"`                // 创建时间
+	UpdateTime   sql.NullTime `json:"update_time"`                 // 更新时间
 }
 
 type ReplyTypeEle int8
@@ -30,15 +30,15 @@ const (
 
 // 回复表
 type Reply struct {
-	Id          int          `json:"id"`
-	CommentId   int          `json:"comment_id"`               // 评论id
-	ReplyId     int          `json:"reply_id"`                 // 回复目标id
-	ReplyType   ReplyTypeEle `json:"reply_type" gorm:"size:8"` // 表示回复的类型，因为回复可以是针对评论的回复(comment表)，也可以是针对回复的回复(reply表)， 通过这个字段来区分两种情景。
-	Content     string       `json:"content"`                  // 回复内容
-	FromUid     int          `json:"from_uid"`                 // 回复用户id
-	ToUid       int          `json:"to_uid"`                   // 目标用户id
-	CreatedTime time.Time    `json:"created_time"`             // 创建时间
-	UpdateTime  sql.NullTime `json:"update_time"`              // 更新时间
+	Id          int          `json:"id" gorm:"size:10"`
+	CommentId   int          `json:"comment_id" gorm:"size:10"` // 评论id
+	ReplyId     int          `json:"reply_id" `                 // 回复目标id，reply_type为1时，是comment_id，reply_type为2时为回复表的id
+	ReplyType   ReplyTypeEle `json:"reply_type" gorm:"size:2"`  // 1为回复评论，2为回复别人的回复'
+	Content     string       `json:"content"`                   // 回复内容
+	FromUid     int          `json:"from_uid" gorm:"size:10"`   // 回复用户id
+	ToUid       int          `json:"to_uid" gorm:"size:10"`     // 回复目标id
+	CreatedTime time.Time    `json:"created_time"`              // 创建时间
+	UpdateTime  sql.NullTime `json:"update_time"`               // 更新时间
 }
 
 type ZanTypeEle int8

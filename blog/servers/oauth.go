@@ -9,8 +9,8 @@ import (
 )
 
 /*第三方登录*/
-func Login_github(uid int, utype models.RoleTypeEle, name, login, location, avatar_url, access_token, auth_token string, ip string) (*models.Role, error) {
-	var r models.Role
+func Login_github(uid int, utype models.RoleTypeEle, name, login, location, avatar_url, access_token, auth_token string, ip string) (*models.OauthUser, error) {
+	var r models.OauthUser
 	r.UId = uid
 	r.UType = utype
 	r.ULogin = login
@@ -27,7 +27,7 @@ func Login_github(uid int, utype models.RoleTypeEle, name, login, location, avat
 	r.CurrentLoginTime.Scan(time.Now())
 
 	var count int
-	role := db.DbConn.Model(&models.Role{}).Where("uid = ? and u_type = ?", r.UId, r.UType)
+	role := db.DbConn.Model(&models.OauthUser{}).Where("uid = ? and u_type = ?", r.UId, r.UType)
 	err := role.Select([]string{"uid", "u_type"}).Count(&count).Error
 
 	if err != nil {
@@ -69,10 +69,10 @@ func Login_github(uid int, utype models.RoleTypeEle, name, login, location, avat
 }
 
 /*去数据库查询*/
-func Select_github(uid int, name, login_ip, auth_token string) (*models.Role, error) {
+func Select_github(uid int, name, login_ip, auth_token string) (*models.OauthUser, error) {
 	var count int
-	var r models.Role
-	err := db.DbConn.Select([]string{"id", "uid", "name", "avatar_url", "auth_token"}).Model(&models.Role{}).Where("uid = ? and name = ? and login_ip = ? and auth_token = ?", uid, name, login_ip, auth_token).Find(&r).Count(&count).Error
+	var r models.OauthUser
+	err := db.DbConn.Select([]string{"id", "uid", "name", "avatar_url", "auth_token"}).Model(&models.OauthUser{}).Where("uid = ? and name = ? and login_ip = ? and auth_token = ?", uid, name, login_ip, auth_token).Find(&r).Count(&count).Error
 	if err != nil {
 		logger.Info("查询登录信息失败")
 		return nil, err

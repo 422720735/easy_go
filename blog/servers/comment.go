@@ -8,11 +8,11 @@ import (
 	"time"
 )
 
-func AddComment(role *models.Role, articleId int, message string) error {
+func AddComment(role *models.OauthUser, articleId int, message string) error {
 	c := models.Comment{
 		ArticleId:    articleId,
 		Content:      message,
-		UserId:       role.Id,
+		FromUid:       role.Id,
 		CommentState: true,
 		CreatedTime:  time.Now(),
 	}
@@ -40,11 +40,11 @@ func AddReply(content string, userId, commentId, replyId int, replyType models.R
 	var r models.Reply
 	r.CommentId = commentId
 	r.Content = content
-	r.UserId = userId
+	r.FromUid = userId
 	r.ReplyType = replyType
 	r.ReplyId = replyId
 	r.CreatedTime = time.Now()
-	err := db.DbConn.Model(&models.Role{}).Create(&r).Error
+	err := db.DbConn.Model(&models.OauthUser{}).Create(&r).Error
 	if err != nil {
 		logger.Error("新增回复数据失败", err.Error())
 		return err
@@ -85,8 +85,8 @@ func SelectCommentList(article_id, size, page int) error {
 		//db.DbConn.Model(&models.Reply{}).Where("user_id = ? and comment_id = ?", value.UserId, value.Id)
 
 		//
-		beego.Info(value.Id, value.UserId)
-		user_array_old = append(user_array_old, value.UserId)
+		beego.Info(value.Id, value.FromUid)
+		user_array_old = append(user_array_old, value.FromUid)
 		// 把与之相对应的10条分页评论id装到切片里，我们根据评论的id去查询相对应的回复。
 		comment_id = append(comment_id, value.Id)
 	}
