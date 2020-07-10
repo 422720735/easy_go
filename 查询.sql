@@ -27,7 +27,8 @@ FROM
 	comments c
 LEFT JOIN oauth_users o ON c.from_uid = o.id
 WHERE
-	c.article_id = 5
+	c.article_id = 5,
+	count(c.id)
 ORDER BY
 	c.created_time DESC
 LIMIT 0,

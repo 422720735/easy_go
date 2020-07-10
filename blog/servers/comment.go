@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+// 新增评论
 func AddComment(role *models.OauthUser, articleId int, message string) error {
 	c := models.Comment{
 		ArticleId:    articleId,
@@ -25,16 +26,7 @@ func AddComment(role *models.OauthUser, articleId int, message string) error {
 	return nil
 }
 
-/*
-Id           int          `json:"id"`
-	ArticleId    int          `json:"article_id"`    // 文章id
-	Content      string       `json:"content"`       // 评论内容
-	UserId       int          `json:"user_id"`       // 评论用户id
-	CommentState bool         `json:"comment_state"` // 评论状态：默认显示全部，超级管理员可以删除评论
-	CreatedTime  time.Time    `json:"created_time"`  // 创建时间
-	UpdateTime   sql.NullTime `json:"update_time"`   // 更新时间
-*/
-
+// 新增回复
 func AddReply(content string, userId, commentId, replyId int, replyType models.ReplyTypeEle) error {
 	var r models.Reply
 	r.CommentId = commentId
@@ -51,12 +43,23 @@ func AddReply(content string, userId, commentId, replyId int, replyType models.R
 	return nil
 }
 
+func IsHaveUser(id int) (*models.Comment, error) {
+	var c models.Comment
+	err := db.DbConn.Select([]string{"id", "from_uid"}).Model(&models.Comment{}).Where("id = ?", id).Find(&c).Error
+	if err != nil {
+		logger.Info("查收评论用户失败", err.Error())
+		return nil, err
+	}
+
+	return &c, nil
+}
+
 /**
 1.分页查询评论信息，每条评论id是唯一的，而这个id会去关联回复表中评论id，
 2.我们可以根据上面的逻辑拿到每条评论下的所有回复信息。回复信息本来就不多，所以不需要分页，直接查询全部。
 3.拿到了评论表、回复表两个表的数据，我们下一步进行组装数据。
 */
-func SelectCommentList(article_id, size, page int) ([]map[string]interface{}, error) {
+func SelectCommentList(article_id, size, page int) ([]map[string]interface{}, int64, error) {
 	var commentRes []*models.ReplyBody
 	var replyRes []*models.ReplyBody
 	rows, err := db.DbConn.Raw(`SELECT
@@ -77,14 +80,14 @@ func SelectCommentList(article_id, size, page int) ([]map[string]interface{}, er
 	`, article_id, (page-1)*size, size).Rows()
 	if err != nil {
 		logger.Info("数据评论查询失败", err.Error())
-		return nil, err
+		return nil, 0, err
 	}
 
 	for rows.Next() {
 		body := new(models.ReplyBody)
 		if err := rows.Scan(&body.Id, &body.Img, &body.ReplyName, &body.Content, &body.Time, &body.Addres); err != nil {
 			logger.Info("数据评论查询失败", err.Error())
-			return nil, err
+			return nil, 0, err
 		}
 
 		r := &models.ReplyBody{
@@ -100,7 +103,7 @@ func SelectCommentList(article_id, size, page int) ([]map[string]interface{}, er
 
 	// 去重
 	if len(commentRes) == 0 {
-		return nil, nil
+		return nil, 0, nil
 	}
 
 	var comment_id []int
@@ -128,15 +131,24 @@ func SelectCommentList(article_id, size, page int) ([]map[string]interface{}, er
 		`, comment_id).Rows()
 	if err != nil {
 		logger.Info("数据查询失败", err.Error())
-		return nil, err
+		return nil, 0, err
 	}
 
 	for rows.Next() {
 		body := new(models.ReplyBody)
 
-		if err := rows.Scan(&body.Id, &body.CommentId, &body.Img, &body.ReplyName, &body.Content, &body.Time, &body.Addres, &body.ReplyType, &body.ReplyId); err != nil {
+		if err := rows.Scan(
+			&body.Id,
+			&body.CommentId,
+			&body.Img,
+			&body.ReplyName,
+			&body.Content,
+			&body.Time,
+			&body.Addres,
+			&body.ReplyType,
+			&body.ReplyId); err != nil {
 			logger.Info("数据查询失败", err.Error())
-			return nil, err
+			return nil, 0, err
 		}
 
 		r := &models.ReplyBody{
@@ -166,7 +178,13 @@ func SelectCommentList(article_id, size, page int) ([]map[string]interface{}, er
 		}
 	}
 
-	return concat(commentRes, replyRes), nil
+	var count int
+	err = db.DbConn.Model(&models.Comment{}).Select("comments.id").Joins("LEFT JOIN oauth_users ON comments.from_uid = oauth_users.id").Where("comments.article_id = ?", article_id).Count(&count).Error
+	if err != nil {
+		logger.Info("查询count失败", err.Error())
+	}
+
+	return concat(commentRes, replyRes), int64(count), nil
 }
 
 func concat(c []*models.ReplyBody, r []*models.ReplyBody) []map[string]interface{} {

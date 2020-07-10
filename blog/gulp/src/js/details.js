@@ -33,7 +33,6 @@ window.onload = function () {
 
     // 评论信息
     selectComment()
-
 }
 
 $(window).resize(function () {
@@ -139,17 +138,49 @@ function insertComment() {
         url: '/api' + '/comment/insert',
         method: 'post',
         headers: {'Content-Type': 'application/json;charset=utf8', 'r': getCookie('auth')},
-        data: JSON.stringify({
+        data: JSON.stringify(Object.assign({
             article_id: $('#article_id').val(),
             message: $('#comment-textarea').val()
-        }),
+        }, {page: defaultListDataset.pagination.current})),
         success: function (res) {
             if (res.code === 1) {
-            } else {
-                // window.message.error(res)
+                window.message.success('新增评论成功！')
+                $('#comment-textarea').val('')
+                let list_now = defaultListDataset.list.concat();
+                list_now.unshift(res.data.list[0])
+                defaultListDataset.pagination = push_pagination(res.data)
+                if (!defaultListDataset.pagination.lastPage) {
+                    $('a.Details-Next').show()
+                }
+                $(".comment-list").html('')
+                $(".comment-list").addCommentList({data: list_now || [], add: ""});
             }
         }
     })
+}
+
+// 发布回复
+function insertReply(reply, current, callback) {
+    if (document.getElementById('ok-comment')) {
+        $.ajax({
+            url: '/api' + '/reply/insert',
+            method: 'post',
+            headers: {'Content-Type': 'application/json;charset=utf8', 'r': getCookie('auth')},
+            data: JSON.stringify(reply),
+            success: function (res) {
+                if (res.code === 1) {
+                    defaultListDataset.list.splice(reply - 1, 1, res.data.list[0])
+                    $(".comment-list").addCommentList({data: defaultListDataset.list || [], add: ""});
+                    window.message.success('新增回复成功！')
+                    callback && callback()
+                } else {
+                    window.message.error(res)
+                }
+            }
+        })
+    } else {
+        window.message.error('请先登录才能回复！')
+    }
 }
 
 // 显示信息
@@ -209,7 +240,14 @@ function selectComment() {
         method: 'get',
         success: function (res) {
             if (res.code === 1) {
-                $(".comment-list").addCommentList({data: res.data, add: ""});
+                defaultListDataset = mergePagination(defaultListDataset, res.data)
+                if (defaultListDataset.pagination.lastPage) {
+                    $('a.Details-SeeMore').hide()
+                }
+                $(".comment-list").addCommentList({data: defaultListDataset.list || [], add: ""});
+                if (defaultListDataset.pagination.lastPage) {
+                    $('a.Details-Next').hide()
+                }
             }
         }
     })
@@ -229,24 +267,92 @@ function getCookie(name) {
     return "";
 }
 
-function insertReply(reply, callback) {
-    if (document.getElementById('ok-comment')) {
+
+$('a.Details-Next').click(function () {
+    console.log(defaultListDataset)
+    if (!defaultListDataset.pagination.lastPage) {
+        var c = defaultListDataset.pagination.current + 1
         $.ajax({
-            url: '/api' + '/reply/insert',
-            method: 'post',
-            headers: {'Content-Type': 'application/json;charset=utf8', 'r': getCookie('auth')},
-            data: JSON.stringify(reply),
+            url: '/article/comment/' + $('#article_id').val() + '?page=' + c,
+            method: 'get',
             success: function (res) {
                 if (res.code === 1) {
-                    window.message.success('新增回复成功！')
-                    callback && callback()
-                } else {
-                    window.message.error(res)
+                    defaultListDataset = mergePagination(defaultListDataset, res.data)
+                    if (defaultListDataset.pagination.lastPage) {
+                        $('a.Details-Next').hide()
+                    }
+                    $(".comment-list").html('')
+                    $(".comment-list").addCommentList({data: defaultListDataset.list || [], add: ""});
                 }
+
             }
         })
     } else {
-        window.message.error('请先登录才能回复！')
+        window.message.error('当前已经是最后一页了！')
+    }
+})
+
+
+let defaultListDataset = {
+    list: [],
+    pagination: {
+        nextpage: 0,
+        prepage: 0,
+        pages: [],
+        current: 1,
+        size: 10,
+        lastPage: false,
+        total: 0
+    }
+}
+
+function mergePagination(prevData, resultsData) {
+    if (!prevData || !prevData.list) {
+        throw new Error('prevData传入的数据格式错误，请确保格式正确。')
     }
 
+    if (!resultsData) {
+        throw new Error('currentData传入的数据格式错误，请确保格式正确。')
+    }
+
+    if (resultsData.current == 1 && Array.isArray(resultsData.list)) {
+        return {
+            list: resultsData.list || [],
+            pagination: {
+                nextpage: resultsData.nextpage,
+                prepage: resultsData.prepage,
+                pages: resultsData.pages,
+                total: resultsData.total,
+                current: resultsData.current,
+                size: resultsData.size,
+                lastPage: resultsData.totalpages === resultsData.current // 是不是到最后一页了
+            }
+        }
+    } else {
+        let _list = prevData.list.concat(resultsData.list || [])
+        return {
+            list: _list,
+            pagination: {
+                nextpage: resultsData.nextpage,
+                prepage: resultsData.prepage,
+                pages: resultsData.pages,
+                total: resultsData.total,
+                current: resultsData.current,
+                size: resultsData.size,
+                lastPage: resultsData.totalpages === resultsData.current // 是不是到最后一页了
+            }
+        }
+    }
+}
+
+function push_pagination(resultsData) {
+    return {
+        nextpage: resultsData.nextpage,
+        prepage: resultsData.prepage,
+        pages: resultsData.pages,
+        total: resultsData.total,
+        current: resultsData.current,
+        size: resultsData.size,
+        lastPage: resultsData.totalpages === resultsData.current // 是不是到最后一页了
+    }
 }

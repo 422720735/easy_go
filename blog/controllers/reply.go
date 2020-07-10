@@ -53,6 +53,29 @@ func (c *ReplyControllers) InsertReply() {
 		return
 	}
 
+	page, _ := transform.InterToInt(msg["page"])
+	if page == -1 {
+		c.Error("回复失败，page错误！")
+		return
+	}
+
+	article_id, _ := transform.InterToInt(msg["article_id"])
+	if page == -1 {
+		c.Error("回复失败，文章id错误！")
+		return
+	}
+
+	u, err := servers.IsHaveUser(comment_id)
+	if err != nil {
+		c.Error("评论id不合法")
+		return
+	}
+
+	if u.FromUid == role.Id {
+		c.Error("不能回复自己")
+		return
+	}
+
 	var reply_id int
 	if _type == 2 {
 		reply_id, err = transform.InterToInt(msg["reply_id"])
@@ -76,5 +99,12 @@ func (c *ReplyControllers) InsertReply() {
 		return
 	}
 
-	c.Success("回复成功！")
+	// 获取到文章id去查询评论+回复
+	data, total, err := servers.SelectCommentList(article_id, 1, page)
+	cl := common.Paginator(page, common.PAGE_SIZE, total, data)
+	if err != nil {
+		c.Error("查询数据失败")
+		return
+	}
+	c.Success(cl)
 }
