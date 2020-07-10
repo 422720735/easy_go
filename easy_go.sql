@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50727
 File Encoding         : 65001
 
-Date: 2020-07-07 18:26:23
+Date: 2020-07-10 18:06:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -43,7 +43,7 @@ CREATE TABLE `articles` (
   `readonly` tinyint(1) DEFAULT NULL,
   `comment_readonly` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of articles
@@ -59,6 +59,7 @@ INSERT INTO `articles` VALUES ('8', '7', null, '', 'scss', null, '为文章内�
 INSERT INTO `articles` VALUES ('9', '5', null, '', 'link', null, 'sfsf', null, null, '0', '1', '1', '1', '0', '0', '0', '9', '0', '2020-07-01 15:25:56', '2020-07-01 16:43:36', null, null);
 INSERT INTO `articles` VALUES ('10', '7', null, '', 'theme', null, 'te', null, null, '0', '1', '1', '1', '0', '0', '0', '10', '0', '2020-07-01 15:26:17', '2020-07-03 09:33:41', null, null);
 INSERT INTO `articles` VALUES ('11', '2', '5', '', 'External use', null, '234234', null, null, '0', '1', '1', '1', '0', '0', '0', '11', '0', '2020-07-01 15:26:54', '2020-07-03 14:06:25', null, null);
+INSERT INTO `articles` VALUES ('12', '7', null, '', '阿隆索', null, '阿隆索', null, null, '0', '0', '0', '1', '0', '0', '0', '12', '0', '2020-07-09 11:26:03', null, null, '0');
 
 -- ----------------------------
 -- Table structure for article_contents
@@ -70,7 +71,7 @@ CREATE TABLE `article_contents` (
   `url` varchar(255) DEFAULT NULL,
   `content` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of article_contents
@@ -86,6 +87,7 @@ INSERT INTO `article_contents` VALUES ('8', '8', null, '<p>为文章内含有很
 INSERT INTO `article_contents` VALUES ('9', '9', null, '{% highlight ruby %} name = \'Storm\' real_name = \'张奇\'\n\ncompany = \'薄荷信息科技\' title = \'软件工程师\' skills = \'android, java, ruby, git, sql\'\n\nemail = \'zhangqi.dev$#qq.com\'.gsub(\'$#\', \'@\') blog = \'http://stormzhang.github.io\' github = \'https://github.com/stormzhang\'\n\nwhile true programing reading enjoying end {% endhighlight %}');
 INSERT INTO `article_contents` VALUES ('10', '10', null, '[TOC]\n\n### Themes\n\n#### Setting\n\nconfigs:\n\n```javascript\n{\n    // Editor.md theme, default or dark, change at v1.5.0\n    // You can also custom css class .editormd-theme-xxxx\n    theme : \"default | dark\",\n\n    // Preview container theme, added v1.5.0\n    // You can also custom css class .editormd-preview-theme-xxxx\n    previewTheme : \"default | dark\",\n\n    // Added @v1.5.0 & after version this is CodeMirror (editor area) theme\n    editorTheme : editormd.editorThemes[\'theme-name\']\n}\n```\n\nfunctions:\n\n```javascript\neditor.setTheme(\'theme-name\');\neditor.setEditorTheme(\'theme-name\');\neditor.setPreviewTheme(\'theme-name\');\n```\n\n#### Default theme\n\n- Editor.md theme : `default`\n- Preview area theme : `default`\n- Editor area theme : `default`\n\n> Recommend `dark` theme.\n\n#### Recommend editor area themes\n\n- ambiance\n- eclipse\n- mdn-like\n- mbo\n- monokai\n- neat\n- pastel-on-dark\n\n#### Editor area themes\n\n- default\n- 3024-day\n- 3024-night\n- ambiance\n- ambiance-mobile\n- base16-dark\n- base16-light\n- blackboard\n- cobalt\n- eclipse\n- elegant\n- erlang-dark\n- lesser-dark\n- mbo\n- mdn-like\n- midnight\n- monokai\n- neat\n- neo\n- night\n- paraiso-dark\n- paraiso-light\n- pastel-on-dark\n- rubyblue\n- solarized\n- the-matrix\n- tomorrow-night-eighties\n- twilight\n- vibrant-ink\n- xq-dark\n- xq-light\n');
 INSERT INTO `article_contents` VALUES ('11', '11', null, 'TOC]\n\n### External use of toolbar handlers / modal dialog\n\n```javascript \ntestEditor = editormd(\"test-editormd\", {\n    width  : \"90%\",\n    height : 720,\n    path   : \'../lib/\'\n}); \n\n// the first method\n$(\"#undo\").bind(\'click\', function() {\n    $.proxy(testEditor.toolbarHandlers.undo, testEditor)();\n});\n\n// the Second method : using manually loaded dialog plugin\n// <script src=\"../plugins/html-entities/html-entities.js\"></script>\n$(\"#open-html-entities-dialog\").bind(\'click\', function() {\n    testEditor.htmlEntities();\n});\n\n// using toolbar dialog plugin\n$(\"#open-link-dialog\").bind(\'click\', function() {\n    $.proxy(testEditor.toolbarHandlers.link, testEditor)();\n});\n\n// or\n$(\"#open-image-dialog\").bind(\'click\', function(){\n    // load and execute plugin\n    testEditor.executePlugin(\"imageDialog\", \"../plugins/image-dialog/image-dialog\");\n});\n```\n');
+INSERT INTO `article_contents` VALUES ('12', '12', null, '<p style=\"text-align: center;\"><img src=\"//n.sinaimg.cn/sports/transform/210/w650h360/20200708/e006-iwasyei2768974.jpg\" style=\"max-width:100%;\"><br></p><h4 style=\"text-align: center;\"><span style=\"font-weight: bold;\">两届F1世界冠军费尔南多-阿隆索&nbsp;&nbsp;</span></h4><p>&nbsp; &nbsp; &nbsp; &nbsp;<span style=\"font-size: 0.875rem;\">7月8日晚，雷诺F1车队官方宣布：两届F1世界冠军费尔南多-阿隆索2021年重返F1，与法国车手埃斯特班-奥康一起并肩为车队效力。这也是阿隆索第三次加盟雷诺车队，此前他在2003年至2006年期间在雷诺车队效力，并拿到了2005、2006两届F1世界冠军；之后2008年至2009年他又重返雷诺车队。</span><span style=\"font-weight: bold;\"><br></span></p><p>　　阿隆索表示：“雷诺是我的家人，我在F1中最美好的回忆是我两次夺得世界冠军，但现在我正在展望未来。这是我骄傲的源泉，我带着无限的激情回到了在我职业生涯开始时给予我机会的车队，现在这给了我重新返回最高水平比赛的机会。”</p><p>雷诺F1车队领队阿比特波尔表示：“签约阿隆索是雷诺集团计划的一部分，雷诺将继续致力于F1并重返赛场巅峰。他出现在我们车队是一个强大的资产，无论是在竞技水平方面，还是品牌方面。”&nbsp;</p><p>　　据BBC报道称，阿隆索与雷诺从去年就开始联系重返事宜，而自由媒体集团也非常希望带流量的“头哥”重返F1车坛，据悉此次阿隆索与雷诺签约的薪水方面，自由媒体集团也承担了一些。</p><p>　　虽然过去10年里雷诺车队发生了很多变化，但仍然有很多人非常了解他在雷诺的工作经历，包括资深竞技总监阿兰-佩马内在内。他还将与现任雷诺技术总监帕特-弗莱重聚，两人之前在迈凯伦和法拉利都共事过。</p><p>　　澳大利亚车手丹尼尔-里卡多本赛季结束后离队，明年加盟迈凯伦，填补小塞恩斯前往法拉利的空缺。雷诺车队一直在评估2021年谁将于埃斯特班-奥康搭档。</p><p>　　奥康则非常欢迎阿隆索重返车队：“我跟费尔南多关系很好，我唯一交换过的头盔就是跟他。他就是那个和迈克尔（指舒马赫）比拼过的人，他当年的比赛让我对这项运动产生了热爱。”</p>');
 
 -- ----------------------------
 -- Table structure for article_types
@@ -125,20 +127,19 @@ CREATE TABLE `comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `article_id` int(11) DEFAULT NULL,
   `content` varchar(255) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
+  `from_uid` int(11) DEFAULT NULL,
   `comment_state` tinyint(1) DEFAULT NULL,
   `created_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of comments
 -- ----------------------------
-INSERT INTO `comments` VALUES ('1', '5', '测试数据1', '1', '1', '2020-07-07 17:44:13', null);
-INSERT INTO `comments` VALUES ('2', '5', '测试数据2', '1', '1', '2020-07-07 17:44:38', null);
-INSERT INTO `comments` VALUES ('3', '5', '测试数据3', '1', '1', '2020-07-07 17:44:50', null);
-INSERT INTO `comments` VALUES ('4', '5', '测试数据4', '1', '1', '2020-07-07 17:44:54', null);
+INSERT INTO `comments` VALUES ('1', '5', '人生苦短，少编程。', '2', '1', '2020-07-10 11:03:21', null);
+INSERT INTO `comments` VALUES ('2', '5', '还嫌头发多？', '2', '1', '2020-07-10 11:03:39', null);
+INSERT INTO `comments` VALUES ('3', '5', '33333', '3', '1', '2020-07-10 17:55:13', null);
 
 -- ----------------------------
 -- Table structure for menu_settings
@@ -170,31 +171,10 @@ INSERT INTO `menu_settings` VALUES ('6', '区块链', 'block', 'iconfont icon-qu
 INSERT INTO `menu_settings` VALUES ('7', '其他', 'other', 'iconfont icon-qita', '1', '0', '7', '0', '2020-06-19 13:42:43', '2020-06-19 13:43:07');
 
 -- ----------------------------
--- Table structure for replies
+-- Table structure for oauth_users
 -- ----------------------------
-DROP TABLE IF EXISTS `replies`;
-CREATE TABLE `replies` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `comment_id` int(11) DEFAULT NULL,
-  `content` varchar(255) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `reply_type` tinyint(4) DEFAULT NULL,
-  `reply_id` int(11) DEFAULT NULL,
-  `created_time` datetime DEFAULT NULL,
-  `update_time` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of replies
--- ----------------------------
-INSERT INTO `replies` VALUES ('1', '4', '回复数据1', '1', '1', '4', '2020-07-07 17:45:09', null);
-
--- ----------------------------
--- Table structure for roles
--- ----------------------------
-DROP TABLE IF EXISTS `roles`;
-CREATE TABLE `roles` (
+DROP TABLE IF EXISTS `oauth_users`;
+CREATE TABLE `oauth_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uid` int(11) DEFAULT NULL,
   `u_type` tinyint(4) DEFAULT NULL,
@@ -209,12 +189,49 @@ CREATE TABLE `roles` (
   `created_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of roles
+-- Records of oauth_users
 -- ----------------------------
-INSERT INTO `roles` VALUES ('1', '1997334', '1', '刘体勇', 'l422720735', null, 'https://gitee.com/assets/no_portrait.png', '127.0.0.1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5NzMzNCwidXNlcm5hbWUiOiLliJjkvZPli4ciLCJsb2dpbl9pcCI6IjEyNy4wLjAuMSIsImV4cCI6MTU5NDExODY0NywiaWF0IjoxNTk0MTE1MDQ3fQ._p75H7fYg5FpMaXx6kgrUKevdgkOHePkWSLLkQcwKc8', '5a30d6987d1b1a6a115959ccea40ed93', '2020-07-07 17:44:07', '2020-07-07 17:44:07', null);
+INSERT INTO `oauth_users` VALUES ('1', '1997334', '1', '刘体勇', 'l422720735', null, 'https://gitee.com/assets/no_portrait.png', '127.0.0.1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5NzMzNCwidXNlcm5hbWUiOiLliJjkvZPli4ciLCJsb2dpbl9pcCI6IjEyNy4wLjAuMSIsImV4cCI6MTU5NDM1MzU1NywiaWF0IjoxNTk0MzQ5OTU3fQ.Gf0YSdR-4j69DTxZGxg-Zl8ySas_d3qyd9w-BHOdpoQ', '1940831d71a88e246ae9793375609aa2', '2020-07-10 10:59:18', '2020-07-10 10:59:18', null);
+INSERT INTO `oauth_users` VALUES ('2', '32890951', '2', '422720735', '422720735', '中国四川省成都市青白江区祥福镇', 'https://avatars2.githubusercontent.com/u/32890951?v=4', '127.0.0.1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzI4OTA5NTEsInVzZXJuYW1lIjoiNDIyNzIwNzM1IiwibG9naW5faXAiOiIxMjcuMC4wLjEiLCJleHAiOjE1OTQzNTQwNzksImlhdCI6MTU5NDM1MDQ3OX0.PqHQ9XZW5x-8vgEmJ_V4cgP6Dz0o7-dvnid6OBl40UM', '857bc6f359f20a05b17bf3b9146bc1cee4a3af8d&expires_in=28800&refresh_token=r1.0b0430aa9509b05255a4b9da308175239aa253b810f960c2d2f674faf68d1e3a179ed7c9ec06cadb&refresh_token_expires_in=15897600', '2020-07-10 11:08:00', '2020-07-10 11:02:31', '2020-07-10 11:08:00');
+INSERT INTO `oauth_users` VALUES ('3', '1394969', '1', 'jokerLeo', 'proLeo', null, 'https://gitee.com/assets/no_portrait.png', '127.0.0.1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTM5NDk2OSwidXNlcm5hbWUiOiJqb2tlckxlbyIsImxvZ2luX2lwIjoiMTI3LjAuMC4xIiwiZXhwIjoxNTk0Mzc3MDgzLCJpYXQiOjE1OTQzNzM0ODN9._lIDloM5P2NanNgmW3RHT4iqtVIyGoIwfrU1_OaXVlI', 'a9934592111b73eed28902a2701cb1f3', '2020-07-10 17:31:23', '2020-07-10 11:07:17', '2020-07-10 17:31:23');
+INSERT INTO `oauth_users` VALUES ('4', '47135694', '2', '1561097459', '1561097459', '中国四川省成都市青白江区祥福', 'https://avatars1.githubusercontent.com/u/47135694?v=4', '127.0.0.1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDcxMzU2OTQsInVzZXJuYW1lIjoiMTU2MTA5NzQ1OSIsImxvZ2luX2lwIjoiMTI3LjAuMC4xIiwiZXhwIjoxNTk0MzU2MTkyLCJpYXQiOjE1OTQzNTI1OTJ9.icIaVwN8Z2pByyOJbM2lVf5i9-QDA5joJorcuO_3AjA', '1bf7e0a43a0c7d2d91785b68acdc302d08039e78&expires_in=28800&refresh_token=r1.6a9899445b7351938db7d30523967a45c0a6058f96e8b2dc89611b094250084af425200bd2be6731&refresh_token_expires_in=15897600', '2020-07-10 11:37:06', '2020-07-10 11:37:23', null);
+INSERT INTO `oauth_users` VALUES ('5', '1565161', '2', '模拟数据1', '4191515122', null, 'https://avatars1.githubusercontent.com/u/47135694?v=4', '127.0.0.1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDcxMzU2OTQsInVzZXJuYW1lIjoiMTU2MTA5NzQ1OSIsImxvZ2luX2lwIjoiMTI3LjAuMC4xIiwiZXhwIjoxNTk0MzU2MTkyLCJpYXQiOjE1OTQzNTI1OTJ9.icIaVwN8Z2pByyOJbM2lVf5i9-QDA5joJorcuO_3AjA', '1bf7e0a43a0c7d2d91785b68acdc302d08039e78&expires_in=28800&refresh_token=r1.6a9899445b7351938db7d30523967a45c0a6058f96e8b2dc89611b094250084af425200bd2be6731&refresh_token_expires_in=15897600', '2020-07-10 11:43:12', '2020-07-10 11:43:12', null);
+INSERT INTO `oauth_users` VALUES ('6', '4984999', '2', '模拟数据2', '665464646', null, 'https://gitee.com/assets/no_portrait.png', '127.0.0.1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDcxMzU2OTQsInVzZXJuYW1lIjoiMTU2MTA5NzQ1OSIsImxvZ2luX2lwIjoiMTI3LjAuMC4xIiwiZXhwIjoxNTk0MzU2MTkyLCJpYXQiOjE1OTQzNTI1OTJ9.icIaVwN8Z2pByyOJbM2lVf5i9-QDA5joJorcuO_3AjA', '1bf7e0a43a0c7d2d91785b68acdc302d08039e78&expires_in=28800&refresh_token=r1.6a9899445b7351938db7d30523967a45c0a6058f96e8b2dc89611b094250084af425200bd2be6731&refresh_token_expires_in=15897600', '2020-07-10 11:47:17', '2020-07-10 11:47:22', null);
+INSERT INTO `oauth_users` VALUES ('7', '4984998', '2', '模拟数据3', '161651665', null, 'https://gitee.com/assets/no_portrait.png', '127.0.0.1', 'tB75Tssj0m30pIn9fSatsdUaSnE', '1bf7e0a43a0c7d2d91785b68acdc302d08039e78&expires_in=28800&refresh_token=r1.6a9899445b7351938db7d30523967a45c0a6058f96e8b2dc89611b094250084af425200bd2be6731&refresh_token_expires_in=15897600', '2020-07-10 12:23:59', '2020-07-10 12:24:05', null);
+INSERT INTO `oauth_users` VALUES ('8', '1997333', '1', '模拟数据4', '161666644', null, 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1906469856,4113625838&fm=26&gp=0.jpg', '127.0.0.1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk5NzMzNCwidXNlcm5hbWUiOiLliJjkvZPli4ciLCJsb2dpbl9pcCI6IjEyNy4wLjAuMSIsImV4cCI6MTU5NDM1MzU1NywiaWF0IjoxNTk0MzQ5OTU3fQ.Gf0YSdR-4j69DTxZGxg-Zl8ySas_d3qyd9w-BHOdpoQ', '1940831d71a88e246ae9793375609aa2', '2020-07-10 12:25:08', '2020-07-10 12:25:12', null);
+
+-- ----------------------------
+-- Table structure for replies
+-- ----------------------------
+DROP TABLE IF EXISTS `replies`;
+CREATE TABLE `replies` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `comment_id` int(11) DEFAULT NULL,
+  `reply_id` int(11) DEFAULT NULL,
+  `reply_type` tinyint(4) DEFAULT NULL,
+  `content` varchar(255) DEFAULT NULL,
+  `from_uid` int(11) DEFAULT NULL,
+  `to_uid` int(11) DEFAULT NULL,
+  `created_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of replies
+-- ----------------------------
+INSERT INTO `replies` VALUES ('1', '2', '2', '1', '第一条回复', '8', '2', '2020-07-10 12:34:01', null);
+INSERT INTO `replies` VALUES ('2', '2', '2', '1', '第二条回复', '7', '2', '2020-07-10 12:34:28', null);
+INSERT INTO `replies` VALUES ('3', '2', '2', '2', '第三条回复的回复', '6', '7', '2020-07-10 12:35:58', null);
+INSERT INTO `replies` VALUES ('4', '2', '3', '2', '第四条回复的回复', '5', '6', '2020-07-10 12:36:29', null);
+INSERT INTO `replies` VALUES ('5', '2', '4', '2', '第五条回复的回复', '4', '5', '2020-07-10 12:37:02', null);
+INSERT INTO `replies` VALUES ('6', '1', '1', '1', '第六条回复', '3', '2', '2020-07-10 12:38:10', null);
+INSERT INTO `replies` VALUES ('17', '1', '6', '2', '42424324', '3', '0', '2020-07-10 17:43:58', null);
+INSERT INTO `replies` VALUES ('18', '1', '6', '2', '313123', '3', '0', '2020-07-10 17:45:46', null);
+INSERT INTO `replies` VALUES ('19', '1', '6', '2', '3223', '3', '0', '2020-07-10 17:58:02', null);
 
 -- ----------------------------
 -- Table structure for systems
