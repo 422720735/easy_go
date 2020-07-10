@@ -54,9 +54,12 @@
         }
         a {
           display: block;
-          padding: 10px;
+          padding: 10px 0;
           text-align: center;
           text-decoration: none;
+          img {
+            margin: 0 auto;
+          }
 
           color: $skin-text-color;
           &:hover {

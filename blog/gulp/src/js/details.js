@@ -202,15 +202,14 @@ function selectComment() {
             replyBody: []
         }
     ];
-    $(".comment-list").addCommentList({data: arr, add: ""});
+
 
     $.ajax({
         url: '/article/comment/' + $('#article_id').val() + '?page=1',
         method: 'get',
         success: function (res) {
             if (res.code === 1) {
-            } else {
-                // window.message.error(res)
+                $(".comment-list").addCommentList({data: res.data, add: ""});
             }
         }
     })

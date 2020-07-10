@@ -3,7 +3,7 @@
             if (typeof (obj.time) == "undefined" || obj.time == "") {
                 obj.time = getNowDateFormat();
             }
-            var el = "<div class='comment-info'><header><img src='" + obj.img + "'></header><div class='comment-right'><h3>" + obj.replyName + "</h3>" + "<div class='comment-content-header'><span><i class='glyphicon glyphicon-time'></i>" + obj.time + "</span>";
+            var el = "<div class='comment-info'><header><img src='" + obj.img + "'></header><div class='comment-right'><h3 data-comment_id='" + obj.comment_id + "'>" + obj.replyName + "</h3>" + "<div class='comment-content-header'><span><i class='glyphicon glyphicon-time'></i>" + obj.time + "</span>";
             if (typeof (obj.address) != "undefined" && obj.browse != "") {
                 el = el + "<span><i class='glyphicon glyphicon-map-marker'></i>" + obj.address + "</span>";
             }
@@ -15,7 +15,7 @@
                 el = el + "<span><i class='glyphicon glyphicon-globe'></i> " + obj.browse + "</span>";
             }
             el = el + "</div><div class='col-md-2'><span class='reply-btn'>回复</span></div></div></div><div class='reply-list'>";
-            if (obj.replyBody != "" && obj.replyBody.length > 0) {
+            if (obj.replyBody && obj.replyBody != "" && obj.replyBody.length > 0) {
                 var arr = obj.replyBody;
                 for (var j = 0; j < arr.length; j++) {
                     var replyObj = arr[j];
@@ -26,7 +26,7 @@
             return el;
         }
         function createReplyComment(reply) {
-            var replyEl = "<div class='reply'><div><a href='javascript:void(0)' class='replyname'>" + reply.replyName + "</a>:<a href='javascript:void(0)'>@" + reply.beReplyName + "</a><span>" + reply.content + "</span></div>" + "<p><span>" + reply.time + "</span> <span class='reply-list-btn'>回复</span></p></div>";
+            var replyEl = "<div class='reply'><div><a href='javascript:void(0)' class='replyname' data-reply_id='" + reply.reply_id + "'>" + reply.replyName + "</a>:<a href='javascript:void(0)'>@" + reply.beReplyName + "</a><span>" + reply.content + "</span></div>" + "<p><span>" + reply.time + "</span> <span class='reply-list-btn'>回复</span></p></div>";
             return replyEl;
         }
         function getNowDateFormat() {
@@ -52,29 +52,27 @@
                 if (content != "") {
                     var parentEl = $(this).parent().parent().parent().parent();
                     var obj = {}
-                    obj.replyName = "匿名";
+                    // obj.replyName = "匿名";
                     if (el.parent().parent().hasClass("reply")) {
-                        obj.beReplyName = el.parent().parent().find("a:first").text();
-
+                        // obj.beReplyName = el.parent().parent().find("a:first").text();
                         // 回复 评论下面的回复
                         obj.type = 2
                         // 你回复哪条评论的id
-                        obj.comment_id = 1
+                        obj.comment_id = parentEl.find("h3").attr('data-comment_id')
                         // 你所回复的 那条回复的id
-                        obj.reply_id = 4
+                        obj.reply_id = el.parent().parent().find("a:first").attr('data-reply_id')
                     } else {
-                        obj.beReplyName = parentEl.find("h3").text();
-
+                        // obj.beReplyName = parentEl.find("h3").text();
                         // 回复 评论
                         obj.type = 1
                         // 你回复哪条评论的id
-                        obj.comment_id = 4
+                        obj.comment_id = parentEl.find("h3").attr('data-comment_id')
                     }
                     obj.content = content;
                     obj.time = getNowDateFormat();
                     const {type, comment_id, reply_id} = obj
                     Object.keys(obj).length > 0 && insertReply({type, comment_id, reply_id, content}, () => {
-                        var replyString = createReplyComment(obj);
+                        // var replyString = createReplyComment(obj);
                         $(".replybox").remove();
                         parentEl.find(".reply-list").append(replyString).find(".reply-list-btn:last").click(function() {
                             alert("不能回复自己");

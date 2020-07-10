@@ -24,7 +24,7 @@ func init() {
 
 	beego.Router("/article/?:id", &controllers.ArticleController{})
 
-	beego.Router("/article/comment/?:id", &controllers.ArticleController{}, "get:GetCommentList")
+	beego.Router("/article/comment/?:id", &controllers.CommentControllers{}, "get:GetCommentList")
 
 	beego.Router("/login", &controllers.LoginController{})
 

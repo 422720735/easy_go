@@ -56,37 +56,3 @@ func publicA(c *ArticleController) {
 		c.Data["u_auth_token"] = auth_token
 	}
 }
-
-func (c *ArticleController) GetCommentList() {
-	param := c.Ctx.Input.Param(":id")
-	if param == "" {
-		c.Error("获取评论参数不合法")
-		return
-	}
-
-	_id, err := strconv.Atoi(param)
-	if err != nil || _id <= 0 {
-		c.Error("获取评论参数不合法")
-		return
-	}
-
-	pageStr := c.GetString("page")
-	if pageStr == "" {
-		c.Error("页码不能为空")
-		return
-	}
-	page, err := strconv.Atoi(pageStr)
-	if err != nil || page <= 0 {
-		c.Error("页码不合法")
-		return
-	}
-
-	// 获取到文章id去查询评论+回复
-	err = servers.SelectCommentList(_id, common.PAGE_SIZE, page)
-	if err != nil {
-		c.Error("查询数据失败")
-		return
-	}
-
-	c.Success(_id)
-}

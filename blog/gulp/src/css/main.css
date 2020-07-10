@@ -43,10 +43,12 @@
         display: none; }
       .navbar-box.nav-skin .navbar-expanded a {
         display: block;
-        padding: 10px;
+        padding: 10px 0;
         text-align: center;
         text-decoration: none;
         color: #999999; }
+        .navbar-box.nav-skin .navbar-expanded a img {
+          margin: 0 auto; }
         .navbar-box.nav-skin .navbar-expanded a:hover {
           color: #ffffff; }
   .navbar-expanded.menu {

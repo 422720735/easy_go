@@ -119,14 +119,3 @@ func ArticleDeleteMenu(id int) error {
 	}
 	return nil
 }
-
-//func SelectArticleIsTopId() (models.System, int, error) {
-//	var count int
-//	err := db.DbConn.Model(&models.System{}).Count(&count).Error
-//	if err != nil {
-//		return models.System{}, 0, err
-//	} else if count == 0{
-//		return models.System{}, 0, nil
-//	}
-//	return models.System{}, 1, nil
-//}

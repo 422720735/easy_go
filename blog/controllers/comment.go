@@ -14,7 +14,7 @@ type CommentControllers struct {
 }
 
 // 查询评论信息
-func (c *CommentControllers) SelectComment() {
+func (c *CommentControllers) GetCommentList() {
 	param := c.Ctx.Input.Param(":id")
 	if param == "" {
 		c.Error("获取评论参数不合法")
@@ -22,27 +22,30 @@ func (c *CommentControllers) SelectComment() {
 	}
 
 	_id, err := strconv.Atoi(param)
-	if err != nil {
+	if err != nil || _id <= 0 {
 		c.Error("获取评论参数不合法")
 		return
 	}
 
-	auth := c.Ctx.Request.Header.Get("r")
-	j := myjwt.NewJWT()
-	claims, err := j.ParseToken(auth)
-	if err != nil {
-		logger.Info("评论解析token失败", err.Error())
-		c.Error("评论失败，参数不合法！")
+	pageStr := c.GetString("page")
+	if pageStr == "" {
+		c.Error("页码不能为空")
+		return
+	}
+	page, err := strconv.Atoi(pageStr)
+	if err != nil || page <= 0 {
+		c.Error("页码不合法")
 		return
 	}
 
-	_, err = servers.Select_github(claims.ID, claims.Username, claims.LoginIp, auth)
+	// 获取到文章id去查询评论+回复
+	cl, err := servers.SelectCommentList(_id, common.PAGE_SIZE, page)
 	if err != nil {
-		c.Error("评论失败，参数不合法！")
+		c.Error("查询数据失败")
 		return
 	}
 
-	c.Success(_id)
+	c.Success(cl)
 }
 
 // 新增评论
