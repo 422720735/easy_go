@@ -124,7 +124,7 @@ func SelectCommentList(article_id, size, page int) ([]map[string]interface{}, er
 		LEFT JOIN oauth_users o ON r.from_uid = o.id
 		WHERE r.comment_id in (?)
 		ORDER BY
-			c.created_time DESC
+			r.created_time DESC
 		`, comment_id).Rows()
 	if err != nil {
 		logger.Info("数据查询失败", err.Error())
