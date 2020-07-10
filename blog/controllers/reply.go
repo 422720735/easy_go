@@ -1,12 +1,12 @@
 package controllers
 
 import (
-	"blogadminapi/transform"
 	"easy_go/blog/logger"
 	"easy_go/blog/servers"
 	"easy_go/common"
 	myjwt "easy_go/middleware"
 	"easy_go/models"
+	"easy_go/transform"
 )
 
 type ReplyControllers struct {
