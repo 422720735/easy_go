@@ -236,8 +236,8 @@ func SelectArticleDetails(id int) (*ArticleAll, error) {
 		logger.Error(err.Error())
 		return nil, err
 	}
-
-	err = db.DbConn.Model(&models.ArticleContent{}).Where("id = ?", a.Id).First(&c).Error
+	
+	err = db.DbConn.Model(&models.ArticleContent{}).Where("article_id = ?", a.Id).First(&c).Error
 	if err != nil {
 		logger.Error(err.Error())
 		return nil, err

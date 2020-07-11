@@ -28,7 +28,7 @@ func Init() {
 	dataname := lib.Conf.Read(mysql, "dataname")
 	port := lib.Conf.Read(mysql, "port")
 	host := lib.Conf.Read(mysql, "host")
-	dns := username + ":" + password + "@tcp(" + host + ":" + port + ")/" + dataname + "?charset=utf8&parseTime=True&loc=Local"
+	dns := username + ":" + password + "@tcp(" + host + ":" + port + ")/" + dataname + "?charset=utf8mb4&parseTime=True&loc=Local"
 	DbConn, err = gorm.Open("mysql", dns)
 	if err != nil {
 		panic(err)
