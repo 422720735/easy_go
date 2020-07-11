@@ -67,8 +67,9 @@
     window.onload=function(){
         document.getElementById("year").innerText=(new Date).getFullYear();
         $('.trim').on("change", function () {
-            $(".trim input[type=text]").each(function () {
+            $(".trim input[type=text], .trim textarea#article-desc").each(function () {
                 this.value = $.trim(this.value);
+                console.log(this.value)
             });
         })
     };

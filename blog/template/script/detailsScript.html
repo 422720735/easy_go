@@ -1,19 +1,4 @@
 <script src="/static/js/details.min.js"></script>
-<script>
-    /*nav的位移 + 用文章title替换。*/
-    $(window).scroll(() => {
-        const top = Math.floor($(window).scrollTop());
-        if (top > 100) {
-            // $('.article-h1').css({ 'transform': `translateY(-${TRANSLATE_Y_HIGHT}px)` })
-            $('.article-h1').addClass('article-current')
-            $('ul.nav.navbar-nav').addClass('article-current')
-        } else {
-            // $('.article-h1').css({ 'transform': `translateY(0)` })
-            $('.article-h1').removeClass('article-current')
-            $('ul.nav.navbar-nav').removeClass('article-current')
-        }
-    })
-</script>
 {{/*editormd*/}}
 <script src="/static/assets/editor.md/lib/marked.min.js"></script>
 <script src="/static/assets/editor.md/editormd.min.js"></script>
@@ -33,4 +18,3 @@
 <script src="/static/js/user.min.js"></script>
 {{/*评论信息*/}}
 <script src="/static/js/jquery.comment.min.js"></script>
-{{/*<script src="http://www.jq22.com/demo/jQueryComment201711092334/js/jquery.comment.js"></script>*/}}

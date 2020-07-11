@@ -8,10 +8,10 @@ import (
 )
 
 // 新增评论
-func AddComment(role *models.OauthUser, articleId int, message string) error {
+func AddComment(role *models.OauthUser, articleId int, content string) error {
 	c := models.Comment{
 		ArticleId:    articleId,
-		Content:      message,
+		Content:      content,
 		FromUid:      role.Id,
 		CommentState: true,
 		CreatedTime:  time.Now(),

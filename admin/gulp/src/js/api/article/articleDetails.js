@@ -115,14 +115,15 @@ function cupload(cover) {
 }
 
 function articleItemValue() {
-    title = $('#article-title').val()
+    title = $.trim($('#article-title').val())
 
     if ($('#article-type').val() && $('#article-type').val() !== "") {
         type = $('#article-type').val().split(',').map(item => Number(item))
     }
     created = $('#article-created').val()
     update = $('#article-update').val()
-    desc = $('#article-desc').val()
+    desc = $.trim($('#article-desc').val())
+
     if (desc && typeof desc === 'string' && desc !== '' && desc.length > 200) {
         desc = desc.substr(0, 200)
     }

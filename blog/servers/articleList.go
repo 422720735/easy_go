@@ -12,7 +12,6 @@ func SelectArticleIsTopId() (*models.System, int, error) {
 	var count int
 	err := db.DbConn.Select([]string{"id", "top_id", "cover"}).Model(&models.System{}).Count(&count).Find(&top).Error
 	if err != nil {
-		logger.Info(err.Error())
 		return &top, count, err
 	}
 	return &top, count, nil

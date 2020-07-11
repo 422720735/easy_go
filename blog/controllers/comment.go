@@ -72,7 +72,7 @@ func (c *CommentControllers) InsertComment() {
 		return
 	}
 
-	message, err := transform.InterToString(msg["message"])
+	content, err := transform.InterToString(msg["content"])
 	if err != nil && message == "" {
 		c.Error("评论失败！4")
 		return
@@ -88,7 +88,7 @@ func (c *CommentControllers) InsertComment() {
 	}
 
 	// 新增评论信息
-	err = servers.AddComment(role, articleId, message)
+	err = servers.AddComment(role, articleId, content)
 
 
 	// 获取到文章id去查询评论+回复

@@ -4,7 +4,6 @@
 const HOST = '/api'
 let current = 0
 const Ok = 1
-const Err = 0
 function changeMenu(id, status) {
     $.ajax({
         type: "post",

@@ -52,7 +52,7 @@
 
         function replyClick(el) {
             el.parent().parent().append("<div class='replybox'><textarea cols='80' rows='50' placeholder='来说几句吧......' class='mytextarea' ></textarea><span class='send'>发送</span></div>").find(".send").click(function () {
-                var content = $(this).prev().val();
+                var content = $.trim($(this).prev().val())
                 if (content != "") {
                     var parentEl = $(this).parent().parent().parent().parent();
                     var obj = {}
@@ -77,8 +77,7 @@
                     obj.content = content;
                     obj.time = getNowDateFormat();
                     const {type, comment_id, reply_id, index} = obj
-                    Object.keys(obj).length > 0 && insertReply(
-                        Object.assign({
+                    Object.keys(obj).length > 0 && insertReply(Object.assign({
                         type,
                         comment_id,
                         reply_id,

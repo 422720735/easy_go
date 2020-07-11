@@ -42,6 +42,20 @@ $(window).resize(function () {
     debounce(handleMoreIcon, 200)
 });
 
+// nav的位移 + 用文章title替换。
+$(window).scroll(() => {
+    const top = Math.floor($(window).scrollTop());
+    if (top > 100) {
+        // $('.article-h1').css({ 'transform': `translateY(-${TRANSLATE_Y_HIGHT}px)` })
+        $('.article-h1').addClass('article-current')
+        $('ul.nav.navbar-nav').addClass('article-current')
+    } else {
+        // $('.article-h1').css({ 'transform': `translateY(0)` })
+        $('.article-h1').removeClass('article-current')
+        $('ul.nav.navbar-nav').removeClass('article-current')
+    }
+})
+
 /**************** 搜索框有两个样式，多个元素绑定同个事件。****************/
 $('#handleSearch, i#mobile').click(function () {
     const iconSearch = $('#handleSearch .iconfont.icon-search');
@@ -142,7 +156,7 @@ function insertComment() {
         headers: {'Content-Type': 'application/json;charset=utf8', 'r': getCookie('auth')},
         data: JSON.stringify(Object.assign({
             article_id: $('#article_id').val(),
-            message: $('#comment-textarea').val()
+            content: $.trim($('#comment-textarea').val())
         }, {page: defaultListDataset.pagination.current})),
         success: function (res) {
             if (res.code === 1) {
@@ -162,7 +176,7 @@ function insertComment() {
 }
 
 // 发布回复
-function insertReply(reply, current, callback) {
+function insertReply(reply, callback) {
     if (document.getElementById('ok-comment')) {
         $.ajax({
             url: '/api' + '/reply/insert',
@@ -312,6 +326,7 @@ let defaultListDataset = {
     }
 }
 
+// 评论分页加载更多
 function mergePagination(prevData, resultsData) {
     if (!prevData || !prevData.list) {
         throw new Error('prevData传入的数据格式错误，请确保格式正确。')
