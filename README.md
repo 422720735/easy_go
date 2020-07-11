@@ -65,56 +65,6 @@
 
 [Quill—心目中的最佳富文本编辑器](https://www.jianshu.com/p/b237372f15cc)
 
-```  
-SELECT * FROM articles LEFT JOIN systems ON articles.id = systems.id ORDER BY systems.created_time desc,articles.hot desc
-
-SELECT articles.*,IFNULL(systems.top_id,0) FROM articles LEFT JOIN systems ON articles.id = systems.id  ORDER BY systems.created_time desc,articles.hot desc 
-
-SELECT articles.*,IFNULL(systems.top_id,0) FROM articles LEFT JOIN systems ON articles.id = systems.top_id  ORDER BY systems.created_time desc,articles.hot desc 
-
-
-replace into 针对于唯一数据的修改
-golang flag包
-```
-
-
-# 转义
-```js
-
-//js
-//富文本反转义html
-function escape2Html(str){
-    var arrEntities = { 'lt': '<', 'gt': '>', 'nbsp': ' ', 'amp': '&', 'quot': '"' };
-	return str.replace(/&(lt|gt|nbsp|amp|quot);/ig, function (all, t) {
-		return arrEntities[t];
-	});
-}
- 
-//富文本转义html
-function html2Escape(str){
-    return str.replace(/[<>&"]/g, function (c) {
-		return { '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c];
-	});
-}
- 
- 
-//vue
-//富文本反转义html
-export const escape2Html = (str) => {
-	var arrEntities = { 'lt': '<', 'gt': '>', 'nbsp': ' ', 'amp': '&', 'quot': '"' };
-	return str.replace(/&(lt|gt|nbsp|amp|quot);/ig, function (all, t) {
-		return arrEntities[t];
-	});
-}
- 
-//富文本转义html
-export const html2Escape = (str) => {
-	return sHtml.replace(/[<>&"]/g, function (c) {
-		return { '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c];
-	});
-}
-
-```
 
 ```  
 mysql 有中文全文检索

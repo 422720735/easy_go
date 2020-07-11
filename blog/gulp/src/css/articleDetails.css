@@ -89,6 +89,10 @@
     text-decoration: none;
     border: 1px solid #e78170;
     color: #e78170; }
+    .article-content .article-share a.active {
+      border-color: #de533c;
+      background-color: #de533c;
+      color: #ffffff; }
     .article-content .article-share a:hover {
       text-decoration: none;
       color: #e78170;

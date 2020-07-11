@@ -33,6 +33,8 @@ window.onload = function () {
 
     // 评论信息
     selectComment()
+    // 点赞信息
+    selectPraise()
 }
 
 $(window).resize(function () {
@@ -203,6 +205,59 @@ function selectComment() {
         }
     })
 }
+
+function selectPraise() {
+    $.ajax({
+        url: '/article/praise/' + $('#article_id').val(),
+        method: 'get',
+        headers: {'Content-Type': 'application/json;charset=utf8', 'r': getCookie('auth')},
+        success: function (res) {
+            if (res.code === 1) {
+                const {praise, state} = res.data
+                if (state) {
+                    $('a.like-btn.link').addClass('active')
+                } else {
+                    $('a.like-btn.link').removeClass('active')
+                }
+                $('a.like-btn.link .like-count').text(praise)
+            }
+        }
+    })
+}
+
+// 文章赞
+$('.like-btn.link .like-content').click(function () {
+    const r = getCookie('auth')
+    if (r && r !== '') {
+        $.ajax({
+            url: '/api' + '/article/praise',
+            method: 'Post',
+            data: JSON.stringify({
+                article_id: $('#article_id').val()
+            }),
+            headers: {'Content-Type': 'application/json;charset=utf8', 'r': r},
+            success: function (res) {
+                if (res.code === 1) {
+                    const {praise, state} = res.data
+                    if (state) {
+                        $('a.like-btn.link').addClass('active')
+                    } else {
+                        $('a.like-btn.link').removeClass('active')
+                    }
+                    $('a.like-btn.link .like-count').text(praise)
+                    window.message.success(res.message)
+                } else {
+                    window.message.error(res.data)
+                }
+            }
+        })
+    }
+})
+
+$('.like-btn.disabled .like-content').click(function () {
+    window.message.warning('登录后才能点赞！')
+})
+
 
 // 获取指定名称的cookie
 function getCookie(name) {

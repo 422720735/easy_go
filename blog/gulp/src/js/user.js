@@ -1,5 +1,4 @@
 $("#confirmbtn,#confirmbtn2,#confirmbtn3").click(function () {
-    console.log('vconfirmbtn')
     $.confirm("提示信息", "是否退出登录！");
 });
 $.isok = function (ok) {

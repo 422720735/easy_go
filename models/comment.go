@@ -36,7 +36,7 @@ type Reply struct {
 	ReplyType   ReplyTypeEle `json:"reply_type" gorm:"size:2"`  // 1为回复评论，2为回复别人的回复'
 	Content     string       `json:"content"`                   // 回复内容
 	FromUid     int          `json:"from_uid" gorm:"size:10"`   // 回复用户id
-	ToUid       int          `json:"to_uid" gorm:"size:10"`     // 回复目标id
+	//ToUid       int          `json:"to_uid" gorm:"size:10"`     // 回复目标id,这个字段暂时未用，发现ReplyId能完全解决指向父id
 	CreatedTime time.Time    `json:"created_time"`              // 创建时间
 	UpdateTime  sql.NullTime `json:"update_time"`               // 更新时间
 }
@@ -50,7 +50,7 @@ const (
 )
 
 // 点赞表
-type Zan struct {
+type Praise struct {
 	Id     int        `json:"id"`
 	TypeId int        `json:"type_id"` // 对应的作品或评论的id
 	Type   ZanTypeEle `json:"type"`    // 点赞类型  1作品点赞  2 评论点赞 3  回复点赞

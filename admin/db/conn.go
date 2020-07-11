@@ -49,7 +49,7 @@ func CreatedTable() {
 		&models.System{},
 		&models.Comment{},
 		&models.Reply{},
-		&models.Zan{},
+		&models.Praise{},
 		&models.OauthUser{},
 	)
 }

@@ -27,11 +27,12 @@
             </article>
 
             <div class="article-share">
-                <a href="javascript:;" class="like-btn">
+
+                <a href="javascript:;" class="like-btn {{if .u_id}}link{{else}}disabled{{end}}">
                 <span class="like-content">
                     <i class="iconfont icon-heart1"></i>&ensp;赞
                 </span>
-                    <span class="like-count">5</span>
+                    <span class="like-count">0</span>
                 </a>
             </div>
 
@@ -58,9 +59,6 @@
 
         </div>
 
-        <div class="comments">
-            评论暂时未做，要等到后期做后端添加，有可能用插件。
-        </div>
         <div class="commentbox">
             <textarea cols="80" rows="50" placeholder="来说几句吧......" class="mytextarea" id="comment-textarea"></textarea>
             <input type="hidden" id="article_id" value="{{$.details.Id}}"/>

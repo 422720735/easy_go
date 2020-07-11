@@ -23,6 +23,8 @@ func init() {
 	beego.Router("/?:menu_id/?:category_id", &controllers.IndexController{}, "get:Index")
 
 	beego.Router("/article/?:id", &controllers.ArticleController{})
+	beego.Router("/article/praise/?:id", &controllers.ArticleController{}, "get:GetPraiseCount")
+
 
 	beego.Router("/article/comment/?:id", &controllers.CommentControllers{}, "get:GetCommentList")
 
@@ -42,6 +44,7 @@ func business() {
 	beego.Router(Api + "/comment/insert", &controllers.CommentControllers{},"post:InsertComment")
 	// 新增回复
 	beego.Router(Api + "/reply/insert", &controllers.ReplyControllers{},"post:InsertReply")
+	beego.Router(Api + "/article/praise", &controllers.ArticleController{},"post:InsertPraise")
 }
 
 /*

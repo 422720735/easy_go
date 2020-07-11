@@ -89,3 +89,59 @@ func SelectArticleDetails(id int) (*ArticleAll, error) {
 	return &all, nil
 
 }
+
+// 修改文章点赞
+func UpdateArticlePraise(u_id, article_id int) (bool, error) {
+	// 先查询用户是否有点赞信息，有就修改点赞信息
+	var count int
+	var err error
+	var praise models.Praise
+	u_p := db.DbConn.Select([]string{"id", "state"}).Model(&models.Praise{}).Where("type_id = ? and user_id = ?", article_id, u_id)
+
+	u_p.Count(&count)
+	if count == 0 {
+		// 新增点赞
+		praise.TypeId = article_id
+		praise.Type = models.ZanTypeEle(1)
+		praise.UserId = u_id
+		praise.State = true
+		err = db.DbConn.Create(&praise).Error
+		if err != nil {
+			logger.Info("点赞数据失败")
+			return false, err
+		}
+
+	} else {
+		u_p.Find(&praise)
+		err = u_p.Updates(map[string]interface{}{"state": !praise.State}).Error
+		if err != nil {
+			logger.Info("点赞数据失败")
+			return false, err
+		}
+		praise.State = !praise.State
+	}
+
+	return praise.State, nil
+}
+
+// 查询文章点赞情况
+func SelectPraise(article_id int) int {
+	var count int
+	db.DbConn.Select("id").Model(&models.Praise{}).Where("type_id = ? and type = ? and state = ?", article_id, 1, true).Count(&count)
+	return count
+}
+
+func SelectArticlePraise(u_id, article_id int) (bool, error) {
+	// 先查询用户是否有点赞信息，有就修改点赞信息
+	var count int
+	var err error
+	var praise models.Praise
+	u_p := db.DbConn.Select([]string{"id", "state"}).Model(&models.Praise{}).Where("type_id = ? and user_id = ?", article_id, u_id).Find(&praise)
+	u_p.Count(&count)
+	if count == 0 {
+		logger.Debug("点赞数据失败")
+		return false, err
+	}
+
+	return praise.State, nil
+}
