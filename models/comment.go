@@ -5,11 +5,6 @@ import (
 	"time"
 )
 
-// 网站点赞 评论 回复 数据库设计
-// https://blog.csdn.net/lm1622/article/details/77950133?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.edu_weight&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.edu_weight
-// https://blog.csdn.net/ztchun/article/details/71106117
-// https://www.jianshu.com/p/f9e27a96da89
-
 /*评论*/
 type Comment struct {
 	Id           int          `json:"id" gorm:"size:10"`
