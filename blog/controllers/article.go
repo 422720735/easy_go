@@ -39,6 +39,9 @@ func (c *ArticleController) Get() {
 		c.Redirect("/404", 302)
 		return
 	}
+
+	// 文章阅读量+1
+
 	c.Data["menu"] = menu
 	c.Data["details"] = details
 	publicA(c)

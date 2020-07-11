@@ -4,11 +4,12 @@ import (
 	"easy_go/blog/db"
 	"easy_go/blog/logger"
 	"easy_go/models"
+	"github.com/jinzhu/gorm"
 )
 
 // 文章上下关联
 type Related struct {
-	Id    int `json:"id"`
+	Id    int    `json:"id"`
 	Title string `json:"title"`
 }
 
@@ -24,11 +25,20 @@ func SelectArticleDetails(id int) (*ArticleAll, error) {
 	var a models.Article
 	var c models.ArticleContent
 	var all ArticleAll
-	err := db.DbConn.Model(&models.Article{}).Where("id = ? and visible = 1 and state = 0", id).Find(&a).Error
+	ar := db.DbConn.Model(&models.Article{}).Where("id = ? and visible = 1 and state = 0", id)
+
+	err := ar.UpdateColumn("view", gorm.Expr("view + ?", 1)).Error
+	if err != nil {
+		logger.Error("修改文章阅读量失败", err.Error())
+		return nil, err
+	}
+
+	err = ar.Find(&a).Error
 	if err != nil {
 		logger.Info("查询文章详情失败", err.Error())
 		return nil, err
 	}
+
 	err = db.DbConn.Model(&models.ArticleContent{}).Where("article_id = ?", a.Id).Find(&c).Error
 	if err != nil {
 		logger.Info("查询文章详情失败", err.Error())
@@ -71,9 +81,7 @@ func SelectArticleDetails(id int) (*ArticleAll, error) {
 
 	err = db.DbConn.Select([]string{"id", "title"}).Model(&models.Article{}).Where("sort > ? and visible = 1 and state = 0", a.Sort).Find(&n).Error
 
-	if err != nil {
-		logger.Info("下页查询失败", err.Error())
-	} else {
+	if err == nil {
 		all.Next.Id = n.Id
 		all.Next.Title = n.Title
 	}
