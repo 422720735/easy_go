@@ -22,6 +22,7 @@ func (c *OAuthControllers) Github() {
 	codeStr := c.GetString("code")
 	user, err := _github(codeStr)
 	if err != nil {
+		c.Ctx.SetCookie("auth", "")
 		c.History("第三方登陆失败", "/")
 		return
 	}
@@ -64,7 +65,9 @@ func (c *OAuthControllers) Gitee() {
 	codeStr := c.GetString("code")
 	user, err := _gitee(codeStr)
 	if err != nil {
+		c.Ctx.SetCookie("auth", "")
 		c.History("第三方登陆失败", "/")
+		return
 	}
 
 	setUser(user, 1, c)
@@ -98,5 +101,3 @@ func _gitee(codeStr string) (map[string]interface{}, error) {
 	return userInfo, nil
 
 }
-
-// 4 '防守反击' 2  2

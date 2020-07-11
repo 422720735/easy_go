@@ -17,7 +17,6 @@ func init() {
 	beego.Router("/captcha/:captchaId", &controllers.CaptchaControllers{}, "get:ShowCode")
 
 	beego.Router("/oauth/github", &controllers.OAuthControllers{}, "get:Github")
-	// https://blog.csdn.net/weixin_44100826/article/details/106822155?utm_medium=distribute.pc_relevant.none-task-blog-baidujs-3
 	beego.Router("/oauth/gitee", &controllers.OAuthControllers{}, "get:Gitee")
 
 	beego.Router("/?:menu_id/?:category_id", &controllers.IndexController{}, "get:Index")
@@ -53,14 +52,17 @@ func business() {
 */
 var FilterUser = func(ctx *context.Context) {
 	id := ctx.Input.CruSession.Get("id")
+	beego.Info(ctx.GetCookie("auth"))
 	if id == nil && (ctx.Request.RequestURI != Api + "/log/out" || strings.Index(ctx.Request.RequestURI, "/static") != - 1) {
 		// 1 获取cookies
 		if auth := ctx.GetCookie("auth"); auth != "" {
 			// 验证token
 			j := myjwt.NewJWT()
 			claims, err := j.ParseToken(auth)
+			beego.Info(err)
 			if err == nil {
 				role, err := servers.Select_github(claims.ID, claims.Username, claims.LoginIp, auth)
+				beego.Info(err)
 				if err == nil {
 					ctx.Output.Session("u_id", role.Id)
 					ctx.Output.Session("u_name", role.Name)

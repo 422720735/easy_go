@@ -65,7 +65,7 @@ func (c *IndexController) Index() {
 	if len(coverLen) == 1 && coverLen[0] == "" {
 		cover = "/static/images/bg.jpg"
 	} else {
-		cover = "http://qbv39uqsg.bkt.clouddn.com/" + coverLen[rand.Intn(len(coverLen))]
+		cover = "http://assets.cdbob.cn/" + coverLen[rand.Intn(len(coverLen))]
 	}
 
 	c.Data["top_id"] = top_id

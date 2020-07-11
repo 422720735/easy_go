@@ -123,8 +123,8 @@ function articleItemValue() {
     created = $('#article-created').val()
     update = $('#article-update').val()
     desc = $('#article-desc').val()
-    if (desc && typeof desc === 'string' && desc !== '' && desc.length > 54) {
-        desc = desc.substr(0, 54)
+    if (desc && typeof desc === 'string' && desc !== '' && desc.length > 200) {
+        desc = desc.substr(0, 200)
     }
     cover = $('.cupload-image-box input').val()
     keyword = $('#keyword').val()
@@ -196,7 +196,7 @@ function save(prod = false) {
     }
 
     if (desc === undefined || desc === '' || !desc) {
-        data.desc = window.text ? window.text.substr(0, 54) : null
+        data.desc = window.text ? window.text.substr(0, 200) : null
     }
 
     if (type && Array.isArray(type) && type.length === 1) {

@@ -170,7 +170,7 @@ func (c *ArticleDetails) HandArticleDetailsInsert() {
 
 	err = servers.IsArticleTake(title)
 	if err != nil {
-		logger.Info("", err.Error())
+		logger.Debug("", err.Error())
 		c.Error("已经存在相同的文章")
 		return
 	}
