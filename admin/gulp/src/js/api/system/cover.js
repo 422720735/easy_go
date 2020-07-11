@@ -1,5 +1,5 @@
 const HOST = '/api'
-const ASSETS = 'http://qbv39uqsg.bkt.clouddn.com/'
+const ASSETS = 'http://assets.cdbob.cn/'
 const Ok = 1
 let img_src = []
 

@@ -77,7 +77,7 @@ func InsertArticleDetails(title, content, cover, desc, tags, keyword string, men
 	}
 
 	c := &models.ArticleContent{
-		Content:   &content,
+		Content: &content,
 		ArticleId: a.Id,
 	}
 
