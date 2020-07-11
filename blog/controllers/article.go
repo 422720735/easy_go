@@ -34,9 +34,8 @@ func (c *ArticleController) Get() {
 	}
 
 	menu, _ := servers.SelectArticleTypeMenuName()
-
 	details, err := servers.SelectArticleDetails(id)
-
+	
 	if err != nil {
 		logger.Error("请求文章详情参数不正确或者没有数据可查询", err.Error())
 		c.Redirect("/404", 302)

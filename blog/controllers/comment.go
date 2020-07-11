@@ -62,19 +62,19 @@ func (c *CommentControllers) InsertComment() {
 
 	role, err := servers.Select_github(claims.ID, claims.Username, claims.LoginIp, auth)
 	if err != nil {
-		c.Error("评论失败，参数不合法！2")
+		c.Error("评论失败，参数不合法！")
 		return
 	}
 
 	msg, err := common.Unmarshal(&c.Controller)
 	if err != nil {
-		c.Error("评论失败，参数不合法！3")
+		c.Error("评论失败，参数不合法！")
 		return
 	}
 
 	content, err := transform.InterToString(msg["content"])
-	if err != nil && message == "" {
-		c.Error("评论失败！4")
+	if err != nil && content == "" {
+		c.Error("评论失败！")
 		return
 	}
 
