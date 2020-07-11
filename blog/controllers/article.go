@@ -6,6 +6,7 @@ import (
 	"easy_go/common"
 	myjwt "easy_go/middleware"
 	"easy_go/transform"
+	"github.com/astaxie/beego"
 	"strconv"
 )
 
@@ -36,6 +37,7 @@ func (c *ArticleController) Get() {
 	menu, _ := servers.SelectArticleTypeMenuName()
 
 	details, err := servers.SelectArticleDetails(id)
+	beego.Info(details.Content)
 	if err != nil {
 		logger.Error("请求文章详情参数不正确或者没有数据可查询", err.Error())
 		c.Redirect("/404", 302)

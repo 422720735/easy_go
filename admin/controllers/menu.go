@@ -65,24 +65,6 @@ func (c *MenuController) Add() {
 	c.LayoutSections["Script"] = "script/menuSettingAdd.html"
 }
 
-// 路由菜单权限详情页面
-func (c *MenuController) Info() {
-	c.Layout = "layout/mainLayout.html"
-
-	c.TplName = "pages/menuSetting/menuInfo.html"
-	c.LayoutSections = make(map[string]string)
-	// menu
-	c.LayoutSections["LeftMenu"] = "layout/leftSideMenuLayout.html"
-	// header
-	c.LayoutSections["HeaderLayout"] = "layout/headerLayout.html"
-	// footer
-	c.LayoutSections["FooterLayout"] = "layout/footerLayout.html"
-	// css
-	c.LayoutSections["BaseStyle"] = "style/baseStyle.html"
-	// js
-	c.LayoutSections["BaseScript"] = "script/baseScript.html"
-}
-
 func (c *MenuController) HandleMenuAdd() {
 	// 接通了获取数据。
 	msg, err := common.Unmarshal(&c.Controller)

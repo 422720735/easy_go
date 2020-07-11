@@ -44,10 +44,8 @@ $('button.btn.validation').click(function () {
         data: JSON.stringify(data),
         success: function (res) {
             if (res.code === Ok) {
-                window.message.success(res)
-                setTimeout(function () {
-                    window.location.reload()
-                }, 5000)
+                window.message.set(res)
+                window.location.reload()
             } else {
                 window.message.error(res)
             }

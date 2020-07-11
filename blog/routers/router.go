@@ -52,17 +52,14 @@ func business() {
 */
 var FilterUser = func(ctx *context.Context) {
 	id := ctx.Input.CruSession.Get("id")
-	beego.Info(ctx.GetCookie("auth"))
 	if id == nil && (ctx.Request.RequestURI != Api + "/log/out" || strings.Index(ctx.Request.RequestURI, "/static") != - 1) {
 		// 1 获取cookies
 		if auth := ctx.GetCookie("auth"); auth != "" {
 			// 验证token
 			j := myjwt.NewJWT()
 			claims, err := j.ParseToken(auth)
-			beego.Info(err)
 			if err == nil {
 				role, err := servers.Select_github(claims.ID, claims.Username, claims.LoginIp, auth)
-				beego.Info(err)
 				if err == nil {
 					ctx.Output.Session("u_id", role.Id)
 					ctx.Output.Session("u_name", role.Name)

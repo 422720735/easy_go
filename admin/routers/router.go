@@ -41,9 +41,6 @@ func init() {
 	// 导航菜单-add
 	beego.Router("/menuSetting/add", &controllers.MenuController{}, "get:Add")
 
-	// 导航菜单-info
-	beego.Router("/menuSetting/info", &controllers.MenuController{}, "get:Info")
-
 	// 文章类型
 	beego.Router("/article/type", &article.ArticleControllerType{}, "get:GetList")
 	beego.Router("/article/type/details", &article.ArticleControllerType{}, "get:GetDetails")

@@ -9,7 +9,7 @@ import (
 // 查询所有不是软删除跟隐藏的 导航数据及文章类型数据
 func SelectArticleTypeMenuName() ([]interface{}, error) {
 	var menuList []*models.MenuSetting
-	menu := db.DbConn.Select([]string{"id", "menu_name", "icon", "child_status", "visible"}).Model(&menuList)
+	menu := db.DbConn.Select([]string{"id", "menu_name", "icon", "child_status", "visible"}).Order("sort asc").Model(&menuList)
 
 	// 文章类型 要过滤下架和软删除的
 	var articleList []*models.ArticleType
