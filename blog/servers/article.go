@@ -148,3 +148,56 @@ func SelectArticlePraise(u_id, article_id int) (bool, error) {
 	}
 	return praise.State, nil
 }
+
+// 热门文章
+func RandRecommend() ([]*models.Article, error) {
+	// 	article := db.DbConn.Raw("SELECT articles.*,IFNULL(systems.top_id,0) FROM articles LEFT JOIN systems ON articles.id = systems.top_id where visible = 1 and state = 0 and ?", articleWhere)
+	var r []*models.Article
+	ar := db.DbConn.Raw(`
+	SELECT
+		a.id,
+		a.title,
+		a.menu_id,
+		a.category_id,
+		a.hot,
+		a.recommend
+	FROM
+		articles a
+	WHERE
+		hot = 1`)
+	ar.Scan(&r)
+	err := ar.Order("RAND()").Limit(5).Find(&r).Error
+	if ar.Error != nil {
+		logger.Info("查询热门文章失败", err.Error())
+		return nil, err
+	}
+	return r, nil
+}
+
+// 精彩推荐
+func RandHot(notHot []int) ([]*models.Article, error) {
+	var h []*models.Article
+	ah := db.DbConn.Raw(`
+	SELECT
+		a.id,
+		a.menu_id,
+		a.title,
+		a.category_id,
+		a.hot,
+		a.recommend
+	FROM
+		articles a
+	WHERE
+		hot = 1
+	AND 
+	a.id NOT IN (?)
+	`, notHot)
+
+	ah = ah.Scan(&h)
+	err := ah.Order("RAND()").Limit(5).Find(&h).Error
+	if ah.Error != nil {
+		logger.Info("查询热门文章失败", err.Error())
+		return nil, err
+	}
+	return h, nil
+}

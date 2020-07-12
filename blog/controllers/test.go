@@ -11,7 +11,7 @@ type TestControllers struct {
 }
 
 func (c *TestControllers) Get() {
-	list, err:= servers.SelectArticleTypeMenuName()
+	list, err := servers.SelectArticleTypeMenuName()
 	if err != nil {
 		c.Success(err.Error())
 	} else {
@@ -32,10 +32,9 @@ func (c *TestControllers) Get2() {
 	}
 	page = int(_int)
 
+	menuId, articleTypeId := getParams(param1, param2)
 
-	menuId, articleTypeId:=getParams(param1, param2)
-
-	data, total, err:= servers.SelectArticleFilterLimit(menuId, articleTypeId, title, page, common.PAGE_SIZE)
+	data, total, err := servers.SelectArticleFilterLimit(menuId, articleTypeId, title, page, common.PAGE_SIZE)
 	articleList := common.Paginator(page, common.PAGE_SIZE, total, data)
 	if err != nil {
 		c.Error(err.Error())
@@ -44,7 +43,7 @@ func (c *TestControllers) Get2() {
 	}
 }
 
-func (c *TestControllers)Get3()  {
+func (c *TestControllers) Get3() {
 	details, err := servers.SelectArticleDetails(1)
 	if err != nil {
 		c.Error(err.Error())
@@ -76,4 +75,28 @@ func getParams(param1, param2 string) (int, int) {
 		return a, b
 	}
 	return 0, 0
+}
+
+func (c *TestControllers) Get4() {
+	list_r, err := servers.RandRecommend()
+	var notHotId []int
+
+	// 相同的数据只显示一次
+	if len(list_r) > 0 && err != nil {
+		for i := 0; i < len(list_r); i++ {
+			if list_r[i].Hot {
+				notHotId = append(notHotId, list_r[i].Id)
+			}
+		}
+	} else {
+		notHotId = append(notHotId, 0)
+	}
+
+	list_h, err := servers.RandHot(notHotId)
+
+	if err != nil {
+		c.Success(err.Error())
+	} else {
+		c.Success(list_h)
+	}
 }
