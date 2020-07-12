@@ -59,17 +59,18 @@
                                     <i class="iconfont icon-denglu" title="登录" onclick="_login()"></i>
                                 </a>
                             {{end}}
-                            <div>
-                                {{if .u_id}}
+                            {{if .u_id}}
+                                <div>
                                     <a class="expanded-avatar c-pointer d-block" title="{{.u_name}}">
-                                        <img class="d-block" width="32px" height="32px" src="{{.u_avatar_url}}" />
+                                        <img class="d-block" width="32px" height="32px" src="{{.u_avatar_url}}"/>
                                     </a>
-                                {{end}}
-                            </div>
+                                </div>
+                            {{end}}
                         </div>
                     </div>
 
-                    <div id="drawer-mask" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu" aria-expanded="false"></div>
+                    <div id="drawer-mask" class="navbar-toggle collapsed" data-toggle="collapse"
+                         data-target="#navbar-menu" aria-expanded="false"></div>
 
                 </nav>
 
