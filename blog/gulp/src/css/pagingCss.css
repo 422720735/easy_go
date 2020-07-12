@@ -21,9 +21,10 @@
   color: #fff;
   font-size: 14px;
   cursor: pointer; }
-
-.ht-page .pagebtn:hover {
-  background: #45bcf9; }
+  .ht-page .pagebtn:hover {
+    background: #45bcf9; }
+  .ht-page .pagebtn:focus {
+    outline: none; }
 
 .ht-page .previous {
   display: inline-block;

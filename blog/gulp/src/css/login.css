@@ -100,6 +100,8 @@
             width: 33%;
             height: 34px;
             margin-left: 2%; }
+            .login .main .loginForm .inputBox > div .formInput.passOrverify .btn:focus, .login .main .loginForm .inputBox > div .formInput.passOrverify .code:focus {
+              outline: none; }
             .login .main .loginForm .inputBox > div .formInput.passOrverify .btn img, .login .main .loginForm .inputBox > div .formInput.passOrverify .code img {
               display: block;
               width: 100%;
@@ -122,6 +124,8 @@
     .login .main .loginForm > button {
       display: block;
       width: 96%; }
+      .login .main .loginForm > button:focus {
+        outline: none; }
     .login .main .oauth-login > div {
       display: inline-block; }
       .login .main .oauth-login > div a {

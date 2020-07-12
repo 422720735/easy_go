@@ -74,14 +74,18 @@ func SelectArticleDetails(id int) (*ArticleAll, error) {
 		err = db.DbConn.Select([]string{"id", "title"}).Model(&models.Article{}).Where("sort < ? and visible = 1 and state = 0", a.Sort).Find(&p).Error
 	}
 
-	if err == nil {
+	if p.Id > 0 && err != nil {
+		logger.Info("查询上一篇文章数据失败")
+	} else {
 		all.Prev.Id = p.Id
 		all.Prev.Title = p.Title
 	}
 
 	err = db.DbConn.Select([]string{"id", "title"}).Model(&models.Article{}).Where("sort > ? and visible = 1 and state = 0", a.Sort).Find(&n).Error
 
-	if err == nil {
+	if n.Id > 0 && err != nil {
+		logger.Info("查询上一篇文章数据失败")
+	} else {
 		all.Next.Id = n.Id
 		all.Next.Title = n.Title
 	}
@@ -137,11 +141,10 @@ func SelectArticlePraise(u_id, article_id int) (bool, error) {
 	var err error
 	var praise models.Praise
 	u_p := db.DbConn.Select([]string{"id", "state"}).Model(&models.Praise{}).Where("type_id = ? and user_id = ?", article_id, u_id).Find(&praise)
-	u_p.Count(&count)
-	if count == 0 {
-		logger.Debug("点赞数据失败")
+	err = u_p.Count(&count).Error
+	if count > 0 && err != nil {
+		logger.Info("点赞数据失败")
 		return false, err
 	}
-
 	return praise.State, nil
 }

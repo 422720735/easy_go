@@ -24,13 +24,18 @@
   border-radius: 4px;
   color: #fff;
   font-size: 14px;
-  cursor: pointer
+  cursor: pointer;
+
+  &:hover {
+    //background: #1875f0;
+    background: #45bcf9;
+  }
+  &:focus {
+    outline:none;
+  }
 }
 
-.ht-page .pagebtn:hover {
-  //background: #1875f0;
-  background: #45bcf9;
-}
+
 
 .ht-page .previous {
   display: inline-block;

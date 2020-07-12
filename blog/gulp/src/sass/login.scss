@@ -166,6 +166,9 @@
                 width: 33%;
                 height: 34px;
                 margin-left: 2%;
+                &:focus {
+                  outline: none;
+                }
                 img {
                   display: block;
                   width: 100%;
@@ -206,6 +209,9 @@
       > button {
         display: block;
         width: 96%;
+        &:focus {
+          outline: none;
+        }
       }
     }
 
