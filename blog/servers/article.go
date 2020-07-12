@@ -156,8 +156,6 @@ func RandRecommend(int int) ([]*models.Article, error) {
 	SELECT
 		a.id,
 		a.title,
-		a.menu_id,
-		a.category_id,
 		a.hot,
 		a.recommend
 	FROM
@@ -182,9 +180,7 @@ func RandHot(notHot []int) ([]*models.Article, error) {
 	ah := db.DbConn.Raw(`
 	SELECT
 		a.id,
-		a.menu_id,
 		a.title,
-		a.category_id,
 		a.hot,
 		a.recommend
 	FROM
