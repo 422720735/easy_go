@@ -11,7 +11,7 @@ import (
 func IsArticleTypeTake(name, keyword string) error {
 	// 新增先查询数据是不是有该条数据
 	var count int
-	err := db.DbConn.Select([]string{"article_name"}).Model(&models.ArticleType{}).Where("article_name = ?", name).Or("key_word = ?", keyword).Count(&count).Error
+	err := db.DbConn.Select([]string{"article_name"}).Model(&models.ArticleType{}).Where("article_name = ? and state = ?", name, false).Or("key_word = ?", keyword).Count(&count).Error
 	if err != nil {
 		logger.Info(err.Error())
 		return err

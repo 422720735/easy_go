@@ -73,21 +73,21 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <a href="/api/menuSetting/move/up?sort={{$v.Sort}}&page={{$.current}}"
+                                            <a href="/api/menuSetting/move/up?sort={{$v.Sort}}&page={{$.menu_data.current}}"
                                                title="上移">
                                                 <i class="feather icon-arrow-up"></i>
                                             </a>
-                                            <a href="/api/menuSetting/move/down?sort={{$v.Sort}}&page={{$.current}}"
+                                            <a href="/api/menuSetting/move/down?sort={{$v.Sort}}&page={{$.menu_data.current}}"
                                                title="下移">
                                                 <i class="feather icon-arrow-down"></i>
                                             </a>
                                         </td>
                                         <td>
                                             {{if $v.Visible}}
-                                                <a href="/api/menuSetting/issue?id={{$v.Id}}&status={{$v.Visible}}&page={{$.current}}"
+                                                <a href="/api/menuSetting/issue?id={{$v.Id}}&status={{$v.Visible}}&page={{$.menu_data.current}}"
                                                    class="text-warning">下架</a>
                                             {{else}}
-                                                <a href="/api/menuSetting/issue?id={{$v.Id}}&status={{$v.Visible}}&page={{$.current}}"
+                                                <a href="/api/menuSetting/issue?id={{$v.Id}}&status={{$v.Visible}}&page={{$.menu_data.current}}"
                                                    class="text-success">上架</a>
                                             {{end}}
                                             {{if eq $v.Visible false}}

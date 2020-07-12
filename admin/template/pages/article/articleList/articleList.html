@@ -166,21 +166,21 @@
                                             </td>
                                             <td>{{$v.View}}</td>
                                             <td>
-                                                <a href="/api/article/move/down?sort={{$v.Sort}}&page={{$.current}}"
+                                                <a href="/api/article/move/down?sort={{$v.Sort}}&page={{$.articleList.current}}"
                                                    title="上移">
                                                     <i class="feather icon-arrow-up"></i>
                                                 </a>
-                                                <a href="/api/article/move/up?sort={{$v.Sort}}&page={{$.current}}"
+                                                <a href="/api/article/move/up?sort={{$v.Sort}}&page={{$.articleList.current}}"
                                                    title="下移">
                                                     <i class="feather icon-arrow-down"></i>
                                                 </a>
                                             </td>
                                             <td>
                                                 {{if $v.Visible}}
-                                                    <a href="/api/article/issue?id={{$v.Id}}&status={{$v.Visible}}&page={{$.current}}"
+                                                    <a href="/api/article/issue?id={{$v.Id}}&status={{$v.Visible}}&page={{$.articleList.current}}"
                                                        class="text-warning">下架</a>
                                                 {{else}}
-                                                    <a href="/api/article/issue?id={{$v.Id}}&status={{$v.Visible}}&page={{$.current}}"
+                                                    <a href="/api/article/issue?id={{$v.Id}}&status={{$v.Visible}}&page={{$.articleList.current}}"
                                                        class="text-success">上架</a>
                                                 {{end}}
                                                 {{if eq $v.Visible false}}

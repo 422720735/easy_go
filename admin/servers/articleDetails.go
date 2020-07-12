@@ -13,7 +13,7 @@ import (
 func IsArticleTake(title string) error {
 	// 新增先查询数据是不是有该条数据
 	var count int
-	err := db.DbConn.Select([]string{"title"}).Model(&models.Article{}).Where("title = ?", title).Count(&count).Error
+	err := db.DbConn.Select([]string{"title"}).Model(&models.Article{}).Where("title = ? and state = ?", title, false).Count(&count).Error
 	if err != nil {
 		logger.Info(err.Error())
 		return err
