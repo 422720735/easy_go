@@ -207,8 +207,6 @@
   border-bottom-left-radius: 0;
   color: #ffffff;
   background-color: #45b6f7; }
-  #search-form-box button.search-btn:hover {
-    opacity: .85; }
   #search-form-box button.search-btn:focus {
     border: none; }
 
