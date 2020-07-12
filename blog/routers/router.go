@@ -1,11 +1,11 @@
 package routers
 
 import (
+	"easy_go/blog/controllers"
 	"easy_go/blog/servers"
 	myjwt "easy_go/middleware"
-	"github.com/astaxie/beego/context"
-	"easy_go/blog/controllers"
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/context"
 	"strings"
 )
 
@@ -38,7 +38,7 @@ func init() {
 
 func business() {
 	// 退出登录
-	beego.Router(Api + "/log/out", &controllers.UserControllers{})
+	beego.Router(Api + "/log/out", &controllers.LoginController{})
 	// 新增评论
 	beego.Router(Api + "/comment/insert", &controllers.CommentControllers{},"post:InsertComment")
 	// 新增回复

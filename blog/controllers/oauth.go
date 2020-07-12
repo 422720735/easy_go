@@ -22,12 +22,12 @@ func (c *OAuthControllers) Github() {
 	codeStr := c.GetString("code")
 	user, err := _github(codeStr)
 	if err != nil {
-		c.Ctx.SetCookie("auth", "")
+		c.Ctx.SetCookie("auth", "", 1)
 		c.History("第三方登陆失败", "/")
 		return
 	}
 
-	setUser(user, 2, c)
+	loginUser(user, 2, c)
 }
 
 func _github(codeStr string) (map[string]interface{}, error) {
@@ -65,12 +65,12 @@ func (c *OAuthControllers) Gitee() {
 	codeStr := c.GetString("code")
 	user, err := _gitee(codeStr)
 	if err != nil {
-		c.Ctx.SetCookie("auth", "")
+		c.Ctx.SetCookie("auth", "", 1)
 		c.History("第三方登陆失败", "/")
 		return
 	}
 
-	setUser(user, 1, c)
+	loginUser(user, 1, c)
 }
 
 func _gitee(codeStr string) (map[string]interface{}, error) {

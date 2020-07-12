@@ -72,8 +72,7 @@
       .article-list .article-item .left_img > a {
         display: block; }
         .article-list .article-item .left_img > a img {
-          width: 100%;
-          height: 150px; }
+          width: 100%; }
     .article-list .article-item .right-html {
       width: calc(100% - 230px);
       /*
@@ -170,8 +169,7 @@
       .article-list .article-item .left_img > a {
         border-radius: 5px; }
         .article-list .article-item .left_img > a img {
-          width: 100%;
-          height: 109px; }
+          width: 100%; }
     .article-list .article-item .right-html {
       width: calc(100% - 160px); }
       .article-list .article-item .right-html .article {

@@ -82,8 +82,6 @@ func business() {
 
 	// 退出登录
 	beego.Router(Api + "/log/out", &system.SystemController{})
-
-	beego.Router("/test", &controllers.TestControllers{})
 }
 
 // 全局过滤方法。

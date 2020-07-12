@@ -32,11 +32,10 @@ func (c *ArticleList) Get() {
 	// req
 	pageStr := c.GetString("page")
 	var page int
-	_int, err := strconv.ParseInt(pageStr, 10, 64)
+	page, err := strconv.Atoi(pageStr)
 	if err != nil {
 		page = 1
 	}
-	page = int(_int)
 
 	title := c.GetString("title")
 	tag := c.GetString("tag")
