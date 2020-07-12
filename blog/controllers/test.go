@@ -78,7 +78,7 @@ func getParams(param1, param2 string) (int, int) {
 }
 
 func (c *TestControllers) Get4() {
-	list_r, err := servers.RandRecommend()
+	list_r, err := servers.RandRecommend(4)
 	var notHotId []int
 
 	// 相同的数据只显示一次

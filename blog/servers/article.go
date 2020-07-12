@@ -150,8 +150,7 @@ func SelectArticlePraise(u_id, article_id int) (bool, error) {
 }
 
 // 热门文章
-func RandRecommend() ([]*models.Article, error) {
-	// 	article := db.DbConn.Raw("SELECT articles.*,IFNULL(systems.top_id,0) FROM articles LEFT JOIN systems ON articles.id = systems.top_id where visible = 1 and state = 0 and ?", articleWhere)
+func RandRecommend(int int) ([]*models.Article, error) {
 	var r []*models.Article
 	ar := db.DbConn.Raw(`
 	SELECT
@@ -164,7 +163,10 @@ func RandRecommend() ([]*models.Article, error) {
 	FROM
 		articles a
 	WHERE
-		hot = 1`)
+		recommend = 1
+	AND 
+		a.id NOT IN (?)
+	`, int)
 	ar.Scan(&r)
 	err := ar.Order("RAND()").Limit(5).Find(&r).Error
 	if ar.Error != nil {

@@ -43,13 +43,12 @@ func (c *ArticleController) Get() {
 	}
 
 	// 文章阅读量+1
-
 	c.Data["menu"] = menu
 	c.Data["details"] = details
-	publicA(c)
+	publicA(c, details.Id)
 }
 
-func publicA(c *ArticleController) {
+func publicA(c *ArticleController, id int) {
 	u_id := c.GetSession("u_id")
 	if u_id != nil {
 		name := c.GetSession("u_name")
@@ -60,6 +59,26 @@ func publicA(c *ArticleController) {
 		c.Data["u_avatar_url"] = avatar_url
 		c.Data["u_auth_token"] = auth_token
 	}
+
+	list_r, err := servers.RandRecommend(id)
+	var notHotId []int
+
+	// 相同的数据只显示一次
+	if len(list_r) > 0 && err != nil {
+		for i := 0; i < len(list_r); i++ {
+			if list_r[i].Hot {
+				notHotId = append(notHotId, list_r[i].Id)
+			}
+		}
+	} else {
+		notHotId = append(notHotId, 0)
+	}
+
+	notHotId = append(notHotId, id)
+
+	list_h, _ := servers.RandHot(notHotId)
+	c.Data["recommendList"] = list_r
+	c.Data["hotList"] = list_h
 }
 
 func (c *ArticleController) InsertPraise() {

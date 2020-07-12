@@ -90,40 +90,29 @@
     </div>
 
     <div class="sidebar">
+        {{if IsLength $.recommendList}}
         <div class="widget widget-meta">
             <h4>精彩推荐</h4>
             <ul>
+                {{range $i, $value := $.recommendList}}
                 <li>
-                    <a href="javascript:void(0)">Golang几大框架的优势和区别？</a>
+                    <a href="/article/{{$value.Id}}">{{$value.Title}}</a>
                 </li>
-                <li>
-                    <a href="javascript:void(0)">使用 beego 搭建 web 应用之一</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)">15个流行编程语言及其应用</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)">2020年最具“钱途”的编程语言</a>
-                </li>
+                {{end}}
             </ul>
         </div>
-
+        {{end}}
+        {{if IsLength $.hotList}}
         <div class="widget widget-meta">
             <h4>热门文章</h4>
             <ul>
-                <li>
-                    <a href="javascript:void(0)">Golang几大框架的优势和区别？</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)">使用 beego 搭建 web 应用之一</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)">15个流行编程语言及其应用</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)">2020年最具“钱途”的编程语言</a>
-                </li>
+                {{range $i, $value := $.hotList}}
+                    <li>
+                        <a href="/article/{{$value.Id}}">{{$value.Title}}</a>
+                    </li>
+                {{end}}
             </ul>
         </div>
+        {{end}}
     </div>
 </div>
