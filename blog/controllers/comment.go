@@ -73,8 +73,13 @@ func (c *CommentControllers) InsertComment() {
 	}
 
 	content, err := transform.InterToString(msg["content"])
-	if err != nil && content == "" {
-		c.Error("评论失败！")
+	if err != nil {
+		c.Error("评论失败，评论内容不合法！")
+		return
+	}
+
+	if  content == "" {
+		c.Error("评论失败，评论内容不合法！")
 		return
 	}
 

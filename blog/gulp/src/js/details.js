@@ -1,6 +1,7 @@
 // 位移高度
 // let TRANSLATE_Y_HIGHT = 0;
 
+let flag = true
 // 函数防抖
 function debounce(fn, wait) {
     var timeout = null;
@@ -150,6 +151,11 @@ $('.nav.navbar-nav > li, .nav.navbar-nav > li ul.dropdown-menu').hover(function 
 
 // 发布评论信息
 function insertComment() {
+    if (!flag) {
+        window.message.warning('正在新增评论中...')
+        return
+    }
+    flag = false
     $.ajax({
         url: '/api' + '/comment/insert',
         method: 'post',
@@ -159,6 +165,7 @@ function insertComment() {
             content: $.trim($('#comment-textarea').val())
         }, {page: defaultListDataset.pagination.current})),
         success: function (res) {
+            flag = true
             if (res.code === 1) {
                 window.message.success('新增评论成功！')
                 $('#comment-textarea').val('')
@@ -170,13 +177,23 @@ function insertComment() {
                 }
                 $(".comment-list").html('')
                 $(".comment-list").addCommentList({data: list_now || [], add: ""});
+            } else {
+                window.message.error(res.data)
             }
+        },
+        error: function () {
+            flag = true
         }
     })
 }
 
 // 发布回复
 function insertReply(reply, callback) {
+    if (!flag) {
+        window.message.warning('正在新增回复中...')
+        return
+    }
+    flag = false
     if (document.getElementById('ok-comment')) {
         $.ajax({
             url: '/api' + '/reply/insert',
@@ -184,6 +201,7 @@ function insertReply(reply, callback) {
             headers: {'Content-Type': 'application/json;charset=utf8', 'r': getCookie('auth')},
             data: JSON.stringify(reply),
             success: function (res) {
+                flag = true
                 if (res.code === 1) {
                     defaultListDataset.list[reply.page - 1] = res.data.list[0]
                     $(".comment-list").html('')
@@ -191,8 +209,11 @@ function insertReply(reply, callback) {
                     window.message.success('新增回复成功！')
                     callback && callback()
                 } else {
-                    window.message.error(res)
+                    window.message.error(res.data)
                 }
+            },
+            error: function () {
+                flag = true
             }
         })
     } else {

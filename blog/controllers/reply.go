@@ -36,7 +36,12 @@ func (c *ReplyControllers) InsertReply() {
 	}
 
 	content, err := transform.InterToString(msg["content"])
-	if err != nil && content == "" {
+	if err != nil {
+		c.Error("回复失败，回复内容不能为空！")
+		return
+	}
+
+	if content == "" {
 		c.Error("回复失败，回复内容不能为空！")
 		return
 	}
