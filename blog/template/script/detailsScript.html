@@ -1,8 +1,9 @@
 <script src="/static/js/details.min.js"></script>
-{{/*editormd*/}}
+{{/*文章内容marked回显*/}}
 <script src="/static/assets/editor.md/lib/marked.min.js"></script>
 <script src="/static/assets/editor.md/editormd.min.js"></script>
-<script src="/static/assets/editor.md/lib/prettify.min.js"></script>
+{{/*下面这个js让我们加载速度变慢，暂时注释掉*/}}
+{{/*<script src="/static/assets/editor.md/lib/prettify.min.js"></script>*/}}
 <script>
     editormd.markdownToHTML("article-content", {
         htmlDecode      : "style,script,iframe",

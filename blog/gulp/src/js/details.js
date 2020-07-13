@@ -2,6 +2,7 @@
 // let TRANSLATE_Y_HIGHT = 0;
 
 let flag = true
+
 // 函数防抖
 function debounce(fn, wait) {
     var timeout = null;
@@ -44,6 +45,7 @@ $(window).resize(function () {
 });
 
 // nav的位移 + 用文章title替换。
+let isScroll = true
 $(window).scroll(() => {
     const top = Math.floor($(window).scrollTop());
     if (top > 100) {
@@ -54,6 +56,12 @@ $(window).scroll(() => {
         // $('.article-h1').css({ 'transform': `translateY(0)` })
         $('.article-h1').removeClass('article-current')
         $('ul.nav.navbar-nav').removeClass('article-current')
+    }
+    if (isScroll) {
+        isScroll = false
+        // 输出和这个文章标题是不显示的，当我们滚动就显示，因为我们需要初始化需要计算这个标题的高度，所以只是元素不可见，不是隐藏。
+        $('.article-h1 .articleTitle').removeClass('invisible')
+        $('.article-h1 .articleTitle').addClass('visible')
     }
 })
 
@@ -241,6 +249,7 @@ function selectComment() {
     })
 }
 
+let not_first = true
 function selectPraise() {
     $.ajax({
         url: '/article/praise/' + $('#article_id').val(),
@@ -248,6 +257,7 @@ function selectPraise() {
         headers: {'Content-Type': 'application/json;charset=utf8', 'r': getCookie('auth')},
         success: function (res) {
             if (res.code === 1) {
+                !not_first && window.message.success(res.message)
                 const {praise, state} = res.data
                 if (state) {
                     $('a.like-btn.link').addClass('active')
@@ -255,7 +265,13 @@ function selectPraise() {
                     $('a.like-btn.link').removeClass('active')
                 }
                 $('a.like-btn.link .like-count').text(praise)
+            } else {
+                !not_ffirst && window.message.error(res.data)
             }
+            not_first = false
+        },
+        error: function () {
+            not_first = false
         }
     })
 }

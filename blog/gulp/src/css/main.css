@@ -194,7 +194,7 @@
   color: #999999;
   outline: 0; }
   #search-form-box input.form-control:focus {
-    border: solid 1px #45b6f7;
+    border: solid 1px #1890ff;
     border-right: 0;
     outline: 0; }
 
@@ -206,7 +206,9 @@
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   color: #ffffff;
-  background-color: #45b6f7; }
+  background-color: #1890ff; }
+  #search-form-box button.search-btn:hover {
+    background-color: #40a9ff; }
   #search-form-box button.search-btn:focus {
     border: none; }
 

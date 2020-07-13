@@ -28,12 +28,7 @@
                             {{end}}
                         {{end}}
                     {{end}}
-                    {{if $v.CategoryId}}
-                        <h2 class="article-title cursorPointer"><a
-                                    href="/article/{{$v.Id}}">{{$v.Title}}</a></h2>
-                    {{else}}
-                        <h2 class="article-title cursorPointer"><a href="/article/{{$v.MenuId}}">{{$v.Title}}</a></h2>
-                    {{end}}
+                    <h2 class="article-title cursorPointer"><a href="/article/{{$v.Id}}">{{$v.Title}}</a></h2>
                     {{if eq $v.Id $.top_id}}
                         <span class="tags">置顶</span>
                     {{end}}

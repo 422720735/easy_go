@@ -316,11 +316,9 @@
     border-bottom-left-radius: 0;
     color: $text-color;
     background-color: $form-btn-search-bg-color;
-
-    //&:hover {
-    //  opacity: .85;
-    //}
-
+    &:hover {
+      background-color: $form-btn-search-bg-color-hover;
+    }
     &:focus {
       border: none;
     }
