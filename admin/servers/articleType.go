@@ -52,12 +52,11 @@ func UpdateArticleType(articleName, KeyWord string, menuId, id int) error {
 func SelectArticleTypeMenuName(allShow bool) ([]interface{}, error) {
 	// 路由
 	var menuList []*models.MenuSetting
-	menu := db.DbConn.Select([]string{"id", "menu_name", "child_status", "visible"}).Model(&menuList)
+	menu := db.DbConn.Select([]string{"id", "menu_name", "child_status", "visible"}).Model(&menuList).Order("sort asc")
 
 	// 文章类型 要过滤下架和软删除的
 	var articleList []*models.ArticleType
-	//article := db.DbConn.Select([]string{"id", "article_name", "menu_id"}).Model(&articleList).Where("visible = ? and state = ?", true, false)
-	article := db.DbConn.Select([]string{"id", "article_name", "menu_id"}).Model(&articleList).Where("state = ?", false)
+	article := db.DbConn.Select([]string{"id", "article_name", "menu_id"}).Model(&articleList).Where("state = ?", false).Order("sort asc")
 	if !allShow {
 		article = article.Where("visible = ?", true)
 	}
