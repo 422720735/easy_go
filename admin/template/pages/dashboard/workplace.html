@@ -148,11 +148,11 @@
                                 </div>
                             </div>
                             <div class="text-center my-2">
-                                <h2 class="display-2 text-warning">{{.commentCount}}</h2>
+                                <h2 class="display-2 text-warning">{{.commentCount.Total}}</h2>
                                 <span class="text-muted">&emsp;</span>
                             </div>
                             <span class="text-muted mr-1">最近一周:</span>
-                            <span class="text-dark">168</span>
+                            <span class="text-dark">{{.commentCount.Day7}}</span>
                         </div>
                         <div class="progress mt-0 mb-0 progress-sm">
                             <div class="progress-bar bg-warning" role="progressbar" style="width: 55%; "

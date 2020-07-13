@@ -67,12 +67,18 @@ func SelectLatelyFiveComment() ([]*models.LatelyFiveComment, error) {
 	return c, nil
 }
 
-func SelectCountComment() (int, error) {
-	var count int
-	err := db.DbConn.Select([]string{"id"}).Model(&models.Comment{}).Count(&count).Error
-	if err != nil && count > 0 {
-		logger.Info("查询总评论数失败", err.Error())
-		return 0, err
+func SelectCountComment() (*models.DayAndTotal, error) {
+	var res models.DayAndTotal
+	err := db.DbConn.Raw(`
+	SELECT
+		( SELECT count( c.id ) FROM comments c WHERE DATE_SUB( CURDATE( ), INTERVAL 7 DAY ) <= date( c.created_time ) ) day7,
+		COUNT( id ) total
+	FROM
+		comments
+	`).Scan(&res).Error
+	if err != nil {
+		logger.Info("查询总评论数和最近7天评论数失败失败", err.Error())
+		return &res, err
 	}
-	return count, nil
+	return &res, nil
 }

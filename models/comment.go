@@ -74,5 +74,9 @@ type LatelyFiveComment struct {
 	Content   string `json:"content"`    // 评论内容
 	Name      string `json:"name"`       // 用户名
 	AvatarUrl string `json:"avatar_url"` // 头像url
+}
 
+type DayAndTotal struct {
+	Day7 int `json:"day_7"`
+	Total int `json:"total"`
 }

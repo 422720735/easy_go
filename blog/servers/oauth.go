@@ -5,7 +5,6 @@ import (
 	"easy_go/blog/logger"
 	"easy_go/models"
 	"errors"
-	"github.com/astaxie/beego"
 	"time"
 )
 
@@ -73,7 +72,6 @@ func Login_github(uid int, utype models.RoleTypeEle, name, login, location, avat
 func SelectUserLoginInfo(uid int, name, login_ip, auth_token string) (*models.OauthUser, error) {
 	var count int
 	var r models.OauthUser
-	beego.Info("uid ====", uid)
 	err := db.DbConn.Select([]string{"id", "uid", "name", "avatar_url", "auth_token"}).Model(&models.OauthUser{}).Where("uid = ? and name = ? and login_ip = ? and auth_token = ?", uid, name, login_ip, auth_token).Find(&r).Count(&count).Error
 	if err != nil {
 		logger.Info("查询登录信息失败", err.Error())

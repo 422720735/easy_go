@@ -102,6 +102,6 @@ func (c *TestControllers) Get4() {
 }
 
 func (c *TestControllers) Get5() {
-	reslut,_ := servers.SelectLatelyFiveComment()
+	reslut, _ := servers.SelectLatelyFiveComment()
 	c.Success(reslut)
 }

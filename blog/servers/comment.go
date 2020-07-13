@@ -237,7 +237,7 @@ func SelectLatelyFiveComment() ([]*models.LatelyFiveComment, error) {
 	ORDER BY
 		c.created_time DESC
 	LIMIT 5
-	`,).Rows()
+	`).Rows()
 	if err != nil {
 		logger.Info("查询最近评论数据失败", err.Error())
 		return nil, err
