@@ -51,7 +51,7 @@
         }
 
         function replyClick(el) {
-            el.parent().parent().append("<div class='replybox'><textarea cols='80' rows='50' placeholder='来说几句吧......' class='mytextarea' ></textarea><span class='send'>发送</span></div>").find(".send").click(function () {
+            el.parent().parent().append("<div class='replybox'><textarea cols='80' rows='50' placeholder='来说几句吧......' class='mytextarea' ></textarea><button class='send btn btn-info'>发送</button></div>").find(".send").click(function () {
                 var content = $.trim($(this).prev().val())
                 if (content != "") {
                     var parentEl = $(this).parent().parent().parent().parent();

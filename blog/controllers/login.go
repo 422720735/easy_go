@@ -54,7 +54,7 @@ func (c *LoginController) Post() {
 		return
 	}
 
-	_, err = servers.Select_github(claims.ID, claims.Username, claims.LoginIp, auth)
+	_, err = servers.SelectUserLoginInfo(claims.ID, claims.Username, claims.LoginIp, auth)
 	if err != nil {
 		logger.Info("退出登录解析token失败", err.Error())
 		c.Error("无权限退出登录")

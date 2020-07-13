@@ -144,3 +144,9 @@ a {
     text-decoration: none;
   }
 }
+
+.send.btn.btn-info {
+  &:focus {
+    outline: none;
+  }
+}

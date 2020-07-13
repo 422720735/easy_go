@@ -388,3 +388,6 @@ a {
   text-decoration: none; }
   a:hover {
     text-decoration: none; }
+
+.send.btn.btn-info:focus {
+  outline: none; }

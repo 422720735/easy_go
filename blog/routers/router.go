@@ -59,7 +59,7 @@ var FilterUser = func(ctx *context.Context) {
 			j := myjwt.NewJWT()
 			claims, err := j.ParseToken(auth)
 			if err == nil {
-				role, err := servers.Select_github(claims.ID, claims.Username, claims.LoginIp, auth)
+				role, err := servers.SelectUserLoginInfo(claims.ID, claims.Username, claims.LoginIp, auth)
 				if err == nil {
 					ctx.Output.Session("u_id", role.Id)
 					ctx.Output.Session("u_name", role.Name)

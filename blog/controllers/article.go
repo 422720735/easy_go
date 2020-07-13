@@ -91,7 +91,7 @@ func (c *ArticleController) InsertPraise() {
 		return
 	}
 
-	role, err := servers.Select_github(claims.ID, claims.Username, claims.LoginIp, auth)
+	role, err := servers.SelectUserLoginInfo(claims.ID, claims.Username, claims.LoginIp, auth)
 	if err != nil {
 		c.Error("暂未登录，无法点赞！")
 		return
@@ -144,7 +144,7 @@ func (c *ArticleController) GetPraiseCount() {
 		j := myjwt.NewJWT()
 		claims, err := j.ParseToken(auth)
 		if err == nil {
-			role, err := servers.Select_github(claims.ID, claims.Username, claims.LoginIp, auth)
+			role, err := servers.SelectUserLoginInfo(claims.ID, claims.Username, claims.LoginIp, auth)
 			if err == nil {
 				state, err = servers.SelectArticlePraise(role.Id, article_id)
 			}

@@ -23,7 +23,7 @@ func (c *ReplyControllers) InsertReply() {
 		return
 	}
 
-	role, err := servers.Select_github(claims.ID, claims.Username, claims.LoginIp, auth)
+	role, err := servers.SelectUserLoginInfo(claims.ID, claims.Username, claims.LoginIp, auth)
 	if err != nil {
 		c.Error("暂未登录，不能回复！")
 		return
