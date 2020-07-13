@@ -222,3 +222,42 @@ func concat(c []*models.ReplyBody, r []*models.ReplyBody) []map[string]interface
 	}
 	return results
 }
+
+func SelectLatelyFiveComment() ([]*models.LatelyFiveComment, error) {
+	rows, err := db.DbConn.Raw(`
+	SELECT
+		c.content,
+		a.title,
+		o.name,
+		o.avatar_url
+	FROM
+		comments c
+	LEFT JOIN articles a ON a.id = c.article_id
+	LEFT JOIN oauth_users o ON c.from_uid = o.id
+	ORDER BY
+		c.created_time DESC
+	LIMIT 5
+	`,).Rows()
+	if err != nil {
+		logger.Info("查询最近评论数据失败", err.Error())
+		return nil, err
+	}
+
+	var c []*models.LatelyFiveComment
+	for rows.Next() {
+		var reslut models.LatelyFiveComment
+		if err := rows.Scan(&reslut.Content, &reslut.Title, &reslut.Name, &reslut.AvatarUrl); err != nil {
+			logger.Info("查询最近评论数据失败", err.Error())
+			return nil, err
+		}
+
+		item := &models.LatelyFiveComment{
+			Title:     reslut.Title,
+			Content:   reslut.Content,
+			Name:      reslut.Name,
+			AvatarUrl: reslut.AvatarUrl,
+		}
+		c = append(c, item)
+	}
+	return c, nil
+}

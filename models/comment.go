@@ -25,15 +25,15 @@ const (
 
 // 回复表
 type Reply struct {
-	Id          int          `json:"id" gorm:"size:10"`
-	CommentId   int          `json:"comment_id" gorm:"size:10"` // 评论id
-	ReplyId     int          `json:"reply_id" `                 // 回复目标id，reply_type为1时，是comment_id，reply_type为2时为回复表的id
-	ReplyType   ReplyTypeEle `json:"reply_type" gorm:"size:2"`  // 1为回复评论，2为回复别人的回复'
-	Content     string       `json:"content"`                   // 回复内容
-	FromUid     int          `json:"from_uid" gorm:"size:10"`   // 回复用户id
+	Id        int          `json:"id" gorm:"size:10"`
+	CommentId int          `json:"comment_id" gorm:"size:10"` // 评论id
+	ReplyId   int          `json:"reply_id" `                 // 回复目标id，reply_type为1时，是comment_id，reply_type为2时为回复表的id
+	ReplyType ReplyTypeEle `json:"reply_type" gorm:"size:2"`  // 1为回复评论，2为回复别人的回复'
+	Content   string       `json:"content"`                   // 回复内容
+	FromUid   int          `json:"from_uid" gorm:"size:10"`   // 回复用户id
 	//ToUid       int          `json:"to_uid" gorm:"size:10"`     // 回复目标id,这个字段暂时未用，发现ReplyId能完全解决指向父id
-	CreatedTime time.Time    `json:"created_time"`              // 创建时间
-	UpdateTime  sql.NullTime `json:"update_time"`               // 更新时间
+	CreatedTime time.Time    `json:"created_time"` // 创建时间
+	UpdateTime  sql.NullTime `json:"update_time"`  // 更新时间
 }
 
 type ZanTypeEle int8
@@ -66,4 +66,13 @@ type ReplyBody struct {
 	Addres      *string      `json:"addres"`
 	OsName      string       `json:"os_name"`
 	Browse      string       `json:"browse"`
+}
+
+type LatelyFiveComment struct {
+	ArticleId int    `json:"article_id"` // 文章id
+	Title     string `json:"title"`      // 标题
+	Content   string `json:"content"`    // 评论内容
+	Name      string `json:"name"`       // 用户名
+	AvatarUrl string `json:"avatar_url"` // 头像url
+
 }

@@ -40,4 +40,11 @@ func (c *DashBoardControllers) Get() {
 	// 查询最近的文章
 	lastArticle := servers.SelectLastArticle()
 	c.Data["lastArticle"] = lastArticle
+
+	// 查询最近的评论
+	latelyFiveComment, _ := servers.SelectLatelyFiveComment()
+	c.Data["latelyFiveComment"] = latelyFiveComment
+
+	commentCount, _ := servers.SelectCountComment()
+	c.Data["commentCount"] = commentCount
 }

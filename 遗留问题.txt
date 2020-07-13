@@ -19,3 +19,17 @@
 评论回复信息，按钮是不是添加一个加载动画。
 
 详情页一直加载中，bug,要看问题出在什么地方，暂时解决，把皮肤删除。
+
+// 查询全部和最近一周
+SELECT
+	(
+		SELECT
+			count(c.id)
+		FROM
+			comments c
+		WHERE
+			DATE_SUB(CURDATE(), INTERVAL 7 DAY) <= date(c.created_time)
+	) as day7,
+	COUNT(id) as total
+FROM
+	comments

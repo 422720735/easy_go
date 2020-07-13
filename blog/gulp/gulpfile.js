@@ -46,12 +46,12 @@ gulp.task('jsUglify', function () {
     return gulp.src(['src/js/*.js', '!src/js/TweenMax/**'])
         .pipe(babel())
         .pipe(rename({suffix: '.min'}))
-        // .pipe(uglify({
-        //     compress: {
-        //         drop_console: NODE_ENV !== 'production', // 过滤 console
-        //         drop_debugger: NODE_ENV !== 'production' // 过滤 debugger
-        //     }
-        // }))
+        .pipe(uglify({
+            compress: {
+                drop_console: NODE_ENV !== 'production', // 过滤 console
+                drop_debugger: NODE_ENV !== 'production' // 过滤 debugger
+            }
+        }))
         .pipe(gulp.dest(path.resolve(__dirname, '../static/js')))
 });
 
@@ -67,9 +67,6 @@ gulp.task('img', function () { //
         // .pipe(cache(imageMin({
         //     optimizationLevel: 5, // 取值范围：0-7（优化等级），默认：3
         //     progressive: true, 	// 无损压缩jpg图片，默认：false
-
-
-
         //     interlaced: true, 	// 隔行扫描gif进行渲染，默认：false
         //     multipass: true 		// 多次优化svg直到完全优化，默认：false
         // })))

@@ -1,7 +1,6 @@
 package tempFunc
 
 import (
-	"easy_go/models"
 	"github.com/astaxie/beego"
 	"strconv"
 	"strings"
@@ -13,7 +12,6 @@ func Init() {
 	beego.AddFuncMap("IsSplit", IsSplit)
 	beego.AddFuncMap("TagSplit", TagSplit)
 	beego.AddFuncMap("ClassName", ClassName)
-	beego.AddFuncMap("IsLength", IsLength)
 }
 
 func IsArticleCover(cover *string) bool {
@@ -45,11 +43,4 @@ func TagSplit(tags *string) []string {
 // 给当前tag标签返回一个class
 func ClassName(index int) string {
 	return "tag_" + strconv.Itoa(index%5+1)
-}
-
-func IsLength(array []*models.Article) bool {
-	if len(array) > 0 {
-		return true
-	}
-	return false
 }

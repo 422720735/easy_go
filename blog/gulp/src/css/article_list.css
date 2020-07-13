@@ -142,6 +142,10 @@
           line-height: 24px;
           color: #666;
           text-indent: 2em; }
+  .article-list .no-data {
+    margin: 155px 0; }
+    .article-list .no-data h4 {
+      margin-top: 45px; }
 
 /*
 这里是响应式适配屏幕

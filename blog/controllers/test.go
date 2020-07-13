@@ -100,3 +100,8 @@ func (c *TestControllers) Get4() {
 		c.Success(list_h)
 	}
 }
+
+func (c *TestControllers) Get5() {
+	reslut,_ := servers.SelectLatelyFiveComment()
+	c.Success(reslut)
+}

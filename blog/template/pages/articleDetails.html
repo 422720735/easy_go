@@ -90,7 +90,7 @@
     </div>
 
     <div class="sidebar">
-        {{if IsLength $.recommendList}}
+        {{if (.recommendList|len)}}
             <div class="widget widget-meta">
                 <h4>精彩推荐</h4>
                 <ul>
@@ -102,7 +102,7 @@
                 </ul>
             </div>
         {{end}}
-        {{if IsLength $.hotList}}
+        {{if (.hotList|len)}}
             <div class="widget widget-meta">
                 <h4>热门文章</h4>
                 <ul>

@@ -17,7 +17,6 @@
 // 列表内容填充部分。
 .article-list {
   box-sizing: border-box;
-
   .article-item {
     display: flex;
     align-items: center;
@@ -131,6 +130,13 @@
           }
         }
       }*/
+    }
+  }
+
+  .no-data {
+    margin: 155px 0;
+    h4 {
+      margin-top: 45px;
     }
   }
 }
