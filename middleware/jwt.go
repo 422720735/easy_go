@@ -6,14 +6,10 @@ import (
 	"github.com/dgrijalva/jwt-go"
 )
 
-
-
-// JWT 签名结构
 type JWT struct {
 	SigningKey []byte
 }
 
-// 一些常量
 var (
 	TokenExpired     error  = errors.New("Token is expired")
 	TokenNotValidYet error  = errors.New("Token not active yet")
@@ -22,7 +18,6 @@ var (
 	SignKey          string = "fDEtrkpbQbocVxYRLZrnkrXDWJzRZMfO"
 )
 
-// 载荷，可以加一些自己需要的信息
 type CustomClaims struct {
 	ID       int    `json:"id"`
 	Username string `json:"username"`
@@ -48,7 +43,7 @@ func SetSignKey(key string) string {
 	return SignKey
 }
 
-// CreateToken 生成一个token
+// 生成一个token
 func (j *JWT) CreateToken(claims CustomClaims) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	return token.SignedString(j.SigningKey)
