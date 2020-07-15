@@ -4,7 +4,6 @@ import (
 	"easy_go/admin/db"
 	"easy_go/admin/logger"
 	"easy_go/models"
-	"github.com/astaxie/beego"
 	"strings"
 	"time"
 )
@@ -128,6 +127,5 @@ func SelectArticleCount() (int, error) {
 	if err != nil && count > 0 {
 		return 0, err
 	}
-	beego.Info(count, "cccc")
 	return count, nil
 }

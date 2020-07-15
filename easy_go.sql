@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50727
 File Encoding         : 65001
 
-Date: 2020-07-13 19:29:18
+Date: 2020-07-15 19:15:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -55,11 +55,11 @@ INSERT INTO `articles` VALUES ('5', '2', '4', '0612_1594481716254_7', 'renren-fa
 INSERT INTO `articles` VALUES ('6', '2', '1', '0612_1594481716254_7', '小爱Admin', null, '基于vue2.0 +vuex+ element-ui后台管理系统', '基于vue2.0 +vuex+ element-ui后台管理系统', 'vue,vuex,elementu-ui', '14', '1', '1', '1', '0', '1', '0', '6', '0', '0', '2020-07-12 16:16:26', '2020-07-12 16:35:00');
 INSERT INTO `articles` VALUES ('8', '2', '1', '0612_1594481716254_7', 'vue2-demo', null, '这个项目最开始建立的是2016年的时候，如今已经过去了4年多，时光匆匆，如今 TS 已经流行起来，并且自己已经在 SSR 方面实践颇多，所以就花了半天的时间使用 Genesis 写了一个完整的 Vue SSR 的demo。', '一个用于快速构建大规模，高质量，全自动化的 mysql分布式集群环境的工具；包含mysql 安装、备份、监控、高可用、读写分离、优化、巡检、自行化运维', 'msyql', '0', '1', '1', '1', '0', '0', '1', '7', '0', '0', '2020-07-12 16:21:30', '2020-07-12 16:34:58');
 INSERT INTO `articles` VALUES ('9', '4', '10', '0612_1594481716254_7', 'flutter-netease-music', null, 'flutter music player application, support iOS and Android. （仿网易云音乐）', 'flutter music player application, support iOS and Android. （仿网易云音乐）', 'flutter', '0', '1', '1', '1', '0', '1', '1', '8', '0', '0', '2020-07-12 16:26:44', '2020-07-12 16:34:56');
-INSERT INTO `articles` VALUES ('10', '4', '10', '0612_1594481716254_7', '基于flutter的仿微博客户端', null, 'Flutter仿微博客户端, 包含首页、视频、发现、消息(仿微博聊界面)及个人中心模块', 'Flutter仿微博客户端, 包含首页、视频、发现、消息(仿微博聊界面)及个人中心模块', 'flutter', '32', '1', '1', '1', '0', '1', '1', '9', '0', '0', '2020-07-12 16:27:54', '2020-07-12 16:34:54');
-INSERT INTO `articles` VALUES ('11', '4', '10', '0612_1594481716254_7', 'Flutter完整开发实战详解系列，GSY Flutter 系列专栏整合，不定期更新', null, 'Flutter 完整开发实战详解系列，提供在线预览和pdf下载，本系列将完整讲述：如何快速从 0 开发一个完整的 Flutter APP，配套高完成度 Flutter 开源项目 GSYGithubAppFlutter ，同时会提供一些Flutter的开发细节技巧，之后深入源码和实战为你全面解析 Flutter 。', 'Flutter完整开发实战详解系列，GSY Flutter 系列专栏整合，不定期更新', 'flutter', '0', '1', '1', '1', '0', '1', '0', '10', '0', '0', '2020-07-12 16:29:15', '2020-07-12 16:34:55');
-INSERT INTO `articles` VALUES ('12', '4', '10', '0612_1594481716254_7', 'fun_android_flutter', null, '?????玩Android客户端Flutter版本。Provider的最佳实践.DarkMode、多色彩主题、国际化、切换字体、优美动画', 'Provider的最佳实践.DarkMode、多色彩主题、国际化、切换字体、优美动画', 'flutter', '0', '1', '1', '1', '0', '0', '1', '11', '0', '0', '2020-07-12 16:31:29', '2020-07-12 16:34:52');
-INSERT INTO `articles` VALUES ('13', '4', '10', '0612_1594481716254_7', '一个优秀的Flutter即时通讯IM开源库', null, 'wechat_flutter Flutter版本微信，一个优秀的Flutter即时通讯IM开源库！', 'wechat_flutter Flutter版本微信，一个优秀的Flutter即时通讯IM开源库！', 'flutter', '0', '1', '1', '1', '0', '0', '0', '12', '0', '0', '2020-07-12 16:34:48', '2020-07-12 16:52:31');
-INSERT INTO `articles` VALUES ('14', '6', null, '0612_1594481716254_7', '夜空中最亮的星', null, '我是歌手第二季 第8期', '我是歌手第二季 第8期', null, '37', '0', '1', '1', '0', '0', '0', '13', '0', '0', '2020-07-13 10:22:48', '2020-07-13 10:22:51');
+INSERT INTO `articles` VALUES ('10', '4', '10', '0612_1594481716254_7', '基于flutter的仿微博客户端', null, 'Flutter仿微博客户端, 包含首页、视频、发现、消息(仿微博聊界面)及个人中心模块', 'Flutter仿微博客户端, 包含首页、视频、发现、消息(仿微博聊界面)及个人中心模块', 'flutter', '32', '1', '1', '1', '0', '1', '1', '9', '0', '0', '2020-07-12 16:27:54', '2020-07-15 13:27:06');
+INSERT INTO `articles` VALUES ('11', '4', '10', '0612_1594481716254_7', 'Flutter完整开发实战详解系列，GSY Flutter 系列专栏整合，不定期更新', null, 'Flutter 完整开发实战详解系列，提供在线预览和pdf下载，本系列将完整讲述：如何快速从 0 开发一个完整的 Flutter APP，配套高完成度 Flutter 开源项目 GSYGithubAppFlutter ，同时会提供一些Flutter的开发细节技巧，之后深入源码和实战为你全面解析 Flutter 。', 'Flutter完整开发实战详解系列，GSY Flutter 系列专栏整合，不定期更新', 'flutter', '0', '1', '1', '1', '0', '1', '0', '10', '0', '0', '2020-07-12 16:29:15', '2020-07-15 13:27:06');
+INSERT INTO `articles` VALUES ('12', '4', '10', '0612_1594481716254_7', 'fun_android_flutter', null, '?????玩Android客户端Flutter版本。Provider的最佳实践.DarkMode、多色彩主题、国际化、切换字体、优美动画', 'Provider的最佳实践.DarkMode、多色彩主题、国际化、切换字体、优美动画', 'flutter', '0', '1', '1', '1', '0', '0', '1', '11', '0', '0', '2020-07-12 16:31:29', '2020-07-15 13:27:04');
+INSERT INTO `articles` VALUES ('13', '4', '10', '0612_1594481716254_7', '一个优秀的Flutter即时通讯IM开源库', null, 'wechat_flutter Flutter版本微信，一个优秀的Flutter即时通讯IM开源库！', 'wechat_flutter Flutter版本微信，一个优秀的Flutter即时通讯IM开源库！', 'flutter', '0', '1', '1', '1', '0', '0', '0', '12', '0', '0', '2020-07-12 16:34:48', '2020-07-15 13:27:03');
+INSERT INTO `articles` VALUES ('14', '6', null, '0612_1594481716254_7', '夜空中最亮的星', null, '我是歌手第二季 第8期', '我是歌手第二季 第8期', null, '37', '0', '1', '1', '0', '0', '0', '13', '0', '0', '2020-07-13 10:22:48', '2020-07-15 13:27:26');
 
 -- ----------------------------
 -- Table structure for article_contents
@@ -110,11 +110,11 @@ CREATE TABLE `article_types` (
 -- ----------------------------
 -- Records of article_types
 -- ----------------------------
-INSERT INTO `article_types` VALUES ('1', 'vue', 'vue', '2', '1', '1', '0', '2020-07-11 22:17:46', '2020-07-11 22:20:07');
-INSERT INTO `article_types` VALUES ('2', 'react', 'react', '2', '1', '2', '0', '2020-07-11 22:17:53', '2020-07-11 22:20:08');
-INSERT INTO `article_types` VALUES ('3', 'typescript', 'typescript', '2', '1', '3', '0', '2020-07-11 22:18:00', '2020-07-11 22:20:09');
-INSERT INTO `article_types` VALUES ('4', 'react native', 'react native', '2', '1', '4', '0', '2020-07-11 22:18:10', '2020-07-11 22:20:09');
-INSERT INTO `article_types` VALUES ('5', 'weex', 'weex', '2', '1', '5', '0', '2020-07-11 22:18:17', '2020-07-11 23:02:52');
+INSERT INTO `article_types` VALUES ('1', 'vue', 'vue', '2', '1', '1', '0', '2020-07-11 22:17:46', '2020-07-15 13:15:09');
+INSERT INTO `article_types` VALUES ('2', 'react', 'react', '2', '0', '2', '0', '2020-07-11 22:17:53', '2020-07-15 13:15:29');
+INSERT INTO `article_types` VALUES ('3', 'typescript', 'typescript', '2', '1', '3', '0', '2020-07-11 22:18:00', '2020-07-15 13:14:20');
+INSERT INTO `article_types` VALUES ('4', 'react native', 'react native', '2', '1', '4', '0', '2020-07-11 22:18:10', '2020-07-15 13:14:19');
+INSERT INTO `article_types` VALUES ('5', 'weex', 'weex', '2', '1', '5', '0', '2020-07-11 22:18:17', '2020-07-15 13:14:18');
 INSERT INTO `article_types` VALUES ('6', 'gin', 'gin', '3', '1', '6', '0', '2020-07-11 22:18:25', '2020-07-11 22:20:11');
 INSERT INTO `article_types` VALUES ('7', 'beego', 'beego', '3', '1', '7', '0', '2020-07-11 22:18:33', '2020-07-11 22:20:12');
 INSERT INTO `article_types` VALUES ('8', 'gorm', 'gorm', '3', '1', '8', '0', '2020-07-11 22:18:44', '2020-07-11 22:20:13');
@@ -164,11 +164,11 @@ CREATE TABLE `menu_settings` (
 -- ----------------------------
 -- Records of menu_settings
 -- ----------------------------
-INSERT INTO `menu_settings` VALUES ('1', '首页', 'home', 'iconfont icon-home1', '1', '0', '1', '0', '2020-07-11 22:10:29', '2020-07-11 23:15:20');
-INSERT INTO `menu_settings` VALUES ('2', '前端', 'web', 'iconfont icon-h5', '1', '0', '2', '1', '2020-07-11 22:11:20', '2020-07-11 23:15:21');
+INSERT INTO `menu_settings` VALUES ('1', '首页', 'home', 'iconfont icon-home1', '1', '0', '1', '0', '2020-07-11 22:10:29', '2020-07-15 13:11:04');
+INSERT INTO `menu_settings` VALUES ('2', '前端', 'web', 'iconfont icon-h5', '1', '0', '2', '1', '2020-07-11 22:11:20', '2020-07-15 13:10:07');
 INSERT INTO `menu_settings` VALUES ('3', 'golang', 'go', 'iconfont icon-prog-golang', '1', '0', '3', '1', '2020-07-11 22:14:43', '2020-07-11 23:15:22');
 INSERT INTO `menu_settings` VALUES ('4', '移动端', 'mobile', 'iconfont icon-mobile', '1', '0', '5', '1', '2020-07-11 22:14:59', '2020-07-11 23:15:23');
-INSERT INTO `menu_settings` VALUES ('5', '区块链', 'block', 'iconfont icon-qukuailian', '0', '0', '8', '0', '2020-07-11 22:15:18', '2020-07-11 23:15:30');
+INSERT INTO `menu_settings` VALUES ('5', '区块链', 'block', 'iconfont icon-qukuailian', '1', '0', '8', '0', '2020-07-11 22:15:18', '2020-07-15 13:11:06');
 INSERT INTO `menu_settings` VALUES ('6', '其他', 'other', 'iconfont icon-qita', '1', '0', '7', '0', '2020-07-11 22:15:38', '2020-07-11 23:15:30');
 INSERT INTO `menu_settings` VALUES ('7', '数据库', 'data_base', 'iconfont icon-data-base', '1', '0', '6', '0', '2020-07-11 22:19:33', '2020-07-11 23:15:23');
 INSERT INTO `menu_settings` VALUES ('8', 'java', 'java', 'iconfont icon-javafill-copy', '1', '0', '4', '1', '2020-07-11 23:09:59', '2020-07-11 23:15:22');
@@ -282,4 +282,4 @@ CREATE TABLE `users` (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', '123456', '1c6a47df3c59184b447411d3764d9e56', '2', '[::1]:64460', '2020-07-13 18:37:30', '2020-07-11 22:09:32', '2020-07-13 18:37:30', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiIxMjM0NTYiLCJsb2dpbl9pcCI6Ils6OjFdOjY0NDYwIiwiZXhwIjoxNTk0NjQwMjQ5LCJpYXQiOjE1OTQ2MzY2NDl9.TBCK0GjgrxnpD6dEfgkxEQe-pWs1wkWjRh6WtKRj1qk');
+INSERT INTO `users` VALUES ('1', '123456', '1c6a47df3c59184b447411d3764d9e56', '2', '[::1]:59875', '2020-07-15 12:56:31', '2020-07-11 22:09:32', '2020-07-15 12:56:31', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiIxMjM0NTYiLCJsb2dpbl9pcCI6Ils6OjFdOjU5ODc1IiwiZXhwIjoxNTk0NzkyNTkxLCJpYXQiOjE1OTQ3ODg5OTF9.wGvp2zoeLdKplqtCiZ8hY0GoyR8bDD1Jxode1wgXjsI');

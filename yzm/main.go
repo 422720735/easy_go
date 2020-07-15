@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/astaxie/beego"
 	"net/smtp"
 	"strings"
 )
@@ -36,7 +35,6 @@ func SendSMTPMail(mailAddress string, subject string, body string) error {
 		"\r\n" + contentType + "\r\n\r\n" + body)
 	sendTo := strings.Split(mailAddress, ",")
 	err := smtp.SendMail(fmt.Sprintf("%s:%s", SMTP_MAIL_HOST, SMTP_MAIL_PORT), auth, SMTP_MAIL_USER, sendTo, msg)
-	beego.Info(err)
 	return err
 }
 

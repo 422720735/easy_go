@@ -17,7 +17,7 @@ const NODE_ENV = process.env.NODE_ENV;
 
 const options = {
     removeComments: true, // 清除HTML注释
-    collapseWhitespace: true, // 压缩HTML
+    // collapseWhitespace: true, // 压缩HTML
     collapseBooleanAttributes: true, // 省略布尔属性的值 <input checked="true"/> ==> <input />
     removeEmptyAttributes: true, // 删除所有空格作属性值 <input id="" /> ==> <input />
     removeScriptTypeAttributes: true, // 删除<script>的type="text/javascript"
