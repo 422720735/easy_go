@@ -1,6 +1,7 @@
 package article
 
 import (
+	"easy_go/admin/controllers"
 	"easy_go/admin/logger"
 	"easy_go/admin/servers"
 	"easy_go/common"
@@ -48,6 +49,7 @@ func (c *ArticleDetails) ArticleDetails() {
 		c.Data["UpdateTime"] = nil
 	}
 
+	c.Data["articleCount"] = controllers.SelectCount()
 }
 
 func (c *ArticleDetails) ArticleDetailsMarkdown() {
@@ -181,6 +183,8 @@ func (c *ArticleDetails) HandArticleDetailsInsert() {
 		c.Error("保存数据失败")
 		return
 	}
+
+	controllers.ArticleCount = -1
 	c.Success("新增文章成功")
 }
 
@@ -288,6 +292,7 @@ func (c *ArticleDetails) HandArticleDetailsUpdate() {
 		return
 	}
 
+	controllers.ArticleCount = -1
 	c.Success("文章编辑成功")
 }
 

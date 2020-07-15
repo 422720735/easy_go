@@ -32,7 +32,7 @@
                 <a href="/workplace" class="menu-link">
                     <i class="feather icon-home"></i>
                     <span> 工作台 </span>
-                    <span class="badge badge-success badge-pill float-right mr-3">New</span>
+                    {{/*<span class="badge badge-success badge-pill float-right mr-3">New</span>*/}}
                 </a>
             </li>
 
@@ -49,7 +49,11 @@
                 <a href="javascript: void(0);" class="menu-link">
                     <i class="feather dripicons-article"></i>
                     <span> 文章系统 </span>
-                    <span class="badge badge-danger badge-pill float-right mr-3">100+</span>
+                    {{if gt .articleCount 99}}
+                        <span class="badge badge-danger badge-pill float-right mr-3">99+</span>
+                    {{else}}
+                        <span class="badge badge-danger badge-pill float-right mr-3">{{.articleCount}}</span>
+                    {{end}}
                     <span class="menu-sub-icon"></span>
                 </a>
                 <ul class="menu-level-second collapse" aria-expanded="false">

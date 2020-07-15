@@ -42,6 +42,8 @@ func (c *MenuController) Get() {
 	c.LayoutSections["Script"] = "script/menuSetting.html"
 	// 数据
 	c.Data["menu_data"] = menuList
+
+	c.Data["articleCount"] = SelectCount()
 }
 
 func (c *MenuController) Add() {
@@ -63,6 +65,8 @@ func (c *MenuController) Add() {
 
 	c.LayoutSections["Style"] = "style/menuSetting.html"
 	c.LayoutSections["Script"] = "script/menuSettingAdd.html"
+
+	c.Data["articleCount"] = SelectCount()
 }
 
 func (c *MenuController) HandleMenuAdd() {

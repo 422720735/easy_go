@@ -11,10 +11,16 @@ import (
 	"runtime"
 )
 
-func init()  {
+
+func init() {
 	db.Init()
 	logger.Init()
 	tempFunc.Init()
+	/*
+	我们的文章量设置为-1，进入相关页面才会去查询文章量，
+	并且用户操作了文章的上下架、删除、编辑、新增等把这个
+	*/
+	controllers.AdminInit()
 }
 
 func main() {

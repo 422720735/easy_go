@@ -91,8 +91,12 @@
                                                    class="text-success">上架</a>
                                             {{end}}
                                             {{if eq $v.Visible false}}
-                                                <div role="separator" class="ant-divider ant-divider-vertical"></div>
-                                                <a href="/article/list?page=1&tag={{$v.Id}}" class="text-c-blue">详情</a>
+                                                {{if ne $v.MenuName "首页"}}
+                                                    <div role="separator"
+                                                         class="ant-divider ant-divider-vertical"></div>
+                                                    <a href="/article/list?page=1&tag={{$v.Id}}"
+                                                       class="text-c-blue">详情</a>
+                                                {{end}}
                                                 <!-- Danger header modal -->
                                                 <div role="separator" class="ant-divider ant-divider-vertical"></div>
                                                 {{if $v.State}}

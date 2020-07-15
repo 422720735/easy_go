@@ -1,6 +1,7 @@
 package system
 
 import (
+	"easy_go/admin/controllers"
 	"easy_go/admin/logger"
 	"easy_go/admin/servers"
 	"easy_go/common"
@@ -28,6 +29,8 @@ func (c *CoverControllers) Get() {
 
 	c.LayoutSections["Style"] = "style/cover.html"
 	c.LayoutSections["Script"] = "script/cover.html"
+
+	c.Data["articleCount"] = controllers.SelectCount()
 }
 
 func (c *CoverControllers) CoverInfo() {

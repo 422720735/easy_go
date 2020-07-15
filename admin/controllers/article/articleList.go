@@ -1,6 +1,7 @@
 package article
 
 import (
+	"easy_go/admin/controllers"
 	"easy_go/admin/logger"
 	"easy_go/admin/servers"
 	"easy_go/common"
@@ -63,6 +64,8 @@ func (c *ArticleList) Get() {
 	c.Data["top_id"] = top_id
 	c.Data["visible_id"] = visible
 	c.Data["articleList"] = articleList
+
+	c.Data["articleCount"] = controllers.SelectCount()
 }
 
 // 上移和下移
@@ -134,6 +137,7 @@ func (c *ArticleList) HandUpdateIssue() {
 		return
 	}
 
+	controllers.ArticleCount = -1
 	c.Redirect("/article/list?page="+page, 302)
 }
 
@@ -158,5 +162,7 @@ func (c *ArticleList) HandDelete() {
 		c.Error("删除文章数据失败")
 		return
 	}
+
+	controllers.ArticleCount = -1
 	c.Success("删除成功")
 }

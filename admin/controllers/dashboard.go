@@ -5,7 +5,6 @@ import (
 	"easy_go/admin/servers"
 	"easy_go/common"
 )
-
 type DashBoardControllers struct {
 	common.BaseController
 }
@@ -47,4 +46,7 @@ func (c *DashBoardControllers) Get() {
 
 	commentCount, _ := servers.SelectCountComment()
 	c.Data["commentCount"] = commentCount
+
+
+	c.Data["articleCount"] = SelectCount()
 }

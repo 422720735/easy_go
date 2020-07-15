@@ -4,6 +4,7 @@ import (
 	"easy_go/admin/db"
 	"easy_go/admin/logger"
 	"easy_go/models"
+	"github.com/astaxie/beego"
 	"strings"
 	"time"
 )
@@ -118,4 +119,15 @@ func ArticleDeleteMenu(id int) error {
 		return err
 	}
 	return nil
+}
+
+func SelectArticleCount() (int, error) {
+	var count int
+	err := db.DbConn.Select("id").Where("visible = ? and state = ?", true, false).Model(&models.Article{}).Count(&count).Error
+
+	if err != nil && count > 0 {
+		return 0, err
+	}
+	beego.Info(count, "cccc")
+	return count, nil
 }

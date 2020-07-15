@@ -1,6 +1,7 @@
 package article
 
 import (
+	"easy_go/admin/controllers"
 	"easy_go/admin/logger"
 	"easy_go/admin/servers"
 	"easy_go/common"
@@ -47,6 +48,8 @@ func (c *ArticleControllerType) GetList() {
 	c.Data["menu_all"] = menAll
 	c.Data["visible_id"] = visible
 	c.Data["article_type_limit"] = typeLimit
+
+	c.Data["articleCount"] = controllers.SelectCount()
 }
 
 func (c *ArticleControllerType) GetDetails() {
@@ -77,6 +80,8 @@ func (c *ArticleControllerType) GetDetails() {
 	}
 	// 数据
 	c.Data["menu_data"] = menuData
+
+	c.Data["articleCount"] = controllers.SelectCount()
 }
 
 func (c *ArticleControllerType) GetArticleTypeInfo() {
