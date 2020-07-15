@@ -1,1 +1,82 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>bob个人感悟</title><meta name="viewport" content="width=device-width,initial-scale=1">{{template "style/globalStyle.html"}} {{.Style}}</head><body class="day-mode"><div class="navbar-box nav-skin visibility">{{template "navbarExpanded" .}}</div><div class="container-fluid main-box visibility"><div class="row"><div class="main-content"><div class="blog-container"><nav class="navbar navbar-default navbar-mobile bootsnav on"><div class="navbar-header clearfiex"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"><i class="fa fa-bars"></i></button> <i id="mobile" class="mobile cursorPointer fr iconfont icon-search"></i></div><div class="collapse navbar-collapse" id="navbar-menu">{{.menuUl}}<div class="navbar-expanded menu"><div>&ensp;</div><div>&ensp;</div><div>&ensp;</div><div>&ensp;</div><div>&ensp;</div><div><a class="themeMixin-skin cursorPointer"><i class="iconfont icon-moon"></i></a></div><div><a href="/login"><i class="iconfont icon-denglu"></i></a></div>{{if .u_id}}<div><a class="expanded-avatar c-pointer d-block" title="{{.u_name}}"><img class="d-block" width="32px" height="32px" src="{{.u_avatar_url}}"></a></div>{{end}}</div></div><div id="drawer-mask" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu" aria-expanded="false"></div></nav>{{.LayoutContent}}<form id="search-form-box" class="input-group search-content"><input type="text" class="form-control" placeholder="输入关键字"> <button class="search-btn" type="submit"><i class="iconfont icon-search"></i></button></form></div>{{template "base/footer.html"}}</div></div></div></body>{{template "script/globalScript.html"}} {{.canvasNest}} {{.Script}}</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bob个人感悟</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    {{template "style/globalStyle.html"}}
+    {{.Style}}
+</head>
+<body class="day-mode">
+
+<div class="navbar-box nav-skin visibility">
+    {{template "navbarExpanded" .}}
+</div>
+
+<div class="container-fluid main-box visibility">
+    <div class="row">
+        <div class="main-content">
+            <div class="blog-container">
+                <nav class="navbar navbar-default navbar-mobile bootsnav on">
+
+                    <div class="navbar-header clearfiex">
+
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+
+                            <i class="fa fa-bars"></i>
+
+                        </button>
+
+                        <i id="mobile" class="mobile cursorPointer fr iconfont icon-search"></i>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="navbar-menu">
+                        {{.menuUl}}
+                        <div class="navbar-expanded menu">
+                            
+                            <div>&ensp;</div>
+                            <div>&ensp;</div>
+                            <div>&ensp;</div>
+                            <div>&ensp;</div>
+                            <div>&ensp;</div>
+                            <div>
+                                <a class="themeMixin-skin cursorPointer">
+                                    <i class="iconfont icon-moon"></i>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="/login">
+                                    
+                                    <i class="iconfont icon-denglu"></i>
+                                </a>
+                            </div>
+                            {{if .u_id}}
+                                <div>
+                                    <a class="expanded-avatar c-pointer d-block" title="{{.u_name}}">
+                                        <img class="d-block" width="32px" height="32px" src="{{.u_avatar_url}}">
+                                    </a>
+                                </div>
+                            {{end}}
+                        </div>
+                    </div>
+
+                    <div id="drawer-mask" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu" aria-expanded="false"></div>
+
+                </nav>
+                {{.LayoutContent}}
+                <form id="search-form-box" class="input-group search-content">
+                    <input type="text" class="form-control" placeholder="输入关键字">
+                    <button class="search-btn" type="submit">
+                        <i class="iconfont icon-search"></i>
+                    </button>
+                </form>
+            </div>
+            {{template "base/footer.html"}}
+        </div>
+    </div>
+</div>
+</body>
+{{template "script/globalScript.html"}}
+{{.canvasNest}}
+{{.Script}}
+</html>

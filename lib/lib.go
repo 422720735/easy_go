@@ -1,11 +1,3 @@
-/**********************************************
-** @Des: 读取config 造个轮子吧
-** @Author: haodaquan
-** @Date:   2017-10-17 10:45:17
-** @Last Modified by:   haodaquan
-** @Last Modified time: 2017-10-18 09:40:00
-***********************************************/
-
 package lib
 
 import (
@@ -13,8 +5,6 @@ import (
 	"io"
 	"log"
 	"os"
-	"path"
-	"runtime"
 	"strings"
 )
 
@@ -26,14 +16,11 @@ type Configs struct {
 const MidStr = "-_-!"
 
 var Conf *Configs
-const configFile = "./../config/config.ini"
+const configFile = "../config/config.ini"
 
 func init() {
 	Conf = new(Configs)
-	_, filename, _, _ := runtime.Caller(0)
-	datapath := path.Join(path.Dir(filename), configFile)
-	//Conf.LoadConfig("../config/config.ini")
-	Conf.LoadConfig(datapath)
+	Conf.LoadConfig("../config/config.ini")
 }
 
 func (conf *Configs) LoadConfig(path string) {

@@ -1,12 +1,14 @@
 package main
 
 import (
-	"easy_go/blog/controllers"
+	"blog/controllers"
 	"easy_go/blog/db"
 	"easy_go/blog/logger"
 	_ "easy_go/blog/routers"
 	"easy_go/blog/tempFunc"
+	"easy_go/lib"
 	"github.com/astaxie/beego"
+	"runtime"
 )
 
 func init()  {
@@ -16,11 +18,20 @@ func init()  {
 }
 
 func main() {
-	// beego.BConfig.RunMode = beego.AppConfig.String("runmode")          // 环境
+	goos := runtime.GOOS
+	system := ""
+	if goos == "linux" {
+		system = "admin_prod"
+	} else {
+		system = "admin_dev"
+	}
+	env := lib.Conf.Read(system, "env")
+	blogenv := lib.Conf.Read(system, "blogenv")
+	viewsPath := lib.Conf.Read(system, "viewspath")
 	beego.ErrorController(&controllers.ErrorController{})
-    beego.BConfig.RunMode = "dev"
-	beego.BConfig.WebConfig.ViewsPath = "template" // 静态目录
 	beego.BConfig.CopyRequestBody = true
 	beego.BConfig.WebConfig.Session.SessionOn = true
-	beego.Run(":" + beego.AppConfig.String("httpport"))
+	beego.BConfig.RunMode = env
+	beego.BConfig.WebConfig.ViewsPath = viewsPath
+	beego.Run(":" + blogenv)
 }
