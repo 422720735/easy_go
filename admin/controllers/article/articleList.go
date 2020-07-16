@@ -29,7 +29,7 @@ func (c *ArticleList) Get() {
 	// js
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
 	c.LayoutSections["Script"] = "script/articleList.html"
-
+	c.Data["metaTitle"] = "文章列表"
 	// req
 	pageStr := c.GetString("page")
 	var page int

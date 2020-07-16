@@ -31,7 +31,7 @@ func (c *ArticleControllerType) GetList() {
 	// js
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
 	c.LayoutSections["Script"] = "script/articleType/articleTypeList.html"
-
+	c.Data["metaTitle"] = "文章类型"
 	// req
 	tag := c.GetString("tag")
 	visible := c.GetString("visible")
@@ -75,8 +75,10 @@ func (c *ArticleControllerType) GetDetails() {
 	id := c.GetString("id")
 	if id != "" {
 		c.Data["title"] = "编辑"
+		c.Data["metaTitle"] = "编辑类型"
 	} else {
 		c.Data["title"] = "新增"
+		c.Data["metaTitle"] = "新增类型"
 	}
 	// 数据
 	c.Data["menu_data"] = menuData

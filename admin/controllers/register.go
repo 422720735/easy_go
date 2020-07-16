@@ -24,6 +24,7 @@ func (c *RegisterController) Get() {
 	c.TplName = "pages/register.html"
 	c.LayoutSections = make(map[string]string)
 	c.LayoutSections["script"] = "script/login_register.html"
+	c.Data["metaKeywords"] = "注册"
 }
 
 func (c *RegisterController) Post() {

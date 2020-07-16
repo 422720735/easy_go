@@ -21,6 +21,7 @@ func (c *LoginController) Get() {
 	c.TplName = "pages/login.html"
 	c.LayoutSections = make(map[string]string)
 	c.LayoutSections["script"] = "script/login_register.html"
+	c.Data["metaTitle"] = "登陆"
 }
 
 func (c *LoginController) HandleLogin() {

@@ -40,6 +40,7 @@ func (c *MenuController) Get() {
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
 	c.LayoutSections["Style"] = "style/menuSetting.html"
 	c.LayoutSections["Script"] = "script/menuSetting.html"
+	c.Data["metaTitle"] = "导航菜单"
 	// 数据
 	c.Data["menu_data"] = menuList
 
@@ -65,7 +66,7 @@ func (c *MenuController) Add() {
 
 	c.LayoutSections["Style"] = "style/menuSetting.html"
 	c.LayoutSections["Script"] = "script/menuSettingAdd.html"
-
+	c.Data["metaTitle"] = "新增导航"
 	c.Data["articleCount"] = SelectCount()
 }
 

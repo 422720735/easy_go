@@ -34,7 +34,7 @@ func (c *ArticleDetails) ArticleDetails() {
 	c.LayoutSections["BaseStyle"] = "style/baseStyle.html"
 	// js
 	c.LayoutSections["BaseScript"] = "script/baseScript.html"
-
+	c.Data["metaTitle"] = "文章详情"
 	c.LayoutSections["Style"] = "style/articleDetails.html"
 	c.LayoutSections["Script"] = "script/articleDetails.html"
 	list, _ := servers.SelectArticleTypeMenuName(false)
@@ -68,6 +68,7 @@ func (c *ArticleDetails) ArticleDetailsMarkdown() {
 
 	c.LayoutSections["Style"] = "style/articleDetails.html"
 	c.LayoutSections["Script"] = "script/articleDetailsMarkdown.html"
+	c.Data["metaTitle"] = "文章详情"
 	list, _ := servers.SelectArticleTypeMenuName(false)
 
 	c.Data["title"] = title

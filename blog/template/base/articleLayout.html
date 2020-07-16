@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>bob个人感悟</title>
+    <title>{{.details.Title}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords"  content="{{.details.Keyword}}">
+    <meta name="description" content="{{.details.Desc}}" />
+    <meta name="author" content="牛的壹,422720735@qq.com">
     {{template "style/globalStyle.html"}}
     {{.style}}
     <link rel="stylesheet" href="/static/assets/message/css/jquery.my-message.1.1.css">

@@ -29,7 +29,7 @@ func (c *CoverControllers) Get() {
 
 	c.LayoutSections["Style"] = "style/cover.html"
 	c.LayoutSections["Script"] = "script/cover.html"
-
+	c.Data["metaTitle"] = "封面设置"
 	c.Data["articleCount"] = controllers.SelectCount()
 }
 
