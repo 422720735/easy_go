@@ -22,11 +22,11 @@ function handleMoreIcon() {
 window.onload = function () {
     // setTimeout(function () {
     //     document.getElementById('initialize').style.display = 'none'
-    // });
+    // })
 
-    document.getElementById('year').innerText = new Date().getFullYear();
+    document.getElementById('year').innerText = new Date().getFullYear()
     handleMoreIcon();
-    computeNavWidth();
+    // computeNavWidth();
     /*
     if (!localStorage.getItem('blog_mode')) {
         $('body').addClass('day-mode')
@@ -50,7 +50,7 @@ window.onload = function () {
 }
 
 $(window).resize(function () {
-    computeNavWidth();
+    computeNavWidth()
     debounce(handleMoreIcon, 200)
 });
 
@@ -75,7 +75,6 @@ $('#handleSearch, i#mobile').click(function () {
 
 /**************** 计算nav的宽度，因为采用了锁定定位所以需要宽度，后期还需要加工。****************/
 function computeNavWidth() {
-    const BodyWidth = document.querySelectorAll('body')[0].clientWidth;
     const totalWidth = document.querySelectorAll('body')[0].clientWidth;
     if (totalWidth > 768) {
         const skinWidth = document.querySelectorAll('.nav-skin')[0].clientWidth;
@@ -95,13 +94,12 @@ function computeNavWidth() {
     const articleAllWidth = document.querySelectorAll('.article-list')[0].clientWidth;
     const skinWidth = document.querySelectorAll('.nav-skin')[0].clientWidth;
     const sidebarWidth = document.querySelectorAll('.sidebar-box')[0].clientWidth;
-    if (BodyWidth > 768) {
+    if (totalWidth > 768) {
         document.querySelectorAll('#initialize')[0].style.left = (articleAllWidth / 2) + skinWidth + sidebarWidth + 'px';
     } else {
         document.querySelectorAll('#initialize')[0].style.left = (articleAllWidth / 2) + 'px';
     }
 }
-
 
 // 皮肤切换白天黑夜
 $('.themeMixin-skin').click(function () {
