@@ -1,5 +1,5 @@
 <section class="article-list">
-    {{if gt .articleList.total 0}}
+    {{if and (gt .articleList.total 0) (gt (.articleList.list|len) 0)}}
         {{range $i, $v := .articleList.list}}
             <div class="article-item">
                 <div class="left_img">
@@ -89,8 +89,8 @@
                         href="{{ if  eq $.articleList.current .articleList.totalpages}}javascript:;{{ else }}?page={{.articleList.nextpage}}{{ end }}"
                         class="iconfont icon-xiala-copy" data-rec="下一页"></a></span>
             <span class="total total_page">共{{.articleList.totalpages}}页</span>
-            <span class="page_jump">到</span><input id="pageInput" class="pageInput" name="page" oldpage=""
-                                                   maxlength="{{.articleList.total}}" type="text"><span
+            <span class="page_jump">到</span><input type="text" id="pageInput" class="pageInput" name="page"
+                                                   max="{{.articleList.totalpages}}"><span
                     class="page_jump">页</span>
             <button type="submit" id="pagebtn" class="pagebtn">确定</button>
         </form>

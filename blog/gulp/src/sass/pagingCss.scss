@@ -2,6 +2,9 @@
   padding: 30px;
   text-align: center;
   font-size: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .ht-page span {
@@ -170,7 +173,9 @@
   outline: none;
   border-radius: 4px;
   text-align: center;
+  font-size: 14px;
 }
+
 
 .ht-page .pageInput:focus {
   border: 1px solid #1875f0;
@@ -194,7 +199,7 @@
     width: 40px;
   }
   .ht-page .pagebtn {
-    display: none;
+    //display: none;
   }
   .ht-page .page_jump {
     margin: 0 5px;
