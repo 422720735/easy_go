@@ -28,8 +28,6 @@ func init() {
 
 	beego.Router("/login", &controllers.LoginController{})
 
-	beego.Router("/test", &controllers.TestControllers{}, "get:Get5")
-
 	beego.Router("/404", &controllers.ErrorController{}, "get:Error404")
 
 	business()
