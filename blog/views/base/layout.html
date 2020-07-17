@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>bob个人感悟</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="keywords" content="easy_go,golang博客,简单配置,上手简单,自定义。">
+    <meta name="description" content="来自成都的一名90后程序员,闲来无事,开源一套最简单部署、可自定义配置 golang 服务端渲染博客。">
+    <meta name="author" content="牛的壹,422720735@qq.com">
     <script>var url=sessionStorage.getItem("r");url&&(sessionStorage.removeItem("r"),window.location.href=url)</script>
     {{template "style/globalStyle.html"}}
     {{.style}}
@@ -74,8 +77,8 @@
                 <div id="placeholder" class="ensp">&ensp;</div>
                 {{.LayoutContent}}
                 {{.spin}}
-                <form id="search-form-box" class="input-group search-content">
-                    <input type="text" class="form-control" placeholder="输入关键字">
+                <form id="search-form-box" class="input-group search-content" method="get" action="/">
+                    <input type="text" class="form-control" placeholder="输入关键字" name="title">
                     <button class="search-btn" type="submit">
                         <i class="iconfont icon-search"></i>
                     </button>
