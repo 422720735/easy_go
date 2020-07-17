@@ -241,6 +241,10 @@
 .commentbox {
   width: 100%;
   margin: 20px auto; }
+  .commentbox .mytextarea {
+    padding: 10px; }
+    .commentbox .mytextarea:focus {
+      outline: none; }
 
 .mytextarea {
   width: 100%;
@@ -351,10 +355,17 @@ nav.navbar.bootsnav {
   .day-mode .article-content .editor {
     border: 1px solid #eaeaea; }
 
-.night-mode .article-content {
+.day-mode .editormd-preview-container, .day-mode .editormd-html-preview, .day-mode .mytextarea {
+  background-color: #ffffff; }
+
+.night-mode .article-content, .night-mode .mytextarea {
   background-color: #3f3f3f; }
-  .night-mode .article-content .editor {
+  .night-mode .article-content .editor, .night-mode .mytextarea .editor {
     border: 1px solid #656565; }
+
+.night-mode .editormd-preview-container, .night-mode .editormd-html-preview, .night-mode .mytextarea {
+  background-color: #3f3f3f;
+  color: #b1b1b1; }
 
 .article-h1 {
   position: relative;

@@ -5,6 +5,12 @@
 .commentbox {
   width: 100%;
   margin: 20px auto;
+  .mytextarea {
+    padding: 10px;
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
 .mytextarea {

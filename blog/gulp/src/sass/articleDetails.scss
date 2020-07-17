@@ -93,14 +93,25 @@ nav.navbar.bootsnav {
       border: 1px solid #eaeaea;
     }
   }
+
+  .editormd-preview-container, .editormd-html-preview, .mytextarea {
+    background-color: #ffffff;
+  }
 }
 
+
+
 .night-mode {
-  .article-content {
+  .article-content, .mytextarea{
     background-color: #3f3f3f;
     .editor {
       border: 1px solid #656565;
     }
+  }
+
+  .editormd-preview-container, .editormd-html-preview, .mytextarea{
+    background-color: #3f3f3f;
+    color: #b1b1b1;
   }
 }
 
