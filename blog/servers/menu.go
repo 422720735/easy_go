@@ -1,8 +1,8 @@
 package servers
 
 import (
-	"easy_go/blog/db"
 	"easy_go/blog/logger"
+	"easy_go/db"
 	"easy_go/models"
 )
 

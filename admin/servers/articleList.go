@@ -1,8 +1,8 @@
 package servers
 
 import (
-	"easy_go/admin/db"
 	"easy_go/admin/logger"
+	"easy_go/db"
 	"easy_go/models"
 	"strings"
 	"time"

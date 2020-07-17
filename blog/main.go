@@ -2,10 +2,10 @@ package main
 
 import (
 	"easy_go/blog/controllers"
-	"easy_go/blog/db"
 	"easy_go/blog/logger"
 	_ "easy_go/blog/routers"
 	"easy_go/blog/tempFunc"
+	"easy_go/db"
 	"easy_go/lib"
 	"github.com/astaxie/beego"
 	"runtime"

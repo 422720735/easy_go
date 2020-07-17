@@ -2,8 +2,8 @@ package servers
 
 import (
 	"database/sql"
-	"easy_go/admin/db"
 	"easy_go/admin/logger"
+	"easy_go/db"
 	"easy_go/models"
 	"errors"
 	"time"
