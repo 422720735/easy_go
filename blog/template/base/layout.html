@@ -84,8 +84,8 @@
                 <div id="placeholder" class="ensp">&ensp;</div>
                 {{.LayoutContent}}
                 {{.spin}}
-                <form id="search-form-box" class="input-group search-content">
-                    <input type="text" class="form-control" placeholder="输入关键字">
+                <form id="search-form-box" class="input-group search-content" method="get" action="/">
+                    <input type="text" class="form-control" placeholder="输入关键字" name="title">
                     <button class="search-btn" type="submit">
                         <i class="iconfont icon-search"></i>
                     </button>

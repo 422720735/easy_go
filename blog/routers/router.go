@@ -24,7 +24,6 @@ func init() {
 	beego.Router("/article/?:id", &controllers.ArticleController{})
 	beego.Router("/article/praise/?:id", &controllers.ArticleController{}, "get:GetPraiseCount")
 
-
 	beego.Router("/article/comment/?:id", &controllers.CommentControllers{}, "get:GetCommentList")
 
 	beego.Router("/login", &controllers.LoginController{})
@@ -40,10 +39,10 @@ func business() {
 	// 退出登录
 	beego.Router(Api + "/log/out", &controllers.LoginController{})
 	// 新增评论
-	beego.Router(Api + "/comment/insert", &controllers.CommentControllers{},"post:InsertComment")
+	beego.Router(Api + "/comment/insert", &controllers.CommentControllers{}, "post:InsertComment")
 	// 新增回复
-	beego.Router(Api + "/reply/insert", &controllers.ReplyControllers{},"post:InsertReply")
-	beego.Router(Api + "/article/praise", &controllers.ArticleController{},"post:InsertPraise")
+	beego.Router(Api + "/reply/insert", &controllers.ReplyControllers{}, "post:InsertReply")
+	beego.Router(Api + "/article/praise", &controllers.ArticleController{}, "post:InsertPraise")
 }
 
 /*
@@ -52,7 +51,7 @@ func business() {
 */
 var FilterUser = func(ctx *context.Context) {
 	id := ctx.Input.CruSession.Get("id")
-	if id == nil && (ctx.Request.RequestURI != Api + "/log/out" || strings.Index(ctx.Request.RequestURI, "/static") != - 1) {
+	if id == nil && (ctx.Request.RequestURI != Api+"/log/out" || strings.Index(ctx.Request.RequestURI, "/static") != - 1) {
 		// 1 获取cookies
 		if auth := ctx.GetCookie("auth"); auth != "" {
 			// 验证token
@@ -64,7 +63,11 @@ var FilterUser = func(ctx *context.Context) {
 					ctx.Output.Session("u_id", role.Id)
 					ctx.Output.Session("u_name", role.Name)
 					ctx.Output.Session("u_avatar_url", role.AvatarUrl)
+				} else {
+					ctx.SetCookie("auth", "", 1)
 				}
+			} else {
+				ctx.SetCookie("auth", "", 1)
 			}
 		}
 	}
