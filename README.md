@@ -3,10 +3,13 @@
 node编写，页面虽然好看些，但是node开发的在性能上有缺陷，加上node提供的模板引擎不友好，基本都用node提供api，前后端分离，这样对seo不友好。
 本博客应该能很简单的跑起来，并部署，对前端友好。
 ## 功能预览
-![首页.png](http://assets.cdbob.cn/%E5%89%8D%E5%8F%B0%E9%A6%96%E9%A1%B5.png)
+![首页白天模式.png](http://assets.cdbob.cn/%E9%A6%96%E9%A1%B5%E7%99%BD%E5%A4%A9%E6%A8%A1%E5%BC%8F.png)
 
-![首页.png](http://assets.cdbob.cn/%E5%90%8E%E5%8F%B0%E9%A6%96%E9%A1%B5.png)
+![首页黑夜模式.png](http://assets.cdbob.cn/%E9%A6%96%E9%A1%B5%E9%BB%91%E5%A4%9C%E6%A8%A1%E5%BC%8F.png)
 
+![后台登录.png](http://assets.cdbob.cn/%E5%90%8E%E5%8F%B0%E7%99%BB%E5%BD%95%E9%A1%B5.png)
+
+![后台工作台.png](http://assets.cdbob.cn/%E5%90%8E%E5%8F%B0%E5%B7%A5%E4%BD%9C%E5%8F%B0.png)
 
 ## 开发博客历程：
 - v.1 jquery + [Express](https://www.expressjs.com.cn/) + [mongodb](https://www.mongodb.org.cn/) 编写一个简易能发布文章，跟前台展示文章的简易版本
