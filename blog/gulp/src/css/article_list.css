@@ -58,6 +58,8 @@
 
 .article-list {
   box-sizing: border-box; }
+  .article-list.no {
+    background-color: transparent; }
   .article-list .article-item {
     display: flex;
     align-items: center;

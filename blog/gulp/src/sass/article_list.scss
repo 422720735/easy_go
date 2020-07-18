@@ -17,6 +17,10 @@
 // 列表内容填充部分。
 .article-list {
   box-sizing: border-box;
+  &.no {
+    background-color: transparent;
+  }
+
   .article-item {
     display: flex;
     align-items: center;
@@ -107,7 +111,6 @@
           text-indent: 2em;
         }
       }
-
 
 
       /*

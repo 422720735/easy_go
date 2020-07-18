@@ -1,4 +1,4 @@
-<section class="article-list">
+<section class="article-list {{if and (gt .articleList.total 0) (gt (.articleList.list|len) 0)}}{{else}}no{{end}}">
     {{if and (gt .articleList.total 0) (gt (.articleList.list|len) 0)}}
         {{range $i, $v := .articleList.list}}
             <div class="article-item">
