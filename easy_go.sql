@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50727
 File Encoding         : 65001
 
-Date: 2020-07-15 19:15:27
+Date: 2020-07-18 17:58:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -47,10 +47,10 @@ CREATE TABLE `articles` (
 -- ----------------------------
 -- Records of articles
 -- ----------------------------
-INSERT INTO `articles` VALUES ('1', '3', '6', '0612_1594481716254_7', 'gin-vue-admin', null, '基于gin+vue搭建的后台管理系统框架，集成jwt鉴权，权限管理，动态路由，分页封装，多点登录拦截，资源权限，上传下载，代码生成器，表单生成器等基础功能，五分钟一套CURD前后端代码包含数据库的快感你不要体验一下吗~,更多功能正在开发中，欢迎issue和pr~', 'gin-vue 管理系统脚手架', 'gin,vue,脚手架', '252', '1', '1', '1', '0', '1', '1', '1', '0', '0', '2020-07-11 23:35:16', '2020-07-12 16:41:10');
+INSERT INTO `articles` VALUES ('1', '3', '6', '0612_1594481716254_7', 'gin-vue-admin', null, '基于gin+vue搭建的后台管理系统框架，集成jwt鉴权，权限管理，动态路由，分页封装，多点登录拦截，资源权限，上传下载，代码生成器，表单生成器等基础功能，五分钟一套CURD前后端代码包含数据库的快感你不要体验一下吗~,更多功能正在开发中，欢迎issue和pr~', 'gin-vue 管理系统脚手架', 'gin,vue,脚手架', '253', '1', '1', '1', '0', '1', '1', '1', '0', '0', '2020-07-11 23:35:16', '2020-07-12 16:41:10');
 INSERT INTO `articles` VALUES ('2', '4', '10', '0612_1594481716254_7', 'Flutter版 WanAndroid App', null, '??? 基于Google Flutter的WanAndroid客户端，支持Android和iOS。包括BLoC、RxDart 、国际化、主题色、启动页、引导页，拥有较好的项目结构&比较规范的代码！', null, null, '1', '1', '1', '1', '0', '1', '1', '2', '0', '0', '2020-07-12 16:09:55', '2020-07-12 16:45:15');
 INSERT INTO `articles` VALUES ('3', '2', '4', '0612_1594481716254_7', 'React-Native学习指南', null, '本指南汇集React-Native各类学习资源，给大家提供便利。指南正在不断的更新，大家有好的资源欢迎Pull Requests！\n同时还有Awesome React Native系列 https://github.com/jondot/awesome-react-native', null, 'react native', '0', '1', '1', '1', '0', '0', '1', '3', '0', '0', '2020-07-12 16:11:55', '2020-07-12 16:35:05');
-INSERT INTO `articles` VALUES ('4', '2', '1', '0612_1594481716254_7', '基于 Vue 2.x 和高德地图的地图组件', null, '基于 Vue 2.x 和高德地图的地图组件', null, 'vue', '1', '1', '1', '1', '0', '0', '0', '4', '0', '0', '2020-07-12 16:13:26', '2020-07-12 16:41:15');
+INSERT INTO `articles` VALUES ('4', '2', '1', '0612_1594481716254_7', '基于 Vue 2.x 和高德地图的地图组件', null, '基于 Vue 2.x 和高德地图的地图组件', null, 'vue', '3', '1', '1', '1', '0', '0', '0', '4', '0', '0', '2020-07-12 16:13:26', '2020-07-12 16:41:15');
 INSERT INTO `articles` VALUES ('5', '2', '4', '0612_1594481716254_7', 'renren-fast-vue', null, 'renren-fast-vue基于vue、element-ui构建开发，实现renren-fast后台管理前端功能，提供一套更优的前端解决方案。', 'renren-fast-vue基于vue、element-ui构建开发，实现renren-fast后台管理前端功能，提供一套更优的前端解决方案。', 'react native', '0', '1', '1', '1', '0', '0', '0', '5', '0', '0', '2020-07-12 16:14:58', '2020-07-12 16:35:01');
 INSERT INTO `articles` VALUES ('6', '2', '1', '0612_1594481716254_7', '小爱Admin', null, '基于vue2.0 +vuex+ element-ui后台管理系统', '基于vue2.0 +vuex+ element-ui后台管理系统', 'vue,vuex,elementu-ui', '14', '1', '1', '1', '0', '1', '0', '6', '0', '0', '2020-07-12 16:16:26', '2020-07-12 16:35:00');
 INSERT INTO `articles` VALUES ('8', '2', '1', '0612_1594481716254_7', 'vue2-demo', null, '这个项目最开始建立的是2016年的时候，如今已经过去了4年多，时光匆匆，如今 TS 已经流行起来，并且自己已经在 SSR 方面实践颇多，所以就花了半天的时间使用 Genesis 写了一个完整的 Vue SSR 的demo。', '一个用于快速构建大规模，高质量，全自动化的 mysql分布式集群环境的工具；包含mysql 安装、备份、监控、高可用、读写分离、优化、巡检、自行化运维', 'msyql', '0', '1', '1', '1', '0', '0', '1', '7', '0', '0', '2020-07-12 16:21:30', '2020-07-12 16:34:58');
@@ -168,8 +168,8 @@ INSERT INTO `menu_settings` VALUES ('1', '首页', 'home', 'iconfont icon-home1'
 INSERT INTO `menu_settings` VALUES ('2', '前端', 'web', 'iconfont icon-h5', '1', '0', '2', '1', '2020-07-11 22:11:20', '2020-07-15 13:10:07');
 INSERT INTO `menu_settings` VALUES ('3', 'golang', 'go', 'iconfont icon-prog-golang', '1', '0', '3', '1', '2020-07-11 22:14:43', '2020-07-11 23:15:22');
 INSERT INTO `menu_settings` VALUES ('4', '移动端', 'mobile', 'iconfont icon-mobile', '1', '0', '5', '1', '2020-07-11 22:14:59', '2020-07-11 23:15:23');
-INSERT INTO `menu_settings` VALUES ('5', '区块链', 'block', 'iconfont icon-qukuailian', '1', '0', '8', '0', '2020-07-11 22:15:18', '2020-07-15 13:11:06');
-INSERT INTO `menu_settings` VALUES ('6', '其他', 'other', 'iconfont icon-qita', '1', '0', '7', '0', '2020-07-11 22:15:38', '2020-07-11 23:15:30');
+INSERT INTO `menu_settings` VALUES ('5', '区块链', 'block', 'iconfont icon-qukuailian', '1', '0', '7', '0', '2020-07-11 22:15:18', '2020-07-18 17:57:34');
+INSERT INTO `menu_settings` VALUES ('6', '其他', 'other', 'iconfont icon-qita', '1', '0', '8', '0', '2020-07-11 22:15:38', '2020-07-18 17:57:34');
 INSERT INTO `menu_settings` VALUES ('7', '数据库', 'data_base', 'iconfont icon-data-base', '1', '0', '6', '0', '2020-07-11 22:19:33', '2020-07-11 23:15:23');
 INSERT INTO `menu_settings` VALUES ('8', 'java', 'java', 'iconfont icon-javafill-copy', '1', '0', '4', '1', '2020-07-11 23:09:59', '2020-07-11 23:15:22');
 
@@ -282,4 +282,4 @@ CREATE TABLE `users` (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', '123456', '1c6a47df3c59184b447411d3764d9e56', '2', '[::1]:59875', '2020-07-15 12:56:31', '2020-07-11 22:09:32', '2020-07-15 12:56:31', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiIxMjM0NTYiLCJsb2dpbl9pcCI6Ils6OjFdOjU5ODc1IiwiZXhwIjoxNTk0NzkyNTkxLCJpYXQiOjE1OTQ3ODg5OTF9.wGvp2zoeLdKplqtCiZ8hY0GoyR8bDD1Jxode1wgXjsI');
+INSERT INTO `users` VALUES ('1', '123456', '1c6a47df3c59184b447411d3764d9e56', '2', '127.0.0.1:50649', '2020-07-18 17:57:20', '2020-07-11 22:09:32', '2020-07-18 17:57:20', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiIxMjM0NTYiLCJsb2dpbl9pcCI6IjEyNy4wLjAuMTo1MDY0OSIsImV4cCI6MTU5NTA2OTg0MCwiaWF0IjoxNTk1MDY2MjQwfQ.9eGxhMUmGY1KE-HOzEQlG1UvjcRpvuAkxKa9EZ8ELwM');

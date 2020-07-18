@@ -17,6 +17,8 @@ $('#register-btn').click(function () {
         window.message.error('请输入验证码')
     } else if (code.length !== 6) {
         window.message.error('验证码长度必须为6位')
+    } else if (invitecode === '') {
+        window.message.error('邀请码不能为空')
     } else if (username && username !== '' || invitecode && invitecode !== '' && password && password !== '') {
         const result =  encodeAes(username) + '+' + encodeAes(password)
         const data = JSON.stringify({

@@ -5,6 +5,7 @@ import (
 	"easy_go/admin/servers"
 	"easy_go/aes"
 	"easy_go/common"
+	"easy_go/lib"
 	"easy_go/md5"
 	"easy_go/middleware"
 	"easy_go/transform"
@@ -64,12 +65,16 @@ func (c *RegisterController) Post() {
 	}
 
 	invitecode, err := transform.InterToString(msg["invitecode"])
-	if err != nil {
+	if err != nil || invitecode == "" {
 		logger.Info("邀请码错误", err.Error())
 		c.Error("获取注册接口数据失败")
 		return
 	}
-	if invitecode == "8201" || invitecode == "20170510" {
+
+	invite_code_1 := lib.Conf.Read("register", "invite_code_1")
+	invite_code_2 := lib.Conf.Read("register", "invite_code_2")
+
+	if invitecode == invite_code_1 || invitecode == invite_code_2 {
 		if invitecode == "20170510" {
 			role = 1
 		} else {

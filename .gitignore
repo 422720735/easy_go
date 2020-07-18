@@ -22,6 +22,8 @@ easy_go.exe
 easy_go.exe~
 
 /OAuth/OAuth.exe
+/admin/build.bat
+/blog/build.bat
 
 admin/admin
 admin/admin.exe
