@@ -26,3 +26,19 @@ node编写，页面虽然好看些，但是node开发的在性能上有缺陷，
 ##
 虽然现在前后端分离是主流，但是vue对应seo有缺陷，虽然node提供了相关解决方案，但是对于不熟悉的人还是要学习成本，我采用了最传统模板渲染方式。
 虽然上个版本我用的是原生mysql，其实开发效率及性能上是有缺陷了，所以该版本采用gorm，加上go的部署简单，web程序员部署也不需要费太多时间，就能跑起项目。
+
+### 数据库、七牛云、图片验证码、token、第三方登陆
+```
+go get -u github.com/go-sql-driver/mysql
+go get -u github.com/jinzhu/gorm
+
+go get -u github.com/qiniu/api.v7
+
+go get -u github.com/dchest/captcha
+
+go get -u github.com/dgrijalva/jwt-go
+
+go get github.com/zcshan/d3outh
+```
+
+前端使用自动构建工具gulp管理，查看gulp说明 /admin/gulp/、/blog/gulp。
