@@ -3,6 +3,8 @@ package db
 import (
 	"easy_go/lib"
 	"easy_go/models"
+	"flag"
+	"fmt"
 	"runtime"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -13,6 +15,7 @@ import (
 var (
 	DbConn *gorm.DB
 	err    error
+	Env    string
 )
 
 func Init() {
@@ -23,6 +26,10 @@ func Init() {
 	} else {
 		mysql = "mysql_dev"
 	}
+
+	golang_env()
+	fmt.Println(Env)
+
 	username := lib.Conf.Read(mysql, "username")
 	password := lib.Conf.Read(mysql, "password")
 	dataname := lib.Conf.Read(mysql, "dataname")
@@ -37,6 +44,11 @@ func Init() {
 	DbConn.DB().SetMaxOpenConns(10)
 
 	CreatedTable()
+}
+
+func golang_env()  {
+	flag.StringVar(&Env,"env","dev","dev")
+	flag.Parse()
 }
 
 func CreatedTable() {
