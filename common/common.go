@@ -3,10 +3,8 @@ package common
 import (
 	"easy_go/admin/logger"
 	"easy_go/admin/servers"
-	"easy_go/aes"
 	myjwt "easy_go/middleware"
 	"easy_go/models"
-	"encoding/base64"
 	"encoding/json"
 	"github.com/astaxie/beego"
 	"time"
@@ -48,33 +46,6 @@ func NewCurrentCookie(user models.User) (string, error) {
 	}
 
 	return token, nil
-}
-
-// 解析aes
-func ParseAes(aesStr string) (string, error) {
-	goaes := aes.NewGoAES([]byte(SECRET_AES_KEY))
-	bytesPass, err := base64.StdEncoding.DecodeString(aesStr)
-	if err != nil {
-		return "", err
-	}
-	decrypt, err := goaes.Decrypt(bytesPass)
-	if err != nil {
-
-		return "", err
-	}
-	return string(decrypt[:]), nil
-}
-
-// 加密aes
-func EncryptAes(tokenString string) (string, error) {
-	aesKey := aes.NewGoAES([]byte(SECRET_AES_KEY))
-	encrypt, err := aesKey.Encrypt([]byte(tokenString))
-	if err != nil {
-		return "", err
-	}
-	// 转存字符串
-	aesS := base64.StdEncoding.EncodeToString(encrypt)
-	return aesS, nil
 }
 
 // 解析token
