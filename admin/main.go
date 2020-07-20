@@ -8,7 +8,6 @@ import (
 	"easy_go/db"
 	"easy_go/lib"
 	"github.com/astaxie/beego"
-	"runtime"
 )
 
 
@@ -24,13 +23,7 @@ func init() {
 }
 
 func main() {
-	goos := runtime.GOOS
-	system := ""
-	if goos == "linux" {
-		system = "admin_prod"
-	} else {
-		system = "admin_dev"
-	}
+	system := "admin_" + db.Env
 	env := lib.Conf.Read(system, "env")
 	port := lib.Conf.Read(system, "httpport")
 	viewsPath := lib.Conf.Read(system, "viewspath")

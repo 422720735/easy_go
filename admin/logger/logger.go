@@ -4,7 +4,9 @@ https://github.com/donnie4w/go-logger
 
 package logger
 
-import "runtime"
+import (
+	"easy_go/db"
+)
 
 const (
 	//logger version
@@ -91,12 +93,11 @@ func Init() {
 	SetRollingFile("./logger/log", "err.log", 10, 5, 64)
 	SetRollingDaily("./logger/log", "err.log")
 	// 测试阶段为debug，生成环境为info以上
-	goos := runtime.GOOS
-	if goos == "linux" {
-		SetConsole(false)
-		SetLevel(FATAL)
-	} else {
+	if db.Env == "dev" {
 		SetConsole(true)
 		SetLevel(DEBUG)
+	} else {
+		SetConsole(false)
+		SetLevel(FATAL)
 	}
 }

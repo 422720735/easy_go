@@ -4,9 +4,6 @@ import (
 	"easy_go/lib"
 	"easy_go/models"
 	"flag"
-	"fmt"
-	"runtime"
-
 	_ "github.com/go-sql-driver/mysql"
 
 	"github.com/jinzhu/gorm"
@@ -19,17 +16,10 @@ var (
 )
 
 func Init() {
-	goos := runtime.GOOS
-	mysql := ""
-	if goos == "linux" {
-		mysql = "mysql_prod"
-	} else {
-		mysql = "mysql_dev"
-	}
+	flag.StringVar(&Env,"env","dev","dev")
+	flag.Parse()
 
-	golang_env()
-	fmt.Println(Env)
-
+	mysql := "mysql_" + Env
 	username := lib.Conf.Read(mysql, "username")
 	password := lib.Conf.Read(mysql, "password")
 	dataname := lib.Conf.Read(mysql, "dataname")
@@ -46,10 +36,6 @@ func Init() {
 	CreatedTable()
 }
 
-func golang_env()  {
-	flag.StringVar(&Env,"env","dev","dev")
-	flag.Parse()
-}
 
 func CreatedTable() {
 	DbConn.AutoMigrate(
