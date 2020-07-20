@@ -43,7 +43,5 @@ go get github.com/zcshan/d3outh
 
 前端使用自动构建工具gulp管理，查看gulp说明 /admin/gulp/、/blog/gulp。
 
-
-
 [运行 通过flag包添加环境](https://www.letianbiji.com/go/go-pkg-flag.html)
 nohup ./** -env prod &
