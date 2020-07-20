@@ -15,13 +15,14 @@
 .day-mode .desc {
   color: #474747; }
 
-.day-mode .main .user-title-tag {
-  color: #474747; }
-
-.day-mode .main .oauth-login > div a {
-  background-color: #eee; }
-  .day-mode .main .oauth-login > div a i {
+.day-mode .main {
+  background-color: #fff; }
+  .day-mode .main .user-title-tag {
     color: #474747; }
+  .day-mode .main .oauth-login > div a {
+    background-color: #eee; }
+    .day-mode .main .oauth-login > div a i {
+      color: #474747; }
 
 .night-mode .header a {
   color: #999999; }
