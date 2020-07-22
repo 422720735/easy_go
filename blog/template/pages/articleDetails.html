@@ -7,9 +7,7 @@
                 </h1>
                 <div class="article-meta">
                     <span class="item">{{.details.CreatedTime.Format "2006-01-02 15:04:05"}}</span>
-                    <span class="item">分类：
-                    <a href="">html</a>
-                </span>
+                    <span class="item">分类：{{if $.details.CategoryId}}{{range $i, $type := $.menu}}{{if and $type.child (eq $type.id $.details.MenuId)}}{{range $key, $item := $type.child}}{{if IsArticleTypeName $.details.CategoryId $item.id }}<a href="/{{$.details.MenuId}}/{{$.details.CategoryId}}">{{$item.name}}</a>{{end}}{{end}}{{end}}{{end}}{{else}}{{range $key, $type := $.menu}}{{if and (eq $type.child_status false) (eq $type.id $.details.MenuId)}}<a href="/{{$.details.MenuId}}">{{$type.name}}</a>{{end}}{{end}}{{end}}</span>
                     <span class="item post-views">阅读({{.details.View}})</span>
                 </div>
             </header>
