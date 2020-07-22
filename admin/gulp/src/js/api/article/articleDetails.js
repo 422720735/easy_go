@@ -276,7 +276,7 @@ function getTokenUrl(base, token) {
     let size = window.qiniuyun.size
     let name = window.btoa("0612_" + new Date().getTime() + "_" + parseInt(Math.random() * 10))
     let pic = base.split("base64,")[1];  //七牛云需要接受的参数是  base64， 后面的值 所以我把它截取了
-    let url = 'http://up-z2.qiniup.com/putb64/' + size + "/key/" + name;  //  我这个是华南地区的   要根据仓库选择url   这个是官方的  https://developer.qiniu.com/kodo/kb/1326/how-to-upload-photos-to-seven-niuyun-base64-code
+    let url = '//up-z2.qiniup.com/putb64/' + size + "/key/" + name;  //  我这个是华南地区的   要根据仓库选择url   这个是官方的  https://developer.qiniu.com/kodo/kb/1326/how-to-upload-photos-to-seven-niuyun-base64-code
     $.ajax({
         url: url,
         type: 'POST',

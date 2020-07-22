@@ -138,7 +138,7 @@ function func_digui(arry, len, token) {
                 arry.splice(i, 1);
                 const {size, name, pic} = temp
                 title = name
-                const url = 'http://up-z2.qiniup.com/putb64/' + size + "/key/" + name;  //  我这个是华南地区的   要根据仓库选择url   这个是官方的  https://developer.qiniu.com/kodo/kb/1326/how-to-upload-photos-to-seven-niuyun-base64-code
+                const url = '//up-z2.qiniup.com/putb64/' + size + "/key/" + name;  //  我这个是华南地区的   要根据仓库选择url   这个是官方的  https://developer.qiniu.com/kodo/kb/1326/how-to-upload-photos-to-seven-niuyun-base64-code
                 if (size && name && pic) {
                     $.ajax({
                         url: url,
