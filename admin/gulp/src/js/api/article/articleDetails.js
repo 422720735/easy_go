@@ -81,11 +81,7 @@ function setValue(data) {
      * */
     if (tags && tags !== '') {
         const tag = tags.split(',')
-        let str = ''
-        tag.forEach(item => {
-            str += '<li class="tagit-choice ui-widget-content ui-state-default ui-corner-all tagit-choice-editable"><span class="tagit-label">' + item + '</span><a class="tagit-close"><span class="text-icon">×</span><span class="ui-icon ui-icon-close"></span></a><input type="hidden" value="11" name="tags" class="tagit-hidden-field"></li>'
-        })
-        $('#articleTags').prepend(str)
+        tag.forEach(t => $('#articleTags').tagit('createTag', t))
     }
 
     if (keyword && keyword !== '') {
