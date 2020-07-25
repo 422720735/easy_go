@@ -1,3 +1,11 @@
+#### 案例网址：
+
+​	前台：http://localhost:80/
+
+​	后台：http://localhost:8201/
+
+    账号：admin   密码：admin
+
 #介绍
 翻阅github很多go编写的博客，发觉大多对应前端程序员部署还是需要成本，而且博客页面不是那么优美，而我们前端程序员一般会使用
 node编写，页面虽然好看些，但是node开发的在性能上有缺陷，加上node提供的模板引擎不友好，基本都用node提供api，前后端分离，这样对seo不友好。
@@ -29,16 +37,7 @@ node编写，页面虽然好看些，但是node开发的在性能上有缺陷，
 
 ### 数据库、七牛云、图片验证码、token、第三方登陆
 ```
-go get -u github.com/go-sql-driver/mysql
-go get -u github.com/jinzhu/gorm
-
-go get -u github.com/qiniu/api.v7
-
-go get -u github.com/dchest/captcha
-
-go get -u github.com/dgrijalva/jwt-go
-
-go get github.com/zcshan/d3outh
+git clone ***
 ```
 
 前端使用自动构建工具gulp管理，查看gulp说明 /admin/gulp/、/blog/gulp。
