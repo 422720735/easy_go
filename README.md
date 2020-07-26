@@ -1,4 +1,6 @@
 #### 案例网址：
+![favicon](http://assets.cdbob.cn/favicon.png) easy_go
+
 
 ​	前台：http://localhost:80/
 
