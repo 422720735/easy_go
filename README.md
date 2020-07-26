@@ -1,13 +1,10 @@
 #### 案例网址：
-![favicon](http://assets.cdbob.cn/favicon.png) easy_go
-
+![favicon](http://assets.cdbob.cn/favicon.png) 
 
 ​	前台：http://localhost:80/
 
 ​	后台：http://localhost:8201/
-
-    账号：admin   密码：admin
-
+   
 #介绍
 翻阅github很多go编写的博客，发觉大多对应前端程序员部署还是需要成本，而且博客页面不是那么优美，而我们前端程序员一般会使用
 node编写，页面虽然好看些，但是node开发的在性能上有缺陷，加上node提供的模板引擎不友好，基本都用node提供api，前后端分离，这样对seo不友好。
@@ -35,7 +32,7 @@ node编写，页面虽然好看些，但是node开发的在性能上有缺陷，
 - v.3 jquery + [Beego](https://beego.me/) + [Mysql](https://www.mysql.com/)
 ##
 虽然现在前后端分离是主流，但是vue对应seo有缺陷，虽然node提供了相关解决方案，但是对于不熟悉的人还是要学习成本，我采用了最传统模板渲染方式。
-虽然上个版本我用的是原生mysql，其实开发效率及性能上是有缺陷了，所以该版本采用gorm，加上go的部署简单，web程序员部署也不需要费太多时间，就能跑起项目。
+虽然上个版本我用的是原生mysql，其实开发效率及性能上是有缺陷了，所以该版本采用gorm，加上go的部署简单，不用容器等技术也能，很快部署项目。
 
 
 ## 技术栈
@@ -55,9 +52,47 @@ node编写，页面虽然好看些，但是node开发的在性能上有缺陷，
 
 ### 数据库、七牛云、图片验证码、token、第三方登陆
 ```
-git clone ***
+go get -u github.com/go-sql-driver/mysql
+go get -u github.com/jinzhu/gorm
+
+go get -u github.com/qiniu/api.v7
+
+go get -u github.com/dchest/captcha
+
+go get -u github.com/dgrijalva/jwt-go
+
+go get github.com/zcshan/d3outh
 ```
+#
 前端使用自动构建工具[gulp](https://www.gulpjs.com.cn/)管理，查看gulp说明 /admin/gulp/、/blog/gulp
 
 [运行 通过flag包添加环境](https://www.letianbiji.com/go/go-pkg-flag.html)
+
+当前config配置区分开发环境与生产环境，开发是
+
+
+### 1、Mac下编译Linux, Windows平台的64位可执行程序：
+```shell script
+$ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build
+$ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build
+```
+
+### 2、Linux下编译Mac, Windows平台的64位可执行程序：
+```shell script
+$ CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build
+$ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build
+```
+### 3、Windows下编译Mac, Linux平台的64位可执行程序：
+```shell script
+$ SET CGO_ENABLED=0SET GOOS=darwin3 SET GOARCH=amd64 go build
+$ SET CGO_ENABLED=0 SET GOOS=linux SET GOARCH=amd64 go build
+```
+
+### 生产环境运行
+```
+linux
 nohup ./** -env prod &
+
+windows
+**.exe - env prod
+```
