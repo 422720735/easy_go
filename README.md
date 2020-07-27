@@ -1,13 +1,3 @@
-#### 案例网址：
-![favicon](http://assets.cdbob.cn/favicon.png) easy_go
-
-
-​	前台：http://localhost:80/
-
-​	后台：http://localhost:8201/
-
-    账号：admin   密码：admin
-
 #介绍
 翻阅github很多go编写的博客，发觉大多对应前端程序员部署还是需要成本，而且博客页面不是那么优美，而我们前端程序员一般会使用
 node编写，页面虽然好看些，但是node开发的在性能上有缺陷，加上node提供的模板引擎不友好，基本都用node提供api，前后端分离，这样对seo不友好。
@@ -35,14 +25,99 @@ node编写，页面虽然好看些，但是node开发的在性能上有缺陷，
 - v.3 jquery + [Beego](https://beego.me/) + [Mysql](https://www.mysql.com/)
 ##
 虽然现在前后端分离是主流，但是vue对应seo有缺陷，虽然node提供了相关解决方案，但是对于不熟悉的人还是要学习成本，我采用了最传统模板渲染方式。
-虽然上个版本我用的是原生mysql，其实开发效率及性能上是有缺陷了，所以该版本采用gorm，加上go的部署简单，web程序员部署也不需要费太多时间，就能跑起项目。
+虽然上个版本我用的是原生mysql，其实开发效率及性能上是有缺陷了，所以该版本采用gorm，加上go的部署简单，不用容器等技术也能，很快部署项目。
 
-### 数据库、七牛云、图片验证码、token、第三方登陆
+
+## 技术栈
+- [x] beego
+- [x] mysql
+- [x] gorm
+- [x] git第三方登录、码云第三方登录、(后续添加QQ第三方登录)
+- [x] gorm
+- [x] jwt-go 权限验证
+- [x] 简单日志切割服务
+- [x] node
+- [x] jquery
+- [x] bootstrap3
+- [x] gulp
+- [x] sass 
+#
+
+> 前端使用自动构建工具[gulp](https://www.gulpjs.com.cn/)管理，查看gulp说明 /admin/gulp/、/blog/gulp
+
+## 前端环境
+```node 
+进入admin和blog的/gulp，分别运行
+npm install
+npm run build && npm run dev
 ```
-git clone ***
+
+### [字体图标](https://www.iconfont.cn/)
+> 字体图表可以选用以下两种方式：
+```html
+<link rel="stylesheet" href="/static/fonts/iconfont.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1521018_rlytcpm4z2b.css">
 ```
 
-前端使用自动构建工具gulp管理，查看gulp说明 /admin/gulp/、/blog/gulp。
+## 后端环境
+关于golang和beego的开发环境在这里就不赘述了，请自行百度获取。
 
-[运行 通过flag包添加环境](https://www.letianbiji.com/go/go-pkg-flag.html)
+### 加入数据库
+mysql 新建easy_go数据库、字符集utf8mb4，并把easy_go.sql 导入
+
+
+#### 数据库、七牛云、图片验证码、token、第三方登陆
+```
+go get -u github.com/go-sql-driver/mysql
+go get -u github.com/jinzhu/gorm
+
+go get -u github.com/qiniu/api.v7
+
+go get -u github.com/dchest/captcha
+
+go get -u github.com/dgrijalva/jwt-go
+
+go get github.com/zcshan/d3outh
+```
+
+#### 修改config/config.ini 配置
+> [flag包添加环境](https://www.letianbiji.com/go/go-pkg-flag.html) 默认环境是dev，直接通过bee run直接运行，生产环境通过命令行添加 -env prod
+
+### 运行
+```cmd
+    cd 到 easy_go admin和blog目录 执行
+    $ bee run
+```
+
+#### 浏览器演示
+
+​	前台：http://localhost:80/
+
+​	后台：http://localhost:8201/
+
+### 1、Mac下编译Linux, Windows平台的64位可执行程序：
+```shell script
+$ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build
+$ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build
+```
+
+### 2、Linux下编译Mac, Windows平台的64位可执行程序：
+```shell script
+$ CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build
+$ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build
+```
+### 3、Windows下编译Mac, Linux平台的64位可执行程序：
+```shell script
+$ SET CGO_ENABLED=0SET GOOS=darwin3 SET GOARCH=amd64 go build
+$ SET CGO_ENABLED=0 SET GOOS=linux SET GOARCH=amd64 go build
+```
+
+### 生产环境运行
+```
+linux
 nohup ./** -env prod &
+
+windows
+**.exe - env prod
+```
