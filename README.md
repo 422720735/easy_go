@@ -15,7 +15,7 @@ node编写，页面虽然好看些，但是node开发的在性能上有缺陷，
 - v.1 jquery + [Express](https://www.expressjs.com.cn/) + [mongodb](https://www.mongodb.org.cn/) 编写一个简易能发布文章，跟前台展示文章的简易版本
 作为一个web程序员应该有自己的博客，当然可以用现成的，但是作为一个技术开发者，我还是选择了自己编写自己版本的博客，作为第一个版本，其实开发过程中，发觉有很多问题。
 
-- v.2 [Vue](https://cn.vuejs.org/) + (Ant Design Pro)[https://pro.ant.design/index-cn] + [Gin](https://github.com/gin-gonic/gin)
+- v.2 [Vue](https://cn.vuejs.org/) + [Ant Design Pro](https://pro.ant.design/) + [Gin](https://github.com/gin-gonic/gin)
 ####
 在我工作中有幸接触到go语言，发觉go语言运行简单，打包后就是一个二进制可执行程序，作为一名前端程序员，对docker等技术陌生，发觉go部署简单，我尝试用go来编写api，使用vue编写html，
 经过上个版本我发觉mongodb存储数据会有很大性能问题，还是需要使用mysql，但是自己工作中使用到mysql地方其实并不多，我果断放弃任何orm，使用go提供的原生mysql包编写api，
