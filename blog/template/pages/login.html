@@ -1,0 +1,44 @@
+<div class="login">
+    <div class="top">
+        <div class="header">
+            <a href="/" class="aNone">
+                <img src="/static/images/favicon.png" alt="blog" class="blog">
+                <strong class="title">Bob The Blog</strong>
+            </a>
+        </div>
+        <div class="desc">最简单部署、可自定义配置 golang 服务端渲染博客</div>
+    </div>
+    <div class="main">
+        <div class="user-title-tag cursorPointer">
+            <div class="tag active">账号密码登录</div>
+            <div class="tag">手机号登录</div>
+            <div class="clearfix"></div>
+            <div class="lnk-bar one"></div>
+        </div>
+
+        <div class="loginForm">
+            {{template "logBox" .}}
+        </div>
+
+        <p class="text-center mt-2 mb-2">您还可以通过以下方式直接登录</p>
+        <div class="oauth-login d-flex justify-content-center">
+            <div class="mr-3">
+                <a href="">
+                    <i class="iconfont icon-QQ"></i>
+                </a>
+            </div>
+            <div class="mr-3">
+{{/*                <a href="https://github.com/login/oauth/authorize?client_id={{.giteeClientId}}&scope=user,public_repo">*/}}
+                <a href="https://gitee.com/oauth/authorize?client_id={{.giteeClientId}}&redirect_uri={{.giteeRedirectUrl}}&response_type=code">
+                    <i class="iconfont icon-icon_gitee"></i>
+                </a>
+            </div>
+            <div>
+                {{/*&redirect_uri={{.redirectUrl}}*/}}
+                <a class="github" href="https://github.com/login/oauth/authorize?client_id={{.githubClientId}}">
+                    <i class="iconfont icon-git"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,55 @@
 @charset "UTF-8";
+.tags-list .tag {
+  display: inline-block;
+  padding: 3px 8px;
+  margin: 2px;
+  border-radius: 8px;
+  font-size: 12px; }
+  .tags-list .tag.tag_1 {
+    background-color: #727577; }
+  .tags-list .tag.tag_2 {
+    background-color: #a77676; }
+  .tags-list .tag.tag_3 {
+    background-color: #5d5252; }
+  .tags-list .tag.tag_4 {
+    background-color: #5a5a7d; }
+  .tags-list .tag.tag_5 {
+    background-color: #bf8835; }
+  .tags-list .tag.tag_6 {
+    background-color: #929266; }
+  .tags-list .tag:nth-of-type(2) {
+    background-color: #a77676; }
+  .tags-list .tag a {
+    color: #f1f1f1;
+    text-decoration: none; }
+    .tags-list .tag a:hover, .tags-list .tag a:focus {
+      outline: none; }
+
+.article-tags {
+  text-align: center;
+  padding: 0 23px 17px 23px; }
+  .article-tags a {
+    padding: 3px 8px;
+    margin: 2px;
+    border-radius: 8px;
+    font-size: 12px; }
+    .article-tags a:last-child {
+      margin: 0; }
+    .article-tags a:hover {
+      opacity: 1; }
+    .article-tags a.tag_1 {
+      background-color: #727577; }
+    .article-tags a.tag_2 {
+      background-color: #a77676; }
+    .article-tags a.tag_3 {
+      background-color: #5d5252; }
+    .article-tags a.tag_4 {
+      background-color: #5a5a7d; }
+    .article-tags a.tag_5 {
+      background-color: #bf8835; }
+    .article-tags a.tag_6 {
+      background-color: #929266; }
+
 .day-mode .article-list {
   background-color: #ffffff; }
 
@@ -7,6 +58,8 @@
 
 .article-list {
   box-sizing: border-box; }
+  .article-list.no {
+    background-color: transparent; }
   .article-list .article-item {
     display: flex;
     align-items: center;
@@ -16,15 +69,33 @@
       width: 220px;
       height: 150px;
       margin-right: 10px;
-      border-radius: 5px;
       overflow: hidden; }
       .article-list .article-item .left_img > a {
         display: block; }
         .article-list .article-item .left_img > a img {
-          width: 100%;
-          height: 150px; }
+          width: 100%; }
     .article-list .article-item .right-html {
-      width: calc(100% - 230px); }
+      width: calc(100% - 230px);
+      /*
+      // 暂时废弃这种现在以标签为主
+      .meta {
+        margin-bottom: 0;
+        font-size: 14px;
+        li {
+          display: inline;
+          margin-right: 20px;
+          &:last-child {
+            margin-right: 0;
+          }
+          .iconfont {
+            vertical-align: middle;
+            font-size: 14px;
+          }
+          span {
+            vertical-align: middle;
+          }
+        }
+      }*/ }
       .article-list .article-item .right-html .title_tag .classTag {
         position: relative;
         display: inline-block;
@@ -60,7 +131,7 @@
           font-weight: bold; }
           .article-list .article-item .right-html .title_tag .article-title a:hover {
             text-decoration: none; }
-      .article-list .article-item .right-html .title_tag .isTop {
+      .article-list .article-item .right-html .title_tag .tags {
         display: inline-block;
         padding: 4px 6px;
         border: solid 1px #c0392b;
@@ -73,19 +144,10 @@
           line-height: 24px;
           color: #666;
           text-indent: 2em; }
-      .article-list .article-item .right-html .meta {
-        margin-bottom: 0;
-        font-size: 14px; }
-        .article-list .article-item .right-html .meta li {
-          display: inline;
-          margin-right: 20px; }
-          .article-list .article-item .right-html .meta li:last-child {
-            margin-right: 0; }
-          .article-list .article-item .right-html .meta li .iconfont {
-            vertical-align: middle;
-            font-size: 14px; }
-          .article-list .article-item .right-html .meta li span {
-            vertical-align: middle; }
+  .article-list .no-data {
+    margin: 155px 0; }
+    .article-list .no-data h4 {
+      margin-top: 45px; }
 
 /*
 这里是响应式适配屏幕
@@ -112,8 +174,7 @@
       .article-list .article-item .left_img > a {
         border-radius: 5px; }
         .article-list .article-item .left_img > a img {
-          width: 100%;
-          height: 109px; }
+          width: 100%; }
     .article-list .article-item .right-html {
       width: calc(100% - 160px); }
       .article-list .article-item .right-html .article {

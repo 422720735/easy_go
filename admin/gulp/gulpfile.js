@@ -36,29 +36,36 @@ gulp.task('sass', () => {
 // 压缩css
 gulp.task('cssUglify', function () {
     return gulp.src(['src/css/*.css'])
-        .pipe(rename({suffixes: '.min'}))
+        .pipe(rename({suffix: '.min'}))
         .pipe(cssUglify())
         .pipe(gulp.dest(path.resolve(__dirname, '../static/css')))
 });
 
 // 压缩js
 gulp.task('jsUglify', function () {
-    return gulp.src(['src/js/**', '!src/js/TweenMax/**'])
+    return gulp.src([
+        'src/js/*.js',
+        'src/js/api/*.js',
+        'src/js/api/article/*.js',
+        'src/js/api/system/*.js',
+        'src/js/plugins/*.js',
+        '!src/js/build/**'
+    ])
         .pipe(babel())
-        .pipe(rename({suffixes: '.min'}))
+        .pipe(rename({suffix: '.min'}))
         .pipe(uglify({
             compress: {
-                drop_console: NODE_ENV === 'development' ? false :  true, // 过滤 console
-                drop_debugger: NODE_ENV === 'development' ? false :  true // 过滤 debugger
+                drop_console: NODE_ENV !== 'production', // 过滤 console
+                drop_debugger: NODE_ENV !== 'production' // 过滤 debugger
             }
         }))
         .pipe(gulp.dest(path.resolve(__dirname, '../static/js')))
 });
 
-// 压缩js
+// 不需要压缩js
 gulp.task('jsNoBuildUglify', function () {
-    return gulp.src(['src/js/TweenMax/**'])
-      .pipe(gulp.dest(path.resolve(__dirname, '../static/js/TweenMax')))
+    return gulp.src(['src/js/build/**'])
+      .pipe(gulp.dest(path.resolve(__dirname, '../static/js/build')))
 });
 
 
@@ -67,9 +74,6 @@ gulp.task('img', function () { //
         // .pipe(cache(imageMin({
         //     optimizationLevel: 5, // 取值范围：0-7（优化等级），默认：3
         //     progressive: true, 	// 无损压缩jpg图片，默认：false
-
-
-
         //     interlaced: true, 	// 隔行扫描gif进行渲染，默认：false
         //     multipass: true 		// 多次优化svg直到完全优化，默认：false
         // })))
@@ -81,7 +85,7 @@ gulp.task('img', function () { //
  */
 gulp.task('html', function () {
    // 开发环境html在template, 生产环境是在views
-   return gulp.src([`${path.resolve(__dirname, '../template')}/**`, `!${path.resolve(__dirname, '../template')}/error.html`, `!${path.resolve(__dirname, '../template/transition')}/TweenMax.html`])
+   return gulp.src([`${path.resolve(__dirname, '../template')}/**`, `!${path.resolve(__dirname, '../template')}/error.html`, `!${path.resolve(__dirname, '../template/transition')}/build.html`])
        .pipe(htmlMin(options))
        .pipe(gulp.dest(`${path.resolve(__dirname, '../views')}`))
 });
@@ -105,6 +109,12 @@ gulp.task('minFonts', function () {
         .pipe(gulp.dest(path.resolve(__dirname, '../static/fonts')))
 });
 
+// 复制后台模版的静态资源。
+gulp.task('copyAssets', function () {
+    return gulp.src('src/assets/**')
+        .pipe(gulp.dest(path.resolve(__dirname, '../static/assets')))
+})
+
 gulp.task('watch', () => {
     gulp.watch('src/sass/*.scss', gulp.series('sass'));
     gulp.watch('src/sass/extension/*.scss', gulp.series('sass'));
@@ -119,10 +129,12 @@ gulp.task('clean', function () {
         'dist',
         path.resolve(__dirname, '../static'),
         path.resolve(__dirname, '../views'),
+        path.resolve(__dirname, '../static/js/.min'),
+        path.resolve(__dirname, '../static/js/'),
     ], { force: true });
 });
 
-gulp.task('build', gulp.series('clean', 'sass', 'cssUglify', 'jsUglify', 'jsNoBuildUglify', 'img', 'fonts', 'minFonts', 'html', 'noBuildHtml'));
+gulp.task('build', gulp.series('clean', 'sass', 'cssUglify', 'jsUglify', 'jsNoBuildUglify', 'img', 'fonts', 'minFonts', 'html', 'noBuildHtml', 'copyAssets'));
 
 
 

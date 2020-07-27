@@ -1,0 +1,18 @@
+<script src="//cdn.staticfile.org/moment.js/2.24.0/moment.min.js"></script>
+<script src="//unpkg.com/wangeditor/release/wangEditor.min.js"></script>
+{{template "articeCommon" .}}
+<script type="text/javascript">
+    // 富文本编辑器
+    var E = window.wangEditor
+    var editor = new E('#editor')
+    editor.customConfig.onchange = function (html) {
+        // 监控变化，同步更新到 textarea
+        const n = editor.txt.text().length
+        $('.article_editor_charCount').text(n ? n : 0);
+        window.content = editor.txt.html()
+        window.text = editor.txt.text()
+    }
+    editor.create()
+    window.editor = editor
+</script>
+

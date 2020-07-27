@@ -1,0 +1,21 @@
+<script src="/static/js/details.min.js"></script>
+{{/*文章内容marked回显*/}}
+<script src="/static/assets/editor.md/lib/marked.min.js"></script>
+<script src="/static/assets/editor.md/editormd.min.js"></script>
+{{/*下面这个js让我们加载速度变慢，暂时注释掉*/}}
+{{/*<script src="/static/assets/editor.md/lib/prettify.min.js"></script>*/}}
+<script>
+    editormd.markdownToHTML("article-content", {
+        htmlDecode      : "style,script,iframe",
+        emoji           : false,
+        taskList        : true,
+        tex             : true,
+        flowChart       : false,
+        sequenceDiagram : false,
+        tocm            : true,
+    });
+</script>
+{{/*用户退出登录*/}}
+<script src="/static/js/user.min.js"></script>
+{{/*评论信息*/}}
+<script src="/static/js/jquery.comment.min.js"></script>

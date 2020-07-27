@@ -1,0 +1,98 @@
+<!-- Start Content-->
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-left mt-3">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/workplace"><i class="feather icon-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="/article/type?page=1">文章类型</a></li>
+                        <li class="breadcrumb-item active">{{.title}}</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-8 col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>文章类型</h5>
+                </div>
+                <div class="card-body">
+                    <form class="needs-validation blog trim" novalidate>
+                        <div class="form-group mb-3">
+                            <label for="validationCustom03">类型名称</label>
+                            <input oninput="addArticle()"
+                                   type="text"
+                                   class="form-control"
+                                   id="articleName"
+                                   name="articleName"
+                                   value=""
+                                   placeholder="请填写文章类型名"
+                                   required
+                            >
+                            <div class="invalid-feedback">文章类型名称不能为空</div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="validationCustom05">关键字<small class="text-danger">&emsp;类型在数据库的key。</small></label>
+                            <input oninput="addArticle()" type="text" class="form-control" id="KeyWord" name="KeyWord" value="" placeholder="请填写类型在数据库的关键字" required>
+                            <div class="invalid-feedback">类型在数据库的关键字不能为空</div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="validationCustom05">导航分类</label>
+                            <select class="custom-select" required id="menuId" onchange="addArticle()">
+                                <option value="" style="display: none;">--请选择--</option>
+                                {{range $k, $v := .menu_data}}
+                                    {{ if gt $v.Id 1}}
+                                        <option value="{{$v.Id}}">{{$v.MenuName}}</option>
+                                    {{end}}
+                                {{end}}
+                            </select>
+                            <div class="invalid-feedback">所属路由菜单不能为空</div>
+                        </div>
+                        <button disabled class="btn btn-primary validation" type="button">提交</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-12">
+            <div class="card ui-activity-card">
+                <div class="card-body">
+                    <h4 class="mt-0 mb-3">注意事项：</h4>
+                    <div class="ui-activity-list">
+                        <div class="row py-3">
+                            <div class="col-auto text-right update-meta">
+                                <i class="bg-success update-icon ring"></i>
+                            </div>
+                            <div class="col pl-2">
+                                <h5 class="m-0">导航分类</h5>
+                                <p class="mb-0">所属导航分类允许进行修改。</p>
+                            </div>
+                        </div>
+                        <div class="row pb-3">
+                            <div class="col-auto text-right update-meta">
+                                <i class="bg-warning update-icon ring"></i>
+                            </div>
+                            <div class="col pl-2">
+                                <h5 class="m-0">类型数据</h5>
+                                <p class="mb-0">在进行文章类型编辑，不允许重复。</p>
+                            </div>
+                        </div>
+                        <div class="row pb-3">
+                            <div class="col-auto text-right update-meta">
+                                <i class="bg-primary update-icon ring"></i>
+                            </div>
+                            <div class="col pl-2">
+                                <h5 class="m-0">类型描述</h5>
+                                <p class="mb-0">文章类型在前台页面查询根据key来检索。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+</div>

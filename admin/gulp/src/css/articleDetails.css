@@ -1,0 +1,169 @@
+.wrapper {
+  margin: 0 auto; }
+
+.article_editor_page {
+  background: #FFFFFF;
+  padding: 0 0 60px 0;
+  box-sizing: border-box;
+  /*box-shadow:0 1px 5px 0 rgba(0,0,0,0.05);*/ }
+
+.article_editor_title input {
+  width: 100%;
+  border: 0;
+  padding: 0;
+  margin: 0 0 10px 0;
+  outline: 0;
+  height: 30px;
+  font-size: 24px;
+  font-weight: 500; }
+
+.article_editor_info {
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #EEEEEE; }
+  .article_editor_info span {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 14px;
+    padding: 0 5px 0 0;
+    border: 0;
+    height: 30px;
+    line-height: 30px;
+    color: #999999;
+    outline: 0;
+    cursor: text; }
+  .article_editor_info input {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 14px;
+    padding: 0;
+    border: 0;
+    height: 30px;
+    outline: 0; }
+    .article_editor_info input.l {
+      width: 150px; }
+    .article_editor_info input.s {
+      width: 60px; }
+  .article_editor_info select {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 14px;
+    padding: 0 10px 0 0;
+    border: 0;
+    height: 30px;
+    outline: 0;
+    margin: 0;
+    color: #288BDE;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer; }
+    .article_editor_info select::-ms-expand {
+      display: none; }
+
+.article_editor_info2 .con {
+  position: relative;
+  padding-left: 180px; }
+  .article_editor_info2 .con .fl {
+    position: absolute;
+    top: 0;
+    left: 0; }
+    .article_editor_info2 .con .fl .thumb {
+      position: absolute;
+      box-sizing: border-box;
+      width: 160px;
+      height: 114px; }
+  .article_editor_info2 .con .fr textarea {
+    resize: none;
+    padding: 10px;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    line-height: 23px;
+    height: 114px;
+    border: 1px solid #EEEEEE;
+    outline: 0; }
+
+.article_editor_options {
+  border-top: 1px solid #EEEEEE;
+  margin-top: 20px; }
+  .article_editor_options .tit {
+    font-size: 16px;
+    padding: 20px 0 15px 0; }
+  .article_editor_options .con ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border-top: 1px solid #EEEEEE; }
+  .article_editor_options .con li .box {
+    position: relative;
+    border: 1px solid #EEEEEE;
+    font-size: 14px;
+    color: #666666;
+    padding-left: 80px;
+    border-top: 0; }
+    .article_editor_options .con li .box span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      line-height: 35px;
+      padding-left: 10px; }
+    .article_editor_options .con li .box input {
+      outline: 0; }
+    .article_editor_options .con li .box input[type=radio],
+    .article_editor_options .con li .box input[type=checkbox] {
+      margin: 0 5px 0 0;
+      vertical-align: -2px; }
+    .article_editor_options .con li .box input[type=text] {
+      border: 0;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      height: 35px; }
+    .article_editor_options .con li .box label {
+      display: inline-block;
+      vertical-align: top;
+      line-height: 35px;
+      margin-right: 10px;
+      cursor: pointer; }
+  .article_editor_options .article_editor_setting {
+    margin-bottom: 40px; }
+    .article_editor_options .article_editor_setting .articleTags-box ul.tagit {
+      border-style: none; }
+
+.article_editor_savebar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999999999; }
+  .article_editor_savebar .fl {
+    float: left; }
+    .article_editor_savebar .fl i {
+      margin-left: 8px;
+      font-style: normal; }
+    .article_editor_savebar .fl span {
+      font-size: 14px;
+      color: #999999;
+      line-height: 30px; }
+  .article_editor_savebar .fr {
+    float: right; }
+    .article_editor_savebar .fr button {
+      border: 1px solid #E7E7E7;
+      background: #FFFFFF;
+      box-sizing: border-box;
+      padding: 0 22px;
+      line-height: 30px;
+      margin-left: 12px;
+      cursor: pointer;
+      outline: 0; }
+      .article_editor_savebar .fr button:first-child {
+        background: #44B549;
+        border-color: #44B549;
+        color: #FFFFFF; }
+  .article_editor_savebar .wrapper {
+    background: #FFFFFF;
+    border: 1px solid #EEEEEE;
+    padding: 25px 60px;
+    overflow: hidden;
+    border-bottom: 0; }

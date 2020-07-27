@@ -1,0 +1,14 @@
+<script src="/static/assets/js/cropper.js"></script>
+<script src="/static/js/cupload.min.js"></script>
+{{/*引入七牛云*/}}
+<script src="https://unpkg.com/qiniu-js@2.5.5/dist/qiniu.min.js"></script>
+<script src="/static/js/cover.min.js"></script>
+<script>
+    var cuploadCreate = new Cupload({
+        ele: '#cupload-create',
+        num: 5,
+        is_tailor: true,
+        tailor_ele: '#cupload-tailor', // 剪切后装到dom位置
+        proportion: [600, 1500] // 宽/高  裁剪and压缩比例  单位px  图片等比例压缩至 200px/200px
+    });
+</script>

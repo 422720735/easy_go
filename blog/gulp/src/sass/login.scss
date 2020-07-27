@@ -26,8 +26,18 @@
   }
 
   .main {
+    background-color: #fff;
     .user-title-tag {
       color: rgb(71, 71, 71);
+    }
+
+    .oauth-login {
+      > div a {
+        background-color: #eee;
+        i {
+          color: rgb(71, 71, 71);
+        }
+      }
     }
   }
 }
@@ -46,6 +56,15 @@
   .main {
     .user-title-tag {
       color: rgb(153, 153, 153);
+    }
+
+    .oauth-login {
+      > div a {
+        background-color: #2f2f2f;
+        i {
+          color: rgb(153, 153, 153);
+        }
+      }
     }
   }
 }
@@ -76,7 +95,7 @@
     }
 
     .desc {
-      margin: 12px 0 40px 0;
+      margin: 12px 0 30px 0;
       font-size: 12px;
     }
   }
@@ -148,6 +167,9 @@
                 width: 33%;
                 height: 34px;
                 margin-left: 2%;
+                &:focus {
+                  outline: none;
+                }
                 img {
                   display: block;
                   width: 100%;
@@ -188,6 +210,27 @@
       > button {
         display: block;
         width: 96%;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .oauth-login {
+      > div {
+        display: inline-block;
+        a {
+          display: inline-block;
+          font-size: 26px;
+          width: 44px;
+          height: 44px;
+          line-height: 44px;
+          text-align: center;
+          border-radius: 50%;
+          i {
+            font-size: 26px;
+          }
+        }
       }
     }
   }

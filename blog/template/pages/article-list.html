@@ -1,0 +1,99 @@
+<section class="article-list {{if and (gt .articleList.total 0) (gt (.articleList.list|len) 0)}}{{else}}no{{end}}">
+    {{if and (gt .articleList.total 0) (gt (.articleList.list|len) 0)}}
+        {{range $i, $v := .articleList.list}}
+            <div class="article-item">
+                <div class="left_img">
+                    {{if IsArticleCover $v.Cover}}
+                        <a href="/article/{{$v.Id}}">
+                            <img src="http://assets.cdbob.cn/{{$v.Cover}}">
+                        </a>
+                    {{end}}
+                </div>
+                <div class="right-html">
+                    <div class="title_tag">
+                        {{if $v.CategoryId}}
+                            {{range $i, $type := $.menu}}
+                                {{if and $type.child (eq $type.id $v.MenuId)}}
+                                    {{range $key, $item := $type.child}}
+                                        {{if IsArticleTypeName $v.CategoryId $item.id }}
+                                            <a href="javascript: void(0);"
+                                               class="classTag cursorPointer">{{$item.name}}</a>
+                                        {{end}}
+                                    {{end}}
+                                {{end}}
+                            {{end}}
+
+                        {{else}}
+                            {{range $key, $type := $.menu}}
+                                {{if and (eq $type.child_status false) (eq $type.id $v.MenuId)}}
+                                    <a href="javascript: void(0);" class="classTag cursorPointer">{{$type.name}}</a>
+                                {{end}}
+                            {{end}}
+                        {{end}}
+                        <h2 class="article-title cursorPointer"><a href="/article/{{$v.Id}}">{{$v.Title}}</a></h2>
+                        {{if eq $v.Id $.top_id}}
+                            <span class="tags">置顶</span>
+                        {{end}}
+                        {{if $v.Hot}}
+                            <span class="tags">热门</span>
+                        {{end}}
+                        {{if $v.Recommend}}
+                            <span class="tags">推荐</span>
+                        {{end}}
+                    </div>
+                    <div class="article">
+                        <p class="text">{{$v.Desc}}</p>
+                    </div>
+                    {{if IsSplit $v.Tags}}
+                        <ul class="tags-list">
+                            {{range $i, $value := TagSplit $v.Tags}}
+                                <li class="tag {{ClassName $i}}" title="{{$value}}">
+                                    <a href="javascript: void(0);" style="cursor: default">
+                                        {{$value}}
+                                    </a>
+                                </li>
+                            {{end}}
+                        </ul>
+                    {{end}}
+                </div>
+            </div>
+        {{end}}
+    {{else}}
+        <div class="no-data text-center">
+            <img style="max-width:100px" src="/static/images/no-data.png" alt="暂无数据">
+            <h4><b>暂无相关数据</b></h4>
+        </div>
+    {{end}}
+    {{if gt .articleList.total 0}}
+        <!--分页器-->
+        <form class="ht-page" method="get" action="/">
+            <span class="total">共{{.articleList.total}}条</span>
+            <span class="previous"><a
+                        href="{{ if eq $.articleList.current 1}}javascript:;{{ else }}?page={{.articleList.prepage}}{{ end }}"
+                        class="iconfont icon-xiala" data-rec="上一页"></a></span>
+            {{if gt $.articleList.current 5}}
+                <span class="num"><a href="?page=1">1</a></span>
+            {{end}}
+            {{ range $k,$v := .articleList.pages }}
+                {{ if and ( gt $.articleList.current 5 ) (eq $k 0) }}
+                    <span class="dots">...</span>
+                {{else}}
+                    {{ if eq $v $.articleList.current }}
+                        <span class="current num">{{ $v }}</span>
+                    {{ else }}
+                        <span class="num"><a href="?page={{$v}}">{{$v}}</a></span>
+                    {{end}}
+                {{end}}
+            {{end}}
+            <span class="next"><a
+                        href="{{ if  eq $.articleList.current .articleList.totalpages}}javascript:;{{ else }}?page={{.articleList.nextpage}}{{ end }}"
+                        class="iconfont icon-xiala-copy" data-rec="下一页"></a></span>
+            <span class="total total_page">共{{.articleList.totalpages}}页</span>
+            <span class="page_jump">到</span><input type="text" id="pageInput" class="pageInput" name="page"
+                                                   max="{{.articleList.totalpages}}"><span
+                    class="page_jump">页</span>
+            <button type="submit" id="pagebtn" class="pagebtn">确定</button>
+        </form>
+    {{end}}
+</section>
+

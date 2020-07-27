@@ -1,0 +1,21 @@
+#initView {
+  height: 100%;
+  width: 100%;
+  background-size: cover; }
+  #initView.bg {
+    background-image: url("./home_bg.png"); }
+  #initView div.centerBar.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); }
+  #initView div.centerBar .mainExample {
+    padding: 100px 0; }
+  #initView div.centerBar .copyright {
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 12px; }
+    #initView div.centerBar .copyright > div {
+      width: 16px;
+      height: 16px; }
+      #initView div.centerBar .copyright > div .logo {
+        max-width: 100%; }

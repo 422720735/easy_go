@@ -49,18 +49,19 @@
         bottom: 0;
         width: 100%;
         margin-bottom: 5px;
-
         &.minS {
           display: none;
         }
-
         a {
           display: block;
-          padding: 10px;
+          padding: 10px 0;
           text-align: center;
           text-decoration: none;
-          color: $skin-text-color;
+          img {
+            margin: 0 auto;
+          }
 
+          color: $skin-text-color;
           &:hover {
             color: $text-color;
           }
@@ -181,7 +182,7 @@
         width: 100%;
         height: 100%;
         background-position: center;
-        background-image: url("../images/bg.jpg");
+        //background-image: url("/static/images/bg.jpg");
       }
 
       .bottom-block {
@@ -315,11 +316,9 @@
     border-bottom-left-radius: 0;
     color: $text-color;
     background-color: $form-btn-search-bg-color;
-
     &:hover {
-      opacity: .85;
+      background-color: $form-btn-search-bg-color-hover;
     }
-
     &:focus {
       border: none;
     }
@@ -329,15 +328,12 @@
 // 登陆个人信息
 .navbar-expanded {
   .expanded-avatar {
-    display: flex !important;
+    display: flex;
     justify-content: center;
     margin: 0 auto;
     img {
-      display: block;
       box-sizing: border-box;
       border: 2px solid transparent;
-      width: 32px;
-      height: 32px;
       border-radius: 50%;
     }
     &:hover img {

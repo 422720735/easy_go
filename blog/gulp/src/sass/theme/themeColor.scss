@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+$liColor: #727577, #a77676, #5d5252, #5a5a7d, #bf8835, #929266;
+
 $text-hover-color: #000000; // 字体hover颜色
 $base-color: none; //背景色
 $text-color: #ffffff; //字体颜色
@@ -8,7 +10,8 @@ $layout--bg-color: #293038; // 侧边栏背景
 $border-color: #fff;
 $nav-red-color: #c0392b;
 $input-bg-color: #ffffff;
-$form-btn-search-bg-color: #45b6f7; // form表单搜索框btn的背景颜色
+$form-btn-search-bg-color: #1890ff; // form表单搜索框btn的背景颜色
+$form-btn-search-bg-color-hover: #40a9ff; // hover背景颜色
 $form-input-search-border-color: #dddddd; // form表单输入框的边框颜色
 $form-input-text-color: #999999; // form表单输入框字体颜色
 $skin-text-color: #999999; // 左边皮肤字体颜色

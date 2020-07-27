@@ -1,5 +1,6 @@
 @import "extension/articleEnlarge";
 @import "extension/articleSidebar";
+@import "extension/comment";
 
 @media (min-width: 1199px) {
   .main-box {
@@ -48,10 +49,11 @@ nav.navbar.bootsnav {
   max-width: 1200px;
   margin: 0 auto;
   .article-content {
-    padding: 0 20px;
     margin-right: 380px;
-    height: 1400px;
-    border-radius: 4px;
+    .editor {
+      padding: 0 20px;
+      border-radius: 4px;
+    }
   }
 
   // 侧边栏
@@ -87,15 +89,29 @@ nav.navbar.bootsnav {
 .day-mode {
   .article-content {
     background-color: #ffffff;
-    border: 1px solid #eaeaea;
+    .editor {
+      border: 1px solid #eaeaea;
+    }
   }
 
+  .editormd-preview-container, .editormd-html-preview, .mytextarea {
+    background-color: #ffffff;
+  }
 }
 
+
+
 .night-mode {
-  .article-content {
+  .article-content, .mytextarea{
     background-color: #3f3f3f;
-    border: 1px solid #656565;
+    .editor {
+      border: 1px solid #656565;
+    }
+  }
+
+  .editormd-preview-container, .editormd-html-preview, .mytextarea{
+    background-color: #3f3f3f;
+    color: #b1b1b1;
   }
 }
 
@@ -108,6 +124,9 @@ nav.navbar.bootsnav {
   transform: translateY(-200%);
   transition: transform .3s cubic-bezier(.645,.045,.355,1);
   .articleTitle {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
     margin: 0 auto;
     padding-left: 20px;
     max-width: 1200px;
@@ -134,5 +153,11 @@ a {
   text-decoration: none;
   &:hover {
     text-decoration: none;
+  }
+}
+
+.send.btn.btn-info {
+  &:focus {
+    outline: none;
   }
 }

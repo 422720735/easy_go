@@ -1,35 +1,162 @@
 package controllers
 
-import "github.com/astaxie/beego"
+import (
+	"easy_go/blog/logger"
+	"easy_go/blog/servers"
+	"easy_go/common"
+	myjwt "easy_go/middleware"
+	"easy_go/transform"
+	"strconv"
+)
 
 type ArticleController struct {
-	beego.Controller
+	common.BaseController
 }
 
 func (c *ArticleController) Get() {
 	c.Layout = "base/articleLayout.html"
-	c.TplName = "articleDetails.html"
+	c.TplName = "pages/articleDetails.html"
 	c.LayoutSections = make(map[string]string)
-    // svg init加载动画
-// 	c.LayoutSections["Loading"] = "transition/TweenMax.html"
-	// h1
-	c.LayoutSections["ArticleH1"] = "articleDetailsH1.html"
-
-	// svg init加载动画
-// 	c.LayoutSections["FirstScreen"] = "style/TweenMaxCss.html"
-	c.LayoutSections["ArticleDetails"] = "style/ArticleDetailsCss.html"
-
-
+	c.LayoutSections["menuUl"] = "base/menu.html"
 	// canvas背景
 	c.LayoutSections["canvasNest"] = "script/canvasNest.html"
-	// 加载更多动画
-	c.LayoutSections["initialize"] = "transition/initialize.html"
+	c.LayoutSections["style"] = "style/detailsStyle.html"
+	c.LayoutSections["script"] = "script/detailsScript.html"
 
-	// svg init加载动画
-// 	c.LayoutSections["TweenMaxJs"] = "script/TweenMaxJs.html"
+	param := c.Ctx.Input.Param(":id")
+	var id int
+	_id, err := strconv.Atoi(param)
+	if err == nil {
+		id = _id
+	} else {
+		c.History("查看文章详情失败", "/")
+		return
+	}
 
-	// 分页器
-	c.LayoutSections["pagingJs"] = "script/pagingJs.html"
+	menu, _ := servers.SelectArticleTypeMenuName()
+	details, err := servers.SelectArticleDetails(id)
 
-	c.LayoutSections["articleDetailsJs"] = "script/articleDetailsJs.html"
+	if err != nil {
+		logger.Error("请求文章详情参数不正确或者没有数据可查询", err.Error())
+		c.Redirect("/404", 302)
+		return
+	}
+
+	// 文章阅读量+1
+	c.Data["menu"] = menu
+	c.Data["details"] = details
+	publicA(c, details.Id)
+}
+
+func publicA(c *ArticleController, id int) {
+	u_id := c.GetSession("u_id")
+	if u_id != nil {
+		name := c.GetSession("u_name")
+		avatar_url := c.GetSession("u_avatar_url")
+		auth_token := c.GetSession("u_auth_token")
+		c.Data["u_id"] = u_id
+		c.Data["u_name"] = name
+		c.Data["u_avatar_url"] = avatar_url
+		c.Data["u_auth_token"] = auth_token
+	}
+
+	list_r, err := servers.RandRecommend(id)
+	var notHotId []int
+
+	// 相同的数据只显示一次
+	if len(list_r) > 0 && err != nil {
+		for i := 0; i < len(list_r); i++ {
+			if list_r[i].Hot {
+				notHotId = append(notHotId, list_r[i].Id)
+			}
+		}
+	} else {
+		notHotId = append(notHotId, 0)
+	}
+
+	notHotId = append(notHotId, id)
+
+	list_h, _ := servers.RandHot(notHotId)
+	c.Data["recommendList"] = list_r
+	c.Data["hotList"] = list_h
+}
+
+func (c *ArticleController) InsertPraise() {
+	auth := c.Ctx.Request.Header.Get("r")
+	j := myjwt.NewJWT()
+	claims, err := j.ParseToken(auth)
+	if err != nil {
+		logger.Info("回复解析token失败", err.Error())
+		c.Error("点赞失败，参数不合法！")
+		return
+	}
+
+	role, err := servers.SelectUserLoginInfo(claims.ID, claims.Username, claims.LoginIp, auth)
+	if err != nil {
+		c.Error("暂未登录，无法点赞！")
+		return
+	}
+
+	msg, err := common.Unmarshal(&c.Controller)
+	if err != nil {
+		c.Error("点赞失败，参数不合法！")
+		return
+	}
+
+	article_id, err := transform.InterToInt(msg["article_id"])
+	if err != nil && article_id > 0 {
+		c.Error("点赞失败，文章不能为空！")
+		return
+	}
+
+	state, err := servers.UpdateArticlePraise(role.Id, article_id)
+	if err != nil {
+		c.Error("点赞操作失败4！")
+		return
+	}
+
+	// 查询点赞情况
+	praiseTotal := servers.SelectPraise(article_id)
+
+	res := map[string]interface{}{
+		"praise": praiseTotal,
+		"state":  state,
+	}
+	c.Success(res)
+}
+
+func (c *ArticleController) GetPraiseCount() {
+	param := c.Ctx.Input.Param(":id")
+	var article_id int
+	_id, err := strconv.Atoi(param)
+	if err == nil {
+		article_id = _id
+	} else {
+		c.Error("文章id不能为空")
+		return
+	}
+
+
+	// 如果有token,我们就去查询用户文章点赞状态
+	var state bool
+	auth := c.Ctx.Request.Header.Get("r")
+	if auth != "" {
+		j := myjwt.NewJWT()
+		claims, err := j.ParseToken(auth)
+		if err == nil {
+			role, err := servers.SelectUserLoginInfo(claims.ID, claims.Username, claims.LoginIp, auth)
+			if err == nil {
+				state, err = servers.SelectArticlePraise(role.Id, article_id)
+			}
+		}
+	}
+
+	// 查询点赞情况
+	praiseTotal := servers.SelectPraise(article_id)
+
+	res := map[string]interface{}{
+		"praise": praiseTotal,
+		"state": state,
+	}
+	c.Success(res)
 }

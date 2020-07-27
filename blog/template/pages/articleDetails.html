@@ -1,0 +1,116 @@
+<div class="article-wrap">
+    <div class="article-content">
+        <div class="editor">
+            <header class="article-header">
+                <h1 class="article-title">
+                    <a href="">{{.details.Title}}</a>
+                </h1>
+                <div class="article-meta">
+                    <span class="item">{{.details.CreatedTime.Format "2006-01-02 15:04:05"}}</span>
+                    <span class="item">分类：{{if $.details.CategoryId}}{{range $i, $type := $.menu}}{{if and $type.child (eq $type.id $.details.MenuId)}}{{range $key, $item := $type.child}}{{if IsArticleTypeName $.details.CategoryId $item.id }}<a href="/{{$.details.MenuId}}/{{$.details.CategoryId}}">{{$item.name}}</a>{{end}}{{end}}{{end}}{{end}}{{else}}{{range $key, $type := $.menu}}{{if and (eq $type.child_status false) (eq $type.id $.details.MenuId)}}<a href="/{{$.details.MenuId}}">{{$type.name}}</a>{{end}}{{end}}{{end}}</span>
+                    <span class="item post-views">阅读({{.details.View}})</span>
+                </div>
+            </header>
+            {{if IsSplit $.details.Tags}}
+                <div class="article-tags">
+                    标签：
+                    {{range $i, $value := TagSplit $.details.Tags}}
+                        <a href="javascript: void(0);" class="tag {{ClassName $i}}">{{$value}}</a>
+                    {{end}}
+                </div>
+            {{end}}
+
+            <article class="article-body" id="article-content">
+                <textarea id="articleContent" name="content" style="display:none;">{{.details.Content}}</textarea>
+            </article>
+
+            <div class="article-share">
+
+                <a href="javascript:;" class="like-btn {{if .u_id}}link{{else}}disabled{{end}}">
+                <span class="like-content">
+                    <i class="iconfont icon-heart1"></i>&ensp;赞
+                </span>
+                    <span class="like-count">0</span>
+                </a>
+            </div>
+
+            <div class="prevNext clearfix">
+                <div class="prev">
+                    <a href="">
+                        <span>上一篇：</span>
+                        <br class="br"/>
+                        {{if ne .details.Prev.Id 0}}
+                            <a href="/article/{{.details.Prev.Id}}" class="prevArticle">{{.details.Prev.Title}}</a>
+                        {{end}}
+                    </a>
+                </div>
+                <div class="next">
+                    <a href="">
+                        <span>下一篇：</span>
+                        <br class="br"/>
+                        {{if ne .details.Next.Id 0}}
+                            <a href="/article/{{.details.Next.Id}}" class="nextArticle">{{.details.Next.Title}}</a>
+                        {{end}}
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="commentbox">
+            <textarea cols="80" rows="50" placeholder="来说几句吧......" class="mytextarea" id="comment-textarea"></textarea>
+            <input type="hidden" id="article_id" value="{{$.details.Id}}"/>
+            {{if .u_id}}
+                <div class="btn btn-info pull-right" id="ok-comment" onclick="insertComment()">评论</div>
+            {{else}}
+                <div class="btn btn-info pull-right">
+                    <a href="/login" class="whiteColor">登录后发表评论</a>
+                </div>
+            {{end}}
+        </div>
+
+        <div class="faceDivBox" style="width:800px;height:580px;display:none;">
+            <div class="faceDiv" style="height:580px;">
+                <section class="emoji-box"></section>
+                <div class="tabbox">
+                    <section class="emoji-tab"></section>
+                </div>
+            </div>
+            <a class="closeFaceBox" href="javascript:void(0)">×</a>
+        </div>
+
+        <div class="comment-list">
+
+        </div>
+        <div class="text-center">
+            <a href="javascript:void(0)" class="Details-Next d-none"><i class="iconfont icon-Order-Details-SeeMore"></i>加载更多</a>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        {{if (.recommendList|len)}}
+            <div class="widget widget-meta">
+                <h4>精彩推荐</h4>
+                <ul>
+                    {{range $i, $value := $.recommendList}}
+                        <li>
+                            <a href="/article/{{$value.Id}}">{{$value.Title}}</a>
+                        </li>
+                    {{end}}
+                </ul>
+            </div>
+        {{end}}
+        {{if (.hotList|len)}}
+            <div class="widget widget-meta">
+                <h4>热门文章</h4>
+                <ul>
+                    {{range $i, $value := $.hotList}}
+                        <li>
+                            <a href="/article/{{$value.Id}}">{{$value.Title}}</a>
+                        </li>
+                    {{end}}
+                </ul>
+            </div>
+        {{end}}
+    </div>
+</div>
