@@ -1,10 +1,3 @@
-#### 案例网址：
-![favicon](http://assets.cdbob.cn/favicon.png) 
-
-​	前台：http://localhost:80/
-
-​	后台：http://localhost:8201/
-   
 #介绍
 翻阅github很多go编写的博客，发觉大多对应前端程序员部署还是需要成本，而且博客页面不是那么优美，而我们前端程序员一般会使用
 node编写，页面虽然好看些，但是node开发的在性能上有缺陷，加上node提供的模板引擎不友好，基本都用node提供api，前后端分离，这样对seo不友好。
@@ -48,9 +41,33 @@ node编写，页面虽然好看些，但是node开发的在性能上有缺陷，
 - [x] bootstrap3
 - [x] gulp
 - [x] sass 
+#
+
+> 前端使用自动构建工具[gulp](https://www.gulpjs.com.cn/)管理，查看gulp说明 /admin/gulp/、/blog/gulp
+
+## 前端环境
+```node 
+进入admin和blog的/gulp，分别运行
+npm install
+npm run build && npm run dev
+```
+
+### [字体图标](https://www.iconfont.cn/)
+> 字体图表可以选用以下两种方式：
+```html
+<link rel="stylesheet" href="/static/fonts/iconfont.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1521018_rlytcpm4z2b.css">
+```
+
+## 后端环境
+关于golang和beego的开发环境在这里就不赘述了，请自行百度获取。
+
+### 加入数据库
+mysql 新建easy_go数据库、字符集utf8mb4，并把easy_go.sql 导入
 
 
-### 数据库、七牛云、图片验证码、token、第三方登陆
+#### 数据库、七牛云、图片验证码、token、第三方登陆
 ```
 go get -u github.com/go-sql-driver/mysql
 go get -u github.com/jinzhu/gorm
@@ -63,13 +80,21 @@ go get -u github.com/dgrijalva/jwt-go
 
 go get github.com/zcshan/d3outh
 ```
-#
-前端使用自动构建工具[gulp](https://www.gulpjs.com.cn/)管理，查看gulp说明 /admin/gulp/、/blog/gulp
 
-[运行 通过flag包添加环境](https://www.letianbiji.com/go/go-pkg-flag.html)
+#### 修改config/config.ini 配置
+> [flag包添加环境](https://www.letianbiji.com/go/go-pkg-flag.html) 默认环境是dev，直接通过bee run直接运行，生产环境通过命令行添加 -env prod
 
-当前config配置区分开发环境与生产环境，开发是
+### 运行
+```cmd
+    cd 到 easy_go admin和blog目录 执行
+    $ bee run
+```
 
+#### 浏览器演示
+
+​	前台：http://localhost:80/
+
+​	后台：http://localhost:8201/
 
 ### 1、Mac下编译Linux, Windows平台的64位可执行程序：
 ```shell script
