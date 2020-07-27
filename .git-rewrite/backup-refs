@@ -1,0 +1,14 @@
+d6160081f593cc16541ea738ca2e3e83b93fb6e1 commit	refs/heads/gorm
+1342b45955c7776f82e24dfbe9c7ea5ea7bf571f commit	refs/heads/layout
+7908486971ca96b9c24508402153c781c5f80fcd commit	refs/heads/master
+7908486971ca96b9c24508402153c781c5f80fcd commit	refs/remotes/origin/HEAD
+7684fe3841272e16242287d6e3d4e130978b25bb commit	refs/remotes/origin/admin
+5e6a881b790ec89c937cc26f8902e842cdb7e6aa commit	refs/remotes/origin/beego
+36b49ebf3a567da55a4fe4e05bedae22e80e1159 commit	refs/remotes/origin/dev
+d6160081f593cc16541ea738ca2e3e83b93fb6e1 commit	refs/remotes/origin/gorm
+d1cd4b2483cd24c977f8c116b782989d84b08adc commit	refs/remotes/origin/gorm-beeo
+46011d7a831b8356b8b89b2d17732a66d13a8fe8 commit	refs/remotes/origin/gorm-old
+1342b45955c7776f82e24dfbe9c7ea5ea7bf571f commit	refs/remotes/origin/layout
+7908486971ca96b9c24508402153c781c5f80fcd commit	refs/remotes/origin/master
+51010b15908905c7842cd27458d593239ebfdbc2 commit	refs/remotes/origin/search
+6580c5dc146683a5a3dbae1aa42ed01e91ee4286 commit	refs/remotes/origin/trunk
