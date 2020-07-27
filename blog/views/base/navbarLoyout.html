@@ -1,0 +1,26 @@
+{{define "navbarExpanded"}}
+    <div class="navbar-expanded">
+        
+        <a class="themeMixin-skin cursorPointer">
+            <i class="iconfont icon-moon"></i>
+        </a>
+
+        {{if .u_id}}
+            <a href="javascript: void(0);">
+                <i class="iconfont icon-exit exit-confirmbtn" title="退出登录" id="confirmbtn3"></i>
+            </a>
+        {{else}}
+            <a href="/login">
+                <i class="iconfont icon-denglu" title="登录" onclick="_login()"></i>
+            </a>
+        {{end}}
+
+
+        {{if .u_id}}
+            <a class="expanded-avatar c-pointer d-block" title="{{.u_name}}">
+                <img class="d-block" width="32px" height="32px" src="{{.u_avatar_url}}">
+            </a>
+        {{end}}
+    </div>
+    <script>function _login(){-1===window.location.pathname.indexOf("/login")&&sessionStorage.setItem("r",window.location.href)}</script>
+{{end}}
