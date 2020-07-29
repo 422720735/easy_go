@@ -29,11 +29,10 @@ node编写，页面虽然好看些，但是node开发的在性能上有缺陷，
 虽然上个版本我用的是原生mysql，其实开发效率及性能上是有缺陷了，所以该版本采用gorm，加上go的部署简单，不用容器等技术也能，很快部署项目。
 
 ## 下载地址(任选其一)
-```shell script
-# github
+
+```
 git clone git@github.com:422720735/easy_go.git
 
-# 码云
 git clone https://gitee.com/l422720735/easy_go.git
 ```
 
@@ -49,13 +48,12 @@ git clone https://gitee.com/l422720735/easy_go.git
 - [x] jquery
 - [x] bootstrap3
 - [x] gulp
-- [x] sass 
-#
+- [x] sass
 
 > 前端使用自动构建工具[gulp](https://www.gulpjs.com.cn/)管理，查看gulp说明 /admin/gulp/、/blog/gulp
 
 ## 前端环境
-```node 
+``` 
 进入admin和blog的/gulp，分别运行
 npm install
 npm run build && npm run dev
@@ -63,7 +61,8 @@ npm run build && npm run dev
 
 ### [字体图标](https://www.iconfont.cn/)
 > 字体图表可以选用以下两种方式：
-```html
+
+```
 <link rel="stylesheet" href="/static/fonts/iconfont.css">
 
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1521018_rlytcpm4z2b.css">
@@ -94,7 +93,7 @@ go get github.com/zcshan/d3outh
 > [flag包添加环境](https://www.letianbiji.com/go/go-pkg-flag.html) 默认环境是dev，直接通过bee run直接运行，生产环境通过命令行添加 -env prod
 
 ### 运行
-```cmd
+```
     cd 到 easy_go admin和blog目录 执行
     $ bee run
 ```
@@ -106,27 +105,25 @@ go get github.com/zcshan/d3outh
 ​	后台：http://localhost:8201/
 
 ### 1、Mac下编译Linux, Windows平台的64位可执行程序：
-```shell script
+```
 $ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build
 $ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build
 ```
 
 ### 2、Linux下编译Mac, Windows平台的64位可执行程序：
-```shell script
+```
 $ CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build
 $ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build
 ```
 ### 3、Windows下编译Mac, Linux平台的64位可执行程序：
-```shell script
+```
 $ SET CGO_ENABLED=0SET GOOS=darwin3 SET GOARCH=amd64 go build
 $ SET CGO_ENABLED=0 SET GOOS=linux SET GOARCH=amd64 go build
 ```
 
-### 生产环境运行
+### 生产环境运行(linux/windows)
 ```
-linux
-nohup ./** -env prod &
+nohup ./blog -env prod &
 
-windows
-**.exe - env prod
+admin.exe - env prod
 ```
