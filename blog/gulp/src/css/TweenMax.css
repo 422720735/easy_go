@@ -17,6 +17,7 @@ svg polygon {
   visibility: hidden; }
 
 .navbar-box.nav-skin, .container-fluid.main-box {
+  -webkit-transition: all 1.3s;
   transition: all 1.3s;
   opacity: 0; }
 

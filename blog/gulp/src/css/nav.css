@@ -21,6 +21,7 @@ nav.navbar.bootsnav ul.nav > li > a {
   position: absolute;
   bottom: 0;
   left: 0;
+  -webkit-transition: all 0.5s ease 0s;
   transition: all 0.5s ease 0s; }
 
 .nav > li:hover:after {
@@ -34,15 +35,18 @@ nav.navbar.bootsnav ul.nav > li.dropdown > a.dropdown-toggle:after {
   position: absolute;
   top: 35%;
   right: 10%;
+  -webkit-transition: all 0.4s ease 0s;
   transition: all 0.4s ease 0s; }
 
 nav.navbar.bootsnav ul.nav > li.dropdown.on > a.dropdown-toggle:after {
   content: "\f105";
-  transform: rotate(90deg); }
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg); }
 
 .dropdown-menu.multi-dropdown {
   position: absolute; }
 
 nav.navbar.bootsnav li.dropdown ul.dropdown-menu {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   border: none; }

@@ -2,6 +2,7 @@ const path = require('path');
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const cssUglify = require('gulp-minify-css');
+const autoprefixer = require('gulp-autoprefixer');
 const rename = require('gulp-rename');
 
 const uglify = require('gulp-uglify');
@@ -30,6 +31,9 @@ const options = {
 gulp.task('sass', () => {
     return gulp.src('src/sass/*.scss')
         .pipe(sass())
+        .pipe(autoprefixer({
+            browsers: ['last 20 versions']
+        }))
         .pipe(gulp.dest('src/css'))
 });
 
