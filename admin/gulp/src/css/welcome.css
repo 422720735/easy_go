@@ -11,7 +11,10 @@
   margin-bottom: 16px; }
 
 #welcome .page-header .head-info {
-  flex: 0 1 auto;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 auto;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
   margin-left: 88px;
   min-width: 242px; }
   #welcome .page-header .head-info .work {

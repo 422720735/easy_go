@@ -16,10 +16,12 @@ ul.pagination .page-item.default .page-link:hover,
 ul.pagination .page-item.default .page-link:focus {
   cursor: default;
   background-color: transparent;
-  box-shadow: none; }
+  -webkit-box-shadow: none;
+          box-shadow: none; }
 
 .ant-divider {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0;
   padding: 0;
   color: rgba(0, 0, 0, 0.65);
@@ -27,7 +29,8 @@ ul.pagination .page-item.default .page-link:focus {
   font-variant: tabular-nums;
   line-height: 1.5;
   list-style: none;
-  font-feature-settings: 'tnum';
+  -webkit-font-feature-settings: 'tnum';
+          font-feature-settings: 'tnum';
   background: #e8e8e8; }
 
 .ant-divider,

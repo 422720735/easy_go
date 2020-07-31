@@ -2,9 +2,12 @@ ul.footer-container {
   position: absolute;
   left: 50%;
   bottom: 1%;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   padding-left: 15px;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
   width: 100%;
   color: #cccccc; }
 
@@ -19,7 +22,8 @@ ul.footer-container {
       height: 30px;
       line-height: 30px;
       text-align: center;
-      border-radius: 50%;
+      -webkit-border-radius: 50%;
+              border-radius: 50%;
       font-size: 18px; }
       .footer-container li a:hover {
         text-decoration: none; }

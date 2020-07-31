@@ -6,6 +6,8 @@ a {
 
 .nav {
   height: 100%;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
   transition: all .3s; }
 
 .nav a {
@@ -15,6 +17,8 @@ a {
   line-height: 46px;
   max-height: 46px;
   color: #abb1b7;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
   transition: all .3s; }
 
 .nav a span {
@@ -45,6 +49,8 @@ a {
   height: 55px;
   background: #34a0ce;
   opacity: 0;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
   transition: all .3s; }
 
 .nav .nav-icon {
@@ -65,13 +71,19 @@ a {
   float: right;
   margin-right: 20px;
   font-size: 12px;
-  transition: transform .3s; }
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  -o-transition: transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s; }
 
 .nav-more::after {
   content: "\e621"; }
 
 .nav-show .nav-more {
-  transform: rotate(90deg); }
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg); }
 
 .nav-show, .nav-item > a:hover {
   color: #fff;

@@ -3,7 +3,8 @@
   display: inline-block;
   padding: 3px 8px;
   margin: 2px;
-  border-radius: 8px;
+  -webkit-border-radius: 8px;
+          border-radius: 8px;
   font-size: 12px; }
   .tags-list .tag.tag_1 {
     background-color: #727577; }
@@ -31,7 +32,8 @@
   .article-tags a {
     padding: 3px 8px;
     margin: 2px;
-    border-radius: 8px;
+    -webkit-border-radius: 8px;
+            border-radius: 8px;
     font-size: 12px; }
     .article-tags a:last-child {
       margin: 0; }
@@ -63,9 +65,11 @@
     background-color: transparent; }
   .article-list .article-item {
     display: -webkit-box;
+    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
+    -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center;
     border-bottom: 1px dashed #999999;
@@ -80,6 +84,7 @@
         .article-list .article-item .left_img > a img {
           width: 100%; }
     .article-list .article-item .right-html {
+      width: -webkit-calc(100% - 230px);
       width: calc(100% - 230px);
       /*
       // 暂时废弃这种现在以标签为主
@@ -107,7 +112,8 @@
         top: -2px;
         padding: 3px 6px;
         margin-right: 6px;
-        border-radius: 3px;
+        -webkit-border-radius: 3px;
+                border-radius: 3px;
         color: #ffffff;
         background-color: #45bcf9;
         font-size: 12px;
@@ -140,7 +146,8 @@
         display: inline-block;
         padding: 4px 6px;
         border: solid 1px #c0392b;
-        border-radius: 3px;
+        -webkit-border-radius: 3px;
+                border-radius: 3px;
         color: #c0392b; }
       .article-list .article-item .right-html .article {
         margin-top: 20px;
@@ -178,10 +185,12 @@
       width: 160px;
       height: 109px; }
       .article-list .article-item .left_img > a {
-        border-radius: 5px; }
+        -webkit-border-radius: 5px;
+                border-radius: 5px; }
         .article-list .article-item .left_img > a img {
           width: 100%; }
     .article-list .article-item .right-html {
+      width: -webkit-calc(100% - 160px);
       width: calc(100% - 160px); }
       .article-list .article-item .right-html .article {
         margin-top: 5px;

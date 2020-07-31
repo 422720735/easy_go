@@ -125,5 +125,5 @@ $ SET CGO_ENABLED=0 SET GOOS=linux SET GOARCH=amd64 go build
 ```
 nohup ./blog -env prod &
 
-admin.exe - env prod
+admin.exe -env prod
 ```

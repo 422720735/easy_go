@@ -43,6 +43,7 @@
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -76,6 +77,7 @@
         height: 2px;
         background-color: #1890ff;
         -webkit-transition: ease 0.3s;
+        -o-transition: ease 0.3s;
         transition: ease 0.3s; }
         .login .main .user-title-tag .lnk-bar.one {
           width: 116px;
@@ -87,13 +89,16 @@
                   transform: translate3d(225px, 0px, 0px); }
     .login .main .loginForm .inputBox {
       display: -webkit-box;
+      display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
       -webkit-box-orient: horizontal;
       -webkit-box-direction: normal;
+      -webkit-flex-direction: row;
           -ms-flex-direction: row;
               flex-direction: row;
       -webkit-transition: ease 0.3s;
+      -o-transition: ease 0.3s;
       transition: ease 0.3s;
       margin-left: 0;
       width: 200%; }
@@ -147,7 +152,8 @@
         height: 44px;
         line-height: 44px;
         text-align: center;
-        border-radius: 50%; }
+        -webkit-border-radius: 50%;
+                border-radius: 50%; }
         .login .main .oauth-login > div a i {
           font-size: 26px; }
 

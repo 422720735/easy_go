@@ -18,6 +18,7 @@
   top: 50%;
   margin-left: 30px;
   -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%); }
 
 @media (max-width: 768px) {
@@ -60,10 +61,12 @@
 @media (max-width: 768px) {
   .navbar-expanded {
     display: -webkit-box;
+    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
         -ms-flex-direction: row;
             flex-direction: row;
     position: relative;
@@ -72,6 +75,7 @@
     width: 100%; }
     .navbar-expanded > div {
       -webkit-box-flex: 1;
+      -webkit-flex: 1;
           -ms-flex: 1;
               flex: 1; }
     .navbar-expanded a {
@@ -150,6 +154,7 @@
 
 @media (max-width: 492px) {
   .blog-container {
+    min-height: -webkit-calc(100vh - 74px) !important;
     min-height: calc(100vh - 74px) !important; } }
 
 .main-content {
@@ -158,6 +163,7 @@
   .main-content i#mobile {
     display: none; }
   .main-content .blog-container {
+    min-height: -webkit-calc(100vh - 51px);
     min-height: calc(100vh - 51px);
     padding-bottom: 51px; }
   .main-content ul.footer-container {
@@ -175,7 +181,8 @@
         height: 30px;
         line-height: 30px;
         text-align: center;
-        border-radius: 50%;
+        -webkit-border-radius: 50%;
+                border-radius: 50%;
         font-size: 18px; }
         .main-content .footer-container li a:hover {
           text-decoration: none; }
@@ -212,9 +219,12 @@
   width: 15%;
   height: 50px;
   border: none;
-  border-radius: 4px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+  -webkit-border-top-left-radius: 0;
+          border-top-left-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+          border-bottom-left-radius: 0;
   color: #ffffff;
   background-color: #1890ff; }
   #search-form-box button.search-btn:hover {
@@ -224,9 +234,11 @@
 
 .navbar-expanded .expanded-avatar {
   display: -webkit-box;
+  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
+  -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
   margin: 0 auto; }
@@ -234,6 +246,7 @@
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
     border: 2px solid transparent;
-    border-radius: 50%; }
+    -webkit-border-radius: 50%;
+            border-radius: 50%; }
   .navbar-expanded .expanded-avatar:hover img {
     border: 2px solid #f49484; }

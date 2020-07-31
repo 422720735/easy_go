@@ -4,7 +4,8 @@
 .article_editor_page {
   background: #FFFFFF;
   padding: 0 0 60px 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   /*box-shadow:0 1px 5px 0 rgba(0,0,0,0.05);*/ }
 
 .article_editor_title input {
@@ -70,7 +71,8 @@
     left: 0; }
     .article_editor_info2 .con .fl .thumb {
       position: absolute;
-      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
       width: 160px;
       height: 114px; }
   .article_editor_info2 .con .fr textarea {
@@ -78,7 +80,8 @@
     padding: 10px;
     margin: 0;
     width: 100%;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     line-height: 23px;
     height: 114px;
     border: 1px solid #EEEEEE;
@@ -151,7 +154,8 @@
     .article_editor_savebar .fr button {
       border: 1px solid #E7E7E7;
       background: #FFFFFF;
-      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
       padding: 0 22px;
       line-height: 30px;
       margin-left: 12px;

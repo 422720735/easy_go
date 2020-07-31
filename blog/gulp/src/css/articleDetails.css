@@ -6,7 +6,8 @@
   display: inline-block;
   padding: 3px 8px;
   margin: 2px;
-  border-radius: 8px;
+  -webkit-border-radius: 8px;
+          border-radius: 8px;
   font-size: 12px; }
   .tags-list .tag.tag_1 {
     background-color: #727577; }
@@ -34,7 +35,8 @@
   .article-tags a {
     padding: 3px 8px;
     margin: 2px;
-    border-radius: 8px;
+    -webkit-border-radius: 8px;
+            border-radius: 8px;
     font-size: 12px; }
     .article-tags a:last-child {
       margin: 0; }
@@ -63,13 +65,16 @@
     font-size: 26px; }
   .article-content .article-header .article-meta {
     display: -webkit-box;
+    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
         -ms-flex-direction: row;
             flex-direction: row;
     -webkit-box-pack: center;
+    -webkit-justify-content: center;
         -ms-flex-pack: center;
             justify-content: center;
     font-size: 14px;
@@ -87,21 +92,26 @@
   .article-content .article-share a {
     font-size: 0;
     display: -webkit-box;
+    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
         -ms-flex-direction: row;
             flex-direction: row;
     -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
         -ms-flex-pack: justify;
             justify-content: space-between;
     -webkit-box-align: center;
+    -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center;
     width: 160px;
     height: 50px;
-    border-radius: 40px;
+    -webkit-border-radius: 40px;
+            border-radius: 40px;
     text-align: center;
     text-decoration: none;
     border: 1px solid #e78170;
@@ -124,6 +134,7 @@
       font-size: 18px; }
       .article-content .article-share a span:first-child {
         -webkit-box-flex: 1;
+        -webkit-flex: 1;
             -ms-flex: 1;
                 flex: 1; }
       .article-content .article-share a span:last-child {
@@ -227,7 +238,8 @@
 
 .day-mode .sidebar .widget {
   background-color: #ffffff;
-  border-radius: 4px;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
   border: 1px solid #eaeaea; }
   .day-mode .sidebar .widget h4 {
     border-bottom: 1px solid #eaeaea;
@@ -288,7 +300,8 @@
       position: absolute; }
       .comment-list .comment-info header img {
         width: 100%;
-        border-radius: 50%;
+        -webkit-border-radius: 50%;
+                border-radius: 50%;
         padding: 5px; }
     .comment-list .comment-info .comment-right {
       padding: 5px 0px 5px 11%; }
@@ -351,7 +364,8 @@ nav.navbar.bootsnav {
     margin-right: 380px; }
     .article-wrap .article-content .editor {
       padding: 0 20px;
-      border-radius: 4px; }
+      -webkit-border-radius: 4px;
+              border-radius: 4px; }
   .article-wrap .sidebar {
     position: fixed;
     width: 360px;
@@ -393,16 +407,20 @@ nav.navbar.bootsnav {
   width: 100%;
   height: 100%;
   -webkit-transform: translateY(-200%);
+      -ms-transform: translateY(-200%);
           transform: translateY(-200%);
   -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   transition: -webkit-transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1); }
   .article-h1 .articleTitle {
     display: -webkit-box;
+    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
+    -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center;
     vertical-align: middle;
@@ -416,15 +434,18 @@ nav.navbar.bootsnav {
 .artile-ul {
   -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   transition: -webkit-transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1); }
 
 .artile-ul.article-current {
   -webkit-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
           transform: translateY(-100%); }
 
 .article-h1.article-current {
   -webkit-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
           transform: translateY(-100%); }
 
 a {

@@ -22,6 +22,7 @@ nav.navbar.bootsnav ul.nav > li > a {
   bottom: 0;
   left: 0;
   -webkit-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
   transition: all 0.5s ease 0s; }
 
 .nav > li:hover:after {
@@ -36,11 +37,13 @@ nav.navbar.bootsnav ul.nav > li.dropdown > a.dropdown-toggle:after {
   top: 35%;
   right: 10%;
   -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
   transition: all 0.4s ease 0s; }
 
 nav.navbar.bootsnav ul.nav > li.dropdown.on > a.dropdown-toggle:after {
   content: "\f105";
   -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
           transform: rotate(90deg); }
 
 .dropdown-menu.multi-dropdown {

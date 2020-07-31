@@ -15,7 +15,6 @@
   .articleTags-box ul.tagit {
     margin-bottom: 0; }
     .articleTags-box ul.tagit li.tagit-choice {
-      -moz-border-radius: 6px;
       border-radius: 6px;
       -webkit-border-radius: 6px;
       border: 1px solid #cad8f3;
@@ -80,9 +79,7 @@
     background: #fff 50% 50% repeat-x;
     color: #222; }
   .articleTags-box .tagit-autocomplete.ui-corner-all, .articleTags-box .tagit-autocomplete .ui-corner-all {
-    -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
-    -khtml-border-radius: 4px;
     border-radius: 4px; }
   .articleTags-box .tagit-autocomplete .ui-state-hover, .articleTags-box .tagit-autocomplete .ui-state-focus {
     border: 1px solid #999;

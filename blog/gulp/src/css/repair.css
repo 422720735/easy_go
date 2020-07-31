@@ -74,6 +74,7 @@ nav.navbar.bootsnav .navbar-toggle {
   top: 0;
   width: 100%;
   -webkit-transition: all 0.25s;
+  -o-transition: all 0.25s;
   transition: all 0.25s; }
 
 @media (max-width: 768px) {
