@@ -45,25 +45,7 @@ func SelectArticleDetails(id int) (*ArticleAll, error) {
 		return nil, err
 	}
 
-	all.Id = a.Id
-	all.MenuId = a.MenuId
-	all.CategoryId = a.CategoryId
-	all.Cover = a.Cover
-	all.Title = a.Title
-	all.Author = a.Author
-	all.Desc = a.Desc
-	all.Keyword = a.Keyword
-	all.Tags = a.Tags
-	all.View = a.View
-	all.Markdown = a.Markdown
-	all.Type = a.Type
-	all.Praise = a.Praise
-	all.Recommend = a.Recommend
-	all.Hot = a.Hot
-	all.Sort = a.Sort
-	all.State = a.State
-	all.CreatedTime = a.CreatedTime
-	all.UpdateTime = a.UpdateTime
+	all.Article = a
 	all.Url = c.Url
 	all.Content = c.Content
 

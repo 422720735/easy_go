@@ -77,7 +77,7 @@ func InsertArticleDetails(title, content, cover, desc, tags, keyword string, men
 	}
 
 	c := &models.ArticleContent{
-		Content: &content,
+		Content:   &content,
 		ArticleId: a.Id,
 	}
 
@@ -236,7 +236,7 @@ func SelectArticleDetails(id int) (*ArticleAll, error) {
 		logger.Error(err.Error())
 		return nil, err
 	}
-	
+
 	err = db.DbConn.Model(&models.ArticleContent{}).Where("article_id = ?", a.Id).First(&c).Error
 	if err != nil {
 		logger.Error(err.Error())
@@ -249,25 +249,7 @@ func SelectArticleDetails(id int) (*ArticleAll, error) {
 		all.TopId = int(top.TopId.Int64)
 	}
 
-	all.Id = a.Id
-	all.MenuId = a.MenuId
-	all.CategoryId = a.CategoryId
-	all.Cover = a.Cover
-	all.Title = a.Title
-	all.Author = a.Author
-	all.Desc = a.Desc
-	all.Keyword = a.Keyword
-	all.Tags = a.Tags
-	all.View = a.View
-	all.Markdown = a.Markdown
-	all.Type = a.Type
-	all.Praise = a.Praise
-	all.Recommend = a.Recommend
-	all.Hot = a.Hot
-	all.Sort = a.Sort
-	all.State = a.State
-	all.CreatedTime = a.CreatedTime
-	all.UpdateTime = a.UpdateTime
+	all.Article = a
 	all.Url = c.Url
 	all.Content = c.Content
 	return &all, nil
