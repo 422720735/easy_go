@@ -1,20 +1,65 @@
 <script src="/static/js/details.min.js"></script>
 {{/*文章内容marked回显*/}}
-<script src="/static/assets/editor.md/lib/marked.min.js"></script>
-<script src="/static/assets/editor.md/editormd.min.js"></script>
+{{/*<script src="/static/assets/editor.md/lib/marked.min.js"></script>*/}}
+{{/*<script src="/static/assets/lib/editor.md-master/lib/prettify.min.js"></script>*/}}
+{{/*<script src="/static/assets/editor.md/editormd.min.js"></script>*/}}
+{{/*<script>*/}}
+{{/*    editormd.markdownToHTML("article-content", {*/}}
+{{/*        htmlDecode      : "style,script,iframe",*/}}
+{{/*        emoji           : false,*/}}
+{{/*        taskList        : true,*/}}
+{{/*        tex             : true,*/}}
+{{/*        flowChart       : false,*/}}
+{{/*        sequenceDiagram : false,*/}}
+{{/*        tocm            : true,*/}}
+{{/*    });*/}}
+{{/*</script>*/}}
 {{/*下面这个js让我们加载速度变慢，暂时注释掉*/}}
 {{/*<script src="/static/assets/editor.md/lib/prettify.min.js"></script>*/}}
+<script src="/static/assets/lib/editor.md-master/lib/marked.min.js"></script>
+<script src="/static/assets/lib/editor.md-master/lib/prettify.min.js"></script>
+<script src="/static/assets/lib/editor.md-master/editormd.min.js"></script>
 <script>
-    editormd.markdownToHTML("article-content", {
-        htmlDecode      : "style,script,iframe",
-        emoji           : false,
-        taskList        : true,
-        tex             : true,
-        flowChart       : false,
-        sequenceDiagram : false,
-        tocm            : true,
-    });
+    $(function(){
+        var testEditormdView;
+        testEditormdView = editormd.markdownToHTML("article-content", {
+            htmlDecode      : "style,script,iframe",
+            emoji           : false,
+            taskList        : true,
+            tex             : true,
+            flowChart       : false,
+            sequenceDiagram : false,
+            tocm            : true,
+            tocContainer    : "#custom-toc-container",
+        });
+        $(window).scroll(function(){
+            sTop = $(window).scrollTop();
+            if (sTop < 604){
+                $('#mulu').css({"position":"relative","top":""})
+            }else{
+                $('#mulu').css({"position":"fixed","top":"20px"})
+            }
+        });
+        $('a[href*=#],area[href*=#]').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                this.hash = decodeURIComponent(this.hash);
+                var a = decodeURIComponent(this.hash);
+                var $target = $(a);
+                $target = $target.length && $target || $('[name="' + a.slice(1) + '"]');
+                if ($target.length) {
+                    var targetOffset = $target.offset().top;
+                    $('html,body').animate({
+                            scrollTop: targetOffset - 80
+                        },
+                        1000);
+                    return false;
+                }
+            }
+        });
+    })
+
 </script>
+
 {{/*用户退出登录*/}}
 <script src="/static/js/user.min.js"></script>
 {{/*评论信息*/}}
