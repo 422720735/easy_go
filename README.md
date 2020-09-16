@@ -117,7 +117,7 @@ $ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build
 ```
 ### 3、Windows下编译Mac, Linux平台的64位可执行程序：
 ```
-$ SET CGO_ENABLED=0SET GOOS=darwin3 SET GOARCH=amd64 go build
+$ SET CGO_ENABLED=0 SET GOOS=darwin3 SET GOARCH=amd64 go build
 $ SET CGO_ENABLED=0 SET GOOS=linux SET GOARCH=amd64 go build
 ```
 
